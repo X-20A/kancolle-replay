@@ -98,6 +98,7 @@ var SIM = {
 			totalEmptiedLBAS: 0,
 			totalTransport: 0,
 			nodes: [],
+			brokenLogs: [],
 		};
 		for (let n=0; n<numNodes; n++) {
 			this._results.nodes.push({
@@ -202,6 +203,13 @@ var SIM = {
 		}
 		let shipBossFlag = FLEETS2.at(-1).ships[0];
 		this._results.totalGaugeDamage += shipBossFlag.maxHP - Math.max(0,shipBossFlag.HP);
+	},
+	
+	_reflectAndResetBrokenLogs: function() {
+		console.log('BrokenLogs');
+		console.log(brokenLogs);
+		this._results.brokenLogs = brokenLogs;
+		brokenLogs = [];
 	},
 
 	_inputEquivalent: function(v1,v2) {
@@ -697,11 +705,12 @@ var SIM = {
 				}
 			}
 		}
-	
+		
 	
 		for (let battleInd=0; battleInd<dataInput.nodes.length; battleInd++) {
 			let node = dataInput.nodes[battleInd];
 			let isBossNode = battleInd == dataInput.nodes.length-1;
+			currentNode = battleInd + 1;
 			let fleetF = FLEETS1[0];
 			let fleetE = FLEETS2[battleInd];
 			let fleetFSupport = isBossNode && !dataInput.nodes[battleInd].useNormalSupport ? FLEETS1S[1] : FLEETS1S[0];
@@ -803,7 +812,7 @@ var SIM = {
 				if (fleetE.combinedWith) {
 					result = sim6vs12(fleetF,fleetE,fleetFSupport,lbWaves,doNB,node.NBOnly,node.airOnly,node.airRaid,node.noAmmo,apiBattle,false,fleetFF);
 				} else {
-					result = sim(fleetF,fleetE,fleetFSupport,lbWaves,doNB,node.NBOnly,node.airOnly,node.airRaid,node.noAmmo,apiBattle,false,fleetFF);
+					result = sim(fleetF,fleetE,fleetFSupport,lbWaves,doNB,node.NBOnly,node.airOnly,node.airRaid,node.noAmmo,apiBattle,false,fleetFF,battleInd);
 				}
 			}
 			
@@ -914,6 +923,7 @@ var SIM = {
 				this._checkWarningsPostRun(dataInput);
 				callback({ progress: n, progressTotal: numSim, result: this._results, warnings: this._warnings.slice() });
 				let timeTotal = Date.now() - timeStart;
+				this._reflectAndResetBrokenLogs();
 				console.log('time: ' + (timeTotal/1000) + ' sec');
 				this.cancelRun = false;
 			} else {

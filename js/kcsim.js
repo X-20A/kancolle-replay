@@ -351,6 +351,9 @@ var MECHANICS = {
 var NERFPTIMPS = false;
 var BREAKPTIMPS = false;
 
+let brokenLogs = [];
+let currentNode = 0;
+
 function getRepairCost(ship) {
 	var base = (ship.maxHP - ship.HP)*SHIPDATA[ship.mid].fuel;
 	return [Math.floor(base*.032),Math.floor(base*.06)];
@@ -909,7 +912,7 @@ function NBattack(ship,target,NBonly,NBequips,APIyasen,attackSpecial) {
 	return (target.HP <= 0);
 }
 
-function ASW(ship,target,isnight,APIhou,isOASW) {
+function ASW(ship,target,isnight,APIhou,isOASW,isEnemyTurn,phaseName) {
 	var sonarAcc = 0;
 	for (var i=0; i<ship.equips.length; i++) if (ship.equips[i].btype == B_SONAR) sonarAcc += 2*ship.equips[i].ASW;
 	if (ship.improves.ACCasw) sonarAcc += ship.improves.ACCasw;
@@ -969,6 +972,9 @@ function ASW(ship,target,isnight,APIhou,isOASW) {
 			}
 			APIhou.api_si_list.push([si]);
 		}
+	}
+	if(isEnemyTurn) {
+		
 	}
 	return (target.HP <= 0);
 }
@@ -1409,7 +1415,7 @@ function getSpecialAttackMod(ship,attackSpecial) {
 	return { modPow: mod, modAcc: modAcc };
 }
 
-function shellPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,APIhou,isOASW) {
+function shellPhase({order1,order2,alive1,subsalive1,alive2,subsalive2,APIhou,isOASW,phaseName}) {
 	if (C && NEWFORMAT) {
 		formatRemovePadding(APIhou);
 		if (!APIhou.api_at_eflag) APIhou.api_at_eflag = [];
@@ -1829,7 +1835,7 @@ function torpedoPhase(alive1,subsalive1,alive2,subsalive2,opening,APIrai,combine
 	}
 }
 
-function airstrike(ship,target,slot,contactMod,issupport,isjetphase,isRaid) {
+function airstrike({ship,target,slot,contactMod,issupport,isjetphase,isRaid,isEnemyTurn,phaseName}) {
 	if (!contactMod) contactMod = 1;
 	var equip = ship.equips[slot];
 	var acc = (issupport)? .85 : .95;
@@ -1927,7 +1933,35 @@ function airstrike(ship,target,slot,contactMod,issupport,isjetphase,isRaid) {
 	if(C) {
 		console.log(ship.name+' airstrikes '+target.name+' for '+dmg+' damage, '+target.HP+'/'+target.maxHP+' left, CONTACT: '+contactMod);
 	}
+	if(isEnemyTurn) {
+		const beforeDmgHp = target.HP + dmg;
+		const taihaLine = target.maxHP / 4;
+		if(beforeDmgHp > taihaLine && target.HP <= taihaLine) {
+			// console.log(`Node: ${currentNode}, Phase: ${phaseName}において ${ship.name} の攻撃により ${target.name} 大破`);
+			pushBrokenLog({
+				phaseName: phaseName,
+				damagedShipName: target.name,
+				attackedShipName: ship.name
+			});
+		}
+	}
 	return realdmg;
+}
+
+function isDamageSignificant(targetHP, targetMaxHP, dmg) {
+	const beforeDmgHp = target.HP + dmg;
+	const taihaLine = target.maxHP / 4;
+	
+}
+
+function pushBrokenLog({phaseName, damagedShipName, attackedShipName}) {
+	const brokenLog = {
+		node: currentNode,
+		phase: phaseName,
+		damaged: damagedShipName,
+		attacked: attackedShipName
+	};
+	brokenLogs.push(brokenLog);
 }
 
 function takeDamage(ship,damage) {
@@ -2338,7 +2372,7 @@ function getContact(carriers) {
 	return null;
 }
 
-function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupport,isjetphase,combinedAll,isRaid) {
+function AADefenceBombersAndAirstrike({carriers,targets,defenders,APIkouku,issupport,isjetphase,combinedAll,isRaid,isEnemyTurn,phaseName}) {
 	var bombers = [], hasbomber = false;
 	for (var i=0; i<carriers.length; i++) {
 		var ship = carriers[i];
@@ -2446,7 +2480,17 @@ function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupp
 				var target = choiceWProtect(targetsR,null,true);
 				if (!target) continue;
 				if (target._rocketTriggered) continue;
-				var dmg = airstrike(ship,target,slot,contactMod,issupport,isjetphase,isRaid);
+				var dmg = airstrike({
+					ship: ship,
+					target: target,
+					slot: slot,
+					contactMod: contactMod,
+					issuport: issupport,
+					isjetphase: isjetphase,
+					isRaid: isRaid,
+					isEnemyTurn: isEnemyTurn,
+					phaseName: phaseName
+				});
 				if (C) {
 					if (target.isescort) {
 						APIkouku.api_stage3_combined[(target.side)?'api_edam':'api_fdam'][target.num] += dmg;
@@ -2472,8 +2516,9 @@ function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupp
 	}
 }
 
-function airPhase(alive1,subsalive1,alive2,subsalive2,APIkouku,isjetphase,isbombing,includeEscort) {
+function airPhase({alive1,subsalive1,alive2,subsalive2,APIkouku,isjetphase,isbombing,includeEscort,phaseName}) {
 	var carriers1 = [], carriers2 = [];
+	let brokenLog = [];
 	for (var i=0; i<alive1.length; i++) if ((includeEscort||!alive1[i].isescort) && (!isjetphase||alive1[i].hasjet)) carriers1.push(alive1[i]);
 	for (var i=0; i<subsalive1.length; i++) if ((includeEscort||!subsalive1[i].isescort) && (!isjetphase||subsalive1[i].hasjet)) carriers1.push(subsalive1[i]);
 	for (var i=0; i<alive2.length; i++) if ((!isjetphase||alive2[i].hasjet)) carriers2.push(alive2[i]);
@@ -2497,8 +2542,30 @@ function airPhase(alive1,subsalive1,alive2,subsalive2,APIkouku,isjetphase,isbomb
 		AADefenceFighters(carriers2,alive1.length,APIkouku,filter);
 		
 		//bomber defence
-		if (!isbombing) AADefenceBombersAndAirstrike(carriers1,alive2,alive2.concat(subsalive2).filter(s => !s.isFaraway),APIkouku,false,isjetphase,includeEscort);
-		AADefenceBombersAndAirstrike(carriers2,alive1,alive1.concat(subsalive1),APIkouku,false,isjetphase,includeEscort,isbombing);
+		if (!isbombing) {
+			AADefenceBombersAndAirstrike({
+				carriers: carriers1,
+				targets: alive2,
+				defenders: alive2.concat(subsalive2).filter(s => !s.isFaraway),
+				APIkouku: APIkouku,
+				issupport: false,
+				isjetphase: isjetphase,
+				combinedAll: includeEscort,
+				isRaid: false
+			});
+		}
+		AADefenceBombersAndAirstrike({
+			carriers: carriers2,
+			targets: alive1,
+			defenders: alive1.concat(subsalive1),
+			APIkouku: APIkouku,
+			issupport: false,
+			isjetphase: isjetphase,
+			combinedAll: includeEscort,
+			isRaid: isbombing,
+			isEnemyTurn: true,
+			phaseName: phaseName
+		});
 	}
 	if (C) {
 		for (var i=0; i<2; i++)
@@ -2509,6 +2576,7 @@ function airPhase(alive1,subsalive1,alive2,subsalive2,APIkouku,isjetphase,isbomb
 			formatRemovePadding(APIkouku.api_stage3_combined);
 		}
 	}
+	return brokenLog;
 }
 
 function supportPhase(shipsS,alive2,subsalive2,suptype,BAPI,isboss) {
@@ -2635,7 +2703,15 @@ function supportPhase(shipsS,alive2,subsalive2,suptype,BAPI,isboss) {
 			var prevAS = alive2[0].fleet.AS;
 			compareAP(shipsS[0].fleet,alive2[0].fleet);
 			AADefenceFighters(shipsS,false,(C)? BAPI.data.api_support_info.api_support_airatack : null);
-			AADefenceBombersAndAirstrike(shipsS,alive2,alive2.concat(subsalive2).filter(s => !s.isFaraway),(C)? BAPI.data.api_support_info.api_support_airatack : null,true,false,alive2[0].fleet.combinedWith);
+			AADefenceBombersAndAirstrike({
+				carriers: shipsS,
+				targets: alive2,
+				defenders: alive2.concat(subsalive2).filter(s => !s.isFaraway),
+				APIkouku: (C)? BAPI.data.api_support_info.api_support_airatack : null,
+				issupport: true,
+				isjetphase: false,
+				combinedAll: alive2[0].fleet.combinedWith
+			});
 			alive2[0].fleet.AS = prevAS;
 		}
 		if (C) {
@@ -3299,7 +3375,7 @@ function apiUpdateFlag(dataroot,isRaid,combineTypeF,combinedE) {
 	}
 }
 
-function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet) {
+function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet,battleInd) {
 	var ships1 = F1.ships, ships2 = F2.ships;
 	var alive1 = [], alive2 = [], subsalive1 = [], subsalive2 = [];
 	var hasInstall1 = false, hasInstall2 = false;
@@ -3379,7 +3455,14 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 	if (!NBonly && !bombing && alive1.length+subsalive1.length > 0 && alive2.length+subsalive2.length > 0) {
 		if (C) BAPI.data.api_injection_kouku = {api_plane_from:[[-1],[-1]],api_stage1:null,api_stage2:null,api_stage3:null};
 		compareAP(F1,F2,'isjet');
-		airPhase(alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_injection_kouku:undefined,true);
+		airPhase({
+			alive1: alive1,
+			subsalive1: subsalive1,
+			alive2: alive2,
+			subsalive2: subsalive2,
+			APIkouku: (C)? BAPI.data.api_injection_kouku:undefined,
+			isjetphase: true
+		});
 		if (C) {
 			if (!BAPI.data.api_injection_kouku.api_stage1) delete BAPI.data.api_injection_kouku;
 			if (BAPI.data.api_injection_kouku) delete BAPI.data.api_injection_kouku.api_stage3_combined;
@@ -3421,7 +3504,13 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 			BAPI.data.api_friendly_kouku = {api_plane_from:[[-1],[-1]],api_stage1:null,api_stage2:null,api_stage3:null};
 		}
 		compareAP(friendFleet.air,F2);
-		airPhase(friendFleet.air.ships.filter(s => !s.isSub),friendFleet.air.ships.filter(s => s.isSub),alive2,subsalive2,(C)? BAPI.data.api_friendly_kouku:undefined);
+		airPhase({
+			alive1: friendFleet.air.ships.filter(s => !s.isSub),
+			subsalive1: friendFleet.air.ships.filter(s => s.isSub),
+			alive2: alive2,
+			subsalive2: subsalive2,
+			APIkouku: (C)? BAPI.data.api_friendly_kouku:undefined
+		});
 		if (C) {
 			if (BAPI.data.api_friendly_kouku.api_stage1) BAPI.data.api_friendly_kouku.api_stage1.api_disp_seiku = {4:1,3:2,2:0,1:3,0:4}[friendFleet.air.AS+2];
 			else BAPI.data.api_friendly_kouku = null;
@@ -3435,7 +3524,17 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 	if (!NBonly && alive1.length+subsalive1.length > 0 && alive2.length+subsalive2.length > 0) {
 		if (C) BAPI.data.api_kouku = {api_plane_from:[[-1],[-1]],api_stage1:null,api_stage2:null,api_stage3:null};
 		compareAP(F1,F2);
-		airPhase(alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_kouku:undefined,false,bombing);
+		airPhase({
+			alive1: alive1,
+			subsalive1: subsalive1,
+			alive2: alive2,
+			subsalive2: subsalive2,
+			APIkouku: (C)? BAPI.data.api_kouku:undefined,
+			isjetphase: false,
+			isbombing: bombing,
+			includeEscort: undefined,
+			phaseName: 'opening air deffence'
+		});
 		if (C) {
 			if (BAPI.data.api_kouku.api_stage1) BAPI.data.api_kouku.api_stage1.api_disp_seiku = {4:1,3:2,2:0,1:3,0:4}[F1.AS+2];
 			else BAPI.data.api_kouku = null;
@@ -3454,7 +3553,17 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 	if (!NBonly && aironly && !bombing && alive1.length+subsalive1.length > 0 && alive2.length+subsalive2.length > 0) {
 		compareAP(F1,F2);
 		if (C) BAPI.data.api_kouku2 = {api_plane_from:[[-1],[-1]],api_stage1:null,api_stage2:null,api_stage3:null};
-		airPhase(alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_kouku2:undefined);
+		airPhase({
+			alive1: alive1,
+			subsalive1: subsalive1,
+			alive2: alive2,
+			subsalive2: subsalive2,
+			APIkouku: (C)? BAPI.data.api_kouku2:undefined,
+			isjetphase: false,
+			isbombing: bombing,
+			includeEscort: undefined,
+			phaseName: 'second air deffence'
+		});
 		if (C) {
 			if (!BAPI.data.api_kouku2.api_stage1) delete BAPI.data.api_kouku2;
 			else BAPI.data.api_kouku2.api_stage1.api_disp_seiku = {4:1,3:2,2:0,1:3,0:4}[F1.AS+2];
@@ -3492,7 +3601,17 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		
 		if (order1.length+order2.length) {
 			if (C) BAPI.data.api_opening_taisen = {api_at_list:[-1],api_at_type:[-1],api_damage:[-1],api_df_list:[-1],api_cl_list:[-1],api_si_list:[-1]};
-			shellPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_opening_taisen:undefined,true);
+			shellPhase({
+				order1: order1,
+				order2: order2,
+				alive1: alive1,
+				subsalive1: subsalive1,
+				alive2: alive2,
+				subsalive2: subsalive2,
+				APIhou: (C)? BAPI.data.api_opening_taisen:undefined,
+				isOASW: true,
+				phaseName: 'opening asw'
+			});
 		}
 	}
 	
@@ -3513,7 +3632,15 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		orderByRange(ships2,order2,hasInstall1);
 		
 		if (C) BAPI.data.api_hougeki1 = {api_at_list:[-1],api_at_type:[-1],api_damage:[-1],api_df_list:[-1],api_cl_list:[-1],api_si_list:[-1]};
-		shellPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_hougeki1:undefined);
+		shellPhase({
+			order1: order1,
+			order2: order2,
+			alive1: alive1,
+			subsalive1: subsalive1,
+			alive2: alive2,
+			subsalive2: subsalive2,
+			APIhou: (C)? BAPI.data.api_hougeki1:undefined
+		});
 	}
 	
 	//shelling 2
@@ -3531,7 +3658,15 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		}
 		
 		if (C) BAPI.data.api_hougeki2 = {api_at_list:[-1],api_at_type:[-1],api_damage:[-1],api_df_list:[-1],api_cl_list:[-1],api_si_list:[-1]};
-		shellPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_hougeki2:undefined);
+		shellPhase({
+			order1: order1,
+			order2: order2,
+			alive1: alive1,
+			subsalive1: subsalive1,
+			alive2: alive2,
+			subsalive2: subsalive2,
+			APIhou: (C)? BAPI.data.api_hougeki2:undefined
+		});
 	}
 	
 	// closing torpedo
@@ -4224,7 +4359,12 @@ function simLBRaid(F1,F2,BAPI) {
 			let equip = ship.equips[slot];
 			if (!equip.isdivebomber && !equip.istorpbomber) continue;
 			var target = ships1[Math.floor(Math.random()*ships1.length)];
-			var dmg = airstrike(ship,target,slot,contactMod);
+			var dmg = airstrike({
+				ship: ship,
+				target: target,
+				slot: slot,
+				ontactMod: contactMod
+			});
 			if (target.HP <= 0) {
 				dmg -= 1 - target.HP;
 				target.HP = 1;
