@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "checkJs": true, // 型チェックを有効にする場合はtrueに
+        "allowJs": true,
+        "lib": [
+            "es2016",
+            "dom"
+        ],
+        "target": "es2016",
+    },
+    "include": [
+        "js/**/*"
+    ]
+}

@@ -4,7 +4,7 @@ var CONST = window.COMMON.getConst({
 	numBattlesMax: 9,
 	numCompMax: 12,
 	
-	numSimDefault: 10000,
+	numSimDefault: 1, // debug
 	numSimMax: 10000000,
 	watchCountMax: 500,
 	

@@ -1,0 +1,5 @@
+// パッと見で分からなかった短縮ワードの覚書
+
+AS
+    Air State・・・制空状態
+    Artillery Spotting・・・弾着観測
