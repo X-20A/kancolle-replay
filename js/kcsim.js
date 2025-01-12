@@ -1,16 +1,41 @@
+// 処理の流れを追う為にconsole出力するか
+let trace_flag = false;
+
+/** 単縦陣補正 */
 var LINEAHEAD = {shellmod:1,torpmod:1,ASWmod:.6,AAmod:1, shellacc:1,torpacc:1,NBacc:1, shellev:1,torpev:1,NBev:1,ASWev:1, id:1};
+/** 複縦陣補正 */
 var DOUBLELINE = {shellmod:.8,torpmod:.8,ASWmod:.8,AAmod:1.2, shellacc:1.2,torpacc:.8,NBacc:.9, shellev:1,torpev:1,NBev:1,ASWev:1, id:2};
+/** 輪形陣補正 */
 var DIAMOND = {shellmod:.7,torpmod:.7,ASWmod:1.2,AAmod:1.6, shellacc:1,torpacc:.4,NBacc:.7, shellev:1.1,torpev:1.1,NBev:1,ASWev:1, id:3};
+/** 梯形陣補正 */
 var ECHELON = {shellmod:.75,torpmod:.6,ASWmod:1.1,AAmod:1, shellacc:1.2,torpacc:.75,NBacc:.9, shellev:1.4,torpev:1.3,NBev:1.3,ASWev:1.3, id:4};
+/** 単横陣補正 */
 var LINEABREAST = {shellmod:.6,torpmod:.6,ASWmod:1.3,AAmod:1, shellacc:1.2,torpacc:.3,NBacc:.8, shellev:1.3,torpev:1.4,NBev:1.2,ASWev:1.1, id:5};
+/** 警戒陣補正(前方) */
 var VANGUARD1 = {shellmod:0.5,torpmod:1,ASWmod:1,AAmod:1.1, shellacc:.8,torpacc:.7,NBacc:.8,ASWacc:1, shellev:1,torpev:1,NBev:1,ASWev:1, id:6};
+/** 警戒陣補正(後方) */
 var VANGUARD2 = {shellmod:1,torpmod:1,ASWmod:.6,AAmod:1.1, shellacc:1.2,torpacc:.9,NBacc:1.2,ASWacc:1.1, shellev:1,torpev:1,NBev:1,ASWev:1, id:6};
 
+/** 第一警戒航行序列(対潜警戒)補正 */
 var COMBINEDCF1 = {shellmod:.8,torpmod:.7,ASWmod:1.3,AAmod:1.1, shellacc:.9,torpacc:.6,NBacc:.8,ASWacc:1.25, shellev:1,torpev:1,NBev:1,ASWev:1, id:11};
+/** 第二警戒航行序列(前方警戒)補正 */
 var COMBINEDCF2 = {shellmod:1,torpmod:.9,ASWmod:1.1,AAmod:1, shellacc:1,torpacc:1,NBacc:.9,ASWacc:1, shellev:1.2,torpev:1,NBev:1,ASWev:1, id:12};
+/** 第三警戒航行序列(輪形陣)補正 */
 var COMBINEDCF3 = {shellmod:.7,torpmod:.6,ASWmod:1,AAmod:1.5, shellacc:.8,torpacc:.35,NBacc:.7,ASWacc:1.1, shellev:1.1,torpev:1,NBev:1.1,ASWev:1, id:13};
+/** 第四警戒航行序列(戦闘隊形)補正 */
 var COMBINEDCF4 = {shellmod:1.1,torpmod:1,ASWmod:.7,AAmod:1, shellacc:1.1,torpacc:1.2,NBacc:1,ASWacc:.7, shellev:1,torpev:1,NBev:1,ASWev:1, id:14};
 
+/**
+ * COMBINEDCONSTS - 艦隊種別ごとの基礎 火力 | 命中    
+ * 艦隊種別ごとに砲戦火力が違うのはこれが原因    
+ * (参考: https://wikiwiki.jp/kancolle/%E9%80%A3%E5%90%88%E8%89%A6%E9%9A%8A#offense)
+ * 
+ * - 上位キー 艦隊種別    
+ * 0: 通常艦隊    
+ * 1: 空母機動部隊    
+ * 2: 水上打撃部隊    
+ * 3: 輸送護衛部隊
+ */
 var COMBINEDCONSTS = {
 	0: {
 		'ecombined': {
@@ -50,12 +75,31 @@ var COMBINEDCONSTS = {
 	},
 }
 
+// 要調査
 var ALLFORMATIONS = {1:LINEAHEAD,2:DOUBLELINE,3:DIAMOND,4:ECHELON,5:LINEABREAST,6:VANGUARD1, 11:COMBINEDCF1, 12:COMBINEDCF2, 13:COMBINEDCF3, 14:COMBINEDCF4,
 	'111':COMBINEDCF1,'111E':COMBINEDCF1,'112':COMBINEDCF2,'112E':COMBINEDCF2,'113':COMBINEDCF3,'113E':COMBINEDCF3,'114':COMBINEDCF4,'114E':COMBINEDCF4,
 	'211':COMBINEDCF1,'211E':COMBINEDCF1,'212':COMBINEDCF2,'212E':COMBINEDCF2,'213':COMBINEDCF3,'213E':COMBINEDCF3,'214':COMBINEDCF4,'214E':COMBINEDCF4,
 	'311':COMBINEDCF1,'311E':COMBINEDCF1,'312':COMBINEDCF2,'312E':COMBINEDCF2,'313':COMBINEDCF3,'313E':COMBINEDCF3,'314':COMBINEDCF4,'314E':COMBINEDCF4,
 };
 
+/**
+ * 対空カットインデータ
+ * num: 対空カットイン種別値
+ * rate: 発動率
+ * mod: 変動ボーナス
+ * equip: 装備種別 [
+ *  H: 高角砲,
+ *  B: 特殊高射砲,
+ *  M: 大口径主砲,
+ *  S: 三式弾,
+ *  A: 高射装置,
+ *  C: 特殊機銃,
+ *  R: 電探,
+ *  G: 対空機銃
+ * ]
+ * rollIndiv: 多重判定可否
+ * num1: 要調査
+ */
 var AACIDATA = {
 	1:{num:7,rate:.65,mod:1.7,equip:'HHR',num1:3},
 	2:{num:6,rate:.58,mod:1.7,equip:'HR',num1:3},
@@ -125,6 +169,20 @@ var AACIDATA = {
 	}
 })();
 
+/**
+ * @typedef {Object} ArtillerySpotData
+ * 
+ * @property {number} dmgMod - ダメージ補正
+ * @property {number} accMod - 命中補正
+ * @property {number} chanceMod - 発動率補正(参照: https://en.kancollewiki.net/w/index.php?title=Combat/Artillery_Spotting&mobileaction=toggle_view_desktop#Trigger_Rates > Trigger rate formula > Base Attack)
+ * @property {string} name - カットイン名
+ * @property {number} [id] 
+ * @property {number} [numHits] - 攻撃回数
+ */
+/**
+ * 砲撃戦(昼)カットインデータ
+ * @type {Record<number, ArtillerySpotData>}
+ */
 var ARTILLERYSPOTDATA = {
 	2: { dmgMod: 1.2, accMod: 1.1, chanceMod: 1.3, numHits: 2, name: 'DA' },
 	3: { dmgMod: 1.1, accMod: 1.3, chanceMod: 1.2, name: 'Sec. CI' },
@@ -138,6 +196,24 @@ var ARTILLERYSPOTDATA = {
 	201: { dmgMod: 1.3, accMod: 1.2, chanceMod: 1.3, name: 'DB CI' },
 }
 
+/**
+ * @typedef {Object} NightAttackData
+ * 
+ * @property {number} dmgMod -  ダメージ補正
+ * @property {number} accMod -  命中補正
+ * @property {number} chanceMod - 発動率補正(参照: https://en.kancollewiki.net/w/index.php?title=Combat/Artillery_Spotting&mobileaction=toggle_view_desktop#Trigger_Rates > Trigger rate formula > Base Attack)
+ * @property {string} name - カットイン名
+ * @property {boolean} [isSpecial] - 特殊カットインであるか
+ * @property {number} [numHits] - 攻撃回数
+ * @property {boolean} [torpedo] - 雷撃カットインであるか
+ * @property {number} [id] - カットイン種別ID
+ * @property {number} [replace] - 置き換え先のNBATTACKDATAのインデックス
+ * @property {number} [replaceChance] - この確率で抽選して通るとreplaceのカットインに置き換えられる
+ */
+/**
+ * 夜戦カットインデータ
+ * @type {Record<number, NightAttackData>}
+ */
 var NBATTACKDATA = {
 	1: { dmgMod: 1.2, accMod: 1.1, chanceMod: 0, numHits: 2, name: 'DA' },
 	2: { dmgMod: 1.3, accMod: 1.5, chanceMod: 1.15, numHits: 2, torpedo: true, name: 'Mixed CI' },
@@ -162,6 +238,17 @@ var NBATTACKDATA = {
 	2004: { dmgMod: 1.24, accMod: 1.07, chanceMod: 1.35, isSpecial: true, id: 200, name: 'NZuiun CI (Z)' },
 }
 
+/**
+ * シミュレーション用のログ管理オブジェクト。 デバッグ系
+ * 通常の console.log に似た動作を提供しつつ、特定の条件でログを蓄積し、
+ * 必要に応じてまとめて出力したり、クリアしたりする機能を持つ。
+ * 
+ * 構成:
+ * - _lines: 内部でログを蓄積する配列。
+ * - log(): ログを記録する。条件に応じて蓄積または即時出力。
+ * - print(): 蓄積されたログをまとめて出力。
+ * - clear(): 蓄積されたログを削除。
+ */
 let simConsole = {
 	_lines: [],
 	log: function(...lines) {
@@ -179,109 +266,248 @@ let simConsole = {
 	},
 };
 
+/**
+ * 第一艦隊データ
+ * @type {Array<Fleet>}
+ */
 var FLEETS1 = [];
+/**
+ * 第二艦隊データ
+ * @type {Array<Fleet>}
+ */
 var FLEETS2 = [];
+/** 
+ * 道中支援艦隊データ, 決戦支援艦隊データ
+ * 友軍艦隊があれば3つ目に入るっぽい
+ * @type {Array<Fleet>}
+ */
 var FLEETS1S = [null,null];
+/**
+ * 基地航空隊データ
+ * @type {Array<LandBase>}
+ */
 var LBAS = [null,null,null];
+/**
+ * 交戦形態ごとの攻撃力補正    
+ * 1: 同航戦    
+ * 0.8: 反航戦    
+ * 1.2: T字有利    
+ * 0.6: T字不利
+ * @type {number}
+ */
 var ENGAGEMENT = 1;
+/** クリティカル(定数) */
 const CRITMOD = 1.5;
+/** 要調査 */
 var FIXTORPEDOSUPPORT = false;
+/** シミュに用いる定数群 */
 var SIMCONSTS = {
+    /** 砲撃ダメージキャップ */
 	shellDmgCap: 220,
+    /** 雷撃ダメージキャップ */
 	torpedoDmgCap: 180,
+    /** 夜戦ダメージキャップ */
 	nightDmgCap: 360,
+    /** 航空戦ダメージキャップ */
 	airDmgCap: 170,
+    /** 基地航空隊ダメージキャップ */
 	lbasDmgCap: 220,
+    /** 対潜ダメージキャップ */
 	aswDmgCap: 170,
+    /** 支援ダメージキャップ */
 	supportDmgCap: 170,
+    /** 廃止? */
 	shellEcMF: null,
+    /** 廃止? */
 	shellEcME: null,
+    /** 廃止? */
 	shellEcEF: null,
+    /** 廃止? */
 	shellEcEE: null,
+    /** 敵連合艦隊のプレイヤー主力艦隊に対する砲撃の基本命中率 読まれてない?*/
 	accEcMF: null,
+    /** 敵連合艦隊の敵主力艦隊に対する砲撃の基本命中率 読まれてない?*/
 	accEcME: null,
+    /** 敵連合艦隊のプレイヤー護衛艦隊に対する砲撃の基本命中率 読まれてない?*/
 	accEcEF: null,
+    /** 敵連合艦隊の敵護衛艦隊に対する砲撃の基本命中率 読まれてない?*/
 	accEcEE: null,
+    /** 道中支援艦隊の基本砲撃命中率 */
 	supportShellN: null,
+    /** 決戦支援艦隊の基本砲撃命中率 */
 	supportShellB: null,
+    /** 警戒陣時の駆逐艦の砲撃回避ボーナス(絶対値) */
 	vanguardEvShellDD: [7,7,20,20,35,40,40],
+    /** 警戒陣時の駆逐艦以外の砲撃回避ボーナス(絶対値) */
 	vanguardEvShellOther: [7,7,7,7,15,20,20],
+    /** 警戒陣時の駆逐艦の雷撃回避ボーナス(絶対値) */
 	vanguardEvTorpDD: [15,15,45,50,65,75,75],
+    /** 警戒陣時の駆逐艦以外の雷撃回避ボーナス(絶対値) */
 	vanguardEvTorpOther: [15,15,20,45,45,60,60],
+    /** 警戒陣時の駆逐艦への砲撃命中補正(倍率) */
 	vanguardEvShellDDMod: null,
+    /** 警戒陣時の駆逐艦への雷撃命中補正(倍率) */
 	vanguardEvTorpDDMod: null,
+    /** 警戒陣時の駆逐艦以外への砲撃命中補正(倍率) */
 	vanguardEvShellOtherMod: [.95,.95,.95,.95,.86,.79,.7],
+    /** 通常海域における警戒陣時の駆逐艦への砲撃命中補正(倍率) */
 	vanguardEvShellDDModNormal: [.95,.95,.8,.8,.69,.64,.64],
+    /** イベント海域における警戒陣時の駆逐艦への砲撃命中補正(倍率) */
 	vanguardEvShellDDModEvent: [.95,.95,.66,.66,.52,.48,.4],
+    /** 警戒陣時の駆逐艦以外への雷撃命中補正(倍率) */
 	vanguardEvTorpOtherMod: [.9,.9,.77,.67,.63,.55,.51],
+    /** 通常海域における警戒陣時の駆逐艦への雷撃命中補正(倍率) */
 	vanguardEvTorpDDModNormal: [.9,.9,.65,.58,.5,.42,.42],
+    /** イベント海域における警戒陣時の駆逐艦への雷撃命中補正(倍率) */
 	vanguardEvTorpDDModEvent: [.9,.9,.54,.48,.38,.33,.25],
+    /** 要調査 */
 	vanguardUseType: 2,
+    /** Nelson Touch発動率 */
 	nelsonTouchRate: 60,
+    /** 長門特殊砲撃発動率 */
 	nagatoSpecialRate: 60,
+    /** 陸奥特殊砲撃発動率 */
 	mutsuSpecialRate: 60,
+    /** Colorado特殊砲撃発動率 */
 	coloradoSpecialRate: 60,
+    /** 金剛型僚艦夜戦突撃発動率 */
 	kongouSpecialRate: null,
+    /** 大和特殊砲撃発動率(3隻) */
 	yamatoSpecial3Rate: 80,
+    /** 大和特殊砲撃発動率(2隻) */
 	yamatoSpecial2Rate: 80,
+    /** 潜水艦隊攻撃発動率 */
 	subFleetAttackRate: 80,
+    /**
+	 * 潜水艦隊攻撃において、Lv75以上&潜水電探なし の潜水艦が魚雷を2本撃つ確率
+	 * 参考: https://en.kancollewiki.net/Special_Attacks/Submarine_Touch#Multiplier
+	 */
 	subFleetAttack2AtkRate: 60,
+    /** Richelieu特殊砲撃発動率 */
 	richelieuSpecialRate: 60,
+    /** Queen Elizabeth特殊砲撃発動率 */
 	qeSpecialRate: 60,
+    /** 夜間瑞雲カットイン発動率 */
 	nightZuiunCIRate: 60,
+    /** 北方迷彩(＋北方装備)ボーナス(装甲)[詳細設定]から上書きされる */
 	arcticCamoAr: 0,
+    /** 北方迷彩(＋北方装備)ボーナス(回避)[詳細設定]から上書きされる */
 	arcticCamoEva: 0,
+    /** 空襲戦にWorld6特有のコストを適用するか */
 	airRaidCostW6: false,
+    /**
+	 * 具体的には何か分からない
+	 * ただ、代入が旧UIにしか無いので今は定数扱いなのかも
+	 */
 	enablePlaneBonus: true,
+    /** 詳細不明、再代入なし */
 	enableModSummerBB: true,
+	/** 詳細不明、再代入なし */
 	enableModSummerCA: true,
+	/** 詳細不明、再代入なし */
 	enableModSummerCV: true,
+	/** 詳細不明、再代入なし */
 	enableModFrenchBB: true,
+	/** 詳細不明、再代入なし */
 	enableModDock: true,
+    /** [詳細設定] > 深海棲艦による跳躍爆撃にはB-25のボーナスを仮適用 */
 	enableSkipTorpBonus: true,
+	/** 詳細不明、再代入なし */
 	enableAirstrikeSpecialBonus: true,
+	/** 詳細不明、再代入なし */
 	enableASFit: false,
+    /** [詳細設定] > 偏向(推定値)を有効にする */
 	enableRangeWeights: false,
+	/** 詳細不明、再代入なし */
 	enableLBASFormula2: true,
+	/** 詳細不明、再代入なし */
 	enableSummerHarbourLBASBonus: true,
+    /** 基地航空隊の命中基礎値 */
 	lbasAccBase: .9,
+    /**
+	 * ターゲットが通常艦隊であるときのキャップ後回避補正
+	 * 参考: https://en.kancollewiki.net/Accuracy,_Evasion_and_Criticals#Land-Based_Air_Squadron > Evasion > Post-cap > Mod LBAS
+	 */
 	lbasEvaModSingle: .86,
+	/**
+	 * ターゲットが連合艦隊であるときのキャップ後回避補正
+	 * 参考: https://en.kancollewiki.net/Accuracy,_Evasion_and_Criticals#Land-Based_Air_Squadron > Evasion > Post-cap > Mod LBAS
+	 */
 	lbasEvaModCombined: .68,
+	/**
+	 * ターゲットが連合艦隊であるときのB-25のキャップ後回避補正
+	 * 参考: https://en.kancollewiki.net/Accuracy,_Evasion_and_Criticals#Land-Based_Air_Squadron > Evasion > Post-cap > Mod LBAS
+	 */
 	lbasEvaModCombinedB25: .7,
+    /** 梯形陣補正(旧) */
 	echelonOld: {shellmod:.6,torpmod:.6,ASWmod:1,AAmod:1, shellacc:1.2,torpacc:.6,NBacc:.8, shellev:1.2,torpev:1.3,NBev:1.1,ASWev:1.3, id:4},
+    /** 梯形陣補正(新) */
 	echelonNew: {shellmod:.75,torpmod:.6,ASWmod:1.1,AAmod:1, shellacc:1.2,torpacc:.75,NBacc:.9, shellev:1.4,torpev:1.3,NBev:1.3,ASWev:1.3, id:4},
+    /** 駆逐(主魚電)旧補正 */
 	nbattack7Old: { dmgMod: 1.3, accMod: 1.1, chanceMod: 1.3, name: 'DDCI (GTR)' },
+	/** 駆逐(主魚電)新補正 */
 	nbattack7New: { dmgMod: 1.3, accMod: 1.1, chanceMod: 1.15, name: 'DDCI (GTR) x1', replace: 11, replaceChance: .65 },
+	/** 駆逐(魚電見)旧補正 */
 	nbattack8Old: { dmgMod: 1.2, accMod: 1.65, chanceMod: 1.5, name: 'DDCI (LTR)' },
+	/** 駆逐(魚電見)新補正 */
 	nbattack8New: { dmgMod: 1.2, accMod: 1.65, chanceMod: 1.4, name: 'DDCI (LTR) x1', replace: 12, replaceChance: .5 },
+    /** 対空カットイン発動率(旧) */
 	aaciRatesOld: { 2: .58, 5: .55, 34: .6, 35: .55, 36: .55, 37: .4, 38: .62 },
+	/** 対空カットイン発動率(新) */
 	aaciRatesNew: { 2: .55, 5: .5, 34: .55, 35: .54, 36: .53, 37: .44, 38: .58 },
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > ダメージ > 自艦隊(砲撃戦) 主力 */
 	airstrikeDmgMF: -10,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > ダメージ > 自艦隊(空襲) 主力 */
 	airstrikeDmgMFRaid: -10,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > ダメージ > 敵艦隊 主力 */
 	airstrikeDmgME: -10,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > ダメージ > 自艦隊(砲撃戦) 随伴 */
 	airstrikeDmgEF: -20,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > ダメージ > 自艦隊(空襲) 随伴 */
 	airstrikeDmgEFRaid: -20,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > ダメージ > 敵艦隊 随伴 */
 	airstrikeDmgEE: -20,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > 命中 > 自艦隊(砲撃戦) 主力 */
 	airstrikeAccMF: 15,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > 命中 > 自艦隊(空襲) 主力 */
 	airstrikeAccMFRaid: 10,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > 命中 > 敵艦隊 主力 */
 	airstrikeAccME: 15,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > 命中 > 自艦隊(砲撃戦) 随伴 */
 	airstrikeAccEF: -20,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > 命中 > 自艦隊(空襲) 随伴 */
 	airstrikeAccEFRaid: -25,
+	/** [詳細設定] > 連合艦隊の航空戦における補正値: > 命中 > 敵艦隊 随伴 */
 	airstrikeAccEE: -15,
+	/** 夜戦マス かつ 自艦隊が連合艦隊のときの命中基礎値 */
 	nbOnlyCFAccBase: 69,
+	/** 対潜支援における、命中基礎値 */
 	supportASWAccBase: 50,
+	/** 煙幕発動率 1重,2重,3重 */
 	smokeChance: [0,0,0],
+	/** 煙幕発動率を推定式で計算する */
 	smokeChanceUseFormula: false,
+	/** [詳細設定] > 煙幕補正値 > 砲撃命中率 > 自艦隊(電探なし) */
 	smokeModShellAccF: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 砲撃命中率 > 自艦隊(電探あり) */
 	smokeModShellAccFRadar: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 砲撃命中率 > 敵艦隊(電探なし) */
 	smokeModShellAccE: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 砲撃命中率 > 敵艦隊(電探あり) */
 	smokeModShellAccERadar: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 対潜命中率 > 自艦隊 */
 	smokeModASWAccF: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 対潜命中率 > 敵艦隊 */
 	smokeModASWAccE: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 雷撃命中率 > 自艦隊 */
 	smokeModTorpAccF: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 雷撃命中率 > 敵艦隊 */
 	smokeModTorpAccE: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 航空戦命中率 > 自艦隊 */
 	smokeModAirAccF: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > 航空戦命中率 > 敵艦隊 */
 	smokeModAirAccE: [1,1,1],
+	/** [詳細設定] > 煙幕補正値 > シミュレータの推奨値(暫定) */
 	smokeEst: {
 		smokeModShellAccF: [.25,.25,.25],
 		smokeModShellAccFRadar: [.35,.25,.25],
@@ -311,18 +537,37 @@ var SIMCONSTS = {
 }
 SIMCONSTS.vanguardEvShellDDMod = SIMCONSTS.vanguardEvShellDDModNormal.slice();
 SIMCONSTS.vanguardEvTorpDDMod = SIMCONSTS.vanguardEvTorpDDModNormal.slice();
+/**
+ * SIMCONSTのプロパティをセット
+ * @param {string} key
+ * @param {number} val
+ * */
 function setConst(key, val) {
 	if (val == null) SIMCONSTS[key] = null;
 	else SIMCONSTS[key] = parseInt(val);
 }
+/**
+ * 梯形陣補正の設定の新旧を切り替える
+ * @param {boolean} enable 
+ */
 function toggleEchelon(enable) {
 	ALLFORMATIONS[4] = ECHELON = enable ? SIMCONSTS.echelonNew : SIMCONSTS.echelonOld;
 }
+/**
+ * NBATTACKDATA[7]: 駆逐(主魚電)    
+ * NBATTACKDATA[8]: 駆逐(魚電見)    
+ * の補正値の新旧を切り替える
+ * @param {boolean} enable 
+ */
 function toggleDDCIBuff(enable) {
 	NBATTACKDATA[7] = enable ? SIMCONSTS.nbattack7New : SIMCONSTS.nbattack7Old;
 	NBATTACKDATA[8] = enable ? SIMCONSTS.nbattack8New : SIMCONSTS.nbattack8Old;
 }
 
+/**
+ * 要調査
+ * @param {boolean} enable 
+ */
 function toggleASWPlaneAir(enable) {
 	MECHANICS.aswPlaneAir = !!enable;
 	for (let type of [AUTOGYRO,ASWPLANE]) {
@@ -330,6 +575,10 @@ function toggleASWPlaneAir(enable) {
 	}
 }
 
+/**
+ * 対空カットインの多重判定可否を切り替える
+ * @param {boolean} enable 
+ */
 function toggleAACIRework(enable) {
 	MECHANICS.aaciMultiRoll = !!enable;
 	for (let id in SIMCONSTS.aaciRatesNew) {
@@ -337,15 +586,26 @@ function toggleAACIRework(enable) {
 	}
 }
 
+/** 結果持ち越し時のバケツ使用閾値(損傷率) */
 var BUCKETPERCENT = .5;
+/** 結果持ち越し時のバケツ使用閾値(入渠時間) */
 var BUCKETTIME = 99*3600;
+/** HPを持ち越すか */
 var CARRYOVERHP = false;
+/** cond値を持ち越すか */
 var CARRYOVERMORALE = false;
 
+/**
+ * debugモード
+ * sim-interdace.js > numStatsでfalseになるので基本false
+ */
 var C = true;
+/** 要調査 */
 var NEWFORMAT = true;
+/** 要調査 */
 var DIDPROTECT = false;
 
+/** Mechanic系 */
 var MECHANICS = {
 	flagProtect: true,
 	aswSynergy: true,
@@ -387,14 +647,26 @@ var MECHANICS = {
 	aaciMultiRoll: true,
 	panzerIIIBuff: true,
 };
+/** PT攻撃時に攻撃側が弱体化されるか? 再代入なし */
 var NERFPTIMPS = false;
+/** PT絡みだが詳細不明 再代入なし */
 var BREAKPTIMPS = false;
 
+/**
+ * 入渠コスト取得
+ * @param {Ship} ship
+ * @returns {number[]} - 燃料, 弾薬
+ */
 function getRepairCost(ship) {
 	var base = (ship.maxHP - ship.HP)*SHIPDATA[ship.mid].fuel;
 	return [Math.floor(base*.032),Math.floor(base*.06)];
 }
 
+/**
+ * 入渠時間取得
+ * @param {Ship} ship 
+ * @returns 秒
+ */
 function getRepairTime(ship) {
 	if (ship.HP >= ship.maxHP) return 0;
 	var mod, base;
@@ -409,6 +681,12 @@ function getRepairTime(ship) {
 	return (ship.maxHP - ship.HP)*base*mod+30;
 }
 
+/**
+ * 我と彼の陣形が特定の組み合わせであるか判定して返す
+ * @param {number} form1 - 我陣形id
+ * @param {number} form2 - 彼陣形id
+ * @returns 特定の組み合わせであればtrue、それ以外はfalse
+ */
 function formationCountered(form1,form2) {
 	if (form1==2 && form2==5) return true;
 	if (form1==4 && form2==1) return true;
@@ -416,13 +694,37 @@ function formationCountered(form1,form2) {
 	return false;
 }
 
+/**
+ * 砲撃戦
+ * 
+ * targetが撃沈されればtrueを返す
+ * 
+ * @param {Ship} ship - 攻撃を行う艦船インスタンス
+ * @param {Ship} target - 攻撃対象となる艦船インスタンス
+ * @param {Object} APIhou - 結果を記録するためのAPIデータ構造
+ * @param {number|boolean} [attackSpecial] - 特殊攻撃の種類を示す識別子
+ * @param {boolean} [combinedAll] - 連合艦隊か
+ * @returns {boolean} - ターゲットが撃沈された場合に`true`を返す。生存している場合は`false`を返す
+ */
 function shell(ship,target,APIhou,attackSpecial,combinedAll) {
-	var da = false, cutin = false, cutinR = 0;
+	if (trace_flag) console.log('shell');
+	/**
+	 * 2回攻撃(昼連撃)ならtrue
+	 * @type {boolean|number}
+	 */
+	var da = false;
+	/**
+	 * ARTILLERYSPOTDATAのid(CVCIの 7 か、undefinedしかない)
+	 * @type {false|number}
+	 */
+	var cutin = false;
+	var cutinR = 0;
 	var preMod = ship.getFormation().shellmod*ENGAGEMENT*ship.damageMod();
 	let postModCI = 1, postModExtra = 1;
 	var overrideCritDmgBonus = null, critRateBonus = null;
 	
 	var accMod = ship.moraleMod();
+    // ship.getFormation().shellaccが常に1なので実質的に機能していない？
 	if (!formationCountered(ship.fleet.formation.id,target.fleet.formation.id)) accMod *= ship.getFormation().shellacc;
 	if (ship.fleet.formation.id == 6 && target.type == 'DD') {
 		accMod *= 1.1;
@@ -431,6 +733,7 @@ function shell(ship,target,APIhou,attackSpecial,combinedAll) {
 	var accMod2 = (MECHANICS.APmod)? ship.APacc(target) : 1;
 	var evMod = target.getFormation().shellev;
 	
+    // 制空優勢以上ならあれこれ
 	let AStypes;
 	if (MECHANICS.artillerySpotting && (AStypes = ship.canAS()) && ship.fleet.AS > 0 && !attackSpecial) {
 		var ASchance = ship.ASchance(ship.fleet.AS,combinedAll);
@@ -477,7 +780,7 @@ function shell(ship,target,APIhou,attackSpecial,combinedAll) {
 	}
 	
 	var evFlat = 0;
-	if (target.fleet.formation.id == 6) {
+	if (target.fleet.formation.id == 6) { // 警戒陣
 		if (SIMCONSTS.vanguardUseType == 1) {
 			evFlat += (target.type == 'DD') ? SIMCONSTS.vanguardEvShellDD[target.num-1] || 0 : SIMCONSTS.vanguardEvShellOther[target.num-1] || 0;
 			if (target.type == 'DD' && !isPlayable(target.mid) && accMod > 1) accMod = 1 + (accMod-1)/2;
@@ -577,7 +880,7 @@ function shell(ship,target,APIhou,attackSpecial,combinedAll) {
 	for (let n=0; n<numAttacks; n++) {
 		let res = rollHit(accuracyAndCrit(ship,target,acc,evMod,evFlat,1.3,ship.CVshelltype,critRateBonus),ship.CVshelltype && (overrideCritDmgBonus || ship.critdmgbonus));
 		let dmg = 0;
-		if (res) {
+		if (res) { // 命中したら
 			let pow = Math.floor(softCap((ship.shellPower(target,ship.fleet.basepowshell)+FPfit)*preMod, SIMCONSTS.shellDmgCap));
 			pow *= postModCI;
 			if (MECHANICS.APmod && target.APweak) {
@@ -671,11 +974,29 @@ function shell(ship,target,APIhou,attackSpecial,combinedAll) {
 	return (target.HP <= 0);
 }
 
+/**
+ * 夜戦
+ * 
+ * targetが撃沈されればtrueを返す
+ * 
+ * @param {Ship} ship - 攻撃する艦船のオブジェクト
+ * @param {Ship} target - 攻撃対象の艦船インスタンス
+ * @param {boolean} NBonly - 夜戦マスか
+ * @param {Array} NBequips - 夜戦装備（照明弾、探照灯、夜間偵察機など）を格納した配列
+ * @param {Object} APIyasen - 結果を記録するためのAPIデータ構造
+ * @param {number} attackSpecial - 特殊攻撃の種類
+ * @returns {boolean} - ターゲットが撃沈された場合に`true`を返す。生存している場合は`false`を返す
+ */
 function NBattack(ship,target,NBonly,NBequips,APIyasen,attackSpecial) {
+	if (trace_flag) console.log('NBattack');
 	var starshells = NBequips[0], searchlights = NBequips[1], nightscouts = NBequips[2];
 	if (!ship.canNB() && attackSpecial != 100) return false;
 	var da = false; //1 = combined damage, 2 = separate damages
-	var cutin = false, cutinR = 0;
+	/**
+	 * @type {boolean|number}
+	 */
+	var cutin = false
+	var cutinR = 0;
 	
 	var preMod = ship.damageMod();
 	var postMod = 1;
@@ -948,7 +1269,21 @@ function NBattack(ship,target,NBonly,NBequips,APIyasen,attackSpecial) {
 	return (target.HP <= 0);
 }
 
+/**
+ * 対潜
+ * 
+ * targetが撃沈されればtrueを返す
+ * 
+ * @param {Ship} ship - 攻撃する艦船のオブジェクト
+ * @param {Ship} target - 対象艦船のオブジェクト
+ * @param {boolean} isnight - 夜戦であるか
+ * @param {Object} APIhou - 結果を記録するためのAPIデータ構造
+ * @param {boolean} isOASW - 先制対潜攻撃であるか
+ * 
+ * @returns {boolean} - 対象艦船のHPが0以下になった場合は`true`を返す。生存している場合は`false`を返す
+ */
 function ASW(ship,target,isnight,APIhou,isOASW) {
+	if (trace_flag) console.log('ASW');
 	var sonarAcc = 0;
 	for (var i=0; i<ship.equips.length; i++) if (ship.equips[i].btype == B_SONAR) sonarAcc += 2*ship.equips[i].ASW;
 	if (ship.improves.ACCasw) sonarAcc += ship.improves.ACCasw;
@@ -1012,6 +1347,15 @@ function ASW(ship,target,isnight,APIhou,isOASW) {
 	return (target.HP <= 0);
 }
 
+/**
+ * 要検証
+ * レーダー射撃マスとは別?
+ * アルペジオ絡みかも
+ * 
+ * @param {Ship} ship - 攻撃する艦船のオブジェクト。艦船の装備やステータスを含む
+ * @param {Array} targets - 攻撃対象の艦船インスタンスの配列
+ * @param {Object} APIhou - API用のデータオブジェクト。攻撃結果を保存するために使用される
+ */
 function laser(ship,targets,APIhou) {
 	var preMod = ship.getFormation().shellmod*ENGAGEMENT*ship.damageMod();
 	var accMod = ship.moraleMod();
@@ -1056,7 +1400,31 @@ function laser(ship,targets,APIhou) {
 	}
 }
 
+/**
+ * @typedef {Object} TargetInfo
+ * 
+ * @property {number} type - targetへの攻撃の種類    
+ * 1: 対潜    
+ * 2: レーザー    
+ * 3: 砲撃
+ * @property {Ship} target - 攻撃対象の艦インスタンス
+ * @property {Array<Ship>} alive - 生存している艦船のリスト
+ * @property {boolean} [isOASW] - 先制対潜攻撃であるか
+ * @property {boolean} [combinedAll] - 
+ */
+
+/**
+ * 
+ * 砲撃戦中のターゲットを選定して返す(攻撃typeの選定も)
+ * 
+ * @param {Ship} ship - 攻撃を行う艦船のオブジェクト
+ * @param {Array<Ship>} alive - 生存しているターゲット艦船のリスト
+ * @param {Array<Ship>} subsalive - 生存している潜水艦のリスト
+ * @param {boolean} [isOASW] - 先制対潜攻撃であるか
+ * @returns {TargetInfo} result - 攻撃対象に関する情報を含むオブジェクト
+ */
 function shellPhaseTarget(ship,alive,subsalive,isOASW) {
+	if (trace_flag) console.log('shellPhaseTarget');
 	var result = { type: 0, target: null, alive: null };
 	if (subsalive.length && ship.canASW(isOASW) && (!ship.isASWlast||!alive.length)) {
 		result.type = 2;
@@ -1102,6 +1470,15 @@ function shellPhaseTarget(ship,alive,subsalive,isOASW) {
 	return result;
 }
 
+/**
+ * 艦船が異なる種類の攻撃（砲撃、対潜攻撃、レーザー攻撃など）をtargetに対して行い、
+ * 攻撃後にターゲットが生存しているかを確認、撃沈された場合、aliveから対象を削除
+ *
+ * @param {Ship} ship - 攻撃を行う艦船のオブジェクト
+ * @param {TargetInfo} targetData - 攻撃対象
+ * @param {Object} APIhou - API用のデータオブジェクト。攻撃結果を保存するために使用される
+ * @param {number} [attackSpecial] - 特殊攻撃ID
+ */
 function shellPhaseAttack(ship,targetData,APIhou,attackSpecial) {
 	if (!targetData.target) return;
 	switch (targetData.type) {
@@ -1119,6 +1496,21 @@ function shellPhaseAttack(ship,targetData,APIhou,attackSpecial) {
 	}
 }
 
+/**
+ * 特殊攻撃が可能かを判定
+ * 
+ * @param {Ship} ship - 艦船インスタンス
+ * @param {boolean} [isNB] - 夜戦であるか
+ * @param {[[boolean, boolean], [boolean, boolean], [Equip, Equip]]} [NBequips] -左から、    
+ * 自艦隊が照明弾を発動するならtrue    
+ * 敵艦隊が照明弾を発動するならtrue    
+ * 自艦隊が探照灯を発動するならtrue    
+ * 敵艦隊が探照灯を発動するならtrue    
+ * 自艦隊で選択された夜偵の装備オブジェクト    
+ * 敵艦隊で選択された夜偵の装備オブジェクト
+ * @param {boolean} [skipUnique] - ユニークな特殊攻撃判定をスキップするか（true: スキップする、false: 判定する）。
+ * @returns {boolean} - 特殊攻撃が可能である場合はtrue、そうでない場合はfalse
+ */
 function canSpecialAttack(ship,isNB,NBequips,skipUnique) {
 	if (SHIPDATA[ship.mid].attackSpecial) {
 		ship.attackSpecial = SHIPDATA[ship.mid].attackSpecial;
@@ -1161,6 +1553,15 @@ function canSpecialAttack(ship,isNB,NBequips,skipUnique) {
 	return false;
 }
 
+/**
+ * 指定された艦が特殊攻撃を実行可能かを判定する関数(発動判定まで)    
+ * 条件を満たし、`isCheck` が false の場合は特殊攻撃を試みる
+ *
+ * @param {Ship} ship - 特殊攻撃の判定対象となる艦オブジェクト
+ * @param {boolean} isNB - 夜戦ならtrue
+ * @param {boolean} [isCheck] - 発動可能かだけ判定したい場合はtrue?
+ * @returns {boolean} - 条件を満たす場合、または特殊攻撃が成功した場合は true。それ以外は false
+ */
 function canSpecialAttackUnique(ship,isNB,isCheck) {
 	if (!MECHANICS.specialAttacks) return false;
 	if (ship.side == 1) return false;
@@ -1325,6 +1726,15 @@ function canSpecialAttackUnique(ship,isNB,isCheck) {
 	return false;
 }
 
+/**
+ * 特殊攻撃に参加する艦を返す    
+ * `attackSpecial` の種類に応じて、攻撃に参加する艦のリストを生成する
+ *
+ * @param {Array<Ship>} ships - 艦隊の艦オブジェクトのリスト
+ * @param {number} attackSpecial - 実行する特殊攻撃の種類を示すid
+ * @param {Object} shipCurrent - 現在の艦の艦種 BB CL とか 文字列ではない
+ * @returns {Array<Ship>} - 特殊攻撃に参加する艦のオブジェクトリスト
+ */
 function getSpecialAttackShips(ships,attackSpecial,shipCurrent) {
 	let attackers;
 	if (attackSpecial == 101 || attackSpecial == 102) {
@@ -1349,6 +1759,7 @@ function getSpecialAttackShips(ships,attackSpecial,shipCurrent) {
 			ship1 = ships[1]; ship2 = ships[3];
 		}
 		attackers = [ship1];
+		// 詳細はsubFleetAttack2AtkRateのコメントを参照
 		if (ship1.LVL >= 75 && (ship1.equiptypes[SUBRADAR] || Math.random() < SIMCONSTS.subFleetAttack2AtkRate/100)) attackers.push(ship1);
 		attackers.push(ship2);
 		if (ship2.LVL >= 75 && (ship2.equiptypes[SUBRADAR] || Math.random() < SIMCONSTS.subFleetAttack2AtkRate/100)) attackers.push(ship2);
@@ -1360,6 +1771,14 @@ function getSpecialAttackShips(ships,attackSpecial,shipCurrent) {
 	return attackers;
 }
 
+/**
+ * 特殊攻撃のダメージ補正と命中補正を計算して返す
+ * 特殊攻撃の種類 (`attackSpecial`) と艦の状態に基づいて倍率を設定する
+ *
+ * @param {Ship} ship - 特殊攻撃に参加する艦の情報を持つオブジェクト
+ * @param {number} attackSpecial - 特殊攻撃の種類を示すコード
+ * @returns {Object} - { modPow: ダメージ補正, modAcc: 命中補正 } のオブジェクト
+ */
 function getSpecialAttackMod(ship,attackSpecial) {
 	let mod = 1, modAcc = 1;
 	if (attackSpecial == 100) {
@@ -1477,7 +1896,21 @@ function getSpecialAttackMod(ship,attackSpecial) {
 	return { modPow: mod, modAcc: modAcc };
 }
 
+/**
+ * 通常艦隊の砲撃戦フェーズ    
+ * 味方艦隊 (`order1`) と敵艦隊 (`order2`) の行動順序を基に、砲撃戦を処理する
+ *
+ * @param {Array} order1 - 味方艦隊の行動順序
+ * @param {Array} order2 - 敵艦隊の行動順序
+ * @param {Array<Ship>} alive1 - 現在生存している味方艦
+ * @param {Array<Ship>} subsalive1 - 生存している味方潜水艦
+ * @param {Array<Ship>} alive2 - 現在生存している敵艦
+ * @param {Array<Ship>} subsalive2 - 生存している敵潜水艦
+ * @param {Object} APIhou - 砲撃戦の結果を保存するAPIデータ
+ * @param {boolean} [isOASW] - 開幕対潜攻撃フェーズか
+ */
 function shellPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,APIhou,isOASW) {
+	if (trace_flag) console.log('shellPhase');
 	if (C && NEWFORMAT) {
 		formatRemovePadding(APIhou);
 		if (!APIhou.api_at_eflag) APIhou.api_at_eflag = [];
@@ -1512,7 +1945,18 @@ function shellPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,APIhou,isO
 	}
 }
 
+/**
+ * 連合艦隊の砲撃戦を処理する関数    
+ * 主力艦隊と護衛艦隊のターゲット選択を行い、砲撃を実行する
+ *
+ * @param {Ship} ship - 攻撃を行う艦
+ * @param {TargetSet} targets - 敵艦隊の生存艦情報（主力艦隊と護衛艦隊）
+ * @param {Object} APIhou - 砲撃戦の結果を記録するAPIデータ
+ * @param {boolean} isOASW - 開幕対潜攻撃フェーズか
+ * @param {number} [attackSpecial] - 特殊攻撃の種類（通常攻撃の場合は undefined）
+ */
 function doShellC(ship,targets,APIhou,isOASW,attackSpecial) {
+	if (trace_flag) console.log('doShellC');
 	var targetData, targetCFirst = targets.alive2C && Math.random() < .39;
 	if (ship.isAntiPT) {
 		let hasMain = !!targets.alive2.find(target => target.isPT), hasEscort = !!targets.alive2C.find(target => target.isPT);
@@ -1535,6 +1979,16 @@ function doShellC(ship,targets,APIhou,isOASW,attackSpecial) {
 	shellPhaseAttack(ship,targetData,APIhou,attackSpecial);
 }
 
+/**
+ * 通常艦隊(我)vs連合艦隊(彼)の砲撃戦フェーズ    
+ * ? 6-5専用?イベントの対連合艦隊戦では呼ばれない
+ *
+ * @param {Array<Ship>} order1 - 第一艦隊の艦隊順番
+ * @param {Array<Ship>} order2 - 第二艦隊の艦隊順番
+ * @param {TargetSet} targets - 砲撃対象の艦隊情報（生存艦や潜水艦）
+ * @param {Object} APIhou - 砲撃戦の結果を記録するAPIデータ
+ * @param {boolean} [isOASW] - 開幕対潜攻撃か
+ */
 function shellPhaseC(order1,order2,targets,APIhou,isOASW) {
 	if (C && NEWFORMAT) {
 		formatRemovePadding(APIhou);
@@ -1592,7 +2046,20 @@ function shellPhaseC(order1,order2,targets,APIhou,isOASW) {
 	}
 }
 
+/**
+ * 夜戦フェーズ
+ *
+ * @param {Array} order1 - 第一艦隊の艦隊順番
+ * @param {Array} order2 - 第二艦隊の艦隊順番
+ * @param {Array} alive1 - 第一艦隊の生存艦
+ * @param {Array} subsalive1 - 第一艦隊の生存潜水艦
+ * @param {Array} alive2 - 第二艦隊の生存艦
+ * @param {Array} subsalive2 - 第二艦隊の生存潜水艦
+ * @param {boolean} NBonly - 夜戦であるか
+ * @param {Object} APIyasen - 夜戦の結果を記録するAPIデータ
+ */
 function nightPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,NBonly,APIyasen) {
+	if (trace_flag) console.log('nightPhase');
 	var APIhou = (APIyasen)? APIyasen.api_hougeki : undefined;
 	var star1 = false;
 	for (var i=0; i<alive1.length; i++) {
@@ -1673,7 +2140,19 @@ function nightPhase(order1,order2,alive1,subsalive1,alive2,subsalive2,NBonly,API
 	}
 }
 
+/**
+ * 夜戦時のターゲットを選択する関数
+ * 与えられた艦船が攻撃するターゲットを決定し、返す
+ *
+ * @param {Ship} ship - 攻撃する艦船
+ * @param {Array<Ship>} alive - 生存している艦船（敵）
+ * @param {Array<Ship>} subsalive - 生存している潜水艦（敵）
+ * @param {number} slrerolls - 探照灯の再ロール回数
+ * @param {boolean} light - 探照灯が有効か
+ * @returns {Object} - 選ばれたターゲットとそのタイプ
+ */
 function nightPhaseTarget(ship,alive,subsalive,slrerolls,light) {
+	if (trace_flag) console.log('nightPhaseTarget');
 	if (subsalive.length && ship.canASWNight() && (!ship.canNBAirAttack() || alive.length <= 0)) {
 		return { type: 2, target: choiceWProtect(subsalive) };
 	} else if (alive.length && (ship.nightattack != 3 || light)) {
@@ -1691,6 +2170,13 @@ function nightPhaseTarget(ship,alive,subsalive,slrerolls,light) {
 	return { type: 0, target: null };
 }
 
+/**
+ * 特殊砲撃の結果を調整する    
+ * 特殊砲撃の回数を反映させるために、攻撃データを調整し、不要なデータを削除
+ *
+ * @param {Object} APIhou - 攻撃結果を格納したAPIオブジェクト
+ * @param {number} numAttack - 処理する攻撃の回数
+ */
 function apiAdjustHougekiSpecial(APIhou,numAttack) {
 	let ind = APIhou.api_damage.length - numAttack;
 	let at_type = APIhou.api_at_type || APIhou.api_sp_list;
@@ -1711,7 +2197,20 @@ function apiAdjustHougekiSpecial(APIhou,numAttack) {
 	}
 }
 
+/**
+ * 雷撃戦フェーズを処理する
+ * それぞれの艦船が魚雷攻撃を行い、ターゲットにダメージを与え、撃沈なら艦隊から削除
+ *
+ * @param {Array<Ship>} alive1 - 1つ目の艦隊の生存艦船のリスト
+ * @param {Array<Ship>} subsalive1 - 1つ目の艦隊の生存潜水艦のリスト
+ * @param {Array<Ship>} alive2 - 2つ目の艦隊の生存艦船のリスト
+ * @param {Array<Ship>} subsalive2 - 2つ目の艦隊の生存潜水艦のリスト
+ * @param {boolean} opening - 開幕魚雷攻撃か
+ * @param {Object} APIrai - 魚雷攻撃の結果を格納するAPIオブジェクト
+ * @param {boolean} [combinedAll] - 連合艦隊か
+ */
 function torpedoPhase(alive1,subsalive1,alive2,subsalive2,opening,APIrai,combinedAll) {
+	if (trace_flag) console.log('torpedoPhase');
 	var shots = []; //set up shots
 	var targets2 = [];
 	for (var i=0; i<alive2.length; i++) { if (!alive2[i].isInstall) targets2.push(alive2[i]); }
@@ -1899,7 +2398,20 @@ function torpedoPhase(alive1,subsalive1,alive2,subsalive2,opening,APIrai,combine
 	}
 }
 
+/**
+ * 航空攻撃のダメージを計算して艦インスタンスに反映、ダメージも返す(デバッグ用途)
+ * 
+ * @param {Ship} ship - 攻撃を行う艦船インスタンス
+ * @param {Ship} target - 攻撃対象の艦船インスタンス
+ * @param {number} slot - 使用する装備のスロット番号
+ * @param {number} contactMod - 接触補正（デフォルトは1）
+ * @param {boolean} issupport - 支援攻撃か
+ * @param {boolean} isjetphase - ジェットフェーズか
+ * @param {boolean} isRaid - 空襲戦か
+ * @returns {number} - 実際に与えたダメージ
+ */
 function airstrike(ship,target,slot,contactMod,issupport,isjetphase,isRaid) {
+	if (trace_flag) console.log('airstrike');
 	if (!contactMod) contactMod = 1;
 	var equip = ship.equips[slot];
 	var acc = (issupport)? .85 : .95;
@@ -2046,13 +2558,22 @@ function airstrike(ship,target,slot,contactMod,issupport,isjetphase,isRaid) {
 	return realdmg;
 }
 
+/**
+ * 轟沈ストッパーやダメコンを考慮したダメージを艦インスタンスに反映、ダメージも返す    
+ * 撃沈判定は別で艦インスタンス自体はまだ残っていることに注意    
+ * 具体的には呼び出し元の任意のタイミングでremoveSunkが呼ばれたりする
+ * 
+ * @param {Ship} ship - ダメージを受ける船オブジェクト
+ * @param {number} damage - 与えるダメージの量
+ * @returns {number} - 実際に与えたダメージ
+ */
 function takeDamage(ship,damage) {
 	if (damage < 0) damage = 0;
 	if (ship.protection) {
 		if (ship.HP == 1) damage = 0;
 		else if (damage >= ship.HP) damage = Math.floor(ship.HP*.5+.3*Math.floor(Math.random()*ship.HP)*+!ship.protectionFF);  //overkill protection
 	}
-	ship.HP -= damage;
+	ship.HP -= damage; // 艦インスタンスにダメージを反映
 	if (ship.HP <= 0 && ship.repairs && ship.repairs.length) {
 		var repair = ship.repairs.shift();
 		if (repair == 42) ship.HP = Math.floor(.2*ship.maxHP);
@@ -2064,11 +2585,34 @@ function takeDamage(ship,damage) {
 	return damage;
 }
 
+/**
+ * 艦の命中率を計算して返す
+ * 
+ * @param {Ship} ship - 命中率を計算する船オブジェクト
+ * @param {number} accBase - 基本命中値
+ * @param {number} accFlat - 命中率のフラットボーナス（加算値）
+ * @param {number} accMod - 命中率の修正値（倍率）
+ * @returns {number} - 最終的な命中率
+ */
 function hitRate(ship,accBase,accFlat,accMod) {
 	if (C) simConsole.log('hit: '+accBase+' '+accFlat+' '+accMod);
 	return (accBase + 2*Math.sqrt(ship.LVL) + 1.5*Math.sqrt(ship.LUK) + accFlat)*accMod*.01;
 }
 
+/**
+ * 命中率とクリティカル率を計算して返す
+ * 
+ * @param {Ship} ship - 命中率とクリティカル率を計算する船オブジェクト
+ * @param {Ship} target - 対象となるターゲットオブジェクト
+ * @param {number} hit - 基本命中率
+ * @param {number} evMod - 回避率の修正値（倍率）
+ * @param {number} evFlat - 回避率のフラットボーナス（加算値）
+ * @param {number} critMod - クリティカル率の修正値（倍率）
+ * @param {boolean} isPlanes - 航空機か（航空機の場合、追加の命中とクリティカルの計算が適用される）
+ * @param {number} critBonusFlat - クリティカル率のフラットボーナス（加算値）
+ * @param {number} evModPost - 回避率の最終修正値（デフォルト値は1）
+ * @returns {Array<number>} - [最終的な命中率, 最終的なクリティカル率]
+ */
 function accuracyAndCrit(ship,target,hit,evMod,evFlat,critMod,isPlanes,critBonusFlat,evModPost=1) {
 	if (evMod===undefined) evMod = 1;
 	
@@ -2113,6 +2657,13 @@ function accuracyAndCrit(ship,target,hit,evMod,evFlat,critMod,isPlanes,critBonus
 	return [acc,crit];
 }
 
+/**
+ * 命中判定およびクリティカルダメージを計算して返す
+ * 
+ * @param {Array} accCrit - [命中率, クリティカル率] を含む配列。accCrit[0] が命中率、accCrit[1] がクリティカル率
+ * @param {number} [critdmgbonus] - クリティカルダメージのボーナス（デフォルトは1）
+ * @returns {number} - ダメージ倍率。命中時は1、クリティカルヒット時はクリティカル倍率、外れた場合は0
+ */
 function rollHit(accCrit,critdmgbonus) {
 	var r = Math.floor(Math.random()*100)/100;
 	if (r <= accCrit[1]) return CRITMOD * ((critdmgbonus)? critdmgbonus : 1);
@@ -2120,6 +2671,13 @@ function rollHit(accCrit,critdmgbonus) {
 	return 0;  //miss
 }
 
+/**
+ * 特殊ボーナスを適用したダメージの修正倍率を計算して返す
+ * 
+ * @param {Ship} ship - 攻撃を行う艦船インスタンス。bonusSpecialプロパティを持つ
+ * @param {Ship} target - ダメージを受けるターゲットオブジェクト。target.mid はターゲットのID
+ * @returns {number} - ダメージ修正倍率。特殊ボーナスが適用されていれば倍率が掛かる
+ */
 function getBonusDmg(ship,target) {
 	let mod = 1;
 	if (ship.bonusSpecial) { //e.g. event historical bonus
@@ -2133,6 +2691,14 @@ function getBonusDmg(ship,target) {
 	return mod;
 }
 
+/**
+ * 特殊ボーナスによる命中修正倍率を計算して返す
+ * 
+ * @param {Ship} ship - 命中を計算する艦船インスタンス。bonusSpecialAccプロパティを持つ
+ * @param {Ship} target - 対象のターゲットオブジェクト。target.mid はターゲットのID
+ * @param {boolean} [isAir] - 航空攻撃であるか。空中攻撃の場合、airタイプのボーナスが適用される
+ * @returns {number} - 命中修正倍率。特殊ボーナスが適用されていれば倍率が掛かる
+ */
 function getBonusAcc(ship,target,isAir) {
 	let mod = 1;
 	for (var i=0; i<ship.bonusSpecialAcc.length; i++) {
@@ -2146,6 +2712,14 @@ function getBonusAcc(ship,target,isAir) {
 	return mod;
 }
 
+/**
+ * 艦船に搭載された装備による特殊ボーナスを計算して返す
+ * 
+ * @param {Ship} ship - ボーナスを計算する艦船インスタンス。装備や艦載機情報が含まれる
+ * @param {string} [key='bonusSpecialP'] - ボーナス情報のキー。デフォルトは 'bonusSpecialP'
+ * @param {boolean} [isAir] - 航空攻撃であるか。航空攻撃の場合、該当するボーナスのみ適用
+ * @returns {number} - 艦船の装備による特殊ボーナス倍率
+ */
 function getBonusSpecialPlane(ship,key='bonusSpecialP',isAir) {
 	let mod = 1, groups = {};
 	for (let i=0; i<ship.equips.length; i++) {
@@ -2164,6 +2738,15 @@ function getBonusSpecialPlane(ship,key='bonusSpecialP',isAir) {
 	return mod;
 }
 
+/**
+ * 通常のダメージ計算を行う関数
+ * 
+ * @param {Ship} ship - 攻撃を行う艦船インスタンス。攻撃力や弾薬の状態などを含む
+ * @param {Ship} target - ダメージを受ける対象艦船インスタンス。防御力や状態異常などを含む
+ * @param {number} pow - 攻撃の元となる威力。装備やその他のボーナスによって決まる
+ * @param {number} res - 攻撃成功率やクリティカル率など、ダメージを修正するための係数
+ * @returns {number} - 計算されたダメージ量
+ */
 function damageCommon(ship,target,pow,res) {
 	if (C) simConsole.log('	' + ship.id + ' ' + target.id + ' ' + pow + ' ' + res);
 	if (res > 1) {
@@ -2188,15 +2771,41 @@ function damageCommon(ship,target,pow,res) {
 	return dmg;
 }
 
+/**
+ * ダメージが0以下になった場合に返す最低限のダメージを計算して返す
+ * 
+ * @param {number} hp - 対象艦船の最大HP。この値を基にして最低ダメージを計算する
+ * @returns {number} - 最低ダメージ
+ */
 function getScratchDamage(hp) {
 	return Math.floor(hp*.06+.08*Math.floor(Math.random()*hp))
 }
 
+/**
+ * キャップ処理を行う関数
+ * 
+ * 指定された値がキャップ（上限）を超えている場合、キャップ値に超過分の平方根を加えた値を返す
+ * キャップ以下の場合はそのまま値を返す
+ * 
+ * @param {number} num - キャップを適用する対象の値
+ * @param {number} cap - 適用するキャップ（上限）値
+ * @returns {number} - キャップ適用後の値
+ */
 function softCap(num,cap) {
 	return (num > cap)? cap+Math.sqrt(num-cap) : num;
 }
 
+/**
+ * 2つの艦隊の航空戦力（AP）を比較し、制空状態を設定する
+ * 
+ * @param {Fleet|LandBase} fleet1 - 比較する1つ目の艦隊
+ * @param {Fleet} fleet2 - 比較する2つ目の艦隊
+ * @param {string} [eqtFilter1] - 1つ目の艦隊で使用する装備フィルタ
+ * @param {boolean} [includeEscort] - 護衛艦隊を含めるか
+ * @param {string} [eqtFilter2] - 2つ目の艦隊で使用する装備フィルタ
+ */
 function compareAP(fleet1,fleet2,eqtFilter1,includeEscort,eqtFilter2) {
+	if (trace_flag) console.log('compareAP');
 	eqtFilter2 = eqtFilter2 || eqtFilter1;
 	var ap1 = fleet1.fleetAirPower(eqtFilter1), ap2 = fleet2.fleetAirPower(eqtFilter2);
 	let hasAir = false, ships1 = fleet1.ships ? fleet1.ships : [fleet1];
@@ -2217,6 +2826,16 @@ function compareAP(fleet1,fleet2,eqtFilter1,includeEscort,eqtFilter2) {
 	if (C) simConsole.log('AS: '+ap1+' '+ap2+' '+fleet1.AS + ' '+fleet2.AS);
 }
 
+/**
+ * 旗艦かばいや探照灯による再選択を考慮して目標艦を選択する
+ * 目標艦が旗艦の場合、旗艦かばいを適用するかを決定
+ * 
+ * @param {Array<Ship>} targets - 対象艦の配列
+ * @param {number | null} [searchlightRerolls] - 探照灯による再選択回数（0 or null の場合、再選択は行わない）。
+ * @param {boolean} [includeEscort] - 護衛艦を含めるか
+ * @param {boolean} [ignoreVanguard] - 第二艦隊を無視するか
+ * @returns {Ship|null} - 選択された艦（またはnull）
+ */
 function choiceWProtect(targets,searchlightRerolls,includeEscort,ignoreVanguard) {
 	DIDPROTECT = false; //disgusting hack, rework later?
 	targets = targets.filter(target => !target.isFaraway);
@@ -2251,14 +2870,36 @@ function choiceWProtect(targets,searchlightRerolls,includeEscort,ignoreVanguard)
 	return target;
 }
 
+/**
+ * carriersの航空機がフィルター(デフォルトは戦闘機)に該当する場合、制空状態による    
+ * 被撃墜数を計算し、艦インスタンスのplanecountプロパティに反映する    
+ * 参考: https://wikiwiki.jp/kancolle/%E8%88%AA%E7%A9%BA%E6%88%A6#AirSupremacy
+ * 
+ * @param {LandBase|Array<Ship>} carriers - 基地インスタンスか、艦インスタンスの配列
+ * @param {boolean} showplanes - 航空機の情報を表示するか
+ * @param {Object} APIkouku - APIの航空戦データ（結果を格納）
+ * @param {string} eqtFilter - 使用する航空機のフィルター
+ */
 function AADefenceFighters(carriers,showplanes,APIkouku,eqtFilter) {
+	if (trace_flag) console.log('AADefenceFighters');
 	eqtFilter = eqtFilter || 'isfighter';
 	for (var i=0; i<carriers.length; i++) {
+		/** @type {Ship} */
 		var ship = carriers[i], hasfighter = false;
 		for (var j=0; j<ship.equips.length; j++) {
-			if (ship.equips[j][eqtFilter]) {
+			if (ship.equips[j][eqtFilter]) { // 艦載機ごとに計算
 				var lostcount;
 				if (ship.side != 1) {
+					// 我の被撃墜数
+					/**
+					 * rmin - 制空定数 / 4 / 10    
+					 * rplus - 制空定数 / 3 / 10    
+					 * 備考: 制空定数    
+					 * 確保: 2    
+					 * 優勢: 3    
+					 * 拮抗: 5    
+					 * 喪失: 10
+					 */
 					var rmin, rplus;
 					switch(ship.airState()) {
 						case 2: rmin = .025; rplus = .0333; break;
@@ -2276,8 +2917,10 @@ function AADefenceFighters(carriers,showplanes,APIkouku,eqtFilter) {
 					}
 					lostcount = Math.floor(ship.planecount[j]*(rmin+randplus)*modJet);
 				} else {
+					// 彼の被撃墜数
 					var rmax;
 					switch(ship.fleet.AS) {
+						// なぜこれらの値になるのか分からない
 						case 2: rmax = 2; break;
 						case 1: rmax = 5; break;
 						case 0: rmax = 7; break;
@@ -2304,6 +2947,17 @@ function AADefenceFighters(carriers,showplanes,APIkouku,eqtFilter) {
 	}
 }
 
+/**
+ * 対空射撃の確率を計算する関数
+ * 防御艦（defender）の対空性能とその他のパラメータを使用して、射撃成功の確率を求めます
+ * 
+ * @param {Ship} defender - 防御する艦船のインスタンス
+ * @param {number} slotsize - 対空機器のスロットサイズ（航空機の数）
+ * @param {number} resistMod - 対空射撃回避値（通常は1で、低いほど抵抗が高い）
+ * @param {boolean} [isRaid] - 空襲戦であるか
+ * @param {boolean} [forceCF] - 強制的に連合艦隊として扱うか?
+ * @returns {number} - 対空射撃の確率
+ */
 function getAAShotProp(defender,slotsize,resistMod,isRaid,forceCF) {
 	if (!MECHANICS.AACI) return 0;
 	var sAA = defender.weightedAntiAir();
@@ -2315,6 +2969,16 @@ function getAAShotProp(defender,slotsize,resistMod,isRaid,forceCF) {
 	return Math.floor(slotsize*sAA/200);
 }
 
+/**
+ * 対空射撃による撃墜数を計算して返す
+ * 
+ * @param {Ship} defender - 対空攻撃を受ける艦船のインスタンス
+ * @param {number} resistModShip - 艦対空に対する対空射撃回避
+ * @param {number} resistModFleet - 艦隊全体の対空に対する対空射撃回避
+ * @param {boolean} [isRaid] - 空襲戦であるか
+ * @param {boolean} [forceCF] - 強制的に連合艦隊として扱うか
+ * @returns {number} - 最終的な撃墜数?
+ */
 function getAAShotFlat(defender,resistModShip,resistModFleet,isRaid,forceCF) {
 	var mod = (defender.side==0)? .2 : 0.1875;
 	if (!MECHANICS.AACI) mod = .2125;
@@ -2337,6 +3001,13 @@ function getAAShotFlat(defender,resistModShip,resistModFleet,isRaid,forceCF) {
 	return (sAA+fAA)*mod;
 }
 
+/**
+ * 対空カットインの発動を決定し、結果を返す
+ * 
+ * @param {Array<Ship>} defenders - 防御艦船のリスト
+ * @param {Object} APIkouku - APIへの出力情報を含むオブジェクト
+ * @returns {Object} - AACI発動に関する情報を含むオブジェクト（発動数、修正値、AACIタイプ）
+ */
 function getAACI(defenders,APIkouku) {
 	var AACInum = 0, AACImod = 1;
 	if (MECHANICS.AACI) {
@@ -2425,6 +3096,17 @@ function getAACI(defenders,APIkouku) {
 	return { num: AACInum, mod: AACImod, id: AACItype };
 }
 
+/**
+ * 空母艦船の装備を基に、触接を判定する関数    
+ * 触接に成功すると、攻撃力修正値と触接を担当する装備のIDが返される    
+ * 触接が失敗した場合は null を返す    
+ * 参考: https://wikiwiki.jp/kancolle/%E8%88%AA%E7%A9%BA%E6%88%A6#s1d9a838
+ * 
+ * @param {Array<Ship>} carriers - 連絡機能を使用する空母艦船の配列
+ * @returns {Record<String, number> | null} 触接結果。    
+ * 成功した場合は `{mod: contactMod(攻撃力修正値), id: equip.mid(触接を担当する装備のID)}` の形式で返す。    
+ * 失敗した場合は `null` を返す
+ */
 function getContact(carriers) {
 	if (!MECHANICS.artillerySpotting) return null;
 	var losPower = 1;
@@ -2441,7 +3123,7 @@ function getContact(carriers) {
 	else { chance = losPower/55; cmod = 18; }
 	if (C) simConsole.log('CONTACT CHANCE 1: '+chance);
 	//phase 2
-	if (Math.random() < chance) {
+	if (Math.random() < chance) { // 触接判定
 		var contacter = null;
 		for (var j=0; j<carriers.length; j++) {
 			var ship = carriers[j];
@@ -2450,7 +3132,7 @@ function getContact(carriers) {
 				if (!EQTDATA[equip.type].canContact || !equip.LOS) continue;
 				if (contacter && ((contacter.ACC||0) >= (equip.ACC||0))) continue;
 				if (C) simConsole.log('    CHANCE 2: '+(equip.LOS/cmod));
-				if (Math.random() < equip.LOS/cmod) contacter = equip;
+				if (Math.random() < equip.LOS / cmod) contacter = equip; // この機体が触接を担当するか
 			}
 		}
 		if (contacter) {
@@ -2463,7 +3145,21 @@ function getContact(carriers) {
 	return null;
 }
 
+/**
+ * 空母艦船による航空攻撃を行い、対空防御や接触判定、阻塞気球の影響を計算し、設定する
+ * 航空攻撃が行われ、targetsにダメージが与えられる
+ * 
+ * @param {Array<Ship>} carriers - 空母艦船の配列
+ * @param {Array<Ship>} targets - 攻撃対象艦船の配列
+ * @param {Array<Ship>} defenders - 防御艦船の配列
+ * @param {Object} APIkouku - APIの航空戦情報
+ * @param {boolean} issupport - 支援攻撃か
+ * @param {boolean} isjetphase - ジェットフェーズか
+ * @param {boolean} combinedAll - 連合艦隊か
+ * @param {boolean} [isRaid] - 雷撃戦か
+ */
 function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupport,isjetphase,combinedAll,isRaid) {
+	if (trace_flag) console.log('AADefenceBombersAndAirstrike');
 	var bombers = [], hasbomber = false;
 	for (var i=0; i<carriers.length; i++) {
 		var ship = carriers[i];
@@ -2559,7 +3255,7 @@ function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupp
 			
 			let targetsR = MECHANICS.antiSubRaid && isRaid && ship.equips[slot].ASW >= 11 ? defenders : targets;
 			if (targetsR.length) {
-				if (false) {
+				if (false) { // ブロック内到達不可
 					var targetsM = [], targetsE = [];
 					for (var k=0; k<targets.length; k++) {
 						if (targets[k].isescort) targetsE.push(targets[k]);
@@ -2579,6 +3275,8 @@ function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupp
 	
 	for (let attack of attacks) {
 		let ship = attack[0], target = attack[1], slot = attack[2];
+		// ダメージを受け取ってるがデバッグ用
+		// airstrikeの方でインスタンスにダメージの反映まで済んでる
 		var dmg = airstrike(ship,target,slot,contactMod,issupport,isjetphase,isRaid);
 		if (C) {
 			if (target.isescort) {
@@ -2603,7 +3301,21 @@ function AADefenceBombersAndAirstrike(carriers,targets,defenders,APIkouku,issupp
 	}
 }
 
+/**
+ * 航空戦フェーズ
+ * ジェット機も
+ *
+ * @param {Array<Ship>} alive1 - 第一陣営の生存艦船（艦載機を持つ艦船）のリスト
+ * @param {Array<Ship>} subsalive1 - 第一陣営の生存潜水艦（艦載機を持つ艦船）のリスト
+ * @param {Array<Ship>} alive2 - 第二陣営の生存艦船（艦載機を持つ艦船）のリスト
+ * @param {Array<Ship>} subsalive2 - 第二陣営の生存潜水艦（艦載機を持つ艦船）のリスト
+ * @param {Object} APIkouku - API用のデータオブジェクト（空襲のステージ情報など）
+ * @param {boolean} [isjetphase] - ジェット機フェーズか
+ * @param {boolean} [isbombing] - 自艦隊から敵艦隊へ爆撃を行うならtrue
+ * @param {boolean} [includeEscort] - 護衛艦隊を含むか
+ */
 function airPhase(alive1,subsalive1,alive2,subsalive2,APIkouku,isjetphase,isbombing,includeEscort) {
+	if (trace_flag) console.log('airPhase');
 	var carriers1 = [], carriers2 = [];
 	for (var i=0; i<alive1.length; i++) if ((includeEscort||!alive1[i].isescort) && (!isjetphase||alive1[i].hasjet)) carriers1.push(alive1[i]);
 	for (var i=0; i<subsalive1.length; i++) if ((includeEscort||!subsalive1[i].isescort) && (!isjetphase||subsalive1[i].hasjet)) carriers1.push(subsalive1[i]);
@@ -2642,7 +3354,18 @@ function airPhase(alive1,subsalive1,alive2,subsalive2,APIkouku,isjetphase,isbomb
 	}
 }
 
+/**
+ * 支援フェーズ
+ * 
+ * @param {Array<Ship>} shipsS - 支援を行う艦船のリスト
+ * @param {Array<Ship>} alive2 - 支援対象となる敵艦船のリスト
+ * @param {Array<Ship>} subsalive2 - 生存している潜水艦のリスト
+ * @param {number} suptype - 支援のタイプ。1: 航空支援、2: 砲撃支援、3: 雷撃支援、4: 対潜支援
+ * @param {Object} BAPI - 支援データを格納するオブジェクト
+ * @param {boolean} [isboss] - ボス艦か
+ */
 function supportPhase(shipsS,alive2,subsalive2,suptype,BAPI,isboss) {
+	if (trace_flag) console.log('supportPhase');
 	if (MECHANICS.LBASBuff && suptype == 1 && subsalive2.length && shipsS[0].fleet.canASWSupport) suptype = 4;
 	if (suptype == 1 && !shipsS[0].fleet.canAirSupport) return;
 	if (C) {
@@ -2794,53 +3517,73 @@ function supportPhase(shipsS,alive2,subsalive2,suptype,BAPI,isboss) {
 	}
 }
 
+/**
+ * 対潜支援を行う関数
+ * 複数の空母とその装備を使って、敵艦隊や敵機隊に対して支援攻撃を行う
+ * 
+ * @param {Array<Ship>} carriers 空母のリスト
+ * @param {Array<Ship>} targets 攻撃対象の艦船または航空機のリスト
+ * @param {Array<Ship>} defenders 防御側の艦船または航空機のリスト
+ * @param {Object} APIkouku APIの攻撃結果情報
+ * @param {boolean} combinedAll 連合艦隊か
+ */
 function supportASW(carriers,targets,defenders,APIkouku,combinedAll) {
+	if (trace_flag) console.log('supportASW');
 	var bombers = [], hasbomber = false;
-	for (var i=0; i<carriers.length; i++) {
+    for (var i = 0; i < carriers.length; i++) { // 空母ごとの爆撃機のリストを作成
 		var ship = carriers[i];
 		bombers.push([]);
-		for (var j=0; j<ship.equips.length; j++) {
+        for (var j = 0; j < ship.equips.length; j++) { // 空母の装備を確認し、対潜支援可能な装備を探す
 			var e = ship.equips[j];
+            // 対潜支援可能な装備があり、かつその装備の機数が0より多い場合
 			if (e.canSupportASW && ship.planecount[j]>0) {
 				bombers[i].push(j);
 				hasbomber = true;
+                // 空母が所属する陣営を設定し、APIkoukuの飛行機情報を更新
 				var side = (ship.side == 2 || ship.side == 3)? 0 : ship.side;
 				if (C && APIkouku.api_plane_from[side].indexOf(ship.apiID2)==-1) APIkouku.api_plane_from[side].push(ship.apiID2);
 			}
 		}
 	}
-	if (!hasbomber) return;
+    if (!hasbomber) return; // 爆撃機がない場合、処理を終了
 	
 	var AACInum = 0, AACImod = 1;
 	
-	for (var i=0; i<bombers.length; i++) {
+    for (var i = 0; i < bombers.length; i++) { // 爆撃機ごとに対潜支援を実行
 		var ship = carriers[i];
-		for (var j=0; j<bombers[i].length; j++) {
+        for (var j = 0; j < bombers[i].length; j++) { // 装備ごとに支援を行う
 			var slot = bombers[i][j];
+            // 防御側がいる場合、対空撃墜処理を行う
 			if (defenders.length) {
 				var defender = defenders[Math.floor(Math.random()*defenders.length)];
 				var supportMod = .8;
+                // 対空撃墜の確率計算
 				var shotProp = (Math.random() < .5)? Math.floor(getAAShotProp(defender,ship.planecount[slot])*supportMod) : 0;
 				var shotFlat = (Math.random() < .5)? Math.floor(getAAShotFlat(defender)*AACImod*supportMod) : 0;
 				var shotFix = ((defender.side==0 || AACInum)? 1 : 0) + AACInum;
 				
+                // APIkoukuのステージ2データを更新
 				if (C) {
 					APIkouku.api_stage2[(ship.side)?'api_e_count':'api_f_count'] += ship.planecount[slot];
 					APIkouku.api_stage2[(ship.side)?'api_e_lostcount':'api_f_lostcount'] += shotProp+shotFlat+shotFix;
 					if (!ship.equips[slot].lostnums) ship.equips[slot].lostnums = [];
 					ship.equips[slot].lostnums.push(shotProp+shotFlat+shotFix);
 				}
+                // 機数を減らす
 				ship.planecount[slot] = Math.max(0,ship.planecount[slot]-shotProp-shotFlat-shotFix);
 				if (C) simConsole.log('	anti air: '+defender.name+' '+defender.AA+' '+shotProp+' '+shotFlat+' '+shotFix+' '+ship.planecount[slot]);
 			
+                // 機数が0になった場合は次の装備へ
 				if (ship.planecount[slot]<=0) {
 					ship.planecount[slot] = 0;
 					continue;
 				}
 			}
 			
+            // 攻撃対象がいる場合、支援攻撃を行う
 			if (targets.length) { 
 				var targetsR = targets;
+                // 連合艦隊の場合、護衛艦と主力艦を分けてターゲット選択
 				if (combinedAll) {
 					var targetsM = [], targetsE = [];
 					for (var k=0; k<targets.length; k++) {
@@ -2851,10 +3594,12 @@ function supportASW(carriers,targets,defenders,APIkouku,combinedAll) {
 					else if (!targetsM.length) targetsR = targetsE;
 					else targetsR = (Math.random() < .5)? targetsM : targetsE;
 				}
+                // 攻撃対象をランダムに選択し、対潜支援攻撃を実行
 				var target = choiceWProtect(targetsR);
 				if (!target) continue;
 				var dmg = airstrikeSupportASW(ship,target,slot,1);
 				
+                // APIkoukuのステージ3データを更新
 				if (C) {
 					if (target.isescort) {
 						APIkouku.api_stage3_combined[(target.side)?'api_edam':'api_fdam'][target.num] += dmg;
@@ -2874,7 +3619,19 @@ function supportASW(carriers,targets,defenders,APIkouku,combinedAll) {
 	}
 }
 
+/**
+ * 対潜支援によるダメージを計算して返す
+ * 指定された艦船が指定された装備スロットの航空機を使用して、ターゲットに対してASW攻撃を行う
+ * 
+ * @param {Ship} ship - 支援攻撃を行う艦船インスタンス
+ * @param {Ship} target - 攻撃対象となる艦船または潜水艦のオブジェクト
+ * @param {number} slot - 使用する装備スロットのインデックス。
+ * @param {number} [contactMod=1] - 攻撃の精度を修正するための連絡補正（デフォルトは1）
+ * 
+ * @returns {number} realdmg - 実際に与えたダメージ
+ */
 function airstrikeSupportASW(ship,target,slot,contactMod) {
+	if (trace_flag) console.log('airstrikeSupportASW');
 	if (!contactMod) contactMod = 1;
 	var acc = SIMCONSTS.supportASWAccBase/100;
 	var res = rollHit(accuracyAndCrit(ship,target,acc,1,0,0));
@@ -2901,15 +3658,28 @@ function airstrikeSupportASW(ship,target,slot,contactMod) {
 	return realdmg;
 }
 
+/**
+ * 基地航空隊フェーズ
+ * 
+ * @param {LandBase} lbas - 地上基地航空隊のデータ
+ * @param {Array<Ship>} alive2 - 生存している艦船のリスト
+ * @param {Array<Ship>} subsalive2 - 生存している潜水艦のリスト
+ * @param {boolean} isjetphase - ジェット機の使用を示すフラグ
+ * @param {Object} APIkouku - 処理データを格納するオブジェクト
+ */
 function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
+	if (trace_flag) console.log('LBASPhase');
+    // 使用可能な艦載機を格納する配列
 	var carriers2 = [];
+    // 敵艦隊(alive2, subsalive2）から、ジェット機を装備した艦船を選択
 	for (var i=0; i<alive2.length; i++) if ((!isjetphase||alive2[i].hasjet)) carriers2.push(alive2[i]);
 	for (var i=0; i<subsalive2.length; i++) if ((!isjetphase||subsalive2[i].hasjet)) carriers2.push(subsalive2[i]);
 	
+    // APIkoukuのデータの初期化
 	if (C) {
 		var apiname = (isjetphase)? 'api_air_base_data' : 'api_squadron_plane';
 		APIkouku[apiname] = [];
-		for (var i=0; i<lbas.equips.length; i++) {
+        for (var i = 0; i < lbas.equips.length; i++) { // LBASの装備に関するデータをAPIkoukuにセット
 			var eq = lbas.equips[i];
 			if (!eq.isPlane) continue;
 			var d = {api_mst_id:0, api_count:0};
@@ -2918,6 +3688,7 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 			APIkouku[apiname].push(d);
 			APIkouku.api_plane_from[0].push(i+7);
 		}
+        // 各ステージのデータを初期化
 		APIkouku.api_stage1 = {api_e_count:0,api_e_lostcount:0,api_f_count:0,api_f_lostcount:0,api_touch_plane:[-1,-1]};
 		APIkouku.api_stage2 = {api_f_count:0,api_f_lostcount:0};
 		APIkouku.api_stage3 = {api_ebak_flag:[-1,0,0,0,0,0,0],api_edam:[-1,0,0,0,0,0,0],api_erai_flag:[-1,0,0,0,0,0,0],api_ecl_flag:[-1,0,0,0,0,0,0],api_e_sp_list:[-1,null,null,null,null,null,null]};
@@ -2926,6 +3697,7 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 	
 	//fighter defence
 	let filter = isjetphase ? 'isjet' : 'isPlane';
+	// ? 2回呼び出してるが実質的に1回になる?
 	AADefenceFighters([lbas],true,APIkouku,filter);
 	AADefenceFighters(carriers2,true,APIkouku,filter);
 	
@@ -2936,6 +3708,9 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 	for (var i=0; i<alive2.length; i++) if (!alive2[i].isFaraway) defenders.push(alive2[i]);
 	for (var i=0; i<subsalive2.length; i++) if (!subsalive2[i].isFaraway) defenders.push(subsalive2[i]);
 	
+	// 制空が拮抗や喪失でも、前回の触接補正値がある場合、前回の触接値を使用する
+	// (権利があるだけで発動の如何は改めて判定)
+	// 参考: https://wikiwiki.jp/kancolle/%E5%9F%BA%E5%9C%B0%E8%88%AA%E7%A9%BA%E9%9A%8A#phase > 触接判定
 	let airStateNow = lbas.AS;
 	if (airStateNow == 0) {
 		lbas.AS = LandBase.airStatePrev;
@@ -2963,6 +3738,7 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 	}
 	lbas.AS = airStateNow;
 	
+    // 攻撃処理
 	let attacks = [];
 	for (var i=0; i<lbas.equips.length; i++) {
 		var eq = lbas.equips[i];
@@ -2989,6 +3765,7 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 			}
 		}
 		
+        // 攻撃対象を設定
 		var targets = isASWPlane && isSurfacePlane ? subsalive2.concat(alive2) : isASWPlane ? subsalive2 : alive2;
 		if (targets.length) {
 			if (targets[0].fleet.combinedWith) {
@@ -3009,7 +3786,8 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 			if (!target) continue;
 			attacks.push([lbas,target,i]);
 		}
-	}		
+	}
+    // 攻撃の実行
 	for (let attack of attacks) {
 		let lbas = attack[0], target = attack[1], i = attack[2];
 		let balloonMod = 1;
@@ -3048,18 +3826,41 @@ function LBASPhase(lbas,alive2,subsalive2,isjetphase,APIkouku) {
 	}
 }
 
+/**
+ * 基地航空隊によるダメージを計算して返す
+ * 
+ * 使用する装備、ターゲットの種類、バフやデバフ、特殊条件、精度、クリティカルヒットの確率からダメージを計算する
+ * 
+ * @param {LandBase} lbas - LBAS（基地航空隊）の情報を保持するオブジェクト
+ * @param {Ship} target - 攻撃対象のターゲットオブジェクト
+ * @param {number} slot - LBASの装備スロット番号
+ * @param {number} contactMod - 攻撃の接触修正値
+ * @param {number} contactModLB - LBAS専用の追加接触修正値
+ * @param {boolean} isjetphase - 攻撃がジェットフェーズ中であるか
+ * @returns {number} - ターゲットに与えた実際のダメージ
+ */
 function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
-	if (!contactMod) contactMod = 1;
-	var equip = lbas.equips[slot];
-	var acc = SIMCONSTS.enableLBASFormula2 ? SIMCONSTS.lbasAccBase : .95;
-	var critdmgbonus = 1, critratebonus = 0, ACCplane = 0;
+	if (trace_flag) console.log('airstrikeLBAS');
+    // contactModが指定されていなければデフォルトで1を使用
+    if (!contactMod) contactMod = 1;
+    var equip = lbas.equips[slot]; // 使用する装備
+    var acc = SIMCONSTS.enableLBASFormula2 ? SIMCONSTS.lbasAccBase : .95; // 命中の初期値
+    /** クリティカルダメージボーナス */
+    var critdmgbonus = 1;
+    /** クリティカル率ボーナス */
+    var critratebonus = 0;
+    /** 命中補正用の変数 */
+    var ACCplane = 0;
 	if ((equip.type != LANDBOMBER || MECHANICS.LBASBuff) && !isjetphase) {
 		let exp = equip.exp || 0, rank = equip.rank || 0;
+        // 回転翼機と対潜哨戒機は経験値と熟練度を補正 知らない仕様
 		if ([AUTOGYRO,ASWPLANE].includes(equip.type)) {
 			exp *= .825;
 			if (rank > 0) rank--;
 		}
+        // 命中補正の計算
 		ACCplane = Math.sqrt(exp*.1);
+        // 熟練度に応じて命中とクリティカル値を調整
 		var critval = 0;
 		switch(rank) {
 			case 7: ACCplane += 9; critval = 10; break;
@@ -3071,55 +3872,60 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 			case 1: ACCplane += 0; critval = 1; break;
 			case 0: ACCplane = 0; break;
 		}
+        // クリティカル率ボーナスの計算
 		critdmgbonus += Math.floor(Math.sqrt(exp)+critval)/100;
 		critratebonus = critval*.8;
 	}
+    // Mechanics > 基地航空隊強化が有効であれば命中をさらに補正
 	if (MECHANICS.LBASBuff) {
 		acc += .07*(equip.ACC || 0);
 	}
+    // targetが特定の艦であれば命中を補正 Formula2の出所は不明
 	if (SIMCONSTS.enableLBASFormula2) {
-		if ([1557,1586].includes(target.mid)) {
+        if ([1557, 1586].includes(target.mid)) { // 戦艦棲姫 or 空母棲姫
 			acc *= 1.1;
 		}
 		if (target.isSummerBB) {
 			acc *= 1.1;
 		}
-		if ([1665,1666,1667].includes(target.mid)) {
+        if ([1665, 1666, 1667].includes(target.mid)) { // 砲台小鬼シリーズ
 			acc *= 1.06;
 		}
-		if ([2178,2179,2196,2197].includes(target.mid)) {
+        if ([2178, 2179, 2196, 2197].includes(target.mid)) { // トーチカ小鬼シリーズ or トーチカ小鬼eliteシリーズ
 			acc *= 1.06;
 		}
-		if ([2180,2181].includes(target.mid)) {
+        if ([2180, 2181].includes(target.mid)) { // 対空小鬼 or 対空小鬼elite
 			acc *= 1.15;
 		}
 		if (target.isPT) {
 			acc *= (equip.mid == 459 ? .85 : .95);
 		}
 	}
-	if (equip.mid == 444) {
+    // 機体とtargetの艦種との相性で命中増減
+    if (equip.mid == 444) { // 四式重爆 飛龍+イ号一型甲 誘導弾
 		if (target.type == 'DD') acc -= .07;
 		if (['CL','CLT','CVL','FBB','BB','BBV','CV'].includes(target.type)) acc += .07;
 	}
-	if (equip.mid == 484) {
+    if (equip.mid == 484) { // 四式重爆 飛龍(熟練)+イ号一型甲 誘導弾
 		if (target.type == 'DD') acc -= .05;
 		if (['CL','CLT','CA','CAV','CVL','FBB','BB','BBV','CV'].includes(target.type)) acc += .05;
 	}
-	if (equip.mid == 453) {
+    if (equip.mid == 453) { // キ102乙
 		if (target.type == 'DD') acc += .07;
 	}
-	if (equip.mid == 454) {
+    if (equip.mid == 454) { // キ102乙改+イ号一型乙 誘導弾
 		if (target.type == 'DD') acc -= .17;
 		if (['CL','CLT'].includes(target.type)) acc += .07;
 		if (['CA','CAV','CVL','FBB','BB','BBV','CV'].includes(target.type)) acc += .05;
 	}
-	if (equip.mid == 459 || (SIMCONSTS.enableSkipTorpBonus && equip.isSkipBomber)) {
+    if (equip.mid == 459 || (SIMCONSTS.enableSkipTorpBonus && equip.isSkipBomber)) { // B-25
 		if (target.isInstall) acc -= .09
 		else if (['FBB','BB','BBV','CVL','CV','AT'].includes(target.type)) acc += .31;
 		else if (['CA','CAV'].includes(target.type)) acc += .22;
 		else if (['CL','CLT','AV'].includes(target.type)) acc += .18;
 		else if (['DD'].includes(target.type) && !target.isPT) acc += .13;
 	}
+    // その他の特殊なボーナスやバフを適用
 	if (SIMCONSTS.enablePlaneBonus) {
 		if (equip.bonusSpecialPUseAll) {
 			acc *= getBonusSpecialPlane(lbas,'bonusSpecialAccP',true);
@@ -3129,6 +3935,7 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 		if (equip.bonusSpecialAccPSelf) acc *= equip.bonusSpecialAccPSelf;
 	}
 	
+    // 気球が有効なら命中を補正
 	if (FLEETS1[0] && FLEETS1[0].useBalloon) {
 		let num = FLEETS1[0].getNumBalloons();
 		if (num) {
@@ -3144,41 +3951,46 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 		}
 	}
 	
+    // クリティカル率ボーナスと命中をLandBaseインスタンスに保存
 	lbas.critratebonus = critratebonus; lbas.ACCplane = ACCplane;
 	let evModPost = 1;
 	if (SIMCONSTS.enableLBASFormula2) {
 		evModPost = target.fleet.combinedWith ? (equip.mid == 459 ? SIMCONSTS.lbasEvaModCombinedB25 : SIMCONSTS.lbasEvaModCombined) : SIMCONSTS.lbasEvaModSingle;
 	}
+    // ヒット判定を行い、ダメージを計算
 	var res = rollHit(accuracyAndCrit(lbas,target,acc,1,0,0,true,null,evModPost),critdmgbonus);
 	lbas.critratebonus = 0; lbas.ACCplane = 0;
+    // ダメージ計算のための初期値設定
 	var dmg = 0, realdmg = 0;
-	if (res) {
+	if (res) { // ヒットした場合
 		var planebase;
 		if (equip.type == LANDBOMBER || equip.type == LANDBOMBERL) planebase = (target.isInstall)? equip.DIVEBOMB : equip.TP;
 		else planebase = (equip.isdivebomber)? equip.DIVEBOMB : target.isInstall ? Math.floor(equip.TP/2) : equip.TP;
 		if (target.isSub) planebase = equip.ASW;
-		if (MECHANICS.hayabusa65Buff && equip.mid == 224) {
+        // 65戦隊と熟練/20戦隊の特殊ボーナスを適用
+        if (MECHANICS.hayabusa65Buff && equip.mid == 224) { // 爆装一式戦 隼III型改(65戦隊)
 			if (['DD'].indexOf(target.type) != -1) planebase = 25;
 		}
-		if (MECHANICS.hayabusa65Buff && equip.mid == 491) {
+        if (MECHANICS.hayabusa65Buff && equip.mid == 491) { // 一式戦 隼III型改(熟練/20戦隊)
 			if (['DD'].indexOf(target.type) != -1) planebase = 30;
 		}
+        // 装備とtarget(陸上艦であるか&艦種)の相性でダメージ補正
 		planebase = planebase || 0;
-		if (equip.mid == 405 && !target.isInstall) {
+        if (equip.mid == 405 && !target.isInstall) { // Do 217 E-5+Hs293初期型
 			if (['DD'].indexOf(target.type) != -1) planebase *= 1.1;
 		}
-		if (equip.mid == 406 && !target.isInstall) {
+        if (equip.mid == 406 && !target.isInstall) { // Do 217 K-2+Fritz-X
 			if (['FBB','BB','BBV'].indexOf(target.type) != -1) planebase *= 1.5;
 		}
-		if (equip.mid == 444 && !target.isInstall) {
+        if (equip.mid == 444 && !target.isInstall) { // 四式重爆 飛龍+イ号一型甲 誘導弾
 			if (['DD','CL','CLT','CA','CAV'].includes(target.type)) planebase *= 1.15;
 			if (['CVL','FBB','BB','BBV','CV'].includes(target.type)) planebase *= 1.13;
 		}
-		if (equip.mid == 454 && !target.isInstall) {
+        if (equip.mid == 454 && !target.isInstall) { // キ102乙改+イ号一型乙 誘導弾
 			if (['DD','CL','CLT','CA','CAV'].includes(target.type)) planebase *= 1.16;
 			if (['CVL','FBB','BB','BBV','CV'].includes(target.type)) planebase *= 1.14;
 		}
-		if (equip.mid == 484) {
+        if (equip.mid == 484) { // 四式重爆 飛龍(熟練)+イ号一型甲 誘導弾
 			if (target.isInstall) {
 				planebase += 2.1;
 			} else {
@@ -3189,14 +4001,16 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 		if (planebase && !target.isSub) planebase += (equip.airstrikePowerImprove || 0);
 		let slotMod = isjetphase ? 1 : 1.8;
 		var dmgbase = 25+planebase*Math.sqrt(slotMod*lbas.planecount[slot]);
+        /** キャップ前補正 */
 		var preMod = (equip.type == LANDBOMBER || equip.type == LANDBOMBERL)? .8 : 1;
 		if (equip.isjet && !isjetphase) preMod = 1/Math.sqrt(2);
 		if (target.isSub) {
 			preMod = (planebase >= 10)? .7 + Math.random()*.3 : .35 + Math.random()*.45;
 		}
 		preMod *= (contactModLB || 1);
+        /** キャップ後補正 */
 		var postMod = equip.type == LANDBOMBER ? 1.8 : 1;
-		if (equip.mid == 459 || (SIMCONSTS.enableSkipTorpBonus && equip.isSkipBomber)) {
+		if (equip.mid == 459 || (SIMCONSTS.enableSkipTorpBonus && equip.isSkipBomber)) { // B-25
 			if (target.isInstall) {
 				preMod *= .9;
 			} else {
@@ -3211,27 +4025,28 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 			// else postMod *= 1.18;
 		// }
 		if (SIMCONSTS.enableAirstrikeSpecialBonus) {
-			if ([1557,1586].includes(target.mid)) {
+            if ([1557, 1586].includes(target.mid)) { // 戦艦棲姫 or 空母棲姫
 				postMod *= Math.random() < .35 ? 3 : 1.7;
 			} else if (target.isPT) {
 				postMod *= Math.random() < .4 ? .7 : .4;
-			} else if ([1653,1654,1655,1656,1657,1658].includes(target.mid)) {
+            } else if ([1653, 1654, 1655, 1656, 1657, 1658].includes(target.mid)) { // 集積地棲姫シリーズ
 				postMod *= Math.random() < .4 ? 3.5 : 1.7;
-			} else if ([1665,1666,1667].includes(target.mid)) {
+			} else if ([1665,1666,1667].includes(target.mid)) { // 砲台小鬼シリーズ
 				postMod *= Math.random() < .5 ? 2.5 : 1.6;
-			} else if ([1668,1669,1670,1671,1672].includes(target.mid)) {
+            } else if ([1668, 1669, 1670, 1671, 1672].includes(target.mid)) { // 離島棲姫シリーズ
 				postMod *= Math.random() < .4 ? 2.0 : 1.5;
-			} else if ([1696,1697,1698].includes(target.mid)) {
+            } else if ([1696, 1697, 1698].includes(target.mid)) { // 戦艦夏姫シリーズ
 				postMod *= Math.random() < .4 ? 1.8 : 1.5;
 			} else if ([1699,1700,1701,1702,1703,1704].includes(target.mid) || (SIMCONSTS.enableSummerHarbourLBASBonus && [2023,2024,2025,2026,2027,2028,2243,2244,2245,2246].includes(target.mid))) {
+                // 港湾夏姫シリーズ or 港湾夏姫IIシリーズ or 港湾棲姫 休日modeシリーズ
 				postMod *= Math.random() < .5 ? 1.5 : 1.2;
-			} else if ([1751].includes(target.mid)) {
+            } else if ([1751].includes(target.mid)) { // 空母夏鬼
 				postMod *= Math.random() < .4 ? 1.7 : 1.3;
-			} else if ([2178,2179,2196,2197].includes(target.mid)) {
+            } else if ([2178, 2179, 2196, 2197].includes(target.mid)) {// トーチカ小鬼 or トーチカ小鬼elite or トーチカ小鬼 or トーチカ小鬼elite
 				postMod *= Math.random() < .5 ? 2.2 : 1.5;
-			} else if ([2180,2181].includes(target.mid)) {
+            } else if ([2180, 2181].includes(target.mid)) { // 対空小鬼 or 対空小鬼elite
 				postMod *= Math.random() < .5 ? 1.6 : 1.3;
-			} else if ([2188,2189,2190,2191].includes(target.mid)) {
+            } else if ([2188, 2189, 2190, 2191].includes(target.mid)) { // トーチカ要塞棲姫シリーズ
 				postMod *= Math.random() < .4 ? 1.8 : 1.4;
 			} else {
 				preMod *= (target.LBWeak || 1);
@@ -3254,9 +4069,10 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 		if (equip.type == SEAPLANE) {
 			postMod = 0;
 		}
+        // キャップ適用
 		let pow = Math.floor(softCap(dmgbase*preMod, SIMCONSTS.lbasDmgCap));
 		if (!SIMCONSTS.enableAirstrikeSpecialBonus) {
-			if ((target.installtype == 3 || target.isSupplyDepot) && target.mid <= 1658) {
+            if ((target.installtype == 3 || target.isSupplyDepot) && target.mid <= 1658) { // 集積地棲姫-壊より若いID
 				pow = pow*target.divebombWeak + 100;
 				postMod /= target.divebombWeak;
 			}
@@ -3274,7 +4090,20 @@ function airstrikeLBAS(lbas,target,slot,contactMod,contactModLB,isjetphase) {
 	return realdmg;
 }
 
+/**
+ * 射程（RNG）に基づいて艦船の順番を並べ替える
+ * 
+ * また、特定の条件（潜水艦の除外、ASWモードなど）に応じて並べ替え処理を行う
+ * 最終的に並べ替えた艦船を `order` 配列に追加する
+ *
+ * @param {Array<Ship>} ships - 艦船の配列
+ * @param {Array<Ship>} order - 並べ替え後の艦船を追加する配列
+ * @param {boolean} includeSubs - 潜水艦を含めるか
+ * @param {boolean} [isOASW] - 開幕対潜攻撃であるか
+ */
 function orderByRange(ships,order,includeSubs,isOASW) {
+    // 「攻撃順の偏向」 が有効で、艦船リストに潜水艦が含まれていない場合
+    // SHELL_RANGE_WEIGHTS による射程の重み付けを使用して並べ替え
 	if (SIMCONSTS.enableRangeWeights && ships.length && !ships.find(ship => ship.isSub)) {
 		let orderShips = SHELL_RANGE_WEIGHTS.getRollShips(ships,includeSubs,isOASW);
 		if (orderShips) {
@@ -3283,21 +4112,28 @@ function orderByRange(ships,order,includeSubs,isOASW) {
 		}
 	}
 	var ranges = []; //fleet 1
-	for (var i=0; i<ships.length; i++) {
+    for (var i = 0; i < ships.length; i++) { // 艦船リストを順に処理し、射程別に艦船を分類
 		if (!includeSubs && ships[i].isSub) continue;
 		if (!ships[i].canShell(isOASW)) continue;
 		if (ships[i].retreated) continue;
 		if (!ranges[ships[i].RNG]) ranges[ships[i].RNG] = [];
 		ranges[ships[i].RNG].push(ships[i]);
 	}
+    // 各射程グループをシャッフル（ランダム順）
 	for (var i=0; i<ranges.length; i++) if (ranges[i]) shuffle(ranges[i]);
-	for (var i=ranges.length-1; i>=0; i--) {
+    for (var i = ranges.length - 1; i >= 0; i--) { // 逆順で射程を並べ、`order` 配列に艦船を追加
 		if (!ranges[i]) continue;
 		for (var j=0; j<ranges[i].length; j++) order.push(ranges[i][j]);
 	}
 }
 
 
+/**
+ * 煙幕装備の種類や数から煙幕ランクを決定して返す
+ * 
+ * @param {Array<Ship>} ships - 艦船の配列
+ * @returns {number} - 煙幕ランク（0～3、0は煙幕なし）
+ */
 function getSmokeType(ships) {
 	if (!ships.find(ship => ship.equips.find(eq => eq.mid == 500 || eq.mid == 501))) return 0;
 	let r = Math.random(), n = 0;
@@ -3307,6 +4143,15 @@ function getSmokeType(ships) {
 	return 0;
 }
 
+/**
+ * 艦隊(彼我、通常、連合)情報をdatarootに詰め込む関数 デバッグ系
+ * 
+ * @param {Object} dataroot - 設定するデータを格納するオブジェクト
+ * @param {Array<Ship>} ships1 - 自艦隊の艦船情報を格納した配列
+ * @param {Array<Ship>} ships2 - 敵艦隊の艦船情報を格納した配列
+ * @param {Fleet[]} [ships1C] - 連合艦隊1（自艦隊の連合艦船情報）を格納した配列
+ * @param {Fleet[]} [ships2C] - 連合艦隊2（敵艦隊の連合艦船情報）を格納した配列
+ */
 function apiSetBasic(dataroot,ships1,ships2,ships1C,ships2C) {
 	dataroot.api_deck_id = 1;
 	var retreatlist = [];
@@ -3425,6 +4270,17 @@ function apiSetBasic(dataroot,ships1,ships2,ships1C,ships2C) {
 	dataroot.api_smoke_type = ships1[0].fleet.smokeType || 0;
 }
 
+/**
+ * 戦闘関連のフラグを更新する関数 デバッグ系
+ * 
+ * 戦闘中の各種イベント（開幕攻撃、雷撃、砲撃など）に関連するフラグを更新
+ * 具体的には、APIレスポンス内の各種戦闘情報を基に、戦闘の進行状況や関連するフラグを設定
+ * 
+ * @param {Object} dataroot - 戦闘情報を格納するオブジェクト
+ * @param {boolean} isRaid - 空襲戦であるか
+ * @param {number} [combineTypeF] - 自艦隊の連合艦隊の種類
+ * @param {boolean} [combinedE] - 敵艦隊が連合艦隊であるか
+ */
 function apiUpdateFlag(dataroot,isRaid,combineTypeF,combinedE) {
 	if (!NEWFORMAT) return;
 	for (let key of ['api_kouku','api_kouku2']) {
@@ -3485,10 +4341,33 @@ function apiUpdateFlag(dataroot,isRaid,combineTypeF,combinedE) {
 	}
 }
 
+/**
+ * 艦隊戦闘シミュレーションを実行する関数
+ * 戦闘の流れ: https://wikiwiki.jp/kancolle/%E6%88%A6%E9%97%98%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6#Phase
+ * 
+ * @param {Fleet} F1 - 自艦隊
+ * @param {Fleet} F2 - 敵艦隊
+ * @param {Fleet} Fsupport - 支援艦隊
+ * @param {LandBase[]} LBASwaves - 基地航空隊
+ * @param {boolean} doNB - 夜戦するか
+ * @param {boolean} NBonly - 夜戦マスか
+ * @param {boolean} aironly - 航空戦マスか
+ * @param {boolean} bombing - 空襲戦マスか
+ * @param {boolean} noammo - 弾薬消費なしならtrue
+ * @param {Object} BAPI - APIデータ
+ * @param {boolean} noupdate - 補給を更新しない場合はtrue、だと思うけどtrueで呼ばれる箇所は見つけられなかった
+ * @param {Object} friendFleet - 友軍艦隊
+ * @returns {Object} 戦闘結果のオブジェクト
+ */
 function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet) {
+	// console.clear();
+	trace_flag = true;
+	if (trace_flag) console.log('sim');
+	// F1とF2の各艦船を取り出す
 	var ships1 = F1.ships, ships2 = F2.ships;
 	var alive1 = [], alive2 = [], subsalive1 = [], subsalive2 = [];
 	var hasInstall1 = false, hasInstall2 = false;
+    // ships1の艦船の状態を整理する
 	for (var i=0; i<ships1.length; i++) {
 		ships1[i].HPprev = ships1[i].HP;
 		if (ships1[i].HP <= 0) continue;
@@ -3499,6 +4378,7 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		if (ships1[i].isInstall) hasInstall1 = true;
 		ships1[i].morale -= (NBonly ? 2 : 3);
 	}
+    // ships2の艦船の状態を整理する
 	for (var i=0; i<ships2.length; i++) {
 		ships2[i].HPprev = ships2[i].HP;
 		if (ships2[i].HP <= 0) continue;
@@ -3512,19 +4392,21 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		F1.formation = ECHELON;
 	}
 	
+    // 交戦形態の抽選と攻撃力補正のセット
 	var r = Math.random();
 	if (r < .45) ENGAGEMENT = 1;
 	else if (r < .6) ENGAGEMENT = 1.2;
 	else if (r < .9 || F1.noRedT || F2.noRedT) ENGAGEMENT = .8;
 	else ENGAGEMENT = .6;
 	
+    // 自艦隊が煙幕を使用するときの発動判定
 	if (F1.useSmoke && alive1.length >= 4) F1.smokeType = getSmokeType(alive1);
 	
 	F1.AS = F2.AS = 0;
 	
-	if (bombing) aironly = true;
+	if (bombing) aironly = true; // 爆撃がある場合は航空戦のみを行う
 	
-	if (C) {
+    if (C) { // コンソールに情報を出力（デバッグ用）
 		simConsole.clear();
 		simConsole.log('ENGAGEMENT: '+ENGAGEMENT);
 		var dataroot = (NBonly)? BAPI.yasen : BAPI.data;
@@ -3532,7 +4414,8 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		apiSetBasic(dataroot,ships1,ships2);
 	}
 	// if (C) console.log(API);
-	
+
+    // 二巡目を行うかの判定
 	var doShell2 = false;
 	for (var i=0; i<ships1.length; i++) {
 		if (ships1[i].enableSecondShelling) doShell2 = true; //do retreated ships count?
@@ -3548,8 +4431,11 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		for (var i=0; i<LBASwaves.length; i++) {
 			if (uniqueLBs.indexOf(LBASwaves[i]) == -1) uniqueLBs.push(LBASwaves[i]);
 		}
+		// 噴進機のみの基地インスタンスを新しく作る
 		var jetLBAS = LandBase.createJetLandBase(uniqueLBs);
 		if (jetLBAS.equips.length) {
+			if (trace_flag) console.log('jet lbas - not function');
+			// 基地(ジェットのみ)と敵艦隊との制空判定
 			compareAP(jetLBAS,F2,'isjet');
 			LBASPhase(jetLBAS,alive2,subsalive2,true,(C)?BAPI.data.api_air_base_injection:undefined);
 			removeSunk(alive2); removeSunk(subsalive2);
@@ -3561,10 +4447,11 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 			if (C) delete BAPI.data.api_air_base_injection;
 		}
 	}
-	
+
 	//jet airstrike
 	if (!NBonly && !bombing && alive1.length+subsalive1.length > 0 && alive2.length+subsalive2.length > 0) {
 		if (C) BAPI.data.api_injection_kouku = {api_plane_from:[[-1],[-1]],api_stage1:null,api_stage2:null,api_stage3:null};
+		if (trace_flag) console.log('jet airstrike - not function');
 		compareAP(F1,F2,'isjet');
 		airPhase(alive1,subsalive1,alive2,subsalive2,(C)? BAPI.data.api_injection_kouku:undefined,true);
 		if (C) {
@@ -3699,8 +4586,9 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 		if (C) BAPI.data.api_opening_atack = {api_edam:[-1,0,0,0,0,0,0],api_erai:[-1,0,0,0,0,0,0],api_eydam:[-1,0,0,0,0,0,0],api_fdam:[-1,0,0,0,0,0,0],api_frai:[-1,0,0,0,0,0,0],api_fydam:[-1,0,0,0,0,0,0],api_ecl:[-1,0,0,0,0,0,0],api_fcl:[-1,0,0,0,0,0,0]};
 		torpedoPhase(alive1,subsalive1,alive2,subsalive2,true,(C)? BAPI.data.api_opening_atack : undefined);
 	}
-	
+
 	//recalculate fLoS before shelling because recon may have been shot down
+	// 偵察機が撃墜された可能性があるため、砲撃戦前に艦隊索敵値を再計算する。
 	F1.clearFleetLoS();
 	F2.clearFleetLoS();
 	
@@ -3845,6 +4733,11 @@ function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,no
 	return results;
 }
 
+/**
+ * HPが0以下の艦船をリストから削除する関数
+ * @param {Array<Ship>} ships - HPが0以下の艦船を削除する艦船リスト
+ * @returns {number} 削除された艦船の数
+ */
 function removeSunk(ships) {
 	let c = ships.length;
 	for (var i=0; i<ships.length; i++) {
@@ -3853,6 +4746,13 @@ function removeSunk(ships) {
 	return c - ships.length;
 }
 
+/**
+ * 通常戦闘の戦闘評価を判定する
+ * @param {Array<Ship>} ships1 - 艦船リスト1
+ * @param {Array<Ship>} ships2 - 艦船リスト2
+ * @param {Array<Ship>} [ships1C] - オプションの艦船リスト 自艦隊に加味される
+ * @returns {'S' | 'A' | 'B' | 'C' | 'D' | 'E'} - 戦闘評価
+ */
 function getRank(ships1,ships2,ships1C) {
 	ships2 = ships2.filter(s => !s.isFaraway);
 	var rank = '';
@@ -3888,6 +4788,21 @@ function getRank(ships1,ships2,ships1C) {
 	return 'D';
 }
 
+/**
+ * 空襲戦の戦闘評価を判定して返す
+ * 
+ * @param {Array} shipsF - 第一艦船リスト。必須のリスト
+ * @param {Array} [shipsFC] - 第二艦船リスト（任意）。指定された場合、`shipsF`と結合されて評価される
+ * @returns {'S' | 'A' | 'B' | 'C' | 'D' | 'E'} - 戦闘評価
+ * 
+ * ランクの判定基準:
+ * - 'S': 現在のHPと前回のHPが完全に一致している場合
+ * - 'A': 現在のHPが前回のHPの90%以上の場合
+ * - 'B': 現在のHPが前回のHPの80%以上90%未満の場合
+ * - 'C': 現在のHPが前回のHPの50%以上80%未満の場合
+ * - 'D': 現在のHPが前回のHPの20%以上50%未満の場合
+ * - 'E': 現在のHPが前回のHPの20%未満の場合
+ */
 function getRankRaid(shipsF,shipsFC) {
 	let ships = (shipsFC)? shipsF.concat(shipsFC) : shipsF;
 	let hpNow = 0, hpPrev = 0;
@@ -3904,15 +4819,29 @@ function getRankRaid(shipsF,shipsFC) {
 	return 'E';
 }
 
+/**
+ * 艦船の補給を更新する
+ * 各艦船について燃料と弾薬の消費を計算し、その残量を更新
+ * 特別攻撃や艦隊の状態に基づいた補給コストも考慮する
+ * 
+ * @param {Array<Ship>} ships - 補給対象の艦船リスト
+ * @param {boolean} didNB - 夜戦攻撃が行われたか
+ * @param {boolean} NBonly - 夜戦マスか
+ * @param {boolean} bombing - 空襲戦マスか
+ * @param {boolean} noammo - 弾薬消費なしならtrue
+ * @param {boolean} isECombined - 敵が連合艦隊か
+ * ? @param {Array} shipsE - 敵艦隊の艦船リスト、対潜空襲を判定する為?
+ */
 function updateSupply(ships,didNB,NBonly,bombing,noammo,isECombined,shipsE) {
-	let costSpecial = null, shipsSpecial = null, hasFaraway = shipsE.find(s => s.isFaraway);
+	// 特殊砲撃料
+    let costSpecial = null, shipsSpecial = null, hasFaraway = shipsE.find(s => s.isFaraway);
 	if (ships[0].fleet.didSpecial == 1) {
 		if (ships[0].attackSpecialT == 101 || ships[0].attackSpecialT == 102 || ships[0].attackSpecialT == 105) costSpecial = 1.5;
 		else if (ships[0].attackSpecialT == 104) costSpecial = MECHANICS.kongouSpecialBuff ? 1.2 : 1.3;
 		else if (ships[0].attackSpecialT == 400) costSpecial = 1.8;
 		else if (ships[0].attackSpecialT == 401) costSpecial = 1.6;
 		if (costSpecial) shipsSpecial = getSpecialAttackShips(ships,ships[0].attackSpecialT);
-		ships[0].fleet.didSpecial = 2;
+		ships[0].fleet.didSpecial = 2; // ? これがわからん
 		delete ships[0].attackSpecialT;
 	}
 	let costFuel = 0, costAmmo = 0;
@@ -3973,6 +4902,12 @@ function updateSupply(ships,didNB,NBonly,bombing,noammo,isECombined,shipsE) {
 	}
 }
 
+/**
+ * 艦隊の洋上補給を行う
+ * 洋上補給を装備した艦船の数に基づいて、艦隊の燃料と弾薬を補充する
+ * 
+ * @param {Fleet} fleet - 洋上補給を実行する艦隊インスタンス
+ */
 function underwaySupply(fleet) {
 	if (!fleet.numUnderwaySupply && !(fleet.combinedWith && fleet.combinedWith.numUnderwaySupply)) return;
 	let ships = fleet.ships, num = fleet.ships.reduce((t,ship) => +(!ship.retreated && (ship.equiptypes[OILDRUM] || 0)) + t, 0);
@@ -3981,22 +4916,37 @@ function underwaySupply(fleet) {
 		num += fleet.combinedWith.ships.reduce((t,ship) => +(!ship.retreated && (ship.equiptypes[OILDRUM] || 0)) + t, 0);
 	}
 	if (num == 0) return;
+	// 洋上補給の割合を計算
 	let amount;
 	if (num == 1) amount = (fleet.combinedWith)? .15 : .25;
 	else if (num == 2) amount = (fleet.combinedWith)? .275 : .36;
 	else amount = (fleet.combinedWith)? .4 : .47;
+	// 各艦船に対して補給を実施
 	for (let ship of ships) {
 		let fuel = 10*(Math.floor(ship.fuel * amount) || 1) / ship.fuel;
 		let ammo = 10*(Math.floor(ship.ammo * amount) || 1) / ship.ammo;
+		// 燃料&弾薬が上限を超えないように調整
 		if (ship.fuelleft + fuel > 10) fuel = 10 - ship.fuelleft;
 		if (ship.ammoleft + ammo > 10) ammo = 10 - ship.ammoleft;
+		// 補給後の残燃料&弾薬値を更新
 		ship.fuelleft += fuel;
 		ship.ammoleft += ammo;
+		// 洋上補給による燃料&弾薬消費量を記録
 		ship._fuelUnderway = fuel;
 		ship._ammoUnderway = ammo;
 	}
 }
 
+/**
+ * 戦闘後に艦船の士気 (morale) を更新する
+ * 戦闘結果や戦闘状況に応じて、艦船の士気を増減させる
+ * 
+ * @param {Array<Ship>} ships1 - 更新対象の艦船の配列
+ * @param {string} rank - 戦闘結果ランク ('S', 'A', 'B', 'C', 'D', 'E')
+ * @param {number} mvp - MVP艦のインデックス
+ * @param {boolean} NBonly - 夜戦マスだったか
+ * @param {boolean} didNB - 夜戦が実施されたか
+ */
 function updateMorale(ships1,rank,mvp,NBonly,didNB) {
 	for (var i=0; i<ships1.length; i++) {
 		if (ships1[i].morale < 30) ships1[i].morale -= 6;
@@ -4020,6 +4970,14 @@ function updateMorale(ships1,rank,mvp,NBonly,didNB) {
 
 
 
+/**
+ * デフォルトの艦船インスタンスを作成する関数
+ * 指定された艦船ID (mid) に基づいてデータを取得し、新しい艦船インスタンスを生成
+ * 
+ * @param {number} mid - 作成する艦船のID
+ * @param {Object} [overrideStats] - 上書きするステータスのオプションオブジェクト (省略可能)
+ * @returns {Object} 新しい艦船インスタンス
+ */
 function createDefaultShip(mid,overrideStats) {
 	var dataOrig = SHIPDATA[mid], data = {};
 	if (overrideStats) {
@@ -4038,6 +4996,15 @@ function createDefaultShip(mid,overrideStats) {
 	return ship;
 }
 
+/**
+ * 艦隊司令部施設を使用して退避艦艇 (retreater) と護衛艦 (escorter) を選択する関数
+ * 
+ * @param {Array<Ship>} ships1 - 主力艦隊の艦艇配列
+ * @param {Array<Ship>} ships1C - 護衛艦隊の艦艇配列
+ * @returns {Array} [retreater, escorter] - 退避艦艇と護衛艦を返す配列
+ *    - retreater: HPが25%以下で退避可能な艦艇
+ *    - escorter: 駆逐艦でHPが75%以上の護衛可能な艦艇
+ */
 function getFCFShips(ships1,ships1C) {
 	var retreater = null, escorter = null;
 	for (var i=1; i<ships1.length; i++) {
@@ -4059,6 +5026,16 @@ function getFCFShips(ships1,ships1C) {
 	return [retreater, escorter];
 }
 
+/**
+ * 艦隊が進撃可能かを判定して返す
+ * 退避条件、ダメコン（応急修理要員）、艦隊司令部施設（FCF）などを考慮して進撃の可否を判断します
+ * 
+ * @param {Array<Ship>} ships1 - 主力艦隊の艦艇配列
+ * @param {Array<Ship>} ships1C - 護衛艦隊の艦艇配列（連合艦隊の場合のみ使用）
+ * @param {boolean} [ignoreFCF] - 艦隊司令部施設を無視するか
+ * @param {boolean} [ignoreDamecon] - ダメコンを無視するか
+ * @returns {boolean} - 艦隊が進撃可能であれば `true` を返す
+ */
 function canContinue(ships1,ships1C,ignoreFCF,ignoreDamecon) {
 	if (ships1[0].HP/ships1[0].maxHP <= .25) {
 		let ship = ships1[0];
@@ -4124,22 +5101,79 @@ function canContinue(ships1,ships1C,ignoreFCF,ignoreDamecon) {
 	return true;
 }
 
+/**
+ * simStats - シミュレーションを実行し、戦闘結果とリソース消費の統計を収集する
+ * simulator-old.htmlから発火するもので今は廃止されている?
+ * 
+ * @param {number} numsims - 実行するシミュレーションの回数
+ * @param {Array} foptions - 各ノードに対するオプション設定（編成や陸上基地の設定など）
+ * @return {number} - 常に 0 を返す（結果は内部で処理される）
+ */
 function simStats(numsims,foptions) {
 	// if (FLEET1.ships.length <= 0) return 1;
 	// if (FLEET2.ships.length <= 0) return 2;
+    /**
+	 * シミュの結果を格納するオブジェクト
+     * @type {Object}
+     */
 	var totalResult = {
+        /**
+		 * 実行されたシミュレーションの総数
+		 * @type {number}
+		 */
 		totalnum: numsims,
+        /**
+		 * 総燃料消費
+		 * @type {number}
+		 */
 		totalFuelS: 0,
+        /**
+		 * 総弾薬消費
+		 * @type {number}
+		 */
 		totalAmmoS: 0,
+        /**
+		 * 総ボーキ消費
+		 * @type {number}
+		 */
 		totalBauxS: 0,
+        /**
+		 * 総入渠燃料消費
+		 * @type {number}
+		 */
 		totalFuelR: 0,
+        /** 
+		 * 総入渠鋼材消費
+		 * @type {number}
+		 */
 		totalSteelR: 0,
+        /**
+		 * 総バケツ消費
+		 * @type {number}
+		 */
 		totalBuckets: 0,
+        /**
+		 * 総全滅艦載機スロット数
+		 * @type {number}
+		 */
 		totalEmptiedPlanes: 0,
+        /**
+		 * 総全滅基地航空隊部隊数
+		 * @type {number}
+		 */
 		totalEmptiedLBAS: 0,
+        /**
+		 * 総削りゲージ量
+		 * @type {number}
+		 */
 		totalGaugeDamage: 0,
+        /**
+		 * 各ノードの結果を格納する配列
+		 * @type {Array<Object>}
+		 */
 		nodes: []
 	};
+    // 各ノードごとの統計情報を初期化
 	for (var i=0; i<FLEETS2.length; i++) {
 		totalResult.nodes.push({
 			num: 0,
@@ -4154,6 +5188,7 @@ function simStats(numsims,foptions) {
 		});
 	}
 	
+    // 友軍艦隊に(たぶん)特効ボーナスを付与
 	if (FLEETS1S[2]) {
 		for (let ship of FLEETS1S[2].ships) {
 			let bonus = ship.bonusBTemp || ship.bonusTemp;
@@ -4297,6 +5332,13 @@ function simStats(numsims,foptions) {
 }
 
 
+/**
+ * 基地航空隊への空襲をシミュレーションする関数? 使われてない
+ * 
+ * @param {Fleet} F1 - 味方艦隊の情報
+ * @param {Fleet} F2 - 敵艦隊の情報
+ * @param {Object} BAPI - 戦闘結果データを格納するオブジェクト
+ */
 function simLBRaid(F1,F2,BAPI) {
 	var ships1 = F1.ships, ships2 = F2.ships;
 	if (C) {
@@ -4455,6 +5497,12 @@ function simLBRaid(F1,F2,BAPI) {
 	}
 }
 
+/**
+ * 艦船のリストから最も効果の高い夜偵を探して装備IDを返す
+ * 
+ * @param {Array<Ship>} ships - 艦船のリスト（各艦船は装備情報を持つオブジェクト）
+ * @returns {Equip|null} - 条件を満たす夜偵の装備オブジェクト（条件を満たさない場合はnull）
+ */
 function getNightEquipsScout(ships) {
 	let nightScout = null;
 	for (let ship of ships) {
@@ -4468,9 +5516,19 @@ function getNightEquipsScout(ships) {
 	return nightScout;
 }
 
+/**
+ * 夜戦装備の装備状況を取得
+ * 
+ * @param {Array<Ship>} alive1 - 自軍の生存艦リスト
+ * @param {Array<Ship>} alive2 - 敵軍の生存艦リスト
+ * @param {Object} APIyasen - APIデータオブジェクト（夜戦に関する情報を更新）
+ * @returns {Array.<Array.<boolean>, Array.<boolean>, Array.<number|null>, Array.<boolean>>} -    
+ * 夜戦装備の状況[自軍, 敵軍]    
+ * 照明弾, 探照灯, 夜偵, 探照灯再ロール回数
+ */
 function getNightEquips(alive1,alive2,APIyasen) {
 	APIyasen.api_flare_pos = [-1,-1]; APIyasen.api_touch_plane = [-1,-1];
-	var star1 = false;
+	var star1 = false; // 照明弾
 	for (var i=0; i<alive1.length; i++) {
 		if (alive1[i].retreated) continue;
 		let off = (NEWFORMAT)? -1 : 0;
@@ -4482,7 +5540,7 @@ function getNightEquips(alive1,alive2,APIyasen) {
 		let off = (NEWFORMAT)? -1 : 0;
 		if (alive2[i].hasStarShell && alive2[i].HP > 4 && Math.random() < .7) { star2 = true; if (C) APIyasen.api_flare_pos[1] = alive2[i].num+off; break; }
 	}
-	var light1 = false, lightship1 = 0, slrerolls1 = 0;
+	var light1 = false, lightship1 = 0, slrerolls1 = 0; // 探照灯
 	for (var i=0; i<alive1.length; i++) {
 		if (alive1[i].retreated) continue;
 		if (alive1[i].hasSearchlight) { light1 = true; lightship1 = i; slrerolls1 = alive1[i].hasSearchlight; break; }
@@ -4492,13 +5550,16 @@ function getNightEquips(alive1,alive2,APIyasen) {
 		if (alive2[i].retreated) continue;
 		if (alive2[i].hasSearchlight) { light2 = true; lightship2 = i; slrerolls2 = alive2[i].hasSearchlight; break; }
 	}
-	var scout1 = getNightEquipsScout(alive1[0].fleet.ships);
+	var scout1 = getNightEquipsScout(alive1[0].fleet.ships); // 夜偵
 	var scout2 = getNightEquipsScout(alive2[0].fleet.combinedWith ? alive2[0].fleet.ships.concat(alive2[0].fleet.combinedWith.ships) : alive2[0].fleet.ships); //FF only
 	if (C && scout1) APIyasen.api_touch_plane[0] = scout1.mid;
 	if (C && scout2) APIyasen.api_touch_plane[1] = scout2.mid;
 	return [[star1,star2],[light1,light2],[scout1,scout2],[slrerolls1,slrerolls2]];
 }
 
+/**
+ * 呼ばれてない。BAPIがあるからreplay関係?
+ */
 function simNightFirstCombined(F1,F2,Fsupport,LBASwaves,BAPI) {
 	var F2C = F2.combinedWith;
 	var ships1 = F1.ships, ships2 = F2.ships, ships2C = F2C.ships;
@@ -4654,6 +5715,9 @@ function simNightFirstCombined(F1,F2,Fsupport,LBASwaves,BAPI) {
 	return results;
 }
 
+/**
+ * getNightEquipsから呼ばれてるので省略
+ */
 function nightPhaseCombined(order1,order2,alive1,subsalive1,alive2,subsalive2,nightEquips,APIhou) {
 	let numRounds = Math.max(order1.length,order2.length);
 	for (var i=0; i<numRounds; i++) {
@@ -4693,6 +5757,25 @@ function nightPhaseCombined(order1,order2,alive1,subsalive1,alive2,subsalive2,ni
 	}
 }
 
+/**
+ * 艦船の情報を収集し、API用の形式で返す関数 デバッグ系
+ *
+ * @param {Ship} ships - 艦船インスタンスの配列
+ * @returns {Object} - 艦船ごとの情報を格納したオブジェクト
+ *   - api_production_type: 固定値 1
+ *   - api_ship_id: 艦船ID（mid）
+ *   - api_ship_lv: 艦船レベル（LVL）
+ *   - api_nowhps: 艦船の現在のHP（HP）
+ *   - api_maxhps: 艦船の最大HP（maxHP）
+ *   - api_Slot: 艦船の装備IDの配列（各装備のmid）
+ *   - api_voice_id: 艦船の友軍ボイスID（voiceFriend[0]）
+ *   - api_voice_p_no: 艦船の友軍ボイス番号（voiceFriend[1]）
+ * 
+ * @description
+ * 引数として渡された艦船の情報から、各艦船のID、レベル、HP、装備、ボイスID等を
+ * 収集し、APIの要求に合った形式でまとめたオブジェクトを返します。
+ * 艦船が友軍ボイスを持っていない場合、デフォルトのボイスID（141）とボイス番号（0）を使用します。
+ */
 function apiGetFriendlyInfo(ships) {
 	let info = {
 		api_production_type: 1,
@@ -4723,6 +5806,20 @@ function apiGetFriendlyInfo(ships) {
 	return info;
 }
 
+/**
+ * 夜戦Phaseで敵艦隊からターゲットを選択して返す（友軍艦隊用）
+ *
+ * @param {Ship} attacker - 攻撃を行う艦船の情報
+ * @param {Array<Ship>} alive2 - 敵艦隊の生存艦船リスト
+ * @param {Array<Ship>} subsalive2 - 敵艦隊の生存潜水艦リスト
+ * @param {Array<number>} nightEquips - 夜戦装備のID（照明弾など）
+ * @returns {Ship} - 攻撃対象の艦船インスタンス
+ * 
+ * @description
+ * 夜戦フェーズにおいて、指定された攻撃艦船が敵艦隊のどの艦船を攻撃するかを決定します。
+ * 旗艦がターゲットに選ばれた場合、`nightPhaseTarget` 関数を呼び出して
+ * 2回目のターゲット選択を行います。
+ */
 function nightPhaseTargetFF(attacker,alive2,subsalive2,nightEquips) {
 	let target;
 	if (MECHANICS.ffReroll && alive2.length && alive2[0].isflagship && !alive2[0].isescort) {
@@ -4738,6 +5835,30 @@ function nightPhaseTargetFF(attacker,alive2,subsalive2,nightEquips) {
 	return target;
 }
 
+/**
+ * 友軍艦隊の夜戦フェーズ処理を実行する関数
+ *
+ * @param {Fleet} fleet1 - 友軍艦隊の情報
+ * @param {Fleet} fleet2 - 敵艦隊の情報
+ * @param {Array<Ship>} alive2 - 敵艦隊の生存艦船リスト
+ * @param {Array<Ship>} subsalive2 - 敵艦隊の生存潜水艦リスト
+ * @param {Object} [BAPI] - APIデータ（任意）。指定されない場合は空のオブジェクトが使用される
+ *
+ * @description
+ * この関数は、友軍艦隊の夜戦フェーズでの行動を処理します。友軍艦隊の艦船が夜戦で攻撃を実行し、
+ * 敵艦隊に対してダメージを与える過程をシミュレートします。また、特殊攻撃や艦船のフォーメーションに
+ * 関する処理も含まれています。
+ *
+ * 主要な処理：
+ * 1. 友軍艦隊の艦船情報をAPIデータに格納
+ * 2. 友軍艦隊の艦船が使用するフォーメーションを設定（特に旗艦の処理）
+ * 3. 夜戦装備を取得
+ * 4. 友軍艦隊と敵艦隊の艦船が攻撃を実行
+ * 5. 特殊攻撃が可能な場合は特殊攻撃を実行
+ * 6. 通常攻撃（夜戦）を実行
+ * 7. 攻撃対象の艦船が沈没した場合、艦船リストから除外
+ * 8. 攻撃後、プロテクションや特殊状態をリセット
+ */
 function friendFleetPhase(fleet1,fleet2,alive2,subsalive2,BAPI) {
 	if (!BAPI) BAPI = { yasen: {} };
 	var APIyasen = BAPI.yasen;
@@ -4755,7 +5876,16 @@ function friendFleetPhase(fleet1,fleet2,alive2,subsalive2,BAPI) {
 	APIyasen.api_friendly_battle = {};
 	var nightEquips = getNightEquips(fleet1.ships,alive2.concat(subsalive2),APIyasen.api_friendly_battle);
 	
-	let APIhou = APIyasen.api_friendly_battle.api_hougeki = {api_at_eflag:[],api_at_list:[],api_damage:[],api_df_list:[],api_sp_list:[],api_cl_list:[],api_n_mother_list:[],api_si_list:[]};
+	let APIhou = APIyasen.api_friendly_battle.api_hougeki = {
+        api_at_eflag:[],
+        api_at_list:[],
+        api_damage:[],
+        api_df_list:[],
+        api_sp_list:[],
+        api_cl_list:[],
+        api_n_mother_list:[],
+        api_si_list:[]
+    };
 	
 	let ind1 = 0; ind2 = 0;
 	let ships1 = fleet1.ships, ships2 = (fleet2.combinedWith)? fleet2.combinedWith.ships.concat(fleet2.ships) : fleet2.ships;
@@ -4831,12 +5961,21 @@ function friendFleetPhase(fleet1,fleet2,alive2,subsalive2,BAPI) {
 	}
 }
 
+/**
+ * オブジェクトの配列に格納された先頭の要素を削除する関数 デバッグ系
+ *
+ * @param {Object} obj - 配列を含むオブジェクト
+ */
 function formatRemovePadding(obj) {
 	for (let key in obj) {
 		if (Array.isArray(obj[key])) obj[key].shift();
 	}
 }
 
+/**
+ * 友軍艦隊データをもとに艦隊オブジェクトを生成する関数
+ * 呼ばれてない
+ */
 function chLoadFriendFleet(friendData) {
 	let fleet = new Fleet(0);
 	let simShips = [];
@@ -4871,6 +6010,22 @@ var DetectionResult = {
 	'Found': 5,
 	'NotFound': 6
 };
+/**
+ * 検索・索敵結果を計算する関数 デバッグ系
+ *
+ * @param {Array} shipsF - 検索を行う味方艦船の配列
+ * @param {Array} shipsE - 検索対象の敵艦船の配列
+ * @returns {number} - 索敵結果（`DetectionResult.Found`, `DetectionResult.Success`, `DetectionResult.SuccessLost`, `DetectionResult.Failure`, `DetectionResult.FailureLost`, `DetectionResult.NotFound` のいずれか）
+ *
+ * @description
+ * この関数は、味方艦船の能力と装備に基づいて敵艦船を検出するかどうかを計算します。索敵結果を決定するために、味方艦船の索敵能力、艦船の艦載機スロット、敵艦船の艦載機による防御力、索敵機の撃墜率などを考慮します。
+ *
+ * 主な処理の流れ：
+ * 1. 味方艦船の索敵能力（LOSp）を計算し、索敵機の数、艦船数、航空母艦の数を加味したスコアを算出。
+ * 2. 敵艦船の艦載機スロット数を基に、防御力を計算。
+ * 3. 最終的な索敵結果（成功、失敗、発見など）をランダム要素を交えた計算で決定。
+ * 4. 結果に応じて、索敵機の損失も考慮。
+ */
 function getDetection(shipsF,shipsE) {
 	let weights = [2,5,8,8,8,8], ind = 0;
 	let weightedLOS = 0, numReconSlots = 0, numCarriers = 0, numShips = 0, reconSlots = [];
@@ -4928,11 +6083,19 @@ function getDetection(shipsF,shipsE) {
 	return (shotdownVal <= 0)? DetectionResult.Failure : DetectionResult.FailureLost;
 }
 
+/**
+ * 砲撃順序の偏向に関する管理および計算を行うオブジェクト。
+ * 主に艦船の射程データを基に、砲撃の順序を決定する際に使用される。
+ */
 var SHELL_RANGE_WEIGHTS = {
-	_data: null,
+    _data: null, // 資料データ
 	_cache: { ranges: {}, weightTotals: {} },
 	_keysMiss: null,
 	
+    /**
+     * 初期化処理
+     * 非同期で資料データを外部から取得
+     */
 	init: async function() {
 		this._data = await fetch('js/data/shell_range_weights.json').then(resp => resp.ok ? resp.json() : null);
 	},
@@ -4942,6 +6105,13 @@ var SHELL_RANGE_WEIGHTS = {
 		let key = ranges.join('');
 		return this._cache.ranges[key] || (this._cache.ranges[key] = ranges.map(r => String.fromCharCode(65+rangesOrder.indexOf(r))).join(''));
 	},
+    /**
+     * getRoll - 射程キーに基づいてランダムな順序キーを取得
+     * 偏向に基づき、確率的に順序キーを決定
+     *
+     * @param {string} rangeKey - 射程キー
+     * @returns {string|null} 順序キー、または存在しない場合はnull
+     */
 	getRoll: function(rangeKey) {
 		if (!this._data[rangeKey]) return null;
 		let orderKeys = Object.keys(this._data[rangeKey]);
@@ -4953,6 +6123,15 @@ var SHELL_RANGE_WEIGHTS = {
 		}
 		return null;
 	},
+    /**
+     * getRollShips - 艦船リストからランダムに射程順序を決定
+     * 条件に基づいて射程キーを生成し、対応する艦船リストを取得する
+     *
+     * @param {Array<Ship>} ships - 艦船インスタンスのリスト
+     * @param {boolean} includeSubs - 潜水艦を含めるか
+     * @param {boolean} isOASW - 先制対潜攻撃があるか
+     * @returns {Array<Ship>|null} 順序キーに対応する艦船リスト、またはnull
+     */
 	getRollShips: function(ships,includeSubs,isOASW) {
 		let shipsCanShell = ships.filter(ship => !ship.retreated && (includeSubs || !ship.isSub) && ship.canShell(isOASW));
 		let rangeKey = this.getRangeKey(shipsCanShell.map(ship => ship.RNG));
@@ -4966,6 +6145,9 @@ var SHELL_RANGE_WEIGHTS = {
 	resetMissing: function() {
 		this._keysMiss = { 0: {}, 1: {} };
 	},
+    /**
+     * getMissing - 未取得の射程順序データを取得
+     */
 	getMissing: function(side) {
 		return Object.keys(this._keysMiss[side]).filter(key => key.length >= 2 && key.length > (new Set(key)).size).sort((a,b) => this._keysMiss[side][b] - this._keysMiss[side][a]);
 	},

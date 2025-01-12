@@ -47,6 +47,10 @@ var PREVEQS = {};
 var WROTESTATS = false;
 var TUTORIAL = false;
 var ADDEDCOMBINED = false;
+/**
+ * よく分からないけど旧UI絡み
+ * @type {Object}
+ */
 var ADDEDECOMBINED = {};
 var ADDEDLBAS = false;
 

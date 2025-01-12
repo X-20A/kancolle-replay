@@ -1,3 +1,33 @@
+/**
+ * @typedef {Object} TargetSet
+ * 
+ * @property {Array<Ship>} alive1 - 自艦隊で健在な艦の配列
+ * @property {Array<Ship>} alive2 - 敵主力艦隊で健在な艦の配列
+ * @property {Array<Ship>} alive2C - 敵随伴艦隊で健在な艦の配列
+ * @property {Array<Ship>} subsalive1 - 自艦隊で健在な潜水艦の配列
+ * @property {Array<Ship>} subsalive2 - 敵主力艦隊で健在な潜水艦の配列
+ * @property {Array<Ship>} subsalive2C - 敵随伴艦隊で健在な潜水艦の配列
+ */
+
+/**
+ * 実質的にsim12v6だと思う、たぶん
+ * 
+ * @param {number} type - 1: 機動, 2: 水上, 3: 輸送
+ * @param {Fleet} F1 - 我主力艦隊インスタンス
+ * @param {Fleet} F1C - 我随伴艦隊インスタンス
+ * @param {Fleet} F2 - 敵艦隊インスタンス
+ * @param {Fleet | null} Fsupport - 支援艦隊インスタンス
+ * @param {Array<LandBase>} LBASwaves - 基地航空隊
+ * @param {boolean} doNB - 夜戦するか
+ * @param {boolean} NBonly - 夜戦マスか
+ * @param {boolean} aironly - 航空戦マスか
+ * @param {boolean} bombing - 空襲戦マスか
+ * @param {boolean} noammo - 弾薬消費なしならtrue
+ * @param {Object} BAPI - 記録用オブジェクト
+ * @param {boolean} noupdate - 補給を更新しない場合はtrue、だと思うけどtrueで呼ばれる箇所は見つけられなかった
+ * @param {Fleet} friendFleet - 友軍艦隊インスタンス
+ * @returns {Object} - 戦闘結果オブジェクト
+ */
 function simCombined(type,F1,F1C,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet) {
 	var ships1 = F1.ships, ships2 = F2.ships, ships1C = F1C.ships;
 	var alive1 = [], alive1C = [], alive2 = [], subsalive1 = [], subsalive1C = [], subsalive2 = [];
@@ -442,6 +472,13 @@ function simCombined(type,F1,F1C,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombi
 	return results;
 }
 
+/**
+ * 旧UIからしか呼ばれてないので省略
+ * @param {*} numsims 
+ * @param {*} type 
+ * @param {*} foptions 
+ * @returns 
+ */
 function simStatsCombined(numsims,type,foptions) {
 	console.log(type);
 	var totalResult = {
@@ -665,6 +702,12 @@ function simStatsCombined(numsims,type,foptions) {
 
 
 //-------------------------------
+/**
+ * 対連合艦隊戦において、夜戦で敵の随伴艦隊が相手になるか判定して返す
+ * @param {Fleet} ships2 - 敵主力艦隊
+ * @param {Fleet} ships2C - 敵随伴艦隊
+ * @returns {boolean} - 随伴艦隊が相手になる場合、true
+ */
 function isNBFightEscort(ships2,ships2C) {
 	var count = 0, allsunk = true;
 	for (var i=0; i<ships2.length; i++) if (ships2[i].HP > 0) { allsunk = false; break; }
@@ -679,6 +722,22 @@ function isNBFightEscort(ships2,ships2C) {
 	return (allsunk || count >= 3);
 }
 
+/**
+ * sim関数の6v12
+ * @param {Fleet} F1 - 自艦隊
+ * @param {Fleet} F2 - 敵艦隊。よく分らん構造だけど、主力随伴共に入ってる
+ * @param {Fleet | null} Fsupport - 支援艦隊インスタンス
+ * @param {Array<LandBase>} LBASwaves - 基地航空隊
+ * @param {boolean} doNB - 夜戦するか
+ * @param {boolean} NBonly - 夜戦マスか
+ * @param {boolean} aironly - 航空戦マスか
+ * @param {boolean} bombing - 空襲戦マスか
+ * @param {boolean} noammo - 弾薬消費なしならtrue
+ * @param {Object} BAPI - 記録用オブジェクト
+ * @param {boolean} noupdate - 補給を更新しない場合はtrue、だと思うけどtrueで呼ばれる箇所は見つけられなかった
+ * @param {Fleet} friendFleet - 友軍艦隊インスタンス
+ * @returns {Object} - 戦闘結果オブジェクト
+ */
 function sim6vs12(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet) {
 	var F2C = F2.combinedWith;
 	var ships1 = F1.ships, ships2 = F2.ships, ships2C = F2C.ships;
@@ -1074,6 +1133,24 @@ function sim6vs12(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BA
 }
 
 //------------------
+/**
+ * sim関数の12v12
+ * @param {number} type - 1: 機動, 2: 水上, 3: 輸送
+ * @param {Fleet} F1 - 我主力艦隊
+ * @param {Fleet} F1C - 我随伴艦隊
+ * @param {Fleet} F2  - 敵艦隊。よく分らん構造だけど、主力随伴共に入ってる
+ * @param {Fleet | null} Fsupport - 支援艦隊インスタンス
+ * @param {Array<LandBase>} LBASwaves - 基地航空隊
+ * @param {boolean} doNB - 夜戦するか
+ * @param {boolean} NBonly - 夜戦マスか
+ * @param {boolean} aironly - 航空戦マスか
+ * @param {boolean} bombing - 空襲戦マスか
+ * @param {boolean} noammo - 弾薬消費なしならtrue
+ * @param {Object} BAPI - 記録用オブジェクト
+ * @param {boolean} noupdate - 補給を更新しない場合はtrue、だと思うけどtrueで呼ばれる箇所は見つけられなかった
+ * @param {Fleet} friendFleet - 友軍艦隊インスタンス
+ * @returns {Object} - 戦闘結果オブジェクト
+ */
 function sim12vs12(type,F1,F1C,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet) {
 	var F2C = F2.combinedWith;
 	var ships1 = F1.ships, ships2 = F2.ships, ships1C = F1C.ships, ships2C = F2C.ships;

@@ -1,5 +1,46 @@
 
 //-------
+/**
+ * @typedef {Object} FleetType
+ * 
+ * @property {number} id - 艦隊のID
+ * @property {number} side - 艦隊の陣営
+ * @property {Array<Ship>} ships - 艦船インスタンス
+ * @property {boolean} isescort - 随伴艦隊であるか
+ * @property {Fleet} combinedWith - 随伴元の艦隊
+ * @property {false | Object} formation - 艦隊の陣形。falseの場合は未設定
+ * LINEAHEADのようなObjectが入ったりformation.id = 1のように設定される
+ * @property {number} AP - 制空値
+ * @property {number} AS - 制空権    
+ * -2: 喪失,    
+ * -1: 劣勢,    
+ * 0 : 拮抗,    
+ * 1 : 優勢,    
+ * 2 : 確保
+ * @property {Array<number>} DMGTOTALS - 各艦の総被ダメージ
+ * @property {boolean} noRedT - T不利回避が有効であるか
+ * @property {number | undefined} _baseFAA - fleetAntiAirとclearFleetAntiAirで艦隊防空値を計算するのに使われる
+ * @property {number | undefined} _fLoS - fleetLoSとclearFleetLosで艦隊索敵値を計算するのに使われる
+ * @property {number | undefined} didSpecial - 特殊砲撃を行ったら1に 2にする条件は不明
+ * @property {number | undefined} numSpecialKongou - 金剛型僚艦夜戦突撃を行った回数 1出撃2回まで 
+ * @property {boolean} smokeUsed - 煙幕を使用したか
+ * @property {number} supportType - 支援ID
+ * 0: 支援不可(駆逐2未満など)
+ * 1: 航空支援(含対潜支援)
+ * 2: 砲撃支援
+ * 3: 雷撃支援
+ * @property {'12v12' | '12v6' | '6v12' | '6v6'} battleType - 我v彼
+ */
+/**
+ * 艦隊インスタンス
+ * 
+ * @type {FleetType}
+ * 
+ * @param {number} id - 艦隊のID
+ * @param {Fleet|undefined} isescortfor - 随伴艦隊の場合は随伴元の艦隊を指定、主艦隊の場合はundefined
+ * 
+
+*/
 function Fleet(id,isescortfor) {
 	this.id = id;
 	this.side = id;
@@ -7,6 +48,7 @@ function Fleet(id,isescortfor) {
 	if (isescortfor) {
 		this.isescort = true;
 		this.combinedWith = isescortfor;
+        // 随伴元の艦隊にこの艦隊を設定
 		isescortfor.combinedWith = this;
 	}
 	
@@ -15,6 +57,10 @@ function Fleet(id,isescortfor) {
 	this.AS = 0;  //air superiority
 	this.DMGTOTALS = null;
 }
+/**
+ * 艦隊に艦船を読み込む関数
+ * @param {Array<Ship>} ships - 艦隊に追加する艦船オブジェクトの配列
+ */
 Fleet.prototype.loadShips = function(ships) {
 	this.AP = 0; this.noRedT = false;
 	for(var i=0; i<ships.length; i++) {
@@ -45,6 +91,12 @@ Fleet.prototype.loadShips = function(ships) {
 	this.ships[0].isflagship = true;
 	this.DMGTOTALS = this.ships.map(s => 0);
 }
+/**
+ * 艦隊の合計航空戦力(AP)を計算して返す
+ *
+ * @param {undefined | 'isjet' | 'isPlane'} eqtFilter
+ * @returns {number} 艦隊の合計航空戦力。
+ */
 Fleet.prototype.fleetAirPower = function(eqtFilter) {  //get air power
 	this.AP = 0;
 	for (var i=0; i<this.ships.length; i++) {
@@ -53,6 +105,13 @@ Fleet.prototype.fleetAirPower = function(eqtFilter) {  //get air power
 	}
 	return this.AP;
 }
+/**
+ * 艦隊防空値を計算して返す    
+ * 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E7%A9%BA%E7%A0%B2%E7%81%AB#AntiAircraft
+ *
+ * @param {boolean} alreadyCombined - 既に随伴艦隊（連合艦隊）が計算に含まれているかを指定。
+ * @returns {number} 艦隊防空値
+ */
 Fleet.prototype.fleetAntiAir = function(alreadyCombined) {
 	if (this._baseFAA === undefined) {
 		this._baseFAA = 0;
@@ -94,9 +153,16 @@ Fleet.prototype.fleetAntiAir = function(alreadyCombined) {
 	FAA = Math.floor(FAA*this.formation.AAmod);
 	return FAA;
 }
+/**
+ * this._baseFAAを初期化する
+ */
 Fleet.prototype.clearFleetAntiAir = function() {
 	this._baseFAA = undefined;
 }
+/**
+ * 艦隊索敵値を計算して返す
+ * @returns {number} 艦隊の総視界（LoS）
+ */
 Fleet.prototype.fleetLoS = function() {
 	if (this._fLoS === undefined) {
 		this._fLoS = 0;
@@ -114,15 +180,32 @@ Fleet.prototype.fleetLoS = function() {
 	}
 	return this._fLoS;
 }
+/**
+ * this.__fLoSを初期化する
+ */
 Fleet.prototype.clearFleetLoS = function() {
 	this._fLoS = undefined;
 }
+/**
+ * 支援艦隊来援率を計算して返す
+ * @param {boolean} isboss 決戦支援は true、それ以外は false を指定
+ * @returns {number} 支援成功確率（0〜1の範囲）
+ */
 Fleet.prototype.supportChance = function(isboss) {
 	var c = (isboss)? .85 : .5;
 	if (this.ships[0].morale > 49) c += .15;
 	for (var i=1; i<this.ships.length; i++) if (this.ships[i].morale > 49) c += .05;
 	return c;
 }
+/**
+ * 艦隊の状態をリセットする
+ * this.didSpecial    
+ * this.numSpecialKongou    
+ * this.smokeUsed    
+ * を削除
+ * this.resetBattle()を呼び出す
+ * @param {boolean} [notShips] 艦船の状態をリセットしない場合は true を指定
+ */
 Fleet.prototype.reset = function(notShips) {
 	if (!notShips) {
 		for (var i=0; i<this.ships.length; i++) this.ships[i].reset();
@@ -132,6 +215,9 @@ Fleet.prototype.reset = function(notShips) {
 	delete this.smokeUsed;
 	this.resetBattle();
 }
+/**
+ * 艦隊の戦闘状態をリセットする
+ */
 Fleet.prototype.resetBattle = function() {
 	this.AS = 0;
 	LandBase.airStatePrev = 0;
@@ -142,9 +228,18 @@ Fleet.prototype.resetBattle = function() {
 	delete this.smokeType;
 	for (let ship of this.ships) ship.dameconUsed = 0;
 }
+/**
+ * 特定艦の総被ダメージを加算
+ * @param {Ship} ship - 追加する艦
+ * @param {number} damage - 追加するダメージ
+ */
 Fleet.prototype.giveCredit = function(ship,damage) {
 	this.DMGTOTALS[this.ships.indexOf(ship)] += damage;
 }
+/**
+ * 艦隊で最も多くのダメージを与えた艦（MVP）を判定し、その艦のIDを返す
+ * @returns {number} MVPとなった艦船のID
+ */
 Fleet.prototype.getMVP = function() {
 	var m = this.DMGTOTALS[0], ship = this.ships[0];
 	for(var i=1; i<this.DMGTOTALS.length; i++) {
@@ -152,6 +247,11 @@ Fleet.prototype.getMVP = function() {
 	}
 	return ship.id;
 }
+/**
+ * 艦隊にALLFORMATIONSから陣形を適用する
+ * @param {number} formNum 設定する陣形番号
+ * @param {number} [combineType]
+ */
 Fleet.prototype.setFormation = function(formNum,combineType) {
 	if (formNum > 10 && this.combinedWith) {
 		if (this.isescort) {
@@ -165,6 +265,14 @@ Fleet.prototype.setFormation = function(formNum,combineType) {
 		this.formation = ALLFORMATIONS[formNum];
 	}
 }
+/**
+ * 艦種や装備から支援艦隊の種類を判定し、支援IDをthis.supportTypeに設定&返す
+ * @returns {number} - 支援ID    
+ * 0: 支援不可(駆逐2未満など)
+ * 1: 航空支援(含対潜支援)
+ * 2: 砲撃支援
+ * 3: 雷撃支援
+ */
 Fleet.prototype.getSupportType = function() {
 	if (this.supportType != null) return this.supportType;
 	if (MECHANICS.aswPlaneAir) {
@@ -206,6 +314,12 @@ Fleet.prototype.getSupportType = function() {
 	if (numBB + numCA >= 4) return this.supportType = 2;
 	return this.supportType = 3;
 }
+/**
+ * 艦隊索敵値を分岐点係数と司令部レベルを指定して計算して返す
+ * @param {1 | 2 | 3 | 4} coef - 分岐点係数
+ * @param {number} [hq=120] - 司令部レベル（デフォルトは120）
+ * @returns {number} 計算された艦隊の索敵値
+ */
 Fleet.prototype.fleetELoS = function(coef,hq=120) {
 	let elos = 0;
 	let numShips = 0;
@@ -226,6 +340,15 @@ Fleet.prototype.fleetELoS = function(coef,hq=120) {
 	elos += 2*(6-numShips);
 	return elos;
 }
+/**
+ * 艦隊が水雷戦隊か判定する
+ * 条件:
+ * - 旗艦が軽巡洋艦（CL）または駆逐艦（DD）である
+ * - 艦隊全体の艦船のうち、駆逐艦（DD）と雷巡（CLT）の合計が艦数と同じかそれ以上
+ * - 雷巡（CLT）の数が3隻以下である
+ * - 駆逐艦（DD）の数が1隻以上である
+ * @returns {boolean} 水雷戦隊であれば true、それ以外は false。
+ */
 Fleet.prototype.isTorpedoSquadron = function() {
 	if (this._isTS != null) return this._isTS;
 	if (!this.ships[0]) return null;
@@ -240,6 +363,10 @@ Fleet.prototype.isTorpedoSquadron = function() {
 	}
 	return this._isTS = false;
 }
+/**
+ * 艦隊の輸送量（TP）を計算し、返す
+ * @returns {number} 艦隊の総TP値。
+ */
 Fleet.prototype.getTransport = function() {
 	let tp = 0;
 	let shipTP = {
@@ -267,6 +394,11 @@ Fleet.prototype.getTransport = function() {
 	}
 	return tp;
 }
+/**
+ * 艦隊内で有効な阻塞気球の数を取得    
+ * 連合艦隊なら両艦隊含めて計算
+ * @returns {number} 有効な阻塞気球の数（最大 3）
+ */
 Fleet.prototype.getNumBalloons = function() {
 	if (this.useBalloon || (this.combinedWith && this.combinedWith.useBalloon)) {
 		let ships = this.combinedWith ? this.combinedWith.ships.concat(this.ships) : this.ships;
@@ -274,6 +406,11 @@ Fleet.prototype.getNumBalloons = function() {
 	}
 	return 0;
 }
+/**
+ * 艦隊の煙幕発生率を各レベルについて計算し、返す    
+ * 連合艦隊なら両艦隊含めて計算
+ * @returns {number[]} [1重率, 2重率, 3重率]
+ */
 Fleet.prototype.getSmokeRates = function() {
 	let ships = this.combinedWith ? this.ships.concat(this.combinedWith.ships) : this.ships;
 	let numSmoke = 0, numStarsBase = 0, numStarsKai = 0;
@@ -310,10 +447,138 @@ Fleet.prototype.getSmokeRates = function() {
 	return rates;
 }
 //----------
+// 
+/**
+ * @typedef {Object} ShipType
+ * 
+ * _が付いてるプロパティも外部で操作される
+ * 
+ * @property {number} id - 艦船ID
+ * @property {string} name - 艦名
+ * @property {0 | 1} side - 0: 自艦, 1: 敵艦 
+ * @property {number} LVL - レベル
+ * @property {number} HP - HP
+ * @property {number} maxHP - 最大HP 初期値はthis.HPと同じ
+ * @property {number} FP - 火力
+ * @property {number} TP - 雷装
+ * @property {number} AA - 対空
+ * @property {number} AR - 装甲
+ * @property {number} EV - 回避
+ * @property {number} ASW - 対潜
+ * @property {number} LOS - 索敵
+ * @property {number} LUK - 運
+ * @property {number} RNG - 射程
+ * @property {Array<number>} planeslots - 艦載機スロット 例: 瑞鳳改二乙なら[18,15,15,2,0]    
+ * 丸腰なら[]でよし
+ * @property {string} type - 艦種 'DD' 'CL' とか
+ * @property {Array<Equip>} equips - 装備インスタンスの配列
+ * @property {Record<number, number>} equiptypes - 艦船の基本ステータス
+ * @property {Record<number, number>} equiptypesB - 装備種別ID: 艦単位での装備数
+ * @property {number} installtype - 陸上型の種別ID
+ * @property {boolean} hasT3Shell - 三式弾系を装備しているか
+ * @property {number} numWG - WG42装備数
+ * @property {boolean} hasDH2 - LandingCraft かつ B_LC2 を装備しているか 参照: kcEQDATA.js
+ * @property {boolean} hasDH3 - LandingTank かつ B_LC3 を装備しているか 参照: kcEQDATA.js
+ * @property {boolean} hasMidgetSub - 甲標的系を装備しているか
+ * @property {boolean} hasStarShell - 照明弾を装備しているか
+ * @property {boolean} hasSearchlightS - 探照灯(ノーマル)を装備しているか
+ * @property {boolean} hasSearchlightL - 大型探照灯を装備しているか
+ * @property {boolean} hasNightScout - 夜偵を装備しているか
+ * @property {boolean} hasLookout - 見張員系を装備しているか
+ * @property {boolean} hasDivebomber - 艦爆系 or 噴式艦爆を装備しているか
+ * @property {boolean | {}} hasFCF - 司令部系(含アンテナ&通信要員)を装備しているか
+ * @property {boolean} hasSubRadar - 潜水電探を装備しているか
+ * @property {number} numSpecialTorp - 潜水魚雷カットインのトリガーになる装備の数
+ * @property {Array<number>} repairs - ダメコン系装備IDの配列
+ * @property {boolean} hasjet - 噴式機を装備しているか
+ * @property {boolean} CVshelltype - 空母が砲戦に参加するか、だと思うが代入はtrueしかない    
+ * undefined(宣言なし)とで使い分けてる? 要調査
+ * @property {number} ACCnbca - 重巡級の夜戦砲撃命中ボーナス 参考: https://zekamashi.net/kancolle-kouryaku/yasen-kihon/#203cm
+ * @property {Array<number>} PLANESLOTS - 艦載機スロット
+ * @property {number} attackSpecialT - 特殊砲撃ID SHIPDATAより
+ * @property {number} attackSpecialType - 夜戦カットインや特殊攻撃の種類を表す番号
+ * @property {0 | 1} dameconUsed - ダメコンを使用したら1
+ * @property {number} sclass - 艦型ID kcSHIPDATAより 金剛型: 6 etc...
+ * @property {Record<number, number>} improves - 改修により上昇した項目と値の連想配列
+ * @property {Fleet} fleet - 艦隊インスタンス
+ * @property {number} ACCfit - フィット砲命中加算値(マイナスもある)
+ * @property {number} ACCfp - フィット砲火力加算値(マイナスもある)
+ * @property {number} APbonus - 制空値ボーナス
+ * @property {number} critratebonus - 熟練度による艦載機のクリティカル率ボーナス
+ * @property {number} critdmgbonus - 熟練度による艦載機のクリティカルダメージボーナス
+ * @property {number} ACCplane - 熟練度による艦載機の命中ボーナス
+ * @property {false | number} APtype - 徹甲弾補正    徹甲弾と特定の装備との組み合わせのID
+ * @property {number} installFlat - 対陸上型火力加算補正 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E5%9C%B0%E6%94%BB%E6%92%83#AGBonus > 加算補正b
+ * @property {number} softSkinMult - 対陸上型火力乗算補正 参考: 同上 > 乗算補正a
+ * @property {number} pillboxMult - 対トーチカ型(砲台小鬼)乗算補正
+ * @property {number} isoMult - 対ハードスキン型(離島棲姫)乗算補正
+ * @property {number} harbourSummerMult - 対港湾夏姫乗算補正
+ * @property {number} northernMult - 対北端上陸姫乗算補正
+ * @property {number} supplyPostMult - 対集積地乗算補正(キャップ後)
+ * @property {number} summerBBPostMult - 対戦艦夏姫乗算補正
+ * @property {number} summerCAPostMult - 対重巡夏姫乗算補正
+ * @property {number} summerCVPostMult - 対空母夏鬼乗算補正
+ * @property {number} frenchBBPostMult - 対戦艦仏棲姫乗算補正
+ * @property {number} anchoragePostMult - 対泊地水鬼 バカンスmode乗算補正
+ * @property {number} dockPostMult - 対船渠棲姫乗算補正
+ * @property {number} ptDmgMod - 対PTダメージ補正、と名前にはあるがkcsim.jsでは火力に乗算している
+ * @property {number} ptAccMod - 対PT命中補正
+ * @property {boolean} hasTorpStat - 開幕雷撃可能ならtrue
+ * @property {number} aswPenetrate - 対潜装備による潜水艦の装甲減少値 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E6%BD%9C%E6%94%BB%E6%92%83#n68b555f > 装甲減少効果
+ * @property {boolean} canAirstrikeSub - 空襲において潜水艦に攻撃可能ならtrue
+ * @property {number} numAtollAttacks - 越環礁攻撃が可能な特四式内火艇/改の装備数
+ * @property {Record<string, number>} statsBase - 艦の素ステータス
+ * @property {boolean} alwaysOASW - 無条件先制対潜艦ならtrue
+ * @property {0 | 1 | 2} planeasw - 水雷以外で対潜可能な艦の識別ID
+ * @property {boolean} canZuiunCI - 海空立体攻撃 | 瑞雲立体攻撃 が発動可能な艦であればtrue
+ * @property {boolean} APweak - 徹甲弾が弱点ならtrue
+ * @property {number|false} _aswpower - 対潜攻撃力
+ * @property {boolean} enableSecondShelling - この艦が戦闘を二巡させるトリガーになる場合はtrue
+ * @property {boolean} _rocketTriggered - 噴進砲発動済みならtrue
+ * @property {boolean} canlaser - レーザー攻撃可能ならtrue
+ * @property {boolean} isFaraway - 後方彼氏空母ならtrue
+ * @property {boolean} isASWlast - 潜水艦を最後に攻撃する鈴熊みたいな空母ならtrue
+ * @property {boolean} isescort - 所属している艦隊が連合艦隊の随伴艦隊ならtrue
+ * @property {number} fuel - 最大燃料消費量
+ * @property {number} ammo - 最大弾薬消費量
+ * 10が最大なのは補給メモリに合わせる為と思われる
+ * @property {number} fuelleft - 残燃料割合 0 ~ 10
+ * @property {number} ammoleft - 残弾薬割合 0 ~ 10
+ * @property {number} _fuelUnderway - 洋上補給による燃料補給量
+ * @property {number} _ammoUnderway - 洋上補給による燃料補給量
+ * @property {Record<string, number>} bonusSpecial - 史実特効?が入ったりする    
+ * mod - 補正値    
+ * on - 対象の艦ID(任意)
+ * @property {Array<number>|false} _nbtypes - 夜戦における攻撃の種類のIDの配列
+ * @property {Array<number>|false} _astype - 制空優勢以上のときに発動可能な特殊攻撃のIDの配列
+ */
 
+/**
+ * 艦船インスタンス
+ * 
+ * @type {ShipType}
+ * 
+ * @param {number} id 
+ * @param {string} name 艦名
+ * @param {0 | 1} side - 0: 自艦, 1: 敵艦 
+ * @param {number} LVL 
+ * @param {number} HP 
+ * @param {number} FP 
+ * @param {number} TP 
+ * @param {number} AA 
+ * @param {number} AR 
+ * @param {number} EV 
+ * @param {number} ASW 
+ * @param {number} LOS 
+ * @param {number} LUK 
+ * @param {1 | 2 | 3} RNG - 射程 1: 短, 2: 中, 3: 長 超長も3
+ * @param {Array<number>} [planeslots] - 艦載機スロット 例: 瑞鳳改二乙なら[18,15,15,2,0]    
+ * 丸腰なら[]でよし
+ */
 function Ship(id,name,side,LVL,HP,FP,TP,AA,AR,EV,ASW,LOS,LUK,RNG,planeslots) {
 	this.id = 0;
 	this.mid = id;
+    // これがミソでSHIPDATAの艦特有のデータ(alwaysOASW, planeasw etc)を登録している
 	if (!(typeof SHIPDATA == 'undefined')) {
 		for (var key in SHIPDATA[id]) {  //load extra data
 			if (['image','EQUIPS','SLOTS'].indexOf(key) == -1) this[key] = SHIPDATA[id][key];
@@ -364,6 +629,14 @@ function Ship(id,name,side,LVL,HP,FP,TP,AA,AR,EV,ASW,LOS,LUK,RNG,planeslots) {
 		this.isInstall = true;
 	}
 }
+/**
+ * 装備関連のプロパティをセットしまくる
+ * @param {Array<number>} equips - 装備IDの配列 
+ * @param {number} levels - 改修値 0 ~ 10 
+ * @param {number} profs - 熟練度 1 ~ 7
+ * @param {boolean} addstats - 装備のステータスを艦のステータスに加算するか
+ * @param {boolean} isSupport - 支援艦隊構成艦なら ture それ以外は false
+ */
 Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (!equips || this.equips.length > 0) return;  //don't load if already have equips, do removeEquips() first
 	var atypes = {};
@@ -389,6 +662,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 				atypes[A_HAGUN] = (!atypes[A_HAGUN])? 1 : atypes[A_HAGUN]+1;
 			}
 		}
+        // 特定の装備の所持フラグ設定
 		if (eq.type == TYPE3SHELL) this.hasT3Shell = true;
 		if (eq.type == MIDGETSUB && !eq.cannotOpTorp) this.hasMidgetSub = true;
 		if (eq.type == STARSHELL) this.hasStarShell = true;
@@ -421,6 +695,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 			else this.improves[key] = eq.improves[key];
 		}
 		
+        // 対地装備の数をカウント
 		//installation equips
 		if (eq.btype == B_LC1) { installeqs.DH1++; installeqs.DH1stars+=(eq.level||0); }
 		else if(eq.btype == B_LC2) { installeqs.DH2++; this.hasDH2 = true; installeqs.DH1stars+=(eq.level||0); }
@@ -671,6 +946,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 		if (installeqs.TDH11) this.softSkinMult *= 1.39;
 	}
 	
+    // トーチカ型(砲台小鬼)乗算補正
 	this.pillboxMult = (this.type=='DD'||this.type=='CL')? 1.4 : 1;
 	if (this.numWG >= 2) this.pillboxMult*=2.72;
 	else if (this.numWG == 1) this.pillboxMult*=1.6;
@@ -705,6 +981,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (installeqs.SB) this.pillboxMult*=1.5;
 	if (installeqs.DB) this.pillboxMult*=1.5;
 	
+    // ハードスキン型(離島棲姫)乗算補正 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E5%9C%B0%E6%94%BB%E6%92%83#Isolated
 	this.isoMult = 1;
 	if (this.numWG >= 2) this.isoMult*=2.1;
 	else if (this.numWG == 1) this.isoMult*=1.4;
@@ -736,6 +1013,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (installeqs.T3) this.isoMult*=1.75;
 	if (installeqs.DB) this.isoMult *= 1.4;
 	
+    // 対港湾夏姫乗算補正 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E5%9C%B0%E6%94%BB%E6%92%83#HarborSummer
 	this.harbourSummerMult = 1;
 	if (MECHANICS.installRevamp) {
 		if (this.numWG) this.harbourSummerMult*=1.4;
@@ -765,6 +1043,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 		this.harbourSummerMult = this.isoMult;
 	}
 	
+    // 対北端上陸姫乗算補正 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E5%9C%B0%E6%94%BB%E6%92%83#Northernmost
 	this.northernMult = 1;
 	if (this.numWG >= 2) this.northernMult*=2.1;
 	else if (this.numWG == 1) this.northernMult*=1.4;
@@ -772,6 +1051,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (installeqs.TDH11) this.northernMult*=2.2;
 	if (installeqs.T3) this.northernMult*=1.75;
 	
+    // 対集積地乗算補正(キャップ後) 参考: https://wikiwiki.jp/kancolle/%E5%AF%BE%E5%9C%B0%E6%94%BB%E6%92%83#Supply
 	this.supplyPostMult = 1;
 	if (MECHANICS.installRevamp) {
 		if (this.numWG) this.supplyPostMult*=1.25;
@@ -805,6 +1085,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	
 	let numSwordfish = this.equips.filter(eq => [242,243,244].includes(eq.mid)).length;
 
+    // 対戦艦夏姫乗算補正
 	this.summerBBPostMult = 1;
 	if (this.equiptypes[APSHELL]) this.summerBBPostMult *= 1.2;
 	if (this.equiptypes[SEAPLANEBOMBER] || this.equiptypes[SEAPLANEFIGHTER]) this.summerBBPostMult *= 1.1;
@@ -812,6 +1093,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (numSwordfish >= 2) this.summerBBPostMult *= 1.05;
 	if ([171,172,173,176,177,178,393,515,571,574,576,579,630].includes(this.mid)) this.summerBBPostMult *= 1.1
 	
+    // 対重巡夏姫乗算補正
 	this.summerCAPostMult = 1;
 	if (this.equiptypes[APSHELL]) this.summerCAPostMult *= 1.1;
 	if (this.equiptypes[SEAPLANEBOMBER] || this.equiptypes[SEAPLANEFIGHTER]) this.summerCAPostMult *= 1.15;
@@ -819,6 +1101,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (numSwordfish >= 2) this.summerCAPostMult *= 1.05;
 	if ([171,172,173,176,177,178,393,515,571,574,576,579,630].includes(this.mid)) this.summerCAPostMult *= 1.1
 	
+    // 対空母夏鬼乗算補正
 	this.summerCVPostMult = 1;
 	if (this.equiptypes[APSHELL]) this.summerCVPostMult *= 1.1;
 	if (this.equiptypes[SEAPLANEBOMBER] || this.equiptypes[SEAPLANEFIGHTER]) this.summerCVPostMult *= 1.1;
@@ -828,6 +1111,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (numSwordfish >= 2) this.summerCVPostMult *= 1.2;
 	if ([171,172,173,176,177,178,393,515,571,574,576,579,630].includes(this.mid)) this.summerCVPostMult *= 1.1
 	
+    // 対戦艦仏棲姫乗算補正
 	this.frenchBBPostMult = 1;
 	if (this.equiptypes[APSHELL]) this.frenchBBPostMult *= 1.2;
 	if (this.equiptypes[SEAPLANEBOMBER] || this.equiptypes[SEAPLANEFIGHTER]) this.frenchBBPostMult *= 1.1;
@@ -836,6 +1120,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (this.equiptypes[DIVEBOMBER] >= 2) this.frenchBBPostMult *= 1.15;
 	if ([70,79,128,129].includes(this.sclass)) this.frenchBBPostMult *= 1.15;
 	
+    // 対泊地水鬼 バカンスmode乗算補正
 	this.anchoragePostMult = 1;
 	if (numMortar) this.anchoragePostMult *= 1.1;
 	if (numRocket4) this.anchoragePostMult *= 1.15;
@@ -857,6 +1142,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (numAB >= 2 || installeqs.T4 >= 2) this.anchoragePostMult *= 1.1;
 	if ([80,81,131,136,143,148,275,276,541,546,573,911,916].includes(this.mid)) this.anchoragePostMult *= 1.2;
 	
+    // 対船渠棲姫乗算補正
 	this.dockPostMult = 1;
 	if (installeqs.DB) this.dockPostMult *= 1.1;
 	if (installeqs.DB >= 2) this.dockPostMult *= 1.1;
@@ -876,6 +1162,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (numAB) this.dockPostMult *= 1.1;
 	if ([58,61,64,68,80,92,113].includes(this.sclass)) this.dockPostMult *= 1.1;
 	
+    // 対PT乗算補正 補正対象についてはShipインスタンスのコメントを参照のこと
 	this.ptDmgMod = 1;
 	let numGuns = (this.equiptypes[MAINGUNS] || 0) + (this.equiptypes[MAINGUNSAA] || 0);
 	if (numGuns) this.ptDmgMod *= 1.5;
@@ -892,6 +1179,7 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 	if (numAD) this.ptDmgMod *= 1.2;
 	if (numAD >= 2 || installeqs.T4 >= 2) this.ptDmgMod *= 1.1;
 	
+    // 対PT命中補正
 	this.ptAccMod = .7;
 	if (this.type == 'DD' || this.type == 'DE') this.ptAccMod = 1;
 	if (this.type == 'CL' || this.type == 'CLT' || this.type == 'CT') this.ptAccMod = .82;
@@ -959,9 +1247,17 @@ Ship.prototype.loadEquips = function(equips,levels,profs,addstats,isSupport) {
 		this.statsBase[stat] = Math.max(0,this.statsBase[stat]);
 	}
 }
+/**
+ * 艦船の装備に基づいてフィット値を計算し、返す
+ * 艦船のタイプ（FBB, BB, BBV）に応じた装備の組み合わせとクラスに基づいてフィット値を計算する。
+ * 計算には艦船の装備（主砲など）や艦船レベル（LVL）、艦船クラス（sclass）などの情報を使用する。
+ *
+ * @returns {number} 計算されたフィット値
+ */
 Ship.prototype.getFit = function() {
 	if (this.type == 'FBB') {
 		let fit = 0;
+        // 各装備の数をカウント
 		let num46cm = this.equips.filter(eq => [9].includes(eq.mid)).length;
 		let numP46cm = this.equips.filter(eq => [117].includes(eq.mid)).length;
 		let num41cm = this.equips.filter(eq => [8,105,236,290,298,299,300,318,330,331,332,381,385,390].includes(eq.mid)).length;
@@ -973,6 +1269,7 @@ Ship.prototype.getFit = function() {
 		let num305cm = this.equips.filter(eq => [231,232].includes(eq.mid)).length;
 		let num320mm = this.equips.filter(eq => [426,427,428,429].includes(eq.mid)).length;
 		let modMarried = this.LVL >= 100 ? .6 : 1;
+        // 各装備に基づいてフィット値を加算または減算
 		fit += -10*Math.sqrt(num46cm)*modMarried;
 		fit += -7*Math.sqrt(numP46cm)*modMarried;
 		fit += -5*Math.sqrt(num41cm)*modMarried;
@@ -983,6 +1280,7 @@ Ship.prototype.getFit = function() {
 		fit += -10*Math.sqrt(num51cm)*modMarried;
 		fit += 12*Math.sqrt(num305cm);
 		fit += 14*Math.sqrt(num320mm);
+        // 艦船クラスに応じたフィット値の加算または減算
 		if ([47,58].includes(this.sclass)) {
 			fit += 3*Math.sqrt(num381mm)*modMarried;
 		}
@@ -1012,6 +1310,7 @@ Ship.prototype.getFit = function() {
 		}
 		return fit;
 	}
+    // 以下同じ流れ
 	if (this.type == 'BB') {
 		let fit = 0;
 		let num46cm = this.equips.filter(eq => [9].includes(eq.mid)).length;
@@ -1170,7 +1469,12 @@ Ship.prototype.getFit = function() {
 	
 	return 0;
 }
+/**
+ * この艦インスタンスの艦載機熟練度ボーナスを計算し、設定する    
+ * ボーナス: 制空値、クリティカル率、クリティカルダメージ、命中率
+ */
 Ship.prototype.updateProficiencyBonus = function() {
+    // リセットしてから再計算
 	delete this.APbonus;
 	delete this.critratebonus;
 	delete this.critdmgbonus;
@@ -1217,10 +1521,17 @@ Ship.prototype.updateProficiencyBonus = function() {
 		else if (avgexp >= 25) this.ACCplane += 1;
 	}
 }
+/**
+ * 指定スロットの装備における雷撃機・爆撃機のボーナスを計算し、返す
+ * スロットに装備された艦載機のタイプやステータスに基づいてボーナスを算出する。
+ * @param {number} slot - 対象スロットのインデックス。
+ * @returns {number} 雷撃ボーナスの合計値。
+ */
 Ship.prototype.getEquipBonusCVTorp = function(slot) {
 	if (slot >= this.equips.length || (!this.equips[slot].istorpbomber && !this.equips[slot].isdivebomber)) return 0;
 	let bonusTotal = 0;
 	let statMax = 0, carryMax = 0, slotMax = -1, equipToBonus = {};
+    // 全スロットを走査して最大ステータス装備を特定
 	for (let i=0; i<this.equips.length; i++) {
 		let eq = this.equips[i];
 		if (!eq.isPlane) continue;
@@ -1236,6 +1547,7 @@ Ship.prototype.getEquipBonusCVTorp = function(slot) {
 			slotMax = i;
 		}
 	}
+    // 最大ステータス装備が指定スロットの場合、ボーナスを加算
 	if (slotMax == slot) {
 		if (equipToBonus[522] != undefined || equipToBonus[523] != undefined) {
 			bonusTotal += (equipToBonus[522] || 0) + (equipToBonus[523] || 0);
@@ -1250,22 +1562,32 @@ Ship.prototype.getEquipBonusCVTorp = function(slot) {
 		}
 	}
 	
+    // 整備員系のボーナスを加算(最小値?)
 	let bonusCrewTPMin = 0, bonusCrewDBMin = 0;
 	for (let eq of this.equips) {
 		if (eq.type != SCAMP) continue;
 		if (eq.statsEqBonus.TP && (!bonusCrewTPMin || bonusCrewTPMin > eq.statsEqBonus.TP)) bonusCrewTPMin = eq.statsEqBonus.TP;
 		if (eq.statsEqBonus.DIVEBOMB && (!bonusCrewDBMin || bonusCrewDBMin > eq.statsEqBonus.DIVEBOMB)) bonusCrewDBMin = eq.statsEqBonus.DIVEBOMB;
 	}
+    // 爆撃機 | 雷撃機 に対応する整備員ボーナス加算
 	if (this.equips[slot].type == TORPBOMBER) bonusTotal += bonusCrewTPMin || 0;
 	else bonusTotal += bonusCrewDBMin || 0;
 	return bonusTotal;
 }
+/**
+ * 艦の所属している艦隊の陣形(LINEAHEAD系)オブジェクトを取得する
+ * @returns {object|null} 陣形オブジェクト(LINEAHEAD系)、または該当なしの場合は null
+ */
 Ship.prototype.getFormation = function() {
 	if (!this.fleet || !this.fleet.formation) return null;
 	if (this.fleet.formation.id != 6) return this.fleet.formation;
 	let threshold = this.isescort ? Math.max(2,Math.floor(this.fleet.combinedWith.ships.length/2)) : Math.floor(this.fleet.ships.length/2);
 	return (this.num <= threshold)? VANGUARD1 : VANGUARD2;
 }
+/**
+ * 艦に搭載されている噴式機の鋼材コストを計算し、this.jetSteelCostを更新する
+ * - this.jetSteelCostが未定義の場合は初期化してから計算する
+ */
 Ship.prototype.addJetSteelCost = function() {
 	this.jetSteelCost = this.jetSteelCost || 0;
 	for (let i=0; i<this.equips.length; i++) {
@@ -1274,26 +1596,72 @@ Ship.prototype.addJetSteelCost = function() {
 		this.jetSteelCost += Math.round(this.planecount[i]*LBASDATA[equip.mid].cost*.2);
 	}
 }
+/**
+ * この艦が越環礁攻撃か判定して返す
+ * @returns {boolean} - 越環礁攻撃可能ならtrue、そうでないならfalse
+ */
 Ship.prototype.isAntiAtollShip = function() {
 	return this.type == 'SS' || this.type == 'SSV' || this.mid == 507 || this.mid == 586 || (
 		this.mid == 348 && this.equips.find(eq => eq.mid == 33) && this.equips.find(eq => eq.mid == 34 || eq.mid == 87)
 	);
 }
 
+/** 
+ * 艦が健在(HP1以上)ならtrueを返す
+ * @return {boolean}
+ */
 Ship.prototype.canShell = function() { return (this.HP > 0); }
+/**
+ * この艦が砲撃戦を行えるかを判定して返す
+ * @returns {boolean} - 砲撃戦を行える場合は true、そうでない場合は false    
+ * 経由の必要性は不明
+ */
 Ship.prototype.canStillShell = function() { return this.canShell(); }
+/**
+ * この艦が夜戦を行えるかを判定して返す
+ * @returns {boolean} - 夜戦を行える場合は true、そうでない場合は false
+ */
 Ship.prototype.canNB = function() { return (this.HP/this.maxHP > .25 && !this.retreated); }
+/**
+ * この艦が雷撃を行えるかを判定して返す
+ * @returns {boolean} - 雷撃を行える場合は true、そうでない場合は false
+ */
 Ship.prototype.canTorp = function() { return this.hasTorpStat && (this.HP/this.maxHP > .5); }
+/**
+ * この艦が開幕雷撃を行えるかを判定して返す
+ * @returns {boolean} - 開幕雷撃を行える場合は true、そうでない場合は false
+ */
 Ship.prototype.canOpTorp = function() { return this.hasMidgetSub; }
+/**
+ * この艦が対潜攻撃を行えるかを判定して返す
+ * @returns {false} - 艦種オブジェクトにoverrideされる前提で常にfalseを返す
+ */
 Ship.prototype.canASW = function() { return false; }
+/**
+ * この艦が開幕対潜攻撃を行えるかを判定して返す    
+ * ※艦種によりoverrideされる
+ * @returns {boolean} - 開幕対潜攻撃を行える場合は true、そうでない場合は false
+ */
 Ship.prototype.canOASW = function() { return this.canASW() && (this.alwaysOASW || (this.ASW >= 100 && this.equiptypesB[B_SONAR] && isPlayable(this.mid))); }
+/**
+ * この艦が夜戦において対潜攻撃を行えるかを判定して返す
+ * @returns {boolean} - 対潜攻撃を行える場合は true、そうでない場合は false
+ */
 Ship.prototype.canASWNight = function() {
 	if (this.planeasw == 1) return false;
 	if (this.planeasw == 2) return this.statsBase.ASW > 0;
 	return this.canASW();
 }
+/**
+ * この艦が 海空立体攻撃 | 瑞雲立体攻撃 が可能なら特殊攻撃のIDの配列を返す。不可なら弾着観測可能かを判定して返す
+ * @returns {boolean | Array<number>} - 弾着観測可能ならtrue、そうでないならfalse
+ */
 Ship.prototype.canAS = function() { 
 	if (this.HP/this.maxHP <= .25) return false;
+    /**
+	 * 水偵を装備しているか
+	 * @type {boolean}
+	 */
 	let hasRecon = null;
 	for (var i=0; i<this.equips.length; i++) {
 		if (this.equips[i].btype == B_RECON && this.planecount[i]) hasRecon = true;
@@ -1311,6 +1679,11 @@ Ship.prototype.canAS = function() {
 	}
 	return hasRecon && this.AStype();
 }
+/**
+ * 海空立体攻撃 | 瑞雲立体攻撃 が発動可能か判定して返す
+ * @param {number} type - 特殊攻撃のIDの配列
+ * @returns {boolean} - 発動可能ならtrue、そうでないならfalse
+ */
 Ship.prototype.canASZuiun = function(type) {
 	if (!MECHANICS.zuiunCI || !this.canZuiunCI) return false;
 	let numZuiun = 0, num634 = 0;
@@ -1321,9 +1694,24 @@ Ship.prototype.canASZuiun = function(type) {
 	}
 	return numZuiun >= 2 ||	num634 >= 2;
 }
+/**
+ * この艦が夜襲可能か判定して返す
+ * ※艦種によりoverrideされる
+ * @returns - 夜襲可能ならtrue、そうでないならfalse
+ */
 Ship.prototype.canNBAirAttack = function() { return false; }
+/**
+ * この艦が夜襲装備を最低限所持しているか判定して返す
+ * ※艦種によりoverrideされる
+ * @returns - 必要装備を所持していればtrue、そうでないならfalse
+ */
 Ship.prototype.hasNBAirGear = function() { return false; }
 
+/**
+ * 夜戦カットインや特殊攻撃のIDを艦船の装備や種類に基づいて判定し、配列で返す    
+ * IDごとの詳細については NBATTACKDATA 宣言部を参照
+ * @returns {Array<number>} 特殊攻撃のIDの配列
+ */
 Ship.prototype.NBtypes = function() {
 	if (this._nbtypes) return this._nbtypes;
 	this._nbtypes = [];
@@ -1384,6 +1772,10 @@ Ship.prototype.NBtypes = function() {
 	return this._nbtypes;
 }
 
+/**
+ * 次の戦闘での夜戦CI(水雷系)の発動率率を計算し、返す(中破は考慮しない)
+ * @returns {number} - 夜戦CIの発動率（0～100の範囲の整数）
+ */
 Ship.prototype.NBchance = function() {
 	if (this._nbchance === undefined) {
 		this._nbchance = (this.isflagship)? 15 : 0;
@@ -1395,6 +1787,11 @@ Ship.prototype.NBchance = function() {
 	return this._nbchance;
 }
 
+/**
+ * 制空優勢以上のときに発動可能な特殊攻撃のIDを配列で返す    
+ * IDごとの詳細については ARTILLERYSPOTDATA 宣言部を参照
+ * @returns {Array<number>} - 特殊攻撃のIDの配列
+ */
 Ship.prototype.AStype = function() {
 	if (this._astype) return this._astype;
 	this._astype = [];
@@ -1423,6 +1820,12 @@ Ship.prototype.AStype = function() {
 	return this._astype;
 }
 
+/**
+ * 弾着観測射撃の発動率を計算し、返す
+ * @param {number} ASstate - 制空優勢状態（0: 制空劣勢, 1: 制空優勢, 2: 制空支配）
+ * @param {boolean} combinedAll - 連合艦隊の場合、trueを指定
+ * @returns {number} - 弾着観測射撃の発動率（0～100の範囲の整数）
+ */
 Ship.prototype.ASchance = function(ASstate,combinedAll) {
 	if (ASstate < 1 || !this.canAS() || !this.AStype().length) return 0;
 	let fleetLOSBase = this.fleet.fleetLoS() + (combinedAll && this.fleet.combinedWith ? this.fleet.combinedWith.fleetLoS() : 0);
@@ -1436,6 +1839,11 @@ Ship.prototype.ASchance = function(ASstate,combinedAll) {
 	return ASchance;
 }
 
+/**
+ * targetに対するAP（徹甲弾）の火力補正を計算して返す
+ * @param {Ship} target - 攻撃対象艦船インスタンス
+ * @returns {number} - AP（徹甲弾）補正係数
+ */
 Ship.prototype.APmod = function(target) {
 	if (!target.APweak) return 1;
 	switch(this.APtype) {
@@ -1446,6 +1854,11 @@ Ship.prototype.APmod = function(target) {
 	}
 }
 
+/**
+ * targetに対するAP（徹甲弾）の命中補正を返す
+ * @param {Ship} target - 攻撃対象艦船インスタンス
+ * @returns {number} - AP（徹甲弾）補正係数
+ */
 Ship.prototype.APacc = function(target) {
 	if (!target.APweak) return 1;
 	switch(this.APtype) {
@@ -1457,6 +1870,11 @@ Ship.prototype.APacc = function(target) {
 	}
 }
 
+/**
+ * wg42の装備数に対応する加算補正bを返す
+ * @param {number} num - wg42の装備数
+ * @returns {number} - 加算補正b
+ */
 function WGpower(num) {
 	switch (num) {
 		case 1: return 75;
@@ -1467,6 +1885,12 @@ function WGpower(num) {
 	}
 }
 
+/**
+ * shellPower - 砲戦火力を計算する関数。
+ * @param {Ship} target - 攻撃対象のオブジェクト。陸上型の場合、ボーナスが適用される。
+ * @param {number|null} base - 基本火力に加算する値。nullの場合はデフォルト値を使用。
+ * @returns {number} 計算された砲戦火力。
+ */
 Ship.prototype.shellPower = function(target,base) {
 	var bonus = (this.improves.Pshell)? this.improves.Pshell : 0;
 	//var shellbonus = (this.fleet && this.fleet.formation.shellbonus!==undefined)? this.fleet.formation.shellbonus : 5;
@@ -1495,6 +1919,11 @@ Ship.prototype.shellPower = function(target,base) {
 	return this.FP + shellbonus + bonus;
 }
 
+/**
+ * 艦の夜戦火力を計算して返す(陸上型も考慮)
+ * @param {Ship} target - 攻撃対象の艦船インスタンス
+ * @returns {number} - 計算された夜戦火力
+ */
 Ship.prototype.NBPower = function(target) {
 	var bonus = (this.improves.Pnb)? this.improves.Pnb : 0;
 	if (target && target.isInstall) {
@@ -1521,6 +1950,10 @@ Ship.prototype.NBPower = function(target) {
 	return this.FP + this.TP + bonus;
 }
 
+/**
+ * 艦の対潜攻撃力を計算して返す
+ * @returns {number} - 計算された対潜攻撃力
+ */
 Ship.prototype.ASWPower = function() {
 	if (this._aswpower) return this._aswpower;
 	var equipASW = 0, hassonar = false, hassonarS = false, hasdc = false, hasdcP = false, hasdcO = false;
@@ -1547,16 +1980,25 @@ Ship.prototype.ASWPower = function() {
 	return this._aswpower;
 }
 
+/**
+ * 艦の損傷による攻撃力補正を計算して返す
+ * @param {boolean} [isTorp] - 雷撃であるか
+ * @returns {number} - 補正値
+ */
 Ship.prototype.damageMod = function(isTorp) {
 	if (isTorp) {
-		if (this.HP/this.maxHP <= .25) return 0;
-		if (this.HP/this.maxHP <= .5) return .8;
-		return 1;
+		if (this.HP/this.maxHP <= .25) return 0; // 大破
+		if (this.HP/this.maxHP <= .5) return .8; // 中破
+		return 1; // 中破未満
 	}
 	if (this.HP/this.maxHP <= .25) return .4;
 	if (this.HP/this.maxHP <= .5) return .7;
 	return 1;
 }
+/**
+ * 艦の加重対空を計算して返す
+ * @returns {number} - 加重対空値
+ */
 Ship.prototype.weightedAntiAir = function() {
 	if (this._wAA === undefined) {
 		if (this.isFaraway) {
@@ -1592,6 +2034,10 @@ Ship.prototype.weightedAntiAir = function() {
 	return this._wAA;
 }
 
+/**
+ * 艦船の装備構成や種類に基づいて、発動可能な対空カットイン(AACI)のタイプを判定し、IDの配列を返す
+ * @returns {Array<number>} 発動可能なAACIタイプの配列。
+ */
 Ship.prototype.getAACItype = function(atypes) {
 	var types = [];
 	
@@ -1705,6 +2151,11 @@ Ship.prototype.getAACItype = function(atypes) {
 	return types;
 }
 
+/**
+ * 疲労度による命中補正を計算して返す
+ * @param {boolean} [isTorp] - 雷撃であればtrue、それ以外であればfalse
+ * @returns {number} - 補正値
+ */
 Ship.prototype.moraleMod = function(isTorp) {
 	if (isTorp) {
 		if (this.morale >= 50) return 1.3;
@@ -1718,6 +2169,10 @@ Ship.prototype.moraleMod = function(isTorp) {
 	return .5;
 }
 
+/**
+ * 疲労度による回避補正を計算して返す(敵艦の命中に乗算される)
+ * @returns {number} - 補正値
+ */
 Ship.prototype.moraleModEv = function() {
 	if (this.morale >= 50) return .7;
 	if (this.morale >= 30) return 1;
@@ -1725,6 +2180,11 @@ Ship.prototype.moraleModEv = function() {
 	return 1.4;
 }
 
+/**
+ * 艦の状態をリセットする
+ * @param {boolean} [notHP=false] - HPをリセットしない場合はtrue
+ * @param {boolean} [notMorale=false] - 疲労度をリセットしない場合はtrue
+ */
 Ship.prototype.reset = function(notHP,notMorale) {
 	if (!notHP) this.HP = (this.HPDefault != null)? this.HPDefault : this.maxHP;
 	this.planecount = this.PLANESLOTS.slice();
@@ -1745,7 +2205,24 @@ Ship.prototype.reset = function(notHP,notMorale) {
 	// this._wAA = undefined;
 }
 
+/**
+ * 艦が所属する艦隊の制空状態を取得
+ * @returns {number} - 制空権    
+ * -2: 喪失,    
+ * -1: 劣勢,    
+ * 0 : 拮抗,    
+ * 1 : 優勢,    
+ * 2 : 確保
+ */
 Ship.prototype.airState = function() { return this.fleet.AS; }
+/**
+ * 艦の制空値を計算して返す
+ * @param {undefined | 'isjet' | 'isPlane'} [eqtFilter] - 制空値を計算する際に適用するフィルタ条件
+ *     - `undefined` の場合は戦闘機（'isfighter'）を対象とする
+ *     - 'isjet': 噴式機を対象とする
+ *     - 'isPlane': 全ての航空機を対象とする
+ * @returns {number} - 計算された制空値
+ */
 Ship.prototype.airPower = function(eqtFilter) {
 	eqtFilter = eqtFilter || 'isfighter';
 	var ap = 0;
@@ -1757,6 +2234,11 @@ Ship.prototype.airPower = function(eqtFilter) {
 	}
 	return Math.floor(ap);
 }
+/**
+ * 噴進弾幕発動率を計算して返す
+ * ※艦種によりoverrideされる
+ * @returns {number} - 噴進弾幕発動率
+ */
 Ship.prototype.rocketBarrageChance = function() { return 0; }
 
 //------------------
@@ -1877,10 +2359,19 @@ CV.prototype.canShell = function(isOASW) {
 	}
 	return false;
 }
+/**
+ * 艦が行動可能か判定し、返す
+ * @param {boolean} isOASW - 開幕対潜攻撃であればtrue
+ * @returns {boolean} - 艦が行動可能であればtrue
+ */
 CV.prototype.canStillShell = function(isOASW) {
 	if (isOASW) return this.HP > 0;
 	return this.canStillShellDamage();
 }
+/**
+ * 艦が砲撃可能か判定し、返す
+ * @returns {boolean} - 艦が砲撃可能であればtrue
+ */
 CV.prototype.canStillShellDamage = function() {
 	return this.HP > this.maxHP*.5;
 }
@@ -2085,6 +2576,39 @@ DE.prototype.canOASW = function() {
 }
 
 
+/**
+ * @typedef {Object} LandBaseType
+ * 
+ * @property {number} side - 0: 我, 1: 彼
+ * @property {number} HP - HP
+ * @property {number} AR - 装甲
+ * @property {Array<number>} PLANESLOTS - 各スロットの機数
+ * @property {Array<number>} planecount - 各スロットの機数 上記との違いは不明
+ * @property {Array<Equip>} equips - 機体
+ * @property {number} AS - 制空状態    
+ * -2: 喪失,    
+ * -1: 劣勢,    
+ * 0 : 拮抗,    
+ * 1 : 優勢,    
+ * 2 : 確保
+ * @property {number} airStatePrev - 前回の制空状態    
+ * -2: 喪失,    
+ * -1: 劣勢,    
+ * 0 : 拮抗,    
+ * 1 : 優勢,    
+ * 2 : 確保
+ * @property {number} contactPrev - 前回の触接による攻撃力補正値
+ */
+
+/**
+ * 基地航空隊の基地インスタンス
+ * 
+ * @type {LandBaseType}
+ * 
+ * @param {Array<number>} equips - 部隊IDの配列
+ * @param {Array<number>} levels - 改修値の配列
+ * @param {Array<number>} profs - 熟練度の配列
+ */
 function LandBase(equips,levels,profs) {
 	this.side = 0;
 	this.HP = 200;
@@ -2097,7 +2621,19 @@ function LandBase(equips,levels,profs) {
 	}
 	this.AS = 0;
 }
+/**
+ * 基地の制空状態を返す
+ * @returns - 制空状態
+ */
 LandBase.prototype.airState = function() { return this.AS; }
+/**
+ * 基地の制空値を計算して返す
+ * @param {undefined | 'isjet' | 'isPlane'} [eqtFilter] - 制空値を計算する際に適用するフィルタ条件
+ *    - `undefined` の場合は全ての航空機（'isPlane'）を対象とする
+ *   - 'isjet': 噴式機を対象とする
+ *  - 'isPlane': 全ての航空機を対象とする
+ * @returns {number} - 計算された制空値
+ */
 LandBase.prototype.airPower = function(eqtFilter) {
 	eqtFilter = eqtFilter || 'isPlane';
 	var ap = 0, landscoutmod = 1;
@@ -2115,6 +2651,10 @@ LandBase.prototype.airPower = function(eqtFilter) {
 	return Math.floor(ap * landscoutmod);
 }
 LandBase.prototype.fleetAirPower = LandBase.prototype.airPower;
+/**
+ * 基地の防空火力を計算して返す
+ * @returns {number} - 防空火力
+ */
 LandBase.prototype.airPowerDefend = function() {
 	var ap = 0, mod = 1;
 	for (var i=0; i<this.equips.length; i++) {
@@ -2139,6 +2679,9 @@ LandBase.prototype.airPowerDefend = function() {
 	}
 	return Math.floor(ap*mod);
 }
+/**
+ * 航空機の数と熟練度をリセットする
+ */
 LandBase.prototype.reset = function() {
 	this.planecount = this.PLANESLOTS.slice();
 	for (let eq of this.equips) {
@@ -2146,6 +2689,11 @@ LandBase.prototype.reset = function() {
 		delete eq.emptied;
 	}
 }
+/**
+ * 基地の出撃および補給にかかるコストを計算して返す
+ * 
+ * @returns {Array<number>} - [燃料, 弾薬, ボーキ] の配列
+ */
 LandBase.prototype.getCost = function() {
 	var cost = [0,0,0]; //fuel,ammo,baux
 	for (var i=0; i<this.equips.length; i++) {
@@ -2170,6 +2718,11 @@ LandBase.prototype.getCost = function() {
 	}
 	return cost;
 }
+/**
+ * 複数の基地からジェット機を装備している基地のみを抽出し、新たにジェット機専用の基地を作成して返す
+ * @param {Array<LandBase>} landbases - ジェット機を装備している基地のリスト
+ * @returns {LandBase} - ジェット機を装備した新しい基地オブジェクト
+ */
 LandBase.createJetLandBase = function(landbases) {
 	var equips = [], planecounts = [];
 	for (var i=0; i<landbases.length; i++) {
@@ -2187,7 +2740,54 @@ LandBase.createJetLandBase = function(landbases) {
 var PLANEDEFAULT = new Ship(0,'PLANEDEFAULT',0, 1,1, 0,0,0,0, 0, 0,0,3, 1);
 PLANEDEFAULT.CVshelltype = true;
 
+/**
+ * @typedef {Object} EquipType
+ * 
+ * @property {number} mid - 装備ID
+ * @property {string} name - 装備名
+ * @property {string} nameJP - 装備名（日本語）
+ * @property {string} added - 追加日
+ * @property {number} type - 装備種別
+ * @property {string} btype - 弾着観測 | 夜戦CI など特殊攻撃に使用される装備の種別
+ * @property {boolean} atype - 対空値を持つ装備の種別
+ * @property {number} FP - 火力
+ * @property {number} AA - 対空
+ * @property {number} AR - 装甲
+ * @property {number} ACC - 命中
+ * @property {number} EV - 回避
+ * @property {number} type - 装備種別ID
+ * @property {number} exp - 艦載機経験値
+ * @property {number} rank - 艦載機熟練度
+ * @property {number} APbonus - 制空値ボーナス
+ * @property {number} level - 改修値
+ * @property {number} AAImprove - 改修による対空値上昇
+ * @property {number} airstrikePowerImprove - 改修による爆装火力上昇
+ * @property {boolean} isconcentrated - 対空9以上?ならtrue
+ * @property {Record<string, number>} improves - ステータス名と改修値によるステータス上昇値
+ * @property {Record<string, number>} statsEqBonus - ステータス名と装備ボーナス値
+ * @property {boolean} isfighter - 戦闘機であればtrue
+ * @property {boolean} isdivebomber - 艦爆であればtrue
+ * @property {boolean} istorpbomber - 艦攻であればtrue
+ * @property {boolean} isjet - 噴式機であればtrue
+ * @property {boolean} isPlane - 航空機であればtrue
+ * @property {boolean} isLB - 基地航空隊部隊であればtrue
+ * @property {boolean} canContact - 触接可能であればtrue
+ * @property {boolean} canDetect - 航空偵察に使える機体であればtrue
+ * @property {boolean} canSupportASW - 対潜に寄与する機体であればtrue
+ */
+
+/**
+ * 装備インスタンス
+ * 
+ * @type {EquipType}
+ * 
+ * @param {number} equipid - 装備ID
+ * @param {number} level - 改修値 0 ~ 10
+ * @param {number} rank - 熟練度 1 ~ 7
+ * @param {boolean} [forLBAS] - 基地航空隊装備であればtrue
+ */
 function Equip(equipid,level,rank,forLBAS) {
+    // Shipと同じように装備特有のデータを登録
 	for(var key in EQDATA[equipid]) this[key] = EQDATA[equipid][key];
 	this.mid = +equipid;
 	this.improves = {};
@@ -2222,6 +2822,11 @@ function Equip(equipid,level,rank,forLBAS) {
 		this.rankInit = rank;
 	}
 }
+/**
+ * 装備インスタンスに改修値セット
+ * @param {number} level - 改修値 0 ~ 10
+ * @returns {void}
+ */
 Equip.prototype.setImprovement = function(level) {
 	this.level = level;
 	switch (this.type) {
@@ -2326,6 +2931,12 @@ Equip.prototype.setImprovement = function(level) {
 		this.AAImprove = .5;
 	}
 }
+/**
+ * 装備インスタンスに熟練度セット
+ * @param {number} rank - 熟練度 1 ~ 7 
+ * @param {boolean} [forLBAS] - 基地航空隊装備であればtrue
+ * @returns {void}
+ */
 Equip.prototype.setProficiency = function(rank,forLBAS) {
 	if (!EQTDATA[this.type].isPlane) return;
 	if (rank > 1000) {
