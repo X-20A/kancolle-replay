@@ -1,5 +1,5 @@
 // 処理の流れを追う為にconsole出力するか
-let trace_flag = false;
+const trace_flag = false;
 
 /** 単縦陣補正 */
 var LINEAHEAD = {shellmod:1,torpmod:1,ASWmod:.6,AAmod:1, shellacc:1,torpacc:1,NBacc:1, shellev:1,torpev:1,NBev:1,ASWev:1, id:1};
@@ -184,16 +184,16 @@ var AACIDATA = {
  * @type {Record<number, ArtillerySpotData>}
  */
 var ARTILLERYSPOTDATA = {
-	2: { dmgMod: 1.2, accMod: 1.1, chanceMod: 1.3, numHits: 2, name: 'DA' },
-	3: { dmgMod: 1.1, accMod: 1.3, chanceMod: 1.2, name: 'Sec. CI' },
-	4: { dmgMod: 1.2, accMod: 1.5, chanceMod: 1.3, name: 'Radar CI' },
-	5: { dmgMod: 1.3, accMod: 1.3, chanceMod: 1.4, name: 'AP+Sec. CI' },
-	6: { dmgMod: 1.5, accMod: 1.2, chanceMod: 1.5, name: 'AP CI' },
+	2: { dmgMod: 1.2, accMod: 1.1, chanceMod: 1.3, numHits: 2, name: 'DA' }, // 連撃
+	3: { dmgMod: 1.1, accMod: 1.3, chanceMod: 1.2, name: 'Sec. CI' }, // 主砲 + 副砲
+	4: { dmgMod: 1.2, accMod: 1.5, chanceMod: 1.3, name: 'Radar CI' }, // 主砲 + 電探
+	5: { dmgMod: 1.3, accMod: 1.3, chanceMod: 1.4, name: 'AP+Sec. CI' }, // 主砲 + 徹甲弾
+	6: { dmgMod: 1.5, accMod: 1.2, chanceMod: 1.5, name: 'AP CI' }, // 主砲 + 主砲
 	71: { dmgMod: 1.25, accMod: 1.35, chanceMod: 1.25, id: 7, name: 'CVCI (FBA)' },
 	72: { dmgMod: 1.2, accMod: 1.2, chanceMod: 1.4, id: 7, name: 'CVCI (BBA)' },
 	73: { dmgMod: 1.15, accMod: 1.18, chanceMod: 1.55, id: 7, name: 'CVCI (BA)' },
-	200: { dmgMod: 1.35, accMod: 1.2, chanceMod: 1.2, name: 'Zuiun CI' },
-	201: { dmgMod: 1.3, accMod: 1.2, chanceMod: 1.3, name: 'DB CI' },
+	200: { dmgMod: 1.35, accMod: 1.2, chanceMod: 1.2, name: 'Zuiun CI' }, // 瑞雲立体攻撃
+	201: { dmgMod: 1.3, accMod: 1.2, chanceMod: 1.3, name: 'DB CI' }, // 海空立体攻撃
 }
 
 /**
@@ -538,7 +538,7 @@ var SIMCONSTS = {
 SIMCONSTS.vanguardEvShellDDMod = SIMCONSTS.vanguardEvShellDDModNormal.slice();
 SIMCONSTS.vanguardEvTorpDDMod = SIMCONSTS.vanguardEvTorpDDModNormal.slice();
 /**
- * SIMCONSTのプロパティをセット
+ * SIMCONSTのプロパティをセット 旧UIからしか呼ばれてない
  * @param {string} key
  * @param {number} val
  * */
@@ -655,7 +655,7 @@ var BREAKPTIMPS = false;
 /**
  * 入渠コスト取得
  * @param {Ship} ship
- * @returns {number[]} - 燃料, 弾薬
+ * @returns {number[]} - 燃料, 鋼材
  */
 function getRepairCost(ship) {
 	var base = (ship.maxHP - ship.HP)*SHIPDATA[ship.mid].fuel;
@@ -668,7 +668,7 @@ function getRepairCost(ship) {
  * @returns 秒
  */
 function getRepairTime(ship) {
-	if (ship.HP >= ship.maxHP) return 0;
+	if (ship.HP >= ship.maxHP) return 0; // マニュアルでHPを増やしたらちゃんとmaxHPに反映されてる
 	var mod, base;
 	if (ship.LVL <= 11) base = 10*ship.LVL;
 	else base = 5*ship.LVL + 10*Math.floor(Math.sqrt(ship.LVL-11)) + 50;
@@ -682,7 +682,8 @@ function getRepairTime(ship) {
 }
 
 /**
- * 我と彼の陣形が特定の組み合わせであるか判定して返す
+ * 我と彼の陣形が特定の組み合わせであるか判定して返す    
+ * 参考: https://x.gd/o1EpH 昼砲撃戦の命中率 > 陣形
  * @param {number} form1 - 我陣形id
  * @param {number} form2 - 彼陣形id
  * @returns 特定の組み合わせであればtrue、それ以外はfalse
@@ -724,7 +725,6 @@ function shell(ship,target,APIhou,attackSpecial,combinedAll) {
 	var overrideCritDmgBonus = null, critRateBonus = null;
 	
 	var accMod = ship.moraleMod();
-    // ship.getFormation().shellaccが常に1なので実質的に機能していない？
 	if (!formationCountered(ship.fleet.formation.id,target.fleet.formation.id)) accMod *= ship.getFormation().shellacc;
 	if (ship.fleet.formation.id == 6 && target.type == 'DD') {
 		accMod *= 1.1;
@@ -751,6 +751,9 @@ function shell(ship,target,APIhou,attackSpecial,combinedAll) {
 				break;
 			}
 		}
+		console.log('ship: ', ship.nameJP);
+		console.log('cution: ', cutin);
+		console.log('cutionR: ', cutinR);
 		if (cutin == 7) { //special CVCI crit bonus
 			let planes = ship.equips.filter(eq => (eq.isdivebomber||eq.istorpbomber) && (eq.DIVEBOMB || eq.TP));
 			let avgExp = planes.reduce((a,eq) => a + (eq.exp||0)*([ASWPLANE,AUTOGYRO].includes(eq.type) ? .825 : 1),0)/planes.length;
@@ -1472,7 +1475,7 @@ function shellPhaseTarget(ship,alive,subsalive,isOASW) {
 
 /**
  * 艦船が異なる種類の攻撃（砲撃、対潜攻撃、レーザー攻撃など）をtargetに対して行い、
- * 攻撃後にターゲットが生存しているかを確認、撃沈された場合、aliveから対象を削除
+ * 攻撃後にtargetが生存しているかを確認、撃沈された場合、aliveから対象を削除
  *
  * @param {Ship} ship - 攻撃を行う艦船のオブジェクト
  * @param {TargetInfo} targetData - 攻撃対象
@@ -4361,7 +4364,6 @@ function apiUpdateFlag(dataroot,isRaid,combineTypeF,combinedE) {
  */
 function sim(F1,F2,Fsupport,LBASwaves,doNB,NBonly,aironly,bombing,noammo,BAPI,noupdate,friendFleet) {
 	// console.clear();
-	trace_flag = true;
 	if (trace_flag) console.log('sim');
 	// F1とF2の各艦船を取り出す
 	var ships1 = F1.ships, ships2 = F2.ships;
