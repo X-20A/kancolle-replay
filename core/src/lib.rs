@@ -84,13 +84,13 @@ struct DetectionPhaseResult {
 	is_success: bool,
 	post_reduction_fleets: Vec<PlayerFleet>,
 }
+/* 
 pub fn detection_phase(fleets: Vec<PlayerFleet>) -> DetectionPhaseResult {
 	let ships_length: usize = fleets
 			.iter()
 			.map(|fleet| fleet.ships.len())
 			.sum();
 	let number_of_ships_modifier = calc_ship_length_modifier(ships_length);	
-	let detection_power = tota
 	let success_rate = (detection_power + 1).floor() / 20;
 }
 
@@ -104,7 +104,7 @@ fn clac_los_per_ship(fleet: PlayerFleet, target_ship: PlayerShip) -> u32 {
 		.position(|ship| ship.unique_id == target_ship.unique_id)
 		.expect("target_shipがfleet内に存在しません");
 	(target_ship.status_los + equip_seek)
-}
+}*/
 
 fn calc_ship_length_modifier(ships_length: usize) -> u32 {
     if ships_length <= 2 {
@@ -113,10 +113,10 @@ fn calc_ship_length_modifier(ships_length: usize) -> u32 {
     // supposition: 遊撃部隊や連合艦隊でも1づつ加算されると仮定
     (ships_length - 2) as u32
 }
-
+/* 
 fn calc_ship_detection_power(ship: PlayerShip) -> u32 {
 
-}
+}*/
 
 #[wasm_bindgen] // Functions that can be called from js
 pub fn update_settings() -> String {

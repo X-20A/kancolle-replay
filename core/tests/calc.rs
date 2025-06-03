@@ -39,11 +39,12 @@ mod tests {
 		assert_eq!(result4, false);
 	}
 
+	/*
 	#[test]
 	fn test_detection_phase() {
 		let fleet = [create_mock_player_ship()];
 		let result = detection_phase([fleet]);
-	}
+	}*/
 }
 
 
@@ -70,8 +71,8 @@ fn create_mock_player_ship() -> PlayerShip {
 		current_plane_slots: vec![3,3,6,3],
 		ship_type: ShipType::BB,
         fuel: 180,
-		fuel_remaining_ratio: 1,
+		fuel_remaining_ratio: 1.0,
         ammo: 225,
-		ammo_remaining_ratio: 1,
+		ammo_remaining_ratio: 1.0,
     }
 }

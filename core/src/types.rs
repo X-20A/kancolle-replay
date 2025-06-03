@@ -32,13 +32,13 @@ pub struct Equip {
 	pub base_asw: u32,
 	pub base_los: u32,
 
-	pub base_fire_power: u32,
-	pub base_torpedo_power: u32,
-	pub base_anti_air_power: u32,
-	pub base_armor: u32,
-	pub base_evasion: u32,
-	pub base_asw: u32,
-	pub base_los: u32,
+	pub gain_fire_power: u32,
+	pub gain_torpedo_power: u32,
+	pub gain_anti_air_power: u32,
+	pub gain_armor: u32,
+	pub gain_evasion: u32,
+	pub gain_asw: u32,
+	pub gain_los: u32,
 }
 
 pub struct PlayerShip {
@@ -57,7 +57,7 @@ pub struct PlayerShip {
 	pub status_los: u32,
 	pub status_luck: u32,
 	pub range: u32,
-	pub equips: Vec<Equip>,
+	// pub equips: Vec<Equip>,
 	pub max_plane_slots: Vec<u32>,
 	pub current_plane_slots: Vec<u32>,
 	pub ship_type: ShipType,

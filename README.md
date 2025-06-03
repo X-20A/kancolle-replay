@@ -1,0 +1,1 @@
+Kancolle Sortie Simulator with Wasm
