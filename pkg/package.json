@@ -1,0 +1,15 @@
+{
+  "name": "kssw",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "kssw_bg.wasm",
+    "kssw.js",
+    "kssw.d.ts"
+  ],
+  "main": "kssw.js",
+  "types": "kssw.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

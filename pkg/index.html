@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kancolle Sortie Simulator with Wasm</title>
+</head>
+
+<body>
+	<button id="run">Run Simulation</button>
+
+	<script type="module">
+		import init, { sim, update_settings } from "./kssw.js";
+
+		async function run() {
+			console.log('run');
+			await init();  // Load Wasm
+			const response_1 = update_settings();
+			console.log(response_1); // "run update_settings"
+			const response_2 = sim();
+			console.log(response_2); // "run sim"
+		}
+
+		document.getElementById("run").addEventListener("click", run);
+	</script>
+</body>
+
+</html>
