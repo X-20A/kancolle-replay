@@ -1,5 +1,5 @@
 {
-  "name": "ui",
+  "name": "kssw",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "wasm:build": "cd ../core; wasm-pack build --target web --out-dir ../ui/src/wasm"
-  },
+    "wasm:build": "cd ../core; wasm-pack build --target web --out-dir ../ui/src/wasm",
+	"wasm:build-pro": "cd ../core; wasm-pack build --release --target web --out-dir ../ui/src/wasm"
+},
   "dependencies": {
     "lz-string": "^1.5.0",
     "pinia": "^3.0.2",
@@ -24,7 +25,6 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
-    "cpx2": "^8.0.0",
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
     "vue-tsc": "^2.2.8"

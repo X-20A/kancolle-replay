@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"scripts": {
+		"dev": "cd ui; bun run dev",
+		"build": "cd ui; bun run build",
+		"preview": "cd ui; bun run preview",
+		"wasm:build": "cd ui; bun run wasm:build"
+	}
+}

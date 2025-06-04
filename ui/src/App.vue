@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <h1>Kancolle Sortie Simulator with Wasm</h1>
-    <div v-if="is_loading">
-      <p>WASM初期化中...</p>
-    </div>
-    <div v-else>
-      <button @click="runSim">sim 実行</button>
-      <div v-if="sim_result">
-        <h2>sim結果</h2>
-        <pre>{{ sim_result }}</pre>
-      </div>
-    </div>
-  </div>
+	<div>
+		<h1>Kancolle Sortie Simulator with Wasm</h1>
+		<div v-if="is_loading">
+			<p>WASM初期化中...</p>
+		</div>
+		<div v-else>
+			<button style="border: 1px solid rgb(100, 108, 255)" @click="runSim">sim 実行</button>
+			<div v-if="sim_result">
+				<h2>sim結果</h2>
+				<pre>{{ sim_result }}</pre>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">
-// wasm-bindgenで生成されたkssw_bg.jsをimportし、初期化関数(init)を利用する
 import { onMounted, ref } from 'vue';
 import init, { sim } from './wasm/kssw';
 
@@ -36,8 +35,11 @@ function runSim(): void {
 }
 
 onMounted(async () => {
-	init().then(() => {
+	init()
+		.then(() => {
 		is_loading.value = false;
+	}).catch(() => {
+		alert('Wasmの初期化に失敗');
 	});
 });
 </script>
