@@ -1,3 +1,5 @@
+// TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
+// TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
 /** 艦種 */
 export const ShipType = {
     DE: 1,
@@ -26,15 +28,20 @@ export const ShipType = {
 } as const;
 export type ShipType = typeof ShipType[keyof typeof ShipType];
 
-type CautionLevel = 2 | 3;
+export const enum UnclearLevel {
+    Caution = 2,
+    Alert = 3,
+}
 
 export type UnknownStatus = {
-    EV?: CautionLevel,
-    ASW?: CautionLevel,
-    LOS?: CautionLevel,
-    LUK?: CautionLevel,
-    TACC?: CautionLevel,
+    EV?: UnclearLevel,
+    ASW?: UnclearLevel,
+    LOS?: UnclearLevel,
+    LUK?: UnclearLevel,
+    TP_ACC?: UnclearLevel,
 }
+
+// TODO: ユニオン共はconst enumにしたい
 
 export type ShipClass =
     | 1
@@ -198,6 +205,7 @@ export enum SpecialItemId {
 
 export type InstallType = 1 | 2 | 3 | 4 | 5 | 6
 
+// TODO: 追々はデータからオブジェクトまでPlayerとAbyssalで分けるべきだと思う
 export type ShipData = {
     name: string,
     nameJP: string,
