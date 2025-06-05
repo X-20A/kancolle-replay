@@ -1,3 +1,14 @@
+/**
+ * 任意の型Tを再帰的にreadonlyにするユーティリティ型
+ */
+export type DeepReadonly<T> = {
+    readonly [P in keyof T]: T[P] extends object
+    ? T[P] extends Function
+    ? T[P]
+    : DeepReadonly<T[P]>
+    : T[P];
+};
+
 export type StatusComponent = {
     hp: number,
     fire_power: number,

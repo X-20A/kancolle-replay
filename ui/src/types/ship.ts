@@ -1,5 +1,8 @@
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
 // TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
+
+import { DeepReadonly } from ".";
+
 /** 艦種 */
 export const ShipType = {
     DE: 1,
@@ -189,13 +192,19 @@ export type ShipFitClass =
     | 12
     | 13
 
-export type SpecialAttckId =
-    | 100
-    | 101
-    | 102
-    | 103
-    | 104
-    | 105
+/** 旗艦時に発動し得る特殊砲撃の種別ID */
+export const enum SpecialAttckId {
+    NelsonTouch = 100,
+    NagatoTouch = 101,
+    MutsuTouch = 102,
+    ColoradoTouch = 103,
+    KongouTouch = 104,
+    RichelieuTouch = 105,
+
+    /** 艦データには無く、発動が確定した段階で付与されてる */
+    YamatoTrioTouch = 400,
+    YamatoDuoTouch = 401,
+}
 
 export enum SpecialItemId {
     None = 0, // なし
@@ -203,9 +212,53 @@ export enum SpecialItemId {
     Sash = 2, // 白たすき
 }
 
-export type InstallType = 1 | 2 | 3 | 4 | 5 | 6
+/**
+ * 陸上型種別ID    
+ * 同じ系統の艦でもバージョンによって変わったりするので命名は目安
+ */
+export const enum InstallType {
+    /** ソフトスキン(従来型) */
+    RegularSoftModel = 1,
+    /** 砲台・トーチカ */
+    PillboxModel = 2,
+    /** 集積地系 */
+    SupplyDepotModel = 3,
+    /** 離島・中枢棲姫系 */
+    IsolatedIslandModel = 4,
+    /** 北端上陸姫系 */
+    NorthernmostModel = 5,
+    /** 港湾棲姫系 */
+    HarbourModel = 6,
+} 
+
+/**
+ * 空母系の夜戦における振る舞いのパターンのID    
+ * ややこいのでリンク先を参照のこと
+ */
+export const enum CVsNightAttackType {
+    /** https://wikiwiki.jp/kancolle/大鷹改二#operation */
+    TaiyoModel = 1,
+    /** https://wikiwiki.jp/kancolle/Graf%20Zeppelin#NightBattle */
+    GrafModel = 2,
+    /** https://wikiwiki.jp/kancolle/護衛棲姫#about */
+    ImohimeModel = 3,
+}
+/**
+ * 対潜攻撃の振る舞いの型のID    
+ * 実際に対潜攻撃可能であるかはどうしてもロジックが絡む    
+ * https://wikiwiki.jp/kancolle/夜戦#heec6dd0
+ */
+export const enum PlaneCarrierAswBefavior {
+    /** 爆雷投下攻撃のみ可能なタイプ */
+    DropMotionModel = 1,
+    /** 素対潜が0であるタイプ */
+    BaseAswZeroModel = 2,
+    /** 素対潜1以上なら対潜可能なタイプ */
+    
+}
 
 // TODO: 追々はデータからオブジェクトまでPlayerとAbyssalで分けるべきだと思う
+// TODO: DOP的にはデータの型定義からもオプショナルを一掃したい。分ければできる気がする
 export type ShipData = {
     name: string,
     nameJP: string,
@@ -232,6 +285,7 @@ export type ShipData = {
     LUK: number,
     LUKmax?: number,
     RNG: number,
+    /** 雷撃命中 */
     TP_ACC?: number,
     SLOTS: Array<number>,
     /** 最大燃料消費量 */
@@ -267,7 +321,7 @@ export type ShipData = {
     /** 海空立体攻撃 | 瑞雲立体攻撃 発動可能な艦であるか */
     can_zuiun_CI?: true,
     /** 夜間作戦航空要員 内蔵艦であるか */
-    has_built_in_nightC_crew?: true,
+    has_built_in_night_crew?: true,
     /** 対PT特効 かつ 対PT優先ターゲティング 艦であるか */
     is_anti_PT_ship?: true,
     /** 対陸上型優先ターゲティング 艦であるか */
@@ -296,24 +350,31 @@ export type ShipData = {
     can_not_NB?: true,
     /** 砲撃戦不可な艦であるか */
     can_not_shell?: true,
-    /** 開幕雷撃不可な潜水艦 */
+    /** 開幕雷撃不可な潜水艦であるか */
     can_not_op_torpedo_submarine?: true,
-    /** 無条件開幕雷撃可能な水上艦 */
+    /** 無条件開幕雷撃可能な水上艦であるか */
     can_op_torpedo_surface_ship?: true,
     /** レーザー攻撃可能な艦であるか */
     can_laser?: true,
-    canASW?: false | "either",
-    canOASW?: false | "either",
-    nightattack?: 1 | 2 | 3,
-    attackSpecial?: SpecialAttckId,
-    installtype?: InstallType,
+    /** 条件次第で対潜攻撃可能なCV(加賀改二護) */
+    has_ASW_potential_CV?: true,
+    /** 空母系の夜戦における振る舞いの型のID */
+    CVs_night_attack_type?: CVsNightAttackType,
+    /** 旗艦時に発動する特殊砲撃の種別ID */
+    attack_special_ids?: SpecialAttckId[],
+
+    install_type?: InstallType,
+
     planeasw?: 0 | 2,
+    /** 正確な値が不明なステータス */
     unknownstats?: UnknownStatus,
+
     EQUIPS?: Array<number>,
+
     ACCbonus?: number,
 }
 
-export type ShipDatas = Record<number, ShipData>;
+export type ShipDatas = DeepReadonly<Record<number, ShipData>>;
 
 export type ShipFlags = {
 

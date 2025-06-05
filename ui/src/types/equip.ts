@@ -1,66 +1,5 @@
-/** 装備種別ID */
-export const enum EquipType {
-    MAINGUNS = 1,
-    MAINGUNSAA = 101,
-    MAINGUNM = 2,
-    MAINGUNL = 3,
-    SECGUN = 4,
-    SECGUNAA = 104,
-    TORPEDO = 5,
-    FIGHTER = 6,
-    DIVEBOMBER = 7,
-    TORPBOMBER = 8,
-    CARRIERSCOUT = 9,
-    SEAPLANE = 10,
-    SEAPLANEBOMBER = 11,
-    RADARS = 12,
-    RADARL = 13,
-    SONARS = 14,
-    DEPTHCHARGE = 15,
-    ENGINE = 17,
-    TYPE3SHELL = 18,
-    APSHELL = 19,
-    AAGUN = 21,
-    MIDGETSUB = 22,
-    REPAIR = 23,
-    LANDINGCRAFT = 24,
-    AUTOGYRO = 25,
-    ASWPLANE = 26,
-    BULGEM = 27,
-    BULGEL = 28,
-    SEARCHLIGHTS = 29,
-    DRUM = 30,
-    SRF = 31,
-    TORPEDOSS = 32,
-    STARSHELL = 33,
-    FCF = 34,
-    SCAMP = 35,
-    AAFD = 36,
-    WG42 = 37,
-    MAINGUNXL = 38,
-    PICKET = 39,
-    SONARL = 40,
-    FLYINGBOAT = 41,
-    SEARCHLIGHTL = 42,
-    RATION = 43,
-    OILDRUM = 44,
-    SEAPLANEFIGHTER = 45,
-    LANDINGTANK = 46,
-    LANDBOMBER = 47,
-    INTERCEPTOR = 48,
-    LANDSCOUT = 49,
-    TRANSPORTITEM = 50,
-    SUBRADAR = 51,
-    ARMYUNIT = 52,
-    LANDBOMBERL = 53,
-    SMOKESCREEN = 54,
-    JETBOMBER = 57,
-    JETSCOUT = 59,
-    RADARXL = 93,
-    CARRIERSCOUT2 = 94,
-    SECGUNL = 95,
-    OTHER = 99,
-};
+import { EquipType } from "@/datas/equip/equips"
+import { DeepReadonly } from "."
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
 export const enum SkillTriggerEquipType {
@@ -196,8 +135,6 @@ export type EquipData = {
     CA_NB_bonus?: number,
     /** T字不利回避能力があるか */
     can_avoid_T_disadvantage?: true,
-    /** 爆戦であるか */
-    is_fighter_bomber?: true,
     /** 対地攻撃可能な艦爆であるか */
     can_shell_install_bomber?: true,
     /** ロケット戦闘機であるか */
@@ -230,13 +167,11 @@ export type EquipData = {
     high_altitude_bomber?: true,
 }
 
-export type EquipDatas = Record<number, EquipData>
+export type EquipDatas = DeepReadonly<Record<number, EquipData>>
 
 export type EquipFlags = {
     /** T字不利回避能力があるか */
     can_avoid_T_disadvantage: boolean,
-    /** 爆戦であるか */
-    is_fighter_bomber: boolean,
     /** 対地攻撃可能な艦爆であるか */
     can_shell_install_bomber: boolean,
     /** ロケット戦闘機であるか */
