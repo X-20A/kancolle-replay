@@ -1,4 +1,4 @@
-import { EquipType } from "@/datas/equip/equips"
+import { EquipType } from "@/datas/equip/base"
 import { DeepReadonly } from "."
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
@@ -159,8 +159,6 @@ export type EquipData = {
     is_skip_bomber?: true,
     /** 隼(20戦隊)系統の装備であるか */
     is_20th_family?: true,
-    /** 阻塞気球系の装備であるか */
-    is_balloon?: true,
     /** 開幕雷撃"不可"な甲標的系装備であるか */
     can_not_op_torpedo_midgetsub?: true,
     /** 高高度爆撃可能な爆撃機であるか */
@@ -196,8 +194,6 @@ export type EquipFlags = {
     is_skip_bomber: boolean,
     /** 隼(20戦隊)系統の装備であるか */
     is_20th_family: boolean,
-    /** 阻塞気球系の装備であるか */
-    is_balloon: boolean,
     /** 開幕雷撃"不可"な甲標的系装備であるか */
     can_not_op_torpedo_midgetsub: boolean,
     /** 高高度爆撃可能な爆撃機であるか */

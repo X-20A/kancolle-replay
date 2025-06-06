@@ -1,7 +1,9 @@
 import { StatusComponent } from "@/types";
 import { UniqueId } from "@/types/brands/ship";
-import { ShipType } from "@/types/ship";
+import { ShipClass, ShipType } from "@/types/ship";
 import { Equip } from "../equip/Equip";
+import { Country } from "@/datas/equip/bonus";
+import { createNakedPlayerShip } from "./ShipMaster";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -17,6 +19,10 @@ export type PlayerShip = {
     readonly lv: number;
     /** 艦種ID */
     readonly type: ShipType;
+    /** 艦型ID */
+    readonly class: ShipClass;
+    /** 国籍ID */
+    readonly country: Country;
     /** 装備スロット、および搭載数 */
     readonly slots: number[],
     /** フラグ類 */
@@ -37,5 +43,5 @@ export function createShip(
     equips: Equip,
     edit_input: StatusComponent,
 ): PlayerShip {
-    const master_ship = 
+    const ship_master = createNakedPlayerShip
 }

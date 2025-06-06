@@ -12,7 +12,7 @@ export const ShipType = {
     CA: 5,
     CAV: 6,
     CVL: 7,
-    FBB: 8,
+    FBB: 8, // ?
     BB: 9,
     BBV: 10,
     CV: 11,
@@ -377,5 +377,56 @@ export type ShipData = {
 export type ShipDatas = DeepReadonly<Record<number, ShipData>>;
 
 export type ShipFlags = {
-
+    always_OASW: boolean,
+    /** 高射装置内蔵艦(秋月型のみ 25/06/04)であるか */
+    has_buil_in_fire_director: boolean,
+    /**
+     *  航空攻撃可能な補給艦であるか    
+     *  実際の攻撃には航空機が必要
+     */
+    can_air_attack: boolean,
+    /** 水上機が搭載可能な戦艦であるか */
+    is_air_craft_carrier_BB: boolean,
+    /** 対潜劣後な軽空(鈴熊のみ 25/06/04)であるか */
+    is_ASW_subordinated_CVL: boolean,
+    /** 海空立体攻撃 | 瑞雲立体攻撃 発動可能な艦であるか */
+    can_zuiun_CI: boolean,
+    /** 夜間作戦航空要員 内蔵艦であるか */
+    has_built_in_night_crew: boolean,
+    /** 対PT特効 かつ 対PT優先ターゲティング 艦であるか */
+    is_anti_PT_ship: boolean,
+    /** 対陸上型優先ターゲティング 艦であるか */
+    is_anti_install_ship: boolean,
+    /** 空母CI"不可能"艦であるか */
+    can_not_CVCI: boolean,
+    /** PT系(含S boat)の艦であるか */
+    is_PT: boolean,
+    /** 戦艦夏姫系であるか */
+    is_Summer_BB: boolean,
+    /** 重巡夏姫系であるか */
+    is_Summer_CA: boolean,
+    /** 戦艦仏棲姫系であるか */
+    is_French_BB: boolean,
+    /** 泊地水鬼 バカンスmode系であるか */
+    is_Anchorage: boolean,
+    /** 空母夏鬼であるか */
+    is_Summer_CV: boolean,
+    /** 船渠棲姫系であるか */
+    is_Dock: boolean,
+    /** 集積地棲姫III バカンスmode系であるか */
+    is_Supply_Depot: boolean,
+    /** 連合艦隊主力艦隊からでも開幕雷撃可能な艦であるか */
+    can_op_torpedo_from_main_fleet: boolean,
+    /** 夜戦行動不可な艦であるか */
+    can_not_NB: boolean,
+    /** 砲撃戦不可な艦であるか */
+    can_not_shell: boolean,
+    /** 開幕雷撃不可な潜水艦であるか */
+    can_not_op_torpedo_submarine: boolean,
+    /** 無条件開幕雷撃可能な水上艦であるか */
+    can_op_torpedo_surface_ship: boolean,
+    /** レーザー攻撃可能な艦であるか */
+    can_laser: boolean,
+    /** 条件次第で対潜攻撃可能なCV(加賀改二護) */
+    has_ASW_potential_CV: boolean,
 }

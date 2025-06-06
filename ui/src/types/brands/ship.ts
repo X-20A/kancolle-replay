@@ -1,4 +1,4 @@
-type Brand<T, B> = T & { __brand: B };
+import { brand, Brand } from ".";
 
 /**
  * 艦ID
@@ -9,13 +9,13 @@ export type ShipId = Brand<number, 'ShipId'>
  */
 export type UniqueId = Brand<number, 'UniqueId'>
 
-/** ブランド化するための共通関数 */
-function brand<T, B extends string>(value: T): Brand<T, B> {
-    return value as Brand<T, B>;
-}
+export type ShipLv = Brand<number, 'ShipLv'>
 
 export const brandShipId =
     (value: number) => brand<number, 'ShipId'>(value);
 
 export const brandUniqueId =
     (value: number): UniqueId => brand<number, 'UniqueId'>(value);
+
+export const brandShipLv =
+    (value: number): ShipLv => brand<number, 'ShipLv'>(value);

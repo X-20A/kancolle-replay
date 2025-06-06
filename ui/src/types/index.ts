@@ -19,5 +19,6 @@ export type StatusComponent = {
     asw: number,
     los: number,
     luck: number,
+    accuracy: number,
 }
 

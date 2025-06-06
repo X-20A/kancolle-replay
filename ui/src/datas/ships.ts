@@ -1,10 +1,10 @@
-import { ShipDatas, UnclearLevel } from "@/types/ship";
+import { ShipDatas, ShipType, UnclearLevel } from "@/types/ship";
 
 const SHIP_DATA: ShipDatas = {
     1: {
         name: 'Mutsuki',
         nameJP: '睦月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 31,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -25,7 +25,7 @@ const SHIP_DATA: ShipDatas = {
     2: {
         name: 'Kisaragi',
         nameJP: '如月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 32,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -46,7 +46,7 @@ const SHIP_DATA: ShipDatas = {
     6: {
         name: 'Nagatsuki',
         nameJP: '長月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 35,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -67,7 +67,7 @@ const SHIP_DATA: ShipDatas = {
     7: {
         name: 'Mikazuki',
         nameJP: '三日月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 37,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -88,7 +88,7 @@ const SHIP_DATA: ShipDatas = {
     9: {
         name: 'Fubuki',
         nameJP: '吹雪',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 11,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -109,7 +109,7 @@ const SHIP_DATA: ShipDatas = {
     10: {
         name: 'Shirayuki',
         nameJP: '白雪',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 12,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -130,7 +130,7 @@ const SHIP_DATA: ShipDatas = {
     11: {
         name: 'Miyuki',
         nameJP: '深雪',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 14,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -151,7 +151,7 @@ const SHIP_DATA: ShipDatas = {
     12: {
         name: 'Isonami',
         nameJP: '磯波',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 16,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -172,7 +172,7 @@ const SHIP_DATA: ShipDatas = {
     13: {
         name: 'Ayanami',
         nameJP: '綾波',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 17,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -193,7 +193,7 @@ const SHIP_DATA: ShipDatas = {
     14: {
         name: 'Shikinami',
         nameJP: '敷波',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 18,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -214,7 +214,7 @@ const SHIP_DATA: ShipDatas = {
     15: {
         name: 'Akebono',
         nameJP: '曙',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 68,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -235,7 +235,7 @@ const SHIP_DATA: ShipDatas = {
     16: {
         name: 'Ushio',
         nameJP: '潮',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 70,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -256,7 +256,7 @@ const SHIP_DATA: ShipDatas = {
     17: {
         name: 'Kagerou',
         nameJP: '陽炎',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 91,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -277,7 +277,7 @@ const SHIP_DATA: ShipDatas = {
     18: {
         name: 'Shiranui',
         nameJP: '不知火',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 92,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -298,7 +298,7 @@ const SHIP_DATA: ShipDatas = {
     19: {
         name: 'Kuroshio',
         nameJP: '黒潮',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 93,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -319,7 +319,7 @@ const SHIP_DATA: ShipDatas = {
     20: {
         name: 'Yukikaze',
         nameJP: '雪風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 5,
         HP: 16, HPmax: 39,
         FP: 29, FPbase: 10,
@@ -340,7 +340,7 @@ const SHIP_DATA: ShipDatas = {
     21: {
         name: 'Nagara',
         nameJP: '長良',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 42,
         HP: 26, HPmax: 39,
         FP: 49, FPbase: 14,
@@ -361,7 +361,7 @@ const SHIP_DATA: ShipDatas = {
     22: {
         name: 'Isuzu',
         nameJP: '五十鈴',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 43,
         HP: 26, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -382,7 +382,7 @@ const SHIP_DATA: ShipDatas = {
     23: {
         name: 'Yura',
         nameJP: '由良',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 45,
         HP: 26, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -403,7 +403,7 @@ const SHIP_DATA: ShipDatas = {
     24: {
         name: 'Ooi',
         nameJP: '大井',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 19,
         HP: 25, HPmax: 39,
         FP: 49, FPbase: 14,
@@ -424,7 +424,7 @@ const SHIP_DATA: ShipDatas = {
     25: {
         name: 'Kitakami',
         nameJP: '北上',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 20,
         HP: 25, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -445,7 +445,7 @@ const SHIP_DATA: ShipDatas = {
     26: {
         name: 'Fusou',
         nameJP: '扶桑',
-        type: 9, ship_class: 26,
+        type: ShipType.BB, ship_class: 26,
         nid: 26,
         fit_class: 8,
         HP: 67, HPmax: 89,
@@ -467,7 +467,7 @@ const SHIP_DATA: ShipDatas = {
     27: {
         name: 'Yamashiro',
         nameJP: '山城',
-        type: 9, ship_class: 26,
+        type: ShipType.BB, ship_class: 26,
         nid: 27,
         fit_class: 8,
         HP: 67, HPmax: 89,
@@ -489,7 +489,7 @@ const SHIP_DATA: ShipDatas = {
     28: {
         name: 'Satsuki',
         nameJP: '皐月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 33,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -510,7 +510,7 @@ const SHIP_DATA: ShipDatas = {
     29: {
         name: 'Fumizuki',
         nameJP: '文月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 34,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -531,7 +531,7 @@ const SHIP_DATA: ShipDatas = {
     30: {
         name: 'Kikuzuki',
         nameJP: '菊月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 36,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -552,7 +552,7 @@ const SHIP_DATA: ShipDatas = {
     31: {
         name: 'Mochizuki',
         nameJP: '望月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 38,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -573,7 +573,7 @@ const SHIP_DATA: ShipDatas = {
     32: {
         name: 'Hatsuyuki',
         nameJP: '初雪',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 13,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -594,7 +594,7 @@ const SHIP_DATA: ShipDatas = {
     33: {
         name: 'Murakumo',
         nameJP: '叢雲',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 15,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -615,7 +615,7 @@ const SHIP_DATA: ShipDatas = {
     34: {
         name: 'Akatsuki',
         nameJP: '暁',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 71,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -636,7 +636,7 @@ const SHIP_DATA: ShipDatas = {
     35: {
         name: 'Hibiki',
         nameJP: '響',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 72,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -657,7 +657,7 @@ const SHIP_DATA: ShipDatas = {
     36: {
         name: 'Ikazuchi',
         nameJP: '雷',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 73,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -678,7 +678,7 @@ const SHIP_DATA: ShipDatas = {
     37: {
         name: 'Inazuma',
         nameJP: '電',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 74,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -699,7 +699,7 @@ const SHIP_DATA: ShipDatas = {
     38: {
         name: 'Hatsuharu',
         nameJP: '初春',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 75,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -720,7 +720,7 @@ const SHIP_DATA: ShipDatas = {
     39: {
         name: 'Nenohi',
         nameJP: '子日',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 76,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -741,7 +741,7 @@ const SHIP_DATA: ShipDatas = {
     40: {
         name: 'Wakaba',
         nameJP: '若葉',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 77,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -762,7 +762,7 @@ const SHIP_DATA: ShipDatas = {
     41: {
         name: 'Hatsushimo',
         nameJP: '初霜',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 78,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -783,7 +783,7 @@ const SHIP_DATA: ShipDatas = {
     42: {
         name: 'Shiratsuyu',
         nameJP: '白露',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 79,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -804,7 +804,7 @@ const SHIP_DATA: ShipDatas = {
     43: {
         name: 'Shigure',
         nameJP: '時雨',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 80,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -825,7 +825,7 @@ const SHIP_DATA: ShipDatas = {
     44: {
         name: 'Murasame',
         nameJP: '村雨',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 81,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -846,7 +846,7 @@ const SHIP_DATA: ShipDatas = {
     45: {
         name: 'Yuudachi',
         nameJP: '夕立',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 82,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -867,7 +867,7 @@ const SHIP_DATA: ShipDatas = {
     46: {
         name: 'Samidare',
         nameJP: '五月雨',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 83,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -888,7 +888,7 @@ const SHIP_DATA: ShipDatas = {
     47: {
         name: 'Suzukaze',
         nameJP: '涼風',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 84,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -909,7 +909,7 @@ const SHIP_DATA: ShipDatas = {
     48: {
         name: 'Arare',
         nameJP: '霰',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 89,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -930,7 +930,7 @@ const SHIP_DATA: ShipDatas = {
     49: {
         name: 'Kasumi',
         nameJP: '霞',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 90,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -951,7 +951,7 @@ const SHIP_DATA: ShipDatas = {
     50: {
         name: 'Shimakaze',
         nameJP: '島風',
-        type: 2, ship_class: 22,
+        type: ShipType.DD, ship_class: 22,
         nid: 10,
         HP: 19, HPmax: 39,
         FP: 29, FPbase: 12,
@@ -972,7 +972,7 @@ const SHIP_DATA: ShipDatas = {
     51: {
         name: 'Tenryuu',
         nameJP: '天龍',
-        type: 3, ship_class: 21,
+        type: ShipType.CL, ship_class: 21,
         nid: 28,
         HP: 23, HPmax: 35,
         FP: 39, FPbase: 11,
@@ -993,7 +993,7 @@ const SHIP_DATA: ShipDatas = {
     52: {
         name: 'Tatsuta',
         nameJP: '龍田',
-        type: 3, ship_class: 21,
+        type: ShipType.CL, ship_class: 21,
         nid: 29,
         HP: 23, HPmax: 35,
         FP: 39, FPbase: 11,
@@ -1014,7 +1014,7 @@ const SHIP_DATA: ShipDatas = {
     53: {
         name: 'Natori',
         nameJP: '名取',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 44,
         HP: 26, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -1035,7 +1035,7 @@ const SHIP_DATA: ShipDatas = {
     54: {
         name: 'Sendai',
         nameJP: '川内',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 46,
         HP: 26, HPmax: 39,
         FP: 49, FPbase: 14,
@@ -1056,7 +1056,7 @@ const SHIP_DATA: ShipDatas = {
     55: {
         name: 'Jintsuu',
         nameJP: '神通',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 47,
         HP: 26, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -1077,7 +1077,7 @@ const SHIP_DATA: ShipDatas = {
     56: {
         name: 'Naka',
         nameJP: '那珂',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 48,
         HP: 26, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -1098,7 +1098,7 @@ const SHIP_DATA: ShipDatas = {
     57: {
         name: 'Ooi Kai',
         nameJP: '大井改',
-        type: 4, ship_class: 4,
+        type: ShipType.CLT, ship_class: 4,
         nid: 97,
         HP: 32, HPmax: 49,
         FP: 39, FPbase: 8,
@@ -1119,7 +1119,7 @@ const SHIP_DATA: ShipDatas = {
     58: {
         name: 'Kitakami Kai',
         nameJP: '北上改',
-        type: 4, ship_class: 4,
+        type: ShipType.CLT, ship_class: 4,
         nid: 98,
         HP: 32, HPmax: 49,
         FP: 39, FPbase: 8,
@@ -1140,7 +1140,7 @@ const SHIP_DATA: ShipDatas = {
     59: {
         name: 'Furutaka',
         nameJP: '古鷹',
-        type: 5, ship_class: 7,
+        type: ShipType.CA, ship_class: 7,
         nid: 52,
         HP: 36, HPmax: 49,
         FP: 54, FPbase: 30,
@@ -1161,7 +1161,7 @@ const SHIP_DATA: ShipDatas = {
     60: {
         name: 'Kako',
         nameJP: '加古',
-        type: 5, ship_class: 7,
+        type: ShipType.CA, ship_class: 7,
         nid: 53,
         HP: 36, HPmax: 49,
         FP: 49, FPbase: 30,
@@ -1182,7 +1182,7 @@ const SHIP_DATA: ShipDatas = {
     61: {
         name: 'Aoba',
         nameJP: '青葉',
-        type: 5, ship_class: 13,
+        type: ShipType.CA, ship_class: 13,
         nid: 54,
         HP: 37, HPmax: 49,
         FP: 54, FPbase: 30,
@@ -1203,7 +1203,7 @@ const SHIP_DATA: ShipDatas = {
     62: {
         name: 'Myoukou',
         nameJP: '妙高',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 55,
         HP: 44, HPmax: 60,
         FP: 59, FPbase: 40,
@@ -1224,7 +1224,7 @@ const SHIP_DATA: ShipDatas = {
     63: {
         name: 'Nachi',
         nameJP: '那智',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 56,
         HP: 44, HPmax: 56,
         FP: 54, FPbase: 40,
@@ -1245,7 +1245,7 @@ const SHIP_DATA: ShipDatas = {
     64: {
         name: 'Ashigara',
         nameJP: '足柄',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 57,
         HP: 44, HPmax: 56,
         FP: 54, FPbase: 40,
@@ -1266,7 +1266,7 @@ const SHIP_DATA: ShipDatas = {
     65: {
         name: 'Haguro',
         nameJP: '羽黒',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 58,
         HP: 44, HPmax: 56,
         FP: 54, FPbase: 40,
@@ -1287,7 +1287,7 @@ const SHIP_DATA: ShipDatas = {
     66: {
         name: 'Takao',
         nameJP: '高雄',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 59,
         HP: 45, HPmax: 60,
         FP: 59, FPbase: 40,
@@ -1308,7 +1308,7 @@ const SHIP_DATA: ShipDatas = {
     67: {
         name: 'Atago',
         nameJP: '愛宕',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 60,
         HP: 45, HPmax: 60,
         FP: 54, FPbase: 40,
@@ -1329,7 +1329,7 @@ const SHIP_DATA: ShipDatas = {
     68: {
         name: 'Maya',
         nameJP: '摩耶',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 61,
         HP: 45, HPmax: 57,
         FP: 54, FPbase: 40,
@@ -1350,7 +1350,7 @@ const SHIP_DATA: ShipDatas = {
     69: {
         name: 'Choukai',
         nameJP: '鳥海',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 62,
         HP: 45, HPmax: 57,
         FP: 54, FPbase: 40,
@@ -1371,7 +1371,7 @@ const SHIP_DATA: ShipDatas = {
     70: {
         name: 'Mogami',
         nameJP: '最上',
-        type: 5, ship_class: 9,
+        type: ShipType.CA, ship_class: 9,
         nid: 51,
         HP: 41, HPmax: 59,
         FP: 59, FPbase: 40,
@@ -1392,7 +1392,7 @@ const SHIP_DATA: ShipDatas = {
     71: {
         name: 'Tone',
         nameJP: '利根',
-        type: 5, ship_class: 31,
+        type: ShipType.CA, ship_class: 31,
         nid: 63,
         HP: 44, HPmax: 62,
         FP: 59, FPbase: 32,
@@ -1413,7 +1413,7 @@ const SHIP_DATA: ShipDatas = {
     72: {
         name: 'Chikuma',
         nameJP: '筑摩',
-        type: 5, ship_class: 31,
+        type: ShipType.CA, ship_class: 31,
         nid: 64,
         HP: 44, HPmax: 62,
         FP: 59, FPbase: 32,
@@ -1434,7 +1434,7 @@ const SHIP_DATA: ShipDatas = {
     73: {
         name: 'Mogami Kai',
         nameJP: '最上改',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 101,
         HP: 50, HPmax: 67,
         FP: 75, FPbase: 24,
@@ -1455,7 +1455,7 @@ const SHIP_DATA: ShipDatas = {
     74: {
         name: 'Shouhou',
         nameJP: '祥鳳',
-        type: 7, ship_class: 11,
+        type: ShipType.CVL, ship_class: 11,
         nid: 94,
         HP: 32, HPmax: 55,
         FP: 19, FPbase: 0,
@@ -1476,7 +1476,7 @@ const SHIP_DATA: ShipDatas = {
     75: {
         name: 'Hiyou',
         nameJP: '飛鷹',
-        type: 7, ship_class: 24,
+        type: ShipType.CVL, ship_class: 24,
         nid: 65,
         HP: 40, HPmax: 64,
         FP: 19, FPbase: 0,
@@ -1497,7 +1497,7 @@ const SHIP_DATA: ShipDatas = {
     76: {
         name: 'Ryuujou',
         nameJP: '龍驤',
-        type: 7, ship_class: 32,
+        type: ShipType.CVL, ship_class: 32,
         nid: 30,
         HP: 31, HPmax: 54,
         FP: 19, FPbase: 0,
@@ -1518,7 +1518,7 @@ const SHIP_DATA: ShipDatas = {
     77: {
         name: 'Ise',
         nameJP: '伊勢',
-        type: 9, ship_class: 2,
+        type: ShipType.BB, ship_class: 2,
         nid: 3,
         fit_class: 8,
         HP: 74, HPmax: 89,
@@ -1540,7 +1540,7 @@ const SHIP_DATA: ShipDatas = {
     78: {
         name: 'Kongou',
         nameJP: '金剛',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 21,
         fit_class: 1,
         HP: 63, HPmax: 79,
@@ -1562,7 +1562,7 @@ const SHIP_DATA: ShipDatas = {
     79: {
         name: 'Haruna',
         nameJP: '榛名',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 23,
         fit_class: 1,
         HP: 63, HPmax: 79,
@@ -1584,7 +1584,7 @@ const SHIP_DATA: ShipDatas = {
     80: {
         name: 'Nagato',
         nameJP: '長門',
-        type: 9, ship_class: 19,
+        type: ShipType.BB, ship_class: 19,
         nid: 1,
         fit_class: 8,
         HP: 80, HPmax: 94,
@@ -1606,7 +1606,7 @@ const SHIP_DATA: ShipDatas = {
     81: {
         name: 'Mutsu',
         nameJP: '陸奥',
-        type: 9, ship_class: 19,
+        type: ShipType.BB, ship_class: 19,
         nid: 2,
         fit_class: 8,
         HP: 80, HPmax: 94,
@@ -1628,7 +1628,7 @@ const SHIP_DATA: ShipDatas = {
     82: {
         name: 'Ise Kai',
         nameJP: '伊勢改',
-        type: 10, ship_class: 2,
+        type: ShipType.BBV, ship_class: 2,
         nid: 102,
         fit_class: 6,
         HP: 77, HPmax: 89,
@@ -1650,7 +1650,7 @@ const SHIP_DATA: ShipDatas = {
     83: {
         name: 'Akagi',
         nameJP: '赤城',
-        type: 11, ship_class: 14,
+        type: ShipType.CV, ship_class: 14,
         nid: 6,
         HP: 69, HPmax: 79,
         FP: 39, FPbase: 0,
@@ -1671,7 +1671,7 @@ const SHIP_DATA: ShipDatas = {
     84: {
         name: 'Kaga',
         nameJP: '加賀',
-        type: 11, ship_class: 3,
+        type: ShipType.CV, ship_class: 3,
         nid: 7,
         HP: 71, HPmax: 89,
         FP: 39, FPbase: 0,
@@ -1692,7 +1692,7 @@ const SHIP_DATA: ShipDatas = {
     85: {
         name: 'Kirishima',
         nameJP: '霧島',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 24,
         fit_class: 1,
         HP: 63, HPmax: 79,
@@ -1714,7 +1714,7 @@ const SHIP_DATA: ShipDatas = {
     86: {
         name: 'Hiei',
         nameJP: '比叡',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 22,
         fit_class: 1,
         HP: 63, HPmax: 79,
@@ -1736,7 +1736,7 @@ const SHIP_DATA: ShipDatas = {
     87: {
         name: 'Hyuuga',
         nameJP: '日向',
-        type: 9, ship_class: 2,
+        type: ShipType.BB, ship_class: 2,
         nid: 4,
         fit_class: 8,
         HP: 74, HPmax: 89,
@@ -1758,7 +1758,7 @@ const SHIP_DATA: ShipDatas = {
     88: {
         name: 'Hyuuga Kai',
         nameJP: '日向改',
-        type: 10, ship_class: 2,
+        type: ShipType.BBV, ship_class: 2,
         nid: 103,
         fit_class: 6,
         HP: 77, HPmax: 89,
@@ -1780,7 +1780,7 @@ const SHIP_DATA: ShipDatas = {
     89: {
         name: 'Houshou',
         nameJP: '鳳翔',
-        type: 7, ship_class: 27,
+        type: ShipType.CVL, ship_class: 27,
         nid: 25,
         HP: 30, HPmax: 49,
         FP: 19, FPbase: 0,
@@ -1801,7 +1801,7 @@ const SHIP_DATA: ShipDatas = {
     90: {
         name: 'Souryuu',
         nameJP: '蒼龍',
-        type: 11, ship_class: 17,
+        type: ShipType.CV, ship_class: 17,
         nid: 8,
         HP: 50, HPmax: 79,
         FP: 29, FPbase: 0,
@@ -1822,7 +1822,7 @@ const SHIP_DATA: ShipDatas = {
     91: {
         name: 'Hiryuu',
         nameJP: '飛龍',
-        type: 11, ship_class: 25,
+        type: ShipType.CV, ship_class: 25,
         nid: 9,
         HP: 50, HPmax: 79,
         FP: 29, FPbase: 0,
@@ -1843,7 +1843,7 @@ const SHIP_DATA: ShipDatas = {
     92: {
         name: 'Junyou',
         nameJP: '隼鷹',
-        type: 7, ship_class: 24,
+        type: ShipType.CVL, ship_class: 24,
         nid: 66,
         HP: 40, HPmax: 64,
         FP: 19, FPbase: 0,
@@ -1864,7 +1864,7 @@ const SHIP_DATA: ShipDatas = {
     93: {
         name: 'Oboro',
         nameJP: '朧',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 67,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -1885,7 +1885,7 @@ const SHIP_DATA: ShipDatas = {
     94: {
         name: 'Sazanami',
         nameJP: '漣',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 69,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -1906,7 +1906,7 @@ const SHIP_DATA: ShipDatas = {
     95: {
         name: 'Asashio',
         nameJP: '朝潮',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 85,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1927,7 +1927,7 @@ const SHIP_DATA: ShipDatas = {
     96: {
         name: 'Ooshio',
         nameJP: '大潮',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 86,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1948,7 +1948,7 @@ const SHIP_DATA: ShipDatas = {
     97: {
         name: 'Michishio',
         nameJP: '満潮',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 87,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1969,7 +1969,7 @@ const SHIP_DATA: ShipDatas = {
     98: {
         name: 'Arashio',
         nameJP: '荒潮',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 88,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1990,7 +1990,7 @@ const SHIP_DATA: ShipDatas = {
     99: {
         name: 'Kuma',
         nameJP: '球磨',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 39,
         HP: 25, HPmax: 39,
         FP: 49, FPbase: 14,
@@ -2011,7 +2011,7 @@ const SHIP_DATA: ShipDatas = {
     100: {
         name: 'Tama',
         nameJP: '多摩',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 40,
         HP: 25, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -2032,7 +2032,7 @@ const SHIP_DATA: ShipDatas = {
     101: {
         name: 'Kiso',
         nameJP: '木曾',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 41,
         HP: 25, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -2053,7 +2053,7 @@ const SHIP_DATA: ShipDatas = {
     102: {
         name: 'Chitose',
         nameJP: '千歳',
-        type: 16, ship_class: 15,
+        type: ShipType.AV, ship_class: 15,
         nid: 49,
         HP: 40, HPmax: 59,
         FP: 29, FPbase: 9,
@@ -2074,7 +2074,7 @@ const SHIP_DATA: ShipDatas = {
     103: {
         name: 'Chiyoda',
         nameJP: '千代田',
-        type: 16, ship_class: 15,
+        type: ShipType.AV, ship_class: 15,
         nid: 50,
         HP: 40, HPmax: 59,
         FP: 29, FPbase: 9,
@@ -2095,7 +2095,7 @@ const SHIP_DATA: ShipDatas = {
     104: {
         name: 'Chitose Kai',
         nameJP: '千歳改',
-        type: 16, ship_class: 15,
+        type: ShipType.AV, ship_class: 15,
         nid: 95,
         HP: 41, HPmax: 59,
         FP: 29, FPbase: 9,
@@ -2116,7 +2116,7 @@ const SHIP_DATA: ShipDatas = {
     105: {
         name: 'Chiyoda Kai',
         nameJP: '千代田改',
-        type: 16, ship_class: 15,
+        type: ShipType.AV, ship_class: 15,
         nid: 96,
         HP: 41, HPmax: 59,
         FP: 29, FPbase: 9,
@@ -2137,7 +2137,7 @@ const SHIP_DATA: ShipDatas = {
     106: {
         name: 'Chitose A',
         nameJP: '千歳甲',
-        type: 16, ship_class: 15,
+        type: ShipType.AV, ship_class: 15,
         nid: 99,
         HP: 42, HPmax: 59,
         FP: 31, FPbase: 9,
@@ -2158,7 +2158,7 @@ const SHIP_DATA: ShipDatas = {
     107: {
         name: 'Chiyoda A',
         nameJP: '千代田甲',
-        type: 16, ship_class: 15,
+        type: ShipType.AV, ship_class: 15,
         nid: 100,
         HP: 42, HPmax: 59,
         FP: 31, FPbase: 9,
@@ -2179,7 +2179,7 @@ const SHIP_DATA: ShipDatas = {
     108: {
         name: 'ChitoseCVL',
         nameJP: '千歳航',
-        type: 7, ship_class: 15,
+        type: ShipType.CVL, ship_class: 15,
         nid: 104,
         HP: 47, HPmax: 59,
         FP: 19, FPbase: 0,
@@ -2200,7 +2200,7 @@ const SHIP_DATA: ShipDatas = {
     109: {
         name: 'ChiyodaCVL',
         nameJP: '千代田航',
-        type: 7, ship_class: 15,
+        type: ShipType.CVL, ship_class: 15,
         nid: 105,
         HP: 47, HPmax: 59,
         FP: 19, FPbase: 0,
@@ -2221,7 +2221,7 @@ const SHIP_DATA: ShipDatas = {
     110: {
         name: 'Shoukaku',
         nameJP: '翔鶴',
-        type: 11, ship_class: 33,
+        type: ShipType.CV, ship_class: 33,
         nid: 106,
         HP: 62, HPmax: 79,
         FP: 39, FPbase: 0,
@@ -2242,7 +2242,7 @@ const SHIP_DATA: ShipDatas = {
     111: {
         name: 'Zuikaku',
         nameJP: '瑞鶴',
-        type: 11, ship_class: 33,
+        type: ShipType.CV, ship_class: 33,
         nid: 107,
         HP: 62, HPmax: 79,
         FP: 39, FPbase: 0,
@@ -2263,7 +2263,7 @@ const SHIP_DATA: ShipDatas = {
     112: {
         name: 'Zuikaku Kai',
         nameJP: '瑞鶴改',
-        type: 11, ship_class: 33,
+        type: ShipType.CV, ship_class: 33,
         nid: 108,
         HP: 75, HPmax: 90,
         FP: 39, FPbase: 0,
@@ -2284,7 +2284,7 @@ const SHIP_DATA: ShipDatas = {
     113: {
         name: 'Kinu',
         nameJP: '鬼怒',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 109,
         HP: 26, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -2305,7 +2305,7 @@ const SHIP_DATA: ShipDatas = {
     114: {
         name: 'Abukuma',
         nameJP: '阿武隈',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 110,
         HP: 27, HPmax: 39,
         FP: 39, FPbase: 14,
@@ -2326,7 +2326,7 @@ const SHIP_DATA: ShipDatas = {
     115: {
         name: 'Yuubari',
         nameJP: '夕張',
-        type: 3, ship_class: 34,
+        type: ShipType.CL, ship_class: 34,
         nid: 111,
         HP: 19, HPmax: 33,
         FP: 42, FPbase: 17,
@@ -2347,7 +2347,7 @@ const SHIP_DATA: ShipDatas = {
     116: {
         name: 'Zuihou',
         nameJP: '瑞鳳',
-        type: 7, ship_class: 11,
+        type: ShipType.CVL, ship_class: 11,
         nid: 112,
         HP: 32, HPmax: 55,
         FP: 19, FPbase: 0,
@@ -2368,7 +2368,7 @@ const SHIP_DATA: ShipDatas = {
     117: {
         name: 'Zuihou Kai',
         nameJP: '瑞鳳改',
-        type: 7, ship_class: 11,
+        type: ShipType.CVL, ship_class: 11,
         nid: 113,
         HP: 45, HPmax: 69,
         FP: 29, FPbase: 0,
@@ -2389,7 +2389,7 @@ const SHIP_DATA: ShipDatas = {
     118: {
         name: 'Ooi Kai 2',
         nameJP: '大井改二',
-        type: 4, ship_class: 4,
+        type: ShipType.CLT, ship_class: 4,
         nid: 114,
         HP: 43, HPmax: 59,
         FP: 63, FPbase: 17,
@@ -2410,7 +2410,7 @@ const SHIP_DATA: ShipDatas = {
     119: {
         name: 'Kitakami Kai 2',
         nameJP: '北上改二',
-        type: 4, ship_class: 4,
+        type: ShipType.CLT, ship_class: 4,
         nid: 115,
         HP: 43, HPmax: 59,
         FP: 63, FPbase: 17,
@@ -2431,7 +2431,7 @@ const SHIP_DATA: ShipDatas = {
     120: {
         name: 'Mikuma',
         nameJP: '三隈',
-        type: 5, ship_class: 9,
+        type: ShipType.CA, ship_class: 9,
         nid: 116,
         HP: 40, HPmax: 59,
         FP: 59, FPbase: 40,
@@ -2452,7 +2452,7 @@ const SHIP_DATA: ShipDatas = {
     121: {
         name: 'Mikuma Kai',
         nameJP: '三隈改',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 117,
         HP: 50, HPmax: 67,
         FP: 77, FPbase: 24,
@@ -2473,7 +2473,7 @@ const SHIP_DATA: ShipDatas = {
     122: {
         name: 'Maikaze',
         nameJP: '舞風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 119,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -2494,7 +2494,7 @@ const SHIP_DATA: ShipDatas = {
     123: {
         name: 'Kinugasa',
         nameJP: '衣笠',
-        type: 5, ship_class: 13,
+        type: ShipType.CA, ship_class: 13,
         nid: 120,
         HP: 37, HPmax: 49,
         FP: 54, FPbase: 30,
@@ -2515,7 +2515,7 @@ const SHIP_DATA: ShipDatas = {
     124: {
         name: 'Suzuya',
         nameJP: '鈴谷',
-        type: 5, ship_class: 9,
+        type: ShipType.CA, ship_class: 9,
         nid: 124,
         HP: 40, HPmax: 59,
         FP: 59, FPbase: 40,
@@ -2536,7 +2536,7 @@ const SHIP_DATA: ShipDatas = {
     125: {
         name: 'Kumano',
         nameJP: '熊野',
-        type: 5, ship_class: 9,
+        type: ShipType.CA, ship_class: 9,
         nid: 125,
         HP: 40, HPmax: 59,
         FP: 59, FPbase: 40,
@@ -2557,7 +2557,7 @@ const SHIP_DATA: ShipDatas = {
     126: {
         name: 'I-168',
         nameJP: '伊168',
-        type: 13, ship_class: 35,
+        type: ShipType.SS, ship_class: 35,
         nid: 126,
         HP: 10, HPmax: 17,
         FP: 7, FPbase: 2,
@@ -2578,7 +2578,7 @@ const SHIP_DATA: ShipDatas = {
     127: {
         name: 'I-58',
         nameJP: '伊58',
-        type: 13, ship_class: 36,
+        type: ShipType.SS, ship_class: 36,
         nid: 127,
         HP: 14, HPmax: 19,
         FP: 9, FPbase: 2,
@@ -2599,7 +2599,7 @@ const SHIP_DATA: ShipDatas = {
     128: {
         name: 'I-8',
         nameJP: '伊8',
-        type: 13, ship_class: 40,
+        type: ShipType.SS, ship_class: 40,
         nid: 128,
         HP: 15, HPmax: 19,
         FP: 9, FPbase: 2,
@@ -2620,7 +2620,7 @@ const SHIP_DATA: ShipDatas = {
     129: {
         name: 'Suzuya Kai',
         nameJP: '鈴谷改',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 129,
         HP: 50, HPmax: 67,
         FP: 75, FPbase: 24,
@@ -2641,7 +2641,7 @@ const SHIP_DATA: ShipDatas = {
     130: {
         name: 'Kumano Kai',
         nameJP: '熊野改',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 130,
         HP: 50, HPmax: 67,
         FP: 75, FPbase: 24,
@@ -2662,7 +2662,7 @@ const SHIP_DATA: ShipDatas = {
     131: {
         name: 'Yamato',
         nameJP: '大和',
-        type: 9, ship_class: 37,
+        type: ShipType.BB, ship_class: 37,
         nid: 131,
         fit_class: 9,
         HP: 93, HPmax: 98,
@@ -2684,7 +2684,7 @@ const SHIP_DATA: ShipDatas = {
     132: {
         name: 'Akigumo',
         nameJP: '秋雲',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 132,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -2705,7 +2705,7 @@ const SHIP_DATA: ShipDatas = {
     133: {
         name: 'Yuugumo',
         nameJP: '夕雲',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 133,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -2726,7 +2726,7 @@ const SHIP_DATA: ShipDatas = {
     134: {
         name: 'Makigumo',
         nameJP: '巻雲',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 134,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -2747,7 +2747,7 @@ const SHIP_DATA: ShipDatas = {
     135: {
         name: 'Naganami',
         nameJP: '長波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 135,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -2768,7 +2768,7 @@ const SHIP_DATA: ShipDatas = {
     136: {
         name: 'Yamato Kai',
         nameJP: '大和改',
-        type: 9, ship_class: 37,
+        type: ShipType.BB, ship_class: 37,
         nid: 136,
         fit_class: 9,
         HP: 96, HPmax: 108,
@@ -2790,7 +2790,7 @@ const SHIP_DATA: ShipDatas = {
     137: {
         name: 'Agano',
         nameJP: '阿賀野',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 137,
         HP: 30, HPmax: 45,
         FP: 42, FPbase: 20,
@@ -2811,7 +2811,7 @@ const SHIP_DATA: ShipDatas = {
     138: {
         name: 'Noshiro',
         nameJP: '能代',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 138,
         HP: 30, HPmax: 45,
         FP: 42, FPbase: 20,
@@ -2832,7 +2832,7 @@ const SHIP_DATA: ShipDatas = {
     139: {
         name: 'Yahagi',
         nameJP: '矢矧',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 139,
         HP: 31, HPmax: 45,
         FP: 42, FPbase: 20,
@@ -2853,7 +2853,7 @@ const SHIP_DATA: ShipDatas = {
     140: {
         name: 'Sakawa',
         nameJP: '酒匂',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 140,
         HP: 31, HPmax: 45,
         FP: 41, FPbase: 19,
@@ -2874,7 +2874,7 @@ const SHIP_DATA: ShipDatas = {
     141: {
         name: 'Isuzu Kai 2',
         nameJP: '五十鈴改二',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 141,
         HP: 44, HPmax: 59,
         FP: 62, FPbase: 18,
@@ -2896,7 +2896,7 @@ const SHIP_DATA: ShipDatas = {
     142: {
         name: 'Kinugasa Kai 2',
         nameJP: '衣笠改二',
-        type: 5, ship_class: 13,
+        type: ShipType.CA, ship_class: 13,
         nid: 142,
         HP: 53, HPmax: 65,
         FP: 78, FPbase: 38,
@@ -2917,7 +2917,7 @@ const SHIP_DATA: ShipDatas = {
     143: {
         name: 'Musashi',
         nameJP: '武蔵',
-        type: 9, ship_class: 37,
+        type: ShipType.BB, ship_class: 37,
         nid: 143,
         fit_class: 9,
         HP: 94, HPmax: 98,
@@ -2939,7 +2939,7 @@ const SHIP_DATA: ShipDatas = {
     144: {
         name: 'Yuudachi Kai 2',
         nameJP: '夕立改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 144,
         HP: 31, HPmax: 58,
         FP: 73, FPbase: 17,
@@ -2960,7 +2960,7 @@ const SHIP_DATA: ShipDatas = {
     145: {
         name: 'Shigure Kai 2',
         nameJP: '時雨改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 145,
         HP: 31, HPmax: 49,
         FP: 62, FPbase: 13,
@@ -2981,7 +2981,7 @@ const SHIP_DATA: ShipDatas = {
     146: {
         name: 'Kiso Kai 2',
         nameJP: '木曾改二',
-        type: 4, ship_class: 4,
+        type: ShipType.CLT, ship_class: 4,
         nid: 146,
         HP: 44, HPmax: 59,
         FP: 65, FPbase: 18,
@@ -3002,7 +3002,7 @@ const SHIP_DATA: ShipDatas = {
     147: {
         name: 'Verniy',
         nameJP: 'Верный',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 147,
         HP: 37, HPmax: 49,
         FP: 58, FPbase: 13,
@@ -3023,7 +3023,7 @@ const SHIP_DATA: ShipDatas = {
     148: {
         name: 'Musashi Kai',
         nameJP: '武蔵改',
-        type: 9, ship_class: 37,
+        type: ShipType.BB, ship_class: 37,
         nid: 148,
         fit_class: 9,
         HP: 97, HPmax: 108,
@@ -3045,7 +3045,7 @@ const SHIP_DATA: ShipDatas = {
     149: {
         name: 'Kongou Kai 2',
         nameJP: '金剛改二',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 149,
         fit_class: 1,
         HP: 82, HPmax: 99,
@@ -3067,7 +3067,7 @@ const SHIP_DATA: ShipDatas = {
     150: {
         name: 'Hiei Kai 2',
         nameJP: '比叡改二',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 150,
         fit_class: 1,
         HP: 83, HPmax: 99,
@@ -3089,7 +3089,7 @@ const SHIP_DATA: ShipDatas = {
     151: {
         name: 'Haruna Kai 2',
         nameJP: '榛名改二',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 151,
         fit_class: 1,
         HP: 81, HPmax: 99,
@@ -3111,7 +3111,7 @@ const SHIP_DATA: ShipDatas = {
     152: {
         name: 'Kirishima Kai 2',
         nameJP: '霧島改二',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 152,
         fit_class: 1,
         HP: 82, HPmax: 99,
@@ -3133,7 +3133,7 @@ const SHIP_DATA: ShipDatas = {
     153: {
         name: 'Taihou',
         nameJP: '大鳳',
-        type: 18, ship_class: 43,
+        type: ShipType.CVB, ship_class: 43,
         nid: 153,
         HP: 67, HPmax: 87,
         FP: 49, FPbase: 0,
@@ -3154,7 +3154,7 @@ const SHIP_DATA: ShipDatas = {
     154: {
         name: 'Katori',
         nameJP: '香取',
-        type: 21, ship_class: 56,
+        type: ShipType.CT, ship_class: 56,
         nid: 154,
         HP: 36, HPmax: 48,
         FP: 28, FPbase: 14,
@@ -3175,7 +3175,7 @@ const SHIP_DATA: ShipDatas = {
     155: {
         name: 'I-401',
         nameJP: '伊401',
-        type: 14, ship_class: 44,
+        type: ShipType.SSV, ship_class: 44,
         nid: 155,
         HP: 20, HPmax: 24,
         FP: 9, FPbase: 2,
@@ -3196,7 +3196,7 @@ const SHIP_DATA: ShipDatas = {
     156: {
         name: 'Taihou Kai',
         nameJP: '大鳳改',
-        type: 18, ship_class: 43,
+        type: ShipType.CVB, ship_class: 43,
         nid: 156,
         HP: 70, HPmax: 90,
         FP: 59, FPbase: 0,
@@ -3217,7 +3217,7 @@ const SHIP_DATA: ShipDatas = {
     157: {
         name: 'Ryuujou Kai 2',
         nameJP: '龍驤改二',
-        type: 7, ship_class: 32,
+        type: ShipType.CVL, ship_class: 32,
         nid: 157,
         HP: 50, HPmax: 72,
         FP: 40, FPbase: 0,
@@ -3238,7 +3238,7 @@ const SHIP_DATA: ShipDatas = {
     158: {
         name: 'Sendai Kai 2',
         nameJP: '川内改二',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 158,
         HP: 49, HPmax: 64,
         FP: 69, FPbase: 24,
@@ -3259,7 +3259,7 @@ const SHIP_DATA: ShipDatas = {
     159: {
         name: 'Jintsuu Kai 2',
         nameJP: '神通改二',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 159,
         HP: 51, HPmax: 63,
         FP: 74, FPbase: 27,
@@ -3280,7 +3280,7 @@ const SHIP_DATA: ShipDatas = {
     160: {
         name: 'Naka Kai 2',
         nameJP: '那珂改二',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 160,
         HP: 48, HPmax: 62,
         FP: 69, FPbase: 22,
@@ -3301,7 +3301,7 @@ const SHIP_DATA: ShipDatas = {
     161: {
         name: 'AkitsuMaru',
         nameJP: 'あきつ丸',
-        type: 17, ship_class: 45,
+        type: ShipType.LHA, ship_class: 45,
         nid: 161,
         HP: 38, HPmax: 49,
         FP: 19, FPbase: 6,
@@ -3322,7 +3322,7 @@ const SHIP_DATA: ShipDatas = {
     162: {
         name: 'Kamoi',
         nameJP: '神威',
-        type: 22, ship_class: 72,
+        type: ShipType.AO, ship_class: 72,
         nid: 162,
         HP: 36, HPmax: 48,
         FP: 18, FPbase: 3,
@@ -3343,7 +3343,7 @@ const SHIP_DATA: ShipDatas = {
     163: {
         name: 'Maruyu',
         nameJP: 'まるゆ',
-        type: 13, ship_class: 46,
+        type: ShipType.SS, ship_class: 46,
         nid: 163,
         HP: 6, HPmax: 9,
         FP: 3, FPbase: 1,
@@ -3364,7 +3364,7 @@ const SHIP_DATA: ShipDatas = {
     164: {
         name: 'Yayoi',
         nameJP: '弥生',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 164,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -3385,7 +3385,7 @@ const SHIP_DATA: ShipDatas = {
     165: {
         name: 'Uzuki',
         nameJP: '卯月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 165,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -3406,7 +3406,7 @@ const SHIP_DATA: ShipDatas = {
     166: {
         name: 'AkitsuMaru Kai',
         nameJP: 'あきつ丸改',
-        type: 17, ship_class: 45,
+        type: ShipType.LHA, ship_class: 45,
         nid: 166,
         HP: 40, HPmax: 59,
         FP: 33, FPbase: 8,
@@ -3427,7 +3427,7 @@ const SHIP_DATA: ShipDatas = {
     167: {
         name: 'Isokaze',
         nameJP: '磯風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 167,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3448,7 +3448,7 @@ const SHIP_DATA: ShipDatas = {
     168: {
         name: 'Urakaze',
         nameJP: '浦風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 168,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3469,7 +3469,7 @@ const SHIP_DATA: ShipDatas = {
     169: {
         name: 'Tanikaze',
         nameJP: '谷風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 169,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3490,7 +3490,7 @@ const SHIP_DATA: ShipDatas = {
     170: {
         name: 'Hamakaze',
         nameJP: '浜風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 170,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3511,7 +3511,7 @@ const SHIP_DATA: ShipDatas = {
     171: {
         name: 'Bismarck',
         nameJP: 'Bismarck',
-        type: 8, ship_class: 47,
+        type: ShipType.FBB, ship_class: 47,
         nid: 171,
         fit_class: 2,
         HP: 90, HPmax: 96,
@@ -3533,7 +3533,7 @@ const SHIP_DATA: ShipDatas = {
     172: {
         name: 'Bismarck Kai',
         nameJP: 'Bismarck改',
-        type: 8, ship_class: 47,
+        type: ShipType.FBB, ship_class: 47,
         nid: 172,
         fit_class: 2,
         HP: 94, HPmax: 99,
@@ -3555,7 +3555,7 @@ const SHIP_DATA: ShipDatas = {
     173: {
         name: 'Bismarck Zwei',
         nameJP: 'Bismarck zwei',
-        type: 8, ship_class: 47,
+        type: ShipType.FBB, ship_class: 47,
         nid: 173,
         fit_class: 2,
         HP: 96, HPmax: 99,
@@ -3577,7 +3577,7 @@ const SHIP_DATA: ShipDatas = {
     174: {
         name: 'Z1',
         nameJP: 'Z1',
-        type: 2, ship_class: 48,
+        type: ShipType.DD, ship_class: 48,
         nid: 174,
         HP: 18, HPmax: 29,
         FP: 26, FPbase: 8,
@@ -3598,7 +3598,7 @@ const SHIP_DATA: ShipDatas = {
     175: {
         name: 'Z3',
         nameJP: 'Z3',
-        type: 2, ship_class: 48,
+        type: ShipType.DD, ship_class: 48,
         nid: 175,
         HP: 18, HPmax: 29,
         FP: 26, FPbase: 8,
@@ -3619,7 +3619,7 @@ const SHIP_DATA: ShipDatas = {
     176: {
         name: 'PrinzEugen',
         nameJP: 'Prinz Eugen',
-        type: 5, ship_class: 55,
+        type: ShipType.CA, ship_class: 55,
         nid: 176,
         HP: 50, HPmax: 72,
         FP: 56, FPbase: 38,
@@ -3640,7 +3640,7 @@ const SHIP_DATA: ShipDatas = {
     177: {
         name: 'PrinzEugen Kai',
         nameJP: 'Prinz Eugen改',
-        type: 5, ship_class: 55,
+        type: ShipType.CA, ship_class: 55,
         nid: 177,
         HP: 63, HPmax: 79,
         FP: 75, FPbase: 48,
@@ -3661,7 +3661,7 @@ const SHIP_DATA: ShipDatas = {
     178: {
         name: 'Bismarck Drei',
         nameJP: 'Bismarck drei',
-        type: 8, ship_class: 47,
+        type: ShipType.FBB, ship_class: 47,
         nid: 178,
         fit_class: 2,
         HP: 96, HPmax: 99,
@@ -3683,7 +3683,7 @@ const SHIP_DATA: ShipDatas = {
     179: {
         name: 'Z1 Zwei',
         nameJP: 'Z1 zwei',
-        type: 2, ship_class: 48,
+        type: ShipType.DD, ship_class: 48,
         nid: 179,
         HP: 35, HPmax: 59,
         FP: 49, FPbase: 12,
@@ -3704,7 +3704,7 @@ const SHIP_DATA: ShipDatas = {
     180: {
         name: 'Z3 Zwei',
         nameJP: 'Z3 zwei',
-        type: 2, ship_class: 48,
+        type: ShipType.DD, ship_class: 48,
         nid: 180,
         HP: 35, HPmax: 59,
         FP: 47, FPbase: 10,
@@ -3725,7 +3725,7 @@ const SHIP_DATA: ShipDatas = {
     181: {
         name: 'Amatsukaze',
         nameJP: '天津風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 181,
         HP: 18, HPmax: 37,
         FP: 29, FPbase: 10,
@@ -3746,7 +3746,7 @@ const SHIP_DATA: ShipDatas = {
     182: {
         name: 'Akashi',
         nameJP: '明石',
-        type: 19, ship_class: 49,
+        type: ShipType.AR, ship_class: 49,
         nid: 182,
         HP: 39, HPmax: 48,
         FP: 14, FPbase: 4,
@@ -3767,7 +3767,7 @@ const SHIP_DATA: ShipDatas = {
     183: {
         name: 'Ooyodo',
         nameJP: '大淀',
-        type: 3, ship_class: 52,
+        type: ShipType.CL, ship_class: 52,
         nid: 183,
         HP: 34, HPmax: 47,
         FP: 48, FPbase: 24,
@@ -3788,7 +3788,7 @@ const SHIP_DATA: ShipDatas = {
     184: {
         name: 'Taigei',
         nameJP: '大鯨',
-        type: 20, ship_class: 50,
+        type: ShipType.AS, ship_class: 50,
         nid: 184,
         HP: 39, HPmax: 55,
         FP: 15, FPbase: 5,
@@ -3809,7 +3809,7 @@ const SHIP_DATA: ShipDatas = {
     185: {
         name: 'Ryuuhou',
         nameJP: '龍鳳',
-        type: 7, ship_class: 51,
+        type: ShipType.CVL, ship_class: 51,
         nid: 185,
         HP: 39, HPmax: 57,
         FP: 20, FPbase: 0,
@@ -3830,7 +3830,7 @@ const SHIP_DATA: ShipDatas = {
     186: {
         name: 'Tokitsukaze',
         nameJP: '時津風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 186,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3851,7 +3851,7 @@ const SHIP_DATA: ShipDatas = {
     187: {
         name: 'Akashi Kai',
         nameJP: '明石改',
-        type: 19, ship_class: 49,
+        type: ShipType.AR, ship_class: 49,
         nid: 187,
         HP: 45, HPmax: 58,
         FP: 24, FPbase: 6,
@@ -3872,7 +3872,7 @@ const SHIP_DATA: ShipDatas = {
     188: {
         name: 'Tone Kai 2',
         nameJP: '利根改二',
-        type: 6, ship_class: 31,
+        type: ShipType.CAV, ship_class: 31,
         nid: 188,
         HP: 59, HPmax: 72,
         FP: 78, FPbase: 46,
@@ -3893,7 +3893,7 @@ const SHIP_DATA: ShipDatas = {
     189: {
         name: 'Chikuma Kai 2',
         nameJP: '筑摩改二',
-        type: 6, ship_class: 31,
+        type: ShipType.CAV, ship_class: 31,
         nid: 189,
         HP: 58, HPmax: 72,
         FP: 79, FPbase: 46,
@@ -3914,7 +3914,7 @@ const SHIP_DATA: ShipDatas = {
     190: {
         name: 'Hatsukaze',
         nameJP: '初風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 118,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3935,7 +3935,7 @@ const SHIP_DATA: ShipDatas = {
     191: {
         name: 'I-19',
         nameJP: '伊19',
-        type: 13, ship_class: 39,
+        type: ShipType.SS, ship_class: 39,
         nid: 123,
         HP: 14, HPmax: 19,
         FP: 9, FPbase: 2,
@@ -3956,7 +3956,7 @@ const SHIP_DATA: ShipDatas = {
     192: {
         name: 'Nachi Kai 2',
         nameJP: '那智改二',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 192,
         HP: 56, HPmax: 71,
         FP: 81, FPbase: 50,
@@ -3977,7 +3977,7 @@ const SHIP_DATA: ShipDatas = {
     193: {
         name: 'Ashigara Kai 2',
         nameJP: '足柄改二',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 193,
         HP: 56, HPmax: 71,
         FP: 84, FPbase: 53,
@@ -3998,7 +3998,7 @@ const SHIP_DATA: ShipDatas = {
     194: {
         name: 'Haguro Kai 2',
         nameJP: '羽黒改二',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 194,
         HP: 57, HPmax: 71,
         FP: 85, FPbase: 52,
@@ -4019,7 +4019,7 @@ const SHIP_DATA: ShipDatas = {
     195: {
         name: 'Ayanami Kai 2',
         nameJP: '綾波改二',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 195,
         HP: 32, HPmax: 54,
         FP: 75, FPbase: 17,
@@ -4040,7 +4040,7 @@ const SHIP_DATA: ShipDatas = {
     196: {
         name: 'Hiryuu Kai 2',
         nameJP: '飛龍改二',
-        type: 11, ship_class: 25,
+        type: ShipType.CV, ship_class: 25,
         nid: 196,
         HP: 67, HPmax: 89,
         FP: 67, FPbase: 0,
@@ -4061,7 +4061,7 @@ const SHIP_DATA: ShipDatas = {
     197: {
         name: 'Souryuu Kai 2',
         nameJP: '蒼龍改二',
-        type: 11, ship_class: 17,
+        type: ShipType.CV, ship_class: 17,
         nid: 197,
         HP: 67, HPmax: 89,
         FP: 63, FPbase: 0,
@@ -4082,7 +4082,7 @@ const SHIP_DATA: ShipDatas = {
     198: {
         name: 'Arare Kai 2',
         nameJP: '霰改二',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 198,
         HP: 31, HPmax: 53,
         FP: 66, FPbase: 16,
@@ -4103,7 +4103,7 @@ const SHIP_DATA: ShipDatas = {
     199: {
         name: 'Ooshio Kai 2',
         nameJP: '大潮改二',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 199,
         HP: 31, HPmax: 53,
         FP: 67, FPbase: 17,
@@ -4124,7 +4124,7 @@ const SHIP_DATA: ShipDatas = {
     200: {
         name: 'Abukuma Kai 2',
         nameJP: '阿武隈改二',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 200,
         HP: 45, HPmax: 61,
         FP: 56, FPbase: 16,
@@ -4145,7 +4145,7 @@ const SHIP_DATA: ShipDatas = {
     201: {
         name: 'Fubuki Kai',
         nameJP: '吹雪改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1301,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4166,7 +4166,7 @@ const SHIP_DATA: ShipDatas = {
     202: {
         name: 'Shirayuki Kai',
         nameJP: '白雪改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1302,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4187,7 +4187,7 @@ const SHIP_DATA: ShipDatas = {
     203: {
         name: 'Hatsuyuki Kai',
         nameJP: '初雪改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1303,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4208,7 +4208,7 @@ const SHIP_DATA: ShipDatas = {
     204: {
         name: 'Miyuki Kai',
         nameJP: '深雪改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1304,
         HP: 30, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -4229,7 +4229,7 @@ const SHIP_DATA: ShipDatas = {
     205: {
         name: 'Murakumo Kai',
         nameJP: '叢雲改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1305,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4250,7 +4250,7 @@ const SHIP_DATA: ShipDatas = {
     206: {
         name: 'Isonami Kai',
         nameJP: '磯波改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1306,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4271,7 +4271,7 @@ const SHIP_DATA: ShipDatas = {
     207: {
         name: 'Ayanami Kai',
         nameJP: '綾波改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1307,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4292,7 +4292,7 @@ const SHIP_DATA: ShipDatas = {
     208: {
         name: 'Shikinami Kai',
         nameJP: '敷波改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1308,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4313,7 +4313,7 @@ const SHIP_DATA: ShipDatas = {
     209: {
         name: 'Kongou Kai',
         nameJP: '金剛改',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 1309,
         fit_class: 1,
         HP: 75, HPmax: 89,
@@ -4335,7 +4335,7 @@ const SHIP_DATA: ShipDatas = {
     210: {
         name: 'Hiei Kai',
         nameJP: '比叡改',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 1310,
         fit_class: 1,
         HP: 75, HPmax: 89,
@@ -4357,7 +4357,7 @@ const SHIP_DATA: ShipDatas = {
     211: {
         name: 'Haruna Kai',
         nameJP: '榛名改',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 1311,
         fit_class: 1,
         HP: 75, HPmax: 89,
@@ -4379,7 +4379,7 @@ const SHIP_DATA: ShipDatas = {
     212: {
         name: 'Kirishima Kai',
         nameJP: '霧島改',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 1312,
         fit_class: 1,
         HP: 75, HPmax: 89,
@@ -4401,7 +4401,7 @@ const SHIP_DATA: ShipDatas = {
     213: {
         name: 'Tenryuu Kai',
         nameJP: '天龍改',
-        type: 3, ship_class: 21,
+        type: ShipType.CL, ship_class: 21,
         nid: 1313,
         HP: 40, HPmax: 54,
         FP: 59, FPbase: 20,
@@ -4422,7 +4422,7 @@ const SHIP_DATA: ShipDatas = {
     214: {
         name: 'Tatsuta Kai',
         nameJP: '龍田改',
-        type: 3, ship_class: 21,
+        type: ShipType.CL, ship_class: 21,
         nid: 1314,
         HP: 40, HPmax: 54,
         FP: 59, FPbase: 20,
@@ -4443,7 +4443,7 @@ const SHIP_DATA: ShipDatas = {
     215: {
         name: 'Kuma Kai',
         nameJP: '球磨改',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 1315,
         HP: 42, HPmax: 59,
         FP: 69, FPbase: 20,
@@ -4464,7 +4464,7 @@ const SHIP_DATA: ShipDatas = {
     216: {
         name: 'Tama Kai',
         nameJP: '多摩改',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 1316,
         HP: 42, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -4485,7 +4485,7 @@ const SHIP_DATA: ShipDatas = {
     217: {
         name: 'Kiso Kai',
         nameJP: '木曾改',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 1317,
         HP: 42, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -4506,7 +4506,7 @@ const SHIP_DATA: ShipDatas = {
     218: {
         name: 'Nagara Kai',
         nameJP: '長良改',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 1318,
         HP: 43, HPmax: 59,
         FP: 69, FPbase: 20,
@@ -4527,7 +4527,7 @@ const SHIP_DATA: ShipDatas = {
     219: {
         name: 'Isuzu Kai',
         nameJP: '五十鈴改',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 1319,
         HP: 37, HPmax: 59,
         FP: 59, FPbase: 18,
@@ -4548,7 +4548,7 @@ const SHIP_DATA: ShipDatas = {
     220: {
         name: 'Yura Kai',
         nameJP: '由良改',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 1320,
         HP: 43, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -4569,7 +4569,7 @@ const SHIP_DATA: ShipDatas = {
     221: {
         name: 'Natori Kai',
         nameJP: '名取改',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 1321,
         HP: 43, HPmax: 59,
         FP: 69, FPbase: 20,
@@ -4590,7 +4590,7 @@ const SHIP_DATA: ShipDatas = {
     222: {
         name: 'Sendai Kai',
         nameJP: '川内改',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 1322,
         HP: 44, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -4611,7 +4611,7 @@ const SHIP_DATA: ShipDatas = {
     223: {
         name: 'Jintsuu Kai',
         nameJP: '神通改',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 1323,
         HP: 44, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -4632,7 +4632,7 @@ const SHIP_DATA: ShipDatas = {
     224: {
         name: 'Naka Kai',
         nameJP: '那珂改',
-        type: 3, ship_class: 16,
+        type: ShipType.CL, ship_class: 16,
         nid: 1324,
         HP: 44, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -4653,7 +4653,7 @@ const SHIP_DATA: ShipDatas = {
     225: {
         name: 'Kagerou Kai',
         nameJP: '陽炎改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1325,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4674,7 +4674,7 @@ const SHIP_DATA: ShipDatas = {
     226: {
         name: 'Shiranui Kai',
         nameJP: '不知火改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1326,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4695,7 +4695,7 @@ const SHIP_DATA: ShipDatas = {
     227: {
         name: 'Kuroshio Kai',
         nameJP: '黒潮改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1327,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4716,7 +4716,7 @@ const SHIP_DATA: ShipDatas = {
     228: {
         name: 'Yukikaze Kai',
         nameJP: '雪風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1328,
         HP: 32, HPmax: 49,
         FP: 59, FPbase: 12,
@@ -4737,7 +4737,7 @@ const SHIP_DATA: ShipDatas = {
     229: {
         name: 'Shimakaze Kai',
         nameJP: '島風改',
-        type: 2, ship_class: 22,
+        type: ShipType.DD, ship_class: 22,
         nid: 1329,
         HP: 36, HPmax: 59,
         FP: 59, FPbase: 14,
@@ -4758,7 +4758,7 @@ const SHIP_DATA: ShipDatas = {
     230: {
         name: 'Oboro Kai',
         nameJP: '朧改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1330,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4779,7 +4779,7 @@ const SHIP_DATA: ShipDatas = {
     231: {
         name: 'Akebono Kai',
         nameJP: '曙改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1331,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4800,7 +4800,7 @@ const SHIP_DATA: ShipDatas = {
     232: {
         name: 'Sazanami Kai',
         nameJP: '漣改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1332,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4821,7 +4821,7 @@ const SHIP_DATA: ShipDatas = {
     233: {
         name: 'Ushio Kai',
         nameJP: '潮改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1333,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4842,7 +4842,7 @@ const SHIP_DATA: ShipDatas = {
     234: {
         name: 'Akatsuki Kai',
         nameJP: '暁改',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 1334,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4863,7 +4863,7 @@ const SHIP_DATA: ShipDatas = {
     235: {
         name: 'Hibiki Kai',
         nameJP: '響改',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 1335,
         HP: 30, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -4884,7 +4884,7 @@ const SHIP_DATA: ShipDatas = {
     236: {
         name: 'Ikazuchi Kai',
         nameJP: '雷改',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 1336,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4905,7 +4905,7 @@ const SHIP_DATA: ShipDatas = {
     237: {
         name: 'Inazuma Kai',
         nameJP: '電改',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 1337,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4926,7 +4926,7 @@ const SHIP_DATA: ShipDatas = {
     238: {
         name: 'Hatsuharu Kai',
         nameJP: '初春改',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 1338,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -4947,7 +4947,7 @@ const SHIP_DATA: ShipDatas = {
     239: {
         name: 'Nenohi Kai',
         nameJP: '子日改',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 1339,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -4968,7 +4968,7 @@ const SHIP_DATA: ShipDatas = {
     240: {
         name: 'Wakaba Kai',
         nameJP: '若葉改',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 1340,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -4989,7 +4989,7 @@ const SHIP_DATA: ShipDatas = {
     241: {
         name: 'Hatsushimo Kai',
         nameJP: '初霜改',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 1341,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5010,7 +5010,7 @@ const SHIP_DATA: ShipDatas = {
     242: {
         name: 'Shiratsuyu Kai',
         nameJP: '白露改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1342,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5031,7 +5031,7 @@ const SHIP_DATA: ShipDatas = {
     243: {
         name: 'Shigure Kai',
         nameJP: '時雨改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1343,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5052,7 +5052,7 @@ const SHIP_DATA: ShipDatas = {
     244: {
         name: 'Murasame Kai',
         nameJP: '村雨改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1344,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5073,7 +5073,7 @@ const SHIP_DATA: ShipDatas = {
     245: {
         name: 'Yuudachi Kai',
         nameJP: '夕立改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1345,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5094,7 +5094,7 @@ const SHIP_DATA: ShipDatas = {
     246: {
         name: 'Samidare Kai',
         nameJP: '五月雨改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1346,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5115,7 +5115,7 @@ const SHIP_DATA: ShipDatas = {
     247: {
         name: 'Suzukaze Kai',
         nameJP: '涼風改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1347,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5136,7 +5136,7 @@ const SHIP_DATA: ShipDatas = {
     248: {
         name: 'Asashio Kai',
         nameJP: '朝潮改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1348,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5157,7 +5157,7 @@ const SHIP_DATA: ShipDatas = {
     249: {
         name: 'Ooshio Kai',
         nameJP: '大潮改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1349,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5178,7 +5178,7 @@ const SHIP_DATA: ShipDatas = {
     250: {
         name: 'Michishio Kai',
         nameJP: '満潮改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1350,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5199,7 +5199,7 @@ const SHIP_DATA: ShipDatas = {
     251: {
         name: 'Arashio Kai',
         nameJP: '荒潮改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1351,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5220,7 +5220,7 @@ const SHIP_DATA: ShipDatas = {
     252: {
         name: 'Arare Kai',
         nameJP: '霰改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1352,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5241,7 +5241,7 @@ const SHIP_DATA: ShipDatas = {
     253: {
         name: 'Kasumi Kai',
         nameJP: '霞改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1353,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5262,7 +5262,7 @@ const SHIP_DATA: ShipDatas = {
     254: {
         name: 'Mutsuki Kai',
         nameJP: '睦月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1354,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5283,7 +5283,7 @@ const SHIP_DATA: ShipDatas = {
     255: {
         name: 'Kisaragi Kai',
         nameJP: '如月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1355,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5304,7 +5304,7 @@ const SHIP_DATA: ShipDatas = {
     256: {
         name: 'Satsuki Kai',
         nameJP: '皐月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1356,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5325,7 +5325,7 @@ const SHIP_DATA: ShipDatas = {
     257: {
         name: 'Fumizuki Kai',
         nameJP: '文月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1357,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5346,7 +5346,7 @@ const SHIP_DATA: ShipDatas = {
     258: {
         name: 'Nagatsuki Kai',
         nameJP: '長月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1358,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5367,7 +5367,7 @@ const SHIP_DATA: ShipDatas = {
     259: {
         name: 'Kikuzuki Kai',
         nameJP: '菊月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1359,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5388,7 +5388,7 @@ const SHIP_DATA: ShipDatas = {
     260: {
         name: 'Mikazuki Kai',
         nameJP: '三日月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1360,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5409,7 +5409,7 @@ const SHIP_DATA: ShipDatas = {
     261: {
         name: 'Mochizuki Kai',
         nameJP: '望月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1361,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5430,7 +5430,7 @@ const SHIP_DATA: ShipDatas = {
     262: {
         name: 'Furutaka Kai',
         nameJP: '古鷹改',
-        type: 5, ship_class: 7,
+        type: ShipType.CA, ship_class: 7,
         nid: 1362,
         HP: 48, HPmax: 65,
         FP: 70, FPbase: 36,
@@ -5451,7 +5451,7 @@ const SHIP_DATA: ShipDatas = {
     263: {
         name: 'Kako Kai',
         nameJP: '加古改',
-        type: 5, ship_class: 7,
+        type: ShipType.CA, ship_class: 7,
         nid: 1363,
         HP: 48, HPmax: 65,
         FP: 70, FPbase: 36,
@@ -5472,7 +5472,7 @@ const SHIP_DATA: ShipDatas = {
     264: {
         name: 'Aoba Kai',
         nameJP: '青葉改',
-        type: 5, ship_class: 13,
+        type: ShipType.CA, ship_class: 13,
         nid: 1364,
         HP: 49, HPmax: 65,
         FP: 73, FPbase: 36,
@@ -5493,7 +5493,7 @@ const SHIP_DATA: ShipDatas = {
     265: {
         name: 'Myoukou Kai',
         nameJP: '妙高改',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 1365,
         HP: 55, HPmax: 69,
         FP: 76, FPbase: 48,
@@ -5514,7 +5514,7 @@ const SHIP_DATA: ShipDatas = {
     266: {
         name: 'Nachi Kai',
         nameJP: '那智改',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 1366,
         HP: 55, HPmax: 69,
         FP: 76, FPbase: 48,
@@ -5535,7 +5535,7 @@ const SHIP_DATA: ShipDatas = {
     267: {
         name: 'Ashigara Kai',
         nameJP: '足柄改',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 1367,
         HP: 55, HPmax: 69,
         FP: 77, FPbase: 48,
@@ -5556,7 +5556,7 @@ const SHIP_DATA: ShipDatas = {
     268: {
         name: 'Haguro Kai',
         nameJP: '羽黒改',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 1368,
         HP: 55, HPmax: 69,
         FP: 77, FPbase: 48,
@@ -5577,7 +5577,7 @@ const SHIP_DATA: ShipDatas = {
     269: {
         name: 'Takao Kai',
         nameJP: '高雄改',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 1369,
         HP: 57, HPmax: 69,
         FP: 79, FPbase: 48,
@@ -5598,7 +5598,7 @@ const SHIP_DATA: ShipDatas = {
     270: {
         name: 'Atago Kai',
         nameJP: '愛宕改',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 1370,
         HP: 57, HPmax: 69,
         FP: 77, FPbase: 48,
@@ -5619,7 +5619,7 @@ const SHIP_DATA: ShipDatas = {
     271: {
         name: 'Maya Kai',
         nameJP: '摩耶改',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 1371,
         HP: 55, HPmax: 69,
         FP: 78, FPbase: 43,
@@ -5640,7 +5640,7 @@ const SHIP_DATA: ShipDatas = {
     272: {
         name: 'Choukai Kai',
         nameJP: '鳥海改',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 1372,
         HP: 57, HPmax: 69,
         FP: 78, FPbase: 48,
@@ -5661,7 +5661,7 @@ const SHIP_DATA: ShipDatas = {
     273: {
         name: 'Tone Kai',
         nameJP: '利根改',
-        type: 5, ship_class: 31,
+        type: ShipType.CA, ship_class: 31,
         nid: 1373,
         HP: 56, HPmax: 69,
         FP: 76, FPbase: 42,
@@ -5682,7 +5682,7 @@ const SHIP_DATA: ShipDatas = {
     274: {
         name: 'Chikuma Kai',
         nameJP: '筑摩改',
-        type: 5, ship_class: 31,
+        type: ShipType.CA, ship_class: 31,
         nid: 1374,
         HP: 56, HPmax: 69,
         FP: 76, FPbase: 42,
@@ -5703,7 +5703,7 @@ const SHIP_DATA: ShipDatas = {
     275: {
         name: 'Nagato Kai',
         nameJP: '長門改',
-        type: 9, ship_class: 19,
+        type: ShipType.BB, ship_class: 19,
         nid: 1375,
         fit_class: 8,
         HP: 90, HPmax: 98,
@@ -5725,7 +5725,7 @@ const SHIP_DATA: ShipDatas = {
     276: {
         name: 'Mutsu Kai',
         nameJP: '陸奥改',
-        type: 9, ship_class: 19,
+        type: ShipType.BB, ship_class: 19,
         nid: 1376,
         fit_class: 8,
         HP: 90, HPmax: 98,
@@ -5747,7 +5747,7 @@ const SHIP_DATA: ShipDatas = {
     277: {
         name: 'Akagi Kai',
         nameJP: '赤城改',
-        type: 11, ship_class: 14,
+        type: ShipType.CV, ship_class: 14,
         nid: 1377,
         HP: 77, HPmax: 92,
         FP: 55, FPbase: 0,
@@ -5768,7 +5768,7 @@ const SHIP_DATA: ShipDatas = {
     278: {
         name: 'Kaga Kai',
         nameJP: '加賀改',
-        type: 11, ship_class: 3,
+        type: ShipType.CV, ship_class: 3,
         nid: 1378,
         HP: 79, HPmax: 92,
         FP: 50, FPbase: 0,
@@ -5789,7 +5789,7 @@ const SHIP_DATA: ShipDatas = {
     279: {
         name: 'Souryuu Kai',
         nameJP: '蒼龍改',
-        type: 11, ship_class: 17,
+        type: ShipType.CV, ship_class: 17,
         nid: 1379,
         HP: 65, HPmax: 89,
         FP: 39, FPbase: 0,
@@ -5810,7 +5810,7 @@ const SHIP_DATA: ShipDatas = {
     280: {
         name: 'Hiryuu Kai',
         nameJP: '飛龍改',
-        type: 11, ship_class: 25,
+        type: ShipType.CV, ship_class: 25,
         nid: 1380,
         HP: 65, HPmax: 89,
         FP: 39, FPbase: 0,
@@ -5831,7 +5831,7 @@ const SHIP_DATA: ShipDatas = {
     281: {
         name: 'Ryuujou Kai',
         nameJP: '龍驤改',
-        type: 7, ship_class: 32,
+        type: ShipType.CVL, ship_class: 32,
         nid: 1381,
         HP: 45, HPmax: 69,
         FP: 29, FPbase: 0,
@@ -5852,7 +5852,7 @@ const SHIP_DATA: ShipDatas = {
     282: {
         name: 'Shouhou Kai',
         nameJP: '祥鳳改',
-        type: 7, ship_class: 11,
+        type: ShipType.CVL, ship_class: 11,
         nid: 1382,
         HP: 45, HPmax: 69,
         FP: 29, FPbase: 0,
@@ -5873,7 +5873,7 @@ const SHIP_DATA: ShipDatas = {
     283: {
         name: 'Hiyou Kai',
         nameJP: '飛鷹改',
-        type: 7, ship_class: 24,
+        type: ShipType.CVL, ship_class: 24,
         nid: 1383,
         HP: 50, HPmax: 79,
         FP: 29, FPbase: 0,
@@ -5894,7 +5894,7 @@ const SHIP_DATA: ShipDatas = {
     284: {
         name: 'Junyou Kai',
         nameJP: '隼鷹改',
-        type: 7, ship_class: 24,
+        type: ShipType.CVL, ship_class: 24,
         nid: 1384,
         HP: 50, HPmax: 79,
         FP: 29, FPbase: 0,
@@ -5915,7 +5915,7 @@ const SHIP_DATA: ShipDatas = {
     285: {
         name: 'Houshou Kai',
         nameJP: '鳳翔改',
-        type: 7, ship_class: 27,
+        type: ShipType.CVL, ship_class: 27,
         nid: 1385,
         HP: 40, HPmax: 59,
         FP: 29, FPbase: 0,
@@ -5936,7 +5936,7 @@ const SHIP_DATA: ShipDatas = {
     286: {
         name: 'Fusou Kai',
         nameJP: '扶桑改',
-        type: 10, ship_class: 26,
+        type: ShipType.BBV, ship_class: 26,
         nid: 1386,
         fit_class: 6,
         HP: 75, HPmax: 89,
@@ -5958,7 +5958,7 @@ const SHIP_DATA: ShipDatas = {
     287: {
         name: 'Yamashiro Kai',
         nameJP: '山城改',
-        type: 10, ship_class: 26,
+        type: ShipType.BBV, ship_class: 26,
         nid: 1387,
         fit_class: 6,
         HP: 75, HPmax: 89,
@@ -5980,7 +5980,7 @@ const SHIP_DATA: ShipDatas = {
     288: {
         name: 'Shoukaku Kai',
         nameJP: '翔鶴改',
-        type: 11, ship_class: 33,
+        type: ShipType.CV, ship_class: 33,
         nid: 1388,
         HP: 75, HPmax: 90,
         FP: 39, FPbase: 0,
@@ -6001,7 +6001,7 @@ const SHIP_DATA: ShipDatas = {
     289: {
         name: 'Kinu Kai',
         nameJP: '鬼怒改',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 1389,
         HP: 41, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -6022,7 +6022,7 @@ const SHIP_DATA: ShipDatas = {
     290: {
         name: 'Abukuma Kai',
         nameJP: '阿武隈改',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 1390,
         HP: 42, HPmax: 59,
         FP: 59, FPbase: 20,
@@ -6043,7 +6043,7 @@ const SHIP_DATA: ShipDatas = {
     291: {
         name: 'ChitoseCVL Kai',
         nameJP: '千歳航改',
-        type: 7, ship_class: 15,
+        type: ShipType.CVL, ship_class: 15,
         nid: 1391,
         HP: 57, HPmax: 79,
         FP: 34, FPbase: 0,
@@ -6064,7 +6064,7 @@ const SHIP_DATA: ShipDatas = {
     292: {
         name: 'ChiyodaCVL Kai',
         nameJP: '千代田航改',
-        type: 7, ship_class: 15,
+        type: ShipType.CVL, ship_class: 15,
         nid: 1392,
         HP: 57, HPmax: 79,
         FP: 34, FPbase: 0,
@@ -6085,7 +6085,7 @@ const SHIP_DATA: ShipDatas = {
     293: {
         name: 'Yuubari Kai',
         nameJP: '夕張改',
-        type: 3, ship_class: 34,
+        type: ShipType.CL, ship_class: 34,
         nid: 1393,
         HP: 36, HPmax: 49,
         FP: 63, FPbase: 23,
@@ -6106,7 +6106,7 @@ const SHIP_DATA: ShipDatas = {
     294: {
         name: 'Maikaze Kai',
         nameJP: '舞風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1394,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6127,7 +6127,7 @@ const SHIP_DATA: ShipDatas = {
     295: {
         name: 'Kinugasa Kai',
         nameJP: '衣笠改',
-        type: 5, ship_class: 13,
+        type: ShipType.CA, ship_class: 13,
         nid: 1395,
         HP: 49, HPmax: 65,
         FP: 66, FPbase: 36,
@@ -6148,7 +6148,7 @@ const SHIP_DATA: ShipDatas = {
     296: {
         name: 'ChitoseCVL Kai 2',
         nameJP: '千歳航改二',
-        type: 7, ship_class: 15,
+        type: ShipType.CVL, ship_class: 15,
         nid: 121,
         HP: 58, HPmax: 79,
         FP: 34, FPbase: 0,
@@ -6169,7 +6169,7 @@ const SHIP_DATA: ShipDatas = {
     297: {
         name: 'ChiyodaCVL Kai 2',
         nameJP: '千代田航改二',
-        type: 7, ship_class: 15,
+        type: ShipType.CVL, ship_class: 15,
         nid: 122,
         HP: 58, HPmax: 79,
         FP: 34, FPbase: 0,
@@ -6190,7 +6190,7 @@ const SHIP_DATA: ShipDatas = {
     299: {
         name: 'Scamp',
         nameJP: 'Scamp',
-        type: 13, ship_class: 114,
+        type: ShipType.SS, ship_class: 114,
         nid: 493,
         HP: 13, HPmax: 18,
         FP: 11, FPbase: 1,
@@ -6211,7 +6211,7 @@ const SHIP_DATA: ShipDatas = {
     300: {
         name: 'Hatsukaze Kai',
         nameJP: '初風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1396,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6232,7 +6232,7 @@ const SHIP_DATA: ShipDatas = {
     301: {
         name: 'Akigumo Kai',
         nameJP: '秋雲改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1397,
         HP: 32, HPmax: 49,
         FP: 44, FPbase: 8,
@@ -6253,7 +6253,7 @@ const SHIP_DATA: ShipDatas = {
     302: {
         name: 'Yuugumo Kai',
         nameJP: '夕雲改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1398,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6274,7 +6274,7 @@ const SHIP_DATA: ShipDatas = {
     303: {
         name: 'Makigumo Kai',
         nameJP: '巻雲改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1399,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6295,7 +6295,7 @@ const SHIP_DATA: ShipDatas = {
     304: {
         name: 'Naganami Kai',
         nameJP: '長波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1400,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6316,7 +6316,7 @@ const SHIP_DATA: ShipDatas = {
     305: {
         name: 'Agano Kai',
         nameJP: '阿賀野改',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 1401,
         HP: 45, HPmax: 62,
         FP: 68, FPbase: 28,
@@ -6337,7 +6337,7 @@ const SHIP_DATA: ShipDatas = {
     306: {
         name: 'Noshiro Kai',
         nameJP: '能代改',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 1402,
         HP: 45, HPmax: 62,
         FP: 70, FPbase: 28,
@@ -6358,7 +6358,7 @@ const SHIP_DATA: ShipDatas = {
     307: {
         name: 'Yahagi Kai',
         nameJP: '矢矧改',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 1403,
         HP: 47, HPmax: 63,
         FP: 72, FPbase: 28,
@@ -6379,7 +6379,7 @@ const SHIP_DATA: ShipDatas = {
     308: {
         name: 'Yayoi Kai',
         nameJP: '弥生改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1404,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -6400,7 +6400,7 @@ const SHIP_DATA: ShipDatas = {
     309: {
         name: 'Uzuki Kai',
         nameJP: '卯月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1405,
         HP: 24, HPmax: 39,
         FP: 34, FPbase: 7,
@@ -6421,7 +6421,7 @@ const SHIP_DATA: ShipDatas = {
     310: {
         name: 'Z1 Kai',
         nameJP: 'Z1改',
-        type: 2, ship_class: 48,
+        type: ShipType.DD, ship_class: 48,
         nid: 1406,
         HP: 33, HPmax: 59,
         FP: 45, FPbase: 11,
@@ -6442,7 +6442,7 @@ const SHIP_DATA: ShipDatas = {
     311: {
         name: 'Z3 Kai',
         nameJP: 'Z3改',
-        type: 2, ship_class: 48,
+        type: ShipType.DD, ship_class: 48,
         nid: 1407,
         HP: 33, HPmax: 59,
         FP: 45, FPbase: 11,
@@ -6463,7 +6463,7 @@ const SHIP_DATA: ShipDatas = {
     312: {
         name: 'Hamakaze Kai',
         nameJP: '浜風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1408,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6484,7 +6484,7 @@ const SHIP_DATA: ShipDatas = {
     313: {
         name: 'Tanikaze Kai',
         nameJP: '谷風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1409,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6505,7 +6505,7 @@ const SHIP_DATA: ShipDatas = {
     314: {
         name: 'Sakawa Kai',
         nameJP: '酒匂改',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 1410,
         HP: 46, HPmax: 62,
         FP: 67, FPbase: 27,
@@ -6526,7 +6526,7 @@ const SHIP_DATA: ShipDatas = {
     316: {
         name: 'Amatsukaze Kai',
         nameJP: '天津風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1411,
         HP: 34, HPmax: 54,
         FP: 49, FPbase: 12,
@@ -6547,7 +6547,7 @@ const SHIP_DATA: ShipDatas = {
     317: {
         name: 'Urakaze Kai',
         nameJP: '浦風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1412,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6568,7 +6568,7 @@ const SHIP_DATA: ShipDatas = {
     318: {
         name: 'Ryuuhou Kai',
         nameJP: '龍鳳改',
-        type: 7, ship_class: 51,
+        type: ShipType.CVL, ship_class: 51,
         nid: 190,
         HP: 48, HPmax: 70,
         FP: 32, FPbase: 0,
@@ -6589,7 +6589,7 @@ const SHIP_DATA: ShipDatas = {
     319: {
         name: 'Myoukou Kai 2',
         nameJP: '妙高改二',
-        type: 5, ship_class: 29,
+        type: ShipType.CA, ship_class: 29,
         nid: 191,
         HP: 56, HPmax: 71,
         FP: 82, FPbase: 50,
@@ -6610,7 +6610,7 @@ const SHIP_DATA: ShipDatas = {
     320: {
         name: 'Isokaze Kai',
         nameJP: '磯風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1413,
         HP: 33, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6631,7 +6631,7 @@ const SHIP_DATA: ShipDatas = {
     321: {
         name: 'Ooyodo Kai',
         nameJP: '大淀改',
-        type: 3, ship_class: 52,
+        type: ShipType.CL, ship_class: 52,
         nid: 1414,
         HP: 47, HPmax: 64,
         FP: 71, FPbase: 32,
@@ -6652,7 +6652,7 @@ const SHIP_DATA: ShipDatas = {
     322: {
         name: 'Tokitsukaze Kai',
         nameJP: '時津風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1415,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6673,7 +6673,7 @@ const SHIP_DATA: ShipDatas = {
     323: {
         name: 'Harusame Kai',
         nameJP: '春雨改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1416,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6694,7 +6694,7 @@ const SHIP_DATA: ShipDatas = {
     324: {
         name: 'Hayashimo Kai',
         nameJP: '早霜改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1417,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6715,7 +6715,7 @@ const SHIP_DATA: ShipDatas = {
     325: {
         name: 'Kiyoshimo Kai',
         nameJP: '清霜改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1418,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -6736,7 +6736,7 @@ const SHIP_DATA: ShipDatas = {
     326: {
         name: 'Hatsuharu Kai 2',
         nameJP: '初春改二',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 204,
         HP: 31, HPmax: 52,
         FP: 55, FPbase: 13,
@@ -6757,7 +6757,7 @@ const SHIP_DATA: ShipDatas = {
     327: {
         name: 'Asagumo Kai',
         nameJP: '朝雲改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1419,
         HP: 31, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6778,7 +6778,7 @@ const SHIP_DATA: ShipDatas = {
     328: {
         name: 'Yamagumo Kai',
         nameJP: '山雲改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1420,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6799,7 +6799,7 @@ const SHIP_DATA: ShipDatas = {
     329: {
         name: 'Nowaki Kai',
         nameJP: '野分改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1421,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6820,7 +6820,7 @@ const SHIP_DATA: ShipDatas = {
     330: {
         name: 'Akizuki Kai',
         nameJP: '秋月改',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 1422,
         HP: 37, HPmax: 57,
         FP: 57, FPbase: 24,
@@ -6842,7 +6842,7 @@ const SHIP_DATA: ShipDatas = {
     331: {
         name: 'Amagi',
         nameJP: '天城',
-        type: 11, ship_class: 53,
+        type: ShipType.CV, ship_class: 53,
         nid: 202,
         HP: 48, HPmax: 79,
         FP: 25, FPbase: 0,
@@ -6863,7 +6863,7 @@ const SHIP_DATA: ShipDatas = {
     332: {
         name: 'Katsuragi',
         nameJP: '葛城',
-        type: 11, ship_class: 53,
+        type: ShipType.CV, ship_class: 53,
         nid: 203,
         HP: 48, HPmax: 79,
         FP: 25, FPbase: 0,
@@ -6884,7 +6884,7 @@ const SHIP_DATA: ShipDatas = {
     334: {
         name: 'U-511 Kai',
         nameJP: 'U-511改',
-        type: 13, ship_class: 57,
+        type: ShipType.SS, ship_class: 57,
         nid: 1504,
         HP: 13, HPmax: 18,
         FP: 12, FPbase: 3,
@@ -6905,7 +6905,7 @@ const SHIP_DATA: ShipDatas = {
     343: {
         name: 'Katori Kai',
         nameJP: '香取改',
-        type: 21, ship_class: 56,
+        type: ShipType.CT, ship_class: 56,
         nid: 1423,
         HP: 40, HPmax: 54,
         FP: 36, FPbase: 16,
@@ -6926,7 +6926,7 @@ const SHIP_DATA: ShipDatas = {
     344: {
         name: 'Asashimo Kai',
         nameJP: '朝霜改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1424,
         HP: 33, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6947,7 +6947,7 @@ const SHIP_DATA: ShipDatas = {
     345: {
         name: 'Takanami Kai',
         nameJP: '高波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1425,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -6968,7 +6968,7 @@ const SHIP_DATA: ShipDatas = {
     346: {
         name: 'Teruzuki Kai',
         nameJP: '照月改',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 1426,
         HP: 37, HPmax: 57,
         FP: 58, FPbase: 24,
@@ -6990,7 +6990,7 @@ const SHIP_DATA: ShipDatas = {
     347: {
         name: 'Libeccio Kai',
         nameJP: 'Libeccio改',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 1427,
         HP: 29, HPmax: 46,
         FP: 48, FPbase: 11,
@@ -7011,7 +7011,7 @@ const SHIP_DATA: ShipDatas = {
     348: {
         name: 'Mizuho Kai',
         nameJP: '瑞穂改',
-        type: 16, ship_class: 62,
+        type: ShipType.AV, ship_class: 62,
         nid: 1428,
         HP: 42, HPmax: 62,
         FP: 45, FPbase: 18,
@@ -7032,7 +7032,7 @@ const SHIP_DATA: ShipDatas = {
     349: {
         name: 'Kazagumo Kai',
         nameJP: '風雲改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1429,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -7053,7 +7053,7 @@ const SHIP_DATA: ShipDatas = {
     350: {
         name: 'Umikaze Kai',
         nameJP: '海風改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1430,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -7074,7 +7074,7 @@ const SHIP_DATA: ShipDatas = {
     351: {
         name: 'Kawakaze Kai',
         nameJP: '江風改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1431,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -7095,7 +7095,7 @@ const SHIP_DATA: ShipDatas = {
     352: {
         name: 'Hayasui Kai',
         nameJP: '速吸改',
-        type: 22, ship_class: 60,
+        type: ShipType.AO, ship_class: 60,
         nid: 1432,
         can_air_attack: true,
         HP: 48, HPmax: 50,
@@ -7117,8 +7117,8 @@ const SHIP_DATA: ShipDatas = {
     353: {
         name: 'GrafZeppelin Kai',
         nameJP: 'Graf Zeppelin改',
-        type: 11, ship_class: 63,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV, ship_class: 63,
+        CVs_night_attack_type: ShipType.DD,
         nid: 1433,
         HP: 78, HPmax: 92,
         FP: 52, FPbase: 15,
@@ -7139,7 +7139,7 @@ const SHIP_DATA: ShipDatas = {
     354: {
         name: 'Arashi Kai',
         nameJP: '嵐改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1434,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -7160,7 +7160,7 @@ const SHIP_DATA: ShipDatas = {
     355: {
         name: 'Hagikaze Kai',
         nameJP: '萩風改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1435,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 13,
@@ -7181,7 +7181,7 @@ const SHIP_DATA: ShipDatas = {
     356: {
         name: 'Kashima Kai',
         nameJP: '鹿島改',
-        type: 21, ship_class: 56,
+        type: ShipType.CT, ship_class: 56,
         nid: 1436,
         HP: 40, HPmax: 54,
         FP: 37, FPbase: 14,
@@ -7202,7 +7202,7 @@ const SHIP_DATA: ShipDatas = {
     357: {
         name: 'Hatsuzuki Kai',
         nameJP: '初月改',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 1437,
         HP: 37, HPmax: 57,
         FP: 60, FPbase: 25,
@@ -7224,7 +7224,7 @@ const SHIP_DATA: ShipDatas = {
     358: {
         name: 'Zara Kai',
         nameJP: 'Zara改',
-        type: 5, ship_class: 64,
+        type: ShipType.CA, ship_class: 64,
         nid: 1438,
         HP: 56, HPmax: 68,
         FP: 75, FPbase: 42,
@@ -7245,7 +7245,7 @@ const SHIP_DATA: ShipDatas = {
     359: {
         name: 'Okinami Kai',
         nameJP: '沖波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1439,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -7266,7 +7266,7 @@ const SHIP_DATA: ShipDatas = {
     360: {
         name: 'Iowa Kai',
         nameJP: 'Iowa改',
-        type: 8, ship_class: 65,
+        type: ShipType.FBB, ship_class: 65,
         nid: 1440,
         fit_class: 4,
         HP: 92, HPmax: 103,
@@ -7288,7 +7288,7 @@ const SHIP_DATA: ShipDatas = {
     361: {
         name: 'Pola Kai',
         nameJP: 'Pola改',
-        type: 5, ship_class: 64,
+        type: ShipType.CA, ship_class: 64,
         nid: 1441,
         HP: 56, HPmax: 68,
         FP: 77, FPbase: 41,
@@ -7309,7 +7309,7 @@ const SHIP_DATA: ShipDatas = {
     362: {
         name: 'Oyashio Kai',
         nameJP: '親潮改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1442,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 13,
@@ -7330,7 +7330,7 @@ const SHIP_DATA: ShipDatas = {
     363: {
         name: 'Harukaze Kai',
         nameJP: '春風改',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 1443,
         HP: 23, HPmax: 38,
         FP: 38, FPbase: 7,
@@ -7351,7 +7351,7 @@ const SHIP_DATA: ShipDatas = {
     364: {
         name: 'Warspite Kai',
         nameJP: 'Warspite改',
-        type: 9, ship_class: 67,
+        type: ShipType.BB, ship_class: 67,
         nid: 1444,
         fit_class: 5,
         HP: 82, HPmax: 92,
@@ -7373,7 +7373,7 @@ const SHIP_DATA: ShipDatas = {
     365: {
         name: 'Aquila Kai',
         nameJP: 'Aquila改',
-        type: 11, ship_class: 68,
+        type: ShipType.CV, ship_class: 68,
         nid: 1445,
         HP: 48, HPmax: 78,
         FP: 31, FPbase: 0,
@@ -7394,7 +7394,7 @@ const SHIP_DATA: ShipDatas = {
     366: {
         name: 'Minazuki Kai',
         nameJP: '水無月改',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 1446,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -7415,7 +7415,7 @@ const SHIP_DATA: ShipDatas = {
     367: {
         name: 'I-26 Kai',
         nameJP: '伊26改',
-        type: 14, ship_class: 39,
+        type: ShipType.SSV, ship_class: 39,
         nid: 1447,
         HP: 18, HPmax: 24,
         FP: 12, FPbase: 3,
@@ -7436,7 +7436,7 @@ const SHIP_DATA: ShipDatas = {
     368: {
         name: 'Uranami Kai',
         nameJP: '浦波改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1448,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -7457,7 +7457,7 @@ const SHIP_DATA: ShipDatas = {
     369: {
         name: 'Yamakaze Kai',
         nameJP: '山風改',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 1449,
         HP: 30, HPmax: 48,
         FP: 51, FPbase: 13,
@@ -7478,7 +7478,7 @@ const SHIP_DATA: ShipDatas = {
     370: {
         name: 'Asakaze Kai',
         nameJP: '朝風改',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 1450,
         HP: 23, HPmax: 38,
         FP: 42, FPbase: 8,
@@ -7499,7 +7499,7 @@ const SHIP_DATA: ShipDatas = {
     371: {
         name: 'Matsukaze Kai',
         nameJP: '松風改',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 1451,
         HP: 23, HPmax: 38,
         FP: 39, FPbase: 7,
@@ -7520,7 +7520,7 @@ const SHIP_DATA: ShipDatas = {
     372: {
         name: 'Commandant Teste Kai',
         nameJP: 'Commandant Teste改',
-        type: 16, ship_class: 70,
+        type: ShipType.AV, ship_class: 70,
         nid: 1452,
         HP: 43, HPmax: 64,
         FP: 58, FPbase: 32,
@@ -7541,7 +7541,7 @@ const SHIP_DATA: ShipDatas = {
     373: {
         name: 'Fujinami Kai',
         nameJP: '藤波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1453,
         HP: 32, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -7562,7 +7562,7 @@ const SHIP_DATA: ShipDatas = {
     374: {
         name: 'I-13 Kai',
         nameJP: '伊13改',
-        type: 14, ship_class: 71,
+        type: ShipType.SSV, ship_class: 71,
         nid: 1454,
         HP: 21, HPmax: 36,
         FP: 16, FPbase: 5,
@@ -7583,7 +7583,7 @@ const SHIP_DATA: ShipDatas = {
     375: {
         name: 'I-14 Kai',
         nameJP: '伊14改',
-        type: 14, ship_class: 71,
+        type: ShipType.SSV, ship_class: 71,
         nid: 1455,
         HP: 22, HPmax: 37,
         FP: 12, FPbase: 4,
@@ -7604,7 +7604,7 @@ const SHIP_DATA: ShipDatas = {
     376: {
         name: 'Shimushu Kai',
         nameJP: '占守改',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 1456,
         HP: 17, HPmax: 28,
         FP: 35, FPbase: 5,
@@ -7625,7 +7625,7 @@ const SHIP_DATA: ShipDatas = {
     377: {
         name: 'Kunashiri Kai',
         nameJP: '国後改',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 1457,
         HP: 17, HPmax: 28,
         FP: 36, FPbase: 5,
@@ -7646,7 +7646,7 @@ const SHIP_DATA: ShipDatas = {
     378: {
         name: 'Hachijou Kai',
         nameJP: '八丈改',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 1458,
         HP: 17, HPmax: 28,
         FP: 35, FPbase: 5,
@@ -7667,7 +7667,7 @@ const SHIP_DATA: ShipDatas = {
     379: {
         name: 'Ishigaki Kai',
         nameJP: '石垣改',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 1459,
         HP: 17, HPmax: 28,
         FP: 37, FPbase: 5,
@@ -7688,7 +7688,7 @@ const SHIP_DATA: ShipDatas = {
     380: {
         name: 'Taiyou Kai',
         nameJP: '大鷹改',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 1460,
         always_OASW: true,
         HP: 47, HPmax: 72,
@@ -7710,7 +7710,7 @@ const SHIP_DATA: ShipDatas = {
     381: {
         name: 'Shinyou Kai',
         nameJP: '神鷹改',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 1461,
         always_OASW: true,
         HP: 48, HPmax: 73,
@@ -7732,7 +7732,7 @@ const SHIP_DATA: ShipDatas = {
     382: {
         name: 'Unyou Kai',
         nameJP: '雲鷹改',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 1462,
         always_OASW: true,
         HP: 47, HPmax: 72,
@@ -7754,7 +7754,7 @@ const SHIP_DATA: ShipDatas = {
     383: {
         name: 'Etorofu Kai',
         nameJP: '択捉改',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 1463,
         HP: 17, HPmax: 28,
         FP: 37, FPbase: 5,
@@ -7775,7 +7775,7 @@ const SHIP_DATA: ShipDatas = {
     384: {
         name: 'Matsuwa Kai',
         nameJP: '松輪改',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 1464,
         HP: 17, HPmax: 28,
         FP: 38, FPbase: 5,
@@ -7796,7 +7796,7 @@ const SHIP_DATA: ShipDatas = {
     385: {
         name: 'Sado Kai',
         nameJP: '佐渡改',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 1465,
         HP: 17, HPmax: 28,
         FP: 39, FPbase: 5,
@@ -7817,7 +7817,7 @@ const SHIP_DATA: ShipDatas = {
     386: {
         name: 'Tsushima Kai',
         nameJP: '対馬改',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 1466,
         HP: 17, HPmax: 28,
         FP: 36, FPbase: 5,
@@ -7838,7 +7838,7 @@ const SHIP_DATA: ShipDatas = {
     387: {
         name: 'Hatakaze Kai',
         nameJP: '旗風改',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 1467,
         HP: 23, HPmax: 38,
         FP: 40, FPbase: 7,
@@ -7859,7 +7859,7 @@ const SHIP_DATA: ShipDatas = {
     390: {
         name: 'Amagiri Kai',
         nameJP: '天霧改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1470,
         HP: 30, HPmax: 50,
         FP: 52, FPbase: 12,
@@ -7880,7 +7880,7 @@ const SHIP_DATA: ShipDatas = {
     391: {
         name: 'Sagiri Kai',
         nameJP: '狭霧改',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 1471,
         HP: 30, HPmax: 49,
         FP: 50, FPbase: 11,
@@ -7901,7 +7901,7 @@ const SHIP_DATA: ShipDatas = {
     392: {
         name: 'Richelieu Kai',
         nameJP: 'Richelieu改',
-        type: 8, ship_class: 79,
+        type: ShipType.FBB, ship_class: 79,
         nid: 1472,
         fit_class: 12,
         attack_special_ids: [105],
@@ -7924,7 +7924,7 @@ const SHIP_DATA: ShipDatas = {
     393: {
         name: 'Ark Royal Kai',
         nameJP: 'Ark Royal改',
-        type: 11, ship_class: 78,
+        type: ShipType.CV, ship_class: 78,
         nid: 1473,
         HP: 71, HPmax: 90,
         FP: 51, FPbase: 0,
@@ -7945,7 +7945,7 @@ const SHIP_DATA: ShipDatas = {
     394: {
         name: 'Jervis Kai',
         nameJP: 'Jervis改',
-        type: 2, ship_class: 82,
+        type: ShipType.DD, ship_class: 82,
         nid: 1474,
         always_OASW: true,
         HP: 31, HPmax: 47,
@@ -7967,7 +7967,7 @@ const SHIP_DATA: ShipDatas = {
     395: {
         name: 'Tashkent Kai',
         nameJP: 'Ташкент改',
-        type: 2, ship_class: 81,
+        type: ShipType.DD, ship_class: 81,
         nid: 1475,
         HP: 39, HPmax: 59,
         FP: 66, FPbase: 28,
@@ -7988,7 +7988,7 @@ const SHIP_DATA: ShipDatas = {
     396: {
         name: 'Gambier Bay Kai',
         nameJP: 'Gambier Bay改',
-        type: 7, ship_class: 83,
+        type: ShipType.CVL, ship_class: 83,
         nid: 1476,
         HP: 38, HPmax: 48,
         FP: 32, FPbase: 0,
@@ -8009,7 +8009,7 @@ const SHIP_DATA: ShipDatas = {
     397: {
         name: 'Intrepid Kai',
         nameJP: 'Intrepid改',
-        type: 11, ship_class: 84,
+        type: ShipType.CV, ship_class: 84,
         nid: 1477,
         HP: 69, HPmax: 90,
         FP: 58, FPbase: 0,
@@ -8030,7 +8030,7 @@ const SHIP_DATA: ShipDatas = {
     398: {
         name: 'I-168 Kai',
         nameJP: '伊168改',
-        type: 13, ship_class: 35,
+        type: ShipType.SS, ship_class: 35,
         nid: 1498,
         HP: 15, HPmax: 19,
         FP: 11, FPbase: 3,
@@ -8051,7 +8051,7 @@ const SHIP_DATA: ShipDatas = {
     399: {
         name: 'I-58 Kai',
         nameJP: '伊58改',
-        type: 14, ship_class: 36,
+        type: ShipType.SSV, ship_class: 36,
         nid: 1499,
         HP: 18, HPmax: 24,
         FP: 12, FPbase: 3,
@@ -8072,7 +8072,7 @@ const SHIP_DATA: ShipDatas = {
     400: {
         name: 'I-8 Kai',
         nameJP: '伊8改',
-        type: 14, ship_class: 40,
+        type: ShipType.SSV, ship_class: 40,
         nid: 1500,
         HP: 19, HPmax: 25,
         FP: 14, FPbase: 4,
@@ -8093,7 +8093,7 @@ const SHIP_DATA: ShipDatas = {
     401: {
         name: 'I-19 Kai',
         nameJP: '伊19改',
-        type: 14, ship_class: 39,
+        type: ShipType.SSV, ship_class: 39,
         nid: 1501,
         HP: 18, HPmax: 24,
         FP: 12, FPbase: 3,
@@ -8114,7 +8114,7 @@ const SHIP_DATA: ShipDatas = {
     402: {
         name: 'Maruyu Kai',
         nameJP: 'まるゆ改',
-        type: 13, ship_class: 46,
+        type: ShipType.SS, ship_class: 46,
         nid: 1502,
         HP: 7, HPmax: 13,
         FP: 5, FPbase: 1,
@@ -8135,7 +8135,7 @@ const SHIP_DATA: ShipDatas = {
     403: {
         name: 'I-401 Kai',
         nameJP: '伊401改',
-        type: 14, ship_class: 44,
+        type: ShipType.SSV, ship_class: 44,
         nid: 1503,
         HP: 24, HPmax: 39,
         FP: 19, FPbase: 6,
@@ -8156,7 +8156,7 @@ const SHIP_DATA: ShipDatas = {
     404: {
         name: 'Unryuu',
         nameJP: '雲龍',
-        type: 11, ship_class: 53,
+        type: ShipType.CV, ship_class: 53,
         nid: 201,
         HP: 48, HPmax: 79,
         FP: 27, FPbase: 0,
@@ -8177,7 +8177,7 @@ const SHIP_DATA: ShipDatas = {
     405: {
         name: 'Harusame',
         nameJP: '春雨',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 205,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -8198,7 +8198,7 @@ const SHIP_DATA: ShipDatas = {
     406: {
         name: 'Unryuu Kai',
         nameJP: '雲龍改',
-        type: 11, ship_class: 53,
+        type: ShipType.CV, ship_class: 53,
         nid: 206,
         HP: 60, HPmax: 84,
         FP: 48, FPbase: 0,
@@ -8219,7 +8219,7 @@ const SHIP_DATA: ShipDatas = {
     407: {
         name: 'Ushio Kai 2',
         nameJP: '潮改二',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 207,
         HP: 33, HPmax: 53,
         FP: 59, FPbase: 10,
@@ -8240,7 +8240,7 @@ const SHIP_DATA: ShipDatas = {
     408: {
         name: 'Junyou Kai 2',
         nameJP: '隼鷹改二',
-        type: 7, ship_class: 24,
+        type: ShipType.CVL, ship_class: 24,
         nid: 208,
         HP: 55, HPmax: 82,
         FP: 40, FPbase: 0,
@@ -8261,7 +8261,7 @@ const SHIP_DATA: ShipDatas = {
     409: {
         name: 'Hayashimo',
         nameJP: '早霜',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 209,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -8282,7 +8282,7 @@ const SHIP_DATA: ShipDatas = {
     410: {
         name: 'Kiyoshimo',
         nameJP: '清霜',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 210,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -8303,7 +8303,7 @@ const SHIP_DATA: ShipDatas = {
     411: {
         name: 'Fusou Kai 2',
         nameJP: '扶桑改二',
-        type: 10, ship_class: 26,
+        type: ShipType.BBV, ship_class: 26,
         nid: 211,
         fit_class: 7,
         HP: 77, HPmax: 94,
@@ -8325,7 +8325,7 @@ const SHIP_DATA: ShipDatas = {
     412: {
         name: 'Yamashiro Kai 2',
         nameJP: '山城改二',
-        type: 10, ship_class: 26,
+        type: ShipType.BBV, ship_class: 26,
         nid: 212,
         fit_class: 7,
         HP: 77, HPmax: 94,
@@ -8347,7 +8347,7 @@ const SHIP_DATA: ShipDatas = {
     413: {
         name: 'Asagumo',
         nameJP: '朝雲',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 213,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -8368,7 +8368,7 @@ const SHIP_DATA: ShipDatas = {
     414: {
         name: 'Yamagumo',
         nameJP: '山雲',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 214,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -8389,7 +8389,7 @@ const SHIP_DATA: ShipDatas = {
     415: {
         name: 'Nowaki',
         nameJP: '野分',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 215,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -8410,7 +8410,7 @@ const SHIP_DATA: ShipDatas = {
     416: {
         name: 'Furutaka Kai 2',
         nameJP: '古鷹改二',
-        type: 5, ship_class: 7,
+        type: ShipType.CA, ship_class: 7,
         nid: 216,
         HP: 53, HPmax: 65,
         FP: 77, FPbase: 39,
@@ -8431,7 +8431,7 @@ const SHIP_DATA: ShipDatas = {
     417: {
         name: 'Kako Kai 2',
         nameJP: '加古改二',
-        type: 5, ship_class: 7,
+        type: ShipType.CA, ship_class: 7,
         nid: 217,
         HP: 52, HPmax: 64,
         FP: 78, FPbase: 40,
@@ -8452,7 +8452,7 @@ const SHIP_DATA: ShipDatas = {
     418: {
         name: 'Satsuki Kai 2',
         nameJP: '皐月改二',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 218,
         HP: 28, HPmax: 44,
         FP: 42, FPbase: 8,
@@ -8473,7 +8473,7 @@ const SHIP_DATA: ShipDatas = {
     419: {
         name: 'Hatsushimo Kai 2',
         nameJP: '初霜改二',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 219,
         HP: 32, HPmax: 53,
         FP: 63, FPbase: 12,
@@ -8494,7 +8494,7 @@ const SHIP_DATA: ShipDatas = {
     420: {
         name: 'Murakumo Kai 2',
         nameJP: '叢雲改二',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 220,
         HP: 31, HPmax: 49,
         FP: 57, FPbase: 14,
@@ -8515,7 +8515,7 @@ const SHIP_DATA: ShipDatas = {
     421: {
         name: 'Akizuki',
         nameJP: '秋月',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 221,
         HP: 20, HPmax: 40,
         FP: 48, FPbase: 16,
@@ -8537,7 +8537,7 @@ const SHIP_DATA: ShipDatas = {
     422: {
         name: 'Teruzuki',
         nameJP: '照月',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 222,
         HP: 20, HPmax: 40,
         FP: 49, FPbase: 16,
@@ -8559,7 +8559,7 @@ const SHIP_DATA: ShipDatas = {
     423: {
         name: 'Hatsuzuki',
         nameJP: '初月',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 223,
         HP: 20, HPmax: 40,
         FP: 50, FPbase: 18,
@@ -8581,7 +8581,7 @@ const SHIP_DATA: ShipDatas = {
     424: {
         name: 'Takanami',
         nameJP: '高波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 224,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -8602,7 +8602,7 @@ const SHIP_DATA: ShipDatas = {
     425: {
         name: 'Asashimo',
         nameJP: '朝霜',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 225,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -8623,7 +8623,7 @@ const SHIP_DATA: ShipDatas = {
     426: {
         name: 'Fubuki Kai 2',
         nameJP: '吹雪改二',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 226,
         HP: 31, HPmax: 49,
         FP: 59, FPbase: 15,
@@ -8644,7 +8644,7 @@ const SHIP_DATA: ShipDatas = {
     427: {
         name: 'Choukai Kai 2',
         nameJP: '鳥海改二',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 227,
         HP: 57, HPmax: 72,
         FP: 86, FPbase: 55,
@@ -8665,7 +8665,7 @@ const SHIP_DATA: ShipDatas = {
     428: {
         name: 'Maya Kai 2',
         nameJP: '摩耶改二',
-        type: 5, ship_class: 8,
+        type: ShipType.CA, ship_class: 8,
         nid: 228,
         HP: 57, HPmax: 71,
         FP: 77, FPbase: 42,
@@ -8686,7 +8686,7 @@ const SHIP_DATA: ShipDatas = {
     429: {
         name: 'Amagi Kai',
         nameJP: '天城改',
-        type: 11, ship_class: 53,
+        type: ShipType.CV, ship_class: 53,
         nid: 229,
         HP: 60, HPmax: 84,
         FP: 45, FPbase: 0,
@@ -8707,7 +8707,7 @@ const SHIP_DATA: ShipDatas = {
     430: {
         name: 'Katsuragi Kai',
         nameJP: '葛城改',
-        type: 11, ship_class: 53,
+        type: ShipType.CV, ship_class: 53,
         nid: 230,
         HP: 60, HPmax: 84,
         FP: 45, FPbase: 0,
@@ -8728,7 +8728,7 @@ const SHIP_DATA: ShipDatas = {
     431: {
         name: 'U-511',
         nameJP: 'U-511',
-        type: 13, ship_class: 57,
+        type: ShipType.SS, ship_class: 57,
         nid: 231,
         HP: 8, HPmax: 16,
         FP: 8, FPbase: 2,
@@ -8749,8 +8749,8 @@ const SHIP_DATA: ShipDatas = {
     432: {
         name: 'GrafZeppelin',
         nameJP: 'Graf Zeppelin',
-        type: 11, ship_class: 63,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV, ship_class: 63,
+        CVs_night_attack_type: ShipType.DD,
         nid: 232,
         HP: 70, HPmax: 89,
         FP: 40, FPbase: 10,
@@ -8771,8 +8771,8 @@ const SHIP_DATA: ShipDatas = {
     433: {
         name: 'Saratoga',
         nameJP: 'Saratoga',
-        type: 11, ship_class: 69,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV, ship_class: 69,
+        CVs_night_attack_type: ShipType.DD,
         nid: 233,
         HP: 83, HPmax: 93,
         FP: 45, FPbase: 30,
@@ -8793,7 +8793,7 @@ const SHIP_DATA: ShipDatas = {
     434: {
         name: 'Mutsuki Kai 2',
         nameJP: '睦月改二',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 234,
         HP: 27, HPmax: 43,
         FP: 45, FPbase: 10,
@@ -8814,7 +8814,7 @@ const SHIP_DATA: ShipDatas = {
     435: {
         name: 'Kisaragi Kai 2',
         nameJP: '如月改二',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 235,
         HP: 27, HPmax: 43,
         FP: 46, FPbase: 10,
@@ -8835,7 +8835,7 @@ const SHIP_DATA: ShipDatas = {
     436: {
         name: 'Ro-500',
         nameJP: '呂500',
-        type: 13, ship_class: 86,
+        type: ShipType.SS, ship_class: 86,
         nid: 236,
         HP: 13, HPmax: 19,
         FP: 13, FPbase: 4,
@@ -8856,7 +8856,7 @@ const SHIP_DATA: ShipDatas = {
     437: {
         name: 'Akatsuki Kai 2',
         nameJP: '暁改二',
-        type: 2, ship_class: 5,
+        type: ShipType.DD, ship_class: 5,
         nid: 237,
         HP: 31, HPmax: 50,
         FP: 62, FPbase: 14,
@@ -8877,7 +8877,7 @@ const SHIP_DATA: ShipDatas = {
     438: {
         name: 'Saratoga Kai',
         nameJP: 'Saratoga改',
-        type: 11, ship_class: 69,
+        type: ShipType.CV, ship_class: 69,
         nid: 238,
         HP: 88, HPmax: 98,
         FP: 53, FPbase: 0,
@@ -8898,7 +8898,7 @@ const SHIP_DATA: ShipDatas = {
     439: {
         name: 'Warspite',
         nameJP: 'Warspite',
-        type: 9, ship_class: 67,
+        type: ShipType.BB, ship_class: 67,
         nid: 239,
         fit_class: 5,
         HP: 72, HPmax: 87,
@@ -8920,7 +8920,7 @@ const SHIP_DATA: ShipDatas = {
     440: {
         name: 'Iowa',
         nameJP: 'Iowa',
-        type: 8, ship_class: 65,
+        type: ShipType.FBB, ship_class: 65,
         nid: 240,
         fit_class: 4,
         HP: 84, HPmax: 95,
@@ -8942,7 +8942,7 @@ const SHIP_DATA: ShipDatas = {
     441: {
         name: 'Littorio',
         nameJP: 'Littorio',
-        type: 8, ship_class: 58,
+        type: ShipType.FBB, ship_class: 58,
         nid: 241,
         fit_class: 3,
         HP: 88, HPmax: 94,
@@ -8964,7 +8964,7 @@ const SHIP_DATA: ShipDatas = {
     442: {
         name: 'Roma',
         nameJP: 'Roma',
-        type: 8, ship_class: 58,
+        type: ShipType.FBB, ship_class: 58,
         nid: 242,
         fit_class: 3,
         HP: 88, HPmax: 94,
@@ -8986,7 +8986,7 @@ const SHIP_DATA: ShipDatas = {
     443: {
         name: 'Libeccio',
         nameJP: 'Libeccio',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 243,
         HP: 15, HPmax: 30,
         FP: 27, FPbase: 9,
@@ -9007,7 +9007,7 @@ const SHIP_DATA: ShipDatas = {
     444: {
         name: 'Aquila',
         nameJP: 'Aquila',
-        type: 11, ship_class: 68,
+        type: ShipType.CV, ship_class: 68,
         nid: 244,
         HP: 38, HPmax: 60,
         FP: 14, FPbase: 0,
@@ -9028,7 +9028,7 @@ const SHIP_DATA: ShipDatas = {
     445: {
         name: 'Akitsushima',
         nameJP: '秋津洲',
-        type: 16, ship_class: 59,
+        type: ShipType.AV, ship_class: 59,
         nid: 245,
         HP: 32, HPmax: 44,
         FP: 18, FPbase: 6,
@@ -9049,7 +9049,7 @@ const SHIP_DATA: ShipDatas = {
     446: {
         name: 'Italia',
         nameJP: 'Italia',
-        type: 8, ship_class: 58,
+        type: ShipType.FBB, ship_class: 58,
         nid: 246,
         fit_class: 3,
         HP: 92, HPmax: 98,
@@ -9072,7 +9072,7 @@ const SHIP_DATA: ShipDatas = {
     447: {
         name: 'Roma Kai',
         nameJP: 'Roma改',
-        type: 8, ship_class: 58,
+        type: ShipType.FBB, ship_class: 58,
         nid: 247,
         fit_class: 3,
         HP: 92, HPmax: 98,
@@ -9095,7 +9095,7 @@ const SHIP_DATA: ShipDatas = {
     448: {
         name: 'Zara',
         nameJP: 'Zara',
-        type: 5, ship_class: 64,
+        type: ShipType.CA, ship_class: 64,
         nid: 248,
         HP: 42, HPmax: 55,
         FP: 58, FPbase: 36,
@@ -9116,7 +9116,7 @@ const SHIP_DATA: ShipDatas = {
     449: {
         name: 'Pola',
         nameJP: 'Pola',
-        type: 5, ship_class: 64,
+        type: ShipType.CA, ship_class: 64,
         nid: 249,
         HP: 42, HPmax: 55,
         FP: 59, FPbase: 35,
@@ -9137,7 +9137,7 @@ const SHIP_DATA: ShipDatas = {
     450: {
         name: 'Akitsushima Kai',
         nameJP: '秋津洲改',
-        type: 16, ship_class: 59,
+        type: ShipType.AV, ship_class: 59,
         nid: 250,
         HP: 36, HPmax: 48,
         FP: 28, FPbase: 8,
@@ -9158,7 +9158,7 @@ const SHIP_DATA: ShipDatas = {
     451: {
         name: 'Mizuho',
         nameJP: '瑞穂',
-        type: 16, ship_class: 62,
+        type: ShipType.AV, ship_class: 62,
         nid: 251,
         HP: 41, HPmax: 59,
         FP: 36, FPbase: 12,
@@ -9179,7 +9179,7 @@ const SHIP_DATA: ShipDatas = {
     452: {
         name: 'Okinami',
         nameJP: '沖波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 252,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -9200,7 +9200,7 @@ const SHIP_DATA: ShipDatas = {
     453: {
         name: 'Kazagumo',
         nameJP: '風雲',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 253,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -9221,7 +9221,7 @@ const SHIP_DATA: ShipDatas = {
     454: {
         name: 'Arashi',
         nameJP: '嵐',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 254,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -9242,7 +9242,7 @@ const SHIP_DATA: ShipDatas = {
     455: {
         name: 'Hagikaze',
         nameJP: '萩風',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 255,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 11,
@@ -9263,7 +9263,7 @@ const SHIP_DATA: ShipDatas = {
     456: {
         name: 'Oyashio',
         nameJP: '親潮',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 256,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -9284,7 +9284,7 @@ const SHIP_DATA: ShipDatas = {
     457: {
         name: 'Yamakaze',
         nameJP: '山風',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 257,
         HP: 16, HPmax: 32,
         FP: 31, FPbase: 11,
@@ -9305,7 +9305,7 @@ const SHIP_DATA: ShipDatas = {
     458: {
         name: 'Umikaze',
         nameJP: '海風',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 258,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -9326,7 +9326,7 @@ const SHIP_DATA: ShipDatas = {
     459: {
         name: 'Kawakaze',
         nameJP: '江風',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 259,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -9347,7 +9347,7 @@ const SHIP_DATA: ShipDatas = {
     460: {
         name: 'Hayasui',
         nameJP: '速吸',
-        type: 22, ship_class: 60,
+        type: ShipType.AO, ship_class: 60,
         nid: 260,
         HP: 43, HPmax: 50,
         FP: 22, FPbase: 4,
@@ -9368,7 +9368,7 @@ const SHIP_DATA: ShipDatas = {
     461: {
         name: 'Shoukaku Kai 2',
         nameJP: '翔鶴改二',
-        type: 11, ship_class: 33,
+        type: ShipType.CV, ship_class: 33,
         nid: 261,
         HP: 77, HPmax: 93,
         FP: 63, FPbase: 0,
@@ -9389,7 +9389,7 @@ const SHIP_DATA: ShipDatas = {
     462: {
         name: 'Zuikaku Kai 2',
         nameJP: '瑞鶴改二',
-        type: 11, ship_class: 33,
+        type: ShipType.CV, ship_class: 33,
         nid: 262,
         HP: 78, HPmax: 93,
         FP: 56, FPbase: 0,
@@ -9410,7 +9410,7 @@ const SHIP_DATA: ShipDatas = {
     463: {
         name: 'Asashio Kai 2',
         nameJP: '朝潮改二',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 263,
         HP: 31, HPmax: 53,
         FP: 68, FPbase: 18,
@@ -9431,7 +9431,7 @@ const SHIP_DATA: ShipDatas = {
     464: {
         name: 'Kasumi Kai 2',
         nameJP: '霞改二',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 264,
         HP: 31, HPmax: 53,
         FP: 65, FPbase: 16,
@@ -9452,7 +9452,7 @@ const SHIP_DATA: ShipDatas = {
     465: {
         name: 'Kashima',
         nameJP: '鹿島',
-        type: 21, ship_class: 56,
+        type: ShipType.CT, ship_class: 56,
         nid: 265,
         HP: 36, HPmax: 48,
         FP: 27, FPbase: 13,
@@ -9473,7 +9473,7 @@ const SHIP_DATA: ShipDatas = {
     466: {
         name: 'Shoukaku Kai 2A',
         nameJP: '翔鶴改二甲',
-        type: 18, ship_class: 33,
+        type: ShipType.CVB, ship_class: 33,
         nid: 266,
         HP: 78, HPmax: 94,
         FP: 70, FPbase: 0,
@@ -9494,7 +9494,7 @@ const SHIP_DATA: ShipDatas = {
     467: {
         name: 'Zuikaku Kai 2A',
         nameJP: '瑞鶴改二甲',
-        type: 18, ship_class: 33,
+        type: ShipType.CVB, ship_class: 33,
         nid: 267,
         HP: 79, HPmax: 94,
         FP: 65, FPbase: 0,
@@ -9515,7 +9515,7 @@ const SHIP_DATA: ShipDatas = {
     468: {
         name: 'Asashio Kai 2 D',
         nameJP: '朝潮改二丁',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 268,
         HP: 34, HPmax: 59,
         FP: 55, FPbase: 12,
@@ -9536,7 +9536,7 @@ const SHIP_DATA: ShipDatas = {
     469: {
         name: 'Kawakaze Kai 2',
         nameJP: '江風改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 269,
         HP: 31, HPmax: 54,
         FP: 62, FPbase: 16,
@@ -9557,7 +9557,7 @@ const SHIP_DATA: ShipDatas = {
     470: {
         name: 'Kasumi Kai 2 B',
         nameJP: '霞改二乙',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 270,
         HP: 31, HPmax: 53,
         FP: 61, FPbase: 12,
@@ -9578,7 +9578,7 @@ const SHIP_DATA: ShipDatas = {
     471: {
         name: 'Kamikaze',
         nameJP: '神風',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 271,
         HP: 12, HPmax: 23,
         FP: 28, FPbase: 5,
@@ -9599,7 +9599,7 @@ const SHIP_DATA: ShipDatas = {
     472: {
         name: 'Asakaze',
         nameJP: '朝風',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 272,
         HP: 12, HPmax: 23,
         FP: 29, FPbase: 5,
@@ -9620,7 +9620,7 @@ const SHIP_DATA: ShipDatas = {
     473: {
         name: 'Harukaze',
         nameJP: '春風',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 273,
         HP: 12, HPmax: 23,
         FP: 27, FPbase: 5,
@@ -9641,7 +9641,7 @@ const SHIP_DATA: ShipDatas = {
     474: {
         name: 'Matsukaze',
         nameJP: '松風',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 274,
         HP: 12, HPmax: 23,
         FP: 28, FPbase: 5,
@@ -9662,7 +9662,7 @@ const SHIP_DATA: ShipDatas = {
     475: {
         name: 'Hatakaze',
         nameJP: '旗風',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 275,
         HP: 12, HPmax: 23,
         FP: 29, FPbase: 5,
@@ -9683,7 +9683,7 @@ const SHIP_DATA: ShipDatas = {
     476: {
         name: 'Kamikaze Kai',
         nameJP: '神風改',
-        type: 2, ship_class: 66,
+        type: ShipType.DD, ship_class: 66,
         nid: 276,
         HP: 23, HPmax: 38,
         FP: 41, FPbase: 8,
@@ -9704,7 +9704,7 @@ const SHIP_DATA: ShipDatas = {
     477: {
         name: 'Tenryuu Kai 2',
         nameJP: '天龍改二',
-        type: 3, ship_class: 21,
+        type: ShipType.CL, ship_class: 21,
         nid: 277,
         HP: 42, HPmax: 56,
         FP: 64, FPbase: 22,
@@ -9725,7 +9725,7 @@ const SHIP_DATA: ShipDatas = {
     478: {
         name: 'Tatsuta Kai 2',
         nameJP: '龍田改二',
-        type: 3, ship_class: 21,
+        type: ShipType.CL, ship_class: 21,
         nid: 278,
         always_OASW: true,
         HP: 42, HPmax: 56,
@@ -9747,7 +9747,7 @@ const SHIP_DATA: ShipDatas = {
     479: {
         name: 'Amagiri',
         nameJP: '天霧',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 279,
         HP: 15, HPmax: 29,
         FP: 30, FPbase: 10,
@@ -9768,7 +9768,7 @@ const SHIP_DATA: ShipDatas = {
     480: {
         name: 'Sagiri',
         nameJP: '狭霧',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 280,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -9789,7 +9789,7 @@ const SHIP_DATA: ShipDatas = {
     481: {
         name: 'Minazuki',
         nameJP: '水無月',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 281,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -9810,7 +9810,7 @@ const SHIP_DATA: ShipDatas = {
     483: {
         name: 'I-26',
         nameJP: '伊26',
-        type: 13, ship_class: 39,
+        type: ShipType.SS, ship_class: 39,
         nid: 283,
         HP: 14, HPmax: 19,
         FP: 9, FPbase: 2,
@@ -9831,7 +9831,7 @@ const SHIP_DATA: ShipDatas = {
     484: {
         name: 'Hamanami',
         nameJP: '浜波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 284,
         HP: 16, HPmax: 34,
         FP: 31, FPbase: 10,
@@ -9852,7 +9852,7 @@ const SHIP_DATA: ShipDatas = {
     485: {
         name: 'Fujinami',
         nameJP: '藤波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 285,
         HP: 16, HPmax: 34,
         FP: 31, FPbase: 10,
@@ -9873,7 +9873,7 @@ const SHIP_DATA: ShipDatas = {
     486: {
         name: 'Uranami',
         nameJP: '浦波',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 286,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -9894,7 +9894,7 @@ const SHIP_DATA: ShipDatas = {
     487: {
         name: 'Kinu Kai 2',
         nameJP: '鬼怒改二',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 287,
         HP: 45, HPmax: 61,
         FP: 58, FPbase: 15,
@@ -9915,7 +9915,7 @@ const SHIP_DATA: ShipDatas = {
     488: {
         name: 'Yura Kai 2',
         nameJP: '由良改二',
-        type: 3, ship_class: 20,
+        type: ShipType.CL, ship_class: 20,
         nid: 288,
         HP: 45, HPmax: 61,
         FP: 57, FPbase: 14,
@@ -9936,7 +9936,7 @@ const SHIP_DATA: ShipDatas = {
     489: {
         name: 'Michishio Kai 2',
         nameJP: '満潮改二',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 289,
         HP: 31, HPmax: 54,
         FP: 69, FPbase: 19,
@@ -9957,7 +9957,7 @@ const SHIP_DATA: ShipDatas = {
     490: {
         name: 'Arashio Kai 2',
         nameJP: '荒潮改二',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 290,
         HP: 31, HPmax: 54,
         FP: 69, FPbase: 19,
@@ -9978,7 +9978,7 @@ const SHIP_DATA: ShipDatas = {
     491: {
         name: 'Commandant Teste',
         nameJP: 'Commandant Teste',
-        type: 16, ship_class: 70,
+        type: ShipType.AV, ship_class: 70,
         nid: 291,
         HP: 42, HPmax: 63,
         FP: 48, FPbase: 28,
@@ -9999,7 +9999,7 @@ const SHIP_DATA: ShipDatas = {
     492: {
         name: 'Richelieu',
         nameJP: 'Richelieu',
-        type: 8, ship_class: 79,
+        type: ShipType.FBB, ship_class: 79,
         nid: 292,
         fit_class: 12,
         HP: 85, HPmax: 93,
@@ -10021,7 +10021,7 @@ const SHIP_DATA: ShipDatas = {
     493: {
         name: 'I-400',
         nameJP: '伊400',
-        type: 14, ship_class: 44,
+        type: ShipType.SSV, ship_class: 44,
         nid: 293,
         HP: 20, HPmax: 24,
         FP: 10, FPbase: 2,
@@ -10042,7 +10042,7 @@ const SHIP_DATA: ShipDatas = {
     494: {
         name: 'I-13',
         nameJP: '伊13',
-        type: 14, ship_class: 71,
+        type: ShipType.SSV, ship_class: 71,
         nid: 294,
         HP: 18, HPmax: 23,
         FP: 9, FPbase: 2,
@@ -10063,7 +10063,7 @@ const SHIP_DATA: ShipDatas = {
     495: {
         name: 'I-14',
         nameJP: '伊14',
-        type: 14, ship_class: 71,
+        type: ShipType.SSV, ship_class: 71,
         nid: 295,
         HP: 18, HPmax: 23,
         FP: 9, FPbase: 2,
@@ -10084,7 +10084,7 @@ const SHIP_DATA: ShipDatas = {
     496: {
         name: 'Zara due',
         nameJP: 'Zara due',
-        type: 5, ship_class: 64,
+        type: ShipType.CA, ship_class: 64,
         nid: 296,
         HP: 62, HPmax: 74,
         FP: 87, FPbase: 57,
@@ -10105,7 +10105,7 @@ const SHIP_DATA: ShipDatas = {
     497: {
         name: 'Shiratsuyu Kai 2',
         nameJP: '白露改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 297,
         HP: 31, HPmax: 49,
         FP: 69, FPbase: 16,
@@ -10126,7 +10126,7 @@ const SHIP_DATA: ShipDatas = {
     498: {
         name: 'Murasame Kai 2',
         nameJP: '村雨改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 298,
         HP: 31, HPmax: 49,
         FP: 68, FPbase: 16,
@@ -10147,7 +10147,7 @@ const SHIP_DATA: ShipDatas = {
     499: {
         name: 'Kamoi Kai',
         nameJP: '神威改',
-        type: 16, ship_class: 72,
+        type: ShipType.AV, ship_class: 72,
         nid: 299,
         HP: 37, HPmax: 48,
         FP: 22, FPbase: 6,
@@ -10168,7 +10168,7 @@ const SHIP_DATA: ShipDatas = {
     500: {
         name: 'Kamoi Kai Bo',
         nameJP: '神威改母',
-        type: 22, ship_class: 72,
+        type: ShipType.AO, ship_class: 72,
         nid: 300,
         HP: 39, HPmax: 51,
         FP: 25, FPbase: 7,
@@ -10189,7 +10189,7 @@ const SHIP_DATA: ShipDatas = {
     501: {
         name: 'Mogami Kai 2',
         nameJP: '最上改二',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 301,
         HP: 60, HPmax: 73,
         FP: 76, FPbase: 30,
@@ -10210,7 +10210,7 @@ const SHIP_DATA: ShipDatas = {
     502: {
         name: 'Mikuma Kai 2',
         nameJP: '三隈改二',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 302,
         HP: 59, HPmax: 73,
         FP: 77, FPbase: 31,
@@ -10231,7 +10231,7 @@ const SHIP_DATA: ShipDatas = {
     503: {
         name: 'Suzuya Kai 2',
         nameJP: '鈴谷改二',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 303,
         HP: 61, HPmax: 73,
         FP: 76, FPbase: 30,
@@ -10252,7 +10252,7 @@ const SHIP_DATA: ShipDatas = {
     504: {
         name: 'Kumano Kai 2',
         nameJP: '熊野改二',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 304,
         HP: 62, HPmax: 74,
         FP: 76, FPbase: 30,
@@ -10273,7 +10273,7 @@ const SHIP_DATA: ShipDatas = {
     506: {
         name: 'Mogami Kai 2 Toku',
         nameJP: '最上改二特',
-        type: 6, ship_class: 9,
+        type: ShipType.CAV, ship_class: 9,
         nid: 306,
         HP: 61, HPmax: 74,
         FP: 81, FPbase: 40,
@@ -10294,7 +10294,7 @@ const SHIP_DATA: ShipDatas = {
     507: {
         name: 'Mikuma Kai 2 Toku',
         nameJP: '三隈改二特',
-        type: 16, ship_class: 9,
+        type: ShipType.AV, ship_class: 9,
         nid: 307,
         HP: 59, HPmax: 73,
         FP: 78, FPbase: 31,
@@ -10315,7 +10315,7 @@ const SHIP_DATA: ShipDatas = {
     508: {
         name: 'Suzuya CVL Kai 2',
         nameJP: '鈴谷航改二',
-        type: 7, ship_class: 9,
+        type: ShipType.CVL, ship_class: 9,
         nid: 308,
         is_ASW_subordinated_CVL: true,
         HP: 61, HPmax: 73,
@@ -10337,7 +10337,7 @@ const SHIP_DATA: ShipDatas = {
     509: {
         name: 'Kumano CVL Kai 2',
         nameJP: '熊野航改二',
-        type: 7, ship_class: 9,
+        type: ShipType.CVL, ship_class: 9,
         nid: 309,
         is_ASW_subordinated_CVL: true,
         HP: 62, HPmax: 74,
@@ -10359,7 +10359,7 @@ const SHIP_DATA: ShipDatas = {
     511: {
         name: 'Gangut',
         nameJP: 'Гангут',
-        type: 8, ship_class: 73,
+        type: ShipType.FBB, ship_class: 73,
         nid: 311,
         fit_class: 10,
         HP: 59, HPmax: 79,
@@ -10381,7 +10381,7 @@ const SHIP_DATA: ShipDatas = {
     512: {
         name: 'Oktyabrskaya Revolyutsiya',
         nameJP: 'Октябрьская революция',
-        type: 8, ship_class: 73,
+        type: ShipType.FBB, ship_class: 73,
         nid: 312,
         fit_class: 10,
         HP: 72, HPmax: 87,
@@ -10403,7 +10403,7 @@ const SHIP_DATA: ShipDatas = {
     513: {
         name: 'Gangut Dva',
         nameJP: 'Гангут два',
-        type: 8, ship_class: 73,
+        type: ShipType.FBB, ship_class: 73,
         nid: 316,
         fit_class: 10,
         HP: 77, HPmax: 92,
@@ -10425,7 +10425,7 @@ const SHIP_DATA: ShipDatas = {
     514: {
         name: 'Sheffield',
         nameJP: 'Sheffield',
-        type: 3, ship_class: 108,
+        type: ShipType.CL, ship_class: 108,
         nid: 314,
         HP: 38, HPmax: 55,
         FP: 56, FPbase: 25,
@@ -10446,7 +10446,7 @@ const SHIP_DATA: ShipDatas = {
     515: {
         name: 'Ark Royal',
         nameJP: 'Ark Royal',
-        type: 11, ship_class: 78,
+        type: ShipType.CV, ship_class: 78,
         nid: 315,
         HP: 55, HPmax: 82,
         FP: 27, FPbase: 0,
@@ -10467,7 +10467,7 @@ const SHIP_DATA: ShipDatas = {
     516: {
         name: 'Tashkent',
         nameJP: 'Ташкент',
-        type: 2, ship_class: 81,
+        type: ShipType.DD, ship_class: 81,
         nid: 313,
         HP: 22, HPmax: 42,
         FP: 50, FPbase: 18,
@@ -10488,7 +10488,7 @@ const SHIP_DATA: ShipDatas = {
     517: {
         name: 'Shimushu',
         nameJP: '占守',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 317,
         HP: 9, HPmax: 18,
         FP: 18, FPbase: 4,
@@ -10509,7 +10509,7 @@ const SHIP_DATA: ShipDatas = {
     518: {
         name: 'Kunashiri',
         nameJP: '国後',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 318,
         HP: 9, HPmax: 18,
         FP: 19, FPbase: 4,
@@ -10530,7 +10530,7 @@ const SHIP_DATA: ShipDatas = {
     519: {
         name: 'Jervis',
         nameJP: 'Jervis',
-        type: 2, ship_class: 82,
+        type: ShipType.DD, ship_class: 82,
         nid: 319,
         HP: 15, HPmax: 33,
         FP: 32, FPbase: 12,
@@ -10551,7 +10551,7 @@ const SHIP_DATA: ShipDatas = {
     520: {
         name: 'Janus',
         nameJP: 'Janus',
-        type: 2, ship_class: 82,
+        type: ShipType.DD, ship_class: 82,
         nid: 320,
         HP: 15, HPmax: 33,
         FP: 33, FPbase: 12,
@@ -10572,7 +10572,7 @@ const SHIP_DATA: ShipDatas = {
     521: {
         name: 'Kasuga Maru',
         nameJP: '春日丸',
-        type: 7, ship_class: 75,
+        type: ShipType.CVL, ship_class: 75,
         nid: 321,
         HP: 36, HPmax: 58,
         FP: 9, FPbase: 0,
@@ -10593,7 +10593,7 @@ const SHIP_DATA: ShipDatas = {
     522: {
         name: 'Yawata Maru',
         nameJP: '八幡丸',
-        type: 7, ship_class: 75,
+        type: ShipType.CVL, ship_class: 75,
         nid: 322,
         HP: 36, HPmax: 58,
         FP: 10, FPbase: 0,
@@ -10614,7 +10614,7 @@ const SHIP_DATA: ShipDatas = {
     524: {
         name: 'Etorofu',
         nameJP: '択捉',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 334,
         HP: 9, HPmax: 18,
         FP: 18, FPbase: 4,
@@ -10635,7 +10635,7 @@ const SHIP_DATA: ShipDatas = {
     525: {
         name: 'Matsuwa',
         nameJP: '松輪',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 335,
         HP: 9, HPmax: 18,
         FP: 19, FPbase: 4,
@@ -10656,7 +10656,7 @@ const SHIP_DATA: ShipDatas = {
     526: {
         name: 'Taiyou',
         nameJP: '大鷹',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 326,
         HP: 37, HPmax: 59,
         FP: 12, FPbase: 0,
@@ -10677,7 +10677,7 @@ const SHIP_DATA: ShipDatas = {
     527: {
         name: 'Kishinami',
         nameJP: '岸波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 327,
         HP: 16, HPmax: 34,
         FP: 31, FPbase: 10,
@@ -10698,7 +10698,7 @@ const SHIP_DATA: ShipDatas = {
     528: {
         name: 'Hayanami',
         nameJP: '早波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 328,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -10719,9 +10719,9 @@ const SHIP_DATA: ShipDatas = {
     529: {
         name: 'Taiyou Kai 2',
         nameJP: '大鷹改二',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 331,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         always_OASW: true,
         HP: 49, HPmax: 74,
         FP: 39, FPbase: 18,
@@ -10742,7 +10742,7 @@ const SHIP_DATA: ShipDatas = {
     530: {
         name: 'I-504',
         nameJP: '伊504',
-        type: 13, ship_class: 80,
+        type: ShipType.SS, ship_class: 80,
         nid: 330,
         HP: 14, HPmax: 24,
         FP: 15, FPbase: 3,
@@ -10763,7 +10763,7 @@ const SHIP_DATA: ShipDatas = {
     531: {
         name: 'Sado',
         nameJP: '佐渡',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 339,
         HP: 9, HPmax: 18,
         FP: 19, FPbase: 4,
@@ -10784,7 +10784,7 @@ const SHIP_DATA: ShipDatas = {
     532: {
         name: 'Suzutsuki',
         nameJP: '涼月',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 332,
         HP: 21, HPmax: 41,
         FP: 47, FPbase: 16,
@@ -10806,7 +10806,7 @@ const SHIP_DATA: ShipDatas = {
     533: {
         name: 'Fuyutsuki',
         nameJP: '冬月',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 333,
         has_buil_in_fire_director: true,
         HP: 21, HPmax: 41,
@@ -10828,7 +10828,7 @@ const SHIP_DATA: ShipDatas = {
     534: {
         name: 'Shinyou',
         nameJP: '神鷹',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 324,
         HP: 38, HPmax: 59,
         FP: 14, FPbase: 0,
@@ -10849,7 +10849,7 @@ const SHIP_DATA: ShipDatas = {
     535: {
         name: 'Luigi Torelli',
         nameJP: 'Luigi Torelli',
-        type: 13, ship_class: 80,
+        type: ShipType.SS, ship_class: 80,
         nid: 325,
         HP: 11, HPmax: 21,
         FP: 10, FPbase: 2,
@@ -10870,9 +10870,9 @@ const SHIP_DATA: ShipDatas = {
     536: {
         name: 'Shinyou Kai 2',
         nameJP: '神鷹改二',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 336,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         always_OASW: true,
         HP: 50, HPmax: 75,
         FP: 37, FPbase: 15,
@@ -10893,7 +10893,7 @@ const SHIP_DATA: ShipDatas = {
     537: {
         name: 'Suzutsuki Kai',
         nameJP: '涼月改',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 337,
         HP: 38, HPmax: 58,
         FP: 56, FPbase: 22,
@@ -10915,7 +10915,7 @@ const SHIP_DATA: ShipDatas = {
     538: {
         name: 'Fuyutsuki Kai',
         nameJP: '冬月改',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 338,
         has_buil_in_fire_director: true,
         HP: 38, HPmax: 58,
@@ -10937,7 +10937,7 @@ const SHIP_DATA: ShipDatas = {
     539: {
         name: 'UIT-25',
         nameJP: 'UIT-25',
-        type: 13, ship_class: 80,
+        type: ShipType.SS, ship_class: 80,
         nid: 329,
         HP: 13, HPmax: 23,
         FP: 12, FPbase: 2,
@@ -10958,7 +10958,7 @@ const SHIP_DATA: ShipDatas = {
     540: {
         name: 'Tsushima',
         nameJP: '対馬',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 340,
         HP: 9, HPmax: 18,
         FP: 17, FPbase: 4,
@@ -10979,7 +10979,7 @@ const SHIP_DATA: ShipDatas = {
     541: {
         name: 'Nagato Kai 2',
         nameJP: '長門改二',
-        type: 9, ship_class: 19,
+        type: ShipType.BB, ship_class: 19,
         nid: 341,
         fit_class: 11,
         attack_special_ids: [101],
@@ -11002,7 +11002,7 @@ const SHIP_DATA: ShipDatas = {
     542: {
         name: 'Yuugumo Kai 2',
         nameJP: '夕雲改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 342,
         HP: 33, HPmax: 56,
         FP: 67, FPbase: 18,
@@ -11023,7 +11023,7 @@ const SHIP_DATA: ShipDatas = {
     543: {
         name: 'Naganami Kai 2',
         nameJP: '長波改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 343,
         HP: 33, HPmax: 56,
         FP: 69, FPbase: 18,
@@ -11044,7 +11044,7 @@ const SHIP_DATA: ShipDatas = {
     544: {
         name: 'Gambier Bay',
         nameJP: 'Gambier Bay',
-        type: 7, ship_class: 83,
+        type: ShipType.CVL, ship_class: 83,
         nid: 344,
         HP: 28, HPmax: 36,
         FP: 15, FPbase: 0,
@@ -11065,7 +11065,7 @@ const SHIP_DATA: ShipDatas = {
     545: {
         name: 'Saratoga Mk.II',
         nameJP: 'Saratoga Mk.II',
-        type: 11, ship_class: 69,
+        type: ShipType.CV, ship_class: 69,
         nid: 345,
         has_built_in_night_crew: true,
         HP: 89, HPmax: 99,
@@ -11087,7 +11087,7 @@ const SHIP_DATA: ShipDatas = {
     546: {
         name: 'Musashi Kai 2',
         nameJP: '武蔵改二',
-        type: 9, ship_class: 37,
+        type: ShipType.BB, ship_class: 37,
         nid: 346,
         fit_class: 9,
         attack_special_ids: [400, 401],
@@ -11110,7 +11110,7 @@ const SHIP_DATA: ShipDatas = {
     547: {
         name: 'Tama Kai 2',
         nameJP: '多摩改二',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 347,
         HP: 46, HPmax: 59,
         FP: 61, FPbase: 16,
@@ -11131,7 +11131,7 @@ const SHIP_DATA: ShipDatas = {
     548: {
         name: 'Fumizuki Kai 2',
         nameJP: '文月改二',
-        type: 2, ship_class: 28,
+        type: ShipType.DD, ship_class: 28,
         nid: 348,
         HP: 27, HPmax: 44,
         FP: 45, FPbase: 7,
@@ -11152,7 +11152,7 @@ const SHIP_DATA: ShipDatas = {
     549: {
         name: 'Intrepid',
         nameJP: 'Intrepid',
-        type: 11, ship_class: 84,
+        type: ShipType.CV, ship_class: 84,
         nid: 349,
         HP: 65, HPmax: 90,
         FP: 55, FPbase: 0,
@@ -11173,7 +11173,7 @@ const SHIP_DATA: ShipDatas = {
     550: {
         name: 'Saratoga Mk.II Mod.2',
         nameJP: 'Saratoga Mk.II Mod.2',
-        type: 18, ship_class: 69,
+        type: ShipType.CVB, ship_class: 69,
         nid: 350,
         HP: 89, HPmax: 99,
         FP: 58, FPbase: 0,
@@ -11194,7 +11194,7 @@ const SHIP_DATA: ShipDatas = {
     551: {
         name: 'Hiburi',
         nameJP: '日振',
-        type: 1, ship_class: 85,
+        type: ShipType.DE, ship_class: 85,
         nid: 351,
         HP: 9, HPmax: 18,
         FP: 19, FPbase: 4,
@@ -11215,7 +11215,7 @@ const SHIP_DATA: ShipDatas = {
     552: {
         name: 'Daitou',
         nameJP: '大東',
-        type: 1, ship_class: 85,
+        type: ShipType.DE, ship_class: 85,
         nid: 352,
         HP: 9, HPmax: 18,
         FP: 18, FPbase: 4,
@@ -11236,7 +11236,7 @@ const SHIP_DATA: ShipDatas = {
     553: {
         name: 'Ise Kai 2',
         nameJP: '伊勢改二',
-        type: 10, ship_class: 2,
+        type: ShipType.BBV, ship_class: 2,
         nid: 353,
         fit_class: 6,
         can_zuiun_CI: true,
@@ -11259,7 +11259,7 @@ const SHIP_DATA: ShipDatas = {
     554: {
         name: 'Hyuuga Kai 2',
         nameJP: '日向改二',
-        type: 10, ship_class: 2,
+        type: ShipType.BBV, ship_class: 2,
         nid: 354,
         fit_class: 6,
         can_zuiun_CI: true,
@@ -11282,7 +11282,7 @@ const SHIP_DATA: ShipDatas = {
     555: {
         name: 'Zuihou Kai 2',
         nameJP: '瑞鳳改二',
-        type: 7, ship_class: 11,
+        type: ShipType.CVL, ship_class: 11,
         nid: 355,
         HP: 59, HPmax: 77,
         FP: 46, FPbase: 0,
@@ -11303,7 +11303,7 @@ const SHIP_DATA: ShipDatas = {
     556: {
         name: 'Urakaze D Kai',
         nameJP: '浦風丁改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 356,
         HP: 33, HPmax: 54,
         FP: 62, FPbase: 12,
@@ -11324,7 +11324,7 @@ const SHIP_DATA: ShipDatas = {
     557: {
         name: 'Isokaze B Kai',
         nameJP: '磯風乙改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 357,
         HP: 34, HPmax: 55,
         FP: 65, FPbase: 10,
@@ -11345,7 +11345,7 @@ const SHIP_DATA: ShipDatas = {
     558: {
         name: 'Hamakaze B Kai',
         nameJP: '浜風乙改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 358,
         HP: 33, HPmax: 54,
         FP: 63, FPbase: 10,
@@ -11366,7 +11366,7 @@ const SHIP_DATA: ShipDatas = {
     559: {
         name: 'Tanikaze D Kai',
         nameJP: '谷風丁改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 359,
         HP: 33, HPmax: 54,
         FP: 59, FPbase: 11,
@@ -11387,7 +11387,7 @@ const SHIP_DATA: ShipDatas = {
     560: {
         name: 'Zuihou Kai 2B',
         nameJP: '瑞鳳改二乙',
-        type: 7, ship_class: 11,
+        type: ShipType.CVL, ship_class: 11,
         nid: 360,
         HP: 59, HPmax: 77,
         FP: 48, FPbase: 0,
@@ -11408,7 +11408,7 @@ const SHIP_DATA: ShipDatas = {
     561: {
         name: 'Samuel B. Roberts',
         nameJP: 'Samuel B.Roberts',
-        type: 2, ship_class: 87,
+        type: ShipType.DD, ship_class: 87,
         nid: 361,
         HP: 14, HPmax: 27,
         FP: 24, FPbase: 8,
@@ -11429,7 +11429,7 @@ const SHIP_DATA: ShipDatas = {
     562: {
         name: 'Johnston',
         nameJP: 'Johnston',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 362,
         always_OASW: true,
         HP: 17, HPmax: 35,
@@ -11451,7 +11451,7 @@ const SHIP_DATA: ShipDatas = {
     563: {
         name: 'Makigumo Kai 2',
         nameJP: '巻雲改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 363,
         HP: 33, HPmax: 56,
         FP: 65, FPbase: 18,
@@ -11472,7 +11472,7 @@ const SHIP_DATA: ShipDatas = {
     564: {
         name: 'Kazagumo Kai 2',
         nameJP: '風雲改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 364,
         HP: 33, HPmax: 57,
         FP: 67, FPbase: 18,
@@ -11493,7 +11493,7 @@ const SHIP_DATA: ShipDatas = {
     565: {
         name: 'Fukae',
         nameJP: '福江',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 365,
         HP: 9, HPmax: 18,
         FP: 16, FPbase: 4,
@@ -11514,7 +11514,7 @@ const SHIP_DATA: ShipDatas = {
     566: {
         name: 'Kagerou Kai 2',
         nameJP: '陽炎改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 366,
         HP: 33, HPmax: 55,
         FP: 68, FPbase: 18,
@@ -11535,7 +11535,7 @@ const SHIP_DATA: ShipDatas = {
     567: {
         name: 'Shiranui Kai 2',
         nameJP: '不知火改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 367,
         HP: 33, HPmax: 55,
         FP: 67, FPbase: 18,
@@ -11556,7 +11556,7 @@ const SHIP_DATA: ShipDatas = {
     568: {
         name: 'Kuroshio Kai 2',
         nameJP: '黒潮改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 368,
         HP: 33, HPmax: 55,
         FP: 69, FPbase: 18,
@@ -11577,7 +11577,7 @@ const SHIP_DATA: ShipDatas = {
     569: {
         name: 'Okinami Kai 2',
         nameJP: '沖波改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 369,
         HP: 33, HPmax: 57,
         FP: 65, FPbase: 18,
@@ -11598,7 +11598,7 @@ const SHIP_DATA: ShipDatas = {
     570: {
         name: 'Hirato',
         nameJP: '平戸',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 370,
         HP: 9, HPmax: 18,
         FP: 18, FPbase: 4,
@@ -11619,7 +11619,7 @@ const SHIP_DATA: ShipDatas = {
     571: {
         name: 'Nelson',
         nameJP: 'Nelson',
-        type: 9, ship_class: 88,
+        type: ShipType.BB, ship_class: 88,
         nid: 371,
         fit_class: 13,
         attack_special_ids: [100],
@@ -11642,7 +11642,7 @@ const SHIP_DATA: ShipDatas = {
     572: {
         name: 'Rodney',
         nameJP: 'Rodney',
-        type: 9, ship_class: 88,
+        type: ShipType.BB, ship_class: 88,
         nid: 372,
         attack_special_ids: [100],
         HP: 81, HPmax: 92,
@@ -11664,7 +11664,7 @@ const SHIP_DATA: ShipDatas = {
     573: {
         name: 'Mutsu Kai 2',
         nameJP: '陸奥改二',
-        type: 9, ship_class: 19,
+        type: ShipType.BB, ship_class: 19,
         nid: 373,
         fit_class: 11,
         attack_special_ids: [102],
@@ -11687,7 +11687,7 @@ const SHIP_DATA: ShipDatas = {
     574: {
         name: 'Gotland',
         nameJP: 'Gotland',
-        type: 3, ship_class: 89,
+        type: ShipType.CL, ship_class: 89,
         nid: 374,
         HP: 32, HPmax: 43,
         FP: 48, FPbase: 16,
@@ -11708,7 +11708,7 @@ const SHIP_DATA: ShipDatas = {
     575: {
         name: 'Maestrale',
         nameJP: 'Maestrale',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 375,
         HP: 15, HPmax: 30,
         FP: 27, FPbase: 9,
@@ -11729,7 +11729,7 @@ const SHIP_DATA: ShipDatas = {
     576: {
         name: 'Nelson Kai',
         nameJP: 'Nelson改',
-        type: 9, ship_class: 88,
+        type: ShipType.BB, ship_class: 88,
         nid: 376,
         fit_class: 13,
         attack_special_ids: [100],
@@ -11752,7 +11752,7 @@ const SHIP_DATA: ShipDatas = {
     577: {
         name: 'Rodney Kai',
         nameJP: 'Rodney改',
-        type: 9, ship_class: 88,
+        type: ShipType.BB, ship_class: 88,
         nid: 377,
         attack_special_ids: [100],
         HP: 92, HPmax: 98,
@@ -11774,7 +11774,7 @@ const SHIP_DATA: ShipDatas = {
     578: {
         name: 'Asashimo Kai 2',
         nameJP: '朝霜改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 378,
         HP: 33, HPmax: 57,
         FP: 69, FPbase: 18,
@@ -11795,7 +11795,7 @@ const SHIP_DATA: ShipDatas = {
     579: {
         name: 'Gotland Kai',
         nameJP: 'Gotland改',
-        type: 3, ship_class: 89,
+        type: ShipType.CL, ship_class: 89,
         nid: 379,
         HP: 43, HPmax: 62,
         FP: 62, FPbase: 17,
@@ -11816,7 +11816,7 @@ const SHIP_DATA: ShipDatas = {
     580: {
         name: 'Maestrale Kai',
         nameJP: 'Maestrale改',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 380,
         HP: 29, HPmax: 46,
         FP: 54, FPbase: 13,
@@ -11837,7 +11837,7 @@ const SHIP_DATA: ShipDatas = {
     581: {
         name: 'Nisshin',
         nameJP: '日進',
-        type: 16, ship_class: 90,
+        type: ShipType.AV, ship_class: 90,
         nid: 381,
         HP: 45, HPmax: 65,
         FP: 46, FPbase: 16,
@@ -11858,7 +11858,7 @@ const SHIP_DATA: ShipDatas = {
     582: {
         name: 'Natsugumo',
         nameJP: '夏雲',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 382,
         HP: 16, HPmax: 33,
         FP: 31, FPbase: 10,
@@ -11879,7 +11879,7 @@ const SHIP_DATA: ShipDatas = {
     583: {
         name: 'Minegumo',
         nameJP: '峯雲',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 383,
         HP: 16, HPmax: 33,
         FP: 30, FPbase: 10,
@@ -11900,7 +11900,7 @@ const SHIP_DATA: ShipDatas = {
     584: {
         name: 'Hachijou',
         nameJP: '八丈',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 384,
         HP: 9, HPmax: 18,
         FP: 18, FPbase: 4,
@@ -11921,7 +11921,7 @@ const SHIP_DATA: ShipDatas = {
     585: {
         name: 'Ishigaki',
         nameJP: '石垣',
-        type: 1, ship_class: 74,
+        type: ShipType.DE, ship_class: 74,
         nid: 385,
         HP: 9, HPmax: 18,
         FP: 20, FPbase: 4,
@@ -11942,7 +11942,7 @@ const SHIP_DATA: ShipDatas = {
     586: {
         name: 'Nisshin A',
         nameJP: '日進甲',
-        type: 16, ship_class: 90,
+        type: ShipType.AV, ship_class: 90,
         nid: 386,
         HP: 49, HPmax: 69,
         FP: 60, FPbase: 20,
@@ -11963,7 +11963,7 @@ const SHIP_DATA: ShipDatas = {
     587: {
         name: 'Umikaze Kai 2',
         nameJP: '海風改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 387,
         HP: 31, HPmax: 54,
         FP: 61, FPbase: 15,
@@ -11984,7 +11984,7 @@ const SHIP_DATA: ShipDatas = {
     588: {
         name: 'Yamakaze Kai Ni',
         nameJP: '山風改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 388,
         HP: 30, HPmax: 52,
         FP: 60, FPbase: 14,
@@ -12005,7 +12005,7 @@ const SHIP_DATA: ShipDatas = {
     589: {
         name: 'L.d.S.D.d.Abruzzi',
         nameJP: 'L.d.S.D.d.Abruzzi',
-        type: 3, ship_class: 92,
+        type: ShipType.CL, ship_class: 92,
         nid: 389,
         HP: 37, HPmax: 55,
         FP: 51, FPbase: 27,
@@ -12026,7 +12026,7 @@ const SHIP_DATA: ShipDatas = {
     590: {
         name: 'G.Garibaldi',
         nameJP: 'G.Garibaldi',
-        type: 3, ship_class: 92,
+        type: ShipType.CL, ship_class: 92,
         nid: 390,
         HP: 37, HPmax: 55,
         FP: 50, FPbase: 28,
@@ -12047,7 +12047,7 @@ const SHIP_DATA: ShipDatas = {
     591: {
         name: 'Kongou Kai Ni C',
         nameJP: '金剛改二丙',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 391,
         fit_class: 1,
         attack_special_ids: [104],
@@ -12070,7 +12070,7 @@ const SHIP_DATA: ShipDatas = {
     592: {
         name: 'Hiei Kai 2 C',
         nameJP: '比叡改二丙',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 392,
         fit_class: 1,
         attack_special_ids: [104],
@@ -12093,7 +12093,7 @@ const SHIP_DATA: ShipDatas = {
     593: {
         name: 'Haruna Kai 2 B',
         nameJP: '榛名改二乙',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 393,
         attack_special_ids: [104],
         HP: 85, HPmax: 98,
@@ -12115,7 +12115,7 @@ const SHIP_DATA: ShipDatas = {
     594: {
         name: 'Akagi Kai 2',
         nameJP: '赤城改二',
-        type: 11, ship_class: 14,
+        type: ShipType.CV, ship_class: 14,
         nid: 404,
         HP: 81, HPmax: 97,
         FP: 60, FPbase: 0,
@@ -12136,7 +12136,7 @@ const SHIP_DATA: ShipDatas = {
     595: {
         name: 'Houston',
         nameJP: 'Houston',
-        type: 5, ship_class: 95,
+        type: ShipType.CA, ship_class: 95,
         nid: 395,
         HP: 43, HPmax: 56,
         FP: 52, FPbase: 37,
@@ -12157,7 +12157,7 @@ const SHIP_DATA: ShipDatas = {
     596: {
         name: 'Fletcher',
         nameJP: 'Fletcher',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 396,
         always_OASW: true,
         HP: 18, HPmax: 38,
@@ -12179,7 +12179,7 @@ const SHIP_DATA: ShipDatas = {
     597: {
         name: 'Atlanta',
         nameJP: 'Atlanta',
-        type: 3, ship_class: 99,
+        type: ShipType.CL, ship_class: 99,
         nid: 397,
         HP: 27, HPmax: 41,
         FP: 38, FPbase: 16,
@@ -12200,7 +12200,7 @@ const SHIP_DATA: ShipDatas = {
     598: {
         name: 'Honolulu',
         nameJP: 'Honolulu',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 398,
         HP: 38, HPmax: 56,
         FP: 59, FPbase: 29,
@@ -12221,7 +12221,7 @@ const SHIP_DATA: ShipDatas = {
     599: {
         name: 'Akagi Kai 2 E',
         nameJP: '赤城改二戊',
-        type: 11, ship_class: 14,
+        type: ShipType.CV, ship_class: 14,
         nid: 409,
         has_built_in_night_crew: true,
         HP: 81, HPmax: 97,
@@ -12243,7 +12243,7 @@ const SHIP_DATA: ShipDatas = {
     600: {
         name: 'Houston Kai',
         nameJP: 'Houston改',
-        type: 5, ship_class: 95,
+        type: ShipType.CA, ship_class: 95,
         nid: 400,
         HP: 54, HPmax: 67,
         FP: 76, FPbase: 46,
@@ -12264,7 +12264,7 @@ const SHIP_DATA: ShipDatas = {
     601: {
         name: 'Colorado',
         nameJP: 'Colorado',
-        type: 9, ship_class: 93,
+        type: ShipType.BB, ship_class: 93,
         nid: 401,
         attack_special_ids: [103],
         HP: 77, HPmax: 89,
@@ -12286,7 +12286,7 @@ const SHIP_DATA: ShipDatas = {
     602: {
         name: 'South Dakota',
         nameJP: 'South Dakota',
-        type: 8, ship_class: 102,
+        type: ShipType.FBB, ship_class: 102,
         nid: 402,
         HP: 79, HPmax: 92,
         FP: 100, FPbase: 81,
@@ -12307,7 +12307,7 @@ const SHIP_DATA: ShipDatas = {
     603: {
         name: 'Hornet',
         nameJP: 'Hornet',
-        type: 11, ship_class: 105,
+        type: ShipType.CV, ship_class: 105,
         nid: 403,
         HP: 67, HPmax: 84,
         FP: 45, FPbase: 0,
@@ -12328,7 +12328,7 @@ const SHIP_DATA: ShipDatas = {
     604: {
         name: 'De Ruyter',
         nameJP: 'De Ruyter',
-        type: 3, ship_class: 98,
+        type: ShipType.CL, ship_class: 98,
         nid: 399,
         HP: 28, HPmax: 43,
         FP: 50, FPbase: 21,
@@ -12349,7 +12349,7 @@ const SHIP_DATA: ShipDatas = {
     605: {
         name: 'Luigi Torelli Kai',
         nameJP: 'Luigi Torelli改',
-        type: 13, ship_class: 80,
+        type: ShipType.SS, ship_class: 80,
         nid: 1505,
         HP: 13, HPmax: 23,
         FP: 8, FPbase: 0,
@@ -12370,7 +12370,7 @@ const SHIP_DATA: ShipDatas = {
     606: {
         name: 'I-400 Kai',
         nameJP: '伊400改',
-        type: 14, ship_class: 44,
+        type: ShipType.SSV, ship_class: 44,
         nid: 1506,
         HP: 24, HPmax: 39,
         FP: 20, FPbase: 6,
@@ -12391,7 +12391,7 @@ const SHIP_DATA: ShipDatas = {
     607: {
         name: 'I-47 Kai',
         nameJP: '伊47改',
-        type: 13, ship_class: 103,
+        type: ShipType.SS, ship_class: 103,
         nid: 1507,
         HP: 18, HPmax: 24,
         FP: 12, FPbase: 3,
@@ -12412,7 +12412,7 @@ const SHIP_DATA: ShipDatas = {
     609: {
         name: 'De Ruyter Kai',
         nameJP: 'De Ruyter改',
-        type: 3, ship_class: 98,
+        type: ShipType.CL, ship_class: 98,
         nid: 1494,
         HP: 43, HPmax: 60,
         FP: 70, FPbase: 29,
@@ -12433,7 +12433,7 @@ const SHIP_DATA: ShipDatas = {
     610: {
         name: 'Kaga Kai 2 E',
         nameJP: '加賀改二戊',
-        type: 11, ship_class: 3,
+        type: ShipType.CV, ship_class: 3,
         nid: 410,
         has_built_in_night_crew: true,
         HP: 84, HPmax: 98,
@@ -12455,7 +12455,7 @@ const SHIP_DATA: ShipDatas = {
     611: {
         name: 'Mikura',
         nameJP: '御蔵',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 411,
         HP: 9, HPmax: 18,
         FP: 17, FPbase: 4,
@@ -12476,7 +12476,7 @@ const SHIP_DATA: ShipDatas = {
     612: {
         name: 'Yashiro',
         nameJP: '屋代',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 412,
         HP: 9, HPmax: 18,
         FP: 16, FPbase: 4,
@@ -12497,7 +12497,7 @@ const SHIP_DATA: ShipDatas = {
     613: {
         name: 'Perth',
         nameJP: 'Perth',
-        type: 3, ship_class: 96,
+        type: ShipType.CL, ship_class: 96,
         nid: 413,
         HP: 29, HPmax: 44,
         FP: 58, FPbase: 24,
@@ -12518,7 +12518,7 @@ const SHIP_DATA: ShipDatas = {
     614: {
         name: 'Grecale',
         nameJP: 'Grecale',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 414,
         HP: 15, HPmax: 30,
         FP: 26, FPbase: 9,
@@ -12539,7 +12539,7 @@ const SHIP_DATA: ShipDatas = {
     615: {
         name: 'Helena',
         nameJP: 'Helena',
-        type: 3, ship_class: 106,
+        type: ShipType.CL, ship_class: 106,
         nid: 415,
         HP: 39, HPmax: 56,
         FP: 60, FPbase: 30,
@@ -12560,7 +12560,7 @@ const SHIP_DATA: ShipDatas = {
     616: {
         name: 'Mikura Kai',
         nameJP: '御蔵改',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 416,
         HP: 17, HPmax: 28,
         FP: 37, FPbase: 5,
@@ -12581,7 +12581,7 @@ const SHIP_DATA: ShipDatas = {
     617: {
         name: 'Yashiro Kai',
         nameJP: '屋代改',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 417,
         HP: 17, HPmax: 28,
         FP: 36, FPbase: 5,
@@ -12602,7 +12602,7 @@ const SHIP_DATA: ShipDatas = {
     618: {
         name: 'Perth Kai',
         nameJP: 'Perth改',
-        type: 3, ship_class: 96,
+        type: ShipType.CL, ship_class: 96,
         nid: 418,
         HP: 45, HPmax: 62,
         FP: 72, FPbase: 32,
@@ -12623,7 +12623,7 @@ const SHIP_DATA: ShipDatas = {
     619: {
         name: 'Grecale Kai',
         nameJP: 'Grecale改',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 419,
         HP: 29, HPmax: 46,
         FP: 55, FPbase: 12,
@@ -12644,7 +12644,7 @@ const SHIP_DATA: ShipDatas = {
     620: {
         name: 'Helena Kai',
         nameJP: 'Helena改',
-        type: 3, ship_class: 106,
+        type: ShipType.CL, ship_class: 106,
         nid: 420,
         HP: 53, HPmax: 67,
         FP: 78, FPbase: 36,
@@ -12665,7 +12665,7 @@ const SHIP_DATA: ShipDatas = {
     621: {
         name: 'Shinshuumaru',
         nameJP: '神州丸',
-        type: 17, ship_class: 97,
+        type: ShipType.LHA, ship_class: 97,
         nid: 421,
         HP: 37, HPmax: 49,
         FP: 22, FPbase: 5,
@@ -12686,7 +12686,7 @@ const SHIP_DATA: ShipDatas = {
     622: {
         name: 'Yuubari Kai 2',
         nameJP: '夕張改二',
-        type: 3, ship_class: 34,
+        type: ShipType.CL, ship_class: 34,
         nid: 422,
         HP: 41, HPmax: 55,
         FP: 56, FPbase: 14,
@@ -12707,7 +12707,7 @@ const SHIP_DATA: ShipDatas = {
     623: {
         name: 'Yuubari Kai 2 Toku',
         nameJP: '夕張改二特',
-        type: 3, ship_class: 34,
+        type: ShipType.CL, ship_class: 34,
         nid: 423,
         HP: 41, HPmax: 55,
         FP: 56, FPbase: 14,
@@ -12728,7 +12728,7 @@ const SHIP_DATA: ShipDatas = {
     624: {
         name: 'Yuubari Kai 2 D',
         nameJP: '夕張改二丁',
-        type: 3, ship_class: 34,
+        type: ShipType.CL, ship_class: 34,
         nid: 424,
         always_OASW: true,
         HP: 41, HPmax: 55,
@@ -12750,7 +12750,7 @@ const SHIP_DATA: ShipDatas = {
     625: {
         name: 'Akishimo',
         nameJP: '秋霜',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 425,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -12771,7 +12771,7 @@ const SHIP_DATA: ShipDatas = {
     626: {
         name: 'Shinshuumaru Kai',
         nameJP: '神州丸改',
-        type: 17, ship_class: 97,
+        type: ShipType.LHA, ship_class: 97,
         nid: 426,
         HP: 39, HPmax: 58,
         FP: 36, FPbase: 6,
@@ -12792,7 +12792,7 @@ const SHIP_DATA: ShipDatas = {
     627: {
         name: 'Shikinami Kai 2',
         nameJP: '敷波改二',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 427,
         HP: 31, HPmax: 53,
         FP: 61, FPbase: 13,
@@ -12813,7 +12813,7 @@ const SHIP_DATA: ShipDatas = {
     628: {
         name: 'Fletcher Kai Mod.2',
         nameJP: 'Fletcher改 Mod.2',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 428,
         always_OASW: true,
         HP: 37, HPmax: 56,
@@ -12835,7 +12835,7 @@ const SHIP_DATA: ShipDatas = {
     629: {
         name: 'Fletcher Mk.II',
         nameJP: 'Fletcher Mk.II',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 429,
         always_OASW: true,
         HP: 38, HPmax: 57,
@@ -12857,7 +12857,7 @@ const SHIP_DATA: ShipDatas = {
     630: {
         name: 'Gotland andra',
         nameJP: 'Gotland andra',
-        type: 3, ship_class: 89,
+        type: ShipType.CL, ship_class: 89,
         nid: 430,
         HP: 47, HPmax: 67,
         FP: 60, FPbase: 16,
@@ -12878,7 +12878,7 @@ const SHIP_DATA: ShipDatas = {
     631: {
         name: 'Usugumo',
         nameJP: '薄雲',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 431,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -12899,7 +12899,7 @@ const SHIP_DATA: ShipDatas = {
     632: {
         name: 'Ariake',
         nameJP: '有明',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 432,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -12920,7 +12920,7 @@ const SHIP_DATA: ShipDatas = {
     633: {
         name: 'Yuugure',
         nameJP: '夕暮',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 433,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -12941,7 +12941,7 @@ const SHIP_DATA: ShipDatas = {
     634: {
         name: 'Jingei',
         nameJP: '迅鯨',
-        type: 20, ship_class: 100,
+        type: ShipType.AS, ship_class: 100,
         nid: 434,
         HP: 32, HPmax: 48,
         FP: 32, FPbase: 6,
@@ -12962,7 +12962,7 @@ const SHIP_DATA: ShipDatas = {
     635: {
         name: 'Chougei',
         nameJP: '長鯨',
-        type: 20, ship_class: 100,
+        type: ShipType.AS, ship_class: 100,
         nid: 435,
         HP: 31, HPmax: 49,
         FP: 31, FPbase: 6,
@@ -12983,7 +12983,7 @@ const SHIP_DATA: ShipDatas = {
     636: {
         name: 'I-47',
         nameJP: '伊47',
-        type: 13, ship_class: 103,
+        type: ShipType.SS, ship_class: 103,
         nid: 436,
         HP: 14, HPmax: 19,
         FP: 8, FPbase: 2,
@@ -13004,7 +13004,7 @@ const SHIP_DATA: ShipDatas = {
     637: {
         name: 'Kaiboukan No.4',
         nameJP: '第四号海防艦',
-        type: 1, ship_class: 104,
+        type: ShipType.DE, ship_class: 104,
         nid: 437,
         HP: 8, HPmax: 15,
         FP: 15, FPbase: 3,
@@ -13025,7 +13025,7 @@ const SHIP_DATA: ShipDatas = {
     638: {
         name: 'Kaiboukan No.30',
         nameJP: '第三〇号海防艦',
-        type: 1, ship_class: 104,
+        type: ShipType.DE, ship_class: 104,
         nid: 438,
         HP: 9, HPmax: 16,
         FP: 15, FPbase: 3,
@@ -13046,7 +13046,7 @@ const SHIP_DATA: ShipDatas = {
     639: {
         name: 'Jingei Kai',
         nameJP: '迅鯨改',
-        type: 20, ship_class: 100,
+        type: ShipType.AS, ship_class: 100,
         nid: 439,
         HP: 38, HPmax: 58,
         FP: 40, FPbase: 8,
@@ -13067,7 +13067,7 @@ const SHIP_DATA: ShipDatas = {
     640: {
         name: 'Chougei Kai',
         nameJP: '長鯨改',
-        type: 20, ship_class: 100,
+        type: ShipType.AS, ship_class: 100,
         nid: 440,
         HP: 37, HPmax: 59,
         FP: 39, FPbase: 8,
@@ -13088,7 +13088,7 @@ const SHIP_DATA: ShipDatas = {
     641: {
         name: 'Matsu',
         nameJP: '松',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 441,
         HP: 14, HPmax: 27,
         FP: 26, FPbase: 5,
@@ -13109,7 +13109,7 @@ const SHIP_DATA: ShipDatas = {
     642: {
         name: 'Take',
         nameJP: '竹',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 442,
         HP: 14, HPmax: 27,
         FP: 25, FPbase: 5,
@@ -13130,7 +13130,7 @@ const SHIP_DATA: ShipDatas = {
     643: {
         name: 'Ume',
         nameJP: '梅',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 443,
         HP: 14, HPmax: 27,
         FP: 24, FPbase: 5,
@@ -13151,7 +13151,7 @@ const SHIP_DATA: ShipDatas = {
     644: {
         name: 'Momo',
         nameJP: '桃',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 444,
         HP: 14, HPmax: 27,
         FP: 23, FPbase: 5,
@@ -13172,7 +13172,7 @@ const SHIP_DATA: ShipDatas = {
     645: {
         name: 'Souya (AGL)',
         nameJP: '宗谷',
-        type: 22, ship_class: 111,
+        type: ShipType.AO, ship_class: 111,
         nid: 445,
         HP: 23, HPmax: 36,
         FP: 1, FPbase: 0,
@@ -13193,9 +13193,9 @@ const SHIP_DATA: ShipDatas = {
     646: {
         name: 'Kaga Kai 2 Go',
         nameJP: '加賀改二護',
-        type: 11, ship_class: 3,
+        type: ShipType.CV, ship_class: 3,
         nid: 446,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         always_OASW: true,
         planeasw: 2,
         HP: 84, HPmax: 98,
@@ -13218,7 +13218,7 @@ const SHIP_DATA: ShipDatas = {
     647: {
         name: 'Uranami Kai 2',
         nameJP: '浦波改二',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 447,
         HP: 31, HPmax: 49,
         FP: 59, FPbase: 14,
@@ -13239,7 +13239,7 @@ const SHIP_DATA: ShipDatas = {
     648: {
         name: 'Akigumo Kai 2',
         nameJP: '秋雲改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 448,
         HP: 33, HPmax: 56,
         FP: 65, FPbase: 18,
@@ -13260,7 +13260,7 @@ const SHIP_DATA: ShipDatas = {
     649: {
         name: 'Takanami Kai 2',
         nameJP: '高波改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 449,
         HP: 33, HPmax: 56,
         FP: 68, FPbase: 16,
@@ -13281,7 +13281,7 @@ const SHIP_DATA: ShipDatas = {
     650: {
         name: 'Souya (AGB)',
         nameJP: '宗谷',
-        type: 22, ship_class: 111,
+        type: ShipType.AO, ship_class: 111,
         nid: 450,
         HP: 26, HPmax: 38,
         FP: 1, FPbase: 0,
@@ -13302,7 +13302,7 @@ const SHIP_DATA: ShipDatas = {
     651: {
         name: 'Dan Yang',
         nameJP: '丹陽',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 451,
         HP: 35, HPmax: 55,
         FP: 68, FPbase: 18,
@@ -13323,7 +13323,7 @@ const SHIP_DATA: ShipDatas = {
     652: {
         name: 'Kuma Kai 2',
         nameJP: '球磨改二',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 452,
         HP: 46, HPmax: 59,
         FP: 70, FPbase: 22,
@@ -13344,7 +13344,7 @@ const SHIP_DATA: ShipDatas = {
     653: {
         name: 'Scirocco',
         nameJP: 'Scirocco',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 453,
         HP: 15, HPmax: 30,
         FP: 27, FPbase: 9,
@@ -13365,7 +13365,7 @@ const SHIP_DATA: ShipDatas = {
     654: {
         name: 'Washington',
         nameJP: 'Washington',
-        type: 8, ship_class: 107,
+        type: ShipType.FBB, ship_class: 107,
         nid: 454,
         HP: 81, HPmax: 93,
         FP: 99, FPbase: 80,
@@ -13386,7 +13386,7 @@ const SHIP_DATA: ShipDatas = {
     655: {
         name: 'Northampton',
         nameJP: 'Northampton',
-        type: 5, ship_class: 95,
+        type: ShipType.CA, ship_class: 95,
         nid: 455,
         HP: 44, HPmax: 56,
         FP: 51, FPbase: 36,
@@ -13407,7 +13407,7 @@ const SHIP_DATA: ShipDatas = {
     656: {
         name: 'Yukikaze Kai 2',
         nameJP: '雪風改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 456,
         HP: 35, HPmax: 55,
         FP: 66, FPbase: 17,
@@ -13428,7 +13428,7 @@ const SHIP_DATA: ShipDatas = {
     657: {
         name: 'Kuma Kai 2 D',
         nameJP: '球磨改二丁',
-        type: 3, ship_class: 4,
+        type: ShipType.CL, ship_class: 4,
         nid: 457,
         HP: 46, HPmax: 59,
         FP: 67, FPbase: 17,
@@ -13449,7 +13449,7 @@ const SHIP_DATA: ShipDatas = {
     658: {
         name: 'Scirocco Kai',
         nameJP: 'Scirocco改',
-        type: 2, ship_class: 61,
+        type: ShipType.DD, ship_class: 61,
         nid: 1707,
         HP: 28, HPmax: 45,
         FP: 55, FPbase: 13,
@@ -13470,7 +13470,7 @@ const SHIP_DATA: ShipDatas = {
     659: {
         name: 'Washington Kai',
         nameJP: 'Washington改',
-        type: 8, ship_class: 107,
+        type: ShipType.FBB, ship_class: 107,
         nid: 459,
         HP: 93, HPmax: 100,
         FP: 107, FPbase: 84,
@@ -13491,7 +13491,7 @@ const SHIP_DATA: ShipDatas = {
     660: {
         name: 'Northampton Kai',
         nameJP: 'Northampton改',
-        type: 5, ship_class: 95,
+        type: ShipType.CA, ship_class: 95,
         nid: 460,
         HP: 55, HPmax: 67,
         FP: 75, FPbase: 45,
@@ -13512,7 +13512,7 @@ const SHIP_DATA: ShipDatas = {
     662: {
         name: 'Noshiro Kai 2',
         nameJP: '能代改二',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 462,
         HP: 53, HPmax: 67,
         FP: 78, FPbase: 30,
@@ -13533,7 +13533,7 @@ const SHIP_DATA: ShipDatas = {
     663: {
         name: 'Yahagi Kai 2',
         nameJP: '矢矧改二',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 463,
         HP: 54, HPmax: 69,
         FP: 78, FPbase: 30,
@@ -13554,7 +13554,7 @@ const SHIP_DATA: ShipDatas = {
     665: {
         name: 'Akebono Kai 2',
         nameJP: '曙改二',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 465,
         HP: 31, HPmax: 51,
         FP: 60, FPbase: 10,
@@ -13575,7 +13575,7 @@ const SHIP_DATA: ShipDatas = {
     666: {
         name: 'Isonami Kai 2',
         nameJP: '磯波改二',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 466,
         HP: 30, HPmax: 49,
         FP: 58, FPbase: 13,
@@ -13596,7 +13596,7 @@ const SHIP_DATA: ShipDatas = {
     667: {
         name: 'Yamakaze Kai Ni D',
         nameJP: '山風改二丁',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 467,
         HP: 30, HPmax: 52,
         FP: 60, FPbase: 14,
@@ -13617,7 +13617,7 @@ const SHIP_DATA: ShipDatas = {
     668: {
         name: 'Yahagi Kai 2 B',
         nameJP: '矢矧改二乙',
-        type: 3, ship_class: 41,
+        type: ShipType.CL, ship_class: 41,
         nid: 468,
         HP: 53, HPmax: 68,
         FP: 81, FPbase: 30,
@@ -13638,7 +13638,7 @@ const SHIP_DATA: ShipDatas = {
     670: {
         name: 'Oyashio Kai 2',
         nameJP: '親潮改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 470,
         HP: 33, HPmax: 55,
         FP: 68, FPbase: 18,
@@ -13659,7 +13659,7 @@ const SHIP_DATA: ShipDatas = {
     671: {
         name: 'Makinami',
         nameJP: '巻波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 471,
         HP: 16, HPmax: 34,
         FP: 32, FPbase: 10,
@@ -13680,7 +13680,7 @@ const SHIP_DATA: ShipDatas = {
     674: {
         name: 'Tamanami',
         nameJP: '玉波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 474,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -13701,7 +13701,7 @@ const SHIP_DATA: ShipDatas = {
     675: {
         name: 'Suzunami',
         nameJP: '涼波',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 475,
         HP: 16, HPmax: 34,
         FP: 32, FPbase: 10,
@@ -13722,7 +13722,7 @@ const SHIP_DATA: ShipDatas = {
     678: {
         name: 'Hiburi Kai',
         nameJP: '日振改',
-        type: 1, ship_class: 85,
+        type: ShipType.DE, ship_class: 85,
         nid: 1478,
         HP: 18, HPmax: 29,
         FP: 38, FPbase: 5,
@@ -13743,7 +13743,7 @@ const SHIP_DATA: ShipDatas = {
     679: {
         name: 'Daitou Kai',
         nameJP: '大東改',
-        type: 1, ship_class: 85,
+        type: ShipType.DE, ship_class: 85,
         nid: 1479,
         HP: 18, HPmax: 29,
         FP: 36, FPbase: 5,
@@ -13764,7 +13764,7 @@ const SHIP_DATA: ShipDatas = {
     680: {
         name: 'Hamanami Kai',
         nameJP: '浜波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1480,
         HP: 32, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -13785,7 +13785,7 @@ const SHIP_DATA: ShipDatas = {
     681: {
         name: 'Samuel B. Roberts Kai',
         nameJP: 'Samuel B.Roberts改',
-        type: 2, ship_class: 87,
+        type: ShipType.DD, ship_class: 87,
         nid: 1481,
         always_OASW: true,
         HP: 27, HPmax: 42,
@@ -13807,7 +13807,7 @@ const SHIP_DATA: ShipDatas = {
     684: {
         name: 'Hirato Kai',
         nameJP: '平戸改',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 1484,
         HP: 17, HPmax: 28,
         FP: 37, FPbase: 5,
@@ -13828,7 +13828,7 @@ const SHIP_DATA: ShipDatas = {
     685: {
         name: 'Fukae Kai',
         nameJP: '福江改',
-        type: 1, ship_class: 77,
+        type: ShipType.DE, ship_class: 77,
         nid: 1485,
         HP: 17, HPmax: 28,
         FP: 35, FPbase: 5,
@@ -13849,7 +13849,7 @@ const SHIP_DATA: ShipDatas = {
     686: {
         name: 'Kishinami Kai',
         nameJP: '岸波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1486,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -13870,7 +13870,7 @@ const SHIP_DATA: ShipDatas = {
     687: {
         name: 'Minegumo Kai',
         nameJP: '峯雲改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1487,
         HP: 31, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -13891,7 +13891,7 @@ const SHIP_DATA: ShipDatas = {
     688: {
         name: 'Hayanami Kai',
         nameJP: '早波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1488,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -13912,7 +13912,7 @@ const SHIP_DATA: ShipDatas = {
     689: {
         name: 'Johnston Kai',
         nameJP: 'Johnston改',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 1489,
         always_OASW: true,
         HP: 34, HPmax: 50,
@@ -13934,7 +13934,7 @@ const SHIP_DATA: ShipDatas = {
     690: {
         name: 'Nisshin Kai',
         nameJP: '日進改',
-        type: 16, ship_class: 90,
+        type: ShipType.AV, ship_class: 90,
         nid: 1490,
         HP: 47, HPmax: 67,
         FP: 54, FPbase: 18,
@@ -13955,7 +13955,7 @@ const SHIP_DATA: ShipDatas = {
     691: {
         name: 'G.Garibaldi Kai',
         nameJP: 'G.Garibaldi改',
-        type: 3, ship_class: 92,
+        type: ShipType.CL, ship_class: 92,
         nid: 1491,
         HP: 52, HPmax: 63,
         FP: 72, FPbase: 34,
@@ -13976,7 +13976,7 @@ const SHIP_DATA: ShipDatas = {
     692: {
         name: 'Fletcher Kai',
         nameJP: 'Fletcher改',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 1492,
         always_OASW: true,
         HP: 35, HPmax: 52,
@@ -13998,7 +13998,7 @@ const SHIP_DATA: ShipDatas = {
     693: {
         name: 'L.d.S.D.d.Abruzzi Kai',
         nameJP: 'L.d.S.D.d.Abruzzi改',
-        type: 3, ship_class: 92,
+        type: ShipType.CL, ship_class: 92,
         nid: 1483,
         HP: 52, HPmax: 63,
         FP: 73, FPbase: 33,
@@ -14019,7 +14019,7 @@ const SHIP_DATA: ShipDatas = {
     694: {
         name: 'Kirishima Kai 2 C',
         nameJP: '霧島改二丙',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 394,
         fit_class: 1,
         attack_special_ids: [104],
@@ -14042,7 +14042,7 @@ const SHIP_DATA: ShipDatas = {
     695: {
         name: 'Akishimo Kai',
         nameJP: '秋霜改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1495,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 11,
@@ -14063,7 +14063,7 @@ const SHIP_DATA: ShipDatas = {
     696: {
         name: 'Atlanta Kai',
         nameJP: 'Atlanta改',
-        type: 3, ship_class: 99,
+        type: ShipType.CL, ship_class: 99,
         nid: 1496,
         HP: 41, HPmax: 59,
         FP: 64, FPbase: 18,
@@ -14084,7 +14084,7 @@ const SHIP_DATA: ShipDatas = {
     697: {
         name: 'South Dakota Kai',
         nameJP: 'South Dakota改',
-        type: 8, ship_class: 102,
+        type: ShipType.FBB, ship_class: 102,
         nid: 407,
         HP: 91, HPmax: 100,
         FP: 109, FPbase: 86,
@@ -14105,7 +14105,7 @@ const SHIP_DATA: ShipDatas = {
     698: {
         name: 'Kaga Kai 2',
         nameJP: '加賀改二',
-        type: 11, ship_class: 3,
+        type: ShipType.CV, ship_class: 3,
         nid: 405,
         HP: 84, HPmax: 98,
         FP: 56, FPbase: 0,
@@ -14126,7 +14126,7 @@ const SHIP_DATA: ShipDatas = {
     699: {
         name: 'Souya (AGS)',
         nameJP: '宗谷',
-        type: 22, ship_class: 111,
+        type: ShipType.AO, ship_class: 111,
         nid: 408,
         HP: 22, HPmax: 35,
         FP: 9, FPbase: 1,
@@ -14147,7 +14147,7 @@ const SHIP_DATA: ShipDatas = {
     700: {
         name: 'Usugumo Kai',
         nameJP: '薄雲改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1700,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -14168,7 +14168,7 @@ const SHIP_DATA: ShipDatas = {
     701: {
         name: 'Kaiboukan No.4 Kai',
         nameJP: '第四号海防艦改',
-        type: 1, ship_class: 104,
+        type: ShipType.DE, ship_class: 104,
         nid: 1701,
         HP: 15, HPmax: 23,
         FP: 28, FPbase: 4,
@@ -14189,7 +14189,7 @@ const SHIP_DATA: ShipDatas = {
     702: {
         name: 'Matsu Kai',
         nameJP: '松改',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 1702,
         HP: 27, HPmax: 45,
         FP: 43, FPbase: 7,
@@ -14210,7 +14210,7 @@ const SHIP_DATA: ShipDatas = {
     703: {
         name: 'Ariake Kai',
         nameJP: '有明改',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 1703,
         HP: 30, HPmax: 48,
         FP: 48, FPbase: 7,
@@ -14231,7 +14231,7 @@ const SHIP_DATA: ShipDatas = {
     704: {
         name: 'Hornet Kai',
         nameJP: 'Hornet改',
-        type: 11, ship_class: 105,
+        type: ShipType.CV, ship_class: 105,
         nid: 1704,
         HP: 81, HPmax: 92,
         FP: 55, FPbase: 0,
@@ -14252,7 +14252,7 @@ const SHIP_DATA: ShipDatas = {
     705: {
         name: 'Sheffield Kai',
         nameJP: 'Sheffield改',
-        type: 3, ship_class: 108,
+        type: ShipType.CL, ship_class: 108,
         nid: 1705,
         HP: 52, HPmax: 67,
         FP: 74, FPbase: 32,
@@ -14273,7 +14273,7 @@ const SHIP_DATA: ShipDatas = {
     706: {
         name: 'Take Kai',
         nameJP: '竹改',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 1706,
         HP: 26, HPmax: 45,
         FP: 42, FPbase: 7,
@@ -14294,7 +14294,7 @@ const SHIP_DATA: ShipDatas = {
     707: {
         name: 'Gambier Bay Mk.II',
         nameJP: 'Gambier Bay Mk.II',
-        type: 7, ship_class: 83,
+        type: ShipType.CVL, ship_class: 83,
         nid: 458,
         HP: 53, HPmax: 73,
         FP: 55, FPbase: 3,
@@ -14315,7 +14315,7 @@ const SHIP_DATA: ShipDatas = {
     708: {
         name: 'Momo Kai',
         nameJP: '桃改',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 1708,
         HP: 26, HPmax: 45,
         FP: 41, FPbase: 7,
@@ -14336,7 +14336,7 @@ const SHIP_DATA: ShipDatas = {
     709: {
         name: 'Makinami Kai',
         nameJP: '巻波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1709,
         HP: 32, HPmax: 49,
         FP: 54, FPbase: 12,
@@ -14357,7 +14357,7 @@ const SHIP_DATA: ShipDatas = {
     710: {
         name: 'Suzunami Kai',
         nameJP: '涼波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1710,
         HP: 32, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -14378,7 +14378,7 @@ const SHIP_DATA: ShipDatas = {
     711: {
         name: 'Honolulu Kai',
         nameJP: 'Honolulu改',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 1711,
         HP: 53, HPmax: 67,
         FP: 77, FPbase: 34,
@@ -14399,7 +14399,7 @@ const SHIP_DATA: ShipDatas = {
     712: {
         name: 'Kaiboukan No.30 Kai',
         nameJP: '第三〇号海防艦改',
-        type: 1, ship_class: 104,
+        type: ShipType.DE, ship_class: 104,
         nid: 1712,
         HP: 15, HPmax: 23,
         FP: 28, FPbase: 4,
@@ -14420,7 +14420,7 @@ const SHIP_DATA: ShipDatas = {
     713: {
         name: 'Victorious Kai',
         nameJP: 'Victorious改',
-        type: 18, ship_class: 112,
+        type: ShipType.CVB, ship_class: 112,
         nid: 1713,
         HP: 74, HPmax: 91,
         FP: 55, FPbase: 0,
@@ -14441,7 +14441,7 @@ const SHIP_DATA: ShipDatas = {
     714: {
         name: 'Shounan Kai',
         nameJP: '昭南改',
-        type: 1, ship_class: 85,
+        type: ShipType.DE, ship_class: 85,
         nid: 1714,
         HP: 18, HPmax: 29,
         FP: 37, FPbase: 5,
@@ -14462,7 +14462,7 @@ const SHIP_DATA: ShipDatas = {
     715: {
         name: 'Scamp Kai',
         nameJP: 'Scamp改',
-        type: 13, ship_class: 114,
+        type: ShipType.SS, ship_class: 114,
         nid: 1715,
         HP: 17, HPmax: 23,
         FP: 13, FPbase: 2,
@@ -14483,7 +14483,7 @@ const SHIP_DATA: ShipDatas = {
     716: {
         name: 'Ume Kai',
         nameJP: '梅改',
-        type: 2, ship_class: 101,
+        type: ShipType.DD, ship_class: 101,
         nid: 1716,
         HP: 27, HPmax: 45,
         FP: 42, FPbase: 7,
@@ -14504,7 +14504,7 @@ const SHIP_DATA: ShipDatas = {
     717: {
         name: 'Yamashio Maru Kai',
         nameJP: '山汐丸改',
-        type: 22, ship_class: 115,
+        type: ShipType.AO, ship_class: 115,
         nid: 1717,
         can_air_attack: true,
         HP: 39, HPmax: 56,
@@ -14526,7 +14526,7 @@ const SHIP_DATA: ShipDatas = {
     718: {
         name: 'Tamanami Kai',
         nameJP: '玉波改',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 1718,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -14547,7 +14547,7 @@ const SHIP_DATA: ShipDatas = {
     719: {
         name: 'I-201 Kai',
         nameJP: '伊201改',
-        type: 13, ship_class: 109,
+        type: ShipType.SS, ship_class: 109,
         nid: 1719,
         HP: 13, HPmax: 23,
         FP: 4, FPbase: 1,
@@ -14568,7 +14568,7 @@ const SHIP_DATA: ShipDatas = {
     720: {
         name: 'Hayashio Kai',
         nameJP: '早潮改',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 1720,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 13,
@@ -14589,7 +14589,7 @@ const SHIP_DATA: ShipDatas = {
     721: {
         name: 'Natsugumo Kai',
         nameJP: '夏雲改',
-        type: 2, ship_class: 18,
+        type: ShipType.DD, ship_class: 18,
         nid: 1721,
         HP: 31, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -14610,7 +14610,7 @@ const SHIP_DATA: ShipDatas = {
     722: {
         name: 'Brooklyn Kai',
         nameJP: 'Brooklyn改',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 1722,
         HP: 53, HPmax: 67,
         FP: 77, FPbase: 33,
@@ -14631,7 +14631,7 @@ const SHIP_DATA: ShipDatas = {
     723: {
         name: 'Ranger Kai',
         nameJP: 'Ranger改',
-        type: 11, ship_class: 118,
+        type: ShipType.CV, ship_class: 118,
         nid: 1723,
         HP: 64, HPmax: 84,
         FP: 47, FPbase: 0,
@@ -14652,7 +14652,7 @@ const SHIP_DATA: ShipDatas = {
     724: {
         name: 'Jean Bart Kai',
         nameJP: 'Jean Bart改',
-        type: 8, ship_class: 79,
+        type: ShipType.FBB, ship_class: 79,
         nid: 1724,
         attack_special_ids: [105],
         HP: 88, HPmax: 98,
@@ -14674,7 +14674,7 @@ const SHIP_DATA: ShipDatas = {
     725: {
         name: 'Yuugure Kai',
         nameJP: '夕暮改',
-        type: 2, ship_class: 10,
+        type: ShipType.DD, ship_class: 10,
         nid: 1725,
         HP: 30, HPmax: 48,
         FP: 47, FPbase: 7,
@@ -14695,7 +14695,7 @@ const SHIP_DATA: ShipDatas = {
     726: {
         name: 'Heywood L.E. Kai',
         nameJP: 'Heywood L.E.改',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 1726,
         always_OASW: true,
         HP: 34, HPmax: 50,
@@ -14717,7 +14717,7 @@ const SHIP_DATA: ShipDatas = {
     727: {
         name: 'No.101 Transport Ship Kai',
         nameJP: '第百一号輸送艦改',
-        type: 17, ship_class: 120,
+        type: ShipType.LHA, ship_class: 120,
         nid: 1727,
         is_anti_install_ship: true,
         HP: 19, HPmax: 29,
@@ -14739,7 +14739,7 @@ const SHIP_DATA: ShipDatas = {
     728: {
         name: 'Kaiboukan No.22 Kai',
         nameJP: '第二十二号海防艦改',
-        type: 1, ship_class: 104,
+        type: ShipType.DE, ship_class: 104,
         nid: 1728,
         HP: 17, HPmax: 25,
         FP: 27, FPbase: 4,
@@ -14760,7 +14760,7 @@ const SHIP_DATA: ShipDatas = {
     729: {
         name: 'Shirakumo Kai',
         nameJP: '白雲改',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 1729,
         HP: 30, HPmax: 50,
         FP: 48, FPbase: 11,
@@ -14781,7 +14781,7 @@ const SHIP_DATA: ShipDatas = {
     730: {
         name: 'Inagi Kai',
         nameJP: '稲木改',
-        type: 1, ship_class: 117,
+        type: ShipType.DE, ship_class: 117,
         nid: 1730,
         HP: 17, HPmax: 29,
         FP: 32, FPbase: 4,
@@ -14802,7 +14802,7 @@ const SHIP_DATA: ShipDatas = {
     731: {
         name: 'C.Cappellini Kai',
         nameJP: 'C.Cappellini改',
-        type: 13, ship_class: 124,
+        type: ShipType.SS, ship_class: 124,
         nid: 1731,
         HP: 11, HPmax: 21,
         FP: 2, FPbase: 0,
@@ -14823,7 +14823,7 @@ const SHIP_DATA: ShipDatas = {
     732: {
         name: 'Drum Kai',
         nameJP: 'Drum改',
-        type: 13, ship_class: 114,
+        type: ShipType.SS, ship_class: 114,
         nid: 1732,
         HP: 17, HPmax: 23,
         FP: 12, FPbase: 2,
@@ -14844,7 +14844,7 @@ const SHIP_DATA: ShipDatas = {
     733: {
         name: 'Valiant Kai',
         nameJP: 'Valiant改',
-        type: 9, ship_class: 67,
+        type: ShipType.BB, ship_class: 67,
         nid: 1733,
         HP: 83, HPmax: 92,
         FP: 102, FPbase: 87,
@@ -14865,7 +14865,7 @@ const SHIP_DATA: ShipDatas = {
     734: {
         name: 'Phoenix Kai',
         nameJP: 'Phoenix改',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 1734,
         HP: 53, HPmax: 67,
         FP: 77, FPbase: 33,
@@ -14886,9 +14886,9 @@ const SHIP_DATA: ShipDatas = {
     735: {
         name: 'Lexington Kai',
         nameJP: 'Lexington改',
-        type: 11, ship_class: 69,
+        type: ShipType.CV, ship_class: 69,
         nid: 1735,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 89, HPmax: 98,
         FP: 55, FPbase: 30,
         TP: 0, TPbase: 0,
@@ -14908,7 +14908,7 @@ const SHIP_DATA: ShipDatas = {
     877: {
         name: 'Conte di Cavour',
         nameJP: 'Conte di Cavour',
-        type: 9, ship_class: 113,
+        type: ShipType.BB, ship_class: 113,
         nid: 477,
         HP: 57, HPmax: 76,
         FP: 75, FPbase: 53,
@@ -14929,7 +14929,7 @@ const SHIP_DATA: ShipDatas = {
     878: {
         name: 'Conte di Cavour Kai',
         nameJP: 'Conte di Cavour改',
-        type: 8, ship_class: 113,
+        type: ShipType.FBB, ship_class: 113,
         nid: 478,
         HP: 73, HPmax: 85,
         FP: 91, FPbase: 62,
@@ -14950,7 +14950,7 @@ const SHIP_DATA: ShipDatas = {
     879: {
         name: 'Conte di Cavour nuovo',
         nameJP: 'Conte di Cavour nuovo',
-        type: 8, ship_class: 113,
+        type: ShipType.FBB, ship_class: 113,
         nid: 479,
         HP: 78, HPmax: 91,
         FP: 95, FPbase: 64,
@@ -14971,7 +14971,7 @@ const SHIP_DATA: ShipDatas = {
     881: {
         name: 'I-201',
         nameJP: '伊201',
-        type: 13, ship_class: 109,
+        type: ShipType.SS, ship_class: 109,
         nid: 481,
         HP: 12, HPmax: 22,
         FP: 3, FPbase: 1,
@@ -14992,7 +14992,7 @@ const SHIP_DATA: ShipDatas = {
     882: {
         name: 'I-203',
         nameJP: '伊203',
-        type: 13, ship_class: 109,
+        type: ShipType.SS, ship_class: 109,
         nid: 482,
         HP: 12, HPmax: 22,
         FP: 3, FPbase: 1,
@@ -15013,7 +15013,7 @@ const SHIP_DATA: ShipDatas = {
     883: {
         name: 'Ryuuhou Kai 2 E',
         nameJP: '龍鳳改二戊',
-        type: 7, ship_class: 51,
+        type: ShipType.CVL, ship_class: 51,
         nid: 483,
         has_built_in_night_crew: true,
         HP: 61, HPmax: 79,
@@ -15035,7 +15035,7 @@ const SHIP_DATA: ShipDatas = {
     884: {
         name: 'Unyou',
         nameJP: '雲鷹',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 484,
         HP: 39, HPmax: 59,
         FP: 13, FPbase: 0,
@@ -15056,7 +15056,7 @@ const SHIP_DATA: ShipDatas = {
     885: {
         name: 'Victorious',
         nameJP: 'Victorious',
-        type: 18, ship_class: 112,
+        type: ShipType.CVB, ship_class: 112,
         nid: 485,
         HP: 59, HPmax: 85,
         FP: 38, FPbase: 0,
@@ -15077,7 +15077,7 @@ const SHIP_DATA: ShipDatas = {
     886: {
         name: 'Hayashio',
         nameJP: '早潮',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 486,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -15098,7 +15098,7 @@ const SHIP_DATA: ShipDatas = {
     887: {
         name: 'I-203 Kai',
         nameJP: '伊203改',
-        type: 13, ship_class: 109,
+        type: ShipType.SS, ship_class: 109,
         nid: 487,
         HP: 13, HPmax: 23,
         FP: 4, FPbase: 1,
@@ -15119,7 +15119,7 @@ const SHIP_DATA: ShipDatas = {
     888: {
         name: 'Ryuuhou Kai 2',
         nameJP: '龍鳳改二',
-        type: 7, ship_class: 51,
+        type: ShipType.CVL, ship_class: 51,
         nid: 488,
         HP: 63, HPmax: 81,
         FP: 47, FPbase: 0,
@@ -15140,9 +15140,9 @@ const SHIP_DATA: ShipDatas = {
     889: {
         name: 'Unyou Kai 2',
         nameJP: '雲鷹改二',
-        type: 7, ship_class: 76,
+        type: ShipType.CVL, ship_class: 76,
         nid: 489,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         always_OASW: true,
         HP: 49, HPmax: 74,
         FP: 39, FPbase: 17,
@@ -15163,7 +15163,7 @@ const SHIP_DATA: ShipDatas = {
     891: {
         name: 'Salmon',
         nameJP: 'Salmon',
-        type: 13, ship_class: 122,
+        type: ShipType.SS, ship_class: 122,
         nid: 491,
         HP: 12, HPmax: 17,
         FP: 10, FPbase: 1,
@@ -15184,7 +15184,7 @@ const SHIP_DATA: ShipDatas = {
     892: {
         name: 'Drum',
         nameJP: 'Drum',
-        type: 13, ship_class: 114,
+        type: ShipType.SS, ship_class: 114,
         nid: 492,
         HP: 13, HPmax: 18,
         FP: 10, FPbase: 1,
@@ -15205,7 +15205,7 @@ const SHIP_DATA: ShipDatas = {
     893: {
         name: 'Janus Kai',
         nameJP: 'Janus改',
-        type: 2, ship_class: 82,
+        type: ShipType.DD, ship_class: 82,
         nid: 1493,
         always_OASW: true,
         HP: 31, HPmax: 47,
@@ -15227,7 +15227,7 @@ const SHIP_DATA: ShipDatas = {
     894: {
         name: 'Houshou Kai 2',
         nameJP: '鳳翔改二',
-        type: 7, ship_class: 27,
+        type: ShipType.CVL, ship_class: 27,
         nid: 494,
         HP: 57, HPmax: 73,
         FP: 53, FPbase: 0,
@@ -15248,7 +15248,7 @@ const SHIP_DATA: ShipDatas = {
     895: {
         name: 'Shounan',
         nameJP: '昭南',
-        type: 1, ship_class: 85,
+        type: ShipType.DE, ship_class: 85,
         nid: 495,
         HP: 9, HPmax: 18,
         FP: 18, FPbase: 4,
@@ -15269,7 +15269,7 @@ const SHIP_DATA: ShipDatas = {
     896: {
         name: 'Brooklyn',
         nameJP: 'Brooklyn',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 497,
         HP: 38, HPmax: 56,
         FP: 59, FPbase: 29,
@@ -15290,7 +15290,7 @@ const SHIP_DATA: ShipDatas = {
     897: {
         name: 'Salmon Kai',
         nameJP: 'Salmon改',
-        type: 13, ship_class: 122,
+        type: ShipType.SS, ship_class: 122,
         nid: 496,
         HP: 15, HPmax: 21,
         FP: 13, FPbase: 2,
@@ -15311,7 +15311,7 @@ const SHIP_DATA: ShipDatas = {
     898: {
         name: 'Kaiboukan No.22',
         nameJP: '第二十二号海防艦',
-        type: 1, ship_class: 104,
+        type: ShipType.DE, ship_class: 104,
         nid: 498,
         HP: 8, HPmax: 16,
         FP: 14, FPbase: 3,
@@ -15332,7 +15332,7 @@ const SHIP_DATA: ShipDatas = {
     899: {
         name: 'Houshou Kai 2 Sen',
         nameJP: '鳳翔改二戦',
-        type: 7, ship_class: 27,
+        type: ShipType.CVL, ship_class: 27,
         nid: 499,
         HP: 57, HPmax: 73,
         FP: 50, FPbase: 0,
@@ -15353,7 +15353,7 @@ const SHIP_DATA: ShipDatas = {
     900: {
         name: 'Yamashio Maru',
         nameJP: '山汐丸',
-        type: 22, ship_class: 115,
+        type: ShipType.AO, ship_class: 115,
         nid: 500,
         HP: 36, HPmax: 48,
         FP: 15, FPbase: 2,
@@ -15374,7 +15374,7 @@ const SHIP_DATA: ShipDatas = {
     901: {
         name: 'Javelin',
         nameJP: 'Javelin',
-        type: 2, ship_class: 82,
+        type: ShipType.DD, ship_class: 82,
         nid: 501,
         HP: 15, HPmax: 33,
         FP: 34, FPbase: 12,
@@ -15395,7 +15395,7 @@ const SHIP_DATA: ShipDatas = {
     903: {
         name: 'Amagiri Kai 2',
         nameJP: '天霧改二',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 503,
         is_anti_PT_ship: true,
         HP: 31, HPmax: 54,
@@ -15417,7 +15417,7 @@ const SHIP_DATA: ShipDatas = {
     904: {
         name: 'Noumi',
         nameJP: '能美',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 504,
         HP: 9, HPmax: 18,
         FP: 16, FPbase: 4,
@@ -15438,7 +15438,7 @@ const SHIP_DATA: ShipDatas = {
     905: {
         name: 'Kurahashi',
         nameJP: '倉橋',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 505,
         HP: 9, HPmax: 18,
         FP: 17, FPbase: 4,
@@ -15459,7 +15459,7 @@ const SHIP_DATA: ShipDatas = {
     906: {
         name: 'Javelin Kai',
         nameJP: 'Javelin改',
-        type: 2, ship_class: 82,
+        type: ShipType.DD, ship_class: 82,
         nid: 506,
         always_OASW: true,
         HP: 31, HPmax: 47,
@@ -15481,7 +15481,7 @@ const SHIP_DATA: ShipDatas = {
     908: {
         name: 'Amagiri Kai 2 D',
         nameJP: '天霧改二丁',
-        type: 2, ship_class: 1,
+        type: ShipType.DD, ship_class: 1,
         nid: 508,
         is_anti_PT_ship: true,
         HP: 31, HPmax: 54,
@@ -15503,7 +15503,7 @@ const SHIP_DATA: ShipDatas = {
     909: {
         name: 'Noumi Kai',
         nameJP: '能美改',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 509,
         HP: 17, HPmax: 28,
         FP: 35, FPbase: 5,
@@ -15524,7 +15524,7 @@ const SHIP_DATA: ShipDatas = {
     910: {
         name: 'Kurahashi Kai',
         nameJP: '倉橋改',
-        type: 1, ship_class: 94,
+        type: ShipType.DE, ship_class: 94,
         nid: 510,
         HP: 17, HPmax: 28,
         FP: 36, FPbase: 5,
@@ -15545,7 +15545,7 @@ const SHIP_DATA: ShipDatas = {
     911: {
         name: 'Yamato Kai 2',
         nameJP: '大和改二',
-        type: 8, ship_class: 37,
+        type: ShipType.FBB, ship_class: 37,
         nid: 511,
         fit_class: 9,
         attack_special_ids: [400, 401],
@@ -15568,7 +15568,7 @@ const SHIP_DATA: ShipDatas = {
     913: {
         name: 'Maryland',
         nameJP: 'Maryland',
-        type: 9, ship_class: 93,
+        type: ShipType.BB, ship_class: 93,
         nid: 513,
         attack_special_ids: [103],
         HP: 77, HPmax: 89,
@@ -15590,7 +15590,7 @@ const SHIP_DATA: ShipDatas = {
     915: {
         name: 'Hayashio Kai 2',
         nameJP: '早潮改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 515,
         HP: 33, HPmax: 55,
         FP: 67, FPbase: 17,
@@ -15611,7 +15611,7 @@ const SHIP_DATA: ShipDatas = {
     916: {
         name: 'Yamato Kai 2 Juu',
         nameJP: '大和改二重',
-        type: 10, ship_class: 37,
+        type: ShipType.BBV, ship_class: 37,
         nid: 516,
         fit_class: 9,
         attack_special_ids: [400, 401],
@@ -15634,7 +15634,7 @@ const SHIP_DATA: ShipDatas = {
     918: {
         name: 'Maryland Kai',
         nameJP: 'Maryland改',
-        type: 9, ship_class: 93,
+        type: ShipType.BB, ship_class: 93,
         nid: 518,
         attack_special_ids: [103],
         HP: 91, HPmax: 98,
@@ -15656,7 +15656,7 @@ const SHIP_DATA: ShipDatas = {
     920: {
         name: 'Samuel B. Roberts Mk.II',
         nameJP: 'Samuel B.Roberts Mk.II',
-        type: 2, ship_class: 87,
+        type: ShipType.DD, ship_class: 87,
         nid: 520,
         always_OASW: true,
         HP: 29, HPmax: 45,
@@ -15678,7 +15678,7 @@ const SHIP_DATA: ShipDatas = {
     921: {
         name: 'Ukuru',
         nameJP: '鵜来',
-        type: 1, ship_class: 117,
+        type: ShipType.DE, ship_class: 117,
         nid: 521,
         HP: 9, HPmax: 17,
         FP: 18, FPbase: 4,
@@ -15699,7 +15699,7 @@ const SHIP_DATA: ShipDatas = {
     922: {
         name: 'Inagi',
         nameJP: '稲木',
-        type: 1, ship_class: 117,
+        type: ShipType.DE, ship_class: 117,
         nid: 522,
         HP: 9, HPmax: 17,
         FP: 17, FPbase: 4,
@@ -15720,7 +15720,7 @@ const SHIP_DATA: ShipDatas = {
     923: {
         name: 'Tuscaloosa',
         nameJP: 'Tuscaloosa',
-        type: 5, ship_class: 121,
+        type: ShipType.CA, ship_class: 121,
         nid: 523,
         HP: 43, HPmax: 55,
         FP: 52, FPbase: 36,
@@ -15741,7 +15741,7 @@ const SHIP_DATA: ShipDatas = {
     924: {
         name: 'Nevada',
         nameJP: 'Nevada',
-        type: 9, ship_class: 125,
+        type: ShipType.BB, ship_class: 125,
         nid: 524,
         HP: 74, HPmax: 87,
         FP: 92, FPbase: 72,
@@ -15762,7 +15762,7 @@ const SHIP_DATA: ShipDatas = {
     925: {
         name: 'Langley',
         nameJP: 'Langley',
-        type: 7, ship_class: 116,
+        type: ShipType.CVL, ship_class: 116,
         nid: 525,
         HP: 31, HPmax: 41,
         FP: 32, FPbase: 14,
@@ -15783,7 +15783,7 @@ const SHIP_DATA: ShipDatas = {
     926: {
         name: 'Ukuru Kai',
         nameJP: '鵜来改',
-        type: 1, ship_class: 117,
+        type: ShipType.DE, ship_class: 117,
         nid: 526,
         HP: 17, HPmax: 28,
         FP: 34, FPbase: 4,
@@ -15804,7 +15804,7 @@ const SHIP_DATA: ShipDatas = {
     927: {
         name: 'Valiant',
         nameJP: 'Valiant',
-        type: 9, ship_class: 67,
+        type: ShipType.BB, ship_class: 67,
         nid: 527,
         HP: 73, HPmax: 87,
         FP: 91, FPbase: 74,
@@ -15825,7 +15825,7 @@ const SHIP_DATA: ShipDatas = {
     928: {
         name: 'Tuscaloosa Kai',
         nameJP: 'Tuscaloosa改',
-        type: 5, ship_class: 121,
+        type: ShipType.CA, ship_class: 121,
         nid: 528,
         HP: 53, HPmax: 65,
         FP: 77, FPbase: 45,
@@ -15846,7 +15846,7 @@ const SHIP_DATA: ShipDatas = {
     929: {
         name: 'Nevada Kai',
         nameJP: 'Nevada改',
-        type: 9, ship_class: 125,
+        type: ShipType.BB, ship_class: 125,
         nid: 529,
         HP: 89, HPmax: 95,
         FP: 97, FPbase: 77,
@@ -15867,7 +15867,7 @@ const SHIP_DATA: ShipDatas = {
     930: {
         name: 'Langley Kai',
         nameJP: 'Langley改',
-        type: 7, ship_class: 116,
+        type: ShipType.CVL, ship_class: 116,
         nid: 530,
         HP: 44, HPmax: 70,
         FP: 40, FPbase: 18,
@@ -15888,7 +15888,7 @@ const SHIP_DATA: ShipDatas = {
     931: {
         name: 'Ranger',
         nameJP: 'Ranger',
-        type: 11, ship_class: 118,
+        type: ShipType.CV, ship_class: 118,
         nid: 531,
         HP: 48, HPmax: 78,
         FP: 27, FPbase: 0,
@@ -15909,7 +15909,7 @@ const SHIP_DATA: ShipDatas = {
     933: {
         name: 'Massachusetts',
         nameJP: 'Massachusetts',
-        type: 8, ship_class: 102,
+        type: ShipType.FBB, ship_class: 102,
         nid: 533,
         HP: 79, HPmax: 92,
         FP: 101, FPbase: 80,
@@ -15930,7 +15930,7 @@ const SHIP_DATA: ShipDatas = {
     934: {
         name: 'C.Cappellini',
         nameJP: 'C.Cappellini',
-        type: 13, ship_class: 124,
+        type: ShipType.SS, ship_class: 124,
         nid: 534,
         HP: 10, HPmax: 20,
         FP: 19, FPbase: 5,
@@ -15951,7 +15951,7 @@ const SHIP_DATA: ShipDatas = {
     935: {
         name: 'Jean Bart',
         nameJP: 'Jean Bart',
-        type: 8, ship_class: 79,
+        type: ShipType.FBB, ship_class: 79,
         nid: 535,
         HP: 84, HPmax: 93,
         FP: 95, FPbase: 61,
@@ -15972,7 +15972,7 @@ const SHIP_DATA: ShipDatas = {
     936: {
         name: 'Nevada Kai Mod.2',
         nameJP: 'Nevada改 Mod.2',
-        type: 9, ship_class: 125,
+        type: ShipType.BB, ship_class: 125,
         nid: 536,
         HP: 90, HPmax: 96,
         FP: 103, FPbase: 82,
@@ -15993,7 +15993,7 @@ const SHIP_DATA: ShipDatas = {
     938: {
         name: 'Massachusetts Kai',
         nameJP: 'Massachusetts改',
-        type: 8, ship_class: 102,
+        type: ShipType.FBB, ship_class: 102,
         nid: 538,
         HP: 91, HPmax: 101,
         FP: 108, FPbase: 84,
@@ -16014,7 +16014,7 @@ const SHIP_DATA: ShipDatas = {
     939: {
         name: 'UIT-24',
         nameJP: 'UIT-24',
-        type: 13, ship_class: 124,
+        type: ShipType.SS, ship_class: 124,
         nid: 539,
         HP: 12, HPmax: 22,
         FP: 14, FPbase: 3,
@@ -16035,7 +16035,7 @@ const SHIP_DATA: ShipDatas = {
     940: {
         name: 'I-503',
         nameJP: '伊503',
-        type: 13, ship_class: 124,
+        type: ShipType.SS, ship_class: 124,
         nid: 540,
         HP: 13, HPmax: 23,
         FP: 18, FPbase: 4,
@@ -16056,7 +16056,7 @@ const SHIP_DATA: ShipDatas = {
     941: {
         name: 'Heywood L.E.',
         nameJP: 'Heywood L.E.',
-        type: 2, ship_class: 91,
+        type: ShipType.DD, ship_class: 91,
         nid: 541,
         HP: 17, HPmax: 35,
         FP: 30, FPbase: 12,
@@ -16077,7 +16077,7 @@ const SHIP_DATA: ShipDatas = {
     943: {
         name: 'Kumano Maru',
         nameJP: '熊野丸',
-        type: 17, ship_class: 119,
+        type: ShipType.LHA, ship_class: 119,
         nid: 543,
         HP: 38, HPmax: 49,
         FP: 24, FPbase: 4,
@@ -16098,7 +16098,7 @@ const SHIP_DATA: ShipDatas = {
     944: {
         name: 'Heian Maru',
         nameJP: '平安丸',
-        type: 20, ship_class: 126,
+        type: ShipType.AS, ship_class: 126,
         nid: 544,
         HP: 36, HPmax: 51,
         FP: 23, FPbase: 5,
@@ -16119,7 +16119,7 @@ const SHIP_DATA: ShipDatas = {
     945: {
         name: 'No.101 Transport Ship',
         nameJP: '第百一号輸送艦',
-        type: 17, ship_class: 120,
+        type: ShipType.LHA, ship_class: 120,
         nid: 545,
         is_anti_install_ship: true,
         HP: 11, HPmax: 19,
@@ -16141,7 +16141,7 @@ const SHIP_DATA: ShipDatas = {
     948: {
         name: 'Kumano Maru Kai',
         nameJP: '熊野丸改',
-        type: 17, ship_class: 119,
+        type: ShipType.LHA, ship_class: 119,
         nid: 548,
         HP: 40, HPmax: 59,
         FP: 37, FPbase: 12,
@@ -16162,7 +16162,7 @@ const SHIP_DATA: ShipDatas = {
     949: {
         name: 'Heian Maru Kai',
         nameJP: '平安丸改',
-        type: 20, ship_class: 126,
+        type: ShipType.AS, ship_class: 126,
         nid: 549,
         HP: 39, HPmax: 57,
         FP: 42, FPbase: 11,
@@ -16183,7 +16183,7 @@ const SHIP_DATA: ShipDatas = {
     951: {
         name: 'Amatsukaze Kai 2',
         nameJP: '天津風改二',
-        type: 2, ship_class: 30,
+        type: ShipType.DD, ship_class: 30,
         nid: 551,
         HP: 35, HPmax: 55,
         FP: 65, FPbase: 16,
@@ -16204,7 +16204,7 @@ const SHIP_DATA: ShipDatas = {
     952: {
         name: 'Phoenix',
         nameJP: 'Phoenix',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 552,
         HP: 38, HPmax: 56,
         FP: 59, FPbase: 29,
@@ -16225,7 +16225,7 @@ const SHIP_DATA: ShipDatas = {
     953: {
         name: 'Asahi',
         nameJP: '朝日',
-        type: 21, ship_class: 123,
+        type: ShipType.CT, ship_class: 123,
         nid: 553,
         HP: 36, HPmax: 44,
         FP: 8, FPbase: 2,
@@ -16246,7 +16246,7 @@ const SHIP_DATA: ShipDatas = {
     954: {
         name: 'Haruna Kai 2 C',
         nameJP: '榛名改二丙',
-        type: 8, ship_class: 6,
+        type: ShipType.FBB, ship_class: 6,
         nid: 554,
         attack_special_ids: [104],
         HP: 85, HPmax: 98,
@@ -16268,7 +16268,7 @@ const SHIP_DATA: ShipDatas = {
     955: {
         name: 'Kiyoshimo Kai 2',
         nameJP: '清霜改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 555,
         HP: 33, HPmax: 56,
         FP: 69, FPbase: 18,
@@ -16289,7 +16289,7 @@ const SHIP_DATA: ShipDatas = {
     956: {
         name: 'Hayashimo Kai 2',
         nameJP: '早霜改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 556,
         HP: 33, HPmax: 56,
         FP: 67, FPbase: 18,
@@ -16310,7 +16310,7 @@ const SHIP_DATA: ShipDatas = {
     957: {
         name: 'General Belgrano',
         nameJP: 'General Belgrano',
-        type: 3, ship_class: 110,
+        type: ShipType.CL, ship_class: 110,
         nid: 557,
         HP: 55, HPmax: 70,
         FP: 80, FPbase: 60,
@@ -16331,7 +16331,7 @@ const SHIP_DATA: ShipDatas = {
     958: {
         name: 'Asahi Kai',
         nameJP: '朝日改',
-        type: 19, ship_class: 123,
+        type: ShipType.AR, ship_class: 123,
         nid: 558,
         HP: 37, HPmax: 45,
         FP: 6, FPbase: 1,
@@ -16352,7 +16352,7 @@ const SHIP_DATA: ShipDatas = {
     959: {
         name: 'Miyuki Kai 2',
         nameJP: '深雪改二',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 559,
         HP: 31, HPmax: 48,
         FP: 60, FPbase: 14,
@@ -16373,7 +16373,7 @@ const SHIP_DATA: ShipDatas = {
     960: {
         name: 'Kiyoshimo Kai 2 D',
         nameJP: '清霜改二丁',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 560,
         HP: 33, HPmax: 56,
         FP: 66, FPbase: 16,
@@ -16394,7 +16394,7 @@ const SHIP_DATA: ShipDatas = {
     961: {
         name: 'Shigure Kai 3',
         nameJP: '時雨改三',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 561,
         HP: 34, HPmax: 54,
         FP: 67, FPbase: 16,
@@ -16415,7 +16415,7 @@ const SHIP_DATA: ShipDatas = {
     962: {
         name: 'Mogador',
         nameJP: 'Mogador',
-        type: 2, ship_class: 129,
+        type: ShipType.DD, ship_class: 129,
         nid: 562,
         HP: 21, HPmax: 41,
         FP: 52, FPbase: 32,
@@ -16436,7 +16436,7 @@ const SHIP_DATA: ShipDatas = {
     964: {
         name: 'Shirakumo',
         nameJP: '白雲',
-        type: 2, ship_class: 12,
+        type: ShipType.DD, ship_class: 12,
         nid: 564,
         HP: 15, HPmax: 29,
         FP: 30, FPbase: 10,
@@ -16457,7 +16457,7 @@ const SHIP_DATA: ShipDatas = {
     965: {
         name: 'Gloire',
         nameJP: 'Gloire',
-        type: 3, ship_class: 128,
+        type: ShipType.CL, ship_class: 128,
         nid: 565,
         HP: 33, HPmax: 46,
         FP: 56, FPbase: 23,
@@ -16478,9 +16478,9 @@ const SHIP_DATA: ShipDatas = {
     966: {
         name: 'Lexington',
         nameJP: 'Lexington',
-        type: 11, ship_class: 69,
+        type: ShipType.CV, ship_class: 69,
         nid: 566,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 84, HPmax: 94,
         FP: 46, FPbase: 30,
         TP: 0, TPbase: 0,
@@ -16500,7 +16500,7 @@ const SHIP_DATA: ShipDatas = {
     967: {
         name: 'Mogador Kai',
         nameJP: 'Mogador改',
-        type: 2, ship_class: 129,
+        type: ShipType.DD, ship_class: 129,
         nid: 567,
         HP: 38, HPmax: 57,
         FP: 72, FPbase: 40,
@@ -16521,7 +16521,7 @@ const SHIP_DATA: ShipDatas = {
     968: {
         name: 'Hatsuzuki Kai 2',
         nameJP: '初月改二',
-        type: 2, ship_class: 54,
+        type: ShipType.DD, ship_class: 54,
         nid: 568,
         HP: 39, HPmax: 58,
         FP: 70, FPbase: 28,
@@ -16542,7 +16542,7 @@ const SHIP_DATA: ShipDatas = {
     969: {
         name: 'Richelieu Deux',
         nameJP: 'Richelieu Deux',
-        type: 8, ship_class: 79,
+        type: ShipType.FBB, ship_class: 79,
         nid: 569,
         attack_special_ids: [105],
         HP: 91, HPmax: 104,
@@ -16564,7 +16564,7 @@ const SHIP_DATA: ShipDatas = {
     970: {
         name: 'Gloire Kai',
         nameJP: 'Gloire改',
-        type: 3, ship_class: 128,
+        type: ShipType.CL, ship_class: 128,
         nid: 570,
         HP: 46, HPmax: 62,
         FP: 75, FPbase: 30,
@@ -16585,7 +16585,7 @@ const SHIP_DATA: ShipDatas = {
     971: {
         name: 'I-36',
         nameJP: '伊36',
-        type: 14, ship_class: 39,
+        type: ShipType.SSV, ship_class: 39,
         nid: 571,
         HP: 14, HPmax: 18,
         FP: 7, FPbase: 2,
@@ -16606,7 +16606,7 @@ const SHIP_DATA: ShipDatas = {
     972: {
         name: 'I-41',
         nameJP: '伊41',
-        type: 14, ship_class: 127,
+        type: ShipType.SSV, ship_class: 127,
         nid: 572,
         HP: 14, HPmax: 19,
         FP: 8, FPbase: 2,
@@ -16627,7 +16627,7 @@ const SHIP_DATA: ShipDatas = {
     975: {
         name: 'Harusame Kai 2',
         nameJP: '春雨改二',
-        type: 2, ship_class: 23,
+        type: ShipType.DD, ship_class: 23,
         nid: 575,
         HP: 31, HPmax: 49,
         FP: 66, FPbase: 16,
@@ -16648,7 +16648,7 @@ const SHIP_DATA: ShipDatas = {
     976: {
         name: 'I-36 Kai',
         nameJP: '伊36改',
-        type: 14, ship_class: 39,
+        type: ShipType.SSV, ship_class: 39,
         nid: 576,
         HP: 18, HPmax: 24,
         FP: 13, FPbase: 3,
@@ -16669,7 +16669,7 @@ const SHIP_DATA: ShipDatas = {
     977: {
         name: 'I-41 Kai',
         nameJP: '伊41改',
-        type: 14, ship_class: 127,
+        type: ShipType.SSV, ship_class: 127,
         nid: 577,
         HP: 18, HPmax: 25,
         FP: 14, FPbase: 3,
@@ -16690,7 +16690,7 @@ const SHIP_DATA: ShipDatas = {
     979: {
         name: 'Inagi Kai 2',
         nameJP: '稲木改二',
-        type: 1, ship_class: 117,
+        type: ShipType.DE, ship_class: 117,
         nid: 579,
         HP: 27, HPmax: 37,
         FP: 43, FPbase: 9,
@@ -16711,7 +16711,7 @@ const SHIP_DATA: ShipDatas = {
     981: {
         name: 'Fujinami Kai 2',
         nameJP: '藤波改二',
-        type: 2, ship_class: 38,
+        type: ShipType.DD, ship_class: 38,
         nid: 581,
         HP: 33, HPmax: 56,
         FP: 64, FPbase: 18,
@@ -16732,7 +16732,7 @@ const SHIP_DATA: ShipDatas = {
     1496: {
         name: 'Colorado Kai',
         nameJP: 'Colorado改',
-        type: 9, ship_class: 93,
+        type: ShipType.BB, ship_class: 93,
         nid: 406,
         attack_special_ids: [103],
         HP: 91, HPmax: 98,
@@ -16754,7 +16754,7 @@ const SHIP_DATA: ShipDatas = {
     1501: {
         name: 'DD I-Class',
         nameJP: '駆逐イ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 20,
         FP: 5,
         TP: 15,
@@ -16773,7 +16773,7 @@ const SHIP_DATA: ShipDatas = {
     1502: {
         name: 'DD Ro-Class',
         nameJP: '駆逐ロ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 22,
         FP: 7,
         TP: 16,
@@ -16792,7 +16792,7 @@ const SHIP_DATA: ShipDatas = {
     1503: {
         name: 'DD Ha-Class',
         nameJP: '駆逐ハ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 24,
         FP: 6,
         TP: 16,
@@ -16811,7 +16811,7 @@ const SHIP_DATA: ShipDatas = {
     1504: {
         name: 'DD Ni-Class',
         nameJP: '駆逐ニ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 28,
         FP: 8,
         TP: 24,
@@ -16830,7 +16830,7 @@ const SHIP_DATA: ShipDatas = {
     1505: {
         name: 'CL Ho-Class',
         nameJP: '軽巡ホ級',
-        type: 3,
+        type: ShipType.CL,
         HP: 33,
         FP: 14,
         TP: 24,
@@ -16849,7 +16849,7 @@ const SHIP_DATA: ShipDatas = {
     1506: {
         name: 'CL He-Class',
         nameJP: '軽巡ヘ級',
-        type: 3,
+        type: ShipType.CL,
         HP: 36,
         FP: 16,
         TP: 28,
@@ -16868,7 +16868,7 @@ const SHIP_DATA: ShipDatas = {
     1507: {
         name: 'CL To-Class',
         nameJP: '軽巡ト級',
-        type: 3,
+        type: ShipType.CL,
         HP: 39,
         FP: 24,
         TP: 28,
@@ -16887,7 +16887,7 @@ const SHIP_DATA: ShipDatas = {
     1508: {
         name: 'CLT Chi-Class',
         nameJP: '雷巡チ級',
-        type: 4,
+        type: ShipType.CLT,
         HP: 48,
         FP: 18,
         TP: 48,
@@ -16907,7 +16907,7 @@ const SHIP_DATA: ShipDatas = {
     1509: {
         name: 'CA Ri-Class',
         nameJP: '重巡リ級',
-        type: 5,
+        type: ShipType.CA,
         HP: 58,
         FP: 32,
         TP: 32,
@@ -16926,7 +16926,7 @@ const SHIP_DATA: ShipDatas = {
     1510: {
         name: 'CVL Nu-Class',
         nameJP: '軽母ヌ級',
-        type: 7,
+        type: ShipType.CVL,
         can_not_CVCI: true,
         HP: 65,
         FP: 0,
@@ -16946,7 +16946,7 @@ const SHIP_DATA: ShipDatas = {
     1511: {
         name: 'BB Ru-Class',
         nameJP: '戦艦ル級',
-        type: 9,
+        type: ShipType.BB,
         HP: 90,
         FP: 65,
         TP: 0,
@@ -16965,7 +16965,7 @@ const SHIP_DATA: ShipDatas = {
     1512: {
         name: 'CV Wo-Class',
         nameJP: '空母ヲ級',
-        type: 11,
+        type: ShipType.CV,
         can_not_CVCI: true,
         HP: 85,
         FP: 0,
@@ -16985,7 +16985,7 @@ const SHIP_DATA: ShipDatas = {
     1513: {
         name: 'Transport Wa-Class',
         nameJP: '輸送ワ級',
-        type: 23,
+        type: ShipType.AT,
         can_not_shell: true,
         can_not_NB: true,
         HP: 70,
@@ -17006,7 +17006,7 @@ const SHIP_DATA: ShipDatas = {
     1514: {
         name: 'DD I-Class Elite',
         nameJP: '駆逐イ級elite',
-        type: 2,
+        type: ShipType.DD,
         HP: 30,
         FP: 15,
         TP: 32,
@@ -17025,7 +17025,7 @@ const SHIP_DATA: ShipDatas = {
     1515: {
         name: 'DD Ro-Class Elite',
         nameJP: '駆逐ロ級elite',
-        type: 2,
+        type: ShipType.DD,
         HP: 35,
         FP: 20,
         TP: 32,
@@ -17044,7 +17044,7 @@ const SHIP_DATA: ShipDatas = {
     1516: {
         name: 'DD Ha-Class Elite',
         nameJP: '駆逐ハ級elite',
-        type: 2,
+        type: ShipType.DD,
         HP: 40,
         FP: 15,
         TP: 32,
@@ -17063,7 +17063,7 @@ const SHIP_DATA: ShipDatas = {
     1517: {
         name: 'DD Ni-Class Elite',
         nameJP: '駆逐ニ級elite',
-        type: 2,
+        type: ShipType.DD,
         HP: 45,
         FP: 20,
         TP: 40,
@@ -17082,7 +17082,7 @@ const SHIP_DATA: ShipDatas = {
     1518: {
         name: 'CL Ho-Class Elite',
         nameJP: '軽巡ホ級elite',
-        type: 3,
+        type: ShipType.CL,
         HP: 48,
         FP: 30,
         TP: 40,
@@ -17101,7 +17101,7 @@ const SHIP_DATA: ShipDatas = {
     1519: {
         name: 'CL He-Class Elite',
         nameJP: '軽巡ヘ級elite',
-        type: 3,
+        type: ShipType.CL,
         HP: 52,
         FP: 34,
         TP: 48,
@@ -17120,7 +17120,7 @@ const SHIP_DATA: ShipDatas = {
     1520: {
         name: 'CL To-Class Elite',
         nameJP: '軽巡ト級elite',
-        type: 3,
+        type: ShipType.CL,
         HP: 55,
         FP: 36,
         TP: 48,
@@ -17139,7 +17139,7 @@ const SHIP_DATA: ShipDatas = {
     1521: {
         name: 'CLT Chi-Class Elite',
         nameJP: '雷巡チ級elite',
-        type: 4,
+        type: ShipType.CLT,
         HP: 50,
         FP: 35,
         TP: 72,
@@ -17159,7 +17159,7 @@ const SHIP_DATA: ShipDatas = {
     1522: {
         name: 'CA Ri-Class Elite',
         nameJP: '重巡リ級elite',
-        type: 5,
+        type: ShipType.CA,
         HP: 60,
         FP: 58,
         TP: 42,
@@ -17178,7 +17178,7 @@ const SHIP_DATA: ShipDatas = {
     1523: {
         name: 'CVL Nu-Class Elite',
         nameJP: '軽母ヌ級elite',
-        type: 7,
+        type: ShipType.CVL,
         can_not_CVCI: true,
         HP: 70,
         FP: 0,
@@ -17198,7 +17198,7 @@ const SHIP_DATA: ShipDatas = {
     1524: {
         name: 'BB Ru-Class Elite',
         nameJP: '戦艦ル級elite',
-        type: 9,
+        type: ShipType.BB,
         HP: 90,
         FP: 85,
         TP: 0,
@@ -17217,7 +17217,7 @@ const SHIP_DATA: ShipDatas = {
     1525: {
         name: 'CV Wo-Class Elite',
         nameJP: '空母ヲ級elite',
-        type: 11,
+        type: ShipType.CV,
         can_not_CVCI: true,
         HP: 88,
         FP: 0,
@@ -17237,7 +17237,7 @@ const SHIP_DATA: ShipDatas = {
     1526: {
         name: 'Transport Wa-Class Elite',
         nameJP: '輸送ワ級elite',
-        type: 23,
+        type: ShipType.AT,
         HP: 80,
         FP: 15,
         TP: 0,
@@ -17256,7 +17256,7 @@ const SHIP_DATA: ShipDatas = {
     1527: {
         name: 'CA Ri-Class Flagship',
         nameJP: '重巡リ級flagship',
-        type: 5,
+        type: ShipType.CA,
         HP: 76,
         FP: 68,
         TP: 48,
@@ -17275,8 +17275,8 @@ const SHIP_DATA: ShipDatas = {
     1528: {
         name: 'CV Wo-Class Flagship',
         nameJP: '空母ヲ級flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -17296,7 +17296,7 @@ const SHIP_DATA: ShipDatas = {
     1529: {
         name: 'BB Ru-Class Flagship',
         nameJP: '戦艦ル級flagship',
-        type: 9,
+        type: ShipType.BB,
         HP: 98,
         FP: 90,
         TP: 0,
@@ -17315,7 +17315,7 @@ const SHIP_DATA: ShipDatas = {
     1530: {
         name: 'SS Ka-Class',
         nameJP: '潜水カ級',
-        type: 13,
+        type: ShipType.SS,
         can_not_op_torpedo_submarine: true,
         HP: 19,
         FP: 0,
@@ -17336,7 +17336,7 @@ const SHIP_DATA: ShipDatas = {
     1531: {
         name: 'SS Yo-Class',
         nameJP: '潜水ヨ級',
-        type: 13,
+        type: ShipType.SS,
         can_not_op_torpedo_submarine: true,
         HP: 24,
         FP: 0,
@@ -17357,7 +17357,7 @@ const SHIP_DATA: ShipDatas = {
     1532: {
         name: 'SS Ka-Class Elite',
         nameJP: '潜水カ級elite',
-        type: 13,
+        type: ShipType.SS,
         HP: 27,
         FP: 0,
         TP: 64,
@@ -17377,7 +17377,7 @@ const SHIP_DATA: ShipDatas = {
     1533: {
         name: 'SS Yo-Class Elite',
         nameJP: '潜水ヨ級elite',
-        type: 13,
+        type: ShipType.SS,
         HP: 34,
         FP: 0,
         TP: 74,
@@ -17397,7 +17397,7 @@ const SHIP_DATA: ShipDatas = {
     1534: {
         name: 'SS Ka-Class Flagship',
         nameJP: '潜水カ級flagship',
-        type: 13,
+        type: ShipType.SS,
         HP: 37,
         FP: 0,
         TP: 86,
@@ -17417,7 +17417,7 @@ const SHIP_DATA: ShipDatas = {
     1535: {
         name: 'SS Yo-Class Flagship',
         nameJP: '潜水ヨ級flagship',
-        type: 13,
+        type: ShipType.SS,
         HP: 44,
         FP: 0,
         TP: 96,
@@ -17437,7 +17437,7 @@ const SHIP_DATA: ShipDatas = {
     1536: {
         name: 'Floating Fortress A',
         nameJP: '浮遊要塞',
-        type: 10,
+        type: ShipType.BBV,
         HP: 88,
         FP: 50,
         TP: 40,
@@ -17456,7 +17456,7 @@ const SHIP_DATA: ShipDatas = {
     1537: {
         name: 'Floating Fortress B',
         nameJP: '浮遊要塞',
-        type: 10,
+        type: ShipType.BBV,
         HP: 88,
         FP: 50,
         TP: 40,
@@ -17475,7 +17475,7 @@ const SHIP_DATA: ShipDatas = {
     1538: {
         name: 'Floating Fortress C',
         nameJP: '浮遊要塞',
-        type: 10,
+        type: ShipType.BBV,
         HP: 88,
         FP: 50,
         TP: 40,
@@ -17494,7 +17494,7 @@ const SHIP_DATA: ShipDatas = {
     1539: {
         name: 'Anchorage Demon',
         nameJP: '泊地棲鬼',
-        type: 10,
+        type: ShipType.BBV,
         HP: 180,
         FP: 90,
         TP: 60,
@@ -17513,7 +17513,7 @@ const SHIP_DATA: ShipDatas = {
     1540: {
         name: 'Anchorage Princess',
         nameJP: '泊地棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 300,
         FP: 96,
         TP: 90,
@@ -17532,7 +17532,7 @@ const SHIP_DATA: ShipDatas = {
     1541: {
         name: 'FBB Ta-Class',
         nameJP: '戦艦タ級',
-        type: 8,
+        type: ShipType.FBB,
         HP: 84,
         FP: 60,
         TP: 0,
@@ -17551,7 +17551,7 @@ const SHIP_DATA: ShipDatas = {
     1542: {
         name: 'FBB Ta-Class Elite',
         nameJP: '戦艦タ級elite',
-        type: 8,
+        type: ShipType.FBB,
         HP: 88,
         FP: 75,
         TP: 0,
@@ -17570,7 +17570,7 @@ const SHIP_DATA: ShipDatas = {
     1543: {
         name: 'FBB Ta-Class Flagship',
         nameJP: '戦艦タ級flagship',
-        type: 8,
+        type: ShipType.FBB,
         HP: 90,
         FP: 85,
         TP: 0,
@@ -17589,7 +17589,7 @@ const SHIP_DATA: ShipDatas = {
     1544: {
         name: 'Armoured Carrier Demon',
         nameJP: '装甲空母鬼',
-        type: 10,
+        type: ShipType.BBV,
         HP: 150,
         FP: 70,
         TP: 80,
@@ -17608,7 +17608,7 @@ const SHIP_DATA: ShipDatas = {
     1545: {
         name: 'Armoured Carrier Princess',
         nameJP: '装甲空母姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 270,
         FP: 90,
         TP: 90,
@@ -17627,7 +17627,7 @@ const SHIP_DATA: ShipDatas = {
     1546: {
         name: 'Southern Demon',
         nameJP: '南方棲鬼',
-        type: 10,
+        type: ShipType.BBV,
         HP: 210,
         FP: 90,
         TP: 80,
@@ -17647,7 +17647,7 @@ const SHIP_DATA: ShipDatas = {
     1547: {
         name: 'Southern War Demon',
         nameJP: '南方棲戦鬼',
-        type: 10,
+        type: ShipType.BBV,
         HP: 240,
         FP: 120,
         TP: 90,
@@ -17667,7 +17667,7 @@ const SHIP_DATA: ShipDatas = {
     1548: {
         name: 'Southern War Princess',
         nameJP: '南方棲戦姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 380,
         FP: 160,
         TP: 100,
@@ -17687,7 +17687,7 @@ const SHIP_DATA: ShipDatas = {
     1549: {
         name: 'Escort Fortress A (Dive)',
         nameJP: '護衛要塞',
-        type: 10,
+        type: ShipType.BBV,
         HP: 66,
         FP: 55,
         TP: 45,
@@ -17707,7 +17707,7 @@ const SHIP_DATA: ShipDatas = {
     1550: {
         name: 'Escort Fortress B (Torpedo)',
         nameJP: '護衛要塞',
-        type: 10,
+        type: ShipType.BBV,
         HP: 66,
         FP: 55,
         TP: 45,
@@ -17727,7 +17727,7 @@ const SHIP_DATA: ShipDatas = {
     1551: {
         name: 'Escort Fortress C (Torpedo)',
         nameJP: '護衛要塞',
-        type: 10,
+        type: ShipType.BBV,
         HP: 66,
         FP: 55,
         TP: 45,
@@ -17747,7 +17747,7 @@ const SHIP_DATA: ShipDatas = {
     1552: {
         name: 'DD Ro-Class Flagship',
         nameJP: '駆逐ロ級flagship',
-        type: 2,
+        type: ShipType.DD,
         HP: 43,
         FP: 33,
         TP: 60,
@@ -17767,7 +17767,7 @@ const SHIP_DATA: ShipDatas = {
     1553: {
         name: 'DD Ha-Class Flagship',
         nameJP: '駆逐ハ級flagship',
-        type: 2,
+        type: ShipType.DD,
         HP: 47,
         FP: 30,
         TP: 60,
@@ -17787,7 +17787,7 @@ const SHIP_DATA: ShipDatas = {
     1554: {
         name: 'CL Ho-Class Flagship',
         nameJP: '軽巡ホ級flagship',
-        type: 3,
+        type: ShipType.CL,
         HP: 53,
         FP: 42,
         TP: 72,
@@ -17807,7 +17807,7 @@ const SHIP_DATA: ShipDatas = {
     1555: {
         name: 'CL He-Class Flagship',
         nameJP: '軽巡ヘ級flagship',
-        type: 3,
+        type: ShipType.CL,
         HP: 57,
         FP: 48,
         TP: 80,
@@ -17827,8 +17827,8 @@ const SHIP_DATA: ShipDatas = {
     1556: {
         name: 'Airfield Princess',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -17848,7 +17848,7 @@ const SHIP_DATA: ShipDatas = {
     1557: {
         name: 'Battleship Princess',
         nameJP: '戦艦棲姫',
-        type: 9,
+        type: ShipType.BB,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         HP: 400,
@@ -17870,7 +17870,7 @@ const SHIP_DATA: ShipDatas = {
     1558: {
         name: 'Transport Wa-Class Flagship',
         nameJP: '輸送ワ級flagship',
-        type: 23,
+        type: ShipType.AT,
         HP: 130,
         FP: 55,
         TP: 0,
@@ -17889,7 +17889,7 @@ const SHIP_DATA: ShipDatas = {
     1559: {
         name: 'CLT Chi-Class Flagship',
         nameJP: '雷巡チ級flagship',
-        type: 4,
+        type: ShipType.CLT,
         HP: 70,
         FP: 50,
         TP: 120,
@@ -17909,8 +17909,8 @@ const SHIP_DATA: ShipDatas = {
     1560: {
         name: 'CVL Nu-Class Flagship',
         nameJP: '軽母ヌ級flagship',
-        type: 7,
-        CVs_night_attack_type: 1,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 84,
         FP: 18,
@@ -17930,7 +17930,7 @@ const SHIP_DATA: ShipDatas = {
     1561: {
         name: 'BBV Re-Class',
         nameJP: '戦艦レ級',
-        type: 10,
+        type: ShipType.BBV,
         planeasw: 0,
         HP: 180,
         FP: 90,
@@ -17951,7 +17951,7 @@ const SHIP_DATA: ShipDatas = {
     1562: {
         name: 'BBV Re-Class Elite',
         nameJP: '戦艦レ級elite',
-        type: 10,
+        type: ShipType.BBV,
         planeasw: 0,
         HP: 270,
         FP: 130,
@@ -17972,7 +17972,7 @@ const SHIP_DATA: ShipDatas = {
     1564: {
         name: 'DD I-Class Flagship',
         nameJP: '駆逐イ級flagship',
-        type: 2,
+        type: ShipType.DD,
         HP: 39,
         FP: 32,
         TP: 60,
@@ -17992,8 +17992,8 @@ const SHIP_DATA: ShipDatas = {
     1565: {
         name: 'CV Wo-Class Flagship Kai',
         nameJP: '空母ヲ級改flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 160,
         FP: 40,
@@ -18013,7 +18013,7 @@ const SHIP_DATA: ShipDatas = {
     1566: {
         name: 'CA Ri-Class Flagship Kai',
         nameJP: '重巡リ級改flagship',
-        type: 5,
+        type: ShipType.CA,
         HP: 88,
         FP: 88,
         TP: 80,
@@ -18033,7 +18033,7 @@ const SHIP_DATA: ShipDatas = {
     1567: {
         name: 'BB Ru-Class Flagship Kai',
         nameJP: '戦艦ル級改flagship',
-        type: 9,
+        type: ShipType.BB,
         HP: 130,
         FP: 110,
         TP: 0,
@@ -18052,7 +18052,7 @@ const SHIP_DATA: ShipDatas = {
     1570: {
         name: 'SS So-Class',
         nameJP: '潜水ソ級',
-        type: 13,
+        type: ShipType.SS,
         can_not_op_torpedo_submarine: true,
         HP: 33,
         FP: 24,
@@ -18073,7 +18073,7 @@ const SHIP_DATA: ShipDatas = {
     1571: {
         name: 'SS So-Class Elite',
         nameJP: '潜水ソ級elite',
-        type: 13,
+        type: ShipType.SS,
         HP: 45,
         FP: 30,
         TP: 100,
@@ -18093,7 +18093,7 @@ const SHIP_DATA: ShipDatas = {
     1572: {
         name: 'SS So-Class Flagship',
         nameJP: '潜水ソ級flagship',
-        type: 13,
+        type: ShipType.SS,
         HP: 48,
         FP: 30,
         TP: 135,
@@ -18113,8 +18113,8 @@ const SHIP_DATA: ShipDatas = {
     1573: {
         name: 'Harbour Princess',
         nameJP: '港湾棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 380,
         FP: 100,
         TP: 0,
@@ -18134,8 +18134,8 @@ const SHIP_DATA: ShipDatas = {
     1574: {
         name: 'Isolated Island Demon',
         nameJP: '離島棲鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 450,
         FP: 150,
         TP: 0,
@@ -18155,7 +18155,7 @@ const SHIP_DATA: ShipDatas = {
     1575: {
         name: 'DD I-Class Late Model',
         nameJP: '駆逐イ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 35,
         FP: 38,
         TP: 60,
@@ -18175,7 +18175,7 @@ const SHIP_DATA: ShipDatas = {
     1576: {
         name: 'DD Ro-Class Late Model',
         nameJP: '駆逐ロ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 37,
         FP: 38,
         TP: 66,
@@ -18195,7 +18195,7 @@ const SHIP_DATA: ShipDatas = {
     1577: {
         name: 'DD Ha-Class Late Model',
         nameJP: '駆逐ハ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 38,
         FP: 44,
         TP: 72,
@@ -18215,7 +18215,7 @@ const SHIP_DATA: ShipDatas = {
     1578: {
         name: 'DD Ni-Class Late Model',
         nameJP: '駆逐ニ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 40,
         FP: 48,
         TP: 84,
@@ -18235,8 +18235,8 @@ const SHIP_DATA: ShipDatas = {
     1579: {
         name: 'CV Wo-Class Flagship 2',
         nameJP: '空母ヲ級flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -18257,8 +18257,8 @@ const SHIP_DATA: ShipDatas = {
     1581: {
         name: 'Northern Princess (Event)',
         nameJP: '北方棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 360,
         FP: 90,
         TP: 0,
@@ -18278,8 +18278,8 @@ const SHIP_DATA: ShipDatas = {
     1582: {
         name: 'Northern Princess 2 (Event)',
         nameJP: '北方棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 170,
         TP: 0,
@@ -18299,8 +18299,8 @@ const SHIP_DATA: ShipDatas = {
     1583: {
         name: 'Midway Princess',
         nameJP: '中間棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 550,
         FP: 100,
         TP: 0,
@@ -18320,8 +18320,8 @@ const SHIP_DATA: ShipDatas = {
     1584: {
         name: 'Midway Princess 2',
         nameJP: '中間棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 600,
         FP: 180,
         TP: 0,
@@ -18341,8 +18341,8 @@ const SHIP_DATA: ShipDatas = {
     1585: {
         name: 'Aircraft Carrier Demon',
         nameJP: '空母棲鬼',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 250,
         FP: 120,
         TP: 0,
@@ -18362,8 +18362,8 @@ const SHIP_DATA: ShipDatas = {
     1586: {
         name: 'Aircraft Carrier Princess',
         nameJP: '空母棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         HP: 350,
@@ -18385,8 +18385,8 @@ const SHIP_DATA: ShipDatas = {
     1587: {
         name: 'Northern Princess (3-5)',
         nameJP: '北方棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 300,
         FP: 80,
         TP: 0,
@@ -18406,8 +18406,8 @@ const SHIP_DATA: ShipDatas = {
     1588: {
         name: 'Northern Princess 2 (3-5)',
         nameJP: '北方棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 390,
         FP: 140,
         TP: 0,
@@ -18427,8 +18427,8 @@ const SHIP_DATA: ShipDatas = {
     1589: {
         name: 'Northern Princess 3 (3-5)',
         nameJP: '北方棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 300,
         FP: 60,
         TP: 0,
@@ -18448,8 +18448,8 @@ const SHIP_DATA: ShipDatas = {
     1590: {
         name: 'Northern Princess 4 (3-5)',
         nameJP: '北方棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 390,
         FP: 140,
         TP: 0,
@@ -18469,7 +18469,7 @@ const SHIP_DATA: ShipDatas = {
     1591: {
         name: 'CL Tsu-Class',
         nameJP: '軽巡ツ級',
-        type: 3,
+        type: ShipType.CL,
         HP: 48,
         FP: 58,
         TP: 84,
@@ -18489,7 +18489,7 @@ const SHIP_DATA: ShipDatas = {
     1592: {
         name: 'CL Tsu-Class Elite',
         nameJP: '軽巡ツ級elite',
-        type: 3,
+        type: ShipType.CL,
         HP: 66,
         FP: 64,
         TP: 92,
@@ -18509,7 +18509,7 @@ const SHIP_DATA: ShipDatas = {
     1594: {
         name: 'CA Ne-Class',
         nameJP: '重巡ネ級',
-        type: 5,
+        type: ShipType.CA,
         HP: 80,
         FP: 73,
         TP: 66,
@@ -18529,7 +18529,7 @@ const SHIP_DATA: ShipDatas = {
     1595: {
         name: 'CA Ne-Class Elite',
         nameJP: '重巡ネ級elite',
-        type: 5,
+        type: ShipType.CA,
         HP: 88,
         FP: 79,
         TP: 74,
@@ -18549,7 +18549,7 @@ const SHIP_DATA: ShipDatas = {
     1597: {
         name: 'Destroyer Princess',
         nameJP: '駆逐棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 150,
         FP: 59,
         TP: 90,
@@ -18569,7 +18569,7 @@ const SHIP_DATA: ShipDatas = {
     1598: {
         name: 'Destroyer Princess 2',
         nameJP: '駆逐棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 190,
         FP: 69,
         TP: 90,
@@ -18589,8 +18589,8 @@ const SHIP_DATA: ShipDatas = {
     1599: {
         name: 'Aircraft Carrier Water Demon',
         nameJP: '空母水鬼',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 370,
         FP: 140,
         TP: 0,
@@ -18610,8 +18610,8 @@ const SHIP_DATA: ShipDatas = {
     1600: {
         name: 'Aircraft Carrier Water Demon 2',
         nameJP: '空母水鬼',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 390,
         FP: 190,
         TP: 0,
@@ -18631,7 +18631,7 @@ const SHIP_DATA: ShipDatas = {
     1601: {
         name: 'Light Cruiser Demon',
         nameJP: '軽巡棲鬼',
-        type: 3,
+        type: ShipType.CL,
         HP: 210,
         FP: 59,
         TP: 88,
@@ -18651,7 +18651,7 @@ const SHIP_DATA: ShipDatas = {
     1602: {
         name: 'Light Cruiser Demon 2',
         nameJP: '軽巡棲鬼',
-        type: 3,
+        type: ShipType.CL,
         HP: 270,
         FP: 69,
         TP: 98,
@@ -18671,7 +18671,7 @@ const SHIP_DATA: ShipDatas = {
     1603: {
         name: 'Battleship Water Demon',
         nameJP: '戦艦水鬼',
-        type: 9,
+        type: ShipType.BB,
         HP: 415,
         FP: 188,
         TP: 0,
@@ -18691,7 +18691,7 @@ const SHIP_DATA: ShipDatas = {
     1604: {
         name: 'Battleship Water Demon 2',
         nameJP: '戦艦水鬼',
-        type: 9,
+        type: ShipType.BB,
         HP: 500,
         FP: 198,
         TP: 0,
@@ -18711,8 +18711,8 @@ const SHIP_DATA: ShipDatas = {
     1605: {
         name: 'Harbour Water Demon',
         nameJP: '港湾水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 450,
         FP: 120,
         TP: 0,
@@ -18732,8 +18732,8 @@ const SHIP_DATA: ShipDatas = {
     1606: {
         name: 'Harbour Water Demon (Hard)',
         nameJP: '港湾水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 450,
         FP: 130,
         TP: 0,
@@ -18753,8 +18753,8 @@ const SHIP_DATA: ShipDatas = {
     1607: {
         name: 'Harbour Water Demon 2',
         nameJP: '港湾水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 140,
         TP: 0,
@@ -18774,8 +18774,8 @@ const SHIP_DATA: ShipDatas = {
     1608: {
         name: 'Harbour Water Demon 2 (Hard)',
         nameJP: '港湾水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 160,
         TP: 0,
@@ -18795,8 +18795,8 @@ const SHIP_DATA: ShipDatas = {
     1609: {
         name: 'Anchorage Water Demon',
         nameJP: '泊地水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 330,
         FP: 120,
         TP: 0,
@@ -18816,8 +18816,8 @@ const SHIP_DATA: ShipDatas = {
     1610: {
         name: 'Anchorage Water Demon (Hard)',
         nameJP: '泊地水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 330,
         FP: 130,
         TP: 0,
@@ -18837,8 +18837,8 @@ const SHIP_DATA: ShipDatas = {
     1611: {
         name: 'Anchorage Water Demon 2',
         nameJP: '泊地水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 430,
         FP: 140,
         TP: 0,
@@ -18858,8 +18858,8 @@ const SHIP_DATA: ShipDatas = {
     1612: {
         name: 'Anchorage Water Demon 2 (Hard)',
         nameJP: '泊地水鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 430,
         FP: 150,
         TP: 0,
@@ -18879,8 +18879,8 @@ const SHIP_DATA: ShipDatas = {
     1613: {
         name: 'Harbour Princess 2',
         nameJP: '港湾棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 490,
         FP: 180,
         TP: 0,
@@ -18900,8 +18900,8 @@ const SHIP_DATA: ShipDatas = {
     1614: {
         name: 'CV Wo-Class Flagship 3',
         nameJP: '空母ヲ級flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -18922,8 +18922,8 @@ const SHIP_DATA: ShipDatas = {
     1615: {
         name: 'CV Wo-Class Flagship 4',
         nameJP: '空母ヲ級flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -18944,8 +18944,8 @@ const SHIP_DATA: ShipDatas = {
     1616: {
         name: 'CV Wo-Class Flagship Kai 2',
         nameJP: '空母ヲ級改flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -18965,8 +18965,8 @@ const SHIP_DATA: ShipDatas = {
     1617: {
         name: 'CV Wo-Class Flagship Kai 3',
         nameJP: '空母ヲ級改flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -18986,8 +18986,8 @@ const SHIP_DATA: ShipDatas = {
     1618: {
         name: 'CV Wo-Class Flagship Kai 4',
         nameJP: '空母ヲ級改flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -19007,8 +19007,8 @@ const SHIP_DATA: ShipDatas = {
     1619: {
         name: 'Aircraft Carrier Demon 2',
         nameJP: '空母棲鬼',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 250,
         FP: 120,
         TP: 0,
@@ -19028,8 +19028,8 @@ const SHIP_DATA: ShipDatas = {
     1620: {
         name: 'Aircraft Carrier Princess 2',
         nameJP: '空母棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         HP: 350,
@@ -19051,7 +19051,7 @@ const SHIP_DATA: ShipDatas = {
     1621: {
         name: 'DD I-Class Late Model Elite',
         nameJP: '駆逐イ級後期型elite',
-        type: 2,
+        type: ShipType.DD,
         HP: 39,
         FP: 48,
         TP: 76,
@@ -19071,7 +19071,7 @@ const SHIP_DATA: ShipDatas = {
     1622: {
         name: 'DD Ro-Class Late Model Elite',
         nameJP: '駆逐ロ級後期型elite',
-        type: 2,
+        type: ShipType.DD,
         HP: 43,
         FP: 58,
         TP: 88,
@@ -19091,7 +19091,7 @@ const SHIP_DATA: ShipDatas = {
     1623: {
         name: 'DD Ha-Class Late Model Elite',
         nameJP: '駆逐ハ級後期型elite',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 46,
         FP: 58,
@@ -19112,7 +19112,7 @@ const SHIP_DATA: ShipDatas = {
     1624: {
         name: 'DD Ni-Class Late Model Elite',
         nameJP: '駆逐ニ級後期型elite',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 49,
         FP: 64,
@@ -19133,7 +19133,7 @@ const SHIP_DATA: ShipDatas = {
     1625: {
         name: 'Seaplane Tender Princess A',
         nameJP: '水母棲姫',
-        type: 16,
+        type: ShipType.AV,
         planeasw: 0,
         HP: 350,
         FP: 75,
@@ -19154,7 +19154,7 @@ const SHIP_DATA: ShipDatas = {
     1626: {
         name: 'Seaplane Tender Princess B',
         nameJP: '水母棲姫',
-        type: 16,
+        type: ShipType.AV,
         planeasw: 0,
         HP: 350,
         FP: 95,
@@ -19175,7 +19175,7 @@ const SHIP_DATA: ShipDatas = {
     1627: {
         name: 'Seaplane Tender Princess C',
         nameJP: '水母棲姫',
-        type: 16,
+        type: ShipType.AV,
         planeasw: 0,
         HP: 350,
         FP: 115,
@@ -19196,7 +19196,7 @@ const SHIP_DATA: ShipDatas = {
     1628: {
         name: 'Air Defence Princess A',
         nameJP: '防空棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 255,
         FP: 130,
         TP: 85,
@@ -19216,7 +19216,7 @@ const SHIP_DATA: ShipDatas = {
     1629: {
         name: 'Air Defence Princess B',
         nameJP: '防空棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 255,
         FP: 160,
         TP: 90,
@@ -19236,7 +19236,7 @@ const SHIP_DATA: ShipDatas = {
     1630: {
         name: 'Air Defence Princess C',
         nameJP: '防空棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 255,
         FP: 190,
         TP: 95,
@@ -19256,8 +19256,8 @@ const SHIP_DATA: ShipDatas = {
     1631: {
         name: 'Airfield Princess 2',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 85,
         TP: 0,
@@ -19277,8 +19277,8 @@ const SHIP_DATA: ShipDatas = {
     1632: {
         name: 'Airfield Princess 3',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 90,
         TP: 0,
@@ -19298,8 +19298,8 @@ const SHIP_DATA: ShipDatas = {
     1633: {
         name: 'Airfield Princess 4',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 95,
         TP: 0,
@@ -19319,8 +19319,8 @@ const SHIP_DATA: ShipDatas = {
     1634: {
         name: 'Isolated Island Demon A',
         nameJP: '離島棲鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 450,
         FP: 150,
         TP: 0,
@@ -19340,8 +19340,8 @@ const SHIP_DATA: ShipDatas = {
     1635: {
         name: 'Isolated Island Demon B',
         nameJP: '離島棲鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 450,
         FP: 165,
         TP: 0,
@@ -19361,8 +19361,8 @@ const SHIP_DATA: ShipDatas = {
     1636: {
         name: 'Isolated Island Demon C',
         nameJP: '離島棲鬼',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 450,
         FP: 180,
         TP: 0,
@@ -19382,7 +19382,7 @@ const SHIP_DATA: ShipDatas = {
     1637: {
         name: 'PT Imp Pack',
         nameJP: 'PT小鬼群',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 9,
         FP: 9,
@@ -19404,7 +19404,7 @@ const SHIP_DATA: ShipDatas = {
     1638: {
         name: 'PT Imp Pack 2',
         nameJP: 'PT小鬼群',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 9,
         FP: 9,
@@ -19426,7 +19426,7 @@ const SHIP_DATA: ShipDatas = {
     1639: {
         name: 'PT Imp Pack 3',
         nameJP: 'PT小鬼群',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 15,
         FP: 15,
@@ -19448,7 +19448,7 @@ const SHIP_DATA: ShipDatas = {
     1640: {
         name: 'PT Imp Pack 4',
         nameJP: 'PT小鬼群',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 18,
         FP: 18,
@@ -19470,7 +19470,7 @@ const SHIP_DATA: ShipDatas = {
     1641: {
         name: 'Light Cruiser Princess',
         nameJP: '軽巡棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 230,
         FP: 64,
         TP: 93,
@@ -19490,7 +19490,7 @@ const SHIP_DATA: ShipDatas = {
     1642: {
         name: 'Light Cruiser Princess 2',
         nameJP: '軽巡棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 290,
         FP: 74,
         TP: 96,
@@ -19510,7 +19510,7 @@ const SHIP_DATA: ShipDatas = {
     1643: {
         name: 'Light Cruiser Princess 3',
         nameJP: '軽巡棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 330,
         FP: 79,
         TP: 99,
@@ -19530,7 +19530,7 @@ const SHIP_DATA: ShipDatas = {
     1644: {
         name: 'Submarine Princess',
         nameJP: '潜水棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 110,
         FP: 50,
         TP: 140,
@@ -19551,7 +19551,7 @@ const SHIP_DATA: ShipDatas = {
     1645: {
         name: 'Submarine Princess 2',
         nameJP: '潜水棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 130,
         FP: 70,
         TP: 155,
@@ -19572,7 +19572,7 @@ const SHIP_DATA: ShipDatas = {
     1646: {
         name: 'Submarine Princess 3',
         nameJP: '潜水棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 160,
         FP: 90,
         TP: 170,
@@ -19593,7 +19593,7 @@ const SHIP_DATA: ShipDatas = {
     1647: {
         name: 'Destroyer Water Demon',
         nameJP: '駆逐水鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 255,
         FP: 100,
         TP: 110,
@@ -19614,7 +19614,7 @@ const SHIP_DATA: ShipDatas = {
     1648: {
         name: 'Destroyer Water Demon 2',
         nameJP: '駆逐水鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 255,
         FP: 120,
         TP: 120,
@@ -19635,7 +19635,7 @@ const SHIP_DATA: ShipDatas = {
     1649: {
         name: 'Destroyer Water Demon 3',
         nameJP: '駆逐水鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 255,
         FP: 140,
         TP: 130,
@@ -19656,8 +19656,8 @@ const SHIP_DATA: ShipDatas = {
     1650: {
         name: 'Airfield Princess 5',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 50,
         TP: 0,
@@ -19678,8 +19678,8 @@ const SHIP_DATA: ShipDatas = {
     1651: {
         name: 'Airfield Princess 6',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 60,
         TP: 0,
@@ -19700,8 +19700,8 @@ const SHIP_DATA: ShipDatas = {
     1652: {
         name: 'Airfield Princess 7',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -19722,8 +19722,8 @@ const SHIP_DATA: ShipDatas = {
     1653: {
         name: 'Supply Depot Princess 1',
         nameJP: '集積地棲姫',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         dive_bomb_weak_mod: 2.1,
         HP: 600,
         FP: 70,
@@ -19745,8 +19745,8 @@ const SHIP_DATA: ShipDatas = {
     1654: {
         name: 'Supply Depot Princess 2',
         nameJP: '集積地棲姫',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         dive_bomb_weak_mod: 2.1,
         HP: 600,
         FP: 90,
@@ -19768,8 +19768,8 @@ const SHIP_DATA: ShipDatas = {
     1655: {
         name: 'Supply Depot Princess 3',
         nameJP: '集積地棲姫',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         dive_bomb_weak_mod: 2.1,
         HP: 600,
         FP: 130,
@@ -19791,8 +19791,8 @@ const SHIP_DATA: ShipDatas = {
     1656: {
         name: 'Supply Depot Princess Damaged 1',
         nameJP: '集積地棲姫-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         dive_bomb_weak_mod: 2.1,
         HP: 380,
         FP: 130,
@@ -19814,8 +19814,8 @@ const SHIP_DATA: ShipDatas = {
     1657: {
         name: 'Supply Depot Princess Damaged 2',
         nameJP: '集積地棲姫-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         dive_bomb_weak_mod: 2.1,
         HP: 430,
         FP: 160,
@@ -19837,8 +19837,8 @@ const SHIP_DATA: ShipDatas = {
     1658: {
         name: 'Supply Depot Princess Damaged 3',
         nameJP: '集積地棲姫-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         dive_bomb_weak_mod: 2.1,
         HP: 480,
         FP: 190,
@@ -19860,7 +19860,7 @@ const SHIP_DATA: ShipDatas = {
     1659: {
         name: 'Heavy Cruiser Princess 1',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 350,
         FP: 100,
         TP: 66,
@@ -19881,7 +19881,7 @@ const SHIP_DATA: ShipDatas = {
     1660: {
         name: 'Heavy Cruiser Princess 2',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 370,
         FP: 130,
         TP: 74,
@@ -19902,7 +19902,7 @@ const SHIP_DATA: ShipDatas = {
     1661: {
         name: 'Heavy Cruiser Princess 3',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 390,
         FP: 160,
         TP: 82,
@@ -19923,7 +19923,7 @@ const SHIP_DATA: ShipDatas = {
     1662: {
         name: 'Heavy Cruiser Princess 4',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 350,
         FP: 130,
         TP: 74,
@@ -19944,7 +19944,7 @@ const SHIP_DATA: ShipDatas = {
     1663: {
         name: 'Heavy Cruiser Princess 5',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 370,
         FP: 160,
         TP: 82,
@@ -19965,7 +19965,7 @@ const SHIP_DATA: ShipDatas = {
     1664: {
         name: 'Heavy Cruiser Princess 6',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 390,
         FP: 190,
         TP: 90,
@@ -19986,8 +19986,8 @@ const SHIP_DATA: ShipDatas = {
     1665: {
         name: 'Artillery Imp 1',
         nameJP: '砲台小鬼',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         land_based_weak_mod: 1.6,
         dive_bomb_weak_mod: 1.55,
         HP: 130,
@@ -20010,8 +20010,8 @@ const SHIP_DATA: ShipDatas = {
     1666: {
         name: 'Artillery Imp 2',
         nameJP: '砲台小鬼',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         land_based_weak_mod: 1.6,
         dive_bomb_weak_mod: 1.55,
         HP: 130,
@@ -20034,8 +20034,8 @@ const SHIP_DATA: ShipDatas = {
     1667: {
         name: 'Artillery Imp 3',
         nameJP: '砲台小鬼',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         land_based_weak_mod: 1.6,
         dive_bomb_weak_mod: 1.55,
         HP: 130,
@@ -20058,9 +20058,9 @@ const SHIP_DATA: ShipDatas = {
     1668: {
         name: 'Isolated Island Princess 1',
         nameJP: '離島棲姫',
-        type: 11,
-        install_type: 4,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.CLT,
+        CVs_night_attack_type: ShipType.DD,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -20083,9 +20083,9 @@ const SHIP_DATA: ShipDatas = {
     1669: {
         name: 'Isolated Island Princess 2',
         nameJP: '離島棲姫',
-        type: 11,
-        install_type: 4,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.CLT,
+        CVs_night_attack_type: ShipType.DD,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -20107,9 +20107,9 @@ const SHIP_DATA: ShipDatas = {
     1670: {
         name: 'Isolated Island Princess 3',
         nameJP: '離島棲姫',
-        type: 11,
-        install_type: 4,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.CLT,
+        CVs_night_attack_type: ShipType.DD,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 450,
@@ -20132,8 +20132,8 @@ const SHIP_DATA: ShipDatas = {
     1671: {
         name: 'Isolated Island Princess 4',
         nameJP: '離島棲姫',
-        type: 10,
-        install_type: 4,
+        type: ShipType.BBV,
+        install_type: ShipType.CLT,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -20156,8 +20156,8 @@ const SHIP_DATA: ShipDatas = {
     1672: {
         name: 'Isolated Island Princess 5',
         nameJP: '離島棲姫',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -20180,7 +20180,7 @@ const SHIP_DATA: ShipDatas = {
     1673: {
         name: 'Destroyer Ancient Demon',
         nameJP: '駆逐古鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 170,
         FP: 80,
         TP: 100,
@@ -20201,7 +20201,7 @@ const SHIP_DATA: ShipDatas = {
     1674: {
         name: 'Destroyer Ancient Demon 2',
         nameJP: '駆逐古鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 180,
         FP: 88,
         TP: 110,
@@ -20222,7 +20222,7 @@ const SHIP_DATA: ShipDatas = {
     1675: {
         name: 'Destroyer Ancient Demon 3',
         nameJP: '駆逐古鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 190,
         FP: 96,
         TP: 120,
@@ -20243,7 +20243,7 @@ const SHIP_DATA: ShipDatas = {
     1676: {
         name: 'Destroyer Water Demon 4',
         nameJP: '駆逐水鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 200,
         FP: 100,
         TP: 110,
@@ -20264,7 +20264,7 @@ const SHIP_DATA: ShipDatas = {
     1677: {
         name: 'Destroyer Water Demon 5',
         nameJP: '駆逐水鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 220,
         FP: 120,
         TP: 120,
@@ -20285,7 +20285,7 @@ const SHIP_DATA: ShipDatas = {
     1678: {
         name: 'Destroyer Water Demon 6',
         nameJP: '駆逐水鬼',
-        type: 2,
+        type: ShipType.DD,
         HP: 240,
         FP: 140,
         TP: 130,
@@ -20306,9 +20306,9 @@ const SHIP_DATA: ShipDatas = {
     1679: {
         name: 'Lycoris Princess',
         nameJP: 'リコリス棲姫',
-        type: 11,
-        install_type: 1,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.DE,
+        CVs_night_attack_type: ShipType.DD,
         HP: 600,
         FP: 150,
         TP: 0,
@@ -20329,9 +20329,9 @@ const SHIP_DATA: ShipDatas = {
     1680: {
         name: 'Lycoris Princess 2',
         nameJP: 'リコリス棲姫',
-        type: 11,
-        install_type: 1,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.DE,
+        CVs_night_attack_type: ShipType.DD,
         HP: 640,
         FP: 170,
         TP: 0,
@@ -20352,9 +20352,9 @@ const SHIP_DATA: ShipDatas = {
     1681: {
         name: 'Lycoris Princess 3',
         nameJP: 'リコリス棲姫',
-        type: 11,
-        install_type: 1,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.DE,
+        CVs_night_attack_type: ShipType.DD,
         HP: 680,
         FP: 190,
         TP: 0,
@@ -20375,9 +20375,9 @@ const SHIP_DATA: ShipDatas = {
     1682: {
         name: 'Lycoris Princess 4',
         nameJP: 'リコリス棲姫',
-        type: 11,
-        install_type: 1,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.DE,
+        CVs_night_attack_type: ShipType.DD,
         HP: 600,
         FP: 150,
         TP: 0,
@@ -20398,9 +20398,9 @@ const SHIP_DATA: ShipDatas = {
     1683: {
         name: 'Lycoris Princess 5',
         nameJP: 'リコリス棲姫',
-        type: 11,
-        install_type: 1,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        install_type: ShipType.DE,
+        CVs_night_attack_type: ShipType.DD,
         HP: 600,
         FP: 150,
         TP: 0,
@@ -20421,8 +20421,8 @@ const SHIP_DATA: ShipDatas = {
     1684: {
         name: 'Central Princess',
         nameJP: '中枢棲姫',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         dive_bomb_weak_mod: 5,
         HP: 600,
         FP: 110,
@@ -20444,8 +20444,8 @@ const SHIP_DATA: ShipDatas = {
     1685: {
         name: 'Central Princess 2',
         nameJP: '中枢棲姫',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         dive_bomb_weak_mod: 5,
         HP: 800,
         FP: 160,
@@ -20467,8 +20467,8 @@ const SHIP_DATA: ShipDatas = {
     1686: {
         name: 'Central Princess 3',
         nameJP: '中枢棲姫',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         dive_bomb_weak_mod: 5,
         HP: 900,
         FP: 200,
@@ -20490,8 +20490,8 @@ const SHIP_DATA: ShipDatas = {
     1687: {
         name: 'Central Princess - Damaged',
         nameJP: '中枢棲姫-壊',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         dive_bomb_weak_mod: 2.5,
         land_based_weak_mod: 1.6,
         HP: 600,
@@ -20514,8 +20514,8 @@ const SHIP_DATA: ShipDatas = {
     1688: {
         name: 'Central Princess - Damaged 2',
         nameJP: '中枢棲姫-壊',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         dive_bomb_weak_mod: 2.5,
         land_based_weak_mod: 1.6,
         HP: 800,
@@ -20538,8 +20538,8 @@ const SHIP_DATA: ShipDatas = {
     1689: {
         name: 'Central Princess - Damaged 3',
         nameJP: '中枢棲姫-壊',
-        type: 9,
-        install_type: 4,
+        type: ShipType.BB,
+        install_type: ShipType.CLT,
         dive_bomb_weak_mod: 2.5,
         land_based_weak_mod: 1.6,
         HP: 900,
@@ -20562,7 +20562,7 @@ const SHIP_DATA: ShipDatas = {
     1690: {
         name: 'Destroyer Ancient Princess',
         nameJP: '駆逐古姫',
-        type: 2,
+        type: ShipType.DD,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         always_OASW: true,
@@ -20586,7 +20586,7 @@ const SHIP_DATA: ShipDatas = {
     1691: {
         name: 'Destroyer Ancient Princess 2',
         nameJP: '駆逐古姫',
-        type: 2,
+        type: ShipType.DD,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         always_OASW: true,
@@ -20610,7 +20610,7 @@ const SHIP_DATA: ShipDatas = {
     1692: {
         name: 'Destroyer Ancient Princess 3',
         nameJP: '駆逐古姫',
-        type: 2,
+        type: ShipType.DD,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         always_OASW: true,
@@ -20634,7 +20634,7 @@ const SHIP_DATA: ShipDatas = {
     1693: {
         name: 'Submarine Summer Princess Flagship',
         nameJP: '潜水夏姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 110,
         FP: 50,
         TP: 140,
@@ -20652,7 +20652,7 @@ const SHIP_DATA: ShipDatas = {
     1694: {
         name: 'Submarine Summer Princess Flagship 2',
         nameJP: '潜水夏姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 140,
         FP: 70,
         TP: 155,
@@ -20670,7 +20670,7 @@ const SHIP_DATA: ShipDatas = {
     1695: {
         name: 'Submarine Summer Princess Flagship 3',
         nameJP: '潜水夏姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 180,
         FP: 90,
         TP: 170,
@@ -20688,7 +20688,7 @@ const SHIP_DATA: ShipDatas = {
     1696: {
         name: 'Battleship Summer Princess',
         nameJP: '戦艦夏姫',
-        type: 9,
+        type: ShipType.BB,
         is_Summer_BB: true,
         HP: 400,
         FP: 180,
@@ -20707,7 +20707,7 @@ const SHIP_DATA: ShipDatas = {
     1697: {
         name: 'Battleship Summer Princess 2',
         nameJP: '戦艦夏姫',
-        type: 9,
+        type: ShipType.BB,
         is_Summer_BB: true,
         HP: 450,
         FP: 185,
@@ -20726,7 +20726,7 @@ const SHIP_DATA: ShipDatas = {
     1698: {
         name: 'Battleship Summer Princess 3',
         nameJP: '戦艦夏姫',
-        type: 9,
+        type: ShipType.BB,
         is_Summer_BB: true,
         HP: 530,
         FP: 195,
@@ -20745,8 +20745,8 @@ const SHIP_DATA: ShipDatas = {
     1699: {
         name: 'Harbour Summer Princess',
         nameJP: '港湾夏姫',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 500,
         FP: 170,
         TP: 0,
@@ -20763,8 +20763,8 @@ const SHIP_DATA: ShipDatas = {
     1700: {
         name: 'Harbour Summer Princess 2',
         nameJP: '港湾夏姫',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 650,
         FP: 188,
         TP: 0,
@@ -20781,8 +20781,8 @@ const SHIP_DATA: ShipDatas = {
     1701: {
         name: 'Harbour Summer Princess 3',
         nameJP: '港湾夏姫',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 750,
         FP: 200,
         TP: 0,
@@ -20799,8 +20799,8 @@ const SHIP_DATA: ShipDatas = {
     1702: {
         name: 'Harbour Summer Princess - Damaged',
         nameJP: '港湾夏姫-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 500,
         FP: 170,
         TP: 0,
@@ -20817,8 +20817,8 @@ const SHIP_DATA: ShipDatas = {
     1703: {
         name: 'Harbour Summer Princess - Damaged 2',
         nameJP: '港湾夏姫-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 650,
         FP: 188,
         TP: 0,
@@ -20835,8 +20835,8 @@ const SHIP_DATA: ShipDatas = {
     1704: {
         name: 'Harbour Summer Princess - Damaged 3',
         nameJP: '港湾夏姫-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 750,
         FP: 200,
         TP: 0,
@@ -20853,7 +20853,7 @@ const SHIP_DATA: ShipDatas = {
     1705: {
         name: 'Heavy Cruiser Summer Princess',
         nameJP: '重巡夏姫',
-        type: 5,
+        type: ShipType.CA,
         is_Summer_CA: true,
         HP: 400,
         FP: 110,
@@ -20872,7 +20872,7 @@ const SHIP_DATA: ShipDatas = {
     1706: {
         name: 'Heavy Cruiser Summer Princess 2',
         nameJP: '重巡夏姫',
-        type: 5,
+        type: ShipType.CA,
         is_Summer_CA: true,
         HP: 450,
         FP: 140,
@@ -20891,7 +20891,7 @@ const SHIP_DATA: ShipDatas = {
     1707: {
         name: 'Heavy Cruiser Summer Princess 3',
         nameJP: '重巡夏姫',
-        type: 5,
+        type: ShipType.CA,
         is_Summer_CA: true,
         HP: 550,
         FP: 170,
@@ -20910,7 +20910,7 @@ const SHIP_DATA: ShipDatas = {
     1708: {
         name: 'Seaplane Tender Water Princess',
         nameJP: '水母水姫',
-        type: 16,
+        type: ShipType.AV,
         planeasw: 0,
         HP: 370,
         FP: 95,
@@ -20929,7 +20929,7 @@ const SHIP_DATA: ShipDatas = {
     1709: {
         name: 'Seaplane Tender Water Princess 2',
         nameJP: '水母水姫',
-        type: 16,
+        type: ShipType.AV,
         planeasw: 0,
         HP: 380,
         FP: 135,
@@ -20948,7 +20948,7 @@ const SHIP_DATA: ShipDatas = {
     1710: {
         name: 'Seaplane Tender Water Princess 3',
         nameJP: '水母水姫',
-        type: 16,
+        type: ShipType.AV,
         planeasw: 0,
         HP: 390,
         FP: 175,
@@ -20967,8 +20967,8 @@ const SHIP_DATA: ShipDatas = {
     1711: {
         name: 'Abyssal Jellyfish Princess',
         nameJP: '深海海月姫',
-        type: 11,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DD,
         HP: 600,
         FP: 180,
         TP: 0,
@@ -20986,8 +20986,8 @@ const SHIP_DATA: ShipDatas = {
     1712: {
         name: 'Abyssal Jellyfish Princess 2',
         nameJP: '深海海月姫',
-        type: 11,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DD,
         HP: 700,
         FP: 220,
         TP: 0,
@@ -21005,8 +21005,8 @@ const SHIP_DATA: ShipDatas = {
     1713: {
         name: 'Abyssal Jellyfish Princess 3',
         nameJP: '深海海月姫',
-        type: 11,
-        CVs_night_attack_type: 2,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DD,
         HP: 800,
         FP: 240,
         TP: 0,
@@ -21024,8 +21024,8 @@ const SHIP_DATA: ShipDatas = {
     1714: {
         name: 'CV Wo-Class Flagship Kai 5',
         nameJP: '空母ヲ級改flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -21045,8 +21045,8 @@ const SHIP_DATA: ShipDatas = {
     1715: {
         name: 'CV Wo-Class Flagship Kai 6',
         nameJP: '空母ヲ級改flagship',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -21066,7 +21066,7 @@ const SHIP_DATA: ShipDatas = {
     1716: {
         name: 'Abyssal Twin Princesses',
         nameJP: '深海双子棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 200,
         TP: 130,
@@ -21086,7 +21086,7 @@ const SHIP_DATA: ShipDatas = {
     1717: {
         name: 'Abyssal Twin Princesses 2',
         nameJP: '深海双子棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 210,
         TP: 160,
@@ -21106,7 +21106,7 @@ const SHIP_DATA: ShipDatas = {
     1718: {
         name: 'Abyssal Twin Princesses 3',
         nameJP: '深海双子棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 220,
         TP: 190,
@@ -21126,7 +21126,7 @@ const SHIP_DATA: ShipDatas = {
     1719: {
         name: 'Abyssal Twin Princesses - Damaged',
         nameJP: '深海双子棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 660,
         FP: 220,
         TP: 120,
@@ -21146,7 +21146,7 @@ const SHIP_DATA: ShipDatas = {
     1720: {
         name: 'Abyssal Twin Princesses 2 - Damaged',
         nameJP: '深海双子棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 660,
         FP: 230,
         TP: 150,
@@ -21166,7 +21166,7 @@ const SHIP_DATA: ShipDatas = {
     1721: {
         name: 'Abyssal Twin Princesses 3 - Damaged',
         nameJP: '深海双子棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 660,
         FP: 240,
         TP: 180,
@@ -21186,8 +21186,8 @@ const SHIP_DATA: ShipDatas = {
     1722: {
         name: 'Escort Princess 1',
         nameJP: '護衛棲姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 400,
         FP: 90,
         TP: 0,
@@ -21205,8 +21205,8 @@ const SHIP_DATA: ShipDatas = {
     1723: {
         name: 'Escort Princess 2',
         nameJP: '護衛棲姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 440,
         FP: 120,
         TP: 0,
@@ -21224,8 +21224,8 @@ const SHIP_DATA: ShipDatas = {
     1724: {
         name: 'Escort Princess 3',
         nameJP: '護衛棲姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 480,
         FP: 150,
         TP: 0,
@@ -21243,8 +21243,8 @@ const SHIP_DATA: ShipDatas = {
     1725: {
         name: 'Northernmost Landing Princess 1',
         nameJP: '北端上陸姫',
-        type: 10,
-        install_type: 5,
+        type: ShipType.BBV,
+        install_type: ShipType.CA,
         HP: 650,
         FP: 150,
         TP: 0,
@@ -21262,8 +21262,8 @@ const SHIP_DATA: ShipDatas = {
     1726: {
         name: 'Northernmost Landing Princess 2',
         nameJP: '北端上陸姫',
-        type: 10,
-        install_type: 5,
+        type: ShipType.BBV,
+        install_type: ShipType.CA,
         HP: 670,
         FP: 170,
         TP: 0,
@@ -21281,8 +21281,8 @@ const SHIP_DATA: ShipDatas = {
     1727: {
         name: 'Northernmost Landing Princess 3',
         nameJP: '北端上陸姫',
-        type: 10,
-        install_type: 5,
+        type: ShipType.BBV,
+        install_type: ShipType.CA,
         HP: 690,
         FP: 190,
         TP: 0,
@@ -21300,7 +21300,7 @@ const SHIP_DATA: ShipDatas = {
     1728: {
         name: 'Northern Water Princess 1',
         nameJP: '北方水姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 770,
         FP: 168,
         TP: 75,
@@ -21318,7 +21318,7 @@ const SHIP_DATA: ShipDatas = {
     1729: {
         name: 'Northern Water Princess 2',
         nameJP: '北方水姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 770,
         FP: 178,
         TP: 85,
@@ -21336,7 +21336,7 @@ const SHIP_DATA: ShipDatas = {
     1730: {
         name: 'Northern Water Princess 3',
         nameJP: '北方水姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 770,
         FP: 188,
         TP: 95,
@@ -21354,7 +21354,7 @@ const SHIP_DATA: ShipDatas = {
     1731: {
         name: 'Northern Water Princess - Damaged 1',
         nameJP: '北方水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 770,
         FP: 168,
         TP: 105,
@@ -21372,7 +21372,7 @@ const SHIP_DATA: ShipDatas = {
     1732: {
         name: 'Northern Water Princess - Damaged 2',
         nameJP: '北方水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 770,
         FP: 178,
         TP: 115,
@@ -21390,7 +21390,7 @@ const SHIP_DATA: ShipDatas = {
     1733: {
         name: 'Northern Water Princess - Damaged 3',
         nameJP: '北方水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 770,
         FP: 188,
         TP: 130,
@@ -21408,8 +21408,8 @@ const SHIP_DATA: ShipDatas = {
     1734: {
         name: 'CVL Nu-Class Kai Elite',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         HP: 88,
         FP: 35,
@@ -21428,8 +21428,8 @@ const SHIP_DATA: ShipDatas = {
     1735: {
         name: 'CVL Nu-Class Kai Flagship',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         HP: 118,
         FP: 45,
@@ -21448,7 +21448,7 @@ const SHIP_DATA: ShipDatas = {
     1736: {
         name: 'New Submarine Princess Flagship 1',
         nameJP: '潜水新棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 177,
         FP: 27,
         TP: 117,
@@ -21467,7 +21467,7 @@ const SHIP_DATA: ShipDatas = {
     1737: {
         name: 'New Submarine Princess Flagship 2',
         nameJP: '潜水新棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 277,
         FP: 47,
         TP: 137,
@@ -21486,7 +21486,7 @@ const SHIP_DATA: ShipDatas = {
     1738: {
         name: 'New Submarine Princess Flagship 3',
         nameJP: '潜水新棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 377,
         FP: 47,
         TP: 177,
@@ -21505,7 +21505,7 @@ const SHIP_DATA: ShipDatas = {
     1739: {
         name: 'DD Na-Class',
         nameJP: '駆逐ナ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 60,
         FP: 66,
         TP: 91,
@@ -21524,7 +21524,7 @@ const SHIP_DATA: ShipDatas = {
     1740: {
         name: 'DD Na-Class Elite',
         nameJP: '駆逐ナ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 63,
         FP: 69,
         TP: 95,
@@ -21543,7 +21543,7 @@ const SHIP_DATA: ShipDatas = {
     1741: {
         name: 'DD Na-Class Flagship',
         nameJP: '駆逐ナ級',
-        type: 2,
+        type: ShipType.DD,
         HP: 66,
         FP: 79,
         TP: 99,
@@ -21562,7 +21562,7 @@ const SHIP_DATA: ShipDatas = {
     1742: {
         name: 'DD Na-Class Late Model',
         nameJP: '駆逐ナ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 63,
         FP: 69,
         TP: 103,
@@ -21581,7 +21581,7 @@ const SHIP_DATA: ShipDatas = {
     1743: {
         name: 'DD Na-Class Late Model Elite',
         nameJP: '駆逐ナ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 66,
         FP: 79,
         TP: 113,
@@ -21600,7 +21600,7 @@ const SHIP_DATA: ShipDatas = {
     1744: {
         name: 'DD Na-Class Late Model Flagship',
         nameJP: '駆逐ナ級後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 69,
         FP: 89,
         TP: 123,
@@ -21619,7 +21619,7 @@ const SHIP_DATA: ShipDatas = {
     1745: {
         name: 'French Battleship Princess',
         nameJP: '戦艦仏棲姫',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 202,
@@ -21638,7 +21638,7 @@ const SHIP_DATA: ShipDatas = {
     1746: {
         name: 'French Battleship Princess 2',
         nameJP: '戦艦仏棲姫',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 242,
@@ -21657,7 +21657,7 @@ const SHIP_DATA: ShipDatas = {
     1747: {
         name: 'French Battleship Princess 3',
         nameJP: '戦艦仏棲姫',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 242,
@@ -21676,7 +21676,7 @@ const SHIP_DATA: ShipDatas = {
     1748: {
         name: 'French Battleship Princess - Damaged',
         nameJP: '戦艦仏棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 222,
@@ -21695,7 +21695,7 @@ const SHIP_DATA: ShipDatas = {
     1749: {
         name: 'French Battleship Princess - Damaged 2',
         nameJP: '戦艦仏棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 262,
@@ -21714,7 +21714,7 @@ const SHIP_DATA: ShipDatas = {
     1750: {
         name: 'French Battleship Princess - Damaged 3',
         nameJP: '戦艦仏棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 282,
@@ -21733,9 +21733,9 @@ const SHIP_DATA: ShipDatas = {
     1751: {
         name: 'Aircraft Carrier Summer Demon',
         nameJP: '空母夏鬼',
-        type: 11,
+        type: ShipType.CV,
         is_Summer_CV: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 340,
         FP: 140,
         TP: 0,
@@ -21753,8 +21753,8 @@ const SHIP_DATA: ShipDatas = {
     1752: {
         name: 'Aircraft Carrier Summer Princess',
         nameJP: '空母夏姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 440,
         FP: 190,
         TP: 0,
@@ -21772,8 +21772,8 @@ const SHIP_DATA: ShipDatas = {
     1753: {
         name: 'Supply Depot Summer Princess',
         nameJP: '集積地夏姫',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 690,
         FP: 115,
         TP: 108,
@@ -21792,8 +21792,8 @@ const SHIP_DATA: ShipDatas = {
     1754: {
         name: 'Supply Depot Summer Princess 2',
         nameJP: '集積地夏姫',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 690,
         FP: 135,
         TP: 128,
@@ -21812,7 +21812,7 @@ const SHIP_DATA: ShipDatas = {
     1755: {
         name: 'European Princess',
         nameJP: '欧州棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 300,
         TP: 0,
@@ -21830,7 +21830,7 @@ const SHIP_DATA: ShipDatas = {
     1756: {
         name: 'European Princess 2',
         nameJP: '欧州棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 310,
         TP: 0,
@@ -21848,7 +21848,7 @@ const SHIP_DATA: ShipDatas = {
     1757: {
         name: 'European Princess 3',
         nameJP: '欧州棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 330,
         TP: 0,
@@ -21866,7 +21866,7 @@ const SHIP_DATA: ShipDatas = {
     1758: {
         name: 'European Princess - Damaged',
         nameJP: '欧州棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 330,
         TP: 105,
@@ -21884,7 +21884,7 @@ const SHIP_DATA: ShipDatas = {
     1759: {
         name: 'European Princess - Damaged 2',
         nameJP: '欧州棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 360,
         TP: 125,
@@ -21902,7 +21902,7 @@ const SHIP_DATA: ShipDatas = {
     1760: {
         name: 'European Princess - Damaged 3',
         nameJP: '欧州棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 390,
         TP: 155,
@@ -21920,7 +21920,7 @@ const SHIP_DATA: ShipDatas = {
     1761: {
         name: 'CA Ne-Class Flagship',
         nameJP: '重巡ネ級',
-        type: 6,
+        type: ShipType.CAV,
         HP: 220,
         FP: 108,
         TP: 74,
@@ -21939,8 +21939,8 @@ const SHIP_DATA: ShipDatas = {
     1762: {
         name: 'CVL Nu-Class Elite 2',
         nameJP: '軽母ヌ級',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         can_not_CVCI: true,
         HP: 70,
         FP: 15,
@@ -21959,8 +21959,8 @@ const SHIP_DATA: ShipDatas = {
     1763: {
         name: 'CVL Nu-Class Flagship 2',
         nameJP: '軽母ヌ級',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         can_not_CVCI: true,
         HP: 84,
         FP: 18,
@@ -21979,8 +21979,8 @@ const SHIP_DATA: ShipDatas = {
     1764: {
         name: 'CVL Nu-Class Flagship 3',
         nameJP: '軽母ヌ級',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         can_not_CVCI: true,
         HP: 84,
         FP: 18,
@@ -21999,8 +21999,8 @@ const SHIP_DATA: ShipDatas = {
     1765: {
         name: 'CVL Nu-Class Kai Elite 2',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 88,
@@ -22020,8 +22020,8 @@ const SHIP_DATA: ShipDatas = {
     1766: {
         name: 'CVL Nu-Class Kai Flagship 2',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 118,
@@ -22041,7 +22041,7 @@ const SHIP_DATA: ShipDatas = {
     1767: {
         name: 'Night Strait Princesses 1',
         nameJP: '海峡夜棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 102,
         TP: 70,
@@ -22059,7 +22059,7 @@ const SHIP_DATA: ShipDatas = {
     1768: {
         name: 'Night Strait Princesses 2',
         nameJP: '海峡夜棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 122,
         TP: 80,
@@ -22077,7 +22077,7 @@ const SHIP_DATA: ShipDatas = {
     1769: {
         name: 'Night Strait Princesses 3',
         nameJP: '海峡夜棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 144,
         TP: 90,
@@ -22095,7 +22095,7 @@ const SHIP_DATA: ShipDatas = {
     1770: {
         name: 'Night Strait Princesses - Damaged 1',
         nameJP: '海峡夜棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 162,
         TP: 90,
@@ -22113,7 +22113,7 @@ const SHIP_DATA: ShipDatas = {
     1771: {
         name: 'Night Strait Princesses - Damaged 2',
         nameJP: '海峡夜棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 182,
         TP: 105,
@@ -22131,7 +22131,7 @@ const SHIP_DATA: ShipDatas = {
     1772: {
         name: 'Night Strait Princesses - Damaged 3',
         nameJP: '海峡夜棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 800,
         FP: 202,
         TP: 120,
@@ -22149,7 +22149,7 @@ const SHIP_DATA: ShipDatas = {
     1773: {
         name: 'Entombed Anti-Air Guardian Princess 1',
         nameJP: '防空埋護姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 655,
         FP: 140,
         TP: 120,
@@ -22167,7 +22167,7 @@ const SHIP_DATA: ShipDatas = {
     1774: {
         name: 'Entombed Anti-Air Guardian Princess 2',
         nameJP: '防空埋護姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 655,
         FP: 170,
         TP: 130,
@@ -22185,7 +22185,7 @@ const SHIP_DATA: ShipDatas = {
     1775: {
         name: 'Entombed Anti-Air Guardian Princess 3',
         nameJP: '防空埋護姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 655,
         FP: 220,
         TP: 140,
@@ -22203,8 +22203,8 @@ const SHIP_DATA: ShipDatas = {
     1776: {
         name: 'CVL Nu-Class Elite 3',
         nameJP: '軽母ヌ級',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 70,
@@ -22224,8 +22224,8 @@ const SHIP_DATA: ShipDatas = {
     1777: {
         name: 'CVL Nu-Class Elite 4',
         nameJP: '軽母ヌ級',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 70,
@@ -22245,8 +22245,8 @@ const SHIP_DATA: ShipDatas = {
     1778: {
         name: 'CVL Nu-Class Kai Elite 3',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 88,
@@ -22266,8 +22266,8 @@ const SHIP_DATA: ShipDatas = {
     1779: {
         name: 'CVL Nu-Class Kai Flagship 3',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 118,
@@ -22287,8 +22287,8 @@ const SHIP_DATA: ShipDatas = {
     1780: {
         name: 'CVL Nu-Class Kai Flagship 4',
         nameJP: '軽母ヌ級改',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         can_not_CVCI: true,
         HP: 118,
@@ -22308,8 +22308,8 @@ const SHIP_DATA: ShipDatas = {
     1781: {
         name: 'Aircraft Carrier Princess 3',
         nameJP: '空母棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 350,
         FP: 180,
         TP: 0,
@@ -22327,8 +22327,8 @@ const SHIP_DATA: ShipDatas = {
     1782: {
         name: 'Aircraft Carrier Princess 4',
         nameJP: '空母棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 350,
         FP: 198,
         TP: 0,
@@ -22346,8 +22346,8 @@ const SHIP_DATA: ShipDatas = {
     1783: {
         name: 'Escort Water Princess 1',
         nameJP: '護衛棲水姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 650,
         FP: 104,
         TP: 110,
@@ -22365,8 +22365,8 @@ const SHIP_DATA: ShipDatas = {
     1784: {
         name: 'Escort Water Princess 2',
         nameJP: '護衛棲水姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 650,
         FP: 124,
         TP: 130,
@@ -22384,8 +22384,8 @@ const SHIP_DATA: ShipDatas = {
     1785: {
         name: 'Escort Water Princess 3',
         nameJP: '護衛棲水姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 650,
         FP: 144,
         TP: 150,
@@ -22403,8 +22403,8 @@ const SHIP_DATA: ShipDatas = {
     1786: {
         name: 'Escort Water Princess - Damaged 1',
         nameJP: '護衛棲水姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 650,
         FP: 128,
         TP: 120,
@@ -22422,8 +22422,8 @@ const SHIP_DATA: ShipDatas = {
     1787: {
         name: 'Escort Water Princess - Damaged 2',
         nameJP: '護衛棲水姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 650,
         FP: 148,
         TP: 140,
@@ -22441,8 +22441,8 @@ const SHIP_DATA: ShipDatas = {
     1788: {
         name: 'Escort Water Princess - Damaged 3',
         nameJP: '護衛棲水姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 650,
         FP: 188,
         TP: 160,
@@ -22460,7 +22460,7 @@ const SHIP_DATA: ShipDatas = {
     1789: {
         name: 'New Submarine Princess Flagship 4',
         nameJP: '潜水新棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 177,
         FP: 27,
         TP: 117,
@@ -22479,7 +22479,7 @@ const SHIP_DATA: ShipDatas = {
     1790: {
         name: 'Battleship Princess Kai 1',
         nameJP: '戦艦棲姫改',
-        type: 9,
+        type: ShipType.BB,
         HP: 700,
         FP: 200,
         TP: 0,
@@ -22497,7 +22497,7 @@ const SHIP_DATA: ShipDatas = {
     1791: {
         name: 'Battleship Princess Kai 2',
         nameJP: '戦艦棲姫改',
-        type: 9,
+        type: ShipType.BB,
         HP: 700,
         FP: 220,
         TP: 0,
@@ -22515,7 +22515,7 @@ const SHIP_DATA: ShipDatas = {
     1792: {
         name: 'Battleship Princess Kai 3',
         nameJP: '戦艦棲姫改',
-        type: 9,
+        type: ShipType.BB,
         HP: 700,
         FP: 240,
         TP: 0,
@@ -22533,7 +22533,7 @@ const SHIP_DATA: ShipDatas = {
     1793: {
         name: 'Battleship Water Demon Kai 1',
         nameJP: '戦艦水鬼改',
-        type: 9,
+        type: ShipType.BB,
         HP: 800,
         FP: 228,
         TP: 0,
@@ -22551,7 +22551,7 @@ const SHIP_DATA: ShipDatas = {
     1794: {
         name: 'Battleship Water Demon Kai 2',
         nameJP: '戦艦水鬼改',
-        type: 9,
+        type: ShipType.BB,
         HP: 800,
         FP: 248,
         TP: 0,
@@ -22569,7 +22569,7 @@ const SHIP_DATA: ShipDatas = {
     1795: {
         name: 'Battleship Water Demon Kai 3',
         nameJP: '戦艦水鬼改',
-        type: 9,
+        type: ShipType.BB,
         HP: 800,
         FP: 278,
         TP: 0,
@@ -22587,7 +22587,7 @@ const SHIP_DATA: ShipDatas = {
     1796: {
         name: 'Battleship Water Demon Kai - Damaged 1',
         nameJP: '戦艦水鬼改-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 800,
         FP: 258,
         TP: 0,
@@ -22605,7 +22605,7 @@ const SHIP_DATA: ShipDatas = {
     1797: {
         name: 'Battleship Water Demon Kai - Damaged 2',
         nameJP: '戦艦水鬼改-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 800,
         FP: 278,
         TP: 0,
@@ -22623,7 +22623,7 @@ const SHIP_DATA: ShipDatas = {
     1798: {
         name: 'Battleship Water Demon Kai - Damaged 3',
         nameJP: '戦艦水鬼改-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 800,
         FP: 308,
         TP: 0,
@@ -22641,8 +22641,8 @@ const SHIP_DATA: ShipDatas = {
     1799: {
         name: 'Abyssal Crane Princess 1',
         nameJP: '深海鶴棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 800,
         FP: 138,
         TP: 108,
@@ -22660,8 +22660,8 @@ const SHIP_DATA: ShipDatas = {
     1800: {
         name: 'Abyssal Crane Princess 2',
         nameJP: '深海鶴棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 800,
         FP: 138,
         TP: 108,
@@ -22679,8 +22679,8 @@ const SHIP_DATA: ShipDatas = {
     1801: {
         name: 'Abyssal Crane Princess 3',
         nameJP: '深海鶴棲姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 800,
         FP: 138,
         TP: 108,
@@ -22698,8 +22698,8 @@ const SHIP_DATA: ShipDatas = {
     1802: {
         name: 'Abyssal Crane Princess - Damaged 1',
         nameJP: '深海鶴棲姫-壊',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 800,
         FP: 207,
         TP: 128,
@@ -22717,8 +22717,8 @@ const SHIP_DATA: ShipDatas = {
     1803: {
         name: 'Abyssal Crane Princess - Damaged 2',
         nameJP: '深海鶴棲姫-壊',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 800,
         FP: 207,
         TP: 128,
@@ -22736,8 +22736,8 @@ const SHIP_DATA: ShipDatas = {
     1804: {
         name: 'Abyssal Crane Princess - Damaged 3',
         nameJP: '深海鶴棲姫-壊',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 800,
         FP: 207,
         TP: 128,
@@ -22755,7 +22755,7 @@ const SHIP_DATA: ShipDatas = {
     1805: {
         name: 'New Submarine Princess Vacation Mode 1',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: 13,
+        type: ShipType.SS,
         HP: 188,
         FP: 28,
         TP: 128,
@@ -22774,7 +22774,7 @@ const SHIP_DATA: ShipDatas = {
     1806: {
         name: 'New Submarine Princess Vacation Mode 2',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: 13,
+        type: ShipType.SS,
         HP: 188,
         FP: 38,
         TP: 148,
@@ -22793,7 +22793,7 @@ const SHIP_DATA: ShipDatas = {
     1807: {
         name: 'New Submarine Princess Vacation Mode 3',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: 13,
+        type: ShipType.SS,
         HP: 288,
         FP: 48,
         TP: 168,
@@ -22812,7 +22812,7 @@ const SHIP_DATA: ShipDatas = {
     1808: {
         name: 'New Submarine Princess Vacation Mode 4',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: 13,
+        type: ShipType.SS,
         HP: 388,
         FP: 48,
         TP: 188,
@@ -22831,8 +22831,8 @@ const SHIP_DATA: ShipDatas = {
     1809: {
         name: 'Supply Depot Princess Vacation Mode 1',
         nameJP: '集積地棲姫 バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 720,
         FP: 118,
         TP: 102,
@@ -22851,8 +22851,8 @@ const SHIP_DATA: ShipDatas = {
     1810: {
         name: 'Supply Depot Princess Vacation Mode 2',
         nameJP: '集積地棲姫 バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 720,
         FP: 148,
         TP: 122,
@@ -22871,8 +22871,8 @@ const SHIP_DATA: ShipDatas = {
     1811: {
         name: 'Supply Depot Princess Vacation Mode 3',
         nameJP: '集積地棲姫 バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 720,
         FP: 178,
         TP: 144,
@@ -22891,8 +22891,8 @@ const SHIP_DATA: ShipDatas = {
     1812: {
         name: 'Supply Depot Princess Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫 バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 720,
         FP: 138,
         TP: 122,
@@ -22911,8 +22911,8 @@ const SHIP_DATA: ShipDatas = {
     1813: {
         name: 'Supply Depot Princess Vacation Mode - Damaged 2',
         nameJP: '集積地棲姫 バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 720,
         FP: 168,
         TP: 144,
@@ -22931,8 +22931,8 @@ const SHIP_DATA: ShipDatas = {
     1814: {
         name: 'Supply Depot Princess Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫 バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 720,
         FP: 198,
         TP: 188,
@@ -22951,7 +22951,7 @@ const SHIP_DATA: ShipDatas = {
     1815: {
         name: 'Anchorage Water Demon Vacation Mode 1',
         nameJP: '泊地水鬼 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Anchorage: true,
         HP: 490,
         FP: 140,
@@ -22971,7 +22971,7 @@ const SHIP_DATA: ShipDatas = {
     1816: {
         name: 'Anchorage Water Demon Vacation Mode 2',
         nameJP: '泊地水鬼 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Anchorage: true,
         HP: 490,
         FP: 150,
@@ -22991,7 +22991,7 @@ const SHIP_DATA: ShipDatas = {
     1817: {
         name: 'Anchorage Water Demon Vacation Mode 3',
         nameJP: '泊地水鬼 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Anchorage: true,
         HP: 490,
         FP: 160,
@@ -23011,7 +23011,7 @@ const SHIP_DATA: ShipDatas = {
     1818: {
         name: 'Anchorage Water Demon Vacation Mode 4',
         nameJP: '泊地水鬼 バカンスmode',
-        type: 9,
+        type: ShipType.BB,
         is_Anchorage: true,
         HP: 490,
         FP: 170,
@@ -23031,7 +23031,7 @@ const SHIP_DATA: ShipDatas = {
     1819: {
         name: 'Anchorage Water Demon Vacation Mode 5',
         nameJP: '泊地水鬼 バカンスmode',
-        type: 9,
+        type: ShipType.BB,
         is_Anchorage: true,
         HP: 490,
         FP: 200,
@@ -23051,7 +23051,7 @@ const SHIP_DATA: ShipDatas = {
     1820: {
         name: 'Anchorage Water Demon Vacation Mode 6',
         nameJP: '泊地水鬼 バカンスmode',
-        type: 9,
+        type: ShipType.BB,
         is_Anchorage: true,
         HP: 490,
         FP: 230,
@@ -23071,8 +23071,8 @@ const SHIP_DATA: ShipDatas = {
     1821: {
         name: 'German Escort Princess 1',
         nameJP: '護衛独還姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 570,
         FP: 110,
         TP: 0,
@@ -23090,8 +23090,8 @@ const SHIP_DATA: ShipDatas = {
     1822: {
         name: 'German Escort Princess 2',
         nameJP: '護衛独還姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 570,
         FP: 130,
         TP: 0,
@@ -23109,8 +23109,8 @@ const SHIP_DATA: ShipDatas = {
     1823: {
         name: 'German Escort Princess 3',
         nameJP: '護衛独還姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 570,
         FP: 150,
         TP: 0,
@@ -23128,8 +23128,8 @@ const SHIP_DATA: ShipDatas = {
     1824: {
         name: 'German Escort Princess - Damaged 1',
         nameJP: '護衛独還姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 570,
         FP: 130,
         TP: 0,
@@ -23147,8 +23147,8 @@ const SHIP_DATA: ShipDatas = {
     1825: {
         name: 'German Escort Princess - Damaged 2',
         nameJP: '護衛独還姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 570,
         FP: 160,
         TP: 0,
@@ -23166,8 +23166,8 @@ const SHIP_DATA: ShipDatas = {
     1826: {
         name: 'German Escort Princess - Damaged 3',
         nameJP: '護衛独還姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 570,
         FP: 190,
         TP: 0,
@@ -23185,7 +23185,7 @@ const SHIP_DATA: ShipDatas = {
     1827: {
         name: 'Dock Princess 1',
         nameJP: '船渠棲姫',
-        type: 2,
+        type: ShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 132,
@@ -23204,7 +23204,7 @@ const SHIP_DATA: ShipDatas = {
     1828: {
         name: 'Dock Princess 2',
         nameJP: '船渠棲姫',
-        type: 2,
+        type: ShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 162,
@@ -23223,7 +23223,7 @@ const SHIP_DATA: ShipDatas = {
     1829: {
         name: 'Dock Princess 3',
         nameJP: '船渠棲姫',
-        type: 2,
+        type: ShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 182,
@@ -23242,7 +23242,7 @@ const SHIP_DATA: ShipDatas = {
     1830: {
         name: 'Dock Princess - Damaged 1',
         nameJP: '船渠棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 152,
@@ -23261,7 +23261,7 @@ const SHIP_DATA: ShipDatas = {
     1831: {
         name: 'Dock Princess - Damaged 2',
         nameJP: '船渠棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 182,
@@ -23280,7 +23280,7 @@ const SHIP_DATA: ShipDatas = {
     1832: {
         name: 'Dock Princess - Damaged 3',
         nameJP: '船渠棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 202,
@@ -23299,7 +23299,7 @@ const SHIP_DATA: ShipDatas = {
     1834: {
         name: 'French Battleship Princess Vacation Mode 1',
         nameJP: '戦艦仏棲姫 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 212,
@@ -23318,7 +23318,7 @@ const SHIP_DATA: ShipDatas = {
     1835: {
         name: 'French Battleship Princess Vacation Mode 2',
         nameJP: '戦艦仏棲姫 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 252,
@@ -23337,7 +23337,7 @@ const SHIP_DATA: ShipDatas = {
     1836: {
         name: 'French Battleship Princess Vacation Mode 3',
         nameJP: '戦艦仏棲姫 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 272,
@@ -23356,7 +23356,7 @@ const SHIP_DATA: ShipDatas = {
     1837: {
         name: 'French Battleship Princess Vacation Mode - Damaged 1',
         nameJP: '戦艦仏棲姫-壊 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 232,
@@ -23375,7 +23375,7 @@ const SHIP_DATA: ShipDatas = {
     1838: {
         name: 'French Battleship Princess Vacation Mode - Damaged 2',
         nameJP: '戦艦仏棲姫-壊 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 272,
@@ -23394,7 +23394,7 @@ const SHIP_DATA: ShipDatas = {
     1839: {
         name: 'French Battleship Princess Vacation Mode - Damaged 3',
         nameJP: '戦艦仏棲姫-壊 バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 292,
@@ -23413,7 +23413,7 @@ const SHIP_DATA: ShipDatas = {
     1840: {
         name: 'European Water Princess 1',
         nameJP: '欧州水姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 900,
         FP: 300,
         TP: 0,
@@ -23431,7 +23431,7 @@ const SHIP_DATA: ShipDatas = {
     1841: {
         name: 'European Water Princess 2',
         nameJP: '欧州水姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 900,
         FP: 310,
         TP: 0,
@@ -23449,7 +23449,7 @@ const SHIP_DATA: ShipDatas = {
     1842: {
         name: 'European Water Princess 3',
         nameJP: '欧州水姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 900,
         FP: 330,
         TP: 0,
@@ -23467,7 +23467,7 @@ const SHIP_DATA: ShipDatas = {
     1843: {
         name: 'European Water Princess - Damaged 1',
         nameJP: '欧州水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 900,
         FP: 330,
         TP: 110,
@@ -23485,7 +23485,7 @@ const SHIP_DATA: ShipDatas = {
     1844: {
         name: 'European Water Princess - Damaged 2',
         nameJP: '欧州水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 900,
         FP: 360,
         TP: 130,
@@ -23503,7 +23503,7 @@ const SHIP_DATA: ShipDatas = {
     1845: {
         name: 'European Water Princess - Damaged 3',
         nameJP: '欧州水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 900,
         FP: 390,
         TP: 160,
@@ -23521,7 +23521,7 @@ const SHIP_DATA: ShipDatas = {
     1846: {
         name: 'Abyssal Nimbus Princess 1',
         nameJP: '深海雨雲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 370,
         FP: 111,
         TP: 0,
@@ -23539,7 +23539,7 @@ const SHIP_DATA: ShipDatas = {
     1847: {
         name: 'Abyssal Nimbus Princess 2',
         nameJP: '深海雨雲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 370,
         FP: 144,
         TP: 0,
@@ -23557,7 +23557,7 @@ const SHIP_DATA: ShipDatas = {
     1848: {
         name: 'Abyssal Nimbus Princess 3',
         nameJP: '深海雨雲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 370,
         FP: 177,
         TP: 0,
@@ -23575,7 +23575,7 @@ const SHIP_DATA: ShipDatas = {
     1849: {
         name: 'Abyssal Nimbus Princess - Damaged 1',
         nameJP: '深海雨雲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 490,
         FP: 133,
@@ -23594,7 +23594,7 @@ const SHIP_DATA: ShipDatas = {
     1850: {
         name: 'Abyssal Nimbus Princess - Damaged 2',
         nameJP: '深海雨雲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 490,
         FP: 166,
@@ -23613,7 +23613,7 @@ const SHIP_DATA: ShipDatas = {
     1851: {
         name: 'Abyssal Nimbus Princess - Damaged 3',
         nameJP: '深海雨雲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 490,
         FP: 188,
@@ -23632,7 +23632,7 @@ const SHIP_DATA: ShipDatas = {
     1852: {
         name: 'Abyssal Sun Princess 1',
         nameJP: '深海日棲姫',
-        type: 16,
+        type: ShipType.AV,
         HP: 888,
         FP: 199,
         TP: 102,
@@ -23650,7 +23650,7 @@ const SHIP_DATA: ShipDatas = {
     1853: {
         name: 'Abyssal Sun Princess 2',
         nameJP: '深海日棲姫',
-        type: 16,
+        type: ShipType.AV,
         HP: 888,
         FP: 233,
         TP: 122,
@@ -23668,7 +23668,7 @@ const SHIP_DATA: ShipDatas = {
     1854: {
         name: 'Abyssal Sun Princess 3',
         nameJP: '深海日棲姫',
-        type: 16,
+        type: ShipType.AV,
         HP: 888,
         FP: 288,
         TP: 166,
@@ -23686,7 +23686,7 @@ const SHIP_DATA: ShipDatas = {
     1855: {
         name: 'Abyssal Sun Princess - Damaged 1',
         nameJP: '深海日棲姫-壊',
-        type: 16,
+        type: ShipType.AV,
         HP: 888,
         FP: 199,
         TP: 102,
@@ -23704,7 +23704,7 @@ const SHIP_DATA: ShipDatas = {
     1856: {
         name: 'Abyssal Sun Princess - Damaged 2',
         nameJP: '深海日棲姫-壊',
-        type: 16,
+        type: ShipType.AV,
         HP: 888,
         FP: 233,
         TP: 122,
@@ -23722,7 +23722,7 @@ const SHIP_DATA: ShipDatas = {
     1857: {
         name: 'Abyssal Sun Princess - Damaged 3',
         nameJP: '深海日棲姫-壊',
-        type: 16,
+        type: ShipType.AV,
         HP: 888,
         FP: 288,
         TP: 166,
@@ -23740,7 +23740,7 @@ const SHIP_DATA: ShipDatas = {
     1858: {
         name: 'Destroyer Ni-Class Kai',
         nameJP: '駆逐ニ級改',
-        type: 2,
+        type: ShipType.DD,
         HP: 39,
         FP: 34,
         TP: 48,
@@ -23758,7 +23758,7 @@ const SHIP_DATA: ShipDatas = {
     1859: {
         name: 'Destroyer Ni-Class Kai Late Model',
         nameJP: '駆逐ニ級改後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 49,
         FP: 54,
         TP: 88,
@@ -23777,7 +23777,7 @@ const SHIP_DATA: ShipDatas = {
     1860: {
         name: 'Destroyer Ni-Class Kai Late Model Elite',
         nameJP: '駆逐ニ級改後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 49,
         FP: 64,
         TP: 98,
@@ -23796,7 +23796,7 @@ const SHIP_DATA: ShipDatas = {
     1861: {
         name: 'Destroyer Ni-Class Kai Late Model Flagship',
         nameJP: '駆逐ニ級改後期型',
-        type: 2,
+        type: ShipType.DD,
         HP: 49,
         FP: 68,
         TP: 98,
@@ -23815,7 +23815,7 @@ const SHIP_DATA: ShipDatas = {
     1862: {
         name: 'CL Tsu-Class Flagship',
         nameJP: '軽巡ツ級',
-        type: 3,
+        type: ShipType.CL,
         always_OASW: true,
         HP: 130,
         FP: 122,
@@ -23835,7 +23835,7 @@ const SHIP_DATA: ShipDatas = {
     1863: {
         name: 'Heavy Cruiser Princess 7',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 540,
         FP: 180,
         TP: 110,
@@ -23854,7 +23854,7 @@ const SHIP_DATA: ShipDatas = {
     1864: {
         name: 'Heavy Cruiser Princess 8',
         nameJP: '重巡棲姫',
-        type: 5,
+        type: ShipType.CA,
         HP: 540,
         FP: 220,
         TP: 130,
@@ -23873,8 +23873,8 @@ const SHIP_DATA: ShipDatas = {
     1865: {
         name: 'Northern Little Sister 1',
         nameJP: '北方棲妹',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 790,
         FP: 170,
         TP: 110,
@@ -23893,8 +23893,8 @@ const SHIP_DATA: ShipDatas = {
     1866: {
         name: 'Northern Little Sister 2',
         nameJP: '北方棲妹',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 790,
         FP: 180,
         TP: 120,
@@ -23913,8 +23913,8 @@ const SHIP_DATA: ShipDatas = {
     1867: {
         name: 'Northern Little Sister 3',
         nameJP: '北方棲妹',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 790,
         FP: 190,
         TP: 150,
@@ -23933,8 +23933,8 @@ const SHIP_DATA: ShipDatas = {
     1868: {
         name: 'Northern Little Sister 1 - Damaged',
         nameJP: '北方棲妹-壊',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 790,
         FP: 170,
         TP: 130,
@@ -23953,8 +23953,8 @@ const SHIP_DATA: ShipDatas = {
     1869: {
         name: 'Northern Little Sister 2 - Damaged',
         nameJP: '北方棲妹-壊',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 790,
         FP: 180,
         TP: 150,
@@ -23973,8 +23973,8 @@ const SHIP_DATA: ShipDatas = {
     1870: {
         name: 'Northern Little Sister 3 - Damaged',
         nameJP: '北方棲妹-壊',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 790,
         FP: 190,
         TP: 180,
@@ -23993,7 +23993,7 @@ const SHIP_DATA: ShipDatas = {
     1871: {
         name: 'Abyssal Pacific Princess 1',
         nameJP: '太平洋深海棲姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 900,
         FP: 320,
         TP: 90,
@@ -24011,7 +24011,7 @@ const SHIP_DATA: ShipDatas = {
     1872: {
         name: 'Abyssal Pacific Princess 2',
         nameJP: '太平洋深海棲姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 930,
         FP: 330,
         TP: 110,
@@ -24029,7 +24029,7 @@ const SHIP_DATA: ShipDatas = {
     1873: {
         name: 'Abyssal Pacific Princess 3',
         nameJP: '太平洋深海棲姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 960,
         FP: 350,
         TP: 120,
@@ -24047,7 +24047,7 @@ const SHIP_DATA: ShipDatas = {
     1874: {
         name: 'Abyssal Pacific Princess - Damaged 1',
         nameJP: '太平洋深海棲姫-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 900,
         FP: 340,
         TP: 110,
@@ -24065,7 +24065,7 @@ const SHIP_DATA: ShipDatas = {
     1875: {
         name: 'Abyssal Pacific Princess - Damaged 2',
         nameJP: '太平洋深海棲姫-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 930,
         FP: 360,
         TP: 130,
@@ -24083,7 +24083,7 @@ const SHIP_DATA: ShipDatas = {
     1876: {
         name: 'Abyssal Pacific Princess - Damaged 3',
         nameJP: '太平洋深海棲姫-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 960,
         FP: 380,
         TP: 150,
@@ -24101,7 +24101,7 @@ const SHIP_DATA: ShipDatas = {
     1877: {
         name: 'Abyssal Mediterranean Princess 1',
         nameJP: '深海地中海棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 700,
         FP: 150,
         TP: 95,
@@ -24119,7 +24119,7 @@ const SHIP_DATA: ShipDatas = {
     1878: {
         name: 'Abyssal Mediterranean Princess 2',
         nameJP: '深海地中海棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 740,
         FP: 180,
         TP: 105,
@@ -24137,7 +24137,7 @@ const SHIP_DATA: ShipDatas = {
     1879: {
         name: 'Abyssal Mediterranean Princess 3',
         nameJP: '深海地中海棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 790,
         FP: 200,
         TP: 125,
@@ -24155,7 +24155,7 @@ const SHIP_DATA: ShipDatas = {
     1880: {
         name: 'Abyssal Mediterranean Princess - Damaged 1',
         nameJP: '深海地中海棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 700,
         FP: 170,
         TP: 155,
@@ -24173,7 +24173,7 @@ const SHIP_DATA: ShipDatas = {
     1881: {
         name: 'Abyssal Mediterranean Princess - Damaged 2',
         nameJP: '深海地中海棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 740,
         FP: 200,
         TP: 175,
@@ -24191,7 +24191,7 @@ const SHIP_DATA: ShipDatas = {
     1882: {
         name: 'Abyssal Mediterranean Princess - Damaged 3',
         nameJP: '深海地中海棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 790,
         FP: 230,
         TP: 195,
@@ -24209,7 +24209,7 @@ const SHIP_DATA: ShipDatas = {
     1883: {
         name: 'Anzio Princess 1',
         nameJP: 'アンツィオ沖棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 800,
         FP: 158,
         TP: 158,
@@ -24227,7 +24227,7 @@ const SHIP_DATA: ShipDatas = {
     1884: {
         name: 'Anzio Princess 2',
         nameJP: 'アンツィオ沖棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 840,
         FP: 178,
         TP: 178,
@@ -24245,7 +24245,7 @@ const SHIP_DATA: ShipDatas = {
     1885: {
         name: 'Anzio Princess 3',
         nameJP: 'アンツィオ沖棲姫',
-        type: 2,
+        type: ShipType.DD,
         HP: 888,
         FP: 188,
         TP: 228,
@@ -24263,7 +24263,7 @@ const SHIP_DATA: ShipDatas = {
     1886: {
         name: 'Anzio Princess - Damaged 1',
         nameJP: 'アンツィオ沖棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         HP: 800,
         FP: 179,
         TP: 209,
@@ -24281,7 +24281,7 @@ const SHIP_DATA: ShipDatas = {
     1887: {
         name: 'Anzio Princess - Damaged 2',
         nameJP: 'アンツィオ沖棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         HP: 840,
         FP: 189,
         TP: 249,
@@ -24299,7 +24299,7 @@ const SHIP_DATA: ShipDatas = {
     1888: {
         name: 'Anzio Princess - Damaged 3',
         nameJP: 'アンツィオ沖棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         HP: 888,
         FP: 199,
         TP: 299,
@@ -24317,8 +24317,8 @@ const SHIP_DATA: ShipDatas = {
     1889: {
         name: 'Airfield Princess 8',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -24337,8 +24337,8 @@ const SHIP_DATA: ShipDatas = {
     1890: {
         name: 'Airfield Princess 9',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -24357,8 +24357,8 @@ const SHIP_DATA: ShipDatas = {
     1891: {
         name: 'Airfield Princess 10',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -24377,8 +24377,8 @@ const SHIP_DATA: ShipDatas = {
     1892: {
         name: 'Airfield Princess 11',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -24397,8 +24397,8 @@ const SHIP_DATA: ShipDatas = {
     1893: {
         name: 'Airfield Princess 12',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 80,
         TP: 0,
@@ -24417,8 +24417,8 @@ const SHIP_DATA: ShipDatas = {
     1894: {
         name: 'Airfield Princess 13',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 90,
         TP: 0,
@@ -24437,7 +24437,7 @@ const SHIP_DATA: ShipDatas = {
     1895: {
         name: 'CA Ne-Class Kai 1',
         nameJP: '重巡ネ級改',
-        type: 5,
+        type: ShipType.CA,
         HP: 330,
         FP: 118,
         TP: 108,
@@ -24456,7 +24456,7 @@ const SHIP_DATA: ShipDatas = {
     1896: {
         name: 'CA Ne-Class Kai 2',
         nameJP: '重巡ネ級改',
-        type: 5,
+        type: ShipType.CA,
         HP: 360,
         FP: 128,
         TP: 128,
@@ -24475,7 +24475,7 @@ const SHIP_DATA: ShipDatas = {
     1897: {
         name: 'CA Ne-Class Kai 3',
         nameJP: '重巡ネ級改',
-        type: 5,
+        type: ShipType.CA,
         HP: 390,
         FP: 148,
         TP: 138,
@@ -24494,7 +24494,7 @@ const SHIP_DATA: ShipDatas = {
     1898: {
         name: 'Batavia Princess 1',
         nameJP: 'バタビア沖棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 690,
         FP: 160,
         TP: 110,
@@ -24512,7 +24512,7 @@ const SHIP_DATA: ShipDatas = {
     1899: {
         name: 'Batavia Princess 2',
         nameJP: 'バタビア沖棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 790,
         FP: 190,
         TP: 130,
@@ -24530,7 +24530,7 @@ const SHIP_DATA: ShipDatas = {
     1900: {
         name: 'Batavia Princess 3',
         nameJP: 'バタビア沖棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 790,
         FP: 230,
         TP: 150,
@@ -24548,7 +24548,7 @@ const SHIP_DATA: ShipDatas = {
     1901: {
         name: 'Batavia Princess - Damaged 1',
         nameJP: 'バタビア沖棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 690,
         FP: 200,
         TP: 130,
@@ -24566,7 +24566,7 @@ const SHIP_DATA: ShipDatas = {
     1902: {
         name: 'Batavia Princess - Damaged 2',
         nameJP: 'バタビア沖棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 790,
         FP: 220,
         TP: 160,
@@ -24584,7 +24584,7 @@ const SHIP_DATA: ShipDatas = {
     1903: {
         name: 'Batavia Princess - Damaged 3',
         nameJP: 'バタビア沖棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 790,
         FP: 270,
         TP: 190,
@@ -24602,7 +24602,7 @@ const SHIP_DATA: ShipDatas = {
     1904: {
         name: 'CL He-Class Kai Flagship 1',
         nameJP: '軽巡ヘ級改',
-        type: 3,
+        type: ShipType.CL,
         HP: 115,
         FP: 58,
         TP: 80,
@@ -24621,7 +24621,7 @@ const SHIP_DATA: ShipDatas = {
     1905: {
         name: 'CL He-Class Kai Flagship 2',
         nameJP: '軽巡ヘ級改',
-        type: 3,
+        type: ShipType.CL,
         HP: 150,
         FP: 78,
         TP: 90,
@@ -24640,8 +24640,8 @@ const SHIP_DATA: ShipDatas = {
     1906: {
         name: 'Aircraft Carrier Princess Kai 1',
         nameJP: '空母棲姫改',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 500,
         FP: 198,
         TP: 0,
@@ -24659,8 +24659,8 @@ const SHIP_DATA: ShipDatas = {
     1907: {
         name: 'Aircraft Carrier Princess Kai 2',
         nameJP: '空母棲姫改',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 550,
         FP: 208,
         TP: 0,
@@ -24678,8 +24678,8 @@ const SHIP_DATA: ShipDatas = {
     1908: {
         name: 'Aircraft Carrier Princess Kai 3',
         nameJP: '空母棲姫改',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 600,
         FP: 228,
         TP: 0,
@@ -24697,7 +24697,7 @@ const SHIP_DATA: ShipDatas = {
     1909: {
         name: 'Anti-Air Cruiser Princess 1',
         nameJP: '防空巡棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 733,
         FP: 150,
         TP: 125,
@@ -24716,7 +24716,7 @@ const SHIP_DATA: ShipDatas = {
     1910: {
         name: 'Anti-Air Cruiser Princess 2',
         nameJP: '防空巡棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 755,
         FP: 180,
         TP: 135,
@@ -24735,7 +24735,7 @@ const SHIP_DATA: ShipDatas = {
     1911: {
         name: 'Anti-Air Cruiser Princess 3',
         nameJP: '防空巡棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 777,
         FP: 220,
         TP: 155,
@@ -24754,7 +24754,7 @@ const SHIP_DATA: ShipDatas = {
     1912: {
         name: 'Anti-Air Cruiser Princess - Damaged 1',
         nameJP: '防空巡棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         always_OASW: true,
         HP: 733,
         FP: 150,
@@ -24774,7 +24774,7 @@ const SHIP_DATA: ShipDatas = {
     1913: {
         name: 'Anti-Air Cruiser Princess - Damaged 2',
         nameJP: '防空巡棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         always_OASW: true,
         HP: 755,
         FP: 180,
@@ -24794,7 +24794,7 @@ const SHIP_DATA: ShipDatas = {
     1914: {
         name: 'Anti-Air Cruiser Princess - Damaged 3',
         nameJP: '防空巡棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         always_OASW: true,
         HP: 777,
         FP: 220,
@@ -24814,7 +24814,7 @@ const SHIP_DATA: ShipDatas = {
     1915: {
         name: 'Submarine Princess Kai Flagship 1',
         nameJP: '潜水棲姫改',
-        type: 13,
+        type: ShipType.SS,
         HP: 290,
         FP: 55,
         TP: 155,
@@ -24833,7 +24833,7 @@ const SHIP_DATA: ShipDatas = {
     1916: {
         name: 'Submarine Princess Kai Flagship 2',
         nameJP: '潜水棲姫改',
-        type: 13,
+        type: ShipType.SS,
         HP: 390,
         FP: 75,
         TP: 175,
@@ -24852,7 +24852,7 @@ const SHIP_DATA: ShipDatas = {
     1917: {
         name: 'Submarine Princess Kai Flagship 3',
         nameJP: '潜水棲姫改',
-        type: 13,
+        type: ShipType.SS,
         HP: 490,
         FP: 95,
         TP: 195,
@@ -24871,7 +24871,7 @@ const SHIP_DATA: ShipDatas = {
     1918: {
         name: 'Submarine Princess Kai Flagship - Damaged 1',
         nameJP: '潜水棲姫改-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 290,
         FP: 68,
         TP: 169,
@@ -24890,7 +24890,7 @@ const SHIP_DATA: ShipDatas = {
     1919: {
         name: 'Submarine Princess Kai Flagship - Damaged 2',
         nameJP: '潜水棲姫改-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 390,
         FP: 78,
         TP: 209,
@@ -24909,7 +24909,7 @@ const SHIP_DATA: ShipDatas = {
     1920: {
         name: 'Submarine Princess Kai Flagship - Damaged 3',
         nameJP: '潜水棲姫改-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 490,
         FP: 98,
         TP: 239,
@@ -24928,8 +24928,8 @@ const SHIP_DATA: ShipDatas = {
     1921: {
         name: 'Supply Depot Princess B 1',
         nameJP: '集積地棲姫II',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 600,
         FP: 70,
         TP: 88,
@@ -24948,8 +24948,8 @@ const SHIP_DATA: ShipDatas = {
     1922: {
         name: 'Supply Depot Princess B 2',
         nameJP: '集積地棲姫II',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 660,
         FP: 90,
         TP: 98,
@@ -24968,8 +24968,8 @@ const SHIP_DATA: ShipDatas = {
     1923: {
         name: 'Supply Depot Princess B 3',
         nameJP: '集積地棲姫II',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 990,
         FP: 130,
         TP: 118,
@@ -24988,8 +24988,8 @@ const SHIP_DATA: ShipDatas = {
     1924: {
         name: 'Supply Depot Princess B - Damaged 1',
         nameJP: '集積地棲姫II-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 600,
         FP: 130,
         TP: 88,
@@ -25008,8 +25008,8 @@ const SHIP_DATA: ShipDatas = {
     1925: {
         name: 'Supply Depot Princess B - Damaged 2',
         nameJP: '集積地棲姫II-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 660,
         FP: 160,
         TP: 98,
@@ -25028,8 +25028,8 @@ const SHIP_DATA: ShipDatas = {
     1926: {
         name: 'Supply Depot Princess B - Damaged 3',
         nameJP: '集積地棲姫II-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 990,
         FP: 190,
         TP: 118,
@@ -25048,7 +25048,7 @@ const SHIP_DATA: ShipDatas = {
     1927: {
         name: 'Abyssal Kuriles Princess 1',
         nameJP: '深海千島棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 330,
         FP: 110,
@@ -25068,7 +25068,7 @@ const SHIP_DATA: ShipDatas = {
     1928: {
         name: 'Abyssal Kuriles Princess 2',
         nameJP: '深海千島棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 480,
         FP: 140,
@@ -25088,7 +25088,7 @@ const SHIP_DATA: ShipDatas = {
     1929: {
         name: 'Abyssal Kuriles Princess 3',
         nameJP: '深海千島棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 590,
         FP: 170,
@@ -25108,7 +25108,7 @@ const SHIP_DATA: ShipDatas = {
     1930: {
         name: 'Abyssal Kuriles Princess - Damaged 1',
         nameJP: '深海千島棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 330,
         FP: 130,
@@ -25128,7 +25128,7 @@ const SHIP_DATA: ShipDatas = {
     1931: {
         name: 'Abyssal Kuriles Princess - Damaged 2',
         nameJP: '深海千島棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 480,
         FP: 170,
@@ -25148,7 +25148,7 @@ const SHIP_DATA: ShipDatas = {
     1932: {
         name: 'Abyssal Kuriles Princess - Damaged 3',
         nameJP: '深海千島棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 590,
         FP: 180,
@@ -25168,8 +25168,8 @@ const SHIP_DATA: ShipDatas = {
     1933: {
         name: 'Supply Depot Princess B Summer Landing Mode 1',
         nameJP: '集積地棲姫II 夏季上陸mode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 600,
         FP: 100,
         TP: 98,
@@ -25188,8 +25188,8 @@ const SHIP_DATA: ShipDatas = {
     1934: {
         name: 'Supply Depot Princess B Summer Landing Mode 2',
         nameJP: '集積地棲姫II 夏季上陸mode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 1200,
         FP: 180,
         TP: 108,
@@ -25208,8 +25208,8 @@ const SHIP_DATA: ShipDatas = {
     1935: {
         name: 'Supply Depot Princess B Summer Landing Mode 3',
         nameJP: '集積地棲姫II 夏季上陸mode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 2400,
         FP: 200,
         TP: 128,
@@ -25228,8 +25228,8 @@ const SHIP_DATA: ShipDatas = {
     1936: {
         name: 'Supply Depot Princess B Summer Landing Mode - Damaged 1',
         nameJP: '集積地棲姫II 夏季上陸mode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 600,
         FP: 160,
         TP: 98,
@@ -25248,8 +25248,8 @@ const SHIP_DATA: ShipDatas = {
     1937: {
         name: 'Supply Depot Princess B Summer Landing Mode - Damaged 2',
         nameJP: '集積地棲姫II 夏季上陸mode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 1200,
         FP: 200,
         TP: 108,
@@ -25268,8 +25268,8 @@ const SHIP_DATA: ShipDatas = {
     1938: {
         name: 'Supply Depot Princess B Summer Landing Mode - Damaged 3',
         nameJP: '集積地棲姫II 夏季上陸mode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 2400,
         FP: 240,
         TP: 128,
@@ -25288,7 +25288,7 @@ const SHIP_DATA: ShipDatas = {
     1939: {
         name: 'Gotou Islands Seabed Princess 1',
         nameJP: '五島沖海底姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 470,
         FP: 47,
         TP: 160,
@@ -25307,7 +25307,7 @@ const SHIP_DATA: ShipDatas = {
     1940: {
         name: 'Gotou Islands Seabed Princess 2',
         nameJP: '五島沖海底姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 470,
         FP: 47,
         TP: 200,
@@ -25326,7 +25326,7 @@ const SHIP_DATA: ShipDatas = {
     1941: {
         name: 'Gotou Islands Seabed Princess 3',
         nameJP: '五島沖海底姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 670,
         FP: 47,
         TP: 240,
@@ -25345,7 +25345,7 @@ const SHIP_DATA: ShipDatas = {
     1942: {
         name: 'Gotou Islands Seabed Princess - Damaged 1',
         nameJP: '五島沖海底姫-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 470,
         FP: 47,
         TP: 200,
@@ -25364,7 +25364,7 @@ const SHIP_DATA: ShipDatas = {
     1943: {
         name: 'Gotou Islands Seabed Princess - Damaged 2',
         nameJP: '五島沖海底姫-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 470,
         FP: 47,
         TP: 240,
@@ -25383,7 +25383,7 @@ const SHIP_DATA: ShipDatas = {
     1944: {
         name: 'Gotou Islands Seabed Princess - Damaged 3',
         nameJP: '五島沖海底姫-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 670,
         FP: 47,
         TP: 290,
@@ -25402,7 +25402,7 @@ const SHIP_DATA: ShipDatas = {
     1945: {
         name: 'Destroyer Forest Princess 1',
         nameJP: '駆逐林棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 500,
         FP: 170,
@@ -25422,7 +25422,7 @@ const SHIP_DATA: ShipDatas = {
     1946: {
         name: 'Destroyer Forest Princess 2',
         nameJP: '駆逐林棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 600,
         FP: 200,
@@ -25442,7 +25442,7 @@ const SHIP_DATA: ShipDatas = {
     1947: {
         name: 'Destroyer Forest Princess 3',
         nameJP: '駆逐林棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 700,
         FP: 230,
@@ -25462,7 +25462,7 @@ const SHIP_DATA: ShipDatas = {
     1948: {
         name: 'Destroyer Forest Princess - Damaged 1',
         nameJP: '駆逐林棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 500,
         FP: 200,
@@ -25482,7 +25482,7 @@ const SHIP_DATA: ShipDatas = {
     1949: {
         name: 'Destroyer Forest Princess - Damaged 2',
         nameJP: '駆逐林棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 600,
         FP: 220,
@@ -25502,7 +25502,7 @@ const SHIP_DATA: ShipDatas = {
     1950: {
         name: 'Destroyer Forest Princess - Damaged 3',
         nameJP: '駆逐林棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 700,
         FP: 270,
@@ -25522,7 +25522,7 @@ const SHIP_DATA: ShipDatas = {
     1951: {
         name: 'DD Na-Class Late Model II Elite',
         nameJP: '駆逐ナ級後期型II',
-        type: 2,
+        type: ShipType.DD,
         HP: 66,
         FP: 79,
         TP: 113,
@@ -25541,7 +25541,7 @@ const SHIP_DATA: ShipDatas = {
     1952: {
         name: 'DD Na-Class Late Model II Flagship',
         nameJP: '駆逐ナ級後期型II',
-        type: 2,
+        type: ShipType.DD,
         HP: 69,
         FP: 89,
         TP: 123,
@@ -25560,7 +25560,7 @@ const SHIP_DATA: ShipDatas = {
     1953: {
         name: 'CA Ne-Class Kai Summer Mode 1',
         nameJP: '重巡ネ級改 夏mode',
-        type: 5,
+        type: ShipType.CA,
         HP: 330,
         FP: 118,
         TP: 108,
@@ -25579,7 +25579,7 @@ const SHIP_DATA: ShipDatas = {
     1954: {
         name: 'CA Ne-Class Kai Summer Mode 2',
         nameJP: '重巡ネ級改 夏mode',
-        type: 5,
+        type: ShipType.CA,
         HP: 360,
         FP: 128,
         TP: 118,
@@ -25598,7 +25598,7 @@ const SHIP_DATA: ShipDatas = {
     1955: {
         name: 'CA Ne-Class Kai Summer Mode 3',
         nameJP: '重巡ネ級改 夏mode',
-        type: 5,
+        type: ShipType.CA,
         HP: 390,
         FP: 138,
         TP: 138,
@@ -25617,7 +25617,7 @@ const SHIP_DATA: ShipDatas = {
     1956: {
         name: 'CA Ne-Class Kai B Summer Mode',
         nameJP: '重巡ネ級改II 夏mode',
-        type: 5,
+        type: ShipType.CA,
         HP: 470,
         FP: 158,
         TP: 148,
@@ -25636,7 +25636,7 @@ const SHIP_DATA: ShipDatas = {
     1957: {
         name: 'Light Cruiser Princess B 1',
         nameJP: '軽巡棲姫II',
-        type: 3,
+        type: ShipType.CL,
         HP: 290,
         FP: 69,
         TP: 119,
@@ -25655,7 +25655,7 @@ const SHIP_DATA: ShipDatas = {
     1958: {
         name: 'Light Cruiser Princess B 2',
         nameJP: '軽巡棲姫II',
-        type: 3,
+        type: ShipType.CL,
         HP: 290,
         FP: 79,
         TP: 139,
@@ -25674,7 +25674,7 @@ const SHIP_DATA: ShipDatas = {
     1959: {
         name: 'Light Cruiser Princess B 3',
         nameJP: '軽巡棲姫II',
-        type: 3,
+        type: ShipType.CL,
         HP: 340,
         FP: 89,
         TP: 169,
@@ -25693,7 +25693,7 @@ const SHIP_DATA: ShipDatas = {
     1960: {
         name: 'Light Cruiser Princess B 4',
         nameJP: '軽巡棲姫II',
-        type: 3,
+        type: ShipType.CL,
         HP: 380,
         FP: 99,
         TP: 199,
@@ -25712,8 +25712,8 @@ const SHIP_DATA: ShipDatas = {
     1961: {
         name: 'Aircraft Carrier Summer Princess 2',
         nameJP: '空母夏姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 440,
         FP: 180,
         TP: 0,
@@ -25731,8 +25731,8 @@ const SHIP_DATA: ShipDatas = {
     1962: {
         name: 'Aircraft Carrier Summer Princess 3',
         nameJP: '空母夏姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 540,
         FP: 190,
         TP: 0,
@@ -25750,8 +25750,8 @@ const SHIP_DATA: ShipDatas = {
     1963: {
         name: 'Aircraft Carrier Summer Princess 4',
         nameJP: '空母夏姫',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 640,
         FP: 200,
         TP: 0,
@@ -25769,9 +25769,9 @@ const SHIP_DATA: ShipDatas = {
     1964: {
         name: 'Aircraft Carrier Summer Princess B',
         nameJP: '空母夏姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 880,
         FP: 248,
         TP: 0,
@@ -25789,7 +25789,7 @@ const SHIP_DATA: ShipDatas = {
     1965: {
         name: 'New Southern Battleship Princess 1',
         nameJP: '南方戦艦新棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 950,
         FP: 300,
         TP: 0,
@@ -25807,7 +25807,7 @@ const SHIP_DATA: ShipDatas = {
     1966: {
         name: 'New Southern Battleship Princess 2',
         nameJP: '南方戦艦新棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 950,
         FP: 310,
         TP: 0,
@@ -25825,7 +25825,7 @@ const SHIP_DATA: ShipDatas = {
     1967: {
         name: 'New Southern Battleship Princess 3',
         nameJP: '南方戦艦新棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 950,
         FP: 330,
         TP: 0,
@@ -25843,7 +25843,7 @@ const SHIP_DATA: ShipDatas = {
     1968: {
         name: 'New Southern Battleship Princess - Damaged 1',
         nameJP: '南方戦艦新棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 950,
         FP: 320,
         TP: 0,
@@ -25861,7 +25861,7 @@ const SHIP_DATA: ShipDatas = {
     1969: {
         name: 'New Southern Battleship Princess - Damaged 2',
         nameJP: '南方戦艦新棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 950,
         FP: 340,
         TP: 0,
@@ -25879,7 +25879,7 @@ const SHIP_DATA: ShipDatas = {
     1970: {
         name: 'New Southern Battleship Princess - Damaged 3',
         nameJP: '南方戦艦新棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 950,
         FP: 360,
         TP: 0,
@@ -25897,9 +25897,9 @@ const SHIP_DATA: ShipDatas = {
     1971: {
         name: 'South Pacific Aircraft Carrier Princess 1',
         nameJP: '南太平洋空母棲姫',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 888,
         FP: 208,
         TP: 0,
@@ -25917,9 +25917,9 @@ const SHIP_DATA: ShipDatas = {
     1972: {
         name: 'South Pacific Aircraft Carrier Princess 2',
         nameJP: '南太平洋空母棲姫',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 888,
         FP: 248,
         TP: 0,
@@ -25937,9 +25937,9 @@ const SHIP_DATA: ShipDatas = {
     1973: {
         name: 'South Pacific Aircraft Carrier Princess 3',
         nameJP: '南太平洋空母棲姫',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 888,
         FP: 288,
         TP: 0,
@@ -25957,9 +25957,9 @@ const SHIP_DATA: ShipDatas = {
     1974: {
         name: 'South Pacific Aircraft Carrier Princess - Damaged 1',
         nameJP: '南太平洋空母棲姫-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 888,
         FP: 238,
         TP: 0,
@@ -25977,9 +25977,9 @@ const SHIP_DATA: ShipDatas = {
     1975: {
         name: 'South Pacific Aircraft Carrier Princess - Damaged 2',
         nameJP: '南太平洋空母棲姫-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 888,
         FP: 278,
         TP: 0,
@@ -25997,9 +25997,9 @@ const SHIP_DATA: ShipDatas = {
     1976: {
         name: 'South Pacific Aircraft Carrier Princess - Damaged 3',
         nameJP: '南太平洋空母棲姫-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 888,
         FP: 308,
         TP: 0,
@@ -26017,7 +26017,7 @@ const SHIP_DATA: ShipDatas = {
     1977: {
         name: 'Submarine Summer Princess B Flagship 1',
         nameJP: '潜水夏姫II',
-        type: 13,
+        type: ShipType.SS,
         HP: 108,
         FP: 44,
         TP: 139,
@@ -26036,7 +26036,7 @@ const SHIP_DATA: ShipDatas = {
     1978: {
         name: 'Submarine Summer Princess B Flagship 2',
         nameJP: '潜水夏姫II',
-        type: 13,
+        type: ShipType.SS,
         HP: 198,
         FP: 66,
         TP: 199,
@@ -26055,7 +26055,7 @@ const SHIP_DATA: ShipDatas = {
     1979: {
         name: 'New Battleship Princess 1',
         nameJP: '戦艦新棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 980,
         FP: 300,
         TP: 0,
@@ -26073,7 +26073,7 @@ const SHIP_DATA: ShipDatas = {
     1980: {
         name: 'New Battleship Princess 2',
         nameJP: '戦艦新棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 980,
         FP: 310,
         TP: 0,
@@ -26091,7 +26091,7 @@ const SHIP_DATA: ShipDatas = {
     1981: {
         name: 'New Battleship Princess 3',
         nameJP: '戦艦新棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 980,
         FP: 330,
         TP: 0,
@@ -26109,7 +26109,7 @@ const SHIP_DATA: ShipDatas = {
     1982: {
         name: 'New Battleship Princess - Damaged 1',
         nameJP: '戦艦新棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 980,
         FP: 320,
         TP: 0,
@@ -26127,7 +26127,7 @@ const SHIP_DATA: ShipDatas = {
     1983: {
         name: 'New Battleship Princess - Damaged 2',
         nameJP: '戦艦新棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 980,
         FP: 340,
         TP: 0,
@@ -26145,7 +26145,7 @@ const SHIP_DATA: ShipDatas = {
     1984: {
         name: 'New Battleship Princess - Damaged 3',
         nameJP: '戦艦新棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 980,
         FP: 360,
         TP: 0,
@@ -26163,7 +26163,7 @@ const SHIP_DATA: ShipDatas = {
     1985: {
         name: 'Submarine Princess Kai B Flagship 1',
         nameJP: '潜水棲姫改II',
-        type: 13,
+        type: ShipType.SS,
         HP: 109,
         FP: 49,
         TP: 159,
@@ -26182,7 +26182,7 @@ const SHIP_DATA: ShipDatas = {
     1986: {
         name: 'Submarine Princess Kai B Flagship 2',
         nameJP: '潜水棲姫改II',
-        type: 13,
+        type: ShipType.SS,
         HP: 190,
         FP: 59,
         TP: 179,
@@ -26201,7 +26201,7 @@ const SHIP_DATA: ShipDatas = {
     1987: {
         name: 'Submarine Princess Kai B Flagship 3',
         nameJP: '潜水棲姫改II',
-        type: 13,
+        type: ShipType.SS,
         HP: 390,
         FP: 99,
         TP: 199,
@@ -26220,7 +26220,7 @@ const SHIP_DATA: ShipDatas = {
     1988: {
         name: 'Abyssal Bamboo Princess 1',
         nameJP: '深海竹棲姫',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 177,
@@ -26240,7 +26240,7 @@ const SHIP_DATA: ShipDatas = {
     1989: {
         name: 'Abyssal Bamboo Princess 2',
         nameJP: '深海竹棲姫',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 207,
@@ -26260,7 +26260,7 @@ const SHIP_DATA: ShipDatas = {
     1990: {
         name: 'Abyssal Bamboo Princess 3',
         nameJP: '深海竹棲姫',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 237,
@@ -26280,7 +26280,7 @@ const SHIP_DATA: ShipDatas = {
     1991: {
         name: 'Abyssal Bamboo Princess - Damaged 1',
         nameJP: '深海竹棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 207,
@@ -26300,7 +26300,7 @@ const SHIP_DATA: ShipDatas = {
     1992: {
         name: 'Abyssal Bamboo Princess - Damaged 2',
         nameJP: '深海竹棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 237,
@@ -26320,7 +26320,7 @@ const SHIP_DATA: ShipDatas = {
     1993: {
         name: 'Abyssal Bamboo Princess - Damaged 3',
         nameJP: '深海竹棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 277,
@@ -26340,8 +26340,8 @@ const SHIP_DATA: ShipDatas = {
     1994: {
         name: 'Supply Depot Princess B 4',
         nameJP: '集積地棲姫II',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 480,
         FP: 60,
         TP: 78,
@@ -26360,8 +26360,8 @@ const SHIP_DATA: ShipDatas = {
     1995: {
         name: 'Supply Depot Princess B - Damaged 4',
         nameJP: '集積地棲姫II-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 480,
         FP: 110,
         TP: 78,
@@ -26380,7 +26380,7 @@ const SHIP_DATA: ShipDatas = {
     1996: {
         name: 'Submarine Princess Kai B Flagship 4',
         nameJP: '潜水棲姫改II',
-        type: 13,
+        type: ShipType.SS,
         HP: 79,
         FP: 39,
         TP: 139,
@@ -26398,8 +26398,8 @@ const SHIP_DATA: ShipDatas = {
     1997: {
         name: 'Aircraft Carrier Princess Kai 4',
         nameJP: '空母棲姫改',
-        type: 11,
-        CVs_night_attack_type: 1,
+        type: ShipType.CV,
+        CVs_night_attack_type: ShipType.DE,
         HP: 500,
         FP: 168,
         TP: 0,
@@ -26417,7 +26417,7 @@ const SHIP_DATA: ShipDatas = {
     1998: {
         name: 'CL To-Class Flagship',
         nameJP: '軽巡ト級',
-        type: 3,
+        type: ShipType.CL,
         HP: 73,
         FP: 69,
         TP: 72,
@@ -26436,7 +26436,7 @@ const SHIP_DATA: ShipDatas = {
     1999: {
         name: 'CA Ri-Class B Flagship',
         nameJP: '重巡リ級II',
-        type: 5,
+        type: ShipType.CA,
         HP: 80,
         FP: 78,
         TP: 67,
@@ -26455,7 +26455,7 @@ const SHIP_DATA: ShipDatas = {
     2000: {
         name: 'Lunga Point Heavy Cruiser Princess 1',
         nameJP: 'ルンガ沖重巡棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 670,
         FP: 167,
         TP: 117,
@@ -26474,7 +26474,7 @@ const SHIP_DATA: ShipDatas = {
     2001: {
         name: 'Lunga Point Heavy Cruiser Princess 2',
         nameJP: 'ルンガ沖重巡棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 770,
         FP: 207,
         TP: 137,
@@ -26493,7 +26493,7 @@ const SHIP_DATA: ShipDatas = {
     2002: {
         name: 'Lunga Point Heavy Cruiser Princess 3',
         nameJP: 'ルンガ沖重巡棲姫',
-        type: 8,
+        type: ShipType.FBB,
         HP: 870,
         FP: 267,
         TP: 167,
@@ -26512,7 +26512,7 @@ const SHIP_DATA: ShipDatas = {
     2003: {
         name: 'Lunga Point Heavy Cruiser Princess - Damaged 1',
         nameJP: 'ルンガ沖重巡棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 670,
         FP: 217,
         TP: 137,
@@ -26531,7 +26531,7 @@ const SHIP_DATA: ShipDatas = {
     2004: {
         name: 'Lunga Point Heavy Cruiser Princess - Damaged 2',
         nameJP: 'ルンガ沖重巡棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 770,
         FP: 247,
         TP: 167,
@@ -26550,7 +26550,7 @@ const SHIP_DATA: ShipDatas = {
     2005: {
         name: 'Lunga Point Heavy Cruiser Princess - Damaged 3',
         nameJP: 'ルンガ沖重巡棲姫-壊',
-        type: 8,
+        type: ShipType.FBB,
         HP: 870,
         FP: 287,
         TP: 197,
@@ -26569,7 +26569,7 @@ const SHIP_DATA: ShipDatas = {
     2006: {
         name: 'New Light Cruiser Princess 1',
         nameJP: '軽巡新棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 960,
         FP: 146,
         TP: 136,
@@ -26588,7 +26588,7 @@ const SHIP_DATA: ShipDatas = {
     2007: {
         name: 'New Light Cruiser Princess 2',
         nameJP: '軽巡新棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 960,
         FP: 186,
         TP: 166,
@@ -26607,7 +26607,7 @@ const SHIP_DATA: ShipDatas = {
     2008: {
         name: 'New Light Cruiser Princess 3',
         nameJP: '軽巡新棲姫',
-        type: 3,
+        type: ShipType.CL,
         HP: 960,
         FP: 246,
         TP: 186,
@@ -26626,7 +26626,7 @@ const SHIP_DATA: ShipDatas = {
     2009: {
         name: 'New Light Cruiser Princess - Damaged 1',
         nameJP: '軽巡新棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 960,
         FP: 156,
         TP: 156,
@@ -26645,7 +26645,7 @@ const SHIP_DATA: ShipDatas = {
     2010: {
         name: 'New Light Cruiser Princess - Damaged 2',
         nameJP: '軽巡新棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 960,
         FP: 196,
         TP: 186,
@@ -26664,7 +26664,7 @@ const SHIP_DATA: ShipDatas = {
     2011: {
         name: 'New Light Cruiser Princess - Damaged 3',
         nameJP: '軽巡新棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 960,
         FP: 256,
         TP: 206,
@@ -26683,7 +26683,7 @@ const SHIP_DATA: ShipDatas = {
     2012: {
         name: 'CL To-Class Elite 2',
         nameJP: '軽巡ト級',
-        type: 3,
+        type: ShipType.CL,
         HP: 63,
         FP: 46,
         TP: 58,
@@ -26702,7 +26702,7 @@ const SHIP_DATA: ShipDatas = {
     2013: {
         name: 'Transport Wa-Class Elite B',
         nameJP: '輸送ワ級II',
-        type: 23,
+        type: ShipType.AT,
         HP: 480,
         FP: 33,
         TP: 0,
@@ -26720,7 +26720,7 @@ const SHIP_DATA: ShipDatas = {
     2014: {
         name: 'Transport Wa-Class Flagship B',
         nameJP: '輸送ワ級II',
-        type: 23,
+        type: ShipType.AT,
         HP: 480,
         FP: 66,
         TP: 0,
@@ -26738,8 +26738,8 @@ const SHIP_DATA: ShipDatas = {
     2015: {
         name: 'Supply Depot Princess B Vacation Mode 1',
         nameJP: '集積地棲姫II バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 440,
         FP: 60,
         TP: 78,
@@ -26758,8 +26758,8 @@ const SHIP_DATA: ShipDatas = {
     2016: {
         name: 'Supply Depot Princess B Vacation Mode 2',
         nameJP: '集積地棲姫II バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 1200,
         FP: 118,
         TP: 102,
@@ -26778,8 +26778,8 @@ const SHIP_DATA: ShipDatas = {
     2017: {
         name: 'Supply Depot Princess B Vacation Mode 3',
         nameJP: '集積地棲姫II バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 3200,
         FP: 148,
         TP: 122,
@@ -26798,8 +26798,8 @@ const SHIP_DATA: ShipDatas = {
     2018: {
         name: 'Supply Depot Princess B Vacation Mode 4',
         nameJP: '集積地棲姫II バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 4800,
         FP: 178,
         TP: 144,
@@ -26818,8 +26818,8 @@ const SHIP_DATA: ShipDatas = {
     2019: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 440,
         FP: 110,
         TP: 78,
@@ -26838,8 +26838,8 @@ const SHIP_DATA: ShipDatas = {
     2020: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 2',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 1200,
         FP: 138,
         TP: 122,
@@ -26858,8 +26858,8 @@ const SHIP_DATA: ShipDatas = {
     2021: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 3200,
         FP: 168,
         TP: 144,
@@ -26878,8 +26878,8 @@ const SHIP_DATA: ShipDatas = {
     2022: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 4',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         HP: 4800,
         FP: 198,
         TP: 188,
@@ -26898,8 +26898,8 @@ const SHIP_DATA: ShipDatas = {
     2023: {
         name: 'Harbour Summer Princess B 1',
         nameJP: '港湾夏姫II',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 750,
         FP: 168,
         TP: 0,
@@ -26917,8 +26917,8 @@ const SHIP_DATA: ShipDatas = {
     2024: {
         name: 'Harbour Summer Princess B 2',
         nameJP: '港湾夏姫II',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 1050,
         FP: 188,
         TP: 0,
@@ -26936,8 +26936,8 @@ const SHIP_DATA: ShipDatas = {
     2025: {
         name: 'Harbour Summer Princess B 3',
         nameJP: '港湾夏姫II',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 1550,
         FP: 200,
         TP: 0,
@@ -26955,8 +26955,8 @@ const SHIP_DATA: ShipDatas = {
     2026: {
         name: 'Harbour Summer Princess B - Damaged 1',
         nameJP: '港湾夏姫II-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 750,
         FP: 178,
         TP: 0,
@@ -26974,8 +26974,8 @@ const SHIP_DATA: ShipDatas = {
     2027: {
         name: 'Harbour Summer Princess B - Damaged 2',
         nameJP: '港湾夏姫II-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 1050,
         FP: 198,
         TP: 0,
@@ -26993,8 +26993,8 @@ const SHIP_DATA: ShipDatas = {
     2028: {
         name: 'Harbour Summer Princess B - Damaged 3',
         nameJP: '港湾夏姫II-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 1550,
         FP: 208,
         TP: 0,
@@ -27012,7 +27012,7 @@ const SHIP_DATA: ShipDatas = {
     2029: {
         name: 'Mediterranean Dreadnought Water Princess 1',
         nameJP: '地中海弩級水姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 680,
         FP: 166,
         TP: 66,
@@ -27030,7 +27030,7 @@ const SHIP_DATA: ShipDatas = {
     2030: {
         name: 'Mediterranean Dreadnought Water Princess 2',
         nameJP: '地中海弩級水姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 880,
         FP: 188,
         TP: 88,
@@ -27048,7 +27048,7 @@ const SHIP_DATA: ShipDatas = {
     2031: {
         name: 'Mediterranean Dreadnought Water Princess 3',
         nameJP: '地中海弩級水姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 930,
         FP: 211,
         TP: 98,
@@ -27066,7 +27066,7 @@ const SHIP_DATA: ShipDatas = {
     2032: {
         name: 'Mediterranean Dreadnought Water Princess - Damaged 1',
         nameJP: '地中海弩級水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 680,
         FP: 202,
         TP: 88,
@@ -27084,7 +27084,7 @@ const SHIP_DATA: ShipDatas = {
     2033: {
         name: 'Mediterranean Dreadnought Water Princess - Damaged 2',
         nameJP: '地中海弩級水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 212,
         TP: 98,
@@ -27102,7 +27102,7 @@ const SHIP_DATA: ShipDatas = {
     2034: {
         name: 'Mediterranean Dreadnought Water Princess - Damaged 3',
         nameJP: '地中海弩級水姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 930,
         FP: 222,
         TP: 128,
@@ -27120,7 +27120,7 @@ const SHIP_DATA: ShipDatas = {
     2035: {
         name: 'Abyssal Mediterranean Princess Vacation Mode 1',
         nameJP: '深海地中海棲姫 バカンスmode',
-        type: 3,
+        type: ShipType.CL,
         HP: 700,
         FP: 148,
         TP: 108,
@@ -27139,7 +27139,7 @@ const SHIP_DATA: ShipDatas = {
     2036: {
         name: 'Abyssal Mediterranean Princess Vacation Mode 2',
         nameJP: '深海地中海棲姫 バカンスmode',
-        type: 3,
+        type: ShipType.CL,
         HP: 740,
         FP: 188,
         TP: 118,
@@ -27158,7 +27158,7 @@ const SHIP_DATA: ShipDatas = {
     2037: {
         name: 'Abyssal Mediterranean Princess Vacation Mode 3',
         nameJP: '深海地中海棲姫 バカンスmode',
-        type: 3,
+        type: ShipType.CL,
         HP: 790,
         FP: 208,
         TP: 138,
@@ -27177,7 +27177,7 @@ const SHIP_DATA: ShipDatas = {
     2038: {
         name: 'Abyssal Mediterranean Princess Vacation Mode - Damaged 1',
         nameJP: '深海地中海棲姫 バカンスmode-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 700,
         FP: 168,
         TP: 148,
@@ -27196,7 +27196,7 @@ const SHIP_DATA: ShipDatas = {
     2039: {
         name: 'Abyssal Mediterranean Princess Vacation Mode - Damaged 2',
         nameJP: '深海地中海棲姫 バカンスmode-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 740,
         FP: 208,
         TP: 178,
@@ -27215,7 +27215,7 @@ const SHIP_DATA: ShipDatas = {
     2040: {
         name: 'Abyssal Mediterranean Princess Vacation Mode - Damaged 3',
         nameJP: '深海地中海棲姫 バカンスmode-壊',
-        type: 3,
+        type: ShipType.CL,
         HP: 790,
         FP: 238,
         TP: 198,
@@ -27234,9 +27234,9 @@ const SHIP_DATA: ShipDatas = {
     2041: {
         name: 'European Armoured Carrier Princess 1',
         nameJP: '欧州装甲空母棲姫',
-        type: 18,
+        type: ShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 980,
         FP: 200,
         TP: 0,
@@ -27254,9 +27254,9 @@ const SHIP_DATA: ShipDatas = {
     2042: {
         name: 'European Armoured Carrier Princess 2',
         nameJP: '欧州装甲空母棲姫',
-        type: 18,
+        type: ShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1080,
         FP: 240,
         TP: 0,
@@ -27274,9 +27274,9 @@ const SHIP_DATA: ShipDatas = {
     2043: {
         name: 'European Armoured Carrier Princess 3',
         nameJP: '欧州装甲空母棲姫',
-        type: 18,
+        type: ShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1080,
         FP: 280,
         TP: 0,
@@ -27294,9 +27294,9 @@ const SHIP_DATA: ShipDatas = {
     2044: {
         name: 'European Armoured Carrier Princess - Damaged 1',
         nameJP: '欧州装甲空母棲姫-壊',
-        type: 18,
+        type: ShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 980,
         FP: 230,
         TP: 0,
@@ -27314,9 +27314,9 @@ const SHIP_DATA: ShipDatas = {
     2045: {
         name: 'European Armoured Carrier Princess - Damaged 2',
         nameJP: '欧州装甲空母棲姫-壊',
-        type: 18,
+        type: ShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1080,
         FP: 270,
         TP: 0,
@@ -27334,9 +27334,9 @@ const SHIP_DATA: ShipDatas = {
     2046: {
         name: 'European Armoured Carrier Princess - Damaged 3',
         nameJP: '欧州装甲空母棲姫-壊',
-        type: 18,
+        type: ShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1080,
         FP: 300,
         TP: 0,
@@ -27354,8 +27354,8 @@ const SHIP_DATA: ShipDatas = {
     2047: {
         name: 'Airfield Princess 14',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 480,
         FP: 50,
         TP: 0,
@@ -27374,8 +27374,8 @@ const SHIP_DATA: ShipDatas = {
     2048: {
         name: 'Airfield Princess 15',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 480,
         FP: 60,
         TP: 0,
@@ -27394,7 +27394,7 @@ const SHIP_DATA: ShipDatas = {
     2049: {
         name: 'New Submarine Princess Flagship 5',
         nameJP: '潜水新棲姫',
-        type: 13,
+        type: ShipType.SS,
         HP: 133,
         FP: 22,
         TP: 102,
@@ -27413,7 +27413,7 @@ const SHIP_DATA: ShipDatas = {
     2050: {
         name: 'DD Na-Class IIe (Mass Production Model)',
         nameJP: '駆逐ナ級IIe(量産型)',
-        type: 2,
+        type: ShipType.DD,
         HP: 63,
         FP: 69,
         TP: 104,
@@ -27432,7 +27432,7 @@ const SHIP_DATA: ShipDatas = {
     2051: {
         name: 'DD Na-Class IIe (Mass Production Model) Elite',
         nameJP: '駆逐ナ級IIe(量産型)',
-        type: 2,
+        type: ShipType.DD,
         HP: 66,
         FP: 79,
         TP: 114,
@@ -27451,7 +27451,7 @@ const SHIP_DATA: ShipDatas = {
     2052: {
         name: 'DD Na-Class IIe (Mass Production Model) Flagship',
         nameJP: '駆逐ナ級IIe(量産型)',
-        type: 2,
+        type: ShipType.DD,
         HP: 69,
         FP: 89,
         TP: 124,
@@ -27470,7 +27470,7 @@ const SHIP_DATA: ShipDatas = {
     2053: {
         name: 'Submarine Shark Water Demon 1',
         nameJP: '潜水鮫水鬼',
-        type: 13,
+        type: ShipType.SS,
         HP: 277,
         FP: 53,
         TP: 161,
@@ -27489,7 +27489,7 @@ const SHIP_DATA: ShipDatas = {
     2054: {
         name: 'Submarine Shark Water Demon 2',
         nameJP: '潜水鮫水鬼',
-        type: 13,
+        type: ShipType.SS,
         HP: 477,
         FP: 63,
         TP: 191,
@@ -27508,7 +27508,7 @@ const SHIP_DATA: ShipDatas = {
     2055: {
         name: 'Submarine Shark Water Demon 3',
         nameJP: '潜水鮫水鬼',
-        type: 13,
+        type: ShipType.SS,
         HP: 577,
         FP: 83,
         TP: 222,
@@ -27527,7 +27527,7 @@ const SHIP_DATA: ShipDatas = {
     2056: {
         name: 'Submarine Shark Water Demon - Damaged 1',
         nameJP: '潜水鮫水鬼-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 277,
         FP: 59,
         TP: 191,
@@ -27546,7 +27546,7 @@ const SHIP_DATA: ShipDatas = {
     2057: {
         name: 'Submarine Shark Water Demon - Damaged 2',
         nameJP: '潜水鮫水鬼-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 477,
         FP: 69,
         TP: 222,
@@ -27565,7 +27565,7 @@ const SHIP_DATA: ShipDatas = {
     2058: {
         name: 'Submarine Shark Water Demon - Damaged 3',
         nameJP: '潜水鮫水鬼-壊',
-        type: 13,
+        type: ShipType.SS,
         HP: 577,
         FP: 89,
         TP: 252,
@@ -27584,7 +27584,7 @@ const SHIP_DATA: ShipDatas = {
     2059: {
         name: 'Hi Convoy Princess 1',
         nameJP: 'ヒ船団棲姫',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 80,
@@ -27603,7 +27603,7 @@ const SHIP_DATA: ShipDatas = {
     2060: {
         name: 'Hi Convoy Princess 2',
         nameJP: 'ヒ船団棲姫',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 98,
@@ -27622,7 +27622,7 @@ const SHIP_DATA: ShipDatas = {
     2061: {
         name: 'Hi Convoy Princess - Damaged 1',
         nameJP: 'ヒ船団棲姫-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 108,
@@ -27641,7 +27641,7 @@ const SHIP_DATA: ShipDatas = {
     2062: {
         name: 'Hi Convoy Princess - Damaged 2',
         nameJP: 'ヒ船団棲姫-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 148,
@@ -27660,7 +27660,7 @@ const SHIP_DATA: ShipDatas = {
     2063: {
         name: 'Abyssal Plum Princess 1',
         nameJP: '深海梅棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 600,
         FP: 151,
@@ -27680,7 +27680,7 @@ const SHIP_DATA: ShipDatas = {
     2064: {
         name: 'Abyssal Plum Princess 2',
         nameJP: '深海梅棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 700,
         FP: 181,
@@ -27700,7 +27700,7 @@ const SHIP_DATA: ShipDatas = {
     2065: {
         name: 'Abyssal Plum Princess 3',
         nameJP: '深海梅棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 800,
         FP: 212,
@@ -27720,7 +27720,7 @@ const SHIP_DATA: ShipDatas = {
     2066: {
         name: 'Abyssal Plum Princess - Damaged 1',
         nameJP: '深海梅棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 600,
         FP: 181,
@@ -27740,7 +27740,7 @@ const SHIP_DATA: ShipDatas = {
     2067: {
         name: 'Abyssal Plum Princess - Damaged 2',
         nameJP: '深海梅棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 700,
         FP: 212,
@@ -27760,7 +27760,7 @@ const SHIP_DATA: ShipDatas = {
     2068: {
         name: 'Abyssal Plum Princess - Damaged 3',
         nameJP: '深海梅棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         HP: 800,
         FP: 252,
@@ -27780,8 +27780,8 @@ const SHIP_DATA: ShipDatas = {
     2069: {
         name: 'Yokohama Wharf Princess 1',
         nameJP: '横浜岸壁棲姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 740,
         FP: 96,
         TP: 0,
@@ -27799,8 +27799,8 @@ const SHIP_DATA: ShipDatas = {
     2070: {
         name: 'Yokohama Wharf Princess 2',
         nameJP: '横浜岸壁棲姫',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 840,
         FP: 106,
         TP: 0,
@@ -27818,8 +27818,8 @@ const SHIP_DATA: ShipDatas = {
     2071: {
         name: 'Yokohama Wharf Princess - Damaged 1',
         nameJP: '横浜岸壁棲姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 740,
         FP: 106,
         TP: 0,
@@ -27837,8 +27837,8 @@ const SHIP_DATA: ShipDatas = {
     2072: {
         name: 'Yokohama Wharf Princess - Damaged 2',
         nameJP: '横浜岸壁棲姫-壊',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         HP: 840,
         FP: 169,
         TP: 0,
@@ -27856,7 +27856,7 @@ const SHIP_DATA: ShipDatas = {
     2073: {
         name: 'Abyssal Jade Princess 1',
         nameJP: '深海玉棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 730,
         FP: 190,
         TP: 130,
@@ -27875,7 +27875,7 @@ const SHIP_DATA: ShipDatas = {
     2074: {
         name: 'Abyssal Jade Princess 2',
         nameJP: '深海玉棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 830,
         FP: 220,
         TP: 160,
@@ -27894,7 +27894,7 @@ const SHIP_DATA: ShipDatas = {
     2075: {
         name: 'Abyssal Jade Princess - Damaged 1',
         nameJP: '深海玉棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         HP: 730,
         FP: 220,
         TP: 160,
@@ -27913,7 +27913,7 @@ const SHIP_DATA: ShipDatas = {
     2076: {
         name: 'Abyssal Jade Princess - Damaged 2',
         nameJP: '深海玉棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         HP: 830,
         FP: 260,
         TP: 190,
@@ -27932,8 +27932,8 @@ const SHIP_DATA: ShipDatas = {
     2077: {
         name: 'Super Heavy Bombing Airfield Princess 1',
         nameJP: '超重爆飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 600,
         FP: 70,
         TP: 0,
@@ -27951,8 +27951,8 @@ const SHIP_DATA: ShipDatas = {
     2078: {
         name: 'Super Heavy Bombing Airfield Princess 2',
         nameJP: '超重爆飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 600,
         FP: 80,
         TP: 0,
@@ -27970,8 +27970,8 @@ const SHIP_DATA: ShipDatas = {
     2079: {
         name: 'Super Heavy Bombing Airfield Princess 3',
         nameJP: '超重爆飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 600,
         FP: 90,
         TP: 0,
@@ -27989,7 +27989,7 @@ const SHIP_DATA: ShipDatas = {
     2080: {
         name: 'Winter Entombed Anti-Air Guardian Princess 1',
         nameJP: '防空埋護冬姫',
-        type: 10,
+        type: ShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -28010,7 +28010,7 @@ const SHIP_DATA: ShipDatas = {
     2081: {
         name: 'Winter Entombed Anti-Air Guardian Princess 2',
         nameJP: '防空埋護冬姫',
-        type: 10,
+        type: ShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 930,
@@ -28031,7 +28031,7 @@ const SHIP_DATA: ShipDatas = {
     2082: {
         name: 'Winter Entombed Anti-Air Guardian Princess - Damaged 1',
         nameJP: '防空埋護冬姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -28052,7 +28052,7 @@ const SHIP_DATA: ShipDatas = {
     2083: {
         name: 'Winter Entombed Anti-Air Guardian Princess - Damaged 2',
         nameJP: '防空埋護冬姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 930,
@@ -28073,8 +28073,8 @@ const SHIP_DATA: ShipDatas = {
     2084: {
         name: 'Supply Depot Princess C 1',
         nameJP: '集積地棲姫III',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 900,
         FP: 60,
         TP: 78,
@@ -28093,8 +28093,8 @@ const SHIP_DATA: ShipDatas = {
     2085: {
         name: 'Supply Depot Princess C - Damaged 1',
         nameJP: '集積地棲姫III-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         HP: 900,
         FP: 110,
@@ -28114,8 +28114,8 @@ const SHIP_DATA: ShipDatas = {
     2086: {
         name: 'Supply Depot Princess C 2',
         nameJP: '集積地棲姫III',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 2000,
         FP: 118,
         TP: 108,
@@ -28134,8 +28134,8 @@ const SHIP_DATA: ShipDatas = {
     2087: {
         name: 'Supply Depot Princess C - Damaged 2',
         nameJP: '集積地棲姫III-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         HP: 2000,
         FP: 110,
@@ -28155,8 +28155,8 @@ const SHIP_DATA: ShipDatas = {
     2088: {
         name: 'Supply Depot Princess C 3',
         nameJP: '集積地棲姫III',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         HP: 6000,
         FP: 133,
         TP: 128,
@@ -28175,8 +28175,8 @@ const SHIP_DATA: ShipDatas = {
     2089: {
         name: 'Supply Depot Princess C - Damaged 3',
         nameJP: '集積地棲姫III-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         HP: 6000,
         FP: 193,
@@ -28196,7 +28196,7 @@ const SHIP_DATA: ShipDatas = {
     2090: {
         name: 'CA Ne-Class Kai 4',
         nameJP: '重巡ネ級改',
-        type: 5,
+        type: ShipType.CA,
         HP: 330,
         FP: 108,
         TP: 88,
@@ -28215,8 +28215,8 @@ const SHIP_DATA: ShipDatas = {
     2091: {
         name: 'Airfield Princess (Patrol Aircraft Deployment) 1',
         nameJP: '飛行場姫(哨戒機配備)',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 300,
         FP: 40,
         TP: 0,
@@ -28234,8 +28234,8 @@ const SHIP_DATA: ShipDatas = {
     2092: {
         name: 'Airfield Princess (Patrol Aircraft Deployment) 2',
         nameJP: '飛行場姫(哨戒機配備)',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 400,
         FP: 50,
         TP: 0,
@@ -28253,8 +28253,8 @@ const SHIP_DATA: ShipDatas = {
     2093: {
         name: 'Airfield Princess (Patrol Aircraft Deployment) 3',
         nameJP: '飛行場姫(哨戒機配備)',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 60,
         TP: 0,
@@ -28272,8 +28272,8 @@ const SHIP_DATA: ShipDatas = {
     2094: {
         name: 'Airfield Princess 16',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 300,
         FP: 40,
         TP: 0,
@@ -28291,8 +28291,8 @@ const SHIP_DATA: ShipDatas = {
     2095: {
         name: 'Airfield Princess 17',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 400,
         FP: 50,
         TP: 0,
@@ -28310,8 +28310,8 @@ const SHIP_DATA: ShipDatas = {
     2096: {
         name: 'Airfield Princess 18',
         nameJP: '飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 60,
         TP: 0,
@@ -28329,7 +28329,7 @@ const SHIP_DATA: ShipDatas = {
     2097: {
         name: 'Outer Southern Sea Destroyer Princess 1',
         nameJP: '外南洋駆逐棲姫',
-        type: 10,
+        type: ShipType.BBV,
         planeasw: 0,
         HP: 770,
         FP: 144,
@@ -28348,7 +28348,7 @@ const SHIP_DATA: ShipDatas = {
     2098: {
         name: 'Outer Southern Sea Destroyer Princess 2',
         nameJP: '外南洋駆逐棲姫',
-        type: 10,
+        type: ShipType.BBV,
         planeasw: 0,
         HP: 870,
         FP: 177,
@@ -28367,7 +28367,7 @@ const SHIP_DATA: ShipDatas = {
     2099: {
         name: 'Outer Southern Sea Destroyer Princess - Damaged 1',
         nameJP: '外南洋駆逐棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         planeasw: 0,
         HP: 770,
         FP: 166,
@@ -28386,7 +28386,7 @@ const SHIP_DATA: ShipDatas = {
     2100: {
         name: 'Outer Southern Sea Destroyer Princess - Damaged 2',
         nameJP: '外南洋駆逐棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         planeasw: 0,
         HP: 870,
         FP: 188,
@@ -28405,8 +28405,8 @@ const SHIP_DATA: ShipDatas = {
     2101: {
         name: 'CVL Nu-Class B Elite 1',
         nameJP: '軽母ヌ級IIelite',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         HP: 73,
         FP: 23,
@@ -28425,8 +28425,8 @@ const SHIP_DATA: ShipDatas = {
     2102: {
         name: 'CVL Nu-Class B Elite 2',
         nameJP: '軽母ヌ級IIelite',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         HP: 83,
         FP: 33,
@@ -28445,8 +28445,8 @@ const SHIP_DATA: ShipDatas = {
     2103: {
         name: 'CVL Nu-Class B Elite 3',
         nameJP: '軽母ヌ級IIelite',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         HP: 93,
         FP: 43,
@@ -28465,8 +28465,8 @@ const SHIP_DATA: ShipDatas = {
     2104: {
         name: 'CVL Nu-Class B Flagship',
         nameJP: '軽母ヌ級IIflagship',
-        type: 7,
-        CVs_night_attack_type: 3,
+        type: ShipType.CVL,
+        CVs_night_attack_type: ShipType.CL,
         always_OASW: true,
         HP: 133,
         FP: 53,
@@ -28485,9 +28485,9 @@ const SHIP_DATA: ShipDatas = {
     2105: {
         name: 'Aircraft Carrier Princess B 1',
         nameJP: '空母棲姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 600,
         FP: 168,
         TP: 0,
@@ -28505,9 +28505,9 @@ const SHIP_DATA: ShipDatas = {
     2106: {
         name: 'Aircraft Carrier Princess B 2',
         nameJP: '空母棲姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 600,
         FP: 198,
         TP: 0,
@@ -28525,9 +28525,9 @@ const SHIP_DATA: ShipDatas = {
     2107: {
         name: 'Aircraft Carrier Princess B 3',
         nameJP: '空母棲姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 720,
         FP: 208,
         TP: 0,
@@ -28545,9 +28545,9 @@ const SHIP_DATA: ShipDatas = {
     2108: {
         name: 'Aircraft Carrier Princess B 4',
         nameJP: '空母棲姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 790,
         FP: 228,
         TP: 0,
@@ -28565,7 +28565,7 @@ const SHIP_DATA: ShipDatas = {
     2109: {
         name: 'Modernized Battleship Princess 1',
         nameJP: '近代化戦艦棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 860,
         FP: 320,
         TP: 78,
@@ -28583,7 +28583,7 @@ const SHIP_DATA: ShipDatas = {
     2110: {
         name: 'Modernized Battleship Princess 2',
         nameJP: '近代化戦艦棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 960,
         FP: 330,
         TP: 98,
@@ -28601,7 +28601,7 @@ const SHIP_DATA: ShipDatas = {
     2111: {
         name: 'Modernized Battleship Princess 3',
         nameJP: '近代化戦艦棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1060,
         FP: 350,
         TP: 118,
@@ -28619,7 +28619,7 @@ const SHIP_DATA: ShipDatas = {
     2112: {
         name: 'Modernized Battleship Princess - Damaged 1',
         nameJP: '近代化戦艦棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 860,
         FP: 340,
         TP: 88,
@@ -28637,7 +28637,7 @@ const SHIP_DATA: ShipDatas = {
     2113: {
         name: 'Modernized Battleship Princess - Damaged 2',
         nameJP: '近代化戦艦棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 960,
         FP: 360,
         TP: 108,
@@ -28655,7 +28655,7 @@ const SHIP_DATA: ShipDatas = {
     2114: {
         name: 'Modernized Battleship Princess - Damaged 3',
         nameJP: '近代化戦艦棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1060,
         FP: 380,
         TP: 148,
@@ -28673,9 +28673,9 @@ const SHIP_DATA: ShipDatas = {
     2115: {
         name: 'CV Wo-Class Flagship Kai B 1',
         nameJP: '空母ヲ級改II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 380,
         FP: 66,
         TP: 0,
@@ -28693,9 +28693,9 @@ const SHIP_DATA: ShipDatas = {
     2116: {
         name: 'CV Wo-Class Flagship Kai B 2',
         nameJP: '空母ヲ級改II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 500,
         FP: 88,
         TP: 0,
@@ -28713,9 +28713,9 @@ const SHIP_DATA: ShipDatas = {
     2117: {
         name: 'Aircraft Carrier Summer Princess B 2',
         nameJP: '空母夏姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 830,
         FP: 208,
         TP: 0,
@@ -28733,9 +28733,9 @@ const SHIP_DATA: ShipDatas = {
     2118: {
         name: 'Aircraft Carrier Summer Princess B 3',
         nameJP: '空母夏姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 890,
         FP: 228,
         TP: 0,
@@ -28753,9 +28753,9 @@ const SHIP_DATA: ShipDatas = {
     2119: {
         name: 'Aircraft Carrier Summer Princess B 4',
         nameJP: '空母夏姫II',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 900,
         FP: 248,
         TP: 0,
@@ -28773,7 +28773,7 @@ const SHIP_DATA: ShipDatas = {
     2120: {
         name: 'Fast Light Carrier Water Demon 1',
         nameJP: '高速軽空母水鬼',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 800,
         FP: 178,
@@ -28792,7 +28792,7 @@ const SHIP_DATA: ShipDatas = {
     2121: {
         name: 'Fast Light Carrier Water Demon 2',
         nameJP: '高速軽空母水鬼',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 840,
         FP: 198,
@@ -28811,7 +28811,7 @@ const SHIP_DATA: ShipDatas = {
     2122: {
         name: 'Fast Light Carrier Water Demon 3',
         nameJP: '高速軽空母水鬼',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 880,
         FP: 218,
@@ -28830,7 +28830,7 @@ const SHIP_DATA: ShipDatas = {
     2123: {
         name: 'Fast Light Carrier Water Demon - Damaged 1',
         nameJP: '高速軽空母水鬼-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 800,
         FP: 228,
@@ -28849,7 +28849,7 @@ const SHIP_DATA: ShipDatas = {
     2124: {
         name: 'Fast Light Carrier Water Demon - Damaged 2',
         nameJP: '高速軽空母水鬼-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 840,
         FP: 288,
@@ -28868,7 +28868,7 @@ const SHIP_DATA: ShipDatas = {
     2125: {
         name: 'Fast Light Carrier Water Demon - Damaged 3',
         nameJP: '高速軽空母水鬼-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 880,
         FP: 318,
@@ -28887,9 +28887,9 @@ const SHIP_DATA: ShipDatas = {
     2126: {
         name: 'Prototype Carrier Princess Vacation Mode 1',
         nameJP: '試作空母姫 バカンスmode',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 620,
         FP: 180,
         TP: 0,
@@ -28907,9 +28907,9 @@ const SHIP_DATA: ShipDatas = {
     2127: {
         name: 'Prototype Carrier Princess Vacation Mode 2',
         nameJP: '試作空母姫 バカンスmode',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 720,
         FP: 210,
         TP: 0,
@@ -28927,9 +28927,9 @@ const SHIP_DATA: ShipDatas = {
     2128: {
         name: 'Prototype Carrier Princess Vacation Mode 3',
         nameJP: '試作空母姫 バカンスmode',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 920,
         FP: 240,
         TP: 0,
@@ -28947,9 +28947,9 @@ const SHIP_DATA: ShipDatas = {
     2129: {
         name: 'Prototype Carrier Princess Vacation Mode - Damaged 1',
         nameJP: '試作空母姫 バカンスmode-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 620,
         FP: 230,
         TP: 0,
@@ -28967,9 +28967,9 @@ const SHIP_DATA: ShipDatas = {
     2130: {
         name: 'Prototype Carrier Princess Vacation Mode - Damaged 2',
         nameJP: '試作空母姫 バカンスmode-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 720,
         FP: 290,
         TP: 0,
@@ -28987,9 +28987,9 @@ const SHIP_DATA: ShipDatas = {
     2131: {
         name: 'Prototype Carrier Princess Vacation Mode - Damaged 3',
         nameJP: '試作空母姫 バカンスmode-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 920,
         FP: 320,
         TP: 0,
@@ -29007,7 +29007,7 @@ const SHIP_DATA: ShipDatas = {
     2132: {
         name: 'Incomplete Battleship Princess 1',
         nameJP: '戦艦未完棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 970,
         FP: 340,
         TP: 0,
@@ -29025,7 +29025,7 @@ const SHIP_DATA: ShipDatas = {
     2133: {
         name: 'Incomplete Battleship Princess 2',
         nameJP: '戦艦未完棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1000,
         FP: 360,
         TP: 0,
@@ -29043,7 +29043,7 @@ const SHIP_DATA: ShipDatas = {
     2134: {
         name: 'Incomplete Battleship Princess 3',
         nameJP: '戦艦未完棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1070,
         FP: 400,
         TP: 0,
@@ -29061,7 +29061,7 @@ const SHIP_DATA: ShipDatas = {
     2135: {
         name: 'Incomplete Battleship Princess - Damaged 1',
         nameJP: '戦艦未完棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 970,
         FP: 380,
         TP: 0,
@@ -29079,7 +29079,7 @@ const SHIP_DATA: ShipDatas = {
     2136: {
         name: 'Incomplete Battleship Princess - Damaged 2',
         nameJP: '戦艦未完棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1000,
         FP: 400,
         TP: 0,
@@ -29097,7 +29097,7 @@ const SHIP_DATA: ShipDatas = {
     2137: {
         name: 'Incomplete Battleship Princess - Damaged 3',
         nameJP: '戦艦未完棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1070,
         FP: 440,
         TP: 0,
@@ -29115,7 +29115,7 @@ const SHIP_DATA: ShipDatas = {
     2138: {
         name: 'Supply Depot Princess C Vacation Mode 1',
         nameJP: '集積地棲姫III バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 960,
@@ -29136,7 +29136,7 @@ const SHIP_DATA: ShipDatas = {
     2139: {
         name: 'Supply Depot Princess C Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫III バカンスmode-壊',
-        type: 9,
+        type: ShipType.BB,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 960,
@@ -29157,7 +29157,7 @@ const SHIP_DATA: ShipDatas = {
     2140: {
         name: 'Supply Depot Princess C Vacation Mode 2',
         nameJP: '集積地棲姫III バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 1800,
@@ -29180,7 +29180,7 @@ const SHIP_DATA: ShipDatas = {
         nameJP: '集積地棲姫III バカンスmode-壊',
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
-        type: 9,
+        type: ShipType.BB,
         HP: 1800,
         FP: 178,
         TP: 144,
@@ -29199,7 +29199,7 @@ const SHIP_DATA: ShipDatas = {
     2142: {
         name: 'Supply Depot Princess C Vacation Mode 3',
         nameJP: '集積地棲姫III バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 3600,
@@ -29220,7 +29220,7 @@ const SHIP_DATA: ShipDatas = {
     2143: {
         name: 'Supply Depot Princess C Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫III バカンスmode-壊',
-        type: 9,
+        type: ShipType.BB,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 3600,
@@ -29241,7 +29241,7 @@ const SHIP_DATA: ShipDatas = {
     2144: {
         name: 'Supply Depot Princess C Vacation Mode 4',
         nameJP: '集積地棲姫III バカンスmode',
-        type: 10,
+        type: ShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 7200,
@@ -29262,7 +29262,7 @@ const SHIP_DATA: ShipDatas = {
     2145: {
         name: 'Supply Depot Princess C Vacation Mode - Damaged 4',
         nameJP: '集積地棲姫III バカンスmode-壊',
-        type: 9,
+        type: ShipType.BB,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 7200,
@@ -29283,7 +29283,7 @@ const SHIP_DATA: ShipDatas = {
     2146: {
         name: 'Remodeled Wartime Cargo Princess 1',
         nameJP: '戦標船改装棲姫',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 830,
         FP: 169,
@@ -29302,7 +29302,7 @@ const SHIP_DATA: ShipDatas = {
     2147: {
         name: 'Remodeled Wartime Cargo Princess 2',
         nameJP: '戦標船改装棲姫',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 930,
         FP: 199,
@@ -29321,7 +29321,7 @@ const SHIP_DATA: ShipDatas = {
     2148: {
         name: 'Remodeled Wartime Cargo Princess 3',
         nameJP: '戦標船改装棲姫',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 1030,
         FP: 219,
@@ -29340,7 +29340,7 @@ const SHIP_DATA: ShipDatas = {
     2149: {
         name: 'Remodeled Wartime Cargo Princess - Damaged 1',
         nameJP: '戦標船改装棲姫-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 830,
         FP: 219,
@@ -29359,7 +29359,7 @@ const SHIP_DATA: ShipDatas = {
     2150: {
         name: 'Remodeled Wartime Cargo Princess - Damaged 2',
         nameJP: '戦標船改装棲姫-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 930,
         FP: 269,
@@ -29378,7 +29378,7 @@ const SHIP_DATA: ShipDatas = {
     2151: {
         name: 'Remodeled Wartime Cargo Princess - Damaged 3',
         nameJP: '戦標船改装棲姫-壊',
-        type: 7,
+        type: ShipType.CVL,
         has_built_in_night_crew: true,
         HP: 1030,
         FP: 289,
@@ -29397,7 +29397,7 @@ const SHIP_DATA: ShipDatas = {
     2152: {
         name: 'Abyssal Heavy Cruiser Water Princess 1',
         nameJP: '深海重巡水姫',
-        type: 6,
+        type: ShipType.CAV,
         HP: 740,
         FP: 188,
         TP: 78,
@@ -29415,7 +29415,7 @@ const SHIP_DATA: ShipDatas = {
     2153: {
         name: 'Abyssal Heavy Cruiser Water Princess 2',
         nameJP: '深海重巡水姫',
-        type: 6,
+        type: ShipType.CAV,
         HP: 840,
         FP: 218,
         TP: 98,
@@ -29433,7 +29433,7 @@ const SHIP_DATA: ShipDatas = {
     2154: {
         name: 'Abyssal Heavy Cruiser Water Princess 3',
         nameJP: '深海重巡水姫',
-        type: 6,
+        type: ShipType.CAV,
         HP: 940,
         FP: 248,
         TP: 128,
@@ -29451,7 +29451,7 @@ const SHIP_DATA: ShipDatas = {
     2155: {
         name: 'Abyssal Heavy Cruiser Water Princess - Damaged 1',
         nameJP: '深海重巡水姫-壊',
-        type: 6,
+        type: ShipType.CAV,
         HP: 740,
         FP: 228,
         TP: 88,
@@ -29469,7 +29469,7 @@ const SHIP_DATA: ShipDatas = {
     2156: {
         name: 'Abyssal Heavy Cruiser Water Princess - Damaged 2',
         nameJP: '深海重巡水姫-壊',
-        type: 6,
+        type: ShipType.CAV,
         HP: 840,
         FP: 258,
         TP: 118,
@@ -29487,7 +29487,7 @@ const SHIP_DATA: ShipDatas = {
     2157: {
         name: 'Abyssal Heavy Cruiser Water Princess - Damaged 3',
         nameJP: '深海重巡水姫-壊',
-        type: 6,
+        type: ShipType.CAV,
         HP: 940,
         FP: 288,
         TP: 148,
@@ -29505,7 +29505,7 @@ const SHIP_DATA: ShipDatas = {
     2158: {
         name: 'Abyssal Stranded Landing Princess 1',
         nameJP: '深海擱座揚陸姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 44,
         TP: 33,
@@ -29523,7 +29523,7 @@ const SHIP_DATA: ShipDatas = {
     2159: {
         name: 'Abyssal Stranded Landing Princess 2',
         nameJP: '深海擱座揚陸姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 980,
         FP: 88,
         TP: 66,
@@ -29541,7 +29541,7 @@ const SHIP_DATA: ShipDatas = {
     2160: {
         name: 'Abyssal Stranded Landing Princess 3',
         nameJP: '深海擱座揚陸姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1080,
         FP: 121,
         TP: 99,
@@ -29559,7 +29559,7 @@ const SHIP_DATA: ShipDatas = {
     2161: {
         name: 'Abyssal Stranded Landing Princess - Damaged 1',
         nameJP: '深海擱座揚陸姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 880,
         FP: 88,
         TP: 66,
@@ -29577,7 +29577,7 @@ const SHIP_DATA: ShipDatas = {
     2162: {
         name: 'Abyssal Stranded Landing Princess - Damaged 2',
         nameJP: '深海擱座揚陸姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 980,
         FP: 121,
         TP: 99,
@@ -29595,7 +29595,7 @@ const SHIP_DATA: ShipDatas = {
     2163: {
         name: 'Abyssal Stranded Landing Princess - Damaged 3',
         nameJP: '深海擱座揚陸姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1080,
         FP: 161,
         TP: 141,
@@ -29613,8 +29613,8 @@ const SHIP_DATA: ShipDatas = {
     2164: {
         name: 'Supply Depot Princess D 1',
         nameJP: '集積地棲姫IV',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 1200,
         FP: 80,
@@ -29634,8 +29634,8 @@ const SHIP_DATA: ShipDatas = {
     2165: {
         name: 'Supply Depot Princess D - Damaged 1',
         nameJP: '集積地棲姫IV-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 1200,
         FP: 130,
@@ -29655,8 +29655,8 @@ const SHIP_DATA: ShipDatas = {
     2166: {
         name: 'Supply Depot Princess D 2',
         nameJP: '集積地棲姫IV',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 2400,
         FP: 120,
@@ -29676,8 +29676,8 @@ const SHIP_DATA: ShipDatas = {
     2167: {
         name: 'Supply Depot Princess D - Damaged 2',
         nameJP: '集積地棲姫IV-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 2400,
         FP: 140,
@@ -29697,8 +29697,8 @@ const SHIP_DATA: ShipDatas = {
     2168: {
         name: 'Supply Depot Princess D 3',
         nameJP: '集積地棲姫IV',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 4800,
         FP: 120,
@@ -29718,8 +29718,8 @@ const SHIP_DATA: ShipDatas = {
     2169: {
         name: 'Supply Depot Princess D - Damaged 3',
         nameJP: '集積地棲姫IV-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 4800,
         FP: 150,
@@ -29739,8 +29739,8 @@ const SHIP_DATA: ShipDatas = {
     2170: {
         name: 'Supply Depot Princess D 4',
         nameJP: '集積地棲姫IV',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 8000,
         FP: 170,
@@ -29760,8 +29760,8 @@ const SHIP_DATA: ShipDatas = {
     2171: {
         name: 'Supply Depot Princess D - Damaged 4',
         nameJP: '集積地棲姫IV-壊',
-        type: 9,
-        install_type: 3,
+        type: ShipType.BB,
+        install_type: ShipType.CL,
         can_op_torpedo_from_main_fleet: true,
         HP: 8000,
         FP: 200,
@@ -29781,7 +29781,7 @@ const SHIP_DATA: ShipDatas = {
     2172: {
         name: 'Abyssal Kushiro Cloud Princess 1',
         nameJP: '深海釧路沖棲雲姫',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 436,
         FP: 111,
@@ -29801,7 +29801,7 @@ const SHIP_DATA: ShipDatas = {
     2173: {
         name: 'Abyssal Kushiro Cloud Princess 2',
         nameJP: '深海釧路沖棲雲姫',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 536,
         FP: 144,
@@ -29821,7 +29821,7 @@ const SHIP_DATA: ShipDatas = {
     2174: {
         name: 'Abyssal Kushiro Cloud Princess 3',
         nameJP: '深海釧路沖棲雲姫',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 736,
         FP: 177,
@@ -29841,7 +29841,7 @@ const SHIP_DATA: ShipDatas = {
     2175: {
         name: 'Abyssal Kushiro Cloud Princess - Damaged 1',
         nameJP: '深海釧路沖棲雲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 436,
         FP: 133,
@@ -29861,7 +29861,7 @@ const SHIP_DATA: ShipDatas = {
     2176: {
         name: 'Abyssal Kushiro Cloud Princess - Damaged 2',
         nameJP: '深海釧路沖棲雲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 536,
         FP: 177,
@@ -29881,7 +29881,7 @@ const SHIP_DATA: ShipDatas = {
     2177: {
         name: 'Abyssal Kushiro Cloud Princess - Damaged 3',
         nameJP: '深海釧路沖棲雲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 736,
         FP: 188,
@@ -29901,8 +29901,8 @@ const SHIP_DATA: ShipDatas = {
     2178: {
         name: 'Pillbox Imp 1',
         nameJP: 'トーチカ小鬼',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 180,
         FP: 130,
         TP: 0,
@@ -29920,8 +29920,8 @@ const SHIP_DATA: ShipDatas = {
     2179: {
         name: 'Pillbox Imp Elite 1',
         nameJP: 'トーチカ小鬼elite',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 280,
         FP: 160,
         TP: 0,
@@ -29939,8 +29939,8 @@ const SHIP_DATA: ShipDatas = {
     2180: {
         name: 'Anti-Air Guns Imp',
         nameJP: '対空小鬼',
-        type: 6,
-        install_type: 2,
+        type: ShipType.CAV,
+        install_type: ShipType.DD,
         HP: 88,
         FP: 48,
         TP: 0,
@@ -29958,8 +29958,8 @@ const SHIP_DATA: ShipDatas = {
     2181: {
         name: 'Anti-Air Guns Imp Elite',
         nameJP: '対空小鬼elite',
-        type: 6,
-        install_type: 2,
+        type: ShipType.CAV,
+        install_type: ShipType.DD,
         HP: 188,
         FP: 88,
         TP: 0,
@@ -29977,7 +29977,7 @@ const SHIP_DATA: ShipDatas = {
     2182: {
         name: 'Standard Type Battleship Princess 1',
         nameJP: '標準型戦艦棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 830,
         FP: 330,
         TP: 68,
@@ -29996,7 +29996,7 @@ const SHIP_DATA: ShipDatas = {
     2183: {
         name: 'Standard Type Battleship Princess 2',
         nameJP: '標準型戦艦棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 930,
         FP: 340,
         TP: 88,
@@ -30015,7 +30015,7 @@ const SHIP_DATA: ShipDatas = {
     2184: {
         name: 'Standard Type Battleship Princess 3',
         nameJP: '標準型戦艦棲姫',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1030,
         FP: 350,
         TP: 108,
@@ -30034,7 +30034,7 @@ const SHIP_DATA: ShipDatas = {
     2185: {
         name: 'Standard Type Battleship Princess - Damaged 1',
         nameJP: '標準型戦艦棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 830,
         FP: 350,
         TP: 88,
@@ -30053,7 +30053,7 @@ const SHIP_DATA: ShipDatas = {
     2186: {
         name: 'Standard Type Battleship Princess - Damaged 2',
         nameJP: '標準型戦艦棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 930,
         FP: 360,
         TP: 108,
@@ -30072,7 +30072,7 @@ const SHIP_DATA: ShipDatas = {
     2187: {
         name: 'Standard Type Battleship Princess - Damaged 3',
         nameJP: '標準型戦艦棲姫-壊',
-        type: 10,
+        type: ShipType.BBV,
         HP: 1030,
         FP: 390,
         TP: 148,
@@ -30091,8 +30091,8 @@ const SHIP_DATA: ShipDatas = {
     2188: {
         name: 'Fortified Pillbox Princess 1',
         nameJP: 'トーチカ要塞棲姫',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 1000,
         FP: 300,
         TP: 0,
@@ -30110,8 +30110,8 @@ const SHIP_DATA: ShipDatas = {
     2189: {
         name: 'Fortified Pillbox Princess 2',
         nameJP: 'トーチカ要塞棲姫',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 1600,
         FP: 300,
         TP: 0,
@@ -30129,8 +30129,8 @@ const SHIP_DATA: ShipDatas = {
     2190: {
         name: 'Fortified Pillbox Princess - Damaged 1',
         nameJP: 'トーチカ要塞棲姫-壊',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 1000,
         FP: 300,
         TP: 0,
@@ -30148,8 +30148,8 @@ const SHIP_DATA: ShipDatas = {
     2191: {
         name: 'Fortified Pillbox Princess - Damaged 2',
         nameJP: 'トーチカ要塞棲姫-壊',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 1600,
         FP: 300,
         TP: 0,
@@ -30167,7 +30167,7 @@ const SHIP_DATA: ShipDatas = {
     2192: {
         name: 'Schnellboot Imp Pack 1',
         nameJP: 'Schnellboot小鬼群',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 19,
         FP: 19,
@@ -30187,7 +30187,7 @@ const SHIP_DATA: ShipDatas = {
     2193: {
         name: 'Schnellboot Imp Pack 2',
         nameJP: 'Schnellboot小鬼群',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 29,
         FP: 29,
@@ -30207,7 +30207,7 @@ const SHIP_DATA: ShipDatas = {
     2194: {
         name: 'Schnellboot Imp Pack Elite',
         nameJP: 'Schnellboot小鬼群elite',
-        type: 2,
+        type: ShipType.DD,
         is_PT: true,
         HP: 39,
         FP: 39,
@@ -30227,8 +30227,8 @@ const SHIP_DATA: ShipDatas = {
     2196: {
         name: 'Pillbox Imp 2',
         nameJP: 'トーチカ小鬼',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 180,
         FP: 130,
         TP: 0,
@@ -30246,8 +30246,8 @@ const SHIP_DATA: ShipDatas = {
     2197: {
         name: 'Pillbox Imp Elite 2',
         nameJP: 'トーチカ小鬼elite',
-        type: 9,
-        install_type: 2,
+        type: ShipType.BB,
+        install_type: ShipType.DD,
         HP: 280,
         FP: 160,
         TP: 0,
@@ -30265,7 +30265,7 @@ const SHIP_DATA: ShipDatas = {
     2198: {
         name: 'European Little Sister Princess 1',
         nameJP: '欧州妹姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 900,
         FP: 310,
         TP: 0,
@@ -30283,7 +30283,7 @@ const SHIP_DATA: ShipDatas = {
     2199: {
         name: 'European Little Sister Princess 2',
         nameJP: '欧州妹姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 980,
         FP: 330,
         TP: 0,
@@ -30301,7 +30301,7 @@ const SHIP_DATA: ShipDatas = {
     2200: {
         name: 'European Little Sister Princess 3',
         nameJP: '欧州妹姫',
-        type: 9,
+        type: ShipType.BB,
         HP: 1100,
         FP: 360,
         TP: 0,
@@ -30319,7 +30319,7 @@ const SHIP_DATA: ShipDatas = {
     2201: {
         name: 'European Little Sister Princess - Damaged 1',
         nameJP: '欧州妹姫-壊',
-        type: 9,
+        type: ShipType.BB,
         HP: 900,
         FP: 360,
         TP: 121,
@@ -30337,7 +30337,7 @@ const SHIP_DATA: ShipDatas = {
     2202: {
         name: 'European Little Sister Princess - Damaged 2',
         nameJP: '欧州妹姫-壊',
-        type: 9,
+        type: ShipType.BB,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 980,
@@ -30358,7 +30358,7 @@ const SHIP_DATA: ShipDatas = {
     2203: {
         name: 'European Little Sister Princess - Damaged 3',
         nameJP: '欧州妹姫-壊',
-        type: 9,
+        type: ShipType.BB,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 1100,
@@ -30379,7 +30379,7 @@ const SHIP_DATA: ShipDatas = {
     2204: {
         name: 'American Destroyer Princess 1',
         nameJP: '米駆逐棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 500,
@@ -30400,7 +30400,7 @@ const SHIP_DATA: ShipDatas = {
     2205: {
         name: 'American Destroyer Princess 2',
         nameJP: '米駆逐棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 600,
@@ -30421,7 +30421,7 @@ const SHIP_DATA: ShipDatas = {
     2206: {
         name: 'American Destroyer Princess 3',
         nameJP: '米駆逐棲姫',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 760,
@@ -30442,7 +30442,7 @@ const SHIP_DATA: ShipDatas = {
     2207: {
         name: 'American Destroyer Princess - Damaged 1',
         nameJP: '米駆逐棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 500,
@@ -30463,7 +30463,7 @@ const SHIP_DATA: ShipDatas = {
     2208: {
         name: 'American Destroyer Princess - Damaged 2',
         nameJP: '米駆逐棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 600,
@@ -30484,7 +30484,7 @@ const SHIP_DATA: ShipDatas = {
     2209: {
         name: 'American Destroyer Princess - Damaged 3',
         nameJP: '米駆逐棲姫-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 760,
@@ -30505,7 +30505,7 @@ const SHIP_DATA: ShipDatas = {
     2210: {
         name: 'Atoll Aircraft Carrier Anchorage Princess 1',
         nameJP: '環礁空母泊地棲姫',
-        type: 6,
+        type: ShipType.CAV,
         HP: 700,
         FP: 150,
         TP: 80,
@@ -30523,7 +30523,7 @@ const SHIP_DATA: ShipDatas = {
     2211: {
         name: 'Atoll Aircraft Carrier Anchorage Princess 2',
         nameJP: '環礁空母泊地棲姫',
-        type: 6,
+        type: ShipType.CAV,
         HP: 900,
         FP: 170,
         TP: 100,
@@ -30541,7 +30541,7 @@ const SHIP_DATA: ShipDatas = {
     2212: {
         name: 'Atoll Aircraft Carrier Anchorage Princess 3',
         nameJP: '環礁空母泊地棲姫',
-        type: 6,
+        type: ShipType.CAV,
         HP: 1000,
         FP: 200,
         TP: 160,
@@ -30559,7 +30559,7 @@ const SHIP_DATA: ShipDatas = {
     2213: {
         name: 'Atoll Aircraft Carrier Anchorage Princess - Damaged 1',
         nameJP: '環礁空母泊地棲姫-壊',
-        type: 6,
+        type: ShipType.CAV,
         HP: 700,
         FP: 180,
         TP: 100,
@@ -30577,7 +30577,7 @@ const SHIP_DATA: ShipDatas = {
     2214: {
         name: 'Atoll Aircraft Carrier Anchorage Princess - Damaged 2',
         nameJP: '環礁空母泊地棲姫-壊',
-        type: 6,
+        type: ShipType.CAV,
         HP: 900,
         FP: 200,
         TP: 160,
@@ -30595,7 +30595,7 @@ const SHIP_DATA: ShipDatas = {
     2215: {
         name: 'Atoll Aircraft Carrier Anchorage Princess - Damaged 3',
         nameJP: '環礁空母泊地棲姫-壊',
-        type: 6,
+        type: ShipType.CAV,
         HP: 1000,
         FP: 280,
         TP: 240,
@@ -30613,7 +30613,7 @@ const SHIP_DATA: ShipDatas = {
     2216: {
         name: 'American Destroyer Princess (Mass Production Model) 1',
         nameJP: '米駆逐棲姫(量産型)',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_surface_ship: true,
         HP: 460,
         FP: 80,
@@ -30633,7 +30633,7 @@ const SHIP_DATA: ShipDatas = {
     2217: {
         name: 'American Destroyer Princess (Mass Production Model) 2',
         nameJP: '米駆逐棲姫(量産型)',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_surface_ship: true,
         HP: 550,
         FP: 110,
@@ -30653,7 +30653,7 @@ const SHIP_DATA: ShipDatas = {
     2218: {
         name: 'American Destroyer Princess (Mass Production Model) 3',
         nameJP: '米駆逐棲姫(量産型)',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 700,
@@ -30674,7 +30674,7 @@ const SHIP_DATA: ShipDatas = {
     2219: {
         name: 'American Destroyer Princess (Mass Production Model) - Damaged 1',
         nameJP: '米駆逐棲姫(量産型)-壊',
-        type: 2,
+        type: ShipType.DD,
         can_op_torpedo_surface_ship: true,
         HP: 460,
         FP: 110,
@@ -30694,7 +30694,7 @@ const SHIP_DATA: ShipDatas = {
     2220: {
         name: 'American Destroyer Princess (Mass Production Model) - Damaged 2',
         nameJP: '米駆逐棲姫(量産型)-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 550,
@@ -30715,7 +30715,7 @@ const SHIP_DATA: ShipDatas = {
     2221: {
         name: 'American Destroyer Princess (Mass Production Model) - Damaged 3',
         nameJP: '米駆逐棲姫(量産型)-壊',
-        type: 2,
+        type: ShipType.DD,
         always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 700,
@@ -30736,9 +30736,9 @@ const SHIP_DATA: ShipDatas = {
     2222: {
         name: 'New Mass-Produced Aircraft Carrier Princess 1',
         nameJP: '新量産空母棲姫',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 600,
         FP: 200,
@@ -30757,9 +30757,9 @@ const SHIP_DATA: ShipDatas = {
     2223: {
         name: 'New Mass-Produced Aircraft Carrier Princess 2',
         nameJP: '新量産空母棲姫',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 800,
         FP: 240,
@@ -30778,9 +30778,9 @@ const SHIP_DATA: ShipDatas = {
     2224: {
         name: 'New Mass-Produced Aircraft Carrier Princess 3',
         nameJP: '新量産空母棲姫',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 980,
         FP: 280,
@@ -30799,9 +30799,9 @@ const SHIP_DATA: ShipDatas = {
     2225: {
         name: 'New Mass-Produced Aircraft Carrier Princess - Damaged 1',
         nameJP: '新量産空母棲姫-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 600,
         FP: 240,
@@ -30820,9 +30820,9 @@ const SHIP_DATA: ShipDatas = {
     2226: {
         name: 'New Mass-Produced Aircraft Carrier Princess - Damaged 2',
         nameJP: '新量産空母棲姫-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 800,
         FP: 280,
@@ -30841,9 +30841,9 @@ const SHIP_DATA: ShipDatas = {
     2227: {
         name: 'New Mass-Produced Aircraft Carrier Princess - Damaged 3',
         nameJP: '新量産空母棲姫-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         can_not_CVCI: true,
         HP: 980,
         FP: 320,
@@ -30862,7 +30862,7 @@ const SHIP_DATA: ShipDatas = {
     2228: {
         name: 'Abyssal I-go Water Princess 1',
         nameJP: '深海伊号水姫',
-        type: 13,
+        type: ShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 241,
         FP: 55,
@@ -30882,7 +30882,7 @@ const SHIP_DATA: ShipDatas = {
     2229: {
         name: 'Abyssal I-go Water Princess 2',
         nameJP: '深海伊号水姫',
-        type: 13,
+        type: ShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 441,
         FP: 65,
@@ -30902,7 +30902,7 @@ const SHIP_DATA: ShipDatas = {
     2230: {
         name: 'Abyssal I-go Water Princess 3',
         nameJP: '深海伊号水姫',
-        type: 13,
+        type: ShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 641,
         FP: 85,
@@ -30922,7 +30922,7 @@ const SHIP_DATA: ShipDatas = {
     2231: {
         name: 'Abyssal I-go Water Princess - Damaged 1',
         nameJP: '深海伊号水姫-壊',
-        type: 13,
+        type: ShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 241,
         FP: 69,
@@ -30942,7 +30942,7 @@ const SHIP_DATA: ShipDatas = {
     2232: {
         name: 'Abyssal I-go Water Princess - Damaged 2',
         nameJP: '深海伊号水姫-壊',
-        type: 13,
+        type: ShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 441,
         FP: 79,
@@ -30962,7 +30962,7 @@ const SHIP_DATA: ShipDatas = {
     2233: {
         name: 'Abyssal I-go Water Princess - Damaged 3',
         nameJP: '深海伊号水姫-壊',
-        type: 13,
+        type: ShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 641,
         FP: 99,
@@ -30982,8 +30982,8 @@ const SHIP_DATA: ShipDatas = {
     2234: {
         name: 'Airfield Summer Princess 1',
         nameJP: '飛行場夏姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 220,
         FP: 40,
         TP: 0,
@@ -31001,8 +31001,8 @@ const SHIP_DATA: ShipDatas = {
     2235: {
         name: 'Airfield Summer Princess 2',
         nameJP: '飛行場夏姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 330,
         FP: 54,
         TP: 0,
@@ -31020,8 +31020,8 @@ const SHIP_DATA: ShipDatas = {
     2236: {
         name: 'Airfield Summer Princess 3',
         nameJP: '飛行場夏姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 440,
         FP: 80,
         TP: 0,
@@ -31039,7 +31039,7 @@ const SHIP_DATA: ShipDatas = {
     2237: {
         name: 'French Light Cruiser Princess 1',
         nameJP: '軽巡仏棲姫',
-        type: 3,
+        type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 760,
@@ -31060,7 +31060,7 @@ const SHIP_DATA: ShipDatas = {
     2238: {
         name: 'French Light Cruiser Princess 2',
         nameJP: '軽巡仏棲姫',
-        type: 3,
+        type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -31081,7 +31081,7 @@ const SHIP_DATA: ShipDatas = {
     2239: {
         name: 'French Light Cruiser Princess 3',
         nameJP: '軽巡仏棲姫',
-        type: 3,
+        type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 910,
@@ -31102,7 +31102,7 @@ const SHIP_DATA: ShipDatas = {
     2240: {
         name: 'French Light Cruiser Princess - Damaged 1',
         nameJP: '軽巡仏棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 760,
@@ -31123,7 +31123,7 @@ const SHIP_DATA: ShipDatas = {
     2241: {
         name: 'French Light Cruiser Princess - Damaged 2',
         nameJP: '軽巡仏棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -31144,7 +31144,7 @@ const SHIP_DATA: ShipDatas = {
     2242: {
         name: 'French Light Cruiser Princess - Damaged 3',
         nameJP: '軽巡仏棲姫-壊',
-        type: 3,
+        type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 910,
@@ -31165,8 +31165,8 @@ const SHIP_DATA: ShipDatas = {
     2243: {
         name: 'Harbour Princess Holiday Mode 1',
         nameJP: '港湾棲姫 休日mode',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 570,
         FP: 177,
         TP: 0,
@@ -31184,8 +31184,8 @@ const SHIP_DATA: ShipDatas = {
     2244: {
         name: 'Harbour Princess Holiday Mode 2',
         nameJP: '港湾棲姫 休日mode',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 1700,
         FP: 227,
         TP: 0,
@@ -31203,8 +31203,8 @@ const SHIP_DATA: ShipDatas = {
     2245: {
         name: 'Harbour Princess Holiday Mode - Damaged 1',
         nameJP: '港湾棲姫 休日mode-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 570,
         FP: 207,
         TP: 0,
@@ -31222,8 +31222,8 @@ const SHIP_DATA: ShipDatas = {
     2246: {
         name: 'Harbour Princess Holiday Mode - Damaged 2',
         nameJP: '港湾棲姫 休日mode-壊',
-        type: 10,
-        install_type: 6,
+        type: ShipType.BBV,
+        install_type: ShipType.CAV,
         HP: 1700,
         FP: 247,
         TP: 0,
@@ -31241,8 +31241,8 @@ const SHIP_DATA: ShipDatas = {
     2247: {
         name: 'Pacific Airfield Princess 1',
         nameJP: '太平洋飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 300,
         FP: 40,
         TP: 0,
@@ -31260,8 +31260,8 @@ const SHIP_DATA: ShipDatas = {
     2248: {
         name: 'Pacific Airfield Princess 2',
         nameJP: '太平洋飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 400,
         FP: 54,
         TP: 0,
@@ -31279,8 +31279,8 @@ const SHIP_DATA: ShipDatas = {
     2249: {
         name: 'Pacific Airfield Princess 3',
         nameJP: '太平洋飛行場姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 500,
         FP: 80,
         TP: 0,
@@ -31298,8 +31298,8 @@ const SHIP_DATA: ShipDatas = {
     2250: {
         name: 'Supply Depot Princess E Vacation Mode 1',
         nameJP: '集積地棲姫V バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 2300,
@@ -31320,8 +31320,8 @@ const SHIP_DATA: ShipDatas = {
     2251: {
         name: 'Supply Depot Princess E Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫V バカンスmode-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 2300,
@@ -31342,8 +31342,8 @@ const SHIP_DATA: ShipDatas = {
     2252: {
         name: 'Supply Depot Princess E Vacation Mode 2',
         nameJP: '集積地棲姫V バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 5200,
@@ -31364,8 +31364,8 @@ const SHIP_DATA: ShipDatas = {
     2253: {
         name: 'Supply Depot Princess E Vacation Mode - Damaged 2',
         nameJP: '集積地棲姫V バカンスmode-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 5200,
@@ -31386,8 +31386,8 @@ const SHIP_DATA: ShipDatas = {
     2254: {
         name: 'Supply Depot Princess E Vacation Mode 3',
         nameJP: '集積地棲姫V バカンスmode',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 8600,
@@ -31408,8 +31408,8 @@ const SHIP_DATA: ShipDatas = {
     2255: {
         name: 'Supply Depot Princess E Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫V バカンスmode-壊',
-        type: 10,
-        install_type: 3,
+        type: ShipType.BBV,
+        install_type: ShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 8600,
@@ -31430,9 +31430,9 @@ const SHIP_DATA: ShipDatas = {
     2256: {
         name: 'Abyssal Coral Sea Water Demon 1',
         nameJP: '深海珊瑚海水鬼',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 850,
         FP: 182,
         TP: 0,
@@ -31450,9 +31450,9 @@ const SHIP_DATA: ShipDatas = {
     2257: {
         name: 'Abyssal Coral Sea Water Demon 2',
         nameJP: '深海珊瑚海水鬼',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1050,
         FP: 212,
         TP: 0,
@@ -31470,9 +31470,9 @@ const SHIP_DATA: ShipDatas = {
     2258: {
         name: 'Abyssal Coral Sea Water Demon 3',
         nameJP: '深海珊瑚海水鬼',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1350,
         FP: 242,
         TP: 0,
@@ -31490,9 +31490,9 @@ const SHIP_DATA: ShipDatas = {
     2259: {
         name: 'Abyssal Coral Sea Water Demon - Damaged 1',
         nameJP: '深海珊瑚海水鬼-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 850,
         FP: 202,
         TP: 0,
@@ -31510,9 +31510,9 @@ const SHIP_DATA: ShipDatas = {
     2260: {
         name: 'Abyssal Coral Sea Water Demon - Damaged 2',
         nameJP: '深海珊瑚海水鬼-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1050,
         FP: 232,
         TP: 0,
@@ -31530,9 +31530,9 @@ const SHIP_DATA: ShipDatas = {
     2261: {
         name: 'Abyssal Coral Sea Water Demon - Damaged 3',
         nameJP: '深海珊瑚海水鬼-壊',
-        type: 11,
+        type: ShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: 1,
+        CVs_night_attack_type: ShipType.DE,
         HP: 1350,
         FP: 272,
         TP: 0,
@@ -31550,7 +31550,7 @@ const SHIP_DATA: ShipDatas = {
     3001: {
         name: '???????',
         nameJP: '???????',
-        type: 18,
+        type: ShipType.CVB,
         HP: 92,
         FP: 89,
         TP: 0,
@@ -31568,7 +31568,7 @@ const SHIP_DATA: ShipDatas = {
     3002: {
         name: '????? ?????????? ??????',
         nameJP: '????? ?????????? ??????',
-        type: 10,
+        type: ShipType.BBV,
         can_laser: true,
         HP: 999,
         FP: 999,
@@ -31588,8 +31588,8 @@ const SHIP_DATA: ShipDatas = {
     3003: {
         name: 'Canal Princess 1 (Vita)',
         nameJP: '運河棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 250,
         FP: 70,
         TP: 0,
@@ -31608,8 +31608,8 @@ const SHIP_DATA: ShipDatas = {
     3004: {
         name: 'Canal Princess 2 (Vita)',
         nameJP: '運河棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 300,
         FP: 90,
         TP: 0,
@@ -31628,8 +31628,8 @@ const SHIP_DATA: ShipDatas = {
     3005: {
         name: 'Canal Princess 3 (Vita)',
         nameJP: '運河棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 390,
         FP: 110,
         TP: 0,
@@ -31648,8 +31648,8 @@ const SHIP_DATA: ShipDatas = {
     3006: {
         name: 'Central Princess 1 (Vita)',
         nameJP: '中枢棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 600,
         FP: 100,
         TP: 0,
@@ -31668,8 +31668,8 @@ const SHIP_DATA: ShipDatas = {
     3007: {
         name: 'Central Princess 2 (Vita)',
         nameJP: '中枢棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 800,
         FP: 160,
         TP: 0,
@@ -31688,8 +31688,8 @@ const SHIP_DATA: ShipDatas = {
     3008: {
         name: 'Central Princess 3 (Vita)',
         nameJP: '中枢棲姫',
-        type: 10,
-        install_type: 1,
+        type: ShipType.BBV,
+        install_type: ShipType.DE,
         HP: 900,
         FP: 200,
         TP: 0,
@@ -31708,7 +31708,7 @@ const SHIP_DATA: ShipDatas = {
     9001: {
         name: 'Iona',
         nameJP: 'イオナ',
-        type: 13,
+        type: ShipType.SS,
         HP: 70, HPmax: 78,
         FP: 129, FPbase: 100,
         TP: 129, TPbase: 110,
@@ -31726,7 +31726,7 @@ const SHIP_DATA: ShipDatas = {
     9002: {
         name: 'Takao (Fog)',
         nameJP: 'タカオ',
-        type: 5,
+        type: ShipType.CA,
         can_laser: true,
         HP: 77, HPmax: 85,
         FP: 139, FPbase: 120,
@@ -31745,7 +31745,7 @@ const SHIP_DATA: ShipDatas = {
     9003: {
         name: 'Haruna (Fog)',
         nameJP: 'ハルナ',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 102, HPmax: 111,
         FP: 149, FPbase: 135,
@@ -31764,7 +31764,7 @@ const SHIP_DATA: ShipDatas = {
     9011: {
         name: 'Nagara-Class mist',
         nameJP: 'ナガラ級mist',
-        type: 3,
+        type: ShipType.CL,
         can_laser: true,
         HP: 55,
         FP: 75,
@@ -31784,7 +31784,7 @@ const SHIP_DATA: ShipDatas = {
     9012: {
         name: 'Takao mist',
         nameJP: 'タカオmist',
-        type: 5,
+        type: ShipType.CA,
         can_laser: true,
         HP: 77,
         FP: 150,
@@ -31804,7 +31804,7 @@ const SHIP_DATA: ShipDatas = {
     9013: {
         name: 'Maya mist',
         nameJP: 'マヤmist',
-        type: 5,
+        type: ShipType.CA,
         can_laser: true,
         HP: 79,
         FP: 160,
@@ -31824,7 +31824,7 @@ const SHIP_DATA: ShipDatas = {
     9014: {
         name: 'Haruna mist',
         nameJP: 'ハルナmist',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 102,
         FP: 200,
@@ -31844,7 +31844,7 @@ const SHIP_DATA: ShipDatas = {
     9015: {
         name: 'Kirishima mist',
         nameJP: 'キリシマmist',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 102,
         FP: 200,
@@ -31864,7 +31864,7 @@ const SHIP_DATA: ShipDatas = {
     9016: {
         name: 'Kongou mist',
         nameJP: 'コンゴウmist',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 142,
         FP: 280,
@@ -31884,7 +31884,7 @@ const SHIP_DATA: ShipDatas = {
     9017: {
         name: 'Nagara-Class *mist*',
         nameJP: 'ナガラ級*mist*',
-        type: 3,
+        type: ShipType.CL,
         can_laser: true,
         HP: 55,
         FP: 60,
@@ -31904,7 +31904,7 @@ const SHIP_DATA: ShipDatas = {
     9018: {
         name: 'Takao *mist*',
         nameJP: 'タカオ*mist*',
-        type: 5,
+        type: ShipType.CA,
         can_laser: true,
         HP: 77,
         FP: 88,
@@ -31924,7 +31924,7 @@ const SHIP_DATA: ShipDatas = {
     9019: {
         name: 'Maya *mist*',
         nameJP: 'マヤ*mist*',
-        type: 5,
+        type: ShipType.CA,
         can_laser: true,
         HP: 79,
         FP: 98,
@@ -31944,7 +31944,7 @@ const SHIP_DATA: ShipDatas = {
     9020: {
         name: 'Haruna *mist*',
         nameJP: 'ハルナ*mist*',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 102,
         FP: 150,
@@ -31964,7 +31964,7 @@ const SHIP_DATA: ShipDatas = {
     9021: {
         name: 'Kirishima *mist*',
         nameJP: 'キリシマ*mist*',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 102,
         FP: 150,
@@ -31984,7 +31984,7 @@ const SHIP_DATA: ShipDatas = {
     9022: {
         name: 'Kongou *mist*',
         nameJP: 'コンゴウ*mist*',
-        type: 8,
+        type: ShipType.FBB,
         can_laser: true,
         HP: 142,
         FP: 180,

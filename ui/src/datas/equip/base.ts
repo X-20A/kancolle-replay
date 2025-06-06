@@ -27,8 +27,8 @@ export const enum EquipType {
     MIDGETSUB = 22,
     REPAIR = 23,
     LANDINGCRAFT = 24,
-    // AUTOGYRO = 25,
-    // ASWPLANE = 26,
+    AUTOGYRO = 25,
+    ASWPLANE = 26,
     BULGEM = 27,
     BULGEL = 28,
     SEARCHLIGHTS = 29,
@@ -58,7 +58,7 @@ export const enum EquipType {
     LANDBOMBERL = 53,
     SMOKESCREEN = 54,
     JETBOMBER = 57,
-    JETSCOUT = 59,
+    // JETSCOUT = 59,
     RADARXL = 93,
     CARRIERSCOUT2 = 94,
     SECGUNL = 95,
@@ -68,14 +68,8 @@ export const enum EquipType {
 
     /** 爆戦 */
     FIGHTERBOMBER = 70,
-    /** 対潜哨戒機(素対潜8未満) */
-    ASWPLANE_LOW = 71,
-    /** 対潜哨戒機(素対潜8以上) */
-    ASWPLANE_HIGH = 72,
-    /** 回転翼機(素対潜11未満) */
-    AUTOGYRO_LOW = 73,
-    /** 回転翼機(素対潜11以上) */
-    AUTOGYRO_HIGH = 74,
+    /** 阻塞気球 */
+    BARRAGE_BALLOON = 79,
 };
 
 const EQUIPDATA: EquipDatas = {
@@ -602,14 +596,14 @@ const EQUIPDATA: EquipDatas = {
     69: {
         name: 'Type Ka Liaison Aircraft',
         nameJP: 'カ号観測機',
-        type: EquipType.AUTOGYRO_LOW,
+        type: EquipType.AUTOGYRO,
         ASW: 9,
         ACC: 1
     },
     70: {
         name: 'Type 3 Liaison Aircraft',
         nameJP: '三式指揮連絡機(対潜)',
-        type: EquipType.ASWPLANE_LOW,
+        type: EquipType.ASWPLANE,
         ASW: 7,
         LOS: 1,
         ACC: 2
@@ -3002,7 +2996,7 @@ const EQUIPDATA: EquipDatas = {
     324: {
         name: 'O Type Observation Autogyro Kai',
         nameJP: 'オ号観測機改',
-        type: EquipType.AUTOGYRO_LOW,
+        type: EquipType.AUTOGYRO,
         FP: 1,
         ACC: 1,
         ASW: 10,
@@ -3010,7 +3004,7 @@ const EQUIPDATA: EquipDatas = {
     325: {
         name: 'O Type Observation Autogyro Kai Ni',
         nameJP: 'オ号観測機改二',
-        type: EquipType.AUTOGYRO_HIGH,
+        type: EquipType.AUTOGYRO,
         FP: 1,
         ACC: 1,
         ASW: 11,
@@ -3019,7 +3013,7 @@ const EQUIPDATA: EquipDatas = {
     326: {
         name: 'S-51J',
         nameJP: 'S-51J',
-        type: EquipType.AUTOGYRO_HIGH,
+        type: EquipType.AUTOGYRO,
         FP: 2,
         ACC: 2,
         ASW: 12,
@@ -3028,7 +3022,7 @@ const EQUIPDATA: EquipDatas = {
     327: {
         name: 'S-51J Kai',
         nameJP: 'S-51J改',
-        type: EquipType.AUTOGYRO_HIGH,
+        type: EquipType.AUTOGYRO,
         FP: 2,
         ACC: 3,
         ASW: 13,
@@ -4237,7 +4231,7 @@ const EQUIPDATA: EquipDatas = {
     451: {
         name: 'Type 3 Command Liaison Aircraft Kai',
         nameJP: '三式指揮連絡機改',
-        type: EquipType.ASWPLANE_HIGH,
+        type: EquipType.ASWPLANE,
         FP: 1,
         ACC: 2,
         ASW: 9,
@@ -4642,7 +4636,7 @@ const EQUIPDATA: EquipDatas = {
     489: {
         name: 'Type 1 Fighter Hayabusa Model II Kai (20th Squadron)',
         nameJP: '一式戦 隼II型改(20戦隊)',
-        type: EquipType.ASWPLANE_HIGH,
+        type: EquipType.ASWPLANE,
         is_20th_family: true,
         FP: 2,
         DIVEBOMB: 4,
@@ -4666,7 +4660,7 @@ const EQUIPDATA: EquipDatas = {
     491: {
         name: 'Type 1 Fighter Hayabusa Model III Kai (Skilled / 20th Squadron)',
         nameJP: '一式戦 隼III型改(熟練/20戦隊)',
-        type: EquipType.ASWPLANE_HIGH,
+        type: EquipType.ASWPLANE,
         is_20th_family: true,
         AA_resist_ship: .6,
         FP: 2,
@@ -4849,8 +4843,7 @@ const EQUIPDATA: EquipDatas = {
     513: {
         name: 'Barrage Balloon',
         nameJP: '阻塞気球',
-        type: EquipType.SMOKESCREEN, icon: SpecialIcon.BarrageBalloons,
-        is_balloon: true,
+        type: EquipType.BARRAGE_BALLOON, icon: SpecialIcon.BarrageBalloons,
         EV: 1,
     },
     514: {
@@ -5181,7 +5174,7 @@ const EQUIPDATA: EquipDatas = {
     549: {
         name: 'Type 3 Command Liaison Aircraft Kai 2',
         nameJP: '三式指揮連絡機改二',
-        type: EquipType.ASWPLANE_HIGH,
+        type: EquipType.ASWPLANE,
         FP: 2,
         DIVEBOMB: 2,
         ACC: 2,
@@ -6536,8 +6529,7 @@ const EQUIPDATA: EquipDatas = {
     1640: {
         name: 'Abyssal Observation Barrage Balloon',
         nameJP: '深海観測阻塞気球',
-        type: EquipType.SMOKESCREEN, icon: SpecialIcon.BarrageBalloons,
-        is_balloon: true,
+        type: EquipType.BARRAGE_BALLOON, icon: SpecialIcon.BarrageBalloons,
         FP: 1,
         AR: 1,
         ACC: 3,
@@ -6616,7 +6608,7 @@ const EQUIPDATA: EquipDatas = {
     1648: {
         name: 'Abyssal Combat Autogyro Seagull',
         nameJP: '深海対戦回転翼海鴎',
-        type: EquipType.AUTOGYRO_HIGH,
+        type: EquipType.AUTOGYRO,
         FP: 8,
         DIVEBOMB: 18,
         ACC: 18,

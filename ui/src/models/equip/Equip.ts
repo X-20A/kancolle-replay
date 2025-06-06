@@ -1,6 +1,7 @@
 import { StatusComponent } from "@/types";
-import { EquipDatas, EquipFlags, EquipType } from "@/types/equip";
+import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip";
 import { createEquipMaster } from "./EquipMaster";
+import { EquipType } from "@/datas/equip/base";
 
 export type Equip = {
     /** 装備マスターID */
@@ -10,23 +11,25 @@ export type Equip = {
     /** 装備名(日) */
     name_jp: string,
     /** 装備改修値 */
-    implovement: number,
+    improvement: number,
     /** 装備種別ID */
     type: EquipType,
+    /** 特殊攻撃のトリガーになる装備の種別ID */
+    skill_trigger_type: SkillTriggerEquipType,
     /** フラグ類 */
     flags: EquipFlags,
     /** マスターデータままの装備加算値 */
-    readonly equip_master_addition: StatusComponent,
+    readonly master_addition: StatusComponent,
     /** 装備ボーナス加算値 */
-    readonly equip_bonus_addition: StatusComponent,
+    readonly bonus_addition: StatusComponent,
     /** 装備改修加算値 */
-    readonly equip_implovement_addition: StatusComponent,
+    readonly improvement_addition: StatusComponent,
 }
 
 export function createEquip(
     master_id: number,
     ship_id: number,
-    implovement: number,
+    improvement: number,
     equip_datas: EquipDatas,
 ): Equip {
     const equip_master = createEquipMaster(master_id, equip_datas);
@@ -42,9 +45,9 @@ export function createEquip(
         master_id,
         name_jp,
         name_en,
-        implovement,
+        improvement,
         type,
         flags,
-        equip_master_addition,
+        master_addition: equip_master_addition,
     }
 }

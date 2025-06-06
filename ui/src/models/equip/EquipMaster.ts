@@ -1,5 +1,6 @@
+import { EquipType } from "@/datas/equip/base";
 import { StatusComponent } from "@/types";
-import { EquipDatas, EquipFlags, EquipType } from "@/types/equip";
+import { EquipDatas, EquipFlags } from "@/types/equip";
 
 /** マスターデータから直接取得するデータ */
 export type EquipMaster = {
@@ -32,11 +33,11 @@ export function createEquipMaster(
         asw: equip_data.ASW ?? 0,
         los: equip_data.LOS ?? 0,
         luck: 0,
+        accuracy: equip_data.ACC ?? 0,
     }
 
     const flags: EquipFlags = {
         can_avoid_T_disadvantage: equip_data.can_avoid_T_disadvantage ?? false,
-        is_fighter_bomber: equip_data.is_fighter_bomber ?? false,
         can_shell_install_bomber: equip_data.can_shell_install_bomber ?? false,
         is_rocket_fighter: equip_data.is_rocket_fighter ?? false,
         is_night_scout: equip_data.is_night_scout ?? false,
@@ -49,7 +50,6 @@ export function createEquipMaster(
         can_barrage: equip_data.can_barrage ?? false,
         is_skip_bomber: equip_data.is_skip_bomber ?? false,
         is_20th_family: equip_data.is_20th_family ?? false,
-        is_balloon: equip_data.is_balloon ?? false,
         can_not_op_torpedo_midgetsub: equip_data.can_not_op_torpedo_midgetsub ?? false,
         high_altitude_bomber: equip_data.high_altitude_bomber ?? false,
     }

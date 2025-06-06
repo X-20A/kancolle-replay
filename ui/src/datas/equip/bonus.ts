@@ -1,5 +1,6 @@
-import { EquipBonusType, EquipType } from "@/types/equip";
-import { ShipClass, ShipType } from "@/types/ship";
+import { EquipType } from "@/datas/equip/base";
+import { EquipBonusType } from "@/types/equip";
+import { ShipClass, ShipType as ST } from "@/types/ship";
 
 /** 国籍ID */
 export const enum Country {
@@ -28,7 +29,7 @@ export type Bonus = {
     /** 未改造状態での艦ID */
     ship_base_ids?: number[],
     /** 艦種ID */
-    ship_type_ids?: ShipType[],
+    ship_type_ids?: ST[],
     /** 艦型ID */
     ship_class_ids?: ShipClass[],
     /** 艦の国籍ID */
@@ -40,11 +41,11 @@ export type Bonus = {
     /** 必要な シナジー装備の数 requires_equip_idを指向 */
     requires_synergy_equip_count?: number,
     /** 必要なシナジー装備の改修値 requires_equip_idを指向 */
-    requires_synergy_equip_implovement?: number,
+    requires_synergy_equip_improvement?: number,
     /** 必要なシナジー装備の種別ID */
     requires_synergy_equip_type_ids?: EquipType[],
     /** 必要改修値 */
-    required_implovement?: number,
+    required_improvement?: number,
     /** 水上電探(素索敵5以上)が必要であるか */
     requires_surface_radar?: true,
     /** 対空電探(素対空2以上)が必要であるか */
@@ -53,44 +54,44 @@ export type Bonus = {
     requires_high_precision_radar?: true,
 }
 
-export type BonusData = {
+export type EquipBonusData = {
     ids?: number[],
-    types?: number[],
+    types?: EquipType[],
     bonuses: Bonus[],
 }
 
-const BONUS_DATAS: BonusData[] = [
+export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
     {
-        types: [9],
+        types: [EquipType.CARRIERSCOUT],
         bonuses: [
             {
                 bonus: { los: 1 },
-                ship_type_ids: [7, 10, 11, 18],
+                ship_type_ids: [ST.CVL, ST.BBV, ST.CV, ST.CVB],
                 stack_limit: 1,
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [7, 10, 11, 18],
+                ship_type_ids: [ST.CVL, ST.BBV, ST.CV, ST.CVB],
                 stack_limit: 1,
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { los: 1 },
-                ship_type_ids: [7, 10, 11, 18],
+                ship_type_ids: [ST.CVL, ST.BBV, ST.CV, ST.CVB],
                 stack_limit: 1,
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1, los: 1 },
-                ship_type_ids: [7, 10, 11, 18],
+                ship_type_ids: [ST.CVL, ST.BBV, ST.CV, ST.CVB],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
     {
-        types: [10],
+        types: [EquipType.SEAPLANE],
         bonuses: [
             {
                 bonus: { fire_power: 2, asw: 3, evasion: 1 },
@@ -105,7 +106,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        types: [11],
+        types: [EquipType.SEAPLANEBOMBER],
         bonuses: [
             {
                 bonus: { fire_power: 1, asw: 1, evasion: 1 },
@@ -121,7 +122,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        types: [12, 13],
+        types: [EquipType.RADARS, EquipType.RADARL],
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 3 },
@@ -138,7 +139,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        types: [25],
+        types: [EquipType.AUTOGYRO],
         bonuses: [
             {
                 bonus: { asw: 4, evasion: 1 },
@@ -153,7 +154,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        types: [29],
+        types: [EquipType.SEARCHLIGHTS],
         bonuses: [
             {
                 bonus: { fire_power: 4, evasion: -1 },
@@ -181,7 +182,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        types: [42],
+        types: [EquipType.SEARCHLIGHTL],
         bonuses: [
             {
                 bonus: { fire_power: 6, evasion: -2 },
@@ -244,22 +245,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [426, 986, 987],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [426, 986, 987],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [426, 986, 987],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [426, 986, 987],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -318,7 +319,7 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                ship_type_ids: [7]
+                ship_type_ids: [ST.CVL]
             },
             {
                 bonus: { fire_power: 2, asw: 3 },
@@ -460,17 +461,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [979],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [979],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [979],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1, anti_air: 1 },
@@ -485,22 +486,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [986, 987],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [986, 987],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [986, 987],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [986, 987],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -510,12 +511,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [979],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [979],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1, anti_air: 1 },
@@ -533,27 +534,27 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [979],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [979],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [979],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [979],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [979],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1, anti_air: 1 },
@@ -567,7 +568,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [979],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -664,7 +665,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        ids: [58],
+        ids: [58], // 61cm五連装(酸素)魚雷
         bonuses: [
             {
                 bonus: { torpedo: 1 },
@@ -672,7 +673,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { torpedo: 1 },
-                ship_type_ids: [4]
+                ship_type_ids: [ST.CLT]
             }
         ]
     },
@@ -725,25 +726,25 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { fire_power: 3, los: 3 },
                 ship_base_ids: [90],
                 stack_limit: 1,
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { fire_power: 2, los: 2 },
                 ship_base_ids: [91],
                 stack_limit: 1,
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { fire_power: 1, los: 1 },
                 ship_ids: [508, 509, 560],
                 stack_limit: 1,
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { fire_power: 1, los: 1 },
                 ship_ids: [197],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             }
         ]
     },
@@ -819,7 +820,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, anti_air: 1, evasion: 1 },
                 ship_ids: [894, 899],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -831,7 +832,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { torpedo: 5 },
-                ship_type_ids: [13, 14]
+                ship_type_ids: [ST.SS, ST.SSV]
             }
         ]
     },
@@ -864,12 +865,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [48],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { armor: 1 },
                 ship_class_ids: [48],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -907,19 +908,19 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 stack_limit: 1,
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, torpedo: 1, shell_accuracy: 1, evasion: 1 },
@@ -928,67 +929,67 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [951],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [951],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [951],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [951],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [951],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [50, 181, 229, 316, 961],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [50, 181, 229, 316, 961],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [50, 181, 229, 316, 961],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [50, 181, 229, 316, 961],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [50, 181, 229, 316, 961],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [38, 54, 101],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [38, 54, 101],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [38, 54, 101],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -1138,7 +1139,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        ids: [450],
+        ids: [450], // 13号対空電探改(後期型)
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, armor: 1, evasion: 3 },
@@ -1146,12 +1147,12 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { anti_air: 1, armor: 1, evasion: 2 },
-                ship_type_ids: [1]
+                ship_type_ids: [ST.DE]
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1, anti_air: 1, evasion: 2 },
                 ship_ids: [955, 956, 960, 981, 983],
-                required_implovement: 4,
+                required_improvement: 4,
                 stack_limit: 1
             }
         ]
@@ -1166,7 +1167,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, evasion: 1 },
                 ship_class_ids: [47, 55],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -1180,7 +1181,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2, los: 1 },
                 ship_class_ids: [52],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 3, evasion: 1, los: 2 },
@@ -1189,22 +1190,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [507],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [507],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [507],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1, torpedo: 1, anti_air: 1, los: 1, evasion: 1 },
                 ship_ids: [507],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -1262,66 +1263,66 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 5, anti_air: 3, evasion: 2 },
                 ship_ids: [656],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 4, evasion: 3 },
                 ship_ids: [656],
                 requires_surface_radar: true,
                 stack_limit: 1,
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 4, evasion: 3 },
                 ship_ids: [656],
                 requires_air_radar: true,
                 stack_limit: 1,
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [54],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [54],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [54],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [54],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [54],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [426, 981, 983, 986, 987],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [426, 981, 983, 986, 987],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [426, 981, 983, 986, 987],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [426, 981, 983, 986, 987],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -1452,13 +1453,13 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, los: 1 },
@@ -1469,13 +1470,13 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { los: 1 },
                 ship_class_ids: [65, 93, 102, 107, 125],
                 stack_limit: 1,
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { los: 1 },
                 ship_class_ids: [65, 93, 102, 107, 125],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             }
         ]
     },
@@ -1565,25 +1566,25 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { armor: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { armor: 1 },
                 ship_ids: [694],
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [694],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -1617,7 +1618,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { anti_air: 1, asw: 2, evasion: 1 },
-                ship_type_ids: [7]
+                ship_type_ids: [ST.CVL]
             }
         ]
     },
@@ -1659,53 +1660,53 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [160, 487, 488],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 3, evasion: 2 },
                 ship_ids: [160, 487, 488],
                 requires_surface_radar: true,
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [220],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [23, 224, 289, 488],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1, anti_air: 1 },
                 ship_class_ids: [28, 66],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 2, evasion: 3 },
                 ship_class_ids: [28, 66],
                 requires_surface_radar: true,
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1, anti_air: 1 },
-                ship_type_ids: [1],
-                required_implovement: 7
+                ship_type_ids: [ST.DE],
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1, evasion: 4 },
-                ship_type_ids: [1],
+                ship_type_ids: [ST.DE],
                 requires_surface_radar: true,
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 2 },
                 ship_base_ids: [23, 56, 113],
-                required_implovement: 7
+                required_improvement: 7
             }
         ]
     },
@@ -1819,52 +1820,52 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [78],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [78],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [78],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [78],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [78],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [78],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_base_ids: [89],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [89],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [89],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [89],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -2032,17 +2033,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, anti_air: 2 },
@@ -2083,29 +2084,29 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1, evasion: 2, asw: 1 },
                 ship_base_ids: [35, 63, 64, 100, 101, 114, 511, 516, 574, 1001],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1, evasion: 4, asw: 2 },
                 requires_synergy_equip_id: [402],
-                required_implovement: 7
+                required_improvement: 7
             }
         ]
     },
@@ -2196,19 +2197,19 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { fire_power: 1, torpedo: 1 },
                 ship_ids: [147, 195, 326, 407, 419, 420, 426, 437, 627, 647, 665, 666, 903, 908, 959, 986, 987],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [147, 195, 326, 407, 419, 420, 426, 437, 627, 647, 665, 666, 903, 908, 959, 986, 987],
                 stack_limit: 2,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { torpedo: 3 },
                 ship_ids: [147, 195, 326, 407, 419, 420, 426, 437, 627, 647, 665, 666, 903, 908, 959, 986, 987],
                 stack_limit: 3,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { torpedo: 2 },
@@ -2249,39 +2250,39 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { fire_power: 1 },
                 ship_ids: [144, 145, 198, 199, 463, 464, 468, 469, 470, 489, 490, 497, 498, 542, 543, 563, 564, 566, 567, 568, 569, 578, 587, 588, 648, 649, 651, 656, 667, 670, 915, 951, 955, 956, 960, 961, 975, 981, 983],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [144, 145, 198, 199, 463, 464, 468, 469, 470, 489, 490, 497, 498, 542, 543, 563, 564, 566, 567, 568, 569, 578, 587, 588, 648, 649, 651, 656, 667, 670, 915, 951, 955, 956, 960, 961, 975, 981, 983],
                 stack_limit: 2,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [144, 145, 198, 199, 463, 464, 468, 469, 470, 489, 490, 497, 498, 542, 543, 563, 564, 566, 567, 568, 569, 578, 587, 588, 648, 649, 651, 656, 667, 670, 915, 951, 955, 956, 960, 961, 975, 981, 983],
                 ship_class_ids: [30],
                 stack_limit: 1,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [144, 145, 198, 199, 463, 464, 468, 469, 470, 489, 490, 497, 498, 542, 543, 563, 564, 566, 567, 568, 569, 578, 587, 588, 648, 649, 651, 656, 667, 670, 915, 951, 955, 956, 960, 961, 975, 981, 983],
                 ship_class_ids: [30],
                 stack_limit: 2,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [961],
                 stack_limit: 1,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { torpedo: 1 },
                 ship_ids: [961],
                 stack_limit: 2,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { torpedo: 7, evasion: 2 },
@@ -2292,13 +2293,13 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { torpedo: 2 },
                 ship_base_ids: [642],
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { torpedo: 2 },
                 ship_base_ids: [642],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { torpedo: 2 },
@@ -2366,72 +2367,72 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151, 593, 954],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [591],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [591],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [591],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [591],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [149, 150, 152, 592, 694],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [149, 150, 152, 592, 694],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [149, 150, 152, 592, 694],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -2567,27 +2568,27 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 4 },
                 ship_ids: [959],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 6 },
                 ship_ids: [959],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [959],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [959],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [959],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -2847,11 +2848,11 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [2]
+                ship_type_ids: [ST.DD]
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                ship_type_ids: [1]
+                ship_type_ids: [ST.DE]
             },
             {
                 bonus: { fire_power: 1, anti_air: 1, evasion: 1 },
@@ -2869,7 +2870,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2 },
                 ship_class_ids: [34],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 2, evasion: 1 },
@@ -2878,7 +2879,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2, evasion: 2 },
                 ship_class_ids: [56],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 3, torpedo: 2, anti_air: 1, evasion: 1 },
@@ -2887,7 +2888,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, torpedo: 1 },
                 ship_class_ids: [90],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 2, asw: 1, evasion: 1 },
@@ -2902,12 +2903,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, torpedo: 1 },
                 ship_ids: [622, 623, 624],
-                required_implovement: 7
+                required_improvement: 7
             }
         ]
     },
     {
-        ids: [518],
+        ids: [518], // 14cm連装砲改二
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 1, asw: 1, evasion: 1 },
@@ -2915,7 +2916,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1, torpedo: 1, evasion: 1 },
-                ship_type_ids: [16]
+                ship_type_ids: [ST.AV]
             },
             {
                 bonus: { fire_power: 1 },
@@ -2996,7 +2997,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [6],
-                required_implovement: 8,
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
@@ -3007,7 +3008,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [2],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -4053,11 +4054,11 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2 },
-                ship_type_ids: [1]
+                ship_type_ids: [ST.DE]
             },
             {
                 bonus: { fire_power: 1, anti_air: 1 },
-                ship_type_ids: [16, 21]
+                ship_type_ids: [ST.AV, ST.CT]
             },
             {
                 bonus: { fire_power: 1, anti_air: 2 },
@@ -4123,13 +4124,13 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1, evasion: 2 },
-                ship_type_ids: [3, 4, 16, 21],
+                ship_type_ids: [ST.CL, ST.CLT, ST.AV, ST.CT],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1, evasion: 4 },
-                ship_type_ids: [1],
+                ship_type_ids: [ST.DE],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
@@ -4170,7 +4171,7 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2 },
-                ship_type_ids: [16, 21]
+                ship_type_ids: [ST.AV, ST.CT]
             },
             {
                 bonus: { fire_power: 1, anti_air: 2 },
@@ -4250,7 +4251,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 2, evasion: 1 },
-                ship_type_ids: [3, 4, 16, 21],
+                ship_type_ids: [ST.CL, ST.CLT, ST.AV, ST.CT],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
@@ -4300,7 +4301,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 6
+                required_improvement: 6
             }
         ]
     },
@@ -4309,17 +4310,17 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { anti_air: 2, asw: 1, evasion: 2 },
-                ship_type_ids: [1]
+                ship_type_ids: [ST.DE]
             },
             {
                 bonus: { fire_power: 2, evasion: 3 },
-                ship_type_ids: [1],
+                ship_type_ids: [ST.DE],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 2, evasion: 3 },
-                ship_type_ids: [1],
+                ship_type_ids: [ST.DE],
                 requires_air_radar: true,
                 stack_limit: 1
             },
@@ -4390,139 +4391,139 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { anti_air: 1 },
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { evasion: 2 },
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [1],
-                required_implovement: 1
+                ship_type_ids: [ST.DE],
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 2, anti_air: -1 },
-                ship_type_ids: [1],
-                required_implovement: 2
+                ship_type_ids: [ST.DE],
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1, evasion: -2 },
-                ship_type_ids: [1],
-                required_implovement: 4
+                ship_type_ids: [ST.DE],
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 1, fire_power: -1 },
-                ship_type_ids: [1],
-                required_implovement: 6
+                ship_type_ids: [ST.DE],
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1, anti_air: -1 },
-                ship_type_ids: [1],
-                required_implovement: 8
+                ship_type_ids: [ST.DE],
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1, shell_accuracy: -1 },
-                ship_type_ids: [1],
-                required_implovement: 10
+                ship_type_ids: [ST.DE],
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [28, 66, 101],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 2, anti_air: -1 },
                 ship_class_ids: [28, 66, 101],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1, evasion: -2 },
                 ship_class_ids: [28, 66, 101],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 1, fire_power: -1 },
                 ship_class_ids: [28, 66, 101],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1, anti_air: -1 },
                 ship_class_ids: [28, 66, 101],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1, shell_accuracy: -1 },
                 ship_class_ids: [28, 66, 101],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [145, 488, 656, 961],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 2, anti_air: -1 },
                 ship_ids: [145, 488, 656, 961],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1, evasion: -2 },
                 ship_ids: [145, 488, 656, 961],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 1, fire_power: -1 },
                 ship_ids: [145, 488, 656, 961],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1, anti_air: -1 },
                 ship_ids: [145, 488, 656, 961],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1, shell_accuracy: -1 },
                 ship_ids: [145, 488, 656, 961],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, evasion: 1 },
-                ship_type_ids: [3, 4, 21],
-                required_implovement: 2,
+                ship_type_ids: [ST.CL, ST.CLT, ST.CT],
+                required_improvement: 2,
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 2, evasion: 1 },
-                ship_type_ids: [3, 4, 21],
-                required_implovement: 2,
+                ship_type_ids: [ST.CL, ST.CLT, ST.CT],
+                required_improvement: 2,
                 requires_air_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1, anti_air: 1, evasion: 2 },
                 ship_ids: [145],
-                required_implovement: 2,
+                required_improvement: 2,
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 4, evasion: 2 },
                 ship_ids: [145],
-                required_implovement: 2,
+                required_improvement: 2,
                 requires_air_radar: true,
                 stack_limit: 1
             },
@@ -4545,27 +4546,27 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [979],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [979],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [979],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [979],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [979],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -4591,29 +4592,29 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [44],
-                required_implovement: 4,
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [44],
-                required_implovement: 6,
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { torpedo: 1 },
-                required_implovement: 8,
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [127, 636],
-                required_implovement: 5,
+                required_improvement: 5,
                 stack_limit: 1
             }
         ]
@@ -4645,7 +4646,7 @@ const BONUS_DATAS: BonusData[] = [
         ]
     },
     {
-        ids: [385],
+        ids: [385], // 16inch三連装砲 Mk.6 mod.2
         bonuses: [
             {
                 bonus: { fire_power: 1 },
@@ -4654,12 +4655,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { armor: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, armor: 1 },
@@ -4671,7 +4672,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [8]
+                ship_type_ids: [ST.FBB]
             }
         ]
     },
@@ -4685,17 +4686,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 7
+                required_improvement: 7
             }
         ]
     },
     {
-        ids: [389],
+        ids: [389], // TBM-3W+3S
         bonuses: [
             {
                 bonus: { fire_power: 2, evasion: 2 },
@@ -4707,7 +4708,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 4, asw: 4, evasion: 3 },
-                ship_ids: [646]
+                ship_ids: [646] // 加賀改二護
             },
             {
                 bonus: { fire_power: 3, asw: 6 },
@@ -4737,17 +4738,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { armor: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, armor: 1 },
@@ -4759,7 +4760,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [8]
+                ship_type_ids: [ST.FBB]
             }
         ]
     },
@@ -4833,32 +4834,32 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [61],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [614],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [61],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [61],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [61],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_base_ids: [614],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -4872,7 +4873,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 4, evasion: 1 },
                 ship_ids: [651],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 3, anti_air: 1, evasion: 1 },
@@ -4896,7 +4897,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 3, evasion: 2 },
                 ship_ids: [651],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 3, anti_air: 2, evasion: 2 },
@@ -4905,7 +4906,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2, evasion: 1 },
                 ship_ids: [656],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 3, evasion: 3 },
@@ -4931,12 +4932,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [108],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [108],
-                required_implovement: 5
+                required_improvement: 5
             }
         ]
     },
@@ -4999,7 +5000,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1, evasion: -5, los: 1 },
-                ship_type_ids: [2]
+                ship_type_ids: [ST.DD]
             }
         ]
     },
@@ -5021,19 +5022,19 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { evasion: -9 },
-                ship_type_ids: [2]
+                ship_type_ids: [ST.DD]
             },
             {
                 bonus: { evasion: -7 },
-                ship_type_ids: [3, 4]
+                ship_type_ids: [ST.CL, ST.CLT]
             },
             {
                 bonus: { evasion: -6 },
-                ship_type_ids: [21]
+                ship_type_ids: [ST.CT]
             },
             {
                 bonus: { evasion: -5 },
-                ship_type_ids: [5, 6]
+                ship_type_ids: [ST.CA, ST.CAV]
             },
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 3 },
@@ -5058,25 +5059,25 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, anti_air: 1 },
                 ship_ids: [151, 411, 412, 541, 553, 554, 573, 593, 954],
-                required_implovement: 4,
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1, anti_air: 1 },
                 ship_ids: [151, 411, 412, 541, 553, 554, 573, 593, 954],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1, anti_air: 1 },
                 ship_ids: [694],
-                required_implovement: 5,
+                required_improvement: 5,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 2, anti_air: 1 },
                 ship_ids: [694],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -5115,13 +5116,13 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { fire_power: 1 },
                 ship_class_ids: [1, 5, 10, 12, 18, 22, 23, 28, 30, 38, 54, 66, 101, 4, 16, 20, 21, 34, 41, 52, 56],
                 stack_limit: 1,
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [1, 5, 10, 12, 18, 22, 23, 28, 30, 38, 54, 66, 101, 4, 16, 20, 21, 34, 41, 52, 56],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             }
         ]
     },
@@ -5186,7 +5187,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, los: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1
             }
         ]
@@ -5198,28 +5199,28 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { los: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5235,47 +5236,47 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { los: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [3, 5],
+                ship_type_ids: [ST.CL, ST.CA],
                 stack_limit: 1,
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5291,7 +5292,7 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
@@ -5302,13 +5303,13 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1 },
                 ship_class_ids: [95, 99, 106, 110, 121],
                 stack_limit: 1,
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [95, 99, 106, 110, 121],
                 stack_limit: 1,
-                required_implovement: 8
+                required_improvement: 8
             }
         ]
     },
@@ -5331,12 +5332,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 7
+                required_improvement: 7
             }
         ]
     },
@@ -5349,27 +5350,27 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 3,
+                required_improvement: 3,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 7,
+                required_improvement: 7,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 8,
+                required_improvement: 8,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 9,
+                required_improvement: 9,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 10,
+                required_improvement: 10,
                 ship_country_ids: [Country.USA]
             },
             {
@@ -5378,7 +5379,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 3,
+                required_improvement: 3,
                 ship_class_ids: [67, 78, 82, 88, 108, 112]
             },
             {
@@ -5391,7 +5392,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: -2, evasion: -1, armor: -2 },
-                ship_type_ids: [7]
+                ship_type_ids: [ST.CVL]
             }
         ]
     },
@@ -5404,32 +5405,32 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 5,
+                required_improvement: 5,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 6,
+                required_improvement: 6,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 7,
+                required_improvement: 7,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 8,
+                required_improvement: 8,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 9,
+                required_improvement: 9,
                 ship_country_ids: [Country.USA]
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10,
+                required_improvement: 10,
                 ship_country_ids: [Country.USA]
             },
             {
@@ -5438,7 +5439,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 5,
+                required_improvement: 5,
                 ship_class_ids: [67, 78, 82, 88, 108, 112]
             },
             {
@@ -5451,7 +5452,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: -2, evasion: -1, armor: -2 },
-                ship_type_ids: [7]
+                ship_type_ids: [ST.CVL]
             }
         ]
     },
@@ -5520,21 +5521,21 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5548,53 +5549,53 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { asw: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { asw: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { asw: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5612,22 +5613,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5750,22 +5751,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [508, 509, 888, 883],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 2 },
                 ship_ids: [508, 509, 888, 883],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { evasion: 2 },
                 ship_ids: [508, 509, 888, 883],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [508, 509, 888, 883],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5785,25 +5786,25 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { asw: 1 },
                 ship_ids: [145, 363, 476, 578, 588, 667, 961],
-                required_implovement: 4,
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [145, 363, 476, 578, 588, 667, 961],
-                required_implovement: 6,
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [145, 363, 476, 578, 588, 667, 961],
-                required_implovement: 8,
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [145, 363, 476, 578, 588, 667, 961],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -5834,17 +5835,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { armor: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { armor: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { armor: 1 },
                 ship_class_ids: [58, 61, 64, 68, 80, 92, 113, 124],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -5853,12 +5854,12 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { asw: 1, evasion: 1 },
-                ship_type_ids: [1, 2, 3, 21],
+                ship_type_ids: [ST.DE, ST.DD, ST.CL, ST.CT],
                 stack_limit: 1
             },
             {
                 bonus: { asw: 1 },
-                ship_type_ids: [1],
+                ship_type_ids: [ST.DE],
                 stack_limit: 1
             },
             {
@@ -5903,23 +5904,23 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { anti_air: 1 },
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, asw: 1, evasion: 2 },
@@ -5944,31 +5945,31 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 1 },
                 requires_air_radar: true,
                 stack_limit: 1,
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
                 ship_country_ids: [Country.Germany, Country.Italia],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1, anti_air: 1 },
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany, Country.Italia],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -6012,27 +6013,27 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [166],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [166],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [166],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [166],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [166],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, asw: 3 },
@@ -6041,37 +6042,37 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2 },
                 ship_base_ids: [900, 943],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [900, 943],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { asw: 1 },
                 ship_base_ids: [900, 943],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [900, 943],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [900, 943],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { asw: 1 },
                 ship_base_ids: [900, 943],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [900, 943],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -6208,37 +6209,37 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [109],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [71, 103, 109],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [109],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -6263,39 +6264,39 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { torpedo: 1 },
                 ship_class_ids: [44, 71, 103, 109],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 3
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 3
             },
             {
                 bonus: { torpedo: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 5
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 5
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 10
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 10
             },
             {
                 bonus: { torpedo: 7, shell_accuracy: 5 },
-                ship_type_ids: [13, 14],
-                required_implovement: 2,
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 2,
                 requires_synergy_equip_id: [461],
-                requires_synergy_equip_implovement: 4,
+                requires_synergy_equip_improvement: 4,
                 stack_limit: 1
             }
         ]
@@ -6488,17 +6489,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 2, evasion: 2, shell_accuracy: 2 },
@@ -6509,13 +6510,13 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { evasion: 1, shell_accuracy: 1 },
                 ship_class_ids: [79],
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 9
+                requires_synergy_equip_improvement: 9
             },
             {
                 bonus: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
                 ship_class_ids: [79],
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             }
         ]
     },
@@ -6538,22 +6539,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_class_ids: [79],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_class_ids: [79],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [79],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [79],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -6601,17 +6602,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [145, 566, 567, 568, 651, 656, 670, 915, 951, 961],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [145, 566, 567, 568, 651, 656, 670, 915, 951, 961],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [145, 566, 567, 568, 651, 656, 670, 915, 951, 961],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -6635,12 +6636,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [144, 145, 246, 405, 497],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [144, 145, 246, 405, 497],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 2, anti_air: 2, shell_accuracy: 1, evasion: 1 },
@@ -6654,17 +6655,17 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [323, 498, 961],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [323, 498, 961],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [323, 498, 961],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 3, anti_air: 3, shell_accuracy: 2, evasion: 2 },
@@ -6683,22 +6684,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [975],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [975],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [975],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [975],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 2, evasion: 2 },
@@ -6731,55 +6732,55 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 2 },
                 ship_class_ids: [79],
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 9
+                requires_synergy_equip_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [79],
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [79],
-                required_implovement: 7,
+                required_improvement: 7,
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [79],
-                required_implovement: 9,
+                required_improvement: 9,
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
                 requires_synergy_equip_id: [536, 537],
-                requires_synergy_equip_implovement: 1
+                requires_synergy_equip_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [970],
                 requires_synergy_equip_id: [536, 537],
-                requires_synergy_equip_implovement: 1
+                requires_synergy_equip_improvement: 1
             }
         ]
     },
@@ -6805,101 +6806,101 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 2 },
                 ship_class_ids: [79],
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 9
+                requires_synergy_equip_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [79],
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [79],
-                required_implovement: 7,
+                required_improvement: 7,
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [79],
-                required_implovement: 8,
+                required_improvement: 8,
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [79],
-                required_implovement: 9,
+                required_improvement: 9,
                 requires_synergy_equip_id: [468],
-                requires_synergy_equip_implovement: 10
+                requires_synergy_equip_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
                 requires_synergy_equip_id: [536, 537],
-                requires_synergy_equip_implovement: 1
+                requires_synergy_equip_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [970],
                 requires_synergy_equip_id: [536, 537],
-                requires_synergy_equip_implovement: 1
+                requires_synergy_equip_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 7,
+                required_improvement: 7,
                 requires_synergy_equip_id: [536, 537],
-                requires_synergy_equip_implovement: 1
+                requires_synergy_equip_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 9,
+                required_improvement: 9,
                 requires_synergy_equip_id: [536, 537],
-                requires_synergy_equip_implovement: 1
+                requires_synergy_equip_improvement: 1
             }
         ]
     },
@@ -6916,7 +6917,7 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [1]
+                ship_type_ids: [ST.DE]
             },
             {
                 bonus: { asw: 1, evasion: 1, shell_accuracy: 1 },
@@ -6930,11 +6931,11 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { asw: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -6943,32 +6944,32 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { evasion: 1 },
-                required_implovement: 3,
+                required_improvement: 3,
                 stack_limit: 1
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 5,
+                required_improvement: 5,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 7,
+                required_improvement: 7,
                 stack_limit: 1
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 8,
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 9,
+                required_improvement: 9,
                 stack_limit: 1
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -7022,52 +7023,52 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 1,
+                required_improvement: 1,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 2,
+                required_improvement: 2,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 3,
+                required_improvement: 3,
                 stack_limit: 1
             },
             {
                 bonus: { dive_bomb: 1 },
-                required_implovement: 4,
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { torpedo: 1 },
-                required_implovement: 5,
+                required_improvement: 5,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 1 },
-                required_implovement: 6,
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 7,
+                required_improvement: 7,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 8,
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 9,
+                required_improvement: 9,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -7083,13 +7084,13 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [6],
-                required_implovement: 6,
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [6],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -7100,31 +7101,31 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [2],
-                required_implovement: 5,
+                required_improvement: 5,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [2],
-                required_implovement: 6,
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [2],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [37],
-                required_implovement: 6,
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [37],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -7180,7 +7181,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [546, 911, 916],
-                required_implovement: 5,
+                required_improvement: 5,
                 stack_limit: 1
             },
             {
@@ -7191,13 +7192,13 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [553, 554],
-                required_implovement: 1,
+                required_improvement: 1,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [553, 554],
-                required_implovement: 3,
+                required_improvement: 3,
                 stack_limit: 1
             },
             {
@@ -7212,62 +7213,62 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [8, 9, 10],
-                required_implovement: 2,
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
+                required_improvement: 2,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [8, 9, 10],
-                required_implovement: 4,
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [8, 9, 10],
-                required_implovement: 7,
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
+                required_improvement: 7,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [8, 9, 10],
-                required_implovement: 8,
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [8, 9, 10],
-                required_implovement: 9,
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
+                required_improvement: 9,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [5, 6],
-                required_implovement: 2,
+                ship_type_ids: [ST.CA, ST.CAV],
+                required_improvement: 2,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [5, 6],
-                required_implovement: 4,
+                ship_type_ids: [ST.CA, ST.CAV],
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [5, 6],
-                required_implovement: 6,
+                ship_type_ids: [ST.CA, ST.CAV],
+                required_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [5, 6],
-                required_implovement: 8,
+                ship_type_ids: [ST.CA, ST.CAV],
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [5, 6],
-                required_implovement: 10,
+                ship_type_ids: [ST.CA, ST.CAV],
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -7289,19 +7290,19 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { anti_air: 1 },
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -7321,12 +7322,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1, evasion: 1 },
                 ship_ids: [894, 899],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1, anti_air: 1, shell_accuracy: 1 },
                 ship_ids: [894, 899],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -7343,15 +7344,15 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { evasion: 1, shell_accuracy: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -7368,15 +7369,15 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1, evasion: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1, shell_accuracy: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -7385,7 +7386,7 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { asw: 1, evasion: 1 },
-                ship_type_ids: [2],
+                ship_type_ids: [ST.DD],
                 ship_country_ids: [Country.Japan]
             },
             {
@@ -7407,52 +7408,52 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [145, 961],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [145, 961],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [145, 961],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [145, 961],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [145, 961],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [145, 961],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { asw: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -7469,19 +7470,19 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -7536,77 +7537,77 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [151, 591],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 591],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151, 591],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [151, 591],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [149, 150, 152, 592, 694],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [149, 150, 152, 592, 694],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [149, 150, 152, 592, 694],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 3, evasion: 4 },
@@ -7630,14 +7631,14 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [410],
-                requires_synergy_equip_implovement: 7,
+                requires_synergy_equip_improvement: 7,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [410],
-                requires_synergy_equip_implovement: 10,
+                requires_synergy_equip_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -7650,35 +7651,35 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [411],
-                requires_synergy_equip_implovement: 2,
+                requires_synergy_equip_improvement: 2,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [411],
-                requires_synergy_equip_implovement: 4,
+                requires_synergy_equip_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [411],
-                requires_synergy_equip_implovement: 6,
+                requires_synergy_equip_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [411],
-                requires_synergy_equip_implovement: 8,
+                requires_synergy_equip_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [411],
-                requires_synergy_equip_implovement: 10,
+                requires_synergy_equip_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -7717,72 +7718,72 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [593, 694, 954],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [593, 954],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [593, 694, 954],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [593, 694, 954],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [593, 694, 954],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 591, 592, 694],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [151, 591, 592],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [151, 591, 592],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [151, 591, 592],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [151, 591, 592],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [149, 150, 152, 694],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [149, 150, 152],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [149, 150, 152],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 3, shell_accuracy: 3, evasion: 2 },
@@ -7806,21 +7807,21 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { torpedo: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
-                requires_synergy_equip_implovement: 6,
+                requires_synergy_equip_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
-                requires_synergy_equip_implovement: 8,
+                requires_synergy_equip_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
-                requires_synergy_equip_implovement: 10,
+                requires_synergy_equip_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -7848,19 +7849,19 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 2 },
-                ship_type_ids: [2]
+                ship_type_ids: [ST.DD]
             },
             {
                 bonus: { fire_power: 1, anti_air: 1, evasion: 1 },
-                ship_type_ids: [1]
+                ship_type_ids: [ST.DE]
             },
             {
                 bonus: { anti_air: 1, evasion: 2 },
-                ship_type_ids: [3, 4, 21]
+                ship_type_ids: [ST.CL, ST.CLT, ST.CT]
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                ship_type_ids: [5, 6, 16]
+                ship_type_ids: [ST.CA, ST.CAV, ST.AV]
             },
             {
                 bonus: { fire_power: 2, anti_air: 3, evasion: 4 },
@@ -7927,7 +7928,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [986, 987],
-                required_implovement: 8
+                required_improvement: 8
             }
         ]
     },
@@ -7961,12 +7962,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2, evasion: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [8, 9, 10]
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV]
             },
             {
                 bonus: { fire_power: 1, evasion: 1, shell_accuracy: 2 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [8, 9, 10],
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
                 requires_synergy_equip_id: [279, 307, 315, 456],
                 stack_limit: 1
             },
@@ -7982,15 +7983,15 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { armor: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 9
+                required_improvement: 9
             }
         ]
     },
@@ -8006,7 +8007,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, evasion: 2, shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                ship_type_ids: [8, 9, 10],
+                ship_type_ids: [ST.FBB, ST.BB, ST.BBV],
                 requires_synergy_equip_id: [507],
                 stack_limit: 1
             },
@@ -8088,40 +8089,40 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 requires_synergy_equip_id: [267, 366],
-                requires_synergy_equip_implovement: 3,
+                requires_synergy_equip_improvement: 3,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_class_ids: [38],
                 requires_synergy_equip_id: [267, 366],
-                requires_synergy_equip_implovement: 3,
+                requires_synergy_equip_improvement: 3,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1, anti_air: 4, evasion: 3 },
                 requires_synergy_equip_id: [450],
-                requires_synergy_equip_implovement: 4,
+                requires_synergy_equip_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 7,
+                required_improvement: 7,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 8,
+                required_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 9,
+                required_improvement: 9,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -8131,31 +8132,31 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { anti_air: 1, evasion: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 2 },
-                required_implovement: 6,
+                required_improvement: 6,
                 requires_air_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
                 ship_country_ids: [Country.Germany, Country.Italia],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1, shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany, Country.Italia],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -8261,12 +8262,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [501, 502, 503, 504, 506, 507],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [501, 502, 503, 504, 506, 507],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8296,72 +8297,72 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [52],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [52],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { los: 1, torpedo: 1 },
                 ship_class_ids: [52],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [52],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [52],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { los: 1 },
                 ship_class_ids: [52],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [52],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [507],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [507],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { los: 1, torpedo: 1 },
                 ship_ids: [507],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [507],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [507],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { los: 1 },
                 ship_ids: [507],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [507],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8370,37 +8371,37 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { torpedo: 1, evasion: 5, shell_accuracy: 1, los: 3 },
-                ship_type_ids: [14]
+                ship_type_ids: [ST.SSV]
             },
             {
                 bonus: { torpedo: 1 },
-                ship_type_ids: [14],
-                required_implovement: 1
+                ship_type_ids: [ST.SSV],
+                required_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [14],
-                required_implovement: 2
+                ship_type_ids: [ST.SSV],
+                required_improvement: 2
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [14],
-                required_implovement: 3
+                ship_type_ids: [ST.SSV],
+                required_improvement: 3
             },
             {
                 bonus: { los: 1 },
-                ship_type_ids: [14],
-                required_implovement: 5
+                ship_type_ids: [ST.SSV],
+                required_improvement: 5
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [14],
-                required_implovement: 8
+                ship_type_ids: [ST.SSV],
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [14],
-                required_implovement: 10
+                ship_type_ids: [ST.SSV],
+                required_improvement: 10
             }
         ]
     },
@@ -8409,62 +8410,62 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { torpedo: 2, dive_bomb: 2, evasion: 1, shell_accuracy: 1, los: 1 },
-                ship_type_ids: [14]
+                ship_type_ids: [ST.SSV]
             }
         ]
     },
     {
-        ids: [524],
+        ids: [524], // 12cm単装高角砲+25mm機銃増備
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 2, shell_accuracy: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22]
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO]
             },
             {
                 bonus: { anti_air: 2, evasion: 2 },
-                ship_type_ids: [17, 19, 20, 21, 22],
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
                 requires_air_radar: true,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 1
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 2
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 2
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 4
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 6
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 7
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 7
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 8
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 9
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [17, 19, 20, 21, 22],
-                required_implovement: 10
+                ship_type_ids: [ST.LHA, ST.AR, ST.AS, ST.CT, ST.AO],
+                required_improvement: 10
             }
         ]
     },
@@ -8473,7 +8474,7 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1, torpedo: 2, evasion: -1 },
-                ship_type_ids: [13, 14]
+                ship_type_ids: [ST.SS, ST.SSV]
             },
             {
                 bonus: { fire_power: 2, torpedo: 1, shell_accuracy: 2 },
@@ -8482,23 +8483,23 @@ const BONUS_DATAS: BonusData[] = [
             },
             {
                 bonus: { torpedo: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 1
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 3
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 6
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 6
             },
             {
                 bonus: { torpedo: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 10
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 10
             }
         ]
     },
@@ -8507,22 +8508,22 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1, torpedo: 1, shell_accuracy: 1 },
-                ship_type_ids: [13, 14]
+                ship_type_ids: [ST.SS, ST.SSV]
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 2
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 2
             },
             {
                 bonus: { torpedo: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 4
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
-                ship_type_ids: [13, 14],
-                required_implovement: 8
+                ship_type_ids: [ST.SS, ST.SSV],
+                required_improvement: 8
             }
         ]
     },
@@ -8547,25 +8548,25 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 2,
+                required_improvement: 2,
                 stack_limit: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 4,
+                required_improvement: 4,
                 stack_limit: 1
             },
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 7,
+                required_improvement: 7,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 10,
+                required_improvement: 10,
                 stack_limit: 1
             }
         ]
@@ -8584,22 +8585,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.UK],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8618,22 +8619,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { armor: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8643,22 +8644,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8673,49 +8674,49 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 8,
+                required_improvement: 8,
                 requires_synergy_equip_id: [123]
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 10,
+                required_improvement: 10,
                 requires_synergy_equip_id: [123]
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Italia],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.Italia],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Italia],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8725,32 +8726,32 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [78, 112],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [78, 112],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [78, 112],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [78, 112],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [78, 112],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [78, 112],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -8788,37 +8789,37 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { armor: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { armor: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [592, 694],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { shell_accuracy: 1 },
@@ -8827,42 +8828,42 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [150, 152, 591, 954],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { armor: 1 },
                 ship_ids: [150, 152, 591, 954],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [150, 152, 591, 954],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [150, 152, 591, 954],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [150, 152, 591, 954],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [149, 151, 593],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { armor: 1 },
                 ship_ids: [149, 151, 593],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [149, 151, 593],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 3, shell_accuracy: 3, evasion: 3 },
@@ -8936,21 +8937,21 @@ const BONUS_DATAS: BonusData[] = [
                 bonus: { torpedo: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
-                requires_synergy_equip_implovement: 6,
+                requires_synergy_equip_improvement: 6,
                 stack_limit: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
-                requires_synergy_equip_implovement: 8,
+                requires_synergy_equip_improvement: 8,
                 stack_limit: 1
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
-                requires_synergy_equip_implovement: 10,
+                requires_synergy_equip_improvement: 10,
                 stack_limit: 1
             },
             {
@@ -8990,82 +8991,82 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [428],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [428],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [428],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [428],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [428],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [428],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [428],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [141],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [141],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [141],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [141],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [141],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [1],
-                required_implovement: 3
+                ship_type_ids: [ST.DE],
+                required_improvement: 3
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [1],
-                required_implovement: 6
+                ship_type_ids: [ST.DE],
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
-                ship_type_ids: [1],
-                required_implovement: 9
+                ship_type_ids: [ST.DE],
+                required_improvement: 9
             },
             {
                 bonus: { evasion: 1 },
-                ship_type_ids: [1],
-                required_implovement: 10
+                ship_type_ids: [ST.DE],
+                required_improvement: 10
             }
         ]
     },
@@ -9074,31 +9075,31 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9108,72 +9109,72 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [54],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [54],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [54],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [54],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [54],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [968],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [968],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [968],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [968],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [968],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9196,27 +9197,27 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9226,12 +9227,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 9
+                required_improvement: 9
             }
         ]
     },
@@ -9254,32 +9255,32 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9289,12 +9290,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.France],
-                required_implovement: 8
+                required_improvement: 8
             }
         ]
     },
@@ -9346,12 +9347,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9361,12 +9362,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9397,22 +9398,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { los: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9422,22 +9423,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.USA],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9492,62 +9493,62 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { asw: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 5
+                required_improvement: 5
             },
             {
                 bonus: { evasion: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { asw: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [161, 900, 943],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { asw: 1 },
                 ship_class_ids: [27, 76],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [27, 76],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [27, 76],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [27, 76],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9561,22 +9562,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [89, 116],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_base_ids: [89, 116],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_base_ids: [89, 116],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [89, 116],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, evasion: 1 },
@@ -9598,22 +9599,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9635,32 +9636,32 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
@@ -9669,22 +9670,22 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { evasion: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9706,12 +9707,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
@@ -9720,7 +9721,7 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 2
+                required_improvement: 2
             }
         ]
     },
@@ -9742,12 +9743,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 2 },
                 ship_ids: [883, 899],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [883, 899],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
@@ -9756,12 +9757,12 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 1
+                required_improvement: 1
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
-                required_implovement: 2
+                required_improvement: 2
             }
         ]
     },
@@ -9770,12 +9771,12 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { shell_accuracy: 1, evasion: 1 },
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
                 ship_ids: [156, 599, 610, 883, 899],
-                required_implovement: 2
+                required_improvement: 2
             }
         ]
     },
@@ -9785,52 +9786,52 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [54],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_class_ids: [54],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_class_ids: [54],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_class_ids: [54],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_class_ids: [54],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { fire_power: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { anti_air: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { evasion: 1 },
                 ship_ids: [981, 983],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9839,27 +9840,27 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 2
+                required_improvement: 2
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 4
+                required_improvement: 4
             },
             {
                 bonus: { asw: 1 },
-                required_implovement: 6
+                required_improvement: 6
             },
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1, evasion: 1, asw: 1 },
-                ship_type_ids: [7]
+                ship_type_ids: [ST.CVL]
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
@@ -9884,15 +9885,15 @@ const BONUS_DATAS: BonusData[] = [
         bonuses: [
             {
                 bonus: { fire_power: 1 },
-                required_implovement: 3
+                required_improvement: 3
             },
             {
                 bonus: { shell_accuracy: 1 },
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 2, shell_accuracy: 1, asw: 1 },
@@ -9925,32 +9926,32 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { fire_power: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { anti_air: 1, fire_power: 1, shell_accuracy: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { fire_power: 1 },
                 ship_base_ids: [83, 534],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1 },
                 ship_base_ids: [83, 534],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
@@ -9973,32 +9974,32 @@ const BONUS_DATAS: BonusData[] = [
             {
                 bonus: { anti_air: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 7
+                required_improvement: 7
             },
             {
                 bonus: { evasion: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 8
+                required_improvement: 8
             },
             {
                 bonus: { shell_accuracy: 1, anti_air: 1, evasion: 1 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { fire_power: 1, shell_accuracy: 1, anti_air: 1, evasion: 2 },
                 ship_country_ids: [Country.Germany],
-                required_implovement: 10
+                required_improvement: 10
             },
             {
                 bonus: { anti_air: 1, evasion: 1 },
                 ship_base_ids: [83, 534],
-                required_implovement: 9
+                required_improvement: 9
             },
             {
                 bonus: { shell_accuracy: 1, anti_air: 1, evasion: 1 },
                 ship_base_ids: [83, 534],
-                required_implovement: 10
+                required_improvement: 10
             }
         ]
     },
