@@ -3,7 +3,7 @@ import { ShipType } from "../../types/ship/ship";
 /**
  * ! 一段落するまで触らない
  */
-export const KETSUBAN_SHIP_DATAS = {
+const KETSUBAN_SHIP_DATAS = {
     9001: {
         name: 'Iona',
         nameJP: 'イオナ',
@@ -299,6 +299,24 @@ export const KETSUBAN_SHIP_DATAS = {
         EQUIPS: [],
         fuel: 0,
         ammo: 0
+    },
+    3001: {
+        name: '???????',
+        nameJP: '???????',
+        type: ShipType.CVB,
+        HP: 92,
+        FP: 89,
+        TP: 0,
+        AA: 99,
+        AR: 102,
+        EV: 59,
+        ASW: 0,
+        LOS: 89,
+        LUK: 8,
+        RNG: 3,
+        SLOTS: [24, 18, 12, 6],
+        fuel: 250,
+        ammo: 220
     },
     3002: {
         name: '????? ?????????? ??????',

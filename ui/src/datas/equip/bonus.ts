@@ -66,7 +66,7 @@ export type EquipBonusData = {
 
 export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
     {
-        types: [EquipType.CARRIERSCOUT],
+        types: [EquipType.CARRIER_SCOUT],
         bonuses: [
             {
                 bonus: { los: 1 },
@@ -110,7 +110,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEAPLANEBOMBER],
+        types: [EquipType.SEAPLANE_BOMBER],
         bonuses: [
             {
                 bonus: { fire_power: 1, asw: 1, evasion: 1 },
@@ -126,7 +126,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.RADARS, EquipType.RADARL],
+        types: [EquipType.RADAR_S, EquipType.RADAR_L],
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 3 },
@@ -158,7 +158,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEARCHLIGHTS],
+        types: [EquipType.SEARCHLIGHT_S],
         bonuses: [
             {
                 bonus: { fire_power: 4, evasion: -1 },
@@ -186,7 +186,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEARCHLIGHTL],
+        types: [EquipType.SEARCHLIGHT_L],
         bonuses: [
             {
                 bonus: { fire_power: 6, evasion: -2 },

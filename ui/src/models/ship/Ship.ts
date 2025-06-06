@@ -7,6 +7,7 @@ import { createNakedPlayerShip } from "./NakedShip";
 import { EquipDatas } from "@/types/equip";
 import { CountryDatas } from "@/datas/ship/country";
 import { createEquipBonus } from "../equip/EquipBonus";
+import { createEquipImprovement } from "../equip/EquipImprovement";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -47,7 +48,7 @@ export function createPlayerShip(
     lv: ShipLv,
     ship_id: ShipId,
     equips: Equip[],
-    edit_input: StatusComponent,
+    edit_input?: StatusComponent,
 ): PlayerShip {
     const naked_ship = createNakedPlayerShip(
         ship_datas,
@@ -57,4 +58,5 @@ export function createPlayerShip(
     );
 
     const equip_bonuses = createEquipBonus(naked_ship, equips);
+    const equip_improvement_bonus = createEquipImprovement();
 }

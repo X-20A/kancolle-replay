@@ -2,72 +2,72 @@ import { AACITriggerEquipType, EquipDatas, SkillTriggerEquipType, SpecialIcon } 
 
 /** 装備種別ID */
 export const enum EquipType {
-    MAINGUNS = 1,
-    MAINGUNSAA = 101,
-    MAINGUNM = 2,
-    MAINGUNL = 3,
-    SECGUN = 4,
-    SECGUNAA = 104,
+    MAIN_GUN_S = 1,
+    MAIN_GUN_S_AA = 101,
+    MAIN_GUN_M = 2,
+    MAIN_GUN_L = 3,
+    SECONDARY_GUN = 4,
+    SECONDARY_GUN_AA = 104,
     TORPEDO = 5,
     FIGHTER = 6,
-    DIVEBOMBER = 7,
-    TORPBOMBER = 8,
-    CARRIERSCOUT = 9,
+    DIVE_BOMBER = 7,
+    TORPEDO_BOMBER = 8,
+    CARRIER_SCOUT = 9,
     SEAPLANE = 10,
-    SEAPLANEBOMBER = 11,
-    RADARS = 12,
-    RADARL = 13,
-    SONARS = 14,
+    SEAPLANE_BOMBER = 11,
+    RADAR_S = 12,
+    RADAR_L = 13,
+    SONAR_S = 14,
     /** 爆雷 && 爆雷投射機 */
-    DEPTHCHARGE = 15,
+    DEPTH_CHARGE = 15,
     ENGINE = 17,
-    TYPE3SHELL = 18,
-    APSHELL = 19,
-    AAGUN = 21,
-    MIDGETSUB = 22,
+    TYPE_3_SHELL = 18,
+    AP_SHELL = 19,
+    AA_GUN = 21,
+    MIDGET_SUBMARINE = 22,
     REPAIR = 23,
-    LANDINGCRAFT = 24,
+    LANDING_CRAFT = 24,
     AUTOGYRO = 25,
-    ASWPLANE = 26,
-    BULGEM = 27,
-    BULGEL = 28,
-    SEARCHLIGHTS = 29,
+    ASW_PLANE = 26,
+    BULGE_M = 27,
+    BULGE_L = 28,
+    SEARCHLIGHT_S = 29,
     DRUM = 30,
     SRF = 31,
-    TORPEDOSS = 32,
+    TORPEDO_SS = 32,
     STARSHELL = 33,
     FCF = 34,
     SCAMP = 35,
-    AAFD = 36,
+    ANTI_AIR_FIRE_DIRECTOR = 36,
     WG42 = 37,
-    MAINGUNXL = 38,
+    MAIN_GUN_XL = 38,
     PICKET = 39,
-    SONARL = 40,
-    FLYINGBOAT = 41,
-    SEARCHLIGHTL = 42,
+    SONAR_L = 40,
+    FLYING_BOAT = 41,
+    SEARCHLIGHT_L = 42,
     RATION = 43,
     OILDRUM = 44,
-    SEAPLANEFIGHTER = 45,
-    LANDINGTANK = 46,
-    LANDBOMBER = 47,
+    SEAPLANE_FIGHTER = 45,
+    LANDING_TANK = 46,
+    LAND_BASED_BOMBER = 47,
     INTERCEPTOR = 48,
-    LANDSCOUT = 49,
-    TRANSPORTITEM = 50,
-    SUBRADAR = 51,
-    ARMYUNIT = 52,
-    LANDBOMBERL = 53,
+    LAND_BASED_SCOUT = 49,
+    TRANSPORT_ITEM = 50,
+    SUBMARINE_RADAR = 51,
+    ARMY_UNIT = 52,
+    LAND_BASED_BOMBER_L = 53,
     SMOKESCREEN = 54,
-    JETBOMBER = 57,
+    JET_BOMBER = 57,
     // JETSCOUT = 59,
-    RADARXL = 93,
-    CARRIERSCOUT2 = 94,
-    SECGUNL = 95,
+    RADAR_XL = 93,
+    CARRIER_SCOUT_2 = 94,
+    SECCONDARY_GUN_L = 95,
     OTHER = 99,
 
     // 新規
 
     /** 爆戦 */
-    FIGHTERBOMBER = 70,
+    FIGHTER_BOMBER = 70,
     /** 阻塞気球 */
     BARRAGE_BALLOON = 79,
 };
@@ -76,7 +76,7 @@ const EQUIPDATA: EquipDatas = {
     1: {
         name: '12cm Single Cannon',
         nameJP: '12cm単装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 1,
         AA: 1,
         RNG: 1
@@ -84,7 +84,7 @@ const EQUIPDATA: EquipDatas = {
     2: {
         name: '12.7cm Twin Cannon',
         nameJP: '12.7cm連装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 2,
         AA: 2,
         RNG: 1
@@ -92,7 +92,7 @@ const EQUIPDATA: EquipDatas = {
     3: {
         name: '10cm Twin High-Angle Cannon',
         nameJP: '10cm連装高角砲',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 7,
         RNG: 1
@@ -100,7 +100,7 @@ const EQUIPDATA: EquipDatas = {
     4: {
         name: '14cm Single Cannon',
         nameJP: '14cm単装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 101,
         FP: 2,
         RNG: 2,
@@ -109,7 +109,7 @@ const EQUIPDATA: EquipDatas = {
     5: {
         name: '15.5cm Triple Cannon',
         nameJP: '15.5cm三連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 7,
         AA: 4,
         RNG: 2,
@@ -118,7 +118,7 @@ const EQUIPDATA: EquipDatas = {
     6: {
         name: '20.3cm Twin Cannon',
         nameJP: '20.3cm連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 3,
         RNG: 2,
@@ -127,7 +127,7 @@ const EQUIPDATA: EquipDatas = {
     7: {
         name: '35.6cm Twin Cannon',
         nameJP: '35.6cm連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 15,
         AA: 4,
@@ -136,7 +136,7 @@ const EQUIPDATA: EquipDatas = {
     8: {
         name: '41cm Twin Cannon',
         nameJP: '41cm連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 3,
         FP: 20,
         AA: 4,
@@ -145,7 +145,7 @@ const EQUIPDATA: EquipDatas = {
     9: {
         name: '46cm Triple Cannon',
         nameJP: '46cm三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         a_type: AACITriggerEquipType.A_XLGUN,
         fit_class: 5,
         FP: 26,
@@ -155,7 +155,7 @@ const EQUIPDATA: EquipDatas = {
     10: {
         name: '12.7cm Twin High-Angle Cannon',
         nameJP: '12.7cm連装高角砲',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 4,
         RNG: 1,
@@ -164,7 +164,7 @@ const EQUIPDATA: EquipDatas = {
     11: {
         name: '15.2cm Single Cannon',
         nameJP: '15.2cm単装砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         fit_class: 101,
         FP: 2,
         RNG: 2,
@@ -173,7 +173,7 @@ const EQUIPDATA: EquipDatas = {
     12: {
         name: '15.5cm Triple Secondary Cannon',
         nameJP: '15.5cm三連装副砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 7,
         AA: 3,
         RNG: 2,
@@ -203,7 +203,7 @@ const EQUIPDATA: EquipDatas = {
     16: {
         name: 'Type 97 Torpedo Bomber',
         nameJP: '九七式艦攻',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 5,
         ASW: 4,
         LOS: 1
@@ -211,7 +211,7 @@ const EQUIPDATA: EquipDatas = {
     17: {
         name: 'Tenzan',
         nameJP: '天山',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 7,
         ASW: 3,
         LOS: 1
@@ -219,7 +219,7 @@ const EQUIPDATA: EquipDatas = {
     18: {
         name: 'Ryuusei',
         nameJP: '流星',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 10,
         AA: 1,
         ASW: 4,
@@ -253,14 +253,14 @@ const EQUIPDATA: EquipDatas = {
     23: {
         name: 'Type 99 Bomber',
         nameJP: '九九式艦爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         ASW: 3,
         DIVEBOMB: 5
     },
     24: {
         name: 'Suisei',
         nameJP: '彗星',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         ASW: 3,
         DIVEBOMB: 8
     },
@@ -277,7 +277,7 @@ const EQUIPDATA: EquipDatas = {
     26: {
         name: 'Zuiun',
         nameJP: '瑞雲',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA: 2,
         ASW: 4,
         LOS: 6,
@@ -287,7 +287,7 @@ const EQUIPDATA: EquipDatas = {
     27: {
         name: 'Type 13 Air RADAR',
         nameJP: '13号対空電探',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         AA: 2,
         LOS: 3,
         ACC: 1
@@ -295,21 +295,21 @@ const EQUIPDATA: EquipDatas = {
     28: {
         name: 'Type 22 Surface RADAR',
         nameJP: '22号対水上電探',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         LOS: 5,
         ACC: 3
     },
     29: {
         name: 'Type 33 Surface RADAR',
         nameJP: '33号対水上電探',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         LOS: 7,
         ACC: 5
     },
     30: {
         name: 'Type 21 Air RADAR',
         nameJP: '21号対空電探',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 4,
         LOS: 4,
         ACC: 2
@@ -317,14 +317,14 @@ const EQUIPDATA: EquipDatas = {
     31: {
         name: 'Type 32 Surface RADAR',
         nameJP: '32号対水上電探',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         LOS: 10,
         ACC: 8
     },
     32: {
         name: 'Type 42 Air RADAR',
         nameJP: '42号対空電探',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 6,
         LOS: 5,
         ACC: 4
@@ -344,48 +344,48 @@ const EQUIPDATA: EquipDatas = {
     35: {
         name: 'Type 3 Shell',
         nameJP: '三式弾',
-        type: EquipType.TYPE3SHELL,
+        type: EquipType.TYPE_3_SHELL,
         AA: 5
     },
     36: {
         name: 'Type 91 AP Shell',
         nameJP: '九一式徹甲弾',
-        type: EquipType.APSHELL,
+        type: EquipType.AP_SHELL,
         FP: 8,
         ACC: 1
     },
     37: {
         name: '7.7mm Gun',
         nameJP: '7.7mm機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 2,
         EV: 1
     },
     38: {
         name: '12.7mm Gun',
         nameJP: '12.7mm単装機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 3,
         EV: 1
     },
     39: {
         name: '25mm Dual Gun',
         nameJP: '25mm連装機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 5,
         EV: 1
     },
     40: {
         name: '25mm Triple Gun',
         nameJP: '25mm三連装機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 6,
         EV: 1
     },
     41: {
         name: 'Type A Ko-hyoteki',
         nameJP: '甲標的 甲型',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 12
     },
     42: {
@@ -401,35 +401,35 @@ const EQUIPDATA: EquipDatas = {
     44: {
         name: 'Type 94 Depth Charge Projector',
         nameJP: '九四式爆雷投射機',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DCP: true,
         ASW: 5
     },
     45: {
         name: 'Type 3 Depth Charge Projector',
         nameJP: '三式爆雷投射機',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DCP: true,
         ASW: 8
     },
     46: {
         name: 'Type 93 SONAR',
         nameJP: '九三式水中聴音機',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ASW: 6,
         ACC: 1
     },
     47: {
         name: 'Type 3 SONAR',
         nameJP: '三式水中探信儀',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ASW: 10,
         ACC: 2
     },
     48: {
         name: '12cm Single High-Angle Cannon',
         nameJP: '12cm単装高角砲',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 3,
         RNG: 1
@@ -437,14 +437,14 @@ const EQUIPDATA: EquipDatas = {
     49: {
         name: '25mm Single Gun',
         nameJP: '25mm単装機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 4,
         EV: 1
     },
     50: {
         name: '20.3cm(no.3) Dual Cannon',
         nameJP: '20.3cm(3号)連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 10,
         AA: 4,
         ACC: 1,
@@ -454,13 +454,13 @@ const EQUIPDATA: EquipDatas = {
     51: {
         name: '12cm 30-tube Rocket Launcher',
         nameJP: '12cm30連装噴進砲',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 8
     },
     52: {
         name: 'Ryuusei Kai',
         nameJP: '流星改',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 13,
         AA: 1,
         ASW: 3,
@@ -475,7 +475,7 @@ const EQUIPDATA: EquipDatas = {
     54: {
         name: 'Saiun',
         nameJP: '彩雲',
-        type: EquipType.CARRIERSCOUT,
+        type: EquipType.CARRIER_SCOUT,
         can_avoid_T_disadvantage: true,
         LOS: 9,
         ACC: 2
@@ -496,7 +496,7 @@ const EQUIPDATA: EquipDatas = {
     57: {
         name: 'Suisei Model 12A',
         nameJP: '彗星一二型甲',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         ASW: 3,
         LOS: 1,
         DIVEBOMB: 10
@@ -522,7 +522,7 @@ const EQUIPDATA: EquipDatas = {
     60: {
         name: 'Type 62 Zero Fighter-Bomber',
         nameJP: '零式艦戦62型(爆戦)',
-        type: EquipType.FIGHTERBOMBER,
+        type: EquipType.FIGHTER_BOMBER,
         AA: 4,
         ASW: 3,
         DIVEBOMB: 4
@@ -530,7 +530,7 @@ const EQUIPDATA: EquipDatas = {
     61: {
         name: 'Type 2 Recon Plane',
         nameJP: '二式艦上偵察機',
-        type: EquipType.CARRIERSCOUT,
+        type: EquipType.CARRIER_SCOUT,
         AA: 1,
         LOS: 7,
         ACC: 3
@@ -538,7 +538,7 @@ const EQUIPDATA: EquipDatas = {
     62: {
         name: 'Prototype Seiran',
         nameJP: '試製晴嵐',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         ASW: 6,
         LOS: 6,
         DIVEBOMB: 11,
@@ -547,7 +547,7 @@ const EQUIPDATA: EquipDatas = {
     63: {
         name: '12.7cm Twin Cannon B',
         nameJP: '12.7cm連装砲B型改二',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
         RNG: 1
@@ -555,7 +555,7 @@ const EQUIPDATA: EquipDatas = {
     64: {
         name: 'Ju 87C Kai',
         nameJP: 'Ju87C改',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         ASW: 5,
         DIVEBOMB: 9,
@@ -564,7 +564,7 @@ const EQUIPDATA: EquipDatas = {
     65: {
         name: '15.2cm Twin Cannon',
         nameJP: '15.2cm連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
         AA: 3,
@@ -574,7 +574,7 @@ const EQUIPDATA: EquipDatas = {
     66: {
         name: '8cm High-Angle Cannon',
         nameJP: '8cm高角砲',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 6,
         RNG: 1,
@@ -591,7 +591,7 @@ const EQUIPDATA: EquipDatas = {
     68: {
         name: 'Daihatsu-Class Landing Craft',
         nameJP: '大発動艇',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
     },
     69: {
         name: 'Type Ka Liaison Aircraft',
@@ -603,7 +603,7 @@ const EQUIPDATA: EquipDatas = {
     70: {
         name: 'Type 3 Liaison Aircraft',
         nameJP: '三式指揮連絡機(対潜)',
-        type: EquipType.ASWPLANE,
+        type: EquipType.ASW_PLANE,
         ASW: 7,
         LOS: 1,
         ACC: 2
@@ -611,7 +611,7 @@ const EQUIPDATA: EquipDatas = {
     71: {
         name: '10cm Twin High-Angle Cannon(Late Model)',
         nameJP: '10cm連装高角砲(砲架)',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 7,
         RNG: 1,
@@ -620,21 +620,21 @@ const EQUIPDATA: EquipDatas = {
     72: {
         name: 'Anti-Torpedo Bulge (M)',
         nameJP: '増設バルジ(中型艦)',
-        type: EquipType.BULGEM,
+        type: EquipType.BULGE_M,
         AR: 7,
         EV: -2
     },
     73: {
         name: 'Anti-Torpedo Bulge (L)',
         nameJP: '増設バルジ(大型艦)',
-        type: EquipType.BULGEL,
+        type: EquipType.BULGE_L,
         AR: 9,
         EV: -3
     },
     74: {
         name: 'Searchlight',
         nameJP: '探照灯',
-        type: EquipType.SEARCHLIGHTS,
+        type: EquipType.SEARCHLIGHT_S,
         LOS: 2
     },
     75: {
@@ -645,7 +645,7 @@ const EQUIPDATA: EquipDatas = {
     76: {
         name: '38cm Twin Gun Mount',
         nameJP: '38cm連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 16,
         AA: 1,
@@ -655,7 +655,7 @@ const EQUIPDATA: EquipDatas = {
     77: {
         name: '15cm Twin Gun Mount',
         nameJP: '15cm連装副砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 4,
         AA: 2,
         RNG: 2,
@@ -664,7 +664,7 @@ const EQUIPDATA: EquipDatas = {
     78: {
         name: '12.7cm Naval Gun',
         nameJP: '12.7cm単装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 2,
         RNG: 1,
         ACC: 1
@@ -672,7 +672,7 @@ const EQUIPDATA: EquipDatas = {
     79: {
         name: 'Zuiun(634)',
         nameJP: '瑞雲(六三四空)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA: 2,
         ASW: 5,
@@ -683,7 +683,7 @@ const EQUIPDATA: EquipDatas = {
     80: {
         name: 'Zuiun Model 12',
         nameJP: '瑞雲12型',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA: 3,
         ASW: 5,
@@ -694,7 +694,7 @@ const EQUIPDATA: EquipDatas = {
     81: {
         name: 'Zuiun Model 12(634)',
         nameJP: '瑞雲12型(六三四空)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         AA: 3,
@@ -706,7 +706,7 @@ const EQUIPDATA: EquipDatas = {
     82: {
         name: 'Type 97 Torpedo Bomber(931)',
         nameJP: '九七式艦攻(九三一空)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 6,
         ASW: 7,
         LOS: 2
@@ -714,7 +714,7 @@ const EQUIPDATA: EquipDatas = {
     83: {
         name: 'Tenzan(931)',
         nameJP: '天山(九三一空)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 9,
         ASW: 8,
         LOS: 2
@@ -722,14 +722,14 @@ const EQUIPDATA: EquipDatas = {
     84: {
         name: '2cm Flakvierling 38',
         nameJP: '2cm 四連装FlaK 38',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 7,
         ACC: 1
     },
     85: {
         name: '3.7cm FlaK M42',
         nameJP: '3.7cm FlaK M42',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         FP: 1,
         AA: 8,
         ACC: 1
@@ -748,7 +748,7 @@ const EQUIPDATA: EquipDatas = {
     88: {
         name: 'Type 22 Surface RADAR Kai 4',
         nameJP: '22号対水上電探改四',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         ASW: 2,
         LOS: 5,
         ACC: 8
@@ -756,7 +756,7 @@ const EQUIPDATA: EquipDatas = {
     89: {
         name: 'Type 21 Air RADAR Kai',
         nameJP: '21号対空電探改',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 5,
         LOS: 6,
         EV: 1,
@@ -765,7 +765,7 @@ const EQUIPDATA: EquipDatas = {
     90: {
         name: '20.3cm(no.2) Twin Gun Mount',
         nameJP: '20.3cm(2号)連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 9,
         AA: 3,
         RNG: 2,
@@ -775,7 +775,7 @@ const EQUIPDATA: EquipDatas = {
     91: {
         name: '12.7cm Twin High-Angle Mount (Late Model)',
         nameJP: '12.7cm連装高角砲(後期型)',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 5,
         ASW: 1,
@@ -786,14 +786,14 @@ const EQUIPDATA: EquipDatas = {
     92: {
         name: 'HI-type 40mm Twin Machine Gun',
         nameJP: '毘式40mm連装機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 6,
         EV: 1
     },
     93: {
         name: 'Type 97 Torpedo Bomber(Tomonaga)',
         nameJP: '九七式艦攻(友永隊)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 11,
         AA: 1,
@@ -804,7 +804,7 @@ const EQUIPDATA: EquipDatas = {
     94: {
         name: 'Tenzan Model 12(Tomonaga)',
         nameJP: '天山一二型(友永隊)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 14,
         AA: 1,
@@ -815,7 +815,7 @@ const EQUIPDATA: EquipDatas = {
     95: {
         name: '53cm Submarine Bow Torpedo Mount (8 tubes)',
         nameJP: '潜水艦53cm艦首魚雷(8門)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         TP: 16,
         RNG: 1,
         ACC: 3
@@ -832,7 +832,7 @@ const EQUIPDATA: EquipDatas = {
     97: {
         name: 'Type 99 Bomber(Skilled)',
         nameJP: '九九式艦爆(熟練)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA: 1,
         ASW: 4,
         LOS: 2,
@@ -842,7 +842,7 @@ const EQUIPDATA: EquipDatas = {
     98: {
         name: 'Type 97 Torpedo Bomber(Skilled)',
         nameJP: '九七式艦攻(熟練)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 8,
         ASW: 5,
         LOS: 2,
@@ -851,7 +851,7 @@ const EQUIPDATA: EquipDatas = {
     99: {
         name: 'Type 99 Bomber(Egusa)',
         nameJP: '九九式艦爆(江草隊)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         ASW: 5,
         LOS: 3,
@@ -861,7 +861,7 @@ const EQUIPDATA: EquipDatas = {
     100: {
         name: 'Suisei(Egusa)',
         nameJP: '彗星(江草隊)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         AA: 1,
@@ -887,7 +887,7 @@ const EQUIPDATA: EquipDatas = {
     103: {
         name: 'Prototype 35.6cm Triple Gun Mount',
         nameJP: '試製35.6cm三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 18,
         AA: 5,
@@ -897,7 +897,7 @@ const EQUIPDATA: EquipDatas = {
     104: {
         name: '35.6cm Twin Gun Mount (Dazzle Camouflage)',
         nameJP: '35.6cm連装砲(ダズル迷彩)',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 15,
         AA: 5,
@@ -908,7 +908,7 @@ const EQUIPDATA: EquipDatas = {
     105: {
         name: 'Prototype 41cm Triple Cannon',
         nameJP: '試製41cm三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 3,
         FP: 22,
         AA: 5,
@@ -918,7 +918,7 @@ const EQUIPDATA: EquipDatas = {
     106: {
         name: 'Type 13 Air RADAR Kai',
         nameJP: '13号対空電探改',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         AA: 4,
         LOS: 4,
         EV: 1,
@@ -962,7 +962,7 @@ const EQUIPDATA: EquipDatas = {
     111: {
         name: 'Suisei (601 Air Group)',
         nameJP: '彗星(六〇一空)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         ASW: 4,
         LOS: 1,
         DIVEBOMB: 11,
@@ -971,7 +971,7 @@ const EQUIPDATA: EquipDatas = {
     112: {
         name: 'Tenzan(601)',
         nameJP: '天山(六〇一空)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 10,
         ASW: 4,
         LOS: 2,
@@ -980,7 +980,7 @@ const EQUIPDATA: EquipDatas = {
     113: {
         name: 'Ryuusei(601)',
         nameJP: '流星(六〇一空)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 13,
         ASW: 5,
         LOS: 3,
@@ -989,7 +989,7 @@ const EQUIPDATA: EquipDatas = {
     114: {
         name: '38cm Twin Gun Mount Kai',
         nameJP: '38cm連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 17,
         AA: 2,
@@ -1009,14 +1009,14 @@ const EQUIPDATA: EquipDatas = {
     116: {
         name: 'Type 1 AP Shell',
         nameJP: '一式徹甲弾',
-        type: EquipType.APSHELL,
+        type: EquipType.AP_SHELL,
         FP: 9,
         ACC: 2
     },
     117: {
         name: 'Prototype 46cm Twin Gun Mount',
         nameJP: '試製46cm連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 4,
         FP: 23,
         AA: 4,
@@ -1035,7 +1035,7 @@ const EQUIPDATA: EquipDatas = {
     119: {
         name: '14cm Twin Gun Mount',
         nameJP: '14cm連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 4,
         RNG: 2,
@@ -1044,21 +1044,21 @@ const EQUIPDATA: EquipDatas = {
     120: {
         name: 'Type 91 Anti-Aircraft Fire Director',
         nameJP: '91式高射装置',
-        type: EquipType.AAFD,
+        type: EquipType.ANTI_AIR_FIRE_DIRECTOR,
         AA: 2,
         EV: 1
     },
     121: {
         name: 'Type 94 Anti-Aircraft Fire Director',
         nameJP: '94式高射装置',
-        type: EquipType.AAFD,
+        type: EquipType.ANTI_AIR_FIRE_DIRECTOR,
         AA: 3,
         EV: 1
     },
     122: {
         name: '10cm Twin High-Angle Cannon+FD',
         nameJP: '10cm連装高角砲+高射装置',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 10,
         EV: 1,
@@ -1068,7 +1068,7 @@ const EQUIPDATA: EquipDatas = {
     123: {
         name: 'SKC34 20.3cm Twin Cannon',
         nameJP: 'SKC34 20.3cm連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 10,
         AA: 2,
         RNG: 2,
@@ -1077,7 +1077,7 @@ const EQUIPDATA: EquipDatas = {
     124: {
         name: 'FuMO25 Radar',
         nameJP: 'FuMO25 レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         FP: 3,
         AA: 7,
         LOS: 9,
@@ -1103,7 +1103,7 @@ const EQUIPDATA: EquipDatas = {
     127: {
         name: 'Prototype FaT Type 95 Oxygen Torpedo Kai',
         nameJP: '試製FaT仕様九五式酸素魚雷改',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         TP: 14,
         EV: 2,
         RNG: 1,
@@ -1112,7 +1112,7 @@ const EQUIPDATA: EquipDatas = {
     128: {
         name: 'Prototype 51cm Twin Cannon',
         nameJP: '試製51cm連装砲',
-        type: EquipType.MAINGUNXL,
+        type: EquipType.MAIN_GUN_XL,
         fit_class: 7,
         FP: 30,
         AA: 5,
@@ -1132,7 +1132,7 @@ const EQUIPDATA: EquipDatas = {
     130: {
         name: '12.7cm Twin High-angle Mount + Type 94 Anti-Aircraft Fire Director',
         nameJP: '12.7cm高角砲+高射装置',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 8,
         EV: 1,
@@ -1142,7 +1142,7 @@ const EQUIPDATA: EquipDatas = {
     131: {
         name: '25mm Triple Autocannon Mount (Concentrated Deployment)',
         nameJP: '25mm三連装機銃 集中配備',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         is_concentrated: true,
         AA: 9,
         EV: 1
@@ -1150,7 +1150,7 @@ const EQUIPDATA: EquipDatas = {
     132: {
         name: 'Type 0 Passive Sonar',
         nameJP: '零式水中聴音機',
-        type: EquipType.SONARL,
+        type: EquipType.SONAR_L,
         ASW: 11,
         LOS: 1,
         EV: 1,
@@ -1159,7 +1159,7 @@ const EQUIPDATA: EquipDatas = {
     133: {
         name: '381mm / 50 Triple Gun Mount',
         nameJP: '381mm/50 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 2,
         FP: 20,
         AA: 2,
@@ -1170,7 +1170,7 @@ const EQUIPDATA: EquipDatas = {
     134: {
         name: 'OTO 152mm Triple Rapid Fire Gun Mount',
         nameJP: 'OTO 152mm三連装速射砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 8,
         AA: 2,
         AR: 1,
@@ -1180,7 +1180,7 @@ const EQUIPDATA: EquipDatas = {
     135: {
         name: '90mm Single High-angle Gun Mount',
         nameJP: '90mm単装高角砲',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 8,
         RNG: 1,
@@ -1189,14 +1189,14 @@ const EQUIPDATA: EquipDatas = {
     136: {
         name: 'Pugliese Underwater Protection Bulkhead',
         nameJP: 'プリエーゼ式水中防御隔壁',
-        type: EquipType.BULGEL,
+        type: EquipType.BULGE_L,
         AR: 7,
         EV: -1
     },
     137: {
         name: '381mm/50 Triple Gun Mount Kai',
         nameJP: '381mm/50 三連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 2,
         FP: 21,
         AA: 4,
@@ -1207,7 +1207,7 @@ const EQUIPDATA: EquipDatas = {
     138: {
         name: 'Type 2 Large-sized Flying Boat',
         nameJP: '二式大艇',
-        type: EquipType.FLYINGBOAT,
+        type: EquipType.FLYING_BOAT,
         ASW: 1,
         LOS: 12,
         ACC: 1
@@ -1215,7 +1215,7 @@ const EQUIPDATA: EquipDatas = {
     139: {
         name: '15.2cm Twin Cannon Kai',
         nameJP: '15.2cm連装砲改',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 6,
         AA: 3,
@@ -1225,21 +1225,21 @@ const EQUIPDATA: EquipDatas = {
     140: {
         name: 'Type 96 150cm Searchlight',
         nameJP: '96式150cm探照灯',
-        type: EquipType.SEARCHLIGHTL,
+        type: EquipType.SEARCHLIGHT_L,
         AA: 1,
         LOS: 3
     },
     141: {
         name: 'Type 32 Surface RADAR Kai',
         nameJP: '32号対水上電探改',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         LOS: 11,
         ACC: 9
     },
     142: {
         name: '15m Duplex Rangefinder + Type 21 Air Radar Kai2',
         nameJP: '15m二重測距儀+21号電探改二',
-        type: EquipType.RADARXL,
+        type: EquipType.RADAR_XL,
         FP: 1,
         AA: 8,
         AR: 1,
@@ -1250,7 +1250,7 @@ const EQUIPDATA: EquipDatas = {
     143: {
         name: 'Type 97 Torpedo Bomber(Murata)',
         nameJP: '九七式艦攻(村田隊)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 12,
         AA: 1,
@@ -1261,7 +1261,7 @@ const EQUIPDATA: EquipDatas = {
     144: {
         name: 'Tenzan Model 12(Murata)',
         nameJP: '天山一二型(村田隊)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 15,
         AA: 1,
@@ -1283,7 +1283,7 @@ const EQUIPDATA: EquipDatas = {
     147: {
         name: '120mm/50 Twin Gun Mount',
         nameJP: '120mm/50 連装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
         RNG: 1,
@@ -1292,7 +1292,7 @@ const EQUIPDATA: EquipDatas = {
     148: {
         name: 'Prototype Nanzan',
         nameJP: '試製南山',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AA: 1,
         ASW: 4,
@@ -1302,7 +1302,7 @@ const EQUIPDATA: EquipDatas = {
     149: {
         name: 'Type 4 Passive Sonar',
         nameJP: '四式水中聴音機',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         AR: 1,
         ASW: 12,
         ACC: 1
@@ -1315,7 +1315,7 @@ const EQUIPDATA: EquipDatas = {
     151: {
         name: 'Prototype Keiun',
         nameJP: '試製景雲(艦偵型)',
-        type: EquipType.CARRIERSCOUT2,
+        type: EquipType.CARRIER_SCOUT_2,
         FP: 2,
         ACC: 2,
         LOS: 11
@@ -1341,7 +1341,7 @@ const EQUIPDATA: EquipDatas = {
     154: {
         name: 'Type 62 Zero Fighter-Bomber (Iwai Corps)',
         nameJP: '零戦62型(爆戦/岩井隊)',
-        type: EquipType.FIGHTERBOMBER,
+        type: EquipType.FIGHTER_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -1398,7 +1398,7 @@ const EQUIPDATA: EquipDatas = {
     160: {
         name: '10.5cm Twin Gun Mount',
         nameJP: '10.5cm連装砲',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 6,
         ACC: 2,
@@ -1408,7 +1408,7 @@ const EQUIPDATA: EquipDatas = {
     161: {
         name: '16inch Triple Gun Mount Mk.7',
         nameJP: '16inch三連装砲 Mk.7',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 6,
         FP: 24,
         AA: 3,
@@ -1419,7 +1419,7 @@ const EQUIPDATA: EquipDatas = {
     162: {
         name: '203mm/53 Twin Gun Mount',
         nameJP: '203mm/53 連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 9,
         AA: 1,
         ACC: -2,
@@ -1439,7 +1439,7 @@ const EQUIPDATA: EquipDatas = {
     164: {
         name: 'Ro.44 Seaplane Fighter',
         nameJP: 'Ro.44水上戦闘機',
-        type: EquipType.SEAPLANEFIGHTER,
+        type: EquipType.SEAPLANE_FIGHTER,
         AA: 2,
         ASW: 1,
         ACC: 1,
@@ -1449,7 +1449,7 @@ const EQUIPDATA: EquipDatas = {
     165: {
         name: 'Type 2 Seaplane Fighter Kai',
         nameJP: '二式水戦改',
-        type: EquipType.SEAPLANEFIGHTER,
+        type: EquipType.SEAPLANE_FIGHTER,
         AA: 3,
         ASW: 1,
         ACC: 1,
@@ -1459,18 +1459,18 @@ const EQUIPDATA: EquipDatas = {
     166: {
         name: 'Daihatsu Landing Craft (Type 89 Medium Tank & Landing Force)',
         nameJP: '大発動艇(八九式中戦車&陸戦隊)',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         b_type: SkillTriggerEquipType.B_LC2,
     },
     167: {
         name: 'Special Type 2 Amphibious Landing Craft',
         nameJP: '特二式内火艇',
-        type: EquipType.LANDINGTANK,
+        type: EquipType.LANDING_TANK,
     },
     168: {
         name: 'Type 96 Land-based Attack Aircraft',
         nameJP: '九六式陸攻',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 10,
         TP: 8,
         AA: 1,
@@ -1480,7 +1480,7 @@ const EQUIPDATA: EquipDatas = {
     169: {
         name: 'Type 1 Land-based Attack Aircraft',
         nameJP: '一式陸攻',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 12,
         TP: 10,
         AA: 2,
@@ -1490,7 +1490,7 @@ const EQUIPDATA: EquipDatas = {
     170: {
         name: 'Type 1 Land-based Attack Aircraft (Nonaka Squadron)',
         nameJP: '一式陸攻(野中隊)',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 13,
         TP: 12,
@@ -1513,7 +1513,7 @@ const EQUIPDATA: EquipDatas = {
     172: {
         name: '5inch Twin Gun Mount Mk.28 mod.2',
         nameJP: '5inch連装砲 Mk.28 mod.2',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 4,
         AA: 9,
         AR: 1,
@@ -1524,7 +1524,7 @@ const EQUIPDATA: EquipDatas = {
     173: {
         name: 'Bofors 40mm Quadruple Autocannon Mount',
         nameJP: 'Bofors 40mm四連装機関砲',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         is_concentrated: true,
         FP: 1,
         AA: 11,
@@ -1569,7 +1569,7 @@ const EQUIPDATA: EquipDatas = {
     178: {
         name: 'PBY-5A Catalina',
         nameJP: 'PBY-5A Catalina',
-        type: EquipType.FLYINGBOAT,
+        type: EquipType.FLYING_BOAT,
         ASW: 2,
         ACC: 2,
         LOS: 9
@@ -1585,7 +1585,7 @@ const EQUIPDATA: EquipDatas = {
     180: {
         name: 'Type 1 Land-based Attack Aircraft Model 22A',
         nameJP: '一式陸攻 二二型甲',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         TP: 11,
         DIVEBOMB: 12,
         AA: 3,
@@ -1610,7 +1610,7 @@ const EQUIPDATA: EquipDatas = {
     183: {
         name: '16inch Triple Gun Mount Mk.7 + GFCS',
         nameJP: '16inch三連装砲 Mk.7+GFCS',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 6,
         FP: 24,
         AA: 3,
@@ -1639,7 +1639,7 @@ const EQUIPDATA: EquipDatas = {
     186: {
         name: 'Type 1 Land-based Attack Aircraft Model 34',
         nameJP: '一式陸攻 三四型',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 12,
         TP: 11,
         AA: 4,
@@ -1650,7 +1650,7 @@ const EQUIPDATA: EquipDatas = {
     187: {
         name: 'Ginga',
         nameJP: '銀河',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 14,
         TP: 14,
         AA: 3,
@@ -1661,7 +1661,7 @@ const EQUIPDATA: EquipDatas = {
     188: {
         name: 'Re.2001 G Kai',
         nameJP: 'Re.2001 G改',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 3,
         TP: 4,
         AA: 4,
@@ -1678,7 +1678,7 @@ const EQUIPDATA: EquipDatas = {
     190: {
         name: '38.1cm Mk.I Twin Gun Mount',
         nameJP: '38.1cm Mk.I連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 18,
         AA: 1,
@@ -1688,7 +1688,7 @@ const EQUIPDATA: EquipDatas = {
     191: {
         name: 'QF 2-pounder Octuple Pom-pom Gun Mount',
         nameJP: 'QF 2ポンド8連装ポンポン砲',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         is_concentrated: true,
         FP: 1,
         AA: 10,
@@ -1696,7 +1696,7 @@ const EQUIPDATA: EquipDatas = {
     192: {
         name: '38.1cm Mk.I/N Twin Gun Mount Kai',
         nameJP: '38.1cm Mk.I/N連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 19,
         AA: 3,
@@ -1706,12 +1706,12 @@ const EQUIPDATA: EquipDatas = {
     193: {
         name: 'Toku Daihatsu Landing Craft',
         nameJP: '特大発動艇',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
     },
     194: {
         name: 'Laté 298B',
         nameJP: 'Laté 298B',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 2,
         DIVEBOMB: 5,
         TP: 4,
@@ -1723,7 +1723,7 @@ const EQUIPDATA: EquipDatas = {
     195: {
         name: 'SBD',
         nameJP: 'SBD',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         FP: 1,
         DIVEBOMB: 6,
         AA: 2,
@@ -1735,7 +1735,7 @@ const EQUIPDATA: EquipDatas = {
     196: {
         name: 'TBD',
         nameJP: 'TBD',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 1,
         TP: 5,
         ASW: 4,
@@ -1762,7 +1762,7 @@ const EQUIPDATA: EquipDatas = {
     199: {
         name: 'Jet Keiun Kai',
         nameJP: '噴式景雲改',
-        type: EquipType.JETBOMBER,
+        type: EquipType.JET_BOMBER,
         AA_resist_ship: .5,
         AA_resist_fleet: .7,
         DIVEBOMB: 15,
@@ -1774,7 +1774,7 @@ const EQUIPDATA: EquipDatas = {
     200: {
         name: 'Kikka Kai',
         nameJP: '橘花改',
-        type: EquipType.JETBOMBER, icon: SpecialIcon.KikkaKai,
+        type: EquipType.JET_BOMBER, icon: SpecialIcon.KikkaKai,
         AA_resist_ship: .5,
         AA_resist_fleet: .5,
         DIVEBOMB: 11,
@@ -1803,14 +1803,14 @@ const EQUIPDATA: EquipDatas = {
     203: {
         name: 'New Kanhon Design Anti-Torpedo Bulge (M)',
         nameJP: '艦本新設計 増設バルジ(中型艦)',
-        type: EquipType.BULGEM,
+        type: EquipType.BULGE_M,
         AR: 8,
         EV: -1,
     },
     204: {
         name: 'New Kanhon Design Anti-Torpedo Bulge (L)',
         nameJP: '艦本新設計 増設バルジ(大型艦)',
-        type: EquipType.BULGEL,
+        type: EquipType.BULGE_L,
         AR: 10,
         EV: -2,
     },
@@ -1837,7 +1837,7 @@ const EQUIPDATA: EquipDatas = {
     207: {
         name: 'Zuiun (631 Air Group)',
         nameJP: '瑞雲(六三一空)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         DIVEBOMB: 7,
         AA: 1,
         ASW: 2,
@@ -1847,7 +1847,7 @@ const EQUIPDATA: EquipDatas = {
     208: {
         name: 'Seiran (631 Air Group)',
         nameJP: '晴嵐(六三一空)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 12,
         ASW: 3,
@@ -1857,12 +1857,12 @@ const EQUIPDATA: EquipDatas = {
     209: {
         name: 'Saiun (Disassembled for Transport)',
         nameJP: '彩雲(輸送用分解済)',
-        type: EquipType.TRANSPORTITEM,
+        type: EquipType.TRANSPORT_ITEM,
     },
     210: {
         name: 'Submarine Radar & Waterproof Telescope',
         nameJP: '潜水艦搭載電探&水防式望遠鏡',
-        type: EquipType.SUBRADAR,
+        type: EquipType.SUBMARINE_RADAR,
         FP: 1,
         AA: 1,
         ACC: 2,
@@ -1872,7 +1872,7 @@ const EQUIPDATA: EquipDatas = {
     211: {
         name: 'Submarine Radar & Passive Radiolocator (E27)',
         nameJP: '潜水艦搭載電探&逆探(E27)',
-        type: EquipType.SUBRADAR,
+        type: EquipType.SUBMARINE_RADAR,
         FP: 1,
         AA: 1,
         ACC: 3,
@@ -1882,7 +1882,7 @@ const EQUIPDATA: EquipDatas = {
     212: {
         name: 'Saiun (Eastern Caroline Air Group)',
         nameJP: '彩雲(東カロリン空)',
-        type: EquipType.CARRIERSCOUT,
+        type: EquipType.CARRIER_SCOUT,
         can_avoid_T_disadvantage: true,
         FP: 1,
         ACC: 2,
@@ -1891,7 +1891,7 @@ const EQUIPDATA: EquipDatas = {
     213: {
         name: 'Late Model Bow Torpedo Mount (6 tubes)',
         nameJP: '後期型艦首魚雷(6門)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 15,
         ACC: 3,
@@ -1901,7 +1901,7 @@ const EQUIPDATA: EquipDatas = {
     214: {
         name: 'Skilled Sonar Personnel + Late Model Bow Torpedo Mount (6 tubes)',
         nameJP: '熟練聴音員+後期型艦首魚雷(6門)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 15,
         ACC: 5,
@@ -1912,7 +1912,7 @@ const EQUIPDATA: EquipDatas = {
     215: {
         name: 'Ro.44 Seaplane Fighter bis',
         nameJP: 'Ro.44水上戦闘機bis',
-        type: EquipType.SEAPLANEFIGHTER,
+        type: EquipType.SEAPLANE_FIGHTER,
         AA: 3,
         ASW: 1,
         ACC: 2,
@@ -1922,7 +1922,7 @@ const EQUIPDATA: EquipDatas = {
     216: {
         name: 'Type 2 Seaplane Fighter Kai (Skilled)',
         nameJP: '二式水戦改(熟練)',
-        type: EquipType.SEAPLANEFIGHTER,
+        type: EquipType.SEAPLANE_FIGHTER,
         AA: 5,
         ASW: 1,
         ACC: 1,
@@ -1932,7 +1932,7 @@ const EQUIPDATA: EquipDatas = {
     217: {
         name: 'Kyoufuu Kai',
         nameJP: '強風改',
-        type: EquipType.SEAPLANEFIGHTER,
+        type: EquipType.SEAPLANE_FIGHTER,
         AA: 5,
         EV: 3,
         LOS: 1,
@@ -1949,7 +1949,7 @@ const EQUIPDATA: EquipDatas = {
     219: {
         name: 'Type 0 Fighter Model 63 (Fighter-bomber)',
         nameJP: '零式艦戦63型(爆戦)',
-        type: EquipType.FIGHTERBOMBER,
+        type: EquipType.FIGHTER_BOMBER,
         DIVEBOMB: 5,
         AA: 5,
         ASW: 2,
@@ -1957,7 +1957,7 @@ const EQUIPDATA: EquipDatas = {
     220: {
         name: '8cm High-angle Gun Kai + Extra Machine Guns',
         nameJP: '8cm高角砲改+増設機銃',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 7,
         ACC: 2,
@@ -1997,7 +1997,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Bomb-carrying Type 1 Fighter Hayabusa Model III Kai (65th Squadron)',
         nameJP: '爆装一式戦 隼III型改(65戦隊)',
         icon: SpecialIcon.ArmyLandBasedFighters,
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         FP: 3,
@@ -2021,7 +2021,7 @@ const EQUIPDATA: EquipDatas = {
     226: {
         name: 'Type 95 Depth Charge',
         nameJP: '九五式爆雷',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
         ASW: 4,
@@ -2029,7 +2029,7 @@ const EQUIPDATA: EquipDatas = {
     227: {
         name: 'Type 2 Depth Charge',
         nameJP: '二式爆雷',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
         ASW: 7,
@@ -2044,7 +2044,7 @@ const EQUIPDATA: EquipDatas = {
     229: {
         name: '12.7cm Single High-Angle Gun Mount (Late Model)',
         nameJP: '12.7cm単装高角砲(後期型)',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 4,
         ACC: 1,
@@ -2055,12 +2055,12 @@ const EQUIPDATA: EquipDatas = {
     230: {
         name: 'Toku Daihatsu Landing Craft + 11th Tank Regiment',
         nameJP: '特大発動艇+戦車第11連隊',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
     },
     231: {
         name: '30.5cm Triple Gun Mount',
         nameJP: '30.5cm三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 8,
         FP: 16,
         AR: 1,
@@ -2070,7 +2070,7 @@ const EQUIPDATA: EquipDatas = {
     232: {
         name: '30.5cm Triple Gun Mount Kai',
         nameJP: '30.5cm三連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 8,
         FP: 17,
         AA: 3,
@@ -2082,7 +2082,7 @@ const EQUIPDATA: EquipDatas = {
     233: {
         name: 'F4U-1D',
         nameJP: 'F4U-1D',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 1,
         DIVEBOMB: 7,
@@ -2094,7 +2094,7 @@ const EQUIPDATA: EquipDatas = {
     234: {
         name: '15.5cm Triple Secondary Gun Mount Kai',
         nameJP: '15.5cm三連装副砲改',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 7,
         AA: 5,
         ACC: 4,
@@ -2104,7 +2104,7 @@ const EQUIPDATA: EquipDatas = {
     235: {
         name: '15.5cm Triple Gun Mount Kai',
         nameJP: '15.5cm三連装砲改',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 7,
         AA: 5,
         AR: 1,
@@ -2115,7 +2115,7 @@ const EQUIPDATA: EquipDatas = {
     236: {
         name: '41cm Triple Gun Mount Kai',
         nameJP: '41cm三連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 3,
         FP: 22,
         AA: 6,
@@ -2126,7 +2126,7 @@ const EQUIPDATA: EquipDatas = {
     237: {
         name: 'Zuiun (634 Air Group/Skilled)',
         nameJP: '瑞雲(六三四空/熟練)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         DIVEBOMB: 9,
@@ -2159,7 +2159,7 @@ const EQUIPDATA: EquipDatas = {
     240: {
         name: 'Type 22 Surface Radar Kai 4 (Calibrated Late Model)',
         nameJP: '22号対水上電探改四(後期調整型)',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         FP: 1,
         ACC: 9,
         ASW: 2,
@@ -2173,7 +2173,7 @@ const EQUIPDATA: EquipDatas = {
     242: {
         name: 'Swordfish',
         nameJP: 'Swordfish',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         is_Swordfish_family: true,
         FP: 2,
@@ -2185,7 +2185,7 @@ const EQUIPDATA: EquipDatas = {
     243: {
         name: 'Swordfish Mk.II(Skilled)',
         nameJP: 'Swordfish Mk.II(熟練)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         is_Swordfish_family: true,
         FP: 3,
@@ -2197,7 +2197,7 @@ const EQUIPDATA: EquipDatas = {
     244: {
         name: 'Swordfish Mk.III (Skilled)',
         nameJP: 'Swordfish Mk.III(熟練)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         is_Swordfish_family: true,
         FP: 4,
@@ -2209,7 +2209,7 @@ const EQUIPDATA: EquipDatas = {
     245: {
         name: '38cm Quadruple Gun Mount',
         nameJP: '38cm四連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 9,
         FP: 21,
         AA: 1,
@@ -2219,7 +2219,7 @@ const EQUIPDATA: EquipDatas = {
     246: {
         name: '38cm Quadruple Gun Mount Kai',
         nameJP: '38cm四連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 9,
         FP: 22,
         AA: 2,
@@ -2230,7 +2230,7 @@ const EQUIPDATA: EquipDatas = {
     247: {
         name: '15.2cm Triple Gun Mount',
         nameJP: '15.2cm三連装砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 6,
         AA: 1,
         ACC: 3,
@@ -2239,7 +2239,7 @@ const EQUIPDATA: EquipDatas = {
     248: {
         name: 'Skua',
         nameJP: 'Skua',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 4,
         AA: 2,
         EV: 2,
@@ -2323,7 +2323,7 @@ const EQUIPDATA: EquipDatas = {
     256: {
         name: 'TBF',
         nameJP: 'TBF',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 2,
         TP: 9,
         AA: 1,
@@ -2334,7 +2334,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'TBM-3D',
         nameJP: 'TBM-3D',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 2,
         TP: 9,
@@ -2366,7 +2366,7 @@ const EQUIPDATA: EquipDatas = {
     260: {
         name: 'Type124 ASDIC',
         nameJP: 'Type124 ASDIC',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ACC: 2,
         EV: 1,
         ASW: 11,
@@ -2374,7 +2374,7 @@ const EQUIPDATA: EquipDatas = {
     261: {
         name: 'Type144/147 ASDIC',
         nameJP: 'Type144/147 ASDIC',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ACC: 3,
         EV: 1,
         ASW: 13,
@@ -2382,7 +2382,7 @@ const EQUIPDATA: EquipDatas = {
     262: {
         name: 'HF/DF + Type144/147 ASDIC',
         nameJP: 'HF/DF + Type144/147 ASDIC',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ACC: 3,
         EV: 2,
         ASW: 15,
@@ -2418,7 +2418,7 @@ const EQUIPDATA: EquipDatas = {
     266: {
         name: '12.7cm Twin Gun Mount Model C Kai 2',
         nameJP: '12.7cm連装砲C型改二',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
         AR: 1,
@@ -2428,7 +2428,7 @@ const EQUIPDATA: EquipDatas = {
     267: {
         name: '12.7cm Twin Gun Mount Model D Kai 2',
         nameJP: '12.7cm連装砲D型改二',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 4,
         AR: 1,
@@ -2439,7 +2439,7 @@ const EQUIPDATA: EquipDatas = {
     268: {
         name: 'Arctic Camouflage (+ Arctic Equipment)',
         nameJP: '北方迷彩(+北方装備)',
-        type: EquipType.BULGEM,
+        type: EquipType.BULGE_M,
         AR: 2,
         EV: 2,
     },
@@ -2447,7 +2447,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Prototype Toukai',
         nameJP: '試製東海',
         icon: SpecialIcon.LandBasedPatrolAircraft,
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 2,
         ASW: 10,
         LOS: 5,
@@ -2456,7 +2456,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Toukai (901 Air Group)',
         nameJP: '東海(九〇一空)',
         icon: SpecialIcon.LandBasedPatrolAircraft,
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 2,
         ACC: 1,
         ASW: 11,
@@ -2483,7 +2483,7 @@ const EQUIPDATA: EquipDatas = {
     273: {
         name: 'Saiun (4th Recon)',
         nameJP: '彩雲(偵四)',
-        type: EquipType.CARRIERSCOUT,
+        type: EquipType.CARRIER_SCOUT,
         can_avoid_T_disadvantage: true,
         AA: 2,
         ACC: 2,
@@ -2492,7 +2492,7 @@ const EQUIPDATA: EquipDatas = {
     274: {
         name: '12cm 30-tube Rocket Launcher Kai Ni',
         nameJP: '12cm30連装噴進砲改二',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         can_barrage: true,
         AA: 8,
         AR: 1,
@@ -2502,7 +2502,7 @@ const EQUIPDATA: EquipDatas = {
     275: {
         name: '10cm Twin High-angle Gun Mount Kai + Additional Machine Guns',
         nameJP: '10cm連装高角砲改+増設機銃',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 9,
         AR: 1,
@@ -2513,7 +2513,7 @@ const EQUIPDATA: EquipDatas = {
     276: {
         name: '46cm Triple Gun Mount Kai',
         nameJP: '46cm三連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 10,
         FP: 27,
         AA: 6,
@@ -2524,7 +2524,7 @@ const EQUIPDATA: EquipDatas = {
     277: {
         name: 'FM-2',
         nameJP: 'FM-2',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 2,
         DIVEBOMB: 2,
@@ -2536,7 +2536,7 @@ const EQUIPDATA: EquipDatas = {
     278: {
         name: 'SK Radar',
         nameJP: 'SK レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 8,
         ACC: 1,
         EV: 2,
@@ -2545,7 +2545,7 @@ const EQUIPDATA: EquipDatas = {
     279: {
         name: 'SK+SG Radar',
         nameJP: 'SK+SG レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         FP: 1,
         AA: 9,
         ACC: 4,
@@ -2556,7 +2556,7 @@ const EQUIPDATA: EquipDatas = {
     280: {
         name: 'QF 4.7inch Gun Mk.XII Kai',
         nameJP: 'QF 4.7inch砲 Mk.XII改',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 3,
         ACC: 1,
@@ -2567,7 +2567,7 @@ const EQUIPDATA: EquipDatas = {
     281: {
         name: '51cm Twin Gun Mount',
         nameJP: '51cm連装砲',
-        type: EquipType.MAINGUNXL,
+        type: EquipType.MAIN_GUN_XL,
         FP: 32,
         AA: 5,
         AR: 2,
@@ -2578,7 +2578,7 @@ const EQUIPDATA: EquipDatas = {
     282: {
         name: '130mm B-13 Twin Gun Mount',
         nameJP: '130mm B-13連装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 4,
         AA: 1,
         AR: 1,
@@ -2596,7 +2596,7 @@ const EQUIPDATA: EquipDatas = {
     284: {
         name: '5inch Single Gun Mount Mk.30',
         nameJP: '5inch単装砲 Mk.30',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 6,
         AR: 1,
@@ -2626,14 +2626,14 @@ const EQUIPDATA: EquipDatas = {
     287: {
         name: 'Type 3 Depth Charge Projector (Concentrated Deployment)',
         nameJP: '三式爆雷投射機 集中配備',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DCP: true,
         ASW: 12,
     },
     288: {
         name: 'Prototype 15cm 9-tube ASW Rocket Launcher',
         nameJP: '試製15cm9連装対潜噴進砲',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DCP: true,
         ACC: 1,
         ASW: 15,
@@ -2641,7 +2641,7 @@ const EQUIPDATA: EquipDatas = {
     289: {
         name: '35.6cm Triple Gun Mount Kai (Dazzle Camouflage)',
         nameJP: '35.6cm三連装砲改(ダズル迷彩仕様)',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 19,
         AA: 5,
@@ -2652,7 +2652,7 @@ const EQUIPDATA: EquipDatas = {
     290: {
         name: '41cm Triple Gun Mount Kai Ni',
         nameJP: '41cm三連装砲改二',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 3,
         FP: 23,
         AA: 6,
@@ -2662,7 +2662,7 @@ const EQUIPDATA: EquipDatas = {
     291: {
         name: 'Suisei Model 22 (634 Air Group)',
         nameJP: '彗星二二型(六三四空)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 11,
         AA: 1,
         ACC: 2,
@@ -2672,7 +2672,7 @@ const EQUIPDATA: EquipDatas = {
     292: {
         name: 'Suisei Model 22 (634 Air Group / Skilled)',
         nameJP: '彗星二二型(六三四空/熟練)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 12,
         AA: 2,
         ACC: 3,
@@ -2683,7 +2683,7 @@ const EQUIPDATA: EquipDatas = {
     293: {
         name: '12cm Single Gun Mount Kai Ni',
         nameJP: '12cm単装砲改二',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 1,
         AR: 1,
         ACC: 1,
@@ -2693,7 +2693,7 @@ const EQUIPDATA: EquipDatas = {
     294: {
         name: '12.7cm Twin Gun Mount Model A Kai Ni',
         nameJP: '12.7cm連装砲A型改二',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 2,
         AA: 1,
         AR: 1,
@@ -2703,7 +2703,7 @@ const EQUIPDATA: EquipDatas = {
     295: {
         name: '12.7cm Twin Gun Mount Model A Kai 3 (Wartime Modification) + Anti-Aircraft Fire Director',
         nameJP: '12.7cm連装砲A型改三(戦時改修)+高射装置',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 8,
         AR: 1,
@@ -2713,7 +2713,7 @@ const EQUIPDATA: EquipDatas = {
     296: {
         name: '12.7cm Twin Gun Mount Model B Kai 4 (Wartime Modification) + Anti-Aircraft Fire Director',
         nameJP: '12.7cm連装砲B型改四(戦時改修)+高射装置',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 9,
         AR: 1,
@@ -2723,7 +2723,7 @@ const EQUIPDATA: EquipDatas = {
     297: {
         name: '12.7cm Twin Gun Mount Model A',
         nameJP: '12.7cm連装砲A型',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 2,
         AA: 1,
         RNG: 1,
@@ -2731,7 +2731,7 @@ const EQUIPDATA: EquipDatas = {
     298: {
         name: '16inch Mk.I Triple Gun Mount',
         nameJP: '16inch Mk.I三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 11,
         FP: 21,
         AR: 1,
@@ -2741,7 +2741,7 @@ const EQUIPDATA: EquipDatas = {
     299: {
         name: '16inch Mk.I Triple Gun Mount + AFCT Kai',
         nameJP: '16inch Mk.I三連装砲+AFCT改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 11,
         FP: 22,
         AR: 1,
@@ -2751,7 +2751,7 @@ const EQUIPDATA: EquipDatas = {
     300: {
         name: '16inch Mk.I Triple Gun Mount Kai + FCR Type 284',
         nameJP: '16inch Mk.I三連装砲改+FCR type284',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 11,
         FP: 23,
         AA: 7,
@@ -2763,14 +2763,14 @@ const EQUIPDATA: EquipDatas = {
     301: {
         name: '20-tube 7inch UP Rocket Launchers',
         nameJP: '20連装7inch UP Rocket Launchers',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 7,
         EV: 2,
     },
     302: {
         name: 'Type 97 Torpedo Bomber (931 Air Group / Skilled)',
         nameJP: '九七式艦攻(九三一空/熟練)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 8,
         ACC: 2,
         EV: 1,
@@ -2780,7 +2780,7 @@ const EQUIPDATA: EquipDatas = {
     303: {
         name: 'Bofors 15.2cm Twin Gun Mount Model 1930',
         nameJP: 'Bofors 15.2cm連装砲 Model 1930',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
         AA: 4,
@@ -2800,7 +2800,7 @@ const EQUIPDATA: EquipDatas = {
     305: {
         name: 'Ju 87C Kai Ni (w/ KMX)',
         nameJP: 'Ju87C改二(KMX搭載機)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         DIVEBOMB: 9,
         ACC: 2,
@@ -2811,7 +2811,7 @@ const EQUIPDATA: EquipDatas = {
     306: {
         name: 'Ju 87C Kai Ni (w/ KMX / Skilled)',
         nameJP: 'Ju87C改二(KMX搭載機/熟練)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         DIVEBOMB: 10,
         ACC: 3,
@@ -2823,7 +2823,7 @@ const EQUIPDATA: EquipDatas = {
     307: {
         name: 'GFCS Mk.37',
         nameJP: 'GFCS Mk.37',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         FP: 2,
         AA: 7,
         AR: 1,
@@ -2835,7 +2835,7 @@ const EQUIPDATA: EquipDatas = {
     308: {
         name: '5inch Single Gun Mount Mk.30 Kai + GFCS Mk.37',
         nameJP: '5inch単装砲 Mk.30改+GFCS Mk.37',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 11,
         AR: 1,
@@ -2847,7 +2847,7 @@ const EQUIPDATA: EquipDatas = {
     309: {
         name: 'Type C Kouhyouteki',
         nameJP: '甲標的 丙型',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 14,
         ACC: 1,
         EV: 1,
@@ -2855,7 +2855,7 @@ const EQUIPDATA: EquipDatas = {
     310: {
         name: '14cm Twin Gun Mount Kai',
         nameJP: '14cm連装砲改',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
         AR: 1,
@@ -2865,7 +2865,7 @@ const EQUIPDATA: EquipDatas = {
     311: {
         name: 'Type 2 Land-based Reconnaissance Aircraft',
         nameJP: '二式陸上偵察機',
-        type: EquipType.LANDSCOUT,
+        type: EquipType.LAND_BASED_SCOUT,
         AA: 3,
         ACC: 2,
         LOS: 8,
@@ -2873,7 +2873,7 @@ const EQUIPDATA: EquipDatas = {
     312: {
         name: 'Type 2 Land-based Reconnaissance Aircraft (Skilled)',
         nameJP: '二式陸上偵察機(熟練)',
-        type: EquipType.LANDSCOUT,
+        type: EquipType.LAND_BASED_SCOUT,
         AA: 3,
         AR: 1,
         ACC: 3,
@@ -2882,7 +2882,7 @@ const EQUIPDATA: EquipDatas = {
     313: {
         name: '5inch Single Gun Mount Mk.30 Kai',
         nameJP: '5inch単装砲 Mk.30改',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 7,
         AR: 1,
@@ -2903,7 +2903,7 @@ const EQUIPDATA: EquipDatas = {
     315: {
         name: 'SG Radar (Initial Model)',
         nameJP: 'SG レーダー(初期型)',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         FP: 1,
         AA: 3,
         ACC: 8,
@@ -2915,7 +2915,7 @@ const EQUIPDATA: EquipDatas = {
     316: {
         name: 'Re.2001 CB Kai',
         nameJP: 'Re.2001 CB改',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         FP: 3,
         DIVEBOMB: 6,
         AA: 4,
@@ -2926,7 +2926,7 @@ const EQUIPDATA: EquipDatas = {
     317: {
         name: 'Type 3 Shell Kai',
         nameJP: '三式弾改',
-        type: EquipType.TYPE3SHELL,
+        type: EquipType.TYPE_3_SHELL,
         FP: 3,
         AA: 6,
         ACC: 1,
@@ -2934,7 +2934,7 @@ const EQUIPDATA: EquipDatas = {
     318: {
         name: '41cm Twin Gun Mount Kai Ni',
         nameJP: '41cm連装砲改二',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 3,
         FP: 21,
         AA: 5,
@@ -2946,7 +2946,7 @@ const EQUIPDATA: EquipDatas = {
     319: {
         name: 'Suisei Model 12 (634 Air Group w/ Type 3 Cluster Bombs)',
         nameJP: '彗星一二型(六三四空/三号爆弾搭載機)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AA_resist_ship: .6,
         DIVEBOMB: 12,
@@ -2958,7 +2958,7 @@ const EQUIPDATA: EquipDatas = {
     320: {
         name: 'Suisei Model 12 (w/ Type 31 Photoelectric Fuze Bombs)',
         nameJP: '彗星一二型(三一号光電管爆弾搭載機)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         AA_resist_ship: .6,
         can_shell_install_bomber: true,
@@ -2968,7 +2968,7 @@ const EQUIPDATA: EquipDatas = {
     322: {
         name: 'Zuiun Kai Ni (634 Air Group)',
         nameJP: '瑞雲改二(六三四空)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .5,
         AA_resist_fleet: .7,
         FP: 2,
@@ -2982,7 +2982,7 @@ const EQUIPDATA: EquipDatas = {
     323: {
         name: 'Zuiun Kai Ni (634 Air Group/Skilled)',
         nameJP: '瑞雲改二(六三四空/熟練)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AA_resist_ship: .5,
         AA_resist_fleet: .5,
         FP: 2,
@@ -3031,7 +3031,7 @@ const EQUIPDATA: EquipDatas = {
     328: {
         name: '35.6cm Twin Gun Mount Kai',
         nameJP: '35.6cm連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 16,
         AA: 4,
@@ -3043,7 +3043,7 @@ const EQUIPDATA: EquipDatas = {
     329: {
         name: '35.6cm Twin Gun Mount Kai Ni',
         nameJP: '35.6cm連装砲改二',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         fit_class: 1,
         FP: 17,
         AA: 5,
@@ -3055,7 +3055,7 @@ const EQUIPDATA: EquipDatas = {
     330: {
         name: '16inch Mk.I Twin Gun Mount',
         nameJP: '16inch Mk.I連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 20,
         AR: 1,
         ACC: 1,
@@ -3065,7 +3065,7 @@ const EQUIPDATA: EquipDatas = {
     331: {
         name: '16inch Mk.V Twin Gun Mount',
         nameJP: '16inch Mk.V連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 21,
         AA: 2,
         AR: 2,
@@ -3076,7 +3076,7 @@ const EQUIPDATA: EquipDatas = {
     332: {
         name: '16inch Mk.VIII Twin Gun Mount Kai',
         nameJP: '16inch Mk.VIII連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 21,
         AA: 6,
         AR: 2,
@@ -3155,7 +3155,7 @@ const EQUIPDATA: EquipDatas = {
     340: {
         name: '152mm/55 Triple Rapid Fire Gun Mount',
         nameJP: '152mm/55 三連装速射砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 2,
         AR: 1,
@@ -3165,7 +3165,7 @@ const EQUIPDATA: EquipDatas = {
     341: {
         name: '152mm/55 Triple Rapid Fire Gun Mount Kai',
         nameJP: '152mm/55 三連装速射砲改',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 9,
         AA: 3,
         AR: 1,
@@ -3176,7 +3176,7 @@ const EQUIPDATA: EquipDatas = {
     342: {
         name: 'Ryuusei Kai (CarDiv 1)',
         nameJP: '流星改(一航戦)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 14,
         AA: 2,
         ACC: 1,
@@ -3186,7 +3186,7 @@ const EQUIPDATA: EquipDatas = {
     343: {
         name: 'Ryuusei Kai (CarDiv 1/Skilled)',
         nameJP: '流星改(一航戦/熟練)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 15,
         AA: 3,
@@ -3198,7 +3198,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Prototype Type 97 Torpedo Bomber Kai Type 3 Model E (w/ Type 6 Airborne Radar Kai)',
         nameJP: '九七式艦攻改 試製三号戊型(空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         TP: 7,
         ACC: 1,
@@ -3209,7 +3209,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Prototype Type 97 Torpedo Bomber Kai (Skilled) Type 3 Model E (w/ Type 6 Airborne Radar Kai)',
         nameJP: '九七式艦攻改(熟練) 試製三号戊型(空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         TP: 9,
         ACC: 2,
@@ -3219,14 +3219,14 @@ const EQUIPDATA: EquipDatas = {
     346: {
         name: 'Type 2 12cm Mortar Kai',
         nameJP: '二式12cm迫撃砲改',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         EV: 1,
         ASW: 3,
     },
     347: {
         name: 'Type 2 12cm Mortar Kai (Concentrated Deployment)',
         nameJP: '二式12cm迫撃砲改 集中配備',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         AR: -1,
         EV: 1,
         ASW: 7,
@@ -3289,14 +3289,14 @@ const EQUIPDATA: EquipDatas = {
     355: {
         name: 'M4A1 DD',
         nameJP: 'M4A1 DD',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         FP: 2,
         EV: -1,
     },
     356: {
         name: '8inch Triple Gun Mount Mk.9',
         nameJP: '8inch三連装砲 Mk.9',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 11,
         AA: 1,
         EV: -1,
@@ -3305,7 +3305,7 @@ const EQUIPDATA: EquipDatas = {
     357: {
         name: '8inch Triple Gun Mount Mk.9 mod.2',
         nameJP: '8inch三連装砲 Mk.9 mod.2',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 12,
         AA: 2,
         ACC: 1,
@@ -3315,7 +3315,7 @@ const EQUIPDATA: EquipDatas = {
     358: {
         name: '5inch Single High-angle Gun Mount Battery',
         nameJP: '5inch 単装高角砲群',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 6,
         AR: 1,
@@ -3326,7 +3326,7 @@ const EQUIPDATA: EquipDatas = {
     359: {
         name: '6inch Twin Rapid Fire Gun Mount Mk.XXI',
         nameJP: '6inch 連装速射砲 Mk.XXI',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
         AA: 3,
@@ -3338,7 +3338,7 @@ const EQUIPDATA: EquipDatas = {
     360: {
         name: 'Bofors 15cm Twin Rapid Fire Gun Mount Mk.9 Model 1938',
         nameJP: 'Bofors 15cm連装速射砲 Mk.9 Model 1938',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 6,
         AA: 5,
@@ -3349,7 +3349,7 @@ const EQUIPDATA: EquipDatas = {
     361: {
         name: 'Bofors 15cm Twin Rapid Fire Gun Mount Mk.9 Kai + Single Rapid Fire Gun Mount Mk.10 Kai Model 1938',
         nameJP: 'Bofors 15cm連装速射砲 Mk.9改+単装速射砲 Mk.10改 Model 1938',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 7,
         AA: 6,
@@ -3361,7 +3361,7 @@ const EQUIPDATA: EquipDatas = {
     362: {
         name: '5inch Twin Dual-purpose Gun Mount (Concentrated Deployment)',
         nameJP: '5inch連装両用砲(集中配備)',
-        type: EquipType.MAINGUNM, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_M, icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
         AA: 11,
         ACC: 2,
@@ -3371,7 +3371,7 @@ const EQUIPDATA: EquipDatas = {
     363: {
         name: 'GFCS Mk.37 + 5inch Twin Dual-purpose Gun Mount (Concentrated Deployment)',
         nameJP: 'GFCS Mk.37+5inch連装両用砲(集中配備)',
-        type: EquipType.MAINGUNM, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_M, icon: SpecialIcon.MainHighAngleGun,
         FP: 6,
         AA: 14,
         ACC: 6,
@@ -3382,7 +3382,7 @@ const EQUIPDATA: EquipDatas = {
     364: {
         name: 'Type D Kouhyouteki Kai (Kouryuu Kai)',
         nameJP: '甲標的 丁型改(蛟龍改)',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 17,
         ACC: 2,
         LOS: 2,
@@ -3390,14 +3390,14 @@ const EQUIPDATA: EquipDatas = {
     365: {
         name: 'Type 1 Armor Piercing Shell Kai',
         nameJP: '一式徹甲弾改',
-        type: EquipType.APSHELL,
+        type: EquipType.AP_SHELL,
         FP: 11,
         ACC: 2,
     },
     366: {
         name: '12.7cm Twin Gun Mount Model D Kai 3',
         nameJP: '12.7cm連装砲D型改三',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 4,
         AR: 1,
@@ -3409,7 +3409,7 @@ const EQUIPDATA: EquipDatas = {
     367: {
         name: 'Swordfish (Seaplane Model)',
         nameJP: 'Swordfish(水上機型)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 2,
         DIVEBOMB: 5,
         TP: 5,
@@ -3420,7 +3420,7 @@ const EQUIPDATA: EquipDatas = {
     368: {
         name: 'Swordfish Mk.III Kai (Seaplane Model)',
         nameJP: 'Swordfish Mk.III改(水上機型)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 4,
         DIVEBOMB: 7,
         TP: 6,
@@ -3431,7 +3431,7 @@ const EQUIPDATA: EquipDatas = {
     369: {
         name: 'Swordfish Mk.III Kai (Seaplane Model/Skilled)',
         nameJP: 'Swordfish Mk.III改(水上機型/熟練)',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 4,
         DIVEBOMB: 8,
         TP: 7,
@@ -3462,7 +3462,7 @@ const EQUIPDATA: EquipDatas = {
     372: {
         name: 'Tenzan Model 12A',
         nameJP: '天山一二型甲',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 9,
         AA: 1,
         ASW: 4,
@@ -3472,7 +3472,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Tenzan Model 12 A Kai (w/ Type 6 Airborne Radar Kai)',
         nameJP: '天山一二型甲改(空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         TP: 11,
         AA: 1,
@@ -3484,7 +3484,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Tenzan Model 12 A Kai (Skilled/ w/ Type 6 Airborne Radar Kai)',
         nameJP: '天山一二型甲改(熟練/空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         AA_resist_ship: .6,
         TP: 13,
@@ -3514,7 +3514,7 @@ const EQUIPDATA: EquipDatas = {
     377: {
         name: 'RUR-4A Weapon Alpha Kai',
         nameJP: 'RUR-4A Weapon Alpha改',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DCP: true,
         can_ASW_penetrate: true,
         AR: 1,
@@ -3525,7 +3525,7 @@ const EQUIPDATA: EquipDatas = {
     378: {
         name: 'Lightweight ASW Torpedo (Initial Test Model)',
         nameJP: '対潜短魚雷(試作初期型)',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
         TP: 2,
@@ -3534,7 +3534,7 @@ const EQUIPDATA: EquipDatas = {
     379: {
         name: '12.7cm Single High-angle Gun Mount Kai Ni',
         nameJP: '12.7cm単装高角砲改二',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 5,
         ACC: 1,
@@ -3545,7 +3545,7 @@ const EQUIPDATA: EquipDatas = {
     380: {
         name: '12.7cm Twin High-angle Gun Mount Kai Ni',
         nameJP: '12.7cm連装高角砲改二',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 6,
         ACC: 1,
@@ -3556,7 +3556,7 @@ const EQUIPDATA: EquipDatas = {
     381: {
         name: '16inch Triple Gun Mount Mk.6',
         nameJP: '16inch三連装砲 Mk.6',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 22,
         AA: 2,
         AR: 1,
@@ -3566,7 +3566,7 @@ const EQUIPDATA: EquipDatas = {
     382: {
         name: '12cm Single High-angle Gun Mount Model E',
         nameJP: '12cm単装高角砲E型',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 3,
         EV: 2,
@@ -3576,7 +3576,7 @@ const EQUIPDATA: EquipDatas = {
     383: {
         name: 'Late Model 53cm Bow Torpedo Mount (8 tubes)',
         nameJP: '後期型53cm艦首魚雷(8門)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 19,
         ACC: 3,
@@ -3586,7 +3586,7 @@ const EQUIPDATA: EquipDatas = {
     384: {
         name: 'Late Model Submarine Radar & Passive Radiolocator',
         nameJP: '後期型潜水艦搭載電探&逆探',
-        type: EquipType.SUBRADAR,
+        type: EquipType.SUBMARINE_RADAR,
         FP: 2,
         TP: 4,
         AR: 1,
@@ -3597,7 +3597,7 @@ const EQUIPDATA: EquipDatas = {
     385: {
         name: '16inch Triple Gun Mount Mk.6 mod.2',
         nameJP: '16inch三連装砲 Mk.6 mod.2',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 23,
         AA: 2,
         AR: 2,
@@ -3607,7 +3607,7 @@ const EQUIPDATA: EquipDatas = {
     386: {
         name: '6inch Triple Rapid Fire Gun Mount Mk.16',
         nameJP: '6inch三連装速射砲 Mk.16',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 7,
         AA: 2,
         AR: 1,
@@ -3617,7 +3617,7 @@ const EQUIPDATA: EquipDatas = {
     387: {
         name: '6inch Triple Rapid Fire Gun Mount Mk.16 mod.2',
         nameJP: '6inch三連装速射砲 Mk.16 mod.2',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 3,
         AR: 1,
@@ -3628,7 +3628,7 @@ const EQUIPDATA: EquipDatas = {
     388: {
         name: 'Ginga (Egusa Squadron)',
         nameJP: '銀河(江草隊)',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 15,
         TP: 15,
@@ -3641,7 +3641,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'TBM-3W+3S',
         nameJP: 'TBM-3W+3S',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 3,
         DIVEBOMB: 7,
@@ -3653,7 +3653,7 @@ const EQUIPDATA: EquipDatas = {
     390: {
         name: '16inch Triple Gun Mount Mk.6 + GFCS',
         nameJP: '16inch三連装砲 Mk.6+GFCS',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 23,
         AA: 3,
         AR: 2,
@@ -3664,7 +3664,7 @@ const EQUIPDATA: EquipDatas = {
     391: {
         name: 'Type 99 Dive Bomber Model 22',
         nameJP: '九九式艦爆二二型',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         DIVEBOMB: 6,
         ACC: 1,
@@ -3674,7 +3674,7 @@ const EQUIPDATA: EquipDatas = {
     392: {
         name: 'Type 99 Dive Bomber Model 22 (Skilled)',
         nameJP: '九九式艦爆二二型(熟練)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         DIVEBOMB: 8,
         AA: 1,
@@ -3685,7 +3685,7 @@ const EQUIPDATA: EquipDatas = {
     393: {
         name: '120mm/50 Twin Gun Mount mod.1936',
         nameJP: '120mm/50 連装砲 mod.1936',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 3,
         ACC: 2,
@@ -3694,7 +3694,7 @@ const EQUIPDATA: EquipDatas = {
     394: {
         name: '120mm/50 Twin Gun Mount Kai A.mod.1937',
         nameJP: '120mm/50 連装砲改 A.mod.1937',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 4,
         ACC: 3,
@@ -3703,7 +3703,7 @@ const EQUIPDATA: EquipDatas = {
     395: {
         name: 'Shinzan',
         nameJP: '深山',
-        type: EquipType.LANDBOMBERL,
+        type: EquipType.LAND_BASED_BOMBER_L,
         DIVEBOMB: 17,
         TP: 16,
         AA: 1,
@@ -3711,7 +3711,7 @@ const EQUIPDATA: EquipDatas = {
     396: {
         name: 'Shinzan Kai',
         nameJP: '深山改',
-        type: EquipType.LANDBOMBERL,
+        type: EquipType.LAND_BASED_BOMBER_L,
         DIVEBOMB: 19,
         TP: 17,
         AA: 2,
@@ -3719,7 +3719,7 @@ const EQUIPDATA: EquipDatas = {
     397: {
         name: 'Locally Modified 12.7cm Twin High-angle Gun Mount',
         nameJP: '現地改装12.7cm連装高角砲',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 6,
         AR: 1,
@@ -3729,7 +3729,7 @@ const EQUIPDATA: EquipDatas = {
     398: {
         name: 'Locally Modified 10cm Twin High-angle Gun Mount',
         nameJP: '現地改装10cm連装高角砲',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 8,
         ACC: 1,
@@ -3739,7 +3739,7 @@ const EQUIPDATA: EquipDatas = {
     399: {
         name: '6inch Mk.XXIII Triple Gun Mount',
         nameJP: '6inch Mk.XXIII三連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 7,
         AA: 2,
         AR: 1,
@@ -3760,7 +3760,7 @@ const EQUIPDATA: EquipDatas = {
     401: {
         name: 'Do 17 Z-2',
         nameJP: 'Do 17 Z-2',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 11,
         AA: 2,
         ASW: 5,
@@ -3774,7 +3774,7 @@ const EQUIPDATA: EquipDatas = {
     403: {
         name: 'Type 4 Heavy Bomber Hiryuu',
         nameJP: '四式重爆 飛龍',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 15,
         TP: 14,
         AA: 5,
@@ -3785,7 +3785,7 @@ const EQUIPDATA: EquipDatas = {
     404: {
         name: 'Type 4 Heavy Bomber Hiryuu (Skilled)',
         nameJP: '四式重爆 飛龍(熟練)',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 16,
         TP: 14,
@@ -3797,7 +3797,7 @@ const EQUIPDATA: EquipDatas = {
     405: {
         name: 'Do 217 E-5 + Hs293 Initial Model',
         nameJP: 'Do 217 E-5+Hs293初期型',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 22,
         TP: 13,
@@ -3808,7 +3808,7 @@ const EQUIPDATA: EquipDatas = {
     406: {
         name: 'Do 217 K-2 + Fritz-X',
         nameJP: 'Do 217 K-2+Fritz-X',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 24,
         TP: 16,
@@ -3819,7 +3819,7 @@ const EQUIPDATA: EquipDatas = {
     407: {
         name: '15.2cm Twin Gun Mount Kai Ni',
         nameJP: '15.2cm連装砲改二',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 6,
         AA: 4,
@@ -3830,7 +3830,7 @@ const EQUIPDATA: EquipDatas = {
     408: {
         name: 'Soukoutei (Armored Boat Class)',
         nameJP: '装甲艇(AB艇)',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         FP: 1,
         AR: 1,
         LOS: 1,
@@ -3838,7 +3838,7 @@ const EQUIPDATA: EquipDatas = {
     409: {
         name: 'Armed Daihatsu',
         nameJP: '武装大発',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         FP: 1,
         AA: 1,
         ACC: 1,
@@ -3846,7 +3846,7 @@ const EQUIPDATA: EquipDatas = {
     410: {
         name: 'Type 21 Air Radar Kai Ni',
         nameJP: '21号対空電探改二',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 7,
         ACC: 4,
         EV: 4,
@@ -3855,7 +3855,7 @@ const EQUIPDATA: EquipDatas = {
     411: {
         name: 'Type 42 Air Radar Kai Ni',
         nameJP: '42号対空電探改二',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 7,
         ACC: 8,
         EV: -1,
@@ -3929,7 +3929,7 @@ const EQUIPDATA: EquipDatas = {
     419: {
         name: 'SBD-5',
         nameJP: 'SBD-5',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         FP: 1,
         DIVEBOMB: 7,
         AA: 2,
@@ -3941,7 +3941,7 @@ const EQUIPDATA: EquipDatas = {
     420: {
         name: 'SB2C-3',
         nameJP: 'SB2C-3',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 1,
         DIVEBOMB: 11,
@@ -3954,7 +3954,7 @@ const EQUIPDATA: EquipDatas = {
     421: {
         name: 'SB2C-5',
         nameJP: 'SB2C-5',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 2,
         DIVEBOMB: 12,
@@ -3976,7 +3976,7 @@ const EQUIPDATA: EquipDatas = {
     423: {
         name: 'Fulmar (Reconnaissance Fighter/Skilled)',
         nameJP: 'Fulmar(戦闘偵察/熟練)',
-        type: EquipType.CARRIERSCOUT,
+        type: EquipType.CARRIER_SCOUT,
         FP: 2,
         AA: 4,
         ACC: 3,
@@ -3987,7 +3987,7 @@ const EQUIPDATA: EquipDatas = {
     424: {
         name: 'Barracuda Mk.II',
         nameJP: 'Barracuda Mk.II',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 7,
         ACC: 1,
         ASW: 5,
@@ -3996,7 +3996,7 @@ const EQUIPDATA: EquipDatas = {
     425: {
         name: 'Barracuda Mk.III',
         nameJP: 'Barracuda Mk.III',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 6,
         ACC: 1,
         ASW: 9,
@@ -4005,7 +4005,7 @@ const EQUIPDATA: EquipDatas = {
     426: {
         name: '305mm/46 Twin Gun Mount',
         nameJP: '305mm/46 連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 13,
         AR: 1,
         ACC: 1,
@@ -4015,7 +4015,7 @@ const EQUIPDATA: EquipDatas = {
     427: {
         name: '305mm/46 Triple Gun Mount',
         nameJP: '305mm/46 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 14,
         AR: 1,
         ACC: 2,
@@ -4025,7 +4025,7 @@ const EQUIPDATA: EquipDatas = {
     428: {
         name: '320mm/44 Twin Gun Mount',
         nameJP: '320mm/44 連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 15,
         AR: 1,
         ACC: 1,
@@ -4035,7 +4035,7 @@ const EQUIPDATA: EquipDatas = {
     429: {
         name: '320mm/44 Triple Gun Mount',
         nameJP: '320mm/44 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         AR: 1,
         ACC: 2,
@@ -4045,7 +4045,7 @@ const EQUIPDATA: EquipDatas = {
     430: {
         name: '65mm/64 Single Rapid Fire Gun Mount Kai',
         nameJP: '65mm/64 単装速射砲改',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 9,
         EV: 1,
@@ -4054,7 +4054,7 @@ const EQUIPDATA: EquipDatas = {
     431: {
         name: 'SM.79',
         nameJP: 'SM.79',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 13,
         TP: 9,
         AA: 2,
@@ -4064,7 +4064,7 @@ const EQUIPDATA: EquipDatas = {
     432: {
         name: 'SM.79 bis',
         nameJP: 'SM.79 bis',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 14,
         TP: 12,
         AA: 3,
@@ -4074,7 +4074,7 @@ const EQUIPDATA: EquipDatas = {
     433: {
         name: 'SM.79 bis (Skilled)',
         nameJP: 'SM.79 bis(熟練)',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 14,
         TP: 13,
@@ -4105,7 +4105,7 @@ const EQUIPDATA: EquipDatas = {
     436: {
         name: 'Daihatsu Landing Craft (Panzer II / North African Specification)',
         nameJP: '大発動艇(II号戦車/北アフリカ仕様)',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         FP: 1,
         ACC: 1,
     },
@@ -4120,7 +4120,7 @@ const EQUIPDATA: EquipDatas = {
     438: {
         name: 'Type 3 Active Sonar Kai',
         nameJP: '三式水中探信儀改',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         AR: 1,
         ACC: 2,
         EV: 1,
@@ -4129,7 +4129,7 @@ const EQUIPDATA: EquipDatas = {
     439: {
         name: 'Hedgehog (Initial Model)',
         nameJP: 'Hedgehog(初期型)',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
         AR: -1,
@@ -4139,7 +4139,7 @@ const EQUIPDATA: EquipDatas = {
     440: {
         name: '21inch 6-tube Bow Torpedo Launcher (Initial Model)',
         nameJP: '21inch艦首魚雷発射管6門(初期型)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         TP: 10,
         EV: 2,
         RNG: 1,
@@ -4147,7 +4147,7 @@ const EQUIPDATA: EquipDatas = {
     441: {
         name: '21inch 6-tube Bow Torpedo Launcher (Late Model)',
         nameJP: '21inch艦首魚雷発射管6門(後期型)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 14,
         ACC: 3,
@@ -4157,7 +4157,7 @@ const EQUIPDATA: EquipDatas = {
     442: {
         name: 'Submarine 4-tube Stern Torpedo Launcher (Initial Model)',
         nameJP: '潜水艦後部魚雷発射管4門(初期型)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         TP: 6,
         ACC: 1,
         EV: 1,
@@ -4166,7 +4166,7 @@ const EQUIPDATA: EquipDatas = {
     443: {
         name: 'Submarine 4-tube Stern Torpedo Launcher (Late Model)',
         nameJP: '潜水艦後部魚雷発射管4門(後期型)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 9,
         ACC: 2,
@@ -4176,7 +4176,7 @@ const EQUIPDATA: EquipDatas = {
     444: {
         name: 'Type 4 Heavy Bomber Hiryuu + No.1 Model 1A Guided Missile',
         nameJP: '四式重爆 飛龍+イ号一型甲 誘導弾',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 20,
         TP: 15,
@@ -4206,7 +4206,7 @@ const EQUIPDATA: EquipDatas = {
     447: {
         name: 'Type 0 Fighter Model 64 (Two-seat w/ KMX)',
         nameJP: '零式艦戦64型(複座KMX搭載機)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 3,
         AA: 4,
         ASW: 8,
@@ -4215,14 +4215,14 @@ const EQUIPDATA: EquipDatas = {
     449: {
         name: 'Toku Daihatsu Landing Craft + Type 1 Gun Tank',
         nameJP: '特大発動艇+一式砲戦車',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         b_type: SkillTriggerEquipType.B_LC2,
         FP: 2,
     },
     450: {
         name: 'Type 13 Air Radar Kai (Late Model)',
         nameJP: '13号対空電探改(後期型)',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         AA: 6,
         ACC: 2,
         EV: 3,
@@ -4231,7 +4231,7 @@ const EQUIPDATA: EquipDatas = {
     451: {
         name: 'Type 3 Command Liaison Aircraft Kai',
         nameJP: '三式指揮連絡機改',
-        type: EquipType.ASWPLANE,
+        type: EquipType.ASW_PLANE,
         FP: 1,
         ACC: 2,
         ASW: 9,
@@ -4249,7 +4249,7 @@ const EQUIPDATA: EquipDatas = {
     453: {
         name: 'Ki-102 B',
         nameJP: 'キ102乙',
-        type: EquipType.LANDBOMBER, icon: SpecialIcon.LandBasedRaidAircraft,
+        type: EquipType.LAND_BASED_BOMBER, icon: SpecialIcon.LandBasedRaidAircraft,
         AA_resist_ship: .6,
         FP: 4,
         DIVEBOMB: 19,
@@ -4261,7 +4261,7 @@ const EQUIPDATA: EquipDatas = {
     454: {
         name: 'Ki-102 B Kai + No.1 Model 1B Guided Missile',
         nameJP: 'キ102乙改+イ号一型乙 誘導弾',
-        type: EquipType.LANDBOMBER, icon: SpecialIcon.LandBasedRaidAircraft,
+        type: EquipType.LAND_BASED_BOMBER, icon: SpecialIcon.LandBasedRaidAircraft,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         FP: 4,
@@ -4274,7 +4274,7 @@ const EQUIPDATA: EquipDatas = {
     455: {
         name: 'Prototype Long-barrel 12.7cm Twin Gun Mount Model A Kai 4',
         nameJP: '試製 長12.7cm連装砲A型改四',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 4,
         AA: 3,
         AR: 1,
@@ -4284,7 +4284,7 @@ const EQUIPDATA: EquipDatas = {
     456: {
         name: 'SG Radar (Late Model)',
         nameJP: 'SG レーダー(後期型)',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         FP: 2,
         AA: 3,
         ACC: 10,
@@ -4296,7 +4296,7 @@ const EQUIPDATA: EquipDatas = {
     457: {
         name: 'Late Model Bow Torpedo Mount (4 tubes)',
         nameJP: '後期型艦首魚雷(4門)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 12,
         AR: 1,
@@ -4307,7 +4307,7 @@ const EQUIPDATA: EquipDatas = {
     458: {
         name: 'Late Model Radar & Passive Radiolocator + Snorkel Equipment',
         nameJP: '後期型電探&逆探+シュノーケル装備',
-        type: EquipType.SUBRADAR,
+        type: EquipType.SUBMARINE_RADAR,
         TP: 4,
         AR: 2,
         ACC: 4,
@@ -4317,7 +4317,7 @@ const EQUIPDATA: EquipDatas = {
     459: {
         name: 'B-25',
         nameJP: 'B-25',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         is_skip_bomber: true,
         FP: 3,
         DIVEBOMB: 16,
@@ -4328,7 +4328,7 @@ const EQUIPDATA: EquipDatas = {
     460: {
         name: '15m Duplex Rangefinder Kai + Type 21 Radar Kai Ni + Skilled Fire Direction Center',
         nameJP: '15m二重測距儀改+21号電探改二+熟練射撃指揮所',
-        type: EquipType.RADARXL,
+        type: EquipType.RADAR_XL,
         FP: 4,
         AA: 8,
         AR: 1,
@@ -4339,7 +4339,7 @@ const EQUIPDATA: EquipDatas = {
     461: {
         name: 'Skilled Sonar Personnel + Late Model Bow Torpedo Mount (4 tubes)',
         nameJP: '熟練聴音員+後期型艦首魚雷(4門)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 13,
         AR: 1,
@@ -4350,7 +4350,7 @@ const EQUIPDATA: EquipDatas = {
     463: {
         name: '15.5cm Triple Secondary Gun Mount Kai Ni',
         nameJP: '15.5cm三連装副砲改二',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 9,
         AA: 5,
         AR: 1,
@@ -4361,7 +4361,7 @@ const EQUIPDATA: EquipDatas = {
     464: {
         name: '10cm Twin High-angle Gun Mount Battery Concentrated Deployment',
         nameJP: '10cm連装高角砲群 集中配備',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 12,
         AR: 2,
@@ -4372,7 +4372,7 @@ const EQUIPDATA: EquipDatas = {
     465: {
         name: 'Prototype 51cm Triple Gun Mount',
         nameJP: '試製51cm三連装砲',
-        type: EquipType.MAINGUNXL,
+        type: EquipType.MAIN_GUN_XL,
         FP: 36,
         AA: 5,
         AR: 2,
@@ -4383,7 +4383,7 @@ const EQUIPDATA: EquipDatas = {
     466: {
         name: 'Ryuusei Kai (Skilled)',
         nameJP: '流星改(熟練)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 13,
         AA: 3,
@@ -4394,7 +4394,7 @@ const EQUIPDATA: EquipDatas = {
     467: {
         name: '5inch Twin Gun Mount (Secondary Armament) Concentrated Deployment',
         nameJP: '5inch連装砲(副砲配置) 集中配備',
-        type: EquipType.SECGUNL, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECCONDARY_GUN_L, icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
         AA: 11,
         AR: 1,
@@ -4405,7 +4405,7 @@ const EQUIPDATA: EquipDatas = {
     468: {
         name: '38cm Quadruple Gun Mount Kai Deux',
         nameJP: '38cm四連装砲改 deux',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 24,
         AA: 5,
         AR: 1,
@@ -4426,7 +4426,7 @@ const EQUIPDATA: EquipDatas = {
     470: {
         name: '12.7cm Twin Gun Mount Model C Kai 3',
         nameJP: '12.7cm連装砲C型改三',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
         AR: 1,
@@ -4447,7 +4447,7 @@ const EQUIPDATA: EquipDatas = {
     472: {
         name: 'Mk.32 ASW Torpedo (Mk.2 Thrower)',
         nameJP: 'Mk.32 対潜魚雷(Mk.2落射機)',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DCP: true,
         can_ASW_penetrate: true,
         TP: 1,
@@ -4469,7 +4469,7 @@ const EQUIPDATA: EquipDatas = {
     474: {
         name: 'F4U-4',
         nameJP: 'F4U-4',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         can_shell_install_bomber: true,
         FP: 2,
@@ -4482,7 +4482,7 @@ const EQUIPDATA: EquipDatas = {
     475: {
         name: 'AU-1',
         nameJP: 'AU-1',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         FP: 3,
         DIVEBOMB: 12,
@@ -4495,7 +4495,7 @@ const EQUIPDATA: EquipDatas = {
     476: {
         name: 'F4U-7',
         nameJP: 'F4U-7',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         FP: 3,
         DIVEBOMB: 11,
@@ -4534,7 +4534,7 @@ const EQUIPDATA: EquipDatas = {
     479: {
         name: 'Mosquito FB Mk.VI',
         nameJP: 'Mosquito FB Mk.VI',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         DIVEBOMB: 18,
@@ -4547,7 +4547,7 @@ const EQUIPDATA: EquipDatas = {
     480: {
         name: 'Mosquito PR Mk.IV',
         nameJP: 'Mosquito PR Mk.IV',
-        type: EquipType.LANDSCOUT,
+        type: EquipType.LAND_BASED_SCOUT,
         AR: 2,
         ACC: 2,
         LOS: 9,
@@ -4555,7 +4555,7 @@ const EQUIPDATA: EquipDatas = {
     481: {
         name: 'Mosquito TR Mk.33',
         nameJP: 'Mosquito TR Mk.33',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
         TP: 8,
         AA: 5,
@@ -4566,14 +4566,14 @@ const EQUIPDATA: EquipDatas = {
     482: {
         name: 'Toku Daihatsu Landing Craft + Panzer III (North African Specification)',
         nameJP: '特大発動艇+Ⅲ号戦車(北アフリカ仕様)',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         FP: 1,
         AA: 1,
     },
     483: {
         name: 'Type 3 Shell Kai Ni',
         nameJP: '三式弾改二',
-        type: EquipType.TYPE3SHELL,
+        type: EquipType.TYPE_3_SHELL,
         FP: 5,
         AA: 7,
         ACC: 1,
@@ -4582,7 +4582,7 @@ const EQUIPDATA: EquipDatas = {
     484: {
         name: 'Type 4 Heavy Bomber Hiryuu (Skilled) + No.1 Model 1A Guided Missile',
         nameJP: '四式重爆 飛龍(熟練)+イ号一型甲 誘導弾',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 21,
         TP: 17,
@@ -4594,7 +4594,7 @@ const EQUIPDATA: EquipDatas = {
     485: {
         name: 'Kyoufuu Kai Ni',
         nameJP: '強風改二',
-        type: EquipType.SEAPLANEFIGHTER,
+        type: EquipType.SEAPLANE_FIGHTER,
         AA: 6,
         ACC: 1,
         EV: 4,
@@ -4613,7 +4613,7 @@ const EQUIPDATA: EquipDatas = {
     487: {
         name: 'Type 0 Fighter Model 64 (Skilled Fighter-Bomber)',
         nameJP: '零式艦戦64型(熟練爆戦)',
-        type: EquipType.FIGHTERBOMBER,
+        type: EquipType.FIGHTER_BOMBER,
         AA_resist_ship: .6,
         FP: 1,
         DIVEBOMB: 6,
@@ -4625,7 +4625,7 @@ const EQUIPDATA: EquipDatas = {
     488: {
         name: 'Type 2 Depth Charge Kai Ni',
         nameJP: '二式爆雷改二',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
         AR: 1,
@@ -4636,7 +4636,7 @@ const EQUIPDATA: EquipDatas = {
     489: {
         name: 'Type 1 Fighter Hayabusa Model II Kai (20th Squadron)',
         nameJP: '一式戦 隼II型改(20戦隊)',
-        type: EquipType.ASWPLANE,
+        type: EquipType.ASW_PLANE,
         is_20th_family: true,
         FP: 2,
         DIVEBOMB: 4,
@@ -4647,7 +4647,7 @@ const EQUIPDATA: EquipDatas = {
     490: {
         name: 'Prototype Night Zuiun (Attack Equipment)',
         nameJP: '試製 夜間瑞雲(攻撃装備)',
-        type: EquipType.SEAPLANEBOMBER, icon: SpecialIcon.NightSeaplaneBombers,
+        type: EquipType.SEAPLANE_BOMBER, icon: SpecialIcon.NightSeaplaneBombers,
         AA_resist_ship: .5,
         AA_resist_fleet: .7,
         FP: 3,
@@ -4660,7 +4660,7 @@ const EQUIPDATA: EquipDatas = {
     491: {
         name: 'Type 1 Fighter Hayabusa Model III Kai (Skilled / 20th Squadron)',
         nameJP: '一式戦 隼III型改(熟練/20戦隊)',
-        type: EquipType.ASWPLANE,
+        type: EquipType.ASW_PLANE,
         is_20th_family: true,
         AA_resist_ship: .6,
         FP: 2,
@@ -4682,7 +4682,7 @@ const EQUIPDATA: EquipDatas = {
     493: {
         name: 'Type 1 Land-based Attack Aircraft (Hachiman Force)',
         nameJP: '一式陸攻(八幡部隊)',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         DIVEBOMB: 12,
         TP: 11,
         AA: 3,
@@ -4693,33 +4693,33 @@ const EQUIPDATA: EquipDatas = {
     494: {
         name: 'Toku Daihatsu Landing Craft + Chi-Ha',
         nameJP: '特大発動艇+チハ',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
     },
     495: {
         name: 'Toku Daihatsu Landing Craft + Chi-Ha Kai',
         nameJP: '特大発動艇+チハ改',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         FP: 1,
     },
     496: {
         name: 'Army Infantry Corps',
         nameJP: '陸軍歩兵部隊',
-        type: EquipType.ARMYUNIT,
+        type: EquipType.ARMY_UNIT,
     },
     497: {
         name: 'Type 97 Medium Tank (Chi-Ha)',
         nameJP: '九七式中戦車(チハ)',
-        type: EquipType.ARMYUNIT,
+        type: EquipType.ARMY_UNIT,
     },
     498: {
         name: 'Type 97 Medium Tank New Turret (Chi-Ha Kai)',
         nameJP: '九七式中戦車 新砲塔(チハ改)',
-        type: EquipType.ARMYUNIT,
+        type: EquipType.ARMY_UNIT,
     },
     499: {
         name: 'Army Infantry Corps + Chi-Ha Kai',
         nameJP: '陸軍歩兵部隊+チハ改',
-        type: EquipType.ARMYUNIT,
+        type: EquipType.ARMY_UNIT,
     },
     500: {
         name: 'Smoke Generator (Smoke Screen)',
@@ -4736,7 +4736,7 @@ const EQUIPDATA: EquipDatas = {
     502: {
         name: '35.6cm Twin Gun Mount Kai 3 (Dazzle Camouflage)',
         nameJP: '35.6cm連装砲改三(ダズル迷彩仕様)',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 20,
         AA: 6,
         AR: 2,
@@ -4747,7 +4747,7 @@ const EQUIPDATA: EquipDatas = {
     503: {
         name: '35.6cm Twin Gun Mount Kai 4',
         nameJP: '35.6cm連装砲改四',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 22,
         AA: 5,
         AR: 2,
@@ -4758,7 +4758,7 @@ const EQUIPDATA: EquipDatas = {
     504: {
         name: 'Ginga (Skilled)',
         nameJP: '銀河(熟練)',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         AA_resist_ship: .6,
         DIVEBOMB: 15,
         TP: 14,
@@ -4770,14 +4770,14 @@ const EQUIPDATA: EquipDatas = {
     505: {
         name: '25mm Anti-Aircraft Autocannon Expansion',
         nameJP: '25mm対空機銃増備',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 7,
         EV: 2,
     },
     506: {
         name: 'Radar Equipment Mast (Type 13 Kai + Type 22 Radar Kai 4)',
         nameJP: '電探装備マスト(13号改+22号電探改四)',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         AA: 4,
         ACC: 6,
         EV: 2,
@@ -4787,7 +4787,7 @@ const EQUIPDATA: EquipDatas = {
     507: {
         name: '14inch/45 Twin Gun Mount',
         nameJP: '14inch/45 連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         AR: 1,
         EV: 1,
@@ -4796,7 +4796,7 @@ const EQUIPDATA: EquipDatas = {
     508: {
         name: '14inch/45 Triple Gun Mount',
         nameJP: '14inch/45 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 19,
         AR: 1,
         RNG: 3,
@@ -4804,7 +4804,7 @@ const EQUIPDATA: EquipDatas = {
     509: {
         name: '12cm Single High-angle Gun Mount Model E Kai',
         nameJP: '12cm単装高角砲E型改',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 4,
         AR: 1,
@@ -4825,7 +4825,7 @@ const EQUIPDATA: EquipDatas = {
     511: {
         name: '21inch 4-tube Bow Torpedo Launcher (Initial Model)',
         nameJP: '21inch艦首魚雷発射管4門(初期型)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         TP: 8,
         EV: 4,
         RNG: 1,
@@ -4833,7 +4833,7 @@ const EQUIPDATA: EquipDatas = {
     512: {
         name: '21inch 4-tube Bow Torpedo Launcher (Late Model)',
         nameJP: '21inch艦首魚雷発射管4門(後期型)',
-        type: EquipType.TORPEDOSS,
+        type: EquipType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 12,
         ACC: 3,
@@ -4849,7 +4849,7 @@ const EQUIPDATA: EquipDatas = {
     514: {
         name: 'Toku Daihatsu Landing Craft + Panzer III Ausf. J',
         nameJP: '特大発動艇+Ⅲ号戦車J型',
-        type: EquipType.LANDINGCRAFT,
+        type: EquipType.LANDING_CRAFT,
         b_type: SkillTriggerEquipType.B_LC2,
         FP: 2,
         AA: 1,
@@ -4876,7 +4876,7 @@ const EQUIPDATA: EquipDatas = {
     517: {
         name: 'Passive Radiolocator (E27) + Type 22 Surface Radar Kai 4 (Calibrated Late Model)',
         nameJP: '逆探(E27)+22号対水上電探改四(後期調整型)',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         FP: 2,
         ACC: 9,
         EV: 5,
@@ -4886,7 +4886,7 @@ const EQUIPDATA: EquipDatas = {
     518: {
         name: '14cm Twin Gun Mount Kai 2',
         nameJP: '14cm連装砲改二',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
         AR: 2,
@@ -4897,7 +4897,7 @@ const EQUIPDATA: EquipDatas = {
     519: {
         name: 'SJ Radar + Submarine Conning Tower Equipment',
         nameJP: 'SJレーダー+潜水艦司令塔装備',
-        type: EquipType.SUBRADAR,
+        type: EquipType.SUBMARINE_RADAR,
         TP: 5,
         ACC: 5,
         EV: 6,
@@ -4906,7 +4906,7 @@ const EQUIPDATA: EquipDatas = {
     520: {
         name: 'Prototype 20.3cm (No.4) Twin Gun Mount',
         nameJP: '試製20.3cm(4号)連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 11,
         AA: 4,
         AR: 1,
@@ -4945,7 +4945,7 @@ const EQUIPDATA: EquipDatas = {
     524: {
         name: '12cm Single High-angle Gun + 25mm Machine Gun',
         nameJP: '12cm単装高角砲+25mm機銃増備',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 5,
         EV: 2,
@@ -4955,7 +4955,7 @@ const EQUIPDATA: EquipDatas = {
     525: {
         name: 'Special Type 4 Amphibious Tank',
         nameJP: '特四式内火艇',
-        type: EquipType.LANDINGTANK,
+        type: EquipType.LANDING_TANK,
         b_type: SkillTriggerEquipType.B_OTHER,
         TP: 1,
         AA: 1,
@@ -4963,7 +4963,7 @@ const EQUIPDATA: EquipDatas = {
     526: {
         name: 'Special Type 4 Amphibious Tank Kai',
         nameJP: '特四式内火艇改',
-        type: EquipType.LANDINGTANK,
+        type: EquipType.LANDING_TANK,
         b_type: SkillTriggerEquipType.B_OTHER,
         TP: 3,
         AA: 2,
@@ -4972,7 +4972,7 @@ const EQUIPDATA: EquipDatas = {
     527: {
         name: 'Type 281 Radar',
         nameJP: 'Type281 レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 7,
         ACC: 1,
         EV: 2,
@@ -4981,7 +4981,7 @@ const EQUIPDATA: EquipDatas = {
     528: {
         name: 'Type 274 Fire Control Radar',
         nameJP: 'Type274 射撃管制レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         FP: 2,
         AA: 3,
         AR: 1,
@@ -4993,7 +4993,7 @@ const EQUIPDATA: EquipDatas = {
     529: {
         name: '12.7cm Twin Gun Mount Model C Kai 3 H',
         nameJP: '12.7cm連装砲C型改三H',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AA: 5,
         AR: 1,
@@ -5005,7 +5005,7 @@ const EQUIPDATA: EquipDatas = {
     530: {
         name: '35.6cm Twin Gun Mount Kai 3C',
         nameJP: '35.6cm連装砲改三丙',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 21,
         AA: 3,
         AR: 4,
@@ -5028,7 +5028,7 @@ const EQUIPDATA: EquipDatas = {
     533: {
         name: '10cm Twin High-angle Gun Mount Kai + Anti-Aircraft Fire Director Kai',
         nameJP: '10cm連装高角砲改+高射装置改',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
         AA: 11,
         AR: 4,
@@ -5039,7 +5039,7 @@ const EQUIPDATA: EquipDatas = {
     534: {
         name: '13.8cm Twin Gun Mount',
         nameJP: '13.8cm連装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         fit_class: 102,
         FP: 4,
         AA: 2,
@@ -5048,7 +5048,7 @@ const EQUIPDATA: EquipDatas = {
     535: {
         name: '13.8cm Twin Gun Mount Kai',
         nameJP: '13.8cm連装砲改',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         fit_class: 102,
         FP: 5,
         AA: 2,
@@ -5059,7 +5059,7 @@ const EQUIPDATA: EquipDatas = {
     536: {
         name: '15.2cm Triple Main Gun Mount',
         nameJP: '15.2cm三連装主砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 7,
         AA: 2,
         EV: 1,
@@ -5068,7 +5068,7 @@ const EQUIPDATA: EquipDatas = {
     537: {
         name: '15.2cm Triple Main Gun Mount Kai',
         nameJP: '15.2cm三連装主砲改',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 3,
         ACC: 1,
@@ -5109,7 +5109,7 @@ const EQUIPDATA: EquipDatas = {
     541: {
         name: 'SBD (Yellow Wings)',
         nameJP: 'SBD(Yellow Wings)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         FP: 1,
         DIVEBOMB: 7,
         AA: 2,
@@ -5121,7 +5121,7 @@ const EQUIPDATA: EquipDatas = {
     542: {
         name: 'TBD (Yellow Wings)',
         nameJP: 'TBD(Yellow Wings)',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 1,
         TP: 6,
         ASW: 4,
@@ -5130,7 +5130,7 @@ const EQUIPDATA: EquipDatas = {
     543: {
         name: 'SBD VS-2 (Reconnaissance Squadron)',
         nameJP: 'SBD VS-2(偵察飛行隊)',
-        type: EquipType.CARRIERSCOUT,
+        type: EquipType.CARRIER_SCOUT,
         FP: 2,
         DIVEBOMB: 6,
         AA: 2,
@@ -5142,7 +5142,7 @@ const EQUIPDATA: EquipDatas = {
     544: {
         name: 'SBD VB-2 (Bombing Squadron)',
         nameJP: 'SBD VB-2(爆撃飛行隊)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         FP: 3,
         DIVEBOMB: 8,
         AA: 2,
@@ -5154,7 +5154,7 @@ const EQUIPDATA: EquipDatas = {
     545: {
         name: 'Tenzan Model 12A Kai 2 (Murata Squadron w/ Radar)',
         nameJP: '天山一二型甲改二(村田隊/電探装備)',
-        type: EquipType.TORPBOMBER, icon: SpecialIcon.NightTorpedoBombers,
+        type: EquipType.TORPEDO_BOMBER, icon: SpecialIcon.NightTorpedoBombers,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         AA_resist_ship: .6,
         TP: 16,
@@ -5174,7 +5174,7 @@ const EQUIPDATA: EquipDatas = {
     549: {
         name: 'Type 3 Command Liaison Aircraft Kai 2',
         nameJP: '三式指揮連絡機改二',
-        type: EquipType.ASWPLANE,
+        type: EquipType.ASW_PLANE,
         FP: 2,
         DIVEBOMB: 2,
         ACC: 2,
@@ -5184,7 +5184,7 @@ const EQUIPDATA: EquipDatas = {
     550: {
         name: 'Prototype Myoujou (Additional Trial Model)',
         nameJP: '試製 明星(増加試作機)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 4,
         ASW: 4,
         LOS: 1,
@@ -5192,7 +5192,7 @@ const EQUIPDATA: EquipDatas = {
     551: {
         name: 'Myoujou Kai',
         nameJP: '明星改',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 5,
         ASW: 5,
         LOS: 2,
@@ -5200,7 +5200,7 @@ const EQUIPDATA: EquipDatas = {
     552: {
         name: 'Type 99 Training Bomber Model 22 Kai (Experimental w/ Night Equipment)',
         nameJP: '九九式練爆二二型改(夜間装備実験機)',
-        type: EquipType.DIVEBOMBER, icon: SpecialIcon.NightDiveBombers,
+        type: EquipType.DIVE_BOMBER, icon: SpecialIcon.NightDiveBombers,
         DIVEBOMB: 6,
         ACC: 1,
         ASW: 6,
@@ -5209,21 +5209,21 @@ const EQUIPDATA: EquipDatas = {
     1501: {
         name: '5inch Single Cannon',
         nameJP: '5inch単装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 1,
         RNG: 1,
     },
     1502: {
         name: '5inch Twin Cannon',
         nameJP: '5inch連装砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 2,
         RNG: 1,
     },
     1503: {
         name: '3inch Single High-Angle Mount',
         nameJP: '3inch単装高角砲',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         a_type: AACITriggerEquipType.A_GUN, //regular gun in AA calculation?
         FP: 1,
         AA: 1,
@@ -5232,7 +5232,7 @@ const EQUIPDATA: EquipDatas = {
     1504: {
         name: '5inch Single AA Cannon',
         nameJP: '5inch単装高射砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 2,
         AA: 2,
         RNG: 2,
@@ -5240,7 +5240,7 @@ const EQUIPDATA: EquipDatas = {
     1505: {
         name: '8inch Triple Cannon',
         nameJP: '8inch三連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 2,
         RNG: 2,
@@ -5248,7 +5248,7 @@ const EQUIPDATA: EquipDatas = {
     1506: {
         name: '6inch Twin Rapid-fire Cannon',
         nameJP: '6inch連装速射砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 3,
         AA: 3,
         RNG: 2,
@@ -5256,7 +5256,7 @@ const EQUIPDATA: EquipDatas = {
     1507: {
         name: '14inch Twin Cannon',
         nameJP: '14inch連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 10,
         AA: 4,
         RNG: 3,
@@ -5264,7 +5264,7 @@ const EQUIPDATA: EquipDatas = {
     1508: {
         name: '16inch Twin Cannon',
         nameJP: '16inch連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 15,
         AA: 4,
         RNG: 3,
@@ -5272,7 +5272,7 @@ const EQUIPDATA: EquipDatas = {
     1509: {
         name: '16inch Triple Cannon',
         nameJP: '16inch三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 20,
         AA: 5,
         RNG: 3,
@@ -5280,7 +5280,7 @@ const EQUIPDATA: EquipDatas = {
     1510: {
         name: '5inch High-Angle Mount (Secondary)',
         nameJP: '5inch単装高射砲',
-        type: EquipType.SECGUN, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.SECONDARY_GUN, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 2,
         RNG: 1,
@@ -5288,14 +5288,14 @@ const EQUIPDATA: EquipDatas = {
     1511: {
         name: '6inch Single Cannon',
         nameJP: '6inch単装砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 1,
         RNG: 2,
     },
     1512: {
         name: '12.5inch Twin Secondary Cannon',
         nameJP: '12.5inch連装副砲',
-        type: EquipType.SECGUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 7,
         AA: 3,
         RNG: 2,
@@ -5324,7 +5324,7 @@ const EQUIPDATA: EquipDatas = {
     1516: {
         name: 'Abyssal Torpedo Bomber Mk.I',
         nameJP: '深海棲艦攻',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 4,
         ASW: 2,
         LOS: 5,
@@ -5332,7 +5332,7 @@ const EQUIPDATA: EquipDatas = {
     1517: {
         name: 'Abyssal Torpedo Bomber Mk.II',
         nameJP: '深海棲艦攻 Mark.II',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 6,
         ASW: 4,
         LOS: 5,
@@ -5340,7 +5340,7 @@ const EQUIPDATA: EquipDatas = {
     1518: {
         name: 'Abyssal Torpedo Bomber Mk.III',
         nameJP: '深海棲艦攻 Mark.III',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 11,
         AA: 4,
         ASW: 7,
@@ -5373,14 +5373,14 @@ const EQUIPDATA: EquipDatas = {
     1523: {
         name: 'Abyssal Dive Bomber Mk.I',
         nameJP: '深海棲艦爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 3,
         ASW: 1,
     },
     1524: {
         name: 'Abyssal Dive Bomber Mk.II',
         nameJP: '深海棲艦爆 Mark.II',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 6,
         ASW: 2,
     },
@@ -5405,7 +5405,7 @@ const EQUIPDATA: EquipDatas = {
     1527: {
         name: 'Air Radar Mark.I',
         nameJP: '対空レーダ― Mark.I',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         AA: 5,
         LOS: 5,
         ACC: 5,
@@ -5413,21 +5413,21 @@ const EQUIPDATA: EquipDatas = {
     1528: {
         name: 'Surface Radar Mark.I',
         nameJP: '水上レーダ― Mark.I',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         LOS: 5,
         ACC: 10,
     },
     1529: {
         name: 'Surface Radar Mark.II',
         nameJP: '水上レーダ― Mark.II',
-        type: EquipType.RADARS,
+        type: EquipType.RADAR_S,
         LOS: 10,
         ACC: 15,
     },
     1530: {
         name: 'Air Radar Mark.II',
         nameJP: '対空レーダ― Mark.II',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 10,
         LOS: 10,
         ACC: 5,
@@ -5435,7 +5435,7 @@ const EQUIPDATA: EquipDatas = {
     1531: {
         name: 'Abyssal Surface Radar',
         nameJP: '深海水上レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 5,
         EV: 3,
         ASW: 5,
@@ -5445,7 +5445,7 @@ const EQUIPDATA: EquipDatas = {
     1532: {
         name: 'Abyssal Air Radar',
         nameJP: '深海対空レーダ―',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 18,
         EV: 2,
         ASW: 5,
@@ -5467,45 +5467,45 @@ const EQUIPDATA: EquipDatas = {
     1535: {
         name: 'Abyssal AA Dispersal Shell',
         nameJP: '対空散弾',
-        type: EquipType.TYPE3SHELL,
+        type: EquipType.TYPE_3_SHELL,
         AA: 10,
     },
     1536: {
         name: 'Depleted AP Shell',
         nameJP: '劣化徹甲弾',
-        type: EquipType.APSHELL,
+        type: EquipType.AP_SHELL,
         FP: 15,
         ACC: 5,
     },
     1537: {
         name: '12.7mm Abyssal Gun',
         nameJP: '12.7mm機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 2,
     },
     1538: {
         name: '20mm Abyssal Gun',
         nameJP: '20mm機銃',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 4,
     },
     1539: {
         name: '40mm Abyssal Twin Autocannon',
         nameJP: '40mm二連装機関砲',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         AA: 8,
     },
     1540: {
         name: '40mm Abyssal Quad Autocannon',
         nameJP: '40mm四連装機関砲',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         is_concentrated: true,
         AA: 12,
     },
     1541: {
         name: 'Abyssal Cuttlefish Torpedo',
         nameJP: '深海烏賊魚雷',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 18,
         ACC: 5,
         RNG: 1,
@@ -5513,31 +5513,31 @@ const EQUIPDATA: EquipDatas = {
     1542: {
         name: 'Abyssal Depth Charge Projector',
         nameJP: '深海爆雷投射機',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         ASW: 7,
     },
     1543: {
         name: 'Abyssal Sonar',
         nameJP: '深海ソナー',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ASW: 9,
     },
     1544: {
         name: 'Abyssal Depth Charge Projector Mk.II',
         nameJP: '深海爆雷投射機 Mk.II',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         ASW: 13,
     },
     1545: {
         name: 'Abyssal Sonar Mk.II',
         nameJP: '深海ソナー Mk.II',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         ASW: 16,
     },
     1546: {
         name: 'Flying-fish Dive Bomber',
         nameJP: '飛び魚艦爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 10,
         AA: 8,
         ASW: 7,
@@ -5552,7 +5552,7 @@ const EQUIPDATA: EquipDatas = {
     1548: {
         name: 'Abyssal Hell Diver',
         nameJP: '深海地獄艦爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 11,
         ASW: 4,
         LOS: 3,
@@ -5561,7 +5561,7 @@ const EQUIPDATA: EquipDatas = {
     1549: {
         name: 'Avenger Torpedo Bomber',
         nameJP: '深海復讐艦攻',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 13,
         AA: 4,
         ASW: 5,
@@ -5571,7 +5571,7 @@ const EQUIPDATA: EquipDatas = {
     1550: {
         name: '5inch Twin Dual-Purpose Cannon',
         nameJP: '5inch連装両用莢砲',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 9,
         RNG: 2,
@@ -5580,7 +5580,7 @@ const EQUIPDATA: EquipDatas = {
     1551: {
         name: '20inch Twin Cannon',
         nameJP: '20inch連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 27,
         AA: 4,
         RNG: 3,
@@ -5589,7 +5589,7 @@ const EQUIPDATA: EquipDatas = {
     1552: {
         name: '15inch Fortress Gun',
         nameJP: '15inch要塞砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 13,
         AR: 3,
         RNG: 3,
@@ -5598,7 +5598,7 @@ const EQUIPDATA: EquipDatas = {
     1553: {
         name: '4inch Dual-Purpose+CIC',
         nameJP: '4inch連装両用砲+CIC',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
         AA: 15,
         RNG: 2,
@@ -5607,7 +5607,7 @@ const EQUIPDATA: EquipDatas = {
     1554: {
         name: 'Abyssal Attack Seaplane',
         nameJP: '深海水上攻撃機',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         DIVEBOMB: 8,
         AA: 4,
         ASW: 8,
@@ -5617,7 +5617,7 @@ const EQUIPDATA: EquipDatas = {
     1555: {
         name: 'Abyssal Attack Seaplane Kai',
         nameJP: '深海水上攻撃機改',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         DIVEBOMB: 13,
         AA: 9,
         ASW: 10,
@@ -5635,7 +5635,7 @@ const EQUIPDATA: EquipDatas = {
     1557: {
         name: 'Abyssal Hell Diver Kai',
         nameJP: '深海地獄艦爆改',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 15,
         ASW: 8,
         LOS: 5,
@@ -5644,7 +5644,7 @@ const EQUIPDATA: EquipDatas = {
     1558: {
         name: 'Avenger Torpedo Bomber Kai',
         nameJP: '深海復讐艦攻改',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         TP: 16,
         AA: 5,
         ASW: 9,
@@ -5654,7 +5654,7 @@ const EQUIPDATA: EquipDatas = {
     1559: {
         name: 'Abyssal FCS + CIC',
         nameJP: '深海FCS+CIC',
-        type: EquipType.SONARS,
+        type: EquipType.SONAR_S,
         a_type: AACITriggerEquipType.A_GUN, //.2 mult
         AA: 6,
         ASW: 20,
@@ -5665,14 +5665,14 @@ const EQUIPDATA: EquipDatas = {
     1560: {
         name: 'Abyssal Searchlight',
         nameJP: '深海探照灯',
-        type: EquipType.SEARCHLIGHTS,
+        type: EquipType.SEARCHLIGHT_S,
         FP: 2,
         LOS: 2
     },
     1561: {
         name: 'Abyssal Liberation Land-based Dive Bomber',
         nameJP: '深海解放陸爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 11,
         AA: 3,
         ASW: 5,
@@ -5682,7 +5682,7 @@ const EQUIPDATA: EquipDatas = {
     1562: {
         name: 'Abyssal Liberation Land-based Dive Bomber Ace',
         nameJP: '深海解放陸爆Ace',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 16,
         AA: 5,
         ASW: 7,
@@ -5692,7 +5692,7 @@ const EQUIPDATA: EquipDatas = {
     1563: {
         name: '8inch Long Range Twin Gun Mount',
         nameJP: '8inch長射程連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 1,
         ACC: -1,
@@ -5710,7 +5710,7 @@ const EQUIPDATA: EquipDatas = {
     1565: {
         name: '5inch Coastal Gun',
         nameJP: '5inch沿岸設置砲',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AR: 2,
         ACC: 3,
@@ -5719,7 +5719,7 @@ const EQUIPDATA: EquipDatas = {
     1566: {
         name: 'Abyssal Cat Fighter (Bombing)',
         nameJP: '深海猫艦戦(爆装)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         DIVEBOMB: 8,
         AA: 7,
         ASW: 2,
@@ -5728,7 +5728,7 @@ const EQUIPDATA: EquipDatas = {
     1567: {
         name: 'Coastal Radar',
         nameJP: '沿岸設置レーダー',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 4,
         ACC: 16,
         LOS: 8
@@ -5736,7 +5736,7 @@ const EQUIPDATA: EquipDatas = {
     1568: {
         name: '16inch Triple Gun Mount (Abyssal)',
         nameJP: '16inch三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 24,
         AA: 3,
         AR: 1,
@@ -5756,7 +5756,7 @@ const EQUIPDATA: EquipDatas = {
     1570: {
         name: 'High-speed Abyssal Torpedo mod. 2',
         nameJP: '高速深海魚雷 mod.2',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 13,
         ACC: 3,
@@ -5765,7 +5765,7 @@ const EQUIPDATA: EquipDatas = {
     1571: {
         name: 'Abyssal Seaplane Tender Imp Aircraft',
         nameJP: '深海水母小鬼機',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 4,
         DIVEBOMB: 15,
         AA: 11,
@@ -5788,7 +5788,7 @@ const EQUIPDATA: EquipDatas = {
     1573: {
         name: 'Abyssal Submarine Floatplane',
         nameJP: '深海潜水下駄履き',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 6,
         DIVEBOMB: 18,
         AA: 6,
@@ -5802,7 +5802,7 @@ const EQUIPDATA: EquipDatas = {
     1574: {
         name: 'Abyssal Patrolling Attack Hawk',
         nameJP: '深海攻撃哨戒鷹',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 3,
         DIVEBOMB: 14,
         AA: 8,
@@ -5816,7 +5816,7 @@ const EQUIPDATA: EquipDatas = {
     1575: {
         name: 'Abyssal Patrolling Attack Hawk Kai',
         nameJP: '深海攻撃哨戒鷹改',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 5,
         DIVEBOMB: 18,
         AA: 9,
@@ -5830,7 +5830,7 @@ const EQUIPDATA: EquipDatas = {
     1576: {
         name: 'Abyssal 12inch Triple Gun Mount',
         nameJP: '深海12inch三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         AA: 3,
         AR: 2,
@@ -5841,7 +5841,7 @@ const EQUIPDATA: EquipDatas = {
     1577: {
         name: 'Abyssal 15inch Quadruple Gun Mount',
         nameJP: '深海15inch四連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 24,
         AA: 4,
         AR: 2,
@@ -5853,7 +5853,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Abyssal 15inch Late Model Twin Gun Mount',
         nameJP: '深海15inch連装砲後期型',
         icon: SpecialIcon.MainHighAngleGun,
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         a_type: AACITriggerEquipType.A_HAFD,
         FP: 19,
         AA: 8,
@@ -5865,7 +5865,7 @@ const EQUIPDATA: EquipDatas = {
     1579: {
         name: 'Abyssal 14inch Straight Twin Gun Mount',
         nameJP: '深海14inch海峡連装砲',
-        type: EquipType.MAINGUNL, icon: SpecialIcon.AbyssalLargeCaliberMainGun,
+        type: EquipType.MAIN_GUN_L, icon: SpecialIcon.AbyssalLargeCaliberMainGun,
         FP: 17,
         AA: 4,
         AR: 3,
@@ -5876,7 +5876,7 @@ const EQUIPDATA: EquipDatas = {
     1580: {
         name: 'Abyssal Ambush Torpedo',
         nameJP: '深海待伏魚雷',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 19,
         ACC: 9,
@@ -5898,7 +5898,7 @@ const EQUIPDATA: EquipDatas = {
     1582: {
         name: 'Abyssal Night Dive Bomber',
         nameJP: '夜深海艦爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -5914,7 +5914,7 @@ const EQUIPDATA: EquipDatas = {
         name: 'Abyssal Night Revenge Torpedo Bomber',
         nameJP: '夜復讐深海艦攻',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -5929,7 +5929,7 @@ const EQUIPDATA: EquipDatas = {
     1584: {
         name: 'Abyssal 14inch Twin Gun Mount Kai',
         nameJP: '深海14inch連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 22,
         AA: 4,
         AR: 4,
@@ -5940,7 +5940,7 @@ const EQUIPDATA: EquipDatas = {
     1585: {
         name: 'Abyssal 16inch Triple Gun Mount Kai',
         nameJP: '深海16inch三連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 27,
         AA: 4,
         AR: 5,
@@ -5950,7 +5950,7 @@ const EQUIPDATA: EquipDatas = {
     1586: {
         name: 'Abyssal Patrolling Attack Hawk Kai Ni',
         nameJP: '深海攻撃哨戒鷹改二',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 9,
         DIVEBOMB: 27,
         AA: 10,
@@ -5964,7 +5964,7 @@ const EQUIPDATA: EquipDatas = {
     1587: {
         name: 'Abyssal 16inch Triple Gun Mount Kai Ni',
         nameJP: '深海16inch三連装砲改二',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 28,
         AA: 5,
         AR: 6,
@@ -5975,7 +5975,7 @@ const EQUIPDATA: EquipDatas = {
     1588: {
         name: 'Abyssal 5inch Twin Gun Mount Model C',
         nameJP: '深海5inch連装砲C型',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 6,
         AA: 3,
         ACC: 18,
@@ -5986,7 +5986,7 @@ const EQUIPDATA: EquipDatas = {
     1589: {
         name: 'Abyssal 5.5inch Twin Gun Mount Kai',
         nameJP: '深海5.5inch連装砲改',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 4,
         AR: 4,
@@ -5998,7 +5998,7 @@ const EQUIPDATA: EquipDatas = {
     1590: {
         name: 'Abyssal Target',
         nameJP: '深海標的',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         FP: 4,
         TP: 18,
@@ -6009,7 +6009,7 @@ const EQUIPDATA: EquipDatas = {
     1591: {
         name: 'Abyssal 5inch Single Gun Mount Mk.30',
         nameJP: '深海5inch単装砲 Mk.30',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
         AA: 7,
         ACC: 20,
@@ -6020,7 +6020,7 @@ const EQUIPDATA: EquipDatas = {
     1592: {
         name: 'Abyssal 16inch Mk.VIII Twin Gun Mount Kai',
         nameJP: '深海16inch Mk.VIII連装砲改',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 23,
         AA: 4,
         AR: 3,
@@ -6039,7 +6039,7 @@ const EQUIPDATA: EquipDatas = {
     1594: {
         name: 'Abyssal Sky Fortress (Reconnaissance Model)',
         nameJP: '深海空要塞(偵察型)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         DIVEBOMB: 3,
@@ -6051,7 +6051,7 @@ const EQUIPDATA: EquipDatas = {
     1595: {
         name: 'Abyssal Sky Fortress Ace (Reconnaissance Model)',
         nameJP: '深海空要塞Ace(偵察型)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         DIVEBOMB: 7,
@@ -6063,7 +6063,7 @@ const EQUIPDATA: EquipDatas = {
     1596: {
         name: 'Abyssal 6inch Triple New Rapid Fire Gun Mount',
         nameJP: '深海6inch三連装新型速射砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 14,
         AA: 13,
         ACC: 9,
@@ -6072,7 +6072,7 @@ const EQUIPDATA: EquipDatas = {
     1597: {
         name: 'Abyssal Sky Fortress (Heavy Bomber Model)',
         nameJP: '深海空要塞(重爆型)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         DIVEBOMB: 27,
@@ -6084,7 +6084,7 @@ const EQUIPDATA: EquipDatas = {
     1598: {
         name: 'Abyssal Sky Fortress Ace (Heavy Bomber Model)',
         nameJP: '深海空要塞Ace(重爆型)',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         DIVEBOMB: 37,
@@ -6096,7 +6096,7 @@ const EQUIPDATA: EquipDatas = {
     1599: {
         name: 'Abyssal 4.7inch Gun Mk.XII',
         nameJP: '深海4.7inch砲 Mk.XII',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 6,
         AA: 6,
         ACC: 24,
@@ -6107,7 +6107,7 @@ const EQUIPDATA: EquipDatas = {
     1600: {
         name: 'Abyssal 8inch Twin Rapid Fire Gun Mount',
         nameJP: '深海8inch連装速射砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 10,
         AA: 2,
         ACC: 8,
@@ -6116,7 +6116,7 @@ const EQUIPDATA: EquipDatas = {
     1601: {
         name: 'Abyssal 8inch Triple Gun Mount Mk.9',
         nameJP: '深海8inch三連装砲 Mk.9',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 12,
         AA: 2,
         ACC: 9,
@@ -6125,7 +6125,7 @@ const EQUIPDATA: EquipDatas = {
     1602: {
         name: 'Abyssal 5inch Twin Dual-purpose Gun Mount (Concentrated Deployment)',
         nameJP: '深海5inch連装両用砲(集中配備)',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 7,
         AA: 18,
         ACC: 7,
@@ -6135,7 +6135,7 @@ const EQUIPDATA: EquipDatas = {
     1603: {
         name: 'Abyssal Air Radar Mark.III + FCS',
         nameJP: '深海対空レーダーMark.III+FCS',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         AA: 19,
         ACC: 16,
         EV: 3,
@@ -6145,7 +6145,7 @@ const EQUIPDATA: EquipDatas = {
     1604: {
         name: 'Abyssal 5inch Twin Gun Mount Model A',
         nameJP: '深海5inch連装砲A型',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 6,
         TP: 6,
         AA: 2,
@@ -6157,7 +6157,7 @@ const EQUIPDATA: EquipDatas = {
     1605: {
         name: 'Abyssal Submarine Electronic Armament',
         nameJP: '深海潜水艦搭載電子兵装',
-        type: EquipType.SUBRADAR,
+        type: EquipType.SUBMARINE_RADAR,
         TP: 6,
         ACC: 22,
         EV: 6,
@@ -6167,7 +6167,7 @@ const EQUIPDATA: EquipDatas = {
     1606: {
         name: 'Abyssal 5inch Single High-angle Gun Mount Kai Ni',
         nameJP: '深海5inch単装高角砲改二',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 5,
         ACC: 19,
@@ -6178,7 +6178,7 @@ const EQUIPDATA: EquipDatas = {
     1607: {
         name: 'Abyssal 5inch Twin High-angle Gun Mount Kai Ni',
         nameJP: '深海5inch連装高角砲改二',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 6,
         ACC: 19,
@@ -6189,7 +6189,7 @@ const EQUIPDATA: EquipDatas = {
     1608: {
         name: 'Abyssal Night Operation Aviation Equipment',
         nameJP: '深海夜間航空作戦装備',
-        type: EquipType.RADARL,
+        type: EquipType.RADAR_L,
         FP: 3,
         ACC: 3,
         RNG: 4,
@@ -6197,7 +6197,7 @@ const EQUIPDATA: EquipDatas = {
     1609: {
         name: 'Abyssal 16inch Triple Gun Mount Mk.6',
         nameJP: '深海16inch三連装砲 Mk6',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 25,
         AA: 3,
         AR: 3,
@@ -6228,7 +6228,7 @@ const EQUIPDATA: EquipDatas = {
     1612: {
         name: 'Abyssal 6inch Triple Main Gun Mount Mk.16',
         nameJP: '深海6inch三連装主砲 Mk.16',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 13,
         AA: 6,
         ACC: 9,
@@ -6238,7 +6238,7 @@ const EQUIPDATA: EquipDatas = {
     1613: {
         name: 'Mediterranean 12inch/46 Twin Gun Mount',
         nameJP: '地中海12inch/46 連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 14,
         AR: 3,
         ACC: 8,
@@ -6248,7 +6248,7 @@ const EQUIPDATA: EquipDatas = {
     1614: {
         name: 'Mediterranean 12inch/46 Triple Gun Mount',
         nameJP: '地中海12inch/46 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 17,
         AR: 3,
         ACC: 9,
@@ -6258,7 +6258,7 @@ const EQUIPDATA: EquipDatas = {
     1615: {
         name: 'Mediterranean 12.6inch/44 Twin Gun Mount',
         nameJP: '地中海12.6inch/44 連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         TP: 7,
         AR: 3,
@@ -6269,7 +6269,7 @@ const EQUIPDATA: EquipDatas = {
     1616: {
         name: 'Mediterranean 12.6inch/44 Triple Gun Mount',
         nameJP: '地中海12.6inch/44 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 19,
         TP: 7,
         AR: 3,
@@ -6292,7 +6292,7 @@ const EQUIPDATA: EquipDatas = {
     1618: {
         name: 'Abyssal Night Dive Bomber II',
         nameJP: '夜深海艦爆II',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         FP: 4,
         DIVEBOMB: 17,
@@ -6305,7 +6305,7 @@ const EQUIPDATA: EquipDatas = {
     1619: {
         name: 'Abyssal Night Revenge Torpedo Bomber II',
         nameJP: '夜復讐深海艦攻II',
-        type: EquipType.TORPBOMBER, icon: SpecialIcon.NightTorpedoBombers,
+        type: EquipType.TORPEDO_BOMBER, icon: SpecialIcon.NightTorpedoBombers,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 5,
         TP: 17,
@@ -6318,7 +6318,7 @@ const EQUIPDATA: EquipDatas = {
     1620: {
         name: 'Abyssal Two-seat Fighter-bomber Hawk',
         nameJP: '深海戦爆複座鷹',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         FP: 5,
@@ -6334,7 +6334,7 @@ const EQUIPDATA: EquipDatas = {
     1621: {
         name: 'Abyssal Two-seat Fighter-bomber Hawk Kai',
         nameJP: '深海戦爆複座鷹改',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         FP: 6,
@@ -6350,7 +6350,7 @@ const EQUIPDATA: EquipDatas = {
     1622: {
         name: 'Abyssal Quadruple (Oxygen) Torpedo Mount Late Model',
         nameJP: '深海四連装(酸素)魚雷後期型',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 14,
         ACC: 8,
@@ -6360,7 +6360,7 @@ const EQUIPDATA: EquipDatas = {
     1623: {
         name: 'Abyssal 5inch Twin Gun Mount Model D',
         nameJP: '深海5inch連装砲D型',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 7,
         AA: 4,
         AR: 1,
@@ -6372,7 +6372,7 @@ const EQUIPDATA: EquipDatas = {
     1624: {
         name: 'Abyssal Quintuple (Oxygen) Torpedo Mount Late Model',
         nameJP: '深海五連装(酸素)魚雷後期型',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 18,
         ACC: 9,
@@ -6382,7 +6382,7 @@ const EQUIPDATA: EquipDatas = {
     1625: {
         name: 'Abyssal Twin-engine Land-based Dive Bomber',
         nameJP: '深海双発陸爆',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         is_skip_bomber: true,
         DIVEBOMB: 12,
         TP: 6,
@@ -6394,7 +6394,7 @@ const EQUIPDATA: EquipDatas = {
     1626: {
         name: 'Abyssal Twin-engine Land-based Dive Bomber Ace',
         nameJP: '深海双発陸爆Ace',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         is_skip_bomber: true,
         DIVEBOMB: 17,
         TP: 7,
@@ -6406,7 +6406,7 @@ const EQUIPDATA: EquipDatas = {
     1627: {
         name: 'Abyssal 5inch Twin Gun Mount Model C',
         nameJP: '深海5inch連装砲C型',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 6,
         AA: 2,
         AR: 2,
@@ -6418,7 +6418,7 @@ const EQUIPDATA: EquipDatas = {
     1630: {
         name: 'Abyssal Sky Super Fortress',
         nameJP: '深海空超要塞',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         FP: 18,
         DIVEBOMB: 33,
         AA: 12,
@@ -6429,7 +6429,7 @@ const EQUIPDATA: EquipDatas = {
     1631: {
         name: 'Abyssal Sky Super Fortress Kai',
         nameJP: '深海空超要塞改',
-        type: EquipType.LANDBOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         FP: 18,
         DIVEBOMB: 44,
         AA: 19,
@@ -6464,7 +6464,7 @@ const EQUIPDATA: EquipDatas = {
     1634: {
         name: 'Abyssal Rigging Assault General Seaplane',
         nameJP: '深海艤装水上汎用襲撃機',
-        type: EquipType.SEAPLANEBOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         is_skip_bomber: true,
         FP: 7,
         DIVEBOMB: 17,
@@ -6477,7 +6477,7 @@ const EQUIPDATA: EquipDatas = {
     1635: {
         name: 'Abyssal Assault Torpedo Bomber',
         nameJP: '深海突破襲撃機',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         is_skip_bomber: true,
         FP: 6,
         DIVEBOMB: 11,
@@ -6489,7 +6489,7 @@ const EQUIPDATA: EquipDatas = {
     1636: {
         name: 'Abyssal Assault Torpedo Bomber Ace',
         nameJP: '深海突破襲撃機Ace',
-        type: EquipType.TORPBOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         is_skip_bomber: true,
         FP: 9,
         DIVEBOMB: 16,
@@ -6501,7 +6501,7 @@ const EQUIPDATA: EquipDatas = {
     1637: {
         name: 'Coastal Ambush Semi-Submersible Torpedo Boat',
         nameJP: '沿岸突撃半水中魚雷艇',
-        type: EquipType.MIDGETSUB,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 18,
         ACC: 9,
         RNG: 1,
@@ -6509,7 +6509,7 @@ const EQUIPDATA: EquipDatas = {
     1638: {
         name: 'Abyssal 3inch Single High-angle Gun Mount + Deck Machine Gun',
         nameJP: '深海3inch単装高角砲+甲板機銃',
-        type: EquipType.MAINGUNS,
+        type: EquipType.MAIN_GUN_S,
         FP: 5,
         AA: 7,
         ACC: 3,
@@ -6518,7 +6518,7 @@ const EQUIPDATA: EquipDatas = {
     1639: {
         name: 'Abyssal Active Sonar & Abyssal Calibrated Radar',
         nameJP: '深海水中探信儀 & 深海調整電探',
-        type: EquipType.RADARS, icon: SpecialIcon.AbyssalSmallSonar,
+        type: EquipType.RADAR_S, icon: SpecialIcon.AbyssalSmallSonar,
         AA: 3,
         ACC: 13,
         EV: 8,
@@ -6538,7 +6538,7 @@ const EQUIPDATA: EquipDatas = {
     1641: {
         name: 'Abyssal Standard 14inch/45 Twin Gun Mount',
         nameJP: '深海標準14inch/45 連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         AR: 3,
         ACC: 4,
@@ -6548,7 +6548,7 @@ const EQUIPDATA: EquipDatas = {
     1642: {
         name: 'Abyssal Standard 14inch/45 Triple Gun Mount',
         nameJP: '深海標準14inch/45 三連装砲',
-        type: EquipType.MAINGUNL,
+        type: EquipType.MAIN_GUN_L,
         FP: 19,
         AR: 4,
         ACC: 6,
@@ -6558,7 +6558,7 @@ const EQUIPDATA: EquipDatas = {
     1643: {
         name: 'Abyssal 3.7cm FlaK',
         nameJP: '深海3.7cm FlaK',
-        type: EquipType.AAGUN,
+        type: EquipType.AA_GUN,
         FP: 1,
         AA: 8,
         ACC: 4,
@@ -6567,7 +6567,7 @@ const EQUIPDATA: EquipDatas = {
     1644: {
         name: 'Abyssal 5inch Single Gun Mount Mk.30 + GFCS',
         nameJP: '深海5inch単装砲 Mk.30+GFCS',
-        type: EquipType.MAINGUNS, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_S, icon: SpecialIcon.MainHighAngleGun,
         FP: 6,
         AA: 12,
         ACC: 22,
@@ -6589,7 +6589,7 @@ const EQUIPDATA: EquipDatas = {
     1646: {
         name: 'Abyssal Hedgehog Mk.10',
         nameJP: '深海Hedgehog Mk.10',
-        type: EquipType.DEPTHCHARGE,
+        type: EquipType.DEPTH_CHARGE,
         ACC: 4,
         EV: 2,
         ASW: 22,
@@ -6597,7 +6597,7 @@ const EQUIPDATA: EquipDatas = {
     1647: {
         name: 'GFCS + Abyssal 5inch Twin Gun Mount Mk.32',
         nameJP: 'GFCS+深海5inch連装砲 Mk.32',
-        type: EquipType.MAINGUNM, icon: SpecialIcon.MainHighAngleGun,
+        type: EquipType.MAIN_GUN_M, icon: SpecialIcon.MainHighAngleGun,
         FP: 11,
         AA: 19,
         ACC: 23,
@@ -6619,7 +6619,7 @@ const EQUIPDATA: EquipDatas = {
     1649: {
         name: '15.2cm Abyssal Triple Gun Mount',
         nameJP: '15.2cm深海三連装砲',
-        type: EquipType.MAINGUNM,
+        type: EquipType.MAIN_GUN_M,
         FP: 9,
         AA: 3,
         ACC: 3,
@@ -6641,7 +6641,7 @@ const EQUIPDATA: EquipDatas = {
     1651: {
         name: 'Abyssal Dauntless Dive Bomber Mk.II',
         nameJP: '深海不屈艦爆 Mk.II',
-        type: EquipType.DIVEBOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         FP: 2,
         DIVEBOMB: 13,
@@ -6655,7 +6655,7 @@ const EQUIPDATA: EquipDatas = {
     1652: {
         name: 'Abyssal Devastation Torpedo Bomber Mk.II',
         nameJP: '深海打撃艦攻 Mk.II',
-        type: EquipType.TORPBOMBER, icon: SpecialIcon.NightTorpedoBombers,
+        type: EquipType.TORPEDO_BOMBER, icon: SpecialIcon.NightTorpedoBombers,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 3,
         TP: 11,

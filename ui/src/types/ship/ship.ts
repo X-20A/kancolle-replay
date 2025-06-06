@@ -1,35 +1,31 @@
-// TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
-// TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
-
 import { DeepReadonly } from "..";
 
+// TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
+// TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
 /** 艦種 */
-export const ShipType = {
-    DE: 1,
-    DD: 2,
-    CL: 3,
-    CLT: 4,
-    CA: 5,
-    CAV: 6,
-    CVL: 7,
-    FBB: 8, // ?
-    BB: 9,
-    BBV: 10,
-    CV: 11,
-    BBB: 12,
-    SS: 13,
-    SSV: 14,
-    // AO_2: 15,
-    AV: 16,
-    LHA: 17,
-    CVB: 18,
-    AR: 19,
-    AS: 20,
-    CT: 21,
-    AO: 22,
-    AT: 23,
-} as const;
-export type ShipType = typeof ShipType[keyof typeof ShipType];
+export const enum ShipType {
+    DE = 1,
+    DD = 2,
+    CL = 3,
+    CLT = 4,
+    CA = 5,
+    CAV = 6,
+    CVL = 7,
+    FBB = 8, // ?
+    BB = 9,
+    BBV = 10,
+    CV = 11,
+    SS = 13,
+    SSV = 14,
+    // AO_2 = 15,
+    AV = 16,
+    LHA = 17,
+    CVB = 18,
+    AR = 19,
+    AS = 20,
+    CT = 21,
+    AO = 22,
+};
 
 export const enum UnclearLevel {
     Caution = 2,

@@ -1,7 +1,7 @@
 import { Country } from "@/datas/equip/bonus";
 import { CountryDatas } from "@/datas/ship/country";
 import { StatusComponent } from "@/types";
-import { brandShipId, ShipId, ShipLv } from "@/types/brands/ship";
+import { ShipId, ShipLv } from "@/types/brands/ship";
 import { ShipDatas, PlayerShipFlags, ShipType, PlayerShipClass } from "@/types/ship/ship";
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */

@@ -2,76 +2,77 @@ import { DeepReadonly } from "@/types";
 
 /** 装備種別ID */
 export const enum EquipImprovementType {
-    MAINGUNS = 1,
-    MAINGUNSAA = 101,
-    MAINGUNM = 2,
-    MAINGUNL = 3,
-    SECGUN = 4,
-    SECGUNAA = 104,
+    MAIN_GUN_S = 1,
+    MAIN_GUN_S_AA = 101,
+    MAIN_GUN_M = 2,
+    MAIN_GUN_L = 3,
+    SECCONDARY_GUN = 4,
+    SECCONDARY_GUN_AA = 104,
     TORPEDO = 5,
     FIGHTER = 6,
-    DIVEBOMBER = 7,
-    TORPBOMBER = 8,
-    CARRIERSCOUT = 9,
+    DIVE_BOMBER = 7,
+    TORPEDO_BOMBER = 8,
+    CARRIER_SCOUT = 9,
     SEAPLANE = 10,
-    SEAPLANEBOMBER = 11,
+    SEAPLANE_BOMBER = 11,
     // RADARS = 12,
-    RADARL = 13,
-    SONARS = 14,
+    RADAR_L = 13,
+    SONAR_S = 14,
     /** 爆雷 && 爆雷投射機 */
-    DEPTHCHARGE = 15,
+    DEPTH_CHARGE = 15,
     ENGINE = 17,
-    TYPE3SHELL = 18,
-    APSHELL = 19,
-    AAGUN = 21,
-    MIDGETSUB = 22,
+    TYPE_3_SHELL = 18,
+    AP_SHELL = 19,
+    AA_GUN = 21,
+    MIDGET_SUBMARINE = 22,
     REPAIR = 23,
-    LANDINGCRAFT = 24,
+    LANDING_CRAFT = 24,
     // AUTOGYRO = 25,
     // ASWPLANE = 26,
-    BULGEM = 27,
-    BULGEL = 28,
-    SEARCHLIGHTS = 29,
+    BULGE_M = 27,
+    BULGE_L = 28,
+    SEARCHLIGHT_S = 29,
     DRUM = 30,
+    /** 艦艇修理施設 */
     SRF = 31,
-    TORPEDOSS = 32,
+    TORPEDO_SS = 32,
     STARSHELL = 33,
     FCF = 34,
     SCAMP = 35,
-    AAFD = 36,
+    ANTI_AIR_FIRE_DIRECTOR = 36,
     WG42 = 37,
-    MAINGUNXL = 38,
+    MAIN_GUN_XL = 38,
     PICKET = 39,
-    SONARL = 40,
+    SONAR_L = 40,
     FLYINGBOAT = 41,
-    SEARCHLIGHTL = 42,
+    SEARCHLIGHT_L = 42,
     RATION = 43,
     OILDRUM = 44,
-    SEAPLANEFIGHTER = 45,
-    LANDINGTANK = 46,
-    LANDBOMBER = 47,
+    SEAPLANE_FIGHTER = 45,
+    LANDING_TANK = 46,
+    LAND_BASED_BOMBER = 47,
     INTERCEPTOR = 48,
-    LANDSCOUT = 49,
-    TRANSPORTITEM = 50,
-    SUBRADAR = 51,
-    ARMYUNIT = 52,
-    LANDBOMBERL = 53,
+    LAND_BASED_SCOUT = 49,
+    TRANSPORT_ITEM = 50,
+    SUBMARINE_RADAR = 51,
+    ARMY_UNIT = 52,
+    LAND_BASED_BOMBER_L = 53,
     SMOKESCREEN = 54,
-    JETBOMBER = 57,
+    JET_BOMBER = 57,
     // JETSCOUT = 59,
-    RADARXL = 93,
-    CARRIERSCOUT2 = 94,
-    SECGUNL = 95,
+    RADAR_XL = 93,
+    CARRIERSCOUT_2 = 94,
+    SECONDARY_GUN_L = 95,
     OTHER = 99,
 
     // 新規
 
     /** 爆戦 */
-    FIGHTERBOMBER = 70,
+    FIGHTER_BOMBER = 70,
     /** 対潜哨戒機(素対潜8未満) */
-    ASWPLANE_LOW = 71,
+    ASW_PLANE_LOW = 71,
     /** 対潜哨戒機(素対潜8以上) */
-    ASWPLANE_HIGH = 72,
+    ASW_PLANE_HIGH = 72,
     /** 回転翼機(素対潜11未満) */
     AUTOGYRO_LOW = 73,
     /** 回転翼機(素対潜11以上) */
@@ -143,7 +144,7 @@ export type EquipImprovementDatas = DeepReadonly<Record<EquipImprovementType, Im
  * 参考: https://akashi-list.me/
  */
 export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
-    [EquipImprovementType.MAINGUNS]: {
+    [EquipImprovementType.MAIN_GUN_S]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -161,7 +162,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.MAINGUNSAA]: {
+    [EquipImprovementType.MAIN_GUN_S_AA]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -187,7 +188,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.MAINGUNM]: {
+    [EquipImprovementType.MAIN_GUN_M]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -205,25 +206,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.MAINGUNL]: {
-        [AddStatusType.SHELL_POWER]: {
-            coeffient: 1.5,
-            is_sqrt: true,
-        },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
-            coeffient: 1,
-            is_sqrt: true,
-        },
-        [AddStatusType.SHELL_ACCURACY]: {
-            coeffient: 1,
-            is_sqrt: true,
-        },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
-            coeffient: 1.3,
-            is_sqrt: true,
-        },
-    },
-    [EquipImprovementType.MAINGUNXL]: {
+    [EquipImprovementType.MAIN_GUN_L]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1.5,
             is_sqrt: true,
@@ -241,7 +224,25 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SECGUN]: { // (分類A)
+    [EquipImprovementType.MAIN_GUN_XL]: {
+        [AddStatusType.SHELL_POWER]: {
+            coeffient: 1.5,
+            is_sqrt: true,
+        },
+        [AddStatusType.NIGHT_BATTLE_POWER]: {
+            coeffient: 1,
+            is_sqrt: true,
+        },
+        [AddStatusType.SHELL_ACCURACY]: {
+            coeffient: 1,
+            is_sqrt: true,
+        },
+        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+            coeffient: 1.3,
+            is_sqrt: true,
+        },
+    },
+    [EquipImprovementType.SECCONDARY_GUN]: { // (分類A)
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -259,7 +260,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SECGUNAA]: { // (分類B)
+    [EquipImprovementType.SECCONDARY_GUN_AA]: { // (分類B)
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: false,
@@ -286,7 +287,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.SECGUNL]: { // (分類C)
+    [EquipImprovementType.SECONDARY_GUN_L]: { // (分類C)
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: false,
@@ -304,7 +305,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.APSHELL]: {
+    [EquipImprovementType.AP_SHELL]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -339,7 +340,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.TORPEDOSS]: {
+    [EquipImprovementType.TORPEDO_SS]: {
         [AddStatusType.TORPEDO_POWER]: {
             coeffient: 1.2,
             is_sqrt: true,
@@ -355,7 +356,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.MIDGETSUB]: {
+    [EquipImprovementType.MIDGET_SUBMARINE]: {
         [AddStatusType.NIGHT_BATTLE_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -365,7 +366,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.AAGUN]: {
+    [EquipImprovementType.AA_GUN]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -383,7 +384,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.AAFD]: {
+    [EquipImprovementType.ANTI_AIR_FIRE_DIRECTOR]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -409,7 +410,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SONARS]: {
+    [EquipImprovementType.SONAR_S]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 0.75,
             is_sqrt: true,
@@ -426,7 +427,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SONARL]: {
+    [EquipImprovementType.SONAR_L]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 0.75, // ! 明石0.66
             is_sqrt: true,
@@ -444,7 +445,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.DEPTHCHARGE]: { // ! 明石では爆雷と爆雷投射機で上昇の挙動が異なる
+    [EquipImprovementType.DEPTH_CHARGE]: { // ! 明石では爆雷と爆雷投射機で上昇の挙動が異なる
         [AddStatusType.SHELL_POWER]: { // ! 明石に無い
             coeffient: 0.75,
             is_sqrt: true,
@@ -464,7 +465,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.TORPBOMBER]: {
+    [EquipImprovementType.TORPEDO_BOMBER]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 0.2,
             is_sqrt: false,
@@ -474,7 +475,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.DIVEBOMBER]: {
+    [EquipImprovementType.DIVE_BOMBER]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 0.2,
             is_sqrt: false,
@@ -484,7 +485,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.FIGHTERBOMBER]: {
+    [EquipImprovementType.FIGHTER_BOMBER]: {
         [AddStatusType.AIR_SUPERIORITY]: {
             coeffient: 0.25,
             is_sqrt: false,
@@ -496,19 +497,19 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SEAPLANEBOMBER]: {
+    [EquipImprovementType.SEAPLANE_BOMBER]: {
         [AddStatusType.LOS]: { // ! 爆装がない
             coeffient: 1.15,
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.CARRIERSCOUT]: {
+    [EquipImprovementType.CARRIER_SCOUT]: {
         [AddStatusType.LOS]: {
             coeffient: 1.2,
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.CARRIERSCOUT2]: {
+    [EquipImprovementType.CARRIERSCOUT_2]: {
         [AddStatusType.LOS]: {
             coeffient: 1.2,
             is_sqrt: true,
@@ -526,7 +527,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.ASWPLANE_LOW]: {
+    [EquipImprovementType.ASW_PLANE_LOW]: {
         [AddStatusType.ASW_POWER]: {
             coeffient: 0.2,
             is_sqrt: false,
@@ -536,7 +537,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.ASWPLANE_HIGH]: {
+    [EquipImprovementType.ASW_PLANE_HIGH]: {
         [AddStatusType.ASW_POWER]: {
             coeffient: 0.3,
             is_sqrt: false,
@@ -610,7 +611,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.RADARL]: { // ! 艦隊防空が無い 大型電探もモデルを分ける必要がありそう
+    [EquipImprovementType.RADAR_L]: { // ! 艦隊防空が無い 大型電探もモデルを分ける必要がありそう
         [AddStatusType.SHELL_ACCURACY]: {
             coeffient: 1, // ! 明石: 1.7
             is_sqrt: true,
@@ -624,7 +625,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.RADARXL]: { // ! 艦隊防空がない
+    [EquipImprovementType.RADAR_XL]: { // ! 艦隊防空がない
         [AddStatusType.SHELL_ACCURACY]: {
             coeffient: 1, // ! 明石: 1.7
             is_sqrt: true,
@@ -644,7 +645,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.TYPE3SHELL]: {
+    [EquipImprovementType.TYPE_3_SHELL]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -661,19 +662,19 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.BULGEM]: {
+    [EquipImprovementType.BULGE_M]: {
         [AddStatusType.ARMOR]: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.BULGEL]: {
+    [EquipImprovementType.BULGE_L]: {
         [AddStatusType.ARMOR]: {
             coeffient: 0.3,
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.LANDINGCRAFT]: { // ! 砲台特効倍率がない
+    [EquipImprovementType.LANDING_CRAFT]: { // ! 砲台特効倍率がない
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -691,7 +692,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SEARCHLIGHTS]: {
+    [EquipImprovementType.SEARCHLIGHT_S]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -709,7 +710,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SEARCHLIGHTL]: {
+    [EquipImprovementType.SEARCHLIGHT_L]: {
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -805,10 +806,10 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
     [EquipImprovementType.RATION]: {
 
     },
-    [EquipImprovementType.SEAPLANEFIGHTER]: {
+    [EquipImprovementType.SEAPLANE_FIGHTER]: {
 
     },
-    [EquipImprovementType.LANDINGTANK]: { // ! 明石では砲台特効倍率が陸戦隊と内火艇で異なる
+    [EquipImprovementType.LANDING_TANK]: { // ! 明石では砲台特効倍率が陸戦隊と内火艇で異なる
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -829,7 +830,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
     [EquipImprovementType.OILDRUM]: {
 
     },
-    [EquipImprovementType.LANDBOMBER]: {
+    [EquipImprovementType.LAND_BASED_BOMBER]: {
         [AddStatusType.TORPEDO_POWER]: {
             coeffient: 0.7,
             is_sqrt: true,
@@ -849,7 +850,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: false,
         },
     },
-    [EquipImprovementType.LANDSCOUT]: { // ! 明石にはない
+    [EquipImprovementType.LAND_BASED_SCOUT]: { // ! 明石にはない
         [AddStatusType.AIR_SUPERIORITY]: {
             coeffient: 0.2,
             is_sqrt: false,
@@ -859,13 +860,13 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.TRANSPORTITEM]: {
+    [EquipImprovementType.TRANSPORT_ITEM]: {
 
     },
-    [EquipImprovementType.SUBRADAR]: { // ! 未検証？
+    [EquipImprovementType.SUBMARINE_RADAR]: { // ! 未検証？
 
     },
-    [EquipImprovementType.LANDBOMBERL]: {
+    [EquipImprovementType.LAND_BASED_BOMBER_L]: {
         [AddStatusType.LAND_BASE_TORPEDO]: {
             coeffient: 0.7,
             is_sqrt: true,
@@ -879,10 +880,10 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.JETBOMBER]: {
+    [EquipImprovementType.JET_BOMBER]: {
 
     },
-    [EquipImprovementType.ARMYUNIT]: { // ! 明石に無い
+    [EquipImprovementType.ARMY_UNIT]: { // ! 明石に無い
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,

@@ -1,11 +1,11 @@
-import { AbyssalShipDatas } from "@/types/ship/abyssal";
-import { ShipType, UnclearLevel } from "@/types/ship/ship";
+import { AbyssalShipDatas, AbyssalShipType } from "@/types/ship/abyssal";
+import { CVsNightAttackType, InstallType, UnclearLevel } from "@/types/ship/ship";
 
 export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1501: {
         name: 'DD I-Class',
         nameJP: '駆逐イ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 20,
         FP: 5,
         TP: 15,
@@ -24,7 +24,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1502: {
         name: 'DD Ro-Class',
         nameJP: '駆逐ロ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 22,
         FP: 7,
         TP: 16,
@@ -43,7 +43,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1503: {
         name: 'DD Ha-Class',
         nameJP: '駆逐ハ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 24,
         FP: 6,
         TP: 16,
@@ -62,7 +62,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1504: {
         name: 'DD Ni-Class',
         nameJP: '駆逐ニ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 28,
         FP: 8,
         TP: 24,
@@ -81,7 +81,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1505: {
         name: 'CL Ho-Class',
         nameJP: '軽巡ホ級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 33,
         FP: 14,
         TP: 24,
@@ -100,7 +100,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1506: {
         name: 'CL He-Class',
         nameJP: '軽巡ヘ級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 36,
         FP: 16,
         TP: 28,
@@ -119,7 +119,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1507: {
         name: 'CL To-Class',
         nameJP: '軽巡ト級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 39,
         FP: 24,
         TP: 28,
@@ -138,7 +138,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1508: {
         name: 'CLT Chi-Class',
         nameJP: '雷巡チ級',
-        type: ShipType.CLT,
+        type: AbyssalShipType.CLT,
         HP: 48,
         FP: 18,
         TP: 48,
@@ -158,7 +158,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1509: {
         name: 'CA Ri-Class',
         nameJP: '重巡リ級',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 58,
         FP: 32,
         TP: 32,
@@ -177,7 +177,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1510: {
         name: 'CVL Nu-Class',
         nameJP: '軽母ヌ級',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         can_not_CVCI: true,
         HP: 65,
         FP: 0,
@@ -197,7 +197,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1511: {
         name: 'BB Ru-Class',
         nameJP: '戦艦ル級',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 90,
         FP: 65,
         TP: 0,
@@ -216,7 +216,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1512: {
         name: 'CV Wo-Class',
         nameJP: '空母ヲ級',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         can_not_CVCI: true,
         HP: 85,
         FP: 0,
@@ -236,7 +236,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1513: {
         name: 'Transport Wa-Class',
         nameJP: '輸送ワ級',
-        type: ShipType.AT,
+        type: AbyssalShipType.AT,
         can_not_shell: true,
         can_not_NB: true,
         HP: 70,
@@ -257,7 +257,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1514: {
         name: 'DD I-Class Elite',
         nameJP: '駆逐イ級elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 30,
         FP: 15,
         TP: 32,
@@ -276,7 +276,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1515: {
         name: 'DD Ro-Class Elite',
         nameJP: '駆逐ロ級elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 35,
         FP: 20,
         TP: 32,
@@ -295,7 +295,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1516: {
         name: 'DD Ha-Class Elite',
         nameJP: '駆逐ハ級elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 40,
         FP: 15,
         TP: 32,
@@ -314,7 +314,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1517: {
         name: 'DD Ni-Class Elite',
         nameJP: '駆逐ニ級elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 45,
         FP: 20,
         TP: 40,
@@ -333,7 +333,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1518: {
         name: 'CL Ho-Class Elite',
         nameJP: '軽巡ホ級elite',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 48,
         FP: 30,
         TP: 40,
@@ -352,7 +352,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1519: {
         name: 'CL He-Class Elite',
         nameJP: '軽巡ヘ級elite',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 52,
         FP: 34,
         TP: 48,
@@ -371,7 +371,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1520: {
         name: 'CL To-Class Elite',
         nameJP: '軽巡ト級elite',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 55,
         FP: 36,
         TP: 48,
@@ -390,7 +390,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1521: {
         name: 'CLT Chi-Class Elite',
         nameJP: '雷巡チ級elite',
-        type: ShipType.CLT,
+        type: AbyssalShipType.CLT,
         HP: 50,
         FP: 35,
         TP: 72,
@@ -410,7 +410,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1522: {
         name: 'CA Ri-Class Elite',
         nameJP: '重巡リ級elite',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 60,
         FP: 58,
         TP: 42,
@@ -429,7 +429,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1523: {
         name: 'CVL Nu-Class Elite',
         nameJP: '軽母ヌ級elite',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         can_not_CVCI: true,
         HP: 70,
         FP: 0,
@@ -449,7 +449,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1524: {
         name: 'BB Ru-Class Elite',
         nameJP: '戦艦ル級elite',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 90,
         FP: 85,
         TP: 0,
@@ -468,7 +468,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1525: {
         name: 'CV Wo-Class Elite',
         nameJP: '空母ヲ級elite',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         can_not_CVCI: true,
         HP: 88,
         FP: 0,
@@ -488,7 +488,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1526: {
         name: 'Transport Wa-Class Elite',
         nameJP: '輸送ワ級elite',
-        type: ShipType.AT,
+        type: AbyssalShipType.AT,
         HP: 80,
         FP: 15,
         TP: 0,
@@ -507,7 +507,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1527: {
         name: 'CA Ri-Class Flagship',
         nameJP: '重巡リ級flagship',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 76,
         FP: 68,
         TP: 48,
@@ -526,8 +526,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1528: {
         name: 'CV Wo-Class Flagship',
         nameJP: '空母ヲ級flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -547,7 +547,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1529: {
         name: 'BB Ru-Class Flagship',
         nameJP: '戦艦ル級flagship',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 98,
         FP: 90,
         TP: 0,
@@ -566,7 +566,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1530: {
         name: 'SS Ka-Class',
         nameJP: '潜水カ級',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_not_op_torpedo_submarine: true,
         HP: 19,
         FP: 0,
@@ -587,7 +587,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1531: {
         name: 'SS Yo-Class',
         nameJP: '潜水ヨ級',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_not_op_torpedo_submarine: true,
         HP: 24,
         FP: 0,
@@ -608,7 +608,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1532: {
         name: 'SS Ka-Class Elite',
         nameJP: '潜水カ級elite',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 27,
         FP: 0,
         TP: 64,
@@ -628,7 +628,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1533: {
         name: 'SS Yo-Class Elite',
         nameJP: '潜水ヨ級elite',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 34,
         FP: 0,
         TP: 74,
@@ -648,7 +648,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1534: {
         name: 'SS Ka-Class Flagship',
         nameJP: '潜水カ級flagship',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 37,
         FP: 0,
         TP: 86,
@@ -668,7 +668,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1535: {
         name: 'SS Yo-Class Flagship',
         nameJP: '潜水ヨ級flagship',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 44,
         FP: 0,
         TP: 96,
@@ -688,7 +688,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1536: {
         name: 'Floating Fortress A',
         nameJP: '浮遊要塞',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 88,
         FP: 50,
         TP: 40,
@@ -707,7 +707,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1537: {
         name: 'Floating Fortress B',
         nameJP: '浮遊要塞',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 88,
         FP: 50,
         TP: 40,
@@ -726,7 +726,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1538: {
         name: 'Floating Fortress C',
         nameJP: '浮遊要塞',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 88,
         FP: 50,
         TP: 40,
@@ -745,7 +745,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1539: {
         name: 'Anchorage Demon',
         nameJP: '泊地棲鬼',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 180,
         FP: 90,
         TP: 60,
@@ -764,7 +764,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1540: {
         name: 'Anchorage Princess',
         nameJP: '泊地棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 300,
         FP: 96,
         TP: 90,
@@ -783,7 +783,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1541: {
         name: 'FBB Ta-Class',
         nameJP: '戦艦タ級',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 84,
         FP: 60,
         TP: 0,
@@ -802,7 +802,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1542: {
         name: 'FBB Ta-Class Elite',
         nameJP: '戦艦タ級elite',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 88,
         FP: 75,
         TP: 0,
@@ -821,7 +821,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1543: {
         name: 'FBB Ta-Class Flagship',
         nameJP: '戦艦タ級flagship',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 90,
         FP: 85,
         TP: 0,
@@ -840,7 +840,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1544: {
         name: 'Armoured Carrier Demon',
         nameJP: '装甲空母鬼',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 150,
         FP: 70,
         TP: 80,
@@ -859,7 +859,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1545: {
         name: 'Armoured Carrier Princess',
         nameJP: '装甲空母姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 270,
         FP: 90,
         TP: 90,
@@ -878,7 +878,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1546: {
         name: 'Southern Demon',
         nameJP: '南方棲鬼',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 210,
         FP: 90,
         TP: 80,
@@ -898,7 +898,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1547: {
         name: 'Southern War Demon',
         nameJP: '南方棲戦鬼',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 240,
         FP: 120,
         TP: 90,
@@ -918,7 +918,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1548: {
         name: 'Southern War Princess',
         nameJP: '南方棲戦姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 380,
         FP: 160,
         TP: 100,
@@ -938,7 +938,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1549: {
         name: 'Escort Fortress A (Dive)',
         nameJP: '護衛要塞',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 66,
         FP: 55,
         TP: 45,
@@ -958,7 +958,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1550: {
         name: 'Escort Fortress B (Torpedo)',
         nameJP: '護衛要塞',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 66,
         FP: 55,
         TP: 45,
@@ -978,7 +978,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1551: {
         name: 'Escort Fortress C (Torpedo)',
         nameJP: '護衛要塞',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 66,
         FP: 55,
         TP: 45,
@@ -998,7 +998,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1552: {
         name: 'DD Ro-Class Flagship',
         nameJP: '駆逐ロ級flagship',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 43,
         FP: 33,
         TP: 60,
@@ -1018,7 +1018,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1553: {
         name: 'DD Ha-Class Flagship',
         nameJP: '駆逐ハ級flagship',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 47,
         FP: 30,
         TP: 60,
@@ -1038,7 +1038,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1554: {
         name: 'CL Ho-Class Flagship',
         nameJP: '軽巡ホ級flagship',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 53,
         FP: 42,
         TP: 72,
@@ -1058,7 +1058,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1555: {
         name: 'CL He-Class Flagship',
         nameJP: '軽巡ヘ級flagship',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 57,
         FP: 48,
         TP: 80,
@@ -1078,8 +1078,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1556: {
         name: 'Airfield Princess',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -1099,7 +1099,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1557: {
         name: 'Battleship Princess',
         nameJP: '戦艦棲姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         HP: 400,
@@ -1121,7 +1121,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1558: {
         name: 'Transport Wa-Class Flagship',
         nameJP: '輸送ワ級flagship',
-        type: ShipType.AT,
+        type: AbyssalShipType.AT,
         HP: 130,
         FP: 55,
         TP: 0,
@@ -1140,7 +1140,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1559: {
         name: 'CLT Chi-Class Flagship',
         nameJP: '雷巡チ級flagship',
-        type: ShipType.CLT,
+        type: AbyssalShipType.CLT,
         HP: 70,
         FP: 50,
         TP: 120,
@@ -1160,8 +1160,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1560: {
         name: 'CVL Nu-Class Flagship',
         nameJP: '軽母ヌ級flagship',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 84,
         FP: 18,
@@ -1181,7 +1181,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1561: {
         name: 'BBV Re-Class',
         nameJP: '戦艦レ級',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         planeasw: 0,
         HP: 180,
         FP: 90,
@@ -1202,7 +1202,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1562: {
         name: 'BBV Re-Class Elite',
         nameJP: '戦艦レ級elite',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         planeasw: 0,
         HP: 270,
         FP: 130,
@@ -1223,7 +1223,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1564: {
         name: 'DD I-Class Flagship',
         nameJP: '駆逐イ級flagship',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 39,
         FP: 32,
         TP: 60,
@@ -1243,8 +1243,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1565: {
         name: 'CV Wo-Class Flagship Kai',
         nameJP: '空母ヲ級改flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 160,
         FP: 40,
@@ -1264,7 +1264,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1566: {
         name: 'CA Ri-Class Flagship Kai',
         nameJP: '重巡リ級改flagship',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 88,
         FP: 88,
         TP: 80,
@@ -1284,7 +1284,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1567: {
         name: 'BB Ru-Class Flagship Kai',
         nameJP: '戦艦ル級改flagship',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 130,
         FP: 110,
         TP: 0,
@@ -1303,7 +1303,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1570: {
         name: 'SS So-Class',
         nameJP: '潜水ソ級',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_not_op_torpedo_submarine: true,
         HP: 33,
         FP: 24,
@@ -1324,7 +1324,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1571: {
         name: 'SS So-Class Elite',
         nameJP: '潜水ソ級elite',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 45,
         FP: 30,
         TP: 100,
@@ -1344,7 +1344,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1572: {
         name: 'SS So-Class Flagship',
         nameJP: '潜水ソ級flagship',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 48,
         FP: 30,
         TP: 135,
@@ -1364,8 +1364,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1573: {
         name: 'Harbour Princess',
         nameJP: '港湾棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 380,
         FP: 100,
         TP: 0,
@@ -1385,8 +1385,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1574: {
         name: 'Isolated Island Demon',
         nameJP: '離島棲鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 450,
         FP: 150,
         TP: 0,
@@ -1406,7 +1406,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1575: {
         name: 'DD I-Class Late Model',
         nameJP: '駆逐イ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 35,
         FP: 38,
         TP: 60,
@@ -1426,7 +1426,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1576: {
         name: 'DD Ro-Class Late Model',
         nameJP: '駆逐ロ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 37,
         FP: 38,
         TP: 66,
@@ -1446,7 +1446,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1577: {
         name: 'DD Ha-Class Late Model',
         nameJP: '駆逐ハ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 38,
         FP: 44,
         TP: 72,
@@ -1466,7 +1466,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1578: {
         name: 'DD Ni-Class Late Model',
         nameJP: '駆逐ニ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 40,
         FP: 48,
         TP: 84,
@@ -1486,8 +1486,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1579: {
         name: 'CV Wo-Class Flagship 2',
         nameJP: '空母ヲ級flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -1508,8 +1508,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1581: {
         name: 'Northern Princess (Event)',
         nameJP: '北方棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 360,
         FP: 90,
         TP: 0,
@@ -1529,8 +1529,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1582: {
         name: 'Northern Princess 2 (Event)',
         nameJP: '北方棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 170,
         TP: 0,
@@ -1550,8 +1550,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1583: {
         name: 'Midway Princess',
         nameJP: '中間棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 550,
         FP: 100,
         TP: 0,
@@ -1571,8 +1571,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1584: {
         name: 'Midway Princess 2',
         nameJP: '中間棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 600,
         FP: 180,
         TP: 0,
@@ -1592,8 +1592,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1585: {
         name: 'Aircraft Carrier Demon',
         nameJP: '空母棲鬼',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 250,
         FP: 120,
         TP: 0,
@@ -1613,8 +1613,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1586: {
         name: 'Aircraft Carrier Princess',
         nameJP: '空母棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         HP: 350,
@@ -1636,8 +1636,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1587: {
         name: 'Northern Princess (3-5)',
         nameJP: '北方棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 300,
         FP: 80,
         TP: 0,
@@ -1657,8 +1657,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1588: {
         name: 'Northern Princess 2 (3-5)',
         nameJP: '北方棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 390,
         FP: 140,
         TP: 0,
@@ -1678,8 +1678,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1589: {
         name: 'Northern Princess 3 (3-5)',
         nameJP: '北方棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 300,
         FP: 60,
         TP: 0,
@@ -1699,8 +1699,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1590: {
         name: 'Northern Princess 4 (3-5)',
         nameJP: '北方棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 390,
         FP: 140,
         TP: 0,
@@ -1720,7 +1720,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1591: {
         name: 'CL Tsu-Class',
         nameJP: '軽巡ツ級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 48,
         FP: 58,
         TP: 84,
@@ -1740,7 +1740,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1592: {
         name: 'CL Tsu-Class Elite',
         nameJP: '軽巡ツ級elite',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 66,
         FP: 64,
         TP: 92,
@@ -1760,7 +1760,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1594: {
         name: 'CA Ne-Class',
         nameJP: '重巡ネ級',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 80,
         FP: 73,
         TP: 66,
@@ -1780,7 +1780,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1595: {
         name: 'CA Ne-Class Elite',
         nameJP: '重巡ネ級elite',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 88,
         FP: 79,
         TP: 74,
@@ -1800,7 +1800,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1597: {
         name: 'Destroyer Princess',
         nameJP: '駆逐棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 150,
         FP: 59,
         TP: 90,
@@ -1820,7 +1820,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1598: {
         name: 'Destroyer Princess 2',
         nameJP: '駆逐棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 190,
         FP: 69,
         TP: 90,
@@ -1840,8 +1840,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1599: {
         name: 'Aircraft Carrier Water Demon',
         nameJP: '空母水鬼',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 370,
         FP: 140,
         TP: 0,
@@ -1861,8 +1861,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1600: {
         name: 'Aircraft Carrier Water Demon 2',
         nameJP: '空母水鬼',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 390,
         FP: 190,
         TP: 0,
@@ -1882,7 +1882,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1601: {
         name: 'Light Cruiser Demon',
         nameJP: '軽巡棲鬼',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 210,
         FP: 59,
         TP: 88,
@@ -1902,7 +1902,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1602: {
         name: 'Light Cruiser Demon 2',
         nameJP: '軽巡棲鬼',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 270,
         FP: 69,
         TP: 98,
@@ -1922,7 +1922,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1603: {
         name: 'Battleship Water Demon',
         nameJP: '戦艦水鬼',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 415,
         FP: 188,
         TP: 0,
@@ -1942,7 +1942,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1604: {
         name: 'Battleship Water Demon 2',
         nameJP: '戦艦水鬼',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 500,
         FP: 198,
         TP: 0,
@@ -1962,8 +1962,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1605: {
         name: 'Harbour Water Demon',
         nameJP: '港湾水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 450,
         FP: 120,
         TP: 0,
@@ -1983,8 +1983,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1606: {
         name: 'Harbour Water Demon (Hard)',
         nameJP: '港湾水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 450,
         FP: 130,
         TP: 0,
@@ -2004,8 +2004,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1607: {
         name: 'Harbour Water Demon 2',
         nameJP: '港湾水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 140,
         TP: 0,
@@ -2025,8 +2025,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1608: {
         name: 'Harbour Water Demon 2 (Hard)',
         nameJP: '港湾水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 160,
         TP: 0,
@@ -2046,8 +2046,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1609: {
         name: 'Anchorage Water Demon',
         nameJP: '泊地水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 330,
         FP: 120,
         TP: 0,
@@ -2067,8 +2067,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1610: {
         name: 'Anchorage Water Demon (Hard)',
         nameJP: '泊地水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 330,
         FP: 130,
         TP: 0,
@@ -2088,8 +2088,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1611: {
         name: 'Anchorage Water Demon 2',
         nameJP: '泊地水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 430,
         FP: 140,
         TP: 0,
@@ -2109,8 +2109,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1612: {
         name: 'Anchorage Water Demon 2 (Hard)',
         nameJP: '泊地水鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 430,
         FP: 150,
         TP: 0,
@@ -2130,8 +2130,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1613: {
         name: 'Harbour Princess 2',
         nameJP: '港湾棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 490,
         FP: 180,
         TP: 0,
@@ -2151,8 +2151,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1614: {
         name: 'CV Wo-Class Flagship 3',
         nameJP: '空母ヲ級flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -2173,8 +2173,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1615: {
         name: 'CV Wo-Class Flagship 4',
         nameJP: '空母ヲ級flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 96,
         FP: 25,
@@ -2195,8 +2195,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1616: {
         name: 'CV Wo-Class Flagship Kai 2',
         nameJP: '空母ヲ級改flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -2216,8 +2216,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1617: {
         name: 'CV Wo-Class Flagship Kai 3',
         nameJP: '空母ヲ級改flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -2237,8 +2237,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1618: {
         name: 'CV Wo-Class Flagship Kai 4',
         nameJP: '空母ヲ級改flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -2258,8 +2258,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1619: {
         name: 'Aircraft Carrier Demon 2',
         nameJP: '空母棲鬼',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 250,
         FP: 120,
         TP: 0,
@@ -2279,8 +2279,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1620: {
         name: 'Aircraft Carrier Princess 2',
         nameJP: '空母棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         HP: 350,
@@ -2302,7 +2302,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1621: {
         name: 'DD I-Class Late Model Elite',
         nameJP: '駆逐イ級後期型elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 39,
         FP: 48,
         TP: 76,
@@ -2322,7 +2322,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1622: {
         name: 'DD Ro-Class Late Model Elite',
         nameJP: '駆逐ロ級後期型elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 43,
         FP: 58,
         TP: 88,
@@ -2342,7 +2342,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1623: {
         name: 'DD Ha-Class Late Model Elite',
         nameJP: '駆逐ハ級後期型elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 46,
         FP: 58,
@@ -2363,7 +2363,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1624: {
         name: 'DD Ni-Class Late Model Elite',
         nameJP: '駆逐ニ級後期型elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 49,
         FP: 64,
@@ -2384,7 +2384,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1625: {
         name: 'Seaplane Tender Princess A',
         nameJP: '水母棲姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         planeasw: 0,
         HP: 350,
         FP: 75,
@@ -2405,7 +2405,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1626: {
         name: 'Seaplane Tender Princess B',
         nameJP: '水母棲姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         planeasw: 0,
         HP: 350,
         FP: 95,
@@ -2426,7 +2426,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1627: {
         name: 'Seaplane Tender Princess C',
         nameJP: '水母棲姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         planeasw: 0,
         HP: 350,
         FP: 115,
@@ -2447,7 +2447,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1628: {
         name: 'Air Defence Princess A',
         nameJP: '防空棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 255,
         FP: 130,
         TP: 85,
@@ -2467,7 +2467,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1629: {
         name: 'Air Defence Princess B',
         nameJP: '防空棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 255,
         FP: 160,
         TP: 90,
@@ -2487,7 +2487,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1630: {
         name: 'Air Defence Princess C',
         nameJP: '防空棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 255,
         FP: 190,
         TP: 95,
@@ -2507,8 +2507,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1631: {
         name: 'Airfield Princess 2',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 85,
         TP: 0,
@@ -2528,8 +2528,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1632: {
         name: 'Airfield Princess 3',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 90,
         TP: 0,
@@ -2549,8 +2549,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1633: {
         name: 'Airfield Princess 4',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 95,
         TP: 0,
@@ -2570,8 +2570,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1634: {
         name: 'Isolated Island Demon A',
         nameJP: '離島棲鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 450,
         FP: 150,
         TP: 0,
@@ -2591,8 +2591,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1635: {
         name: 'Isolated Island Demon B',
         nameJP: '離島棲鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 450,
         FP: 165,
         TP: 0,
@@ -2612,8 +2612,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1636: {
         name: 'Isolated Island Demon C',
         nameJP: '離島棲鬼',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 450,
         FP: 180,
         TP: 0,
@@ -2633,7 +2633,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1637: {
         name: 'PT Imp Pack',
         nameJP: 'PT小鬼群',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 9,
         FP: 9,
@@ -2655,7 +2655,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1638: {
         name: 'PT Imp Pack 2',
         nameJP: 'PT小鬼群',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 9,
         FP: 9,
@@ -2677,7 +2677,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1639: {
         name: 'PT Imp Pack 3',
         nameJP: 'PT小鬼群',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 15,
         FP: 15,
@@ -2699,7 +2699,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1640: {
         name: 'PT Imp Pack 4',
         nameJP: 'PT小鬼群',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 18,
         FP: 18,
@@ -2721,7 +2721,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1641: {
         name: 'Light Cruiser Princess',
         nameJP: '軽巡棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 230,
         FP: 64,
         TP: 93,
@@ -2741,7 +2741,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1642: {
         name: 'Light Cruiser Princess 2',
         nameJP: '軽巡棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 290,
         FP: 74,
         TP: 96,
@@ -2761,7 +2761,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1643: {
         name: 'Light Cruiser Princess 3',
         nameJP: '軽巡棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 330,
         FP: 79,
         TP: 99,
@@ -2781,7 +2781,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1644: {
         name: 'Submarine Princess',
         nameJP: '潜水棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 110,
         FP: 50,
         TP: 140,
@@ -2802,7 +2802,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1645: {
         name: 'Submarine Princess 2',
         nameJP: '潜水棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 130,
         FP: 70,
         TP: 155,
@@ -2823,7 +2823,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1646: {
         name: 'Submarine Princess 3',
         nameJP: '潜水棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 160,
         FP: 90,
         TP: 170,
@@ -2844,7 +2844,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1647: {
         name: 'Destroyer Water Demon',
         nameJP: '駆逐水鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 255,
         FP: 100,
         TP: 110,
@@ -2865,7 +2865,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1648: {
         name: 'Destroyer Water Demon 2',
         nameJP: '駆逐水鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 255,
         FP: 120,
         TP: 120,
@@ -2886,7 +2886,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1649: {
         name: 'Destroyer Water Demon 3',
         nameJP: '駆逐水鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 255,
         FP: 140,
         TP: 130,
@@ -2907,8 +2907,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1650: {
         name: 'Airfield Princess 5',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 50,
         TP: 0,
@@ -2929,8 +2929,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1651: {
         name: 'Airfield Princess 6',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 60,
         TP: 0,
@@ -2951,8 +2951,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1652: {
         name: 'Airfield Princess 7',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -2973,8 +2973,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1653: {
         name: 'Supply Depot Princess 1',
         nameJP: '集積地棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         dive_bomb_weak_mod: 2.1,
         HP: 600,
         FP: 70,
@@ -2996,8 +2996,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1654: {
         name: 'Supply Depot Princess 2',
         nameJP: '集積地棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         dive_bomb_weak_mod: 2.1,
         HP: 600,
         FP: 90,
@@ -3019,8 +3019,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1655: {
         name: 'Supply Depot Princess 3',
         nameJP: '集積地棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         dive_bomb_weak_mod: 2.1,
         HP: 600,
         FP: 130,
@@ -3042,8 +3042,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1656: {
         name: 'Supply Depot Princess Damaged 1',
         nameJP: '集積地棲姫-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         dive_bomb_weak_mod: 2.1,
         HP: 380,
         FP: 130,
@@ -3065,8 +3065,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1657: {
         name: 'Supply Depot Princess Damaged 2',
         nameJP: '集積地棲姫-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         dive_bomb_weak_mod: 2.1,
         HP: 430,
         FP: 160,
@@ -3088,8 +3088,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1658: {
         name: 'Supply Depot Princess Damaged 3',
         nameJP: '集積地棲姫-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         dive_bomb_weak_mod: 2.1,
         HP: 480,
         FP: 190,
@@ -3111,7 +3111,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1659: {
         name: 'Heavy Cruiser Princess 1',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 350,
         FP: 100,
         TP: 66,
@@ -3132,7 +3132,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1660: {
         name: 'Heavy Cruiser Princess 2',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 370,
         FP: 130,
         TP: 74,
@@ -3153,7 +3153,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1661: {
         name: 'Heavy Cruiser Princess 3',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 390,
         FP: 160,
         TP: 82,
@@ -3174,7 +3174,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1662: {
         name: 'Heavy Cruiser Princess 4',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 350,
         FP: 130,
         TP: 74,
@@ -3195,7 +3195,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1663: {
         name: 'Heavy Cruiser Princess 5',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 370,
         FP: 160,
         TP: 82,
@@ -3216,7 +3216,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1664: {
         name: 'Heavy Cruiser Princess 6',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 390,
         FP: 190,
         TP: 90,
@@ -3237,8 +3237,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1665: {
         name: 'Artillery Imp 1',
         nameJP: '砲台小鬼',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         land_based_weak_mod: 1.6,
         dive_bomb_weak_mod: 1.55,
         HP: 130,
@@ -3261,8 +3261,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1666: {
         name: 'Artillery Imp 2',
         nameJP: '砲台小鬼',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         land_based_weak_mod: 1.6,
         dive_bomb_weak_mod: 1.55,
         HP: 130,
@@ -3285,8 +3285,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1667: {
         name: 'Artillery Imp 3',
         nameJP: '砲台小鬼',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         land_based_weak_mod: 1.6,
         dive_bomb_weak_mod: 1.55,
         HP: 130,
@@ -3309,9 +3309,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1668: {
         name: 'Isolated Island Princess 1',
         nameJP: '離島棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.CLT,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.IsolatedIslandModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -3334,9 +3334,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1669: {
         name: 'Isolated Island Princess 2',
         nameJP: '離島棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.CLT,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.IsolatedIslandModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -3358,9 +3358,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1670: {
         name: 'Isolated Island Princess 3',
         nameJP: '離島棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.CLT,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.IsolatedIslandModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 450,
@@ -3383,8 +3383,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1671: {
         name: 'Isolated Island Princess 4',
         nameJP: '離島棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.IsolatedIslandModel,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -3407,8 +3407,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1672: {
         name: 'Isolated Island Princess 5',
         nameJP: '離島棲姫',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         land_based_weak_mod: 1.18,
         dive_bomb_weak_mod: 1.7,
         HP: 480,
@@ -3431,7 +3431,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1673: {
         name: 'Destroyer Ancient Demon',
         nameJP: '駆逐古鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 170,
         FP: 80,
         TP: 100,
@@ -3452,7 +3452,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1674: {
         name: 'Destroyer Ancient Demon 2',
         nameJP: '駆逐古鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 180,
         FP: 88,
         TP: 110,
@@ -3473,7 +3473,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1675: {
         name: 'Destroyer Ancient Demon 3',
         nameJP: '駆逐古鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 190,
         FP: 96,
         TP: 120,
@@ -3494,7 +3494,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1676: {
         name: 'Destroyer Water Demon 4',
         nameJP: '駆逐水鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 200,
         FP: 100,
         TP: 110,
@@ -3515,7 +3515,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1677: {
         name: 'Destroyer Water Demon 5',
         nameJP: '駆逐水鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 220,
         FP: 120,
         TP: 120,
@@ -3536,7 +3536,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1678: {
         name: 'Destroyer Water Demon 6',
         nameJP: '駆逐水鬼',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 240,
         FP: 140,
         TP: 130,
@@ -3557,9 +3557,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1679: {
         name: 'Lycoris Princess',
         nameJP: 'リコリス棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.DE,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.RegularSoftModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 600,
         FP: 150,
         TP: 0,
@@ -3580,9 +3580,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1680: {
         name: 'Lycoris Princess 2',
         nameJP: 'リコリス棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.DE,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.RegularSoftModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 640,
         FP: 170,
         TP: 0,
@@ -3603,9 +3603,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1681: {
         name: 'Lycoris Princess 3',
         nameJP: 'リコリス棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.DE,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.RegularSoftModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 680,
         FP: 190,
         TP: 0,
@@ -3626,9 +3626,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1682: {
         name: 'Lycoris Princess 4',
         nameJP: 'リコリス棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.DE,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.RegularSoftModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 600,
         FP: 150,
         TP: 0,
@@ -3649,9 +3649,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1683: {
         name: 'Lycoris Princess 5',
         nameJP: 'リコリス棲姫',
-        type: ShipType.CV,
-        install_type: ShipType.DE,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        install_type: InstallType.RegularSoftModel,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 600,
         FP: 150,
         TP: 0,
@@ -3672,8 +3672,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1684: {
         name: 'Central Princess',
         nameJP: '中枢棲姫',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         dive_bomb_weak_mod: 5,
         HP: 600,
         FP: 110,
@@ -3695,8 +3695,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1685: {
         name: 'Central Princess 2',
         nameJP: '中枢棲姫',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         dive_bomb_weak_mod: 5,
         HP: 800,
         FP: 160,
@@ -3718,8 +3718,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1686: {
         name: 'Central Princess 3',
         nameJP: '中枢棲姫',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         dive_bomb_weak_mod: 5,
         HP: 900,
         FP: 200,
@@ -3741,8 +3741,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1687: {
         name: 'Central Princess - Damaged',
         nameJP: '中枢棲姫-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         dive_bomb_weak_mod: 2.5,
         land_based_weak_mod: 1.6,
         HP: 600,
@@ -3765,8 +3765,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1688: {
         name: 'Central Princess - Damaged 2',
         nameJP: '中枢棲姫-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         dive_bomb_weak_mod: 2.5,
         land_based_weak_mod: 1.6,
         HP: 800,
@@ -3789,8 +3789,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1689: {
         name: 'Central Princess - Damaged 3',
         nameJP: '中枢棲姫-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CLT,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.IsolatedIslandModel,
         dive_bomb_weak_mod: 2.5,
         land_based_weak_mod: 1.6,
         HP: 900,
@@ -3813,7 +3813,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1690: {
         name: 'Destroyer Ancient Princess',
         nameJP: '駆逐古姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         has_potential_always_OASW: true,
@@ -3837,7 +3837,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1691: {
         name: 'Destroyer Ancient Princess 2',
         nameJP: '駆逐古姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         has_potential_always_OASW: true,
@@ -3861,7 +3861,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1692: {
         name: 'Destroyer Ancient Princess 3',
         nameJP: '駆逐古姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         dive_bomb_weak_mod: 2,
         land_based_weak_mod: 1.32,
         has_potential_always_OASW: true,
@@ -3885,7 +3885,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1693: {
         name: 'Submarine Summer Princess Flagship',
         nameJP: '潜水夏姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 110,
         FP: 50,
         TP: 140,
@@ -3903,7 +3903,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1694: {
         name: 'Submarine Summer Princess Flagship 2',
         nameJP: '潜水夏姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 140,
         FP: 70,
         TP: 155,
@@ -3921,7 +3921,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1695: {
         name: 'Submarine Summer Princess Flagship 3',
         nameJP: '潜水夏姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 180,
         FP: 90,
         TP: 170,
@@ -3939,7 +3939,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1696: {
         name: 'Battleship Summer Princess',
         nameJP: '戦艦夏姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Summer_BB: true,
         HP: 400,
         FP: 180,
@@ -3958,7 +3958,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1697: {
         name: 'Battleship Summer Princess 2',
         nameJP: '戦艦夏姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Summer_BB: true,
         HP: 450,
         FP: 185,
@@ -3977,7 +3977,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1698: {
         name: 'Battleship Summer Princess 3',
         nameJP: '戦艦夏姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Summer_BB: true,
         HP: 530,
         FP: 195,
@@ -3996,8 +3996,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1699: {
         name: 'Harbour Summer Princess',
         nameJP: '港湾夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 500,
         FP: 170,
         TP: 0,
@@ -4014,8 +4014,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1700: {
         name: 'Harbour Summer Princess 2',
         nameJP: '港湾夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 650,
         FP: 188,
         TP: 0,
@@ -4032,8 +4032,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1701: {
         name: 'Harbour Summer Princess 3',
         nameJP: '港湾夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 750,
         FP: 200,
         TP: 0,
@@ -4050,8 +4050,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1702: {
         name: 'Harbour Summer Princess - Damaged',
         nameJP: '港湾夏姫-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 500,
         FP: 170,
         TP: 0,
@@ -4068,8 +4068,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1703: {
         name: 'Harbour Summer Princess - Damaged 2',
         nameJP: '港湾夏姫-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 650,
         FP: 188,
         TP: 0,
@@ -4086,8 +4086,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1704: {
         name: 'Harbour Summer Princess - Damaged 3',
         nameJP: '港湾夏姫-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 750,
         FP: 200,
         TP: 0,
@@ -4104,7 +4104,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1705: {
         name: 'Heavy Cruiser Summer Princess',
         nameJP: '重巡夏姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         is_Summer_CA: true,
         HP: 400,
         FP: 110,
@@ -4123,7 +4123,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1706: {
         name: 'Heavy Cruiser Summer Princess 2',
         nameJP: '重巡夏姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         is_Summer_CA: true,
         HP: 450,
         FP: 140,
@@ -4142,7 +4142,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1707: {
         name: 'Heavy Cruiser Summer Princess 3',
         nameJP: '重巡夏姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         is_Summer_CA: true,
         HP: 550,
         FP: 170,
@@ -4161,7 +4161,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1708: {
         name: 'Seaplane Tender Water Princess',
         nameJP: '水母水姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         planeasw: 0,
         HP: 370,
         FP: 95,
@@ -4180,7 +4180,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1709: {
         name: 'Seaplane Tender Water Princess 2',
         nameJP: '水母水姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         planeasw: 0,
         HP: 380,
         FP: 135,
@@ -4199,7 +4199,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1710: {
         name: 'Seaplane Tender Water Princess 3',
         nameJP: '水母水姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         planeasw: 0,
         HP: 390,
         FP: 175,
@@ -4218,8 +4218,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1711: {
         name: 'Abyssal Jellyfish Princess',
         nameJP: '深海海月姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 600,
         FP: 180,
         TP: 0,
@@ -4237,8 +4237,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1712: {
         name: 'Abyssal Jellyfish Princess 2',
         nameJP: '深海海月姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 700,
         FP: 220,
         TP: 0,
@@ -4256,8 +4256,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1713: {
         name: 'Abyssal Jellyfish Princess 3',
         nameJP: '深海海月姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DD,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.GrafModel,
         HP: 800,
         FP: 240,
         TP: 0,
@@ -4275,8 +4275,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1714: {
         name: 'CV Wo-Class Flagship Kai 5',
         nameJP: '空母ヲ級改flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -4296,8 +4296,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1715: {
         name: 'CV Wo-Class Flagship Kai 6',
         nameJP: '空母ヲ級改flagship',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 160,
         FP: 40,
         TP: 0,
@@ -4317,7 +4317,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1716: {
         name: 'Abyssal Twin Princesses',
         nameJP: '深海双子棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 200,
         TP: 130,
@@ -4337,7 +4337,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1717: {
         name: 'Abyssal Twin Princesses 2',
         nameJP: '深海双子棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 210,
         TP: 160,
@@ -4357,7 +4357,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1718: {
         name: 'Abyssal Twin Princesses 3',
         nameJP: '深海双子棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 220,
         TP: 190,
@@ -4377,7 +4377,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1719: {
         name: 'Abyssal Twin Princesses - Damaged',
         nameJP: '深海双子棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 660,
         FP: 220,
         TP: 120,
@@ -4397,7 +4397,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1720: {
         name: 'Abyssal Twin Princesses 2 - Damaged',
         nameJP: '深海双子棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 660,
         FP: 230,
         TP: 150,
@@ -4417,7 +4417,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1721: {
         name: 'Abyssal Twin Princesses 3 - Damaged',
         nameJP: '深海双子棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 660,
         FP: 240,
         TP: 180,
@@ -4437,8 +4437,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1722: {
         name: 'Escort Princess 1',
         nameJP: '護衛棲姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 400,
         FP: 90,
         TP: 0,
@@ -4456,8 +4456,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1723: {
         name: 'Escort Princess 2',
         nameJP: '護衛棲姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 440,
         FP: 120,
         TP: 0,
@@ -4475,8 +4475,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1724: {
         name: 'Escort Princess 3',
         nameJP: '護衛棲姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 480,
         FP: 150,
         TP: 0,
@@ -4494,8 +4494,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1725: {
         name: 'Northernmost Landing Princess 1',
         nameJP: '北端上陸姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CA,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.NorthernmostModel,
         HP: 650,
         FP: 150,
         TP: 0,
@@ -4513,8 +4513,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1726: {
         name: 'Northernmost Landing Princess 2',
         nameJP: '北端上陸姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CA,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.NorthernmostModel,
         HP: 670,
         FP: 170,
         TP: 0,
@@ -4532,8 +4532,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1727: {
         name: 'Northernmost Landing Princess 3',
         nameJP: '北端上陸姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CA,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.NorthernmostModel,
         HP: 690,
         FP: 190,
         TP: 0,
@@ -4551,7 +4551,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1728: {
         name: 'Northern Water Princess 1',
         nameJP: '北方水姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 770,
         FP: 168,
         TP: 75,
@@ -4569,7 +4569,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1729: {
         name: 'Northern Water Princess 2',
         nameJP: '北方水姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 770,
         FP: 178,
         TP: 85,
@@ -4587,7 +4587,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1730: {
         name: 'Northern Water Princess 3',
         nameJP: '北方水姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 770,
         FP: 188,
         TP: 95,
@@ -4605,7 +4605,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1731: {
         name: 'Northern Water Princess - Damaged 1',
         nameJP: '北方水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 770,
         FP: 168,
         TP: 105,
@@ -4623,7 +4623,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1732: {
         name: 'Northern Water Princess - Damaged 2',
         nameJP: '北方水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 770,
         FP: 178,
         TP: 115,
@@ -4641,7 +4641,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1733: {
         name: 'Northern Water Princess - Damaged 3',
         nameJP: '北方水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 770,
         FP: 188,
         TP: 130,
@@ -4659,8 +4659,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1734: {
         name: 'CVL Nu-Class Kai Elite',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         HP: 88,
         FP: 35,
@@ -4679,8 +4679,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1735: {
         name: 'CVL Nu-Class Kai Flagship',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         HP: 118,
         FP: 45,
@@ -4699,7 +4699,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1736: {
         name: 'New Submarine Princess Flagship 1',
         nameJP: '潜水新棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 177,
         FP: 27,
         TP: 117,
@@ -4718,7 +4718,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1737: {
         name: 'New Submarine Princess Flagship 2',
         nameJP: '潜水新棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 277,
         FP: 47,
         TP: 137,
@@ -4737,7 +4737,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1738: {
         name: 'New Submarine Princess Flagship 3',
         nameJP: '潜水新棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 377,
         FP: 47,
         TP: 177,
@@ -4756,7 +4756,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1739: {
         name: 'DD Na-Class',
         nameJP: '駆逐ナ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 60,
         FP: 66,
         TP: 91,
@@ -4775,7 +4775,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1740: {
         name: 'DD Na-Class Elite',
         nameJP: '駆逐ナ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 63,
         FP: 69,
         TP: 95,
@@ -4794,7 +4794,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1741: {
         name: 'DD Na-Class Flagship',
         nameJP: '駆逐ナ級',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 66,
         FP: 79,
         TP: 99,
@@ -4813,7 +4813,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1742: {
         name: 'DD Na-Class Late Model',
         nameJP: '駆逐ナ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 63,
         FP: 69,
         TP: 103,
@@ -4832,7 +4832,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1743: {
         name: 'DD Na-Class Late Model Elite',
         nameJP: '駆逐ナ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 66,
         FP: 79,
         TP: 113,
@@ -4851,7 +4851,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1744: {
         name: 'DD Na-Class Late Model Flagship',
         nameJP: '駆逐ナ級後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 69,
         FP: 89,
         TP: 123,
@@ -4870,7 +4870,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1745: {
         name: 'French Battleship Princess',
         nameJP: '戦艦仏棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 202,
@@ -4889,7 +4889,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1746: {
         name: 'French Battleship Princess 2',
         nameJP: '戦艦仏棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 242,
@@ -4908,7 +4908,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1747: {
         name: 'French Battleship Princess 3',
         nameJP: '戦艦仏棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 242,
@@ -4927,7 +4927,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1748: {
         name: 'French Battleship Princess - Damaged',
         nameJP: '戦艦仏棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 222,
@@ -4946,7 +4946,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1749: {
         name: 'French Battleship Princess - Damaged 2',
         nameJP: '戦艦仏棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 262,
@@ -4965,7 +4965,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1750: {
         name: 'French Battleship Princess - Damaged 3',
         nameJP: '戦艦仏棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 730,
         FP: 282,
@@ -4984,9 +4984,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1751: {
         name: 'Aircraft Carrier Summer Demon',
         nameJP: '空母夏鬼',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         is_Summer_CV: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 340,
         FP: 140,
         TP: 0,
@@ -5004,8 +5004,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1752: {
         name: 'Aircraft Carrier Summer Princess',
         nameJP: '空母夏姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 440,
         FP: 190,
         TP: 0,
@@ -5023,8 +5023,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1753: {
         name: 'Supply Depot Summer Princess',
         nameJP: '集積地夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 690,
         FP: 115,
         TP: 108,
@@ -5043,8 +5043,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1754: {
         name: 'Supply Depot Summer Princess 2',
         nameJP: '集積地夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 690,
         FP: 135,
         TP: 128,
@@ -5063,7 +5063,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1755: {
         name: 'European Princess',
         nameJP: '欧州棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 300,
         TP: 0,
@@ -5081,7 +5081,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1756: {
         name: 'European Princess 2',
         nameJP: '欧州棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 310,
         TP: 0,
@@ -5099,7 +5099,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1757: {
         name: 'European Princess 3',
         nameJP: '欧州棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 330,
         TP: 0,
@@ -5117,7 +5117,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1758: {
         name: 'European Princess - Damaged',
         nameJP: '欧州棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 330,
         TP: 105,
@@ -5135,7 +5135,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1759: {
         name: 'European Princess - Damaged 2',
         nameJP: '欧州棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 360,
         TP: 125,
@@ -5153,7 +5153,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1760: {
         name: 'European Princess - Damaged 3',
         nameJP: '欧州棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 390,
         TP: 155,
@@ -5171,7 +5171,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1761: {
         name: 'CA Ne-Class Flagship',
         nameJP: '重巡ネ級',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 220,
         FP: 108,
         TP: 74,
@@ -5190,8 +5190,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1762: {
         name: 'CVL Nu-Class Elite 2',
         nameJP: '軽母ヌ級',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         can_not_CVCI: true,
         HP: 70,
         FP: 15,
@@ -5210,8 +5210,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1763: {
         name: 'CVL Nu-Class Flagship 2',
         nameJP: '軽母ヌ級',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         can_not_CVCI: true,
         HP: 84,
         FP: 18,
@@ -5230,8 +5230,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1764: {
         name: 'CVL Nu-Class Flagship 3',
         nameJP: '軽母ヌ級',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         can_not_CVCI: true,
         HP: 84,
         FP: 18,
@@ -5250,8 +5250,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1765: {
         name: 'CVL Nu-Class Kai Elite 2',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 88,
@@ -5271,8 +5271,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1766: {
         name: 'CVL Nu-Class Kai Flagship 2',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 118,
@@ -5292,7 +5292,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1767: {
         name: 'Night Strait Princesses 1',
         nameJP: '海峡夜棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 102,
         TP: 70,
@@ -5310,7 +5310,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1768: {
         name: 'Night Strait Princesses 2',
         nameJP: '海峡夜棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 122,
         TP: 80,
@@ -5328,7 +5328,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1769: {
         name: 'Night Strait Princesses 3',
         nameJP: '海峡夜棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 144,
         TP: 90,
@@ -5346,7 +5346,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1770: {
         name: 'Night Strait Princesses - Damaged 1',
         nameJP: '海峡夜棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 162,
         TP: 90,
@@ -5364,7 +5364,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1771: {
         name: 'Night Strait Princesses - Damaged 2',
         nameJP: '海峡夜棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 182,
         TP: 105,
@@ -5382,7 +5382,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1772: {
         name: 'Night Strait Princesses - Damaged 3',
         nameJP: '海峡夜棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 800,
         FP: 202,
         TP: 120,
@@ -5400,7 +5400,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1773: {
         name: 'Entombed Anti-Air Guardian Princess 1',
         nameJP: '防空埋護姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 655,
         FP: 140,
         TP: 120,
@@ -5418,7 +5418,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1774: {
         name: 'Entombed Anti-Air Guardian Princess 2',
         nameJP: '防空埋護姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 655,
         FP: 170,
         TP: 130,
@@ -5436,7 +5436,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1775: {
         name: 'Entombed Anti-Air Guardian Princess 3',
         nameJP: '防空埋護姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 655,
         FP: 220,
         TP: 140,
@@ -5454,8 +5454,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1776: {
         name: 'CVL Nu-Class Elite 3',
         nameJP: '軽母ヌ級',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 70,
@@ -5475,8 +5475,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1777: {
         name: 'CVL Nu-Class Elite 4',
         nameJP: '軽母ヌ級',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 70,
@@ -5496,8 +5496,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1778: {
         name: 'CVL Nu-Class Kai Elite 3',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 88,
@@ -5517,8 +5517,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1779: {
         name: 'CVL Nu-Class Kai Flagship 3',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 118,
@@ -5538,8 +5538,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1780: {
         name: 'CVL Nu-Class Kai Flagship 4',
         nameJP: '軽母ヌ級改',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         can_not_CVCI: true,
         HP: 118,
@@ -5559,8 +5559,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1781: {
         name: 'Aircraft Carrier Princess 3',
         nameJP: '空母棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 350,
         FP: 180,
         TP: 0,
@@ -5578,8 +5578,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1782: {
         name: 'Aircraft Carrier Princess 4',
         nameJP: '空母棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 350,
         FP: 198,
         TP: 0,
@@ -5597,8 +5597,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1783: {
         name: 'Escort Water Princess 1',
         nameJP: '護衛棲水姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 650,
         FP: 104,
         TP: 110,
@@ -5616,8 +5616,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1784: {
         name: 'Escort Water Princess 2',
         nameJP: '護衛棲水姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 650,
         FP: 124,
         TP: 130,
@@ -5635,8 +5635,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1785: {
         name: 'Escort Water Princess 3',
         nameJP: '護衛棲水姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 650,
         FP: 144,
         TP: 150,
@@ -5654,8 +5654,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1786: {
         name: 'Escort Water Princess - Damaged 1',
         nameJP: '護衛棲水姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 650,
         FP: 128,
         TP: 120,
@@ -5673,8 +5673,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1787: {
         name: 'Escort Water Princess - Damaged 2',
         nameJP: '護衛棲水姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 650,
         FP: 148,
         TP: 140,
@@ -5692,8 +5692,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1788: {
         name: 'Escort Water Princess - Damaged 3',
         nameJP: '護衛棲水姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 650,
         FP: 188,
         TP: 160,
@@ -5711,7 +5711,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1789: {
         name: 'New Submarine Princess Flagship 4',
         nameJP: '潜水新棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 177,
         FP: 27,
         TP: 117,
@@ -5730,7 +5730,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1790: {
         name: 'Battleship Princess Kai 1',
         nameJP: '戦艦棲姫改',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 700,
         FP: 200,
         TP: 0,
@@ -5748,7 +5748,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1791: {
         name: 'Battleship Princess Kai 2',
         nameJP: '戦艦棲姫改',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 700,
         FP: 220,
         TP: 0,
@@ -5766,7 +5766,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1792: {
         name: 'Battleship Princess Kai 3',
         nameJP: '戦艦棲姫改',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 700,
         FP: 240,
         TP: 0,
@@ -5784,7 +5784,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1793: {
         name: 'Battleship Water Demon Kai 1',
         nameJP: '戦艦水鬼改',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 800,
         FP: 228,
         TP: 0,
@@ -5802,7 +5802,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1794: {
         name: 'Battleship Water Demon Kai 2',
         nameJP: '戦艦水鬼改',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 800,
         FP: 248,
         TP: 0,
@@ -5820,7 +5820,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1795: {
         name: 'Battleship Water Demon Kai 3',
         nameJP: '戦艦水鬼改',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 800,
         FP: 278,
         TP: 0,
@@ -5838,7 +5838,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1796: {
         name: 'Battleship Water Demon Kai - Damaged 1',
         nameJP: '戦艦水鬼改-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 800,
         FP: 258,
         TP: 0,
@@ -5856,7 +5856,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1797: {
         name: 'Battleship Water Demon Kai - Damaged 2',
         nameJP: '戦艦水鬼改-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 800,
         FP: 278,
         TP: 0,
@@ -5874,7 +5874,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1798: {
         name: 'Battleship Water Demon Kai - Damaged 3',
         nameJP: '戦艦水鬼改-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 800,
         FP: 308,
         TP: 0,
@@ -5892,8 +5892,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1799: {
         name: 'Abyssal Crane Princess 1',
         nameJP: '深海鶴棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 800,
         FP: 138,
         TP: 108,
@@ -5911,8 +5911,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1800: {
         name: 'Abyssal Crane Princess 2',
         nameJP: '深海鶴棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 800,
         FP: 138,
         TP: 108,
@@ -5930,8 +5930,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1801: {
         name: 'Abyssal Crane Princess 3',
         nameJP: '深海鶴棲姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 800,
         FP: 138,
         TP: 108,
@@ -5949,8 +5949,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1802: {
         name: 'Abyssal Crane Princess - Damaged 1',
         nameJP: '深海鶴棲姫-壊',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 800,
         FP: 207,
         TP: 128,
@@ -5968,8 +5968,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1803: {
         name: 'Abyssal Crane Princess - Damaged 2',
         nameJP: '深海鶴棲姫-壊',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 800,
         FP: 207,
         TP: 128,
@@ -5987,8 +5987,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1804: {
         name: 'Abyssal Crane Princess - Damaged 3',
         nameJP: '深海鶴棲姫-壊',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 800,
         FP: 207,
         TP: 128,
@@ -6006,7 +6006,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1805: {
         name: 'New Submarine Princess Vacation Mode 1',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 188,
         FP: 28,
         TP: 128,
@@ -6025,7 +6025,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1806: {
         name: 'New Submarine Princess Vacation Mode 2',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 188,
         FP: 38,
         TP: 148,
@@ -6044,7 +6044,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1807: {
         name: 'New Submarine Princess Vacation Mode 3',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 288,
         FP: 48,
         TP: 168,
@@ -6063,7 +6063,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1808: {
         name: 'New Submarine Princess Vacation Mode 4',
         nameJP: '潜水新棲姫 バカンスmode',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 388,
         FP: 48,
         TP: 188,
@@ -6082,8 +6082,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1809: {
         name: 'Supply Depot Princess Vacation Mode 1',
         nameJP: '集積地棲姫 バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 720,
         FP: 118,
         TP: 102,
@@ -6102,8 +6102,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1810: {
         name: 'Supply Depot Princess Vacation Mode 2',
         nameJP: '集積地棲姫 バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 720,
         FP: 148,
         TP: 122,
@@ -6122,8 +6122,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1811: {
         name: 'Supply Depot Princess Vacation Mode 3',
         nameJP: '集積地棲姫 バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 720,
         FP: 178,
         TP: 144,
@@ -6142,8 +6142,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1812: {
         name: 'Supply Depot Princess Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫 バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 720,
         FP: 138,
         TP: 122,
@@ -6162,8 +6162,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1813: {
         name: 'Supply Depot Princess Vacation Mode - Damaged 2',
         nameJP: '集積地棲姫 バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 720,
         FP: 168,
         TP: 144,
@@ -6182,8 +6182,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1814: {
         name: 'Supply Depot Princess Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫 バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 720,
         FP: 198,
         TP: 188,
@@ -6202,7 +6202,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1815: {
         name: 'Anchorage Water Demon Vacation Mode 1',
         nameJP: '泊地水鬼 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Anchorage: true,
         HP: 490,
         FP: 140,
@@ -6222,7 +6222,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1816: {
         name: 'Anchorage Water Demon Vacation Mode 2',
         nameJP: '泊地水鬼 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Anchorage: true,
         HP: 490,
         FP: 150,
@@ -6242,7 +6242,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1817: {
         name: 'Anchorage Water Demon Vacation Mode 3',
         nameJP: '泊地水鬼 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Anchorage: true,
         HP: 490,
         FP: 160,
@@ -6262,7 +6262,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1818: {
         name: 'Anchorage Water Demon Vacation Mode 4',
         nameJP: '泊地水鬼 バカンスmode',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Anchorage: true,
         HP: 490,
         FP: 170,
@@ -6282,7 +6282,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1819: {
         name: 'Anchorage Water Demon Vacation Mode 5',
         nameJP: '泊地水鬼 バカンスmode',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Anchorage: true,
         HP: 490,
         FP: 200,
@@ -6302,7 +6302,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1820: {
         name: 'Anchorage Water Demon Vacation Mode 6',
         nameJP: '泊地水鬼 バカンスmode',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Anchorage: true,
         HP: 490,
         FP: 230,
@@ -6322,8 +6322,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1821: {
         name: 'German Escort Princess 1',
         nameJP: '護衛独還姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 570,
         FP: 110,
         TP: 0,
@@ -6341,8 +6341,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1822: {
         name: 'German Escort Princess 2',
         nameJP: '護衛独還姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 570,
         FP: 130,
         TP: 0,
@@ -6360,8 +6360,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1823: {
         name: 'German Escort Princess 3',
         nameJP: '護衛独還姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 570,
         FP: 150,
         TP: 0,
@@ -6379,8 +6379,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1824: {
         name: 'German Escort Princess - Damaged 1',
         nameJP: '護衛独還姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 570,
         FP: 130,
         TP: 0,
@@ -6398,8 +6398,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1825: {
         name: 'German Escort Princess - Damaged 2',
         nameJP: '護衛独還姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 570,
         FP: 160,
         TP: 0,
@@ -6417,8 +6417,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1826: {
         name: 'German Escort Princess - Damaged 3',
         nameJP: '護衛独還姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 570,
         FP: 190,
         TP: 0,
@@ -6436,7 +6436,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1827: {
         name: 'Dock Princess 1',
         nameJP: '船渠棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 132,
@@ -6455,7 +6455,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1828: {
         name: 'Dock Princess 2',
         nameJP: '船渠棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 162,
@@ -6474,7 +6474,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1829: {
         name: 'Dock Princess 3',
         nameJP: '船渠棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 182,
@@ -6493,7 +6493,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1830: {
         name: 'Dock Princess - Damaged 1',
         nameJP: '船渠棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 152,
@@ -6512,7 +6512,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1831: {
         name: 'Dock Princess - Damaged 2',
         nameJP: '船渠棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 182,
@@ -6531,7 +6531,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1832: {
         name: 'Dock Princess - Damaged 3',
         nameJP: '船渠棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_Dock: true,
         HP: 700,
         FP: 202,
@@ -6550,7 +6550,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1834: {
         name: 'French Battleship Princess Vacation Mode 1',
         nameJP: '戦艦仏棲姫 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 212,
@@ -6569,7 +6569,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1835: {
         name: 'French Battleship Princess Vacation Mode 2',
         nameJP: '戦艦仏棲姫 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 252,
@@ -6588,7 +6588,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1836: {
         name: 'French Battleship Princess Vacation Mode 3',
         nameJP: '戦艦仏棲姫 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 272,
@@ -6607,7 +6607,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1837: {
         name: 'French Battleship Princess Vacation Mode - Damaged 1',
         nameJP: '戦艦仏棲姫-壊 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 232,
@@ -6626,7 +6626,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1838: {
         name: 'French Battleship Princess Vacation Mode - Damaged 2',
         nameJP: '戦艦仏棲姫-壊 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 272,
@@ -6645,7 +6645,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1839: {
         name: 'French Battleship Princess Vacation Mode - Damaged 3',
         nameJP: '戦艦仏棲姫-壊 バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_French_BB: true,
         HP: 770,
         FP: 292,
@@ -6664,7 +6664,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1840: {
         name: 'European Water Princess 1',
         nameJP: '欧州水姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 900,
         FP: 300,
         TP: 0,
@@ -6682,7 +6682,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1841: {
         name: 'European Water Princess 2',
         nameJP: '欧州水姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 900,
         FP: 310,
         TP: 0,
@@ -6700,7 +6700,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1842: {
         name: 'European Water Princess 3',
         nameJP: '欧州水姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 900,
         FP: 330,
         TP: 0,
@@ -6718,7 +6718,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1843: {
         name: 'European Water Princess - Damaged 1',
         nameJP: '欧州水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 900,
         FP: 330,
         TP: 110,
@@ -6736,7 +6736,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1844: {
         name: 'European Water Princess - Damaged 2',
         nameJP: '欧州水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 900,
         FP: 360,
         TP: 130,
@@ -6754,7 +6754,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1845: {
         name: 'European Water Princess - Damaged 3',
         nameJP: '欧州水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 900,
         FP: 390,
         TP: 160,
@@ -6772,7 +6772,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1846: {
         name: 'Abyssal Nimbus Princess 1',
         nameJP: '深海雨雲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 370,
         FP: 111,
         TP: 0,
@@ -6790,7 +6790,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1847: {
         name: 'Abyssal Nimbus Princess 2',
         nameJP: '深海雨雲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 370,
         FP: 144,
         TP: 0,
@@ -6808,7 +6808,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1848: {
         name: 'Abyssal Nimbus Princess 3',
         nameJP: '深海雨雲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 370,
         FP: 177,
         TP: 0,
@@ -6826,7 +6826,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1849: {
         name: 'Abyssal Nimbus Princess - Damaged 1',
         nameJP: '深海雨雲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 490,
         FP: 133,
@@ -6845,7 +6845,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1850: {
         name: 'Abyssal Nimbus Princess - Damaged 2',
         nameJP: '深海雨雲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 490,
         FP: 166,
@@ -6864,7 +6864,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1851: {
         name: 'Abyssal Nimbus Princess - Damaged 3',
         nameJP: '深海雨雲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 490,
         FP: 188,
@@ -6883,7 +6883,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1852: {
         name: 'Abyssal Sun Princess 1',
         nameJP: '深海日棲姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         HP: 888,
         FP: 199,
         TP: 102,
@@ -6901,7 +6901,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1853: {
         name: 'Abyssal Sun Princess 2',
         nameJP: '深海日棲姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         HP: 888,
         FP: 233,
         TP: 122,
@@ -6919,7 +6919,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1854: {
         name: 'Abyssal Sun Princess 3',
         nameJP: '深海日棲姫',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         HP: 888,
         FP: 288,
         TP: 166,
@@ -6937,7 +6937,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1855: {
         name: 'Abyssal Sun Princess - Damaged 1',
         nameJP: '深海日棲姫-壊',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         HP: 888,
         FP: 199,
         TP: 102,
@@ -6955,7 +6955,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1856: {
         name: 'Abyssal Sun Princess - Damaged 2',
         nameJP: '深海日棲姫-壊',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         HP: 888,
         FP: 233,
         TP: 122,
@@ -6973,7 +6973,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1857: {
         name: 'Abyssal Sun Princess - Damaged 3',
         nameJP: '深海日棲姫-壊',
-        type: ShipType.AV,
+        type: AbyssalShipType.AV,
         HP: 888,
         FP: 288,
         TP: 166,
@@ -6991,7 +6991,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1858: {
         name: 'Destroyer Ni-Class Kai',
         nameJP: '駆逐ニ級改',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 39,
         FP: 34,
         TP: 48,
@@ -7009,7 +7009,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1859: {
         name: 'Destroyer Ni-Class Kai Late Model',
         nameJP: '駆逐ニ級改後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 49,
         FP: 54,
         TP: 88,
@@ -7028,7 +7028,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1860: {
         name: 'Destroyer Ni-Class Kai Late Model Elite',
         nameJP: '駆逐ニ級改後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 49,
         FP: 64,
         TP: 98,
@@ -7047,7 +7047,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1861: {
         name: 'Destroyer Ni-Class Kai Late Model Flagship',
         nameJP: '駆逐ニ級改後期型',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 49,
         FP: 68,
         TP: 98,
@@ -7066,7 +7066,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1862: {
         name: 'CL Tsu-Class Flagship',
         nameJP: '軽巡ツ級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         has_potential_always_OASW: true,
         HP: 130,
         FP: 122,
@@ -7086,7 +7086,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1863: {
         name: 'Heavy Cruiser Princess 7',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 540,
         FP: 180,
         TP: 110,
@@ -7105,7 +7105,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1864: {
         name: 'Heavy Cruiser Princess 8',
         nameJP: '重巡棲姫',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 540,
         FP: 220,
         TP: 130,
@@ -7124,8 +7124,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1865: {
         name: 'Northern Little Sister 1',
         nameJP: '北方棲妹',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 790,
         FP: 170,
         TP: 110,
@@ -7144,8 +7144,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1866: {
         name: 'Northern Little Sister 2',
         nameJP: '北方棲妹',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 790,
         FP: 180,
         TP: 120,
@@ -7164,8 +7164,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1867: {
         name: 'Northern Little Sister 3',
         nameJP: '北方棲妹',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 790,
         FP: 190,
         TP: 150,
@@ -7184,8 +7184,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1868: {
         name: 'Northern Little Sister 1 - Damaged',
         nameJP: '北方棲妹-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 790,
         FP: 170,
         TP: 130,
@@ -7204,8 +7204,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1869: {
         name: 'Northern Little Sister 2 - Damaged',
         nameJP: '北方棲妹-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 790,
         FP: 180,
         TP: 150,
@@ -7224,8 +7224,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1870: {
         name: 'Northern Little Sister 3 - Damaged',
         nameJP: '北方棲妹-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 790,
         FP: 190,
         TP: 180,
@@ -7244,7 +7244,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1871: {
         name: 'Abyssal Pacific Princess 1',
         nameJP: '太平洋深海棲姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 900,
         FP: 320,
         TP: 90,
@@ -7262,7 +7262,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1872: {
         name: 'Abyssal Pacific Princess 2',
         nameJP: '太平洋深海棲姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 930,
         FP: 330,
         TP: 110,
@@ -7280,7 +7280,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1873: {
         name: 'Abyssal Pacific Princess 3',
         nameJP: '太平洋深海棲姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 960,
         FP: 350,
         TP: 120,
@@ -7298,7 +7298,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1874: {
         name: 'Abyssal Pacific Princess - Damaged 1',
         nameJP: '太平洋深海棲姫-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 900,
         FP: 340,
         TP: 110,
@@ -7316,7 +7316,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1875: {
         name: 'Abyssal Pacific Princess - Damaged 2',
         nameJP: '太平洋深海棲姫-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 930,
         FP: 360,
         TP: 130,
@@ -7334,7 +7334,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1876: {
         name: 'Abyssal Pacific Princess - Damaged 3',
         nameJP: '太平洋深海棲姫-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 960,
         FP: 380,
         TP: 150,
@@ -7352,7 +7352,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1877: {
         name: 'Abyssal Mediterranean Princess 1',
         nameJP: '深海地中海棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 700,
         FP: 150,
         TP: 95,
@@ -7370,7 +7370,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1878: {
         name: 'Abyssal Mediterranean Princess 2',
         nameJP: '深海地中海棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 740,
         FP: 180,
         TP: 105,
@@ -7388,7 +7388,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1879: {
         name: 'Abyssal Mediterranean Princess 3',
         nameJP: '深海地中海棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 790,
         FP: 200,
         TP: 125,
@@ -7406,7 +7406,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1880: {
         name: 'Abyssal Mediterranean Princess - Damaged 1',
         nameJP: '深海地中海棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 700,
         FP: 170,
         TP: 155,
@@ -7424,7 +7424,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1881: {
         name: 'Abyssal Mediterranean Princess - Damaged 2',
         nameJP: '深海地中海棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 740,
         FP: 200,
         TP: 175,
@@ -7442,7 +7442,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1882: {
         name: 'Abyssal Mediterranean Princess - Damaged 3',
         nameJP: '深海地中海棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 790,
         FP: 230,
         TP: 195,
@@ -7460,7 +7460,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1883: {
         name: 'Anzio Princess 1',
         nameJP: 'アンツィオ沖棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 800,
         FP: 158,
         TP: 158,
@@ -7478,7 +7478,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1884: {
         name: 'Anzio Princess 2',
         nameJP: 'アンツィオ沖棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 840,
         FP: 178,
         TP: 178,
@@ -7496,7 +7496,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1885: {
         name: 'Anzio Princess 3',
         nameJP: 'アンツィオ沖棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 888,
         FP: 188,
         TP: 228,
@@ -7514,7 +7514,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1886: {
         name: 'Anzio Princess - Damaged 1',
         nameJP: 'アンツィオ沖棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 800,
         FP: 179,
         TP: 209,
@@ -7532,7 +7532,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1887: {
         name: 'Anzio Princess - Damaged 2',
         nameJP: 'アンツィオ沖棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 840,
         FP: 189,
         TP: 249,
@@ -7550,7 +7550,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1888: {
         name: 'Anzio Princess - Damaged 3',
         nameJP: 'アンツィオ沖棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 888,
         FP: 199,
         TP: 299,
@@ -7568,8 +7568,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1889: {
         name: 'Airfield Princess 8',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -7588,8 +7588,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1890: {
         name: 'Airfield Princess 9',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -7608,8 +7608,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1891: {
         name: 'Airfield Princess 10',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -7628,8 +7628,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1892: {
         name: 'Airfield Princess 11',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 70,
         TP: 0,
@@ -7648,8 +7648,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1893: {
         name: 'Airfield Princess 12',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 80,
         TP: 0,
@@ -7668,8 +7668,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1894: {
         name: 'Airfield Princess 13',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 90,
         TP: 0,
@@ -7688,7 +7688,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1895: {
         name: 'CA Ne-Class Kai 1',
         nameJP: '重巡ネ級改',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 330,
         FP: 118,
         TP: 108,
@@ -7707,7 +7707,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1896: {
         name: 'CA Ne-Class Kai 2',
         nameJP: '重巡ネ級改',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 360,
         FP: 128,
         TP: 128,
@@ -7726,7 +7726,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1897: {
         name: 'CA Ne-Class Kai 3',
         nameJP: '重巡ネ級改',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 390,
         FP: 148,
         TP: 138,
@@ -7745,7 +7745,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1898: {
         name: 'Batavia Princess 1',
         nameJP: 'バタビア沖棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 690,
         FP: 160,
         TP: 110,
@@ -7763,7 +7763,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1899: {
         name: 'Batavia Princess 2',
         nameJP: 'バタビア沖棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 790,
         FP: 190,
         TP: 130,
@@ -7781,7 +7781,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1900: {
         name: 'Batavia Princess 3',
         nameJP: 'バタビア沖棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 790,
         FP: 230,
         TP: 150,
@@ -7799,7 +7799,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1901: {
         name: 'Batavia Princess - Damaged 1',
         nameJP: 'バタビア沖棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 690,
         FP: 200,
         TP: 130,
@@ -7817,7 +7817,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1902: {
         name: 'Batavia Princess - Damaged 2',
         nameJP: 'バタビア沖棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 790,
         FP: 220,
         TP: 160,
@@ -7835,7 +7835,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1903: {
         name: 'Batavia Princess - Damaged 3',
         nameJP: 'バタビア沖棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 790,
         FP: 270,
         TP: 190,
@@ -7853,7 +7853,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1904: {
         name: 'CL He-Class Kai Flagship 1',
         nameJP: '軽巡ヘ級改',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 115,
         FP: 58,
         TP: 80,
@@ -7872,7 +7872,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1905: {
         name: 'CL He-Class Kai Flagship 2',
         nameJP: '軽巡ヘ級改',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 150,
         FP: 78,
         TP: 90,
@@ -7891,8 +7891,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1906: {
         name: 'Aircraft Carrier Princess Kai 1',
         nameJP: '空母棲姫改',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 500,
         FP: 198,
         TP: 0,
@@ -7910,8 +7910,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1907: {
         name: 'Aircraft Carrier Princess Kai 2',
         nameJP: '空母棲姫改',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 550,
         FP: 208,
         TP: 0,
@@ -7929,8 +7929,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1908: {
         name: 'Aircraft Carrier Princess Kai 3',
         nameJP: '空母棲姫改',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 600,
         FP: 228,
         TP: 0,
@@ -7948,7 +7948,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1909: {
         name: 'Anti-Air Cruiser Princess 1',
         nameJP: '防空巡棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 733,
         FP: 150,
         TP: 125,
@@ -7967,7 +7967,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1910: {
         name: 'Anti-Air Cruiser Princess 2',
         nameJP: '防空巡棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 755,
         FP: 180,
         TP: 135,
@@ -7986,7 +7986,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1911: {
         name: 'Anti-Air Cruiser Princess 3',
         nameJP: '防空巡棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 777,
         FP: 220,
         TP: 155,
@@ -8005,7 +8005,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1912: {
         name: 'Anti-Air Cruiser Princess - Damaged 1',
         nameJP: '防空巡棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         has_potential_always_OASW: true,
         HP: 733,
         FP: 150,
@@ -8025,7 +8025,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1913: {
         name: 'Anti-Air Cruiser Princess - Damaged 2',
         nameJP: '防空巡棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         has_potential_always_OASW: true,
         HP: 755,
         FP: 180,
@@ -8045,7 +8045,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1914: {
         name: 'Anti-Air Cruiser Princess - Damaged 3',
         nameJP: '防空巡棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         has_potential_always_OASW: true,
         HP: 777,
         FP: 220,
@@ -8065,7 +8065,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1915: {
         name: 'Submarine Princess Kai Flagship 1',
         nameJP: '潜水棲姫改',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 290,
         FP: 55,
         TP: 155,
@@ -8084,7 +8084,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1916: {
         name: 'Submarine Princess Kai Flagship 2',
         nameJP: '潜水棲姫改',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 390,
         FP: 75,
         TP: 175,
@@ -8103,7 +8103,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1917: {
         name: 'Submarine Princess Kai Flagship 3',
         nameJP: '潜水棲姫改',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 490,
         FP: 95,
         TP: 195,
@@ -8122,7 +8122,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1918: {
         name: 'Submarine Princess Kai Flagship - Damaged 1',
         nameJP: '潜水棲姫改-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 290,
         FP: 68,
         TP: 169,
@@ -8141,7 +8141,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1919: {
         name: 'Submarine Princess Kai Flagship - Damaged 2',
         nameJP: '潜水棲姫改-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 390,
         FP: 78,
         TP: 209,
@@ -8160,7 +8160,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1920: {
         name: 'Submarine Princess Kai Flagship - Damaged 3',
         nameJP: '潜水棲姫改-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 490,
         FP: 98,
         TP: 239,
@@ -8179,8 +8179,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1921: {
         name: 'Supply Depot Princess B 1',
         nameJP: '集積地棲姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 600,
         FP: 70,
         TP: 88,
@@ -8199,8 +8199,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1922: {
         name: 'Supply Depot Princess B 2',
         nameJP: '集積地棲姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 660,
         FP: 90,
         TP: 98,
@@ -8219,8 +8219,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1923: {
         name: 'Supply Depot Princess B 3',
         nameJP: '集積地棲姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 990,
         FP: 130,
         TP: 118,
@@ -8239,8 +8239,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1924: {
         name: 'Supply Depot Princess B - Damaged 1',
         nameJP: '集積地棲姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 600,
         FP: 130,
         TP: 88,
@@ -8259,8 +8259,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1925: {
         name: 'Supply Depot Princess B - Damaged 2',
         nameJP: '集積地棲姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 660,
         FP: 160,
         TP: 98,
@@ -8279,8 +8279,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1926: {
         name: 'Supply Depot Princess B - Damaged 3',
         nameJP: '集積地棲姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 990,
         FP: 190,
         TP: 118,
@@ -8299,7 +8299,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1927: {
         name: 'Abyssal Kuriles Princess 1',
         nameJP: '深海千島棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 330,
         FP: 110,
@@ -8319,7 +8319,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1928: {
         name: 'Abyssal Kuriles Princess 2',
         nameJP: '深海千島棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 480,
         FP: 140,
@@ -8339,7 +8339,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1929: {
         name: 'Abyssal Kuriles Princess 3',
         nameJP: '深海千島棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 590,
         FP: 170,
@@ -8359,7 +8359,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1930: {
         name: 'Abyssal Kuriles Princess - Damaged 1',
         nameJP: '深海千島棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 330,
         FP: 130,
@@ -8379,7 +8379,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1931: {
         name: 'Abyssal Kuriles Princess - Damaged 2',
         nameJP: '深海千島棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 480,
         FP: 170,
@@ -8399,7 +8399,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1932: {
         name: 'Abyssal Kuriles Princess - Damaged 3',
         nameJP: '深海千島棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 590,
         FP: 180,
@@ -8419,8 +8419,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1933: {
         name: 'Supply Depot Princess B Summer Landing Mode 1',
         nameJP: '集積地棲姫II 夏季上陸mode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 600,
         FP: 100,
         TP: 98,
@@ -8439,8 +8439,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1934: {
         name: 'Supply Depot Princess B Summer Landing Mode 2',
         nameJP: '集積地棲姫II 夏季上陸mode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 1200,
         FP: 180,
         TP: 108,
@@ -8459,8 +8459,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1935: {
         name: 'Supply Depot Princess B Summer Landing Mode 3',
         nameJP: '集積地棲姫II 夏季上陸mode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 2400,
         FP: 200,
         TP: 128,
@@ -8479,8 +8479,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1936: {
         name: 'Supply Depot Princess B Summer Landing Mode - Damaged 1',
         nameJP: '集積地棲姫II 夏季上陸mode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 600,
         FP: 160,
         TP: 98,
@@ -8499,8 +8499,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1937: {
         name: 'Supply Depot Princess B Summer Landing Mode - Damaged 2',
         nameJP: '集積地棲姫II 夏季上陸mode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 1200,
         FP: 200,
         TP: 108,
@@ -8519,8 +8519,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1938: {
         name: 'Supply Depot Princess B Summer Landing Mode - Damaged 3',
         nameJP: '集積地棲姫II 夏季上陸mode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 2400,
         FP: 240,
         TP: 128,
@@ -8539,7 +8539,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1939: {
         name: 'Gotou Islands Seabed Princess 1',
         nameJP: '五島沖海底姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 470,
         FP: 47,
         TP: 160,
@@ -8558,7 +8558,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1940: {
         name: 'Gotou Islands Seabed Princess 2',
         nameJP: '五島沖海底姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 470,
         FP: 47,
         TP: 200,
@@ -8577,7 +8577,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1941: {
         name: 'Gotou Islands Seabed Princess 3',
         nameJP: '五島沖海底姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 670,
         FP: 47,
         TP: 240,
@@ -8596,7 +8596,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1942: {
         name: 'Gotou Islands Seabed Princess - Damaged 1',
         nameJP: '五島沖海底姫-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 470,
         FP: 47,
         TP: 200,
@@ -8615,7 +8615,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1943: {
         name: 'Gotou Islands Seabed Princess - Damaged 2',
         nameJP: '五島沖海底姫-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 470,
         FP: 47,
         TP: 240,
@@ -8634,7 +8634,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1944: {
         name: 'Gotou Islands Seabed Princess - Damaged 3',
         nameJP: '五島沖海底姫-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 670,
         FP: 47,
         TP: 290,
@@ -8653,7 +8653,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1945: {
         name: 'Destroyer Forest Princess 1',
         nameJP: '駆逐林棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 500,
         FP: 170,
@@ -8673,7 +8673,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1946: {
         name: 'Destroyer Forest Princess 2',
         nameJP: '駆逐林棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 600,
         FP: 200,
@@ -8693,7 +8693,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1947: {
         name: 'Destroyer Forest Princess 3',
         nameJP: '駆逐林棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 700,
         FP: 230,
@@ -8713,7 +8713,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1948: {
         name: 'Destroyer Forest Princess - Damaged 1',
         nameJP: '駆逐林棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 500,
         FP: 200,
@@ -8733,7 +8733,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1949: {
         name: 'Destroyer Forest Princess - Damaged 2',
         nameJP: '駆逐林棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 600,
         FP: 220,
@@ -8753,7 +8753,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1950: {
         name: 'Destroyer Forest Princess - Damaged 3',
         nameJP: '駆逐林棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 700,
         FP: 270,
@@ -8773,7 +8773,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1951: {
         name: 'DD Na-Class Late Model II Elite',
         nameJP: '駆逐ナ級後期型II',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 66,
         FP: 79,
         TP: 113,
@@ -8792,7 +8792,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1952: {
         name: 'DD Na-Class Late Model II Flagship',
         nameJP: '駆逐ナ級後期型II',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 69,
         FP: 89,
         TP: 123,
@@ -8811,7 +8811,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1953: {
         name: 'CA Ne-Class Kai Summer Mode 1',
         nameJP: '重巡ネ級改 夏mode',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 330,
         FP: 118,
         TP: 108,
@@ -8830,7 +8830,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1954: {
         name: 'CA Ne-Class Kai Summer Mode 2',
         nameJP: '重巡ネ級改 夏mode',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 360,
         FP: 128,
         TP: 118,
@@ -8849,7 +8849,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1955: {
         name: 'CA Ne-Class Kai Summer Mode 3',
         nameJP: '重巡ネ級改 夏mode',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 390,
         FP: 138,
         TP: 138,
@@ -8868,7 +8868,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1956: {
         name: 'CA Ne-Class Kai B Summer Mode',
         nameJP: '重巡ネ級改II 夏mode',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 470,
         FP: 158,
         TP: 148,
@@ -8887,7 +8887,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1957: {
         name: 'Light Cruiser Princess B 1',
         nameJP: '軽巡棲姫II',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 290,
         FP: 69,
         TP: 119,
@@ -8906,7 +8906,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1958: {
         name: 'Light Cruiser Princess B 2',
         nameJP: '軽巡棲姫II',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 290,
         FP: 79,
         TP: 139,
@@ -8925,7 +8925,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1959: {
         name: 'Light Cruiser Princess B 3',
         nameJP: '軽巡棲姫II',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 340,
         FP: 89,
         TP: 169,
@@ -8944,7 +8944,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1960: {
         name: 'Light Cruiser Princess B 4',
         nameJP: '軽巡棲姫II',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 380,
         FP: 99,
         TP: 199,
@@ -8963,8 +8963,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1961: {
         name: 'Aircraft Carrier Summer Princess 2',
         nameJP: '空母夏姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 440,
         FP: 180,
         TP: 0,
@@ -8982,8 +8982,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1962: {
         name: 'Aircraft Carrier Summer Princess 3',
         nameJP: '空母夏姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 540,
         FP: 190,
         TP: 0,
@@ -9001,8 +9001,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1963: {
         name: 'Aircraft Carrier Summer Princess 4',
         nameJP: '空母夏姫',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 640,
         FP: 200,
         TP: 0,
@@ -9020,9 +9020,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1964: {
         name: 'Aircraft Carrier Summer Princess B',
         nameJP: '空母夏姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 880,
         FP: 248,
         TP: 0,
@@ -9040,7 +9040,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1965: {
         name: 'New Southern Battleship Princess 1',
         nameJP: '南方戦艦新棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 950,
         FP: 300,
         TP: 0,
@@ -9058,7 +9058,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1966: {
         name: 'New Southern Battleship Princess 2',
         nameJP: '南方戦艦新棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 950,
         FP: 310,
         TP: 0,
@@ -9076,7 +9076,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1967: {
         name: 'New Southern Battleship Princess 3',
         nameJP: '南方戦艦新棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 950,
         FP: 330,
         TP: 0,
@@ -9094,7 +9094,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1968: {
         name: 'New Southern Battleship Princess - Damaged 1',
         nameJP: '南方戦艦新棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 950,
         FP: 320,
         TP: 0,
@@ -9112,7 +9112,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1969: {
         name: 'New Southern Battleship Princess - Damaged 2',
         nameJP: '南方戦艦新棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 950,
         FP: 340,
         TP: 0,
@@ -9130,7 +9130,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1970: {
         name: 'New Southern Battleship Princess - Damaged 3',
         nameJP: '南方戦艦新棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 950,
         FP: 360,
         TP: 0,
@@ -9148,9 +9148,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1971: {
         name: 'South Pacific Aircraft Carrier Princess 1',
         nameJP: '南太平洋空母棲姫',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 888,
         FP: 208,
         TP: 0,
@@ -9168,9 +9168,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1972: {
         name: 'South Pacific Aircraft Carrier Princess 2',
         nameJP: '南太平洋空母棲姫',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 888,
         FP: 248,
         TP: 0,
@@ -9188,9 +9188,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1973: {
         name: 'South Pacific Aircraft Carrier Princess 3',
         nameJP: '南太平洋空母棲姫',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 888,
         FP: 288,
         TP: 0,
@@ -9208,9 +9208,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1974: {
         name: 'South Pacific Aircraft Carrier Princess - Damaged 1',
         nameJP: '南太平洋空母棲姫-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 888,
         FP: 238,
         TP: 0,
@@ -9228,9 +9228,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1975: {
         name: 'South Pacific Aircraft Carrier Princess - Damaged 2',
         nameJP: '南太平洋空母棲姫-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 888,
         FP: 278,
         TP: 0,
@@ -9248,9 +9248,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1976: {
         name: 'South Pacific Aircraft Carrier Princess - Damaged 3',
         nameJP: '南太平洋空母棲姫-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 888,
         FP: 308,
         TP: 0,
@@ -9268,7 +9268,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1977: {
         name: 'Submarine Summer Princess B Flagship 1',
         nameJP: '潜水夏姫II',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 108,
         FP: 44,
         TP: 139,
@@ -9287,7 +9287,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1978: {
         name: 'Submarine Summer Princess B Flagship 2',
         nameJP: '潜水夏姫II',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 198,
         FP: 66,
         TP: 199,
@@ -9306,7 +9306,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1979: {
         name: 'New Battleship Princess 1',
         nameJP: '戦艦新棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 980,
         FP: 300,
         TP: 0,
@@ -9324,7 +9324,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1980: {
         name: 'New Battleship Princess 2',
         nameJP: '戦艦新棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 980,
         FP: 310,
         TP: 0,
@@ -9342,7 +9342,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1981: {
         name: 'New Battleship Princess 3',
         nameJP: '戦艦新棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 980,
         FP: 330,
         TP: 0,
@@ -9360,7 +9360,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1982: {
         name: 'New Battleship Princess - Damaged 1',
         nameJP: '戦艦新棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 980,
         FP: 320,
         TP: 0,
@@ -9378,7 +9378,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1983: {
         name: 'New Battleship Princess - Damaged 2',
         nameJP: '戦艦新棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 980,
         FP: 340,
         TP: 0,
@@ -9396,7 +9396,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1984: {
         name: 'New Battleship Princess - Damaged 3',
         nameJP: '戦艦新棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 980,
         FP: 360,
         TP: 0,
@@ -9414,7 +9414,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1985: {
         name: 'Submarine Princess Kai B Flagship 1',
         nameJP: '潜水棲姫改II',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 109,
         FP: 49,
         TP: 159,
@@ -9433,7 +9433,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1986: {
         name: 'Submarine Princess Kai B Flagship 2',
         nameJP: '潜水棲姫改II',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 190,
         FP: 59,
         TP: 179,
@@ -9452,7 +9452,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1987: {
         name: 'Submarine Princess Kai B Flagship 3',
         nameJP: '潜水棲姫改II',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 390,
         FP: 99,
         TP: 199,
@@ -9471,7 +9471,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1988: {
         name: 'Abyssal Bamboo Princess 1',
         nameJP: '深海竹棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 177,
@@ -9491,7 +9491,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1989: {
         name: 'Abyssal Bamboo Princess 2',
         nameJP: '深海竹棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 207,
@@ -9511,7 +9511,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1990: {
         name: 'Abyssal Bamboo Princess 3',
         nameJP: '深海竹棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 237,
@@ -9531,7 +9531,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1991: {
         name: 'Abyssal Bamboo Princess - Damaged 1',
         nameJP: '深海竹棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 207,
@@ -9551,7 +9551,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1992: {
         name: 'Abyssal Bamboo Princess - Damaged 2',
         nameJP: '深海竹棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 237,
@@ -9571,7 +9571,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1993: {
         name: 'Abyssal Bamboo Princess - Damaged 3',
         nameJP: '深海竹棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 880,
         FP: 277,
@@ -9591,8 +9591,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1994: {
         name: 'Supply Depot Princess B 4',
         nameJP: '集積地棲姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 480,
         FP: 60,
         TP: 78,
@@ -9611,8 +9611,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1995: {
         name: 'Supply Depot Princess B - Damaged 4',
         nameJP: '集積地棲姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 480,
         FP: 110,
         TP: 78,
@@ -9631,7 +9631,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1996: {
         name: 'Submarine Princess Kai B Flagship 4',
         nameJP: '潜水棲姫改II',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 79,
         FP: 39,
         TP: 139,
@@ -9649,8 +9649,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1997: {
         name: 'Aircraft Carrier Princess Kai 4',
         nameJP: '空母棲姫改',
-        type: ShipType.CV,
-        CVs_night_attack_type: ShipType.DE,
+        type: AbyssalShipType.CV,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 500,
         FP: 168,
         TP: 0,
@@ -9668,7 +9668,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1998: {
         name: 'CL To-Class Flagship',
         nameJP: '軽巡ト級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 73,
         FP: 69,
         TP: 72,
@@ -9687,7 +9687,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     1999: {
         name: 'CA Ri-Class B Flagship',
         nameJP: '重巡リ級II',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 80,
         FP: 78,
         TP: 67,
@@ -9706,7 +9706,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2000: {
         name: 'Lunga Point Heavy Cruiser Princess 1',
         nameJP: 'ルンガ沖重巡棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 670,
         FP: 167,
         TP: 117,
@@ -9725,7 +9725,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2001: {
         name: 'Lunga Point Heavy Cruiser Princess 2',
         nameJP: 'ルンガ沖重巡棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 770,
         FP: 207,
         TP: 137,
@@ -9744,7 +9744,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2002: {
         name: 'Lunga Point Heavy Cruiser Princess 3',
         nameJP: 'ルンガ沖重巡棲姫',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 870,
         FP: 267,
         TP: 167,
@@ -9763,7 +9763,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2003: {
         name: 'Lunga Point Heavy Cruiser Princess - Damaged 1',
         nameJP: 'ルンガ沖重巡棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 670,
         FP: 217,
         TP: 137,
@@ -9782,7 +9782,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2004: {
         name: 'Lunga Point Heavy Cruiser Princess - Damaged 2',
         nameJP: 'ルンガ沖重巡棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 770,
         FP: 247,
         TP: 167,
@@ -9801,7 +9801,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2005: {
         name: 'Lunga Point Heavy Cruiser Princess - Damaged 3',
         nameJP: 'ルンガ沖重巡棲姫-壊',
-        type: ShipType.FBB,
+        type: AbyssalShipType.FBB,
         HP: 870,
         FP: 287,
         TP: 197,
@@ -9820,7 +9820,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2006: {
         name: 'New Light Cruiser Princess 1',
         nameJP: '軽巡新棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 960,
         FP: 146,
         TP: 136,
@@ -9839,7 +9839,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2007: {
         name: 'New Light Cruiser Princess 2',
         nameJP: '軽巡新棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 960,
         FP: 186,
         TP: 166,
@@ -9858,7 +9858,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2008: {
         name: 'New Light Cruiser Princess 3',
         nameJP: '軽巡新棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 960,
         FP: 246,
         TP: 186,
@@ -9877,7 +9877,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2009: {
         name: 'New Light Cruiser Princess - Damaged 1',
         nameJP: '軽巡新棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 960,
         FP: 156,
         TP: 156,
@@ -9896,7 +9896,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2010: {
         name: 'New Light Cruiser Princess - Damaged 2',
         nameJP: '軽巡新棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 960,
         FP: 196,
         TP: 186,
@@ -9915,7 +9915,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2011: {
         name: 'New Light Cruiser Princess - Damaged 3',
         nameJP: '軽巡新棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 960,
         FP: 256,
         TP: 206,
@@ -9934,7 +9934,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2012: {
         name: 'CL To-Class Elite 2',
         nameJP: '軽巡ト級',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 63,
         FP: 46,
         TP: 58,
@@ -9953,7 +9953,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2013: {
         name: 'Transport Wa-Class Elite B',
         nameJP: '輸送ワ級II',
-        type: ShipType.AT,
+        type: AbyssalShipType.AT,
         HP: 480,
         FP: 33,
         TP: 0,
@@ -9971,7 +9971,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2014: {
         name: 'Transport Wa-Class Flagship B',
         nameJP: '輸送ワ級II',
-        type: ShipType.AT,
+        type: AbyssalShipType.AT,
         HP: 480,
         FP: 66,
         TP: 0,
@@ -9989,8 +9989,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2015: {
         name: 'Supply Depot Princess B Vacation Mode 1',
         nameJP: '集積地棲姫II バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 440,
         FP: 60,
         TP: 78,
@@ -10009,8 +10009,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2016: {
         name: 'Supply Depot Princess B Vacation Mode 2',
         nameJP: '集積地棲姫II バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 1200,
         FP: 118,
         TP: 102,
@@ -10029,8 +10029,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2017: {
         name: 'Supply Depot Princess B Vacation Mode 3',
         nameJP: '集積地棲姫II バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 3200,
         FP: 148,
         TP: 122,
@@ -10049,8 +10049,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2018: {
         name: 'Supply Depot Princess B Vacation Mode 4',
         nameJP: '集積地棲姫II バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 4800,
         FP: 178,
         TP: 144,
@@ -10069,8 +10069,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2019: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 440,
         FP: 110,
         TP: 78,
@@ -10089,8 +10089,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2020: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 2',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 1200,
         FP: 138,
         TP: 122,
@@ -10109,8 +10109,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2021: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 3200,
         FP: 168,
         TP: 144,
@@ -10129,8 +10129,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2022: {
         name: 'Supply Depot Princess B Vacation Mode - Damaged 4',
         nameJP: '集積地棲姫II バカンスmode-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         HP: 4800,
         FP: 198,
         TP: 188,
@@ -10149,8 +10149,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2023: {
         name: 'Harbour Summer Princess B 1',
         nameJP: '港湾夏姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 750,
         FP: 168,
         TP: 0,
@@ -10168,8 +10168,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2024: {
         name: 'Harbour Summer Princess B 2',
         nameJP: '港湾夏姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 1050,
         FP: 188,
         TP: 0,
@@ -10187,8 +10187,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2025: {
         name: 'Harbour Summer Princess B 3',
         nameJP: '港湾夏姫II',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 1550,
         FP: 200,
         TP: 0,
@@ -10206,8 +10206,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2026: {
         name: 'Harbour Summer Princess B - Damaged 1',
         nameJP: '港湾夏姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 750,
         FP: 178,
         TP: 0,
@@ -10225,8 +10225,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2027: {
         name: 'Harbour Summer Princess B - Damaged 2',
         nameJP: '港湾夏姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 1050,
         FP: 198,
         TP: 0,
@@ -10244,8 +10244,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2028: {
         name: 'Harbour Summer Princess B - Damaged 3',
         nameJP: '港湾夏姫II-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 1550,
         FP: 208,
         TP: 0,
@@ -10263,7 +10263,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2029: {
         name: 'Mediterranean Dreadnought Water Princess 1',
         nameJP: '地中海弩級水姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 680,
         FP: 166,
         TP: 66,
@@ -10281,7 +10281,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2030: {
         name: 'Mediterranean Dreadnought Water Princess 2',
         nameJP: '地中海弩級水姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 880,
         FP: 188,
         TP: 88,
@@ -10299,7 +10299,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2031: {
         name: 'Mediterranean Dreadnought Water Princess 3',
         nameJP: '地中海弩級水姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 930,
         FP: 211,
         TP: 98,
@@ -10317,7 +10317,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2032: {
         name: 'Mediterranean Dreadnought Water Princess - Damaged 1',
         nameJP: '地中海弩級水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 680,
         FP: 202,
         TP: 88,
@@ -10335,7 +10335,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2033: {
         name: 'Mediterranean Dreadnought Water Princess - Damaged 2',
         nameJP: '地中海弩級水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 212,
         TP: 98,
@@ -10353,7 +10353,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2034: {
         name: 'Mediterranean Dreadnought Water Princess - Damaged 3',
         nameJP: '地中海弩級水姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 930,
         FP: 222,
         TP: 128,
@@ -10371,7 +10371,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2035: {
         name: 'Abyssal Mediterranean Princess Vacation Mode 1',
         nameJP: '深海地中海棲姫 バカンスmode',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 700,
         FP: 148,
         TP: 108,
@@ -10390,7 +10390,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2036: {
         name: 'Abyssal Mediterranean Princess Vacation Mode 2',
         nameJP: '深海地中海棲姫 バカンスmode',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 740,
         FP: 188,
         TP: 118,
@@ -10409,7 +10409,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2037: {
         name: 'Abyssal Mediterranean Princess Vacation Mode 3',
         nameJP: '深海地中海棲姫 バカンスmode',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 790,
         FP: 208,
         TP: 138,
@@ -10428,7 +10428,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2038: {
         name: 'Abyssal Mediterranean Princess Vacation Mode - Damaged 1',
         nameJP: '深海地中海棲姫 バカンスmode-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 700,
         FP: 168,
         TP: 148,
@@ -10447,7 +10447,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2039: {
         name: 'Abyssal Mediterranean Princess Vacation Mode - Damaged 2',
         nameJP: '深海地中海棲姫 バカンスmode-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 740,
         FP: 208,
         TP: 178,
@@ -10466,7 +10466,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2040: {
         name: 'Abyssal Mediterranean Princess Vacation Mode - Damaged 3',
         nameJP: '深海地中海棲姫 バカンスmode-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         HP: 790,
         FP: 238,
         TP: 198,
@@ -10485,9 +10485,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2041: {
         name: 'European Armoured Carrier Princess 1',
         nameJP: '欧州装甲空母棲姫',
-        type: ShipType.CVB,
+        type: AbyssalShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 980,
         FP: 200,
         TP: 0,
@@ -10505,9 +10505,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2042: {
         name: 'European Armoured Carrier Princess 2',
         nameJP: '欧州装甲空母棲姫',
-        type: ShipType.CVB,
+        type: AbyssalShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1080,
         FP: 240,
         TP: 0,
@@ -10525,9 +10525,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2043: {
         name: 'European Armoured Carrier Princess 3',
         nameJP: '欧州装甲空母棲姫',
-        type: ShipType.CVB,
+        type: AbyssalShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1080,
         FP: 280,
         TP: 0,
@@ -10545,9 +10545,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2044: {
         name: 'European Armoured Carrier Princess - Damaged 1',
         nameJP: '欧州装甲空母棲姫-壊',
-        type: ShipType.CVB,
+        type: AbyssalShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 980,
         FP: 230,
         TP: 0,
@@ -10565,9 +10565,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2045: {
         name: 'European Armoured Carrier Princess - Damaged 2',
         nameJP: '欧州装甲空母棲姫-壊',
-        type: ShipType.CVB,
+        type: AbyssalShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1080,
         FP: 270,
         TP: 0,
@@ -10585,9 +10585,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2046: {
         name: 'European Armoured Carrier Princess - Damaged 3',
         nameJP: '欧州装甲空母棲姫-壊',
-        type: ShipType.CVB,
+        type: AbyssalShipType.CVB,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1080,
         FP: 300,
         TP: 0,
@@ -10605,8 +10605,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2047: {
         name: 'Airfield Princess 14',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 480,
         FP: 50,
         TP: 0,
@@ -10625,8 +10625,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2048: {
         name: 'Airfield Princess 15',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 480,
         FP: 60,
         TP: 0,
@@ -10645,7 +10645,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2049: {
         name: 'New Submarine Princess Flagship 5',
         nameJP: '潜水新棲姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 133,
         FP: 22,
         TP: 102,
@@ -10664,7 +10664,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2050: {
         name: 'DD Na-Class IIe (Mass Production Model)',
         nameJP: '駆逐ナ級IIe(量産型)',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 63,
         FP: 69,
         TP: 104,
@@ -10683,7 +10683,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2051: {
         name: 'DD Na-Class IIe (Mass Production Model) Elite',
         nameJP: '駆逐ナ級IIe(量産型)',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 66,
         FP: 79,
         TP: 114,
@@ -10702,7 +10702,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2052: {
         name: 'DD Na-Class IIe (Mass Production Model) Flagship',
         nameJP: '駆逐ナ級IIe(量産型)',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 69,
         FP: 89,
         TP: 124,
@@ -10721,7 +10721,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2053: {
         name: 'Submarine Shark Water Demon 1',
         nameJP: '潜水鮫水鬼',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 277,
         FP: 53,
         TP: 161,
@@ -10740,7 +10740,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2054: {
         name: 'Submarine Shark Water Demon 2',
         nameJP: '潜水鮫水鬼',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 477,
         FP: 63,
         TP: 191,
@@ -10759,7 +10759,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2055: {
         name: 'Submarine Shark Water Demon 3',
         nameJP: '潜水鮫水鬼',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 577,
         FP: 83,
         TP: 222,
@@ -10778,7 +10778,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2056: {
         name: 'Submarine Shark Water Demon - Damaged 1',
         nameJP: '潜水鮫水鬼-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 277,
         FP: 59,
         TP: 191,
@@ -10797,7 +10797,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2057: {
         name: 'Submarine Shark Water Demon - Damaged 2',
         nameJP: '潜水鮫水鬼-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 477,
         FP: 69,
         TP: 222,
@@ -10816,7 +10816,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2058: {
         name: 'Submarine Shark Water Demon - Damaged 3',
         nameJP: '潜水鮫水鬼-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         HP: 577,
         FP: 89,
         TP: 252,
@@ -10835,7 +10835,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2059: {
         name: 'Hi Convoy Princess 1',
         nameJP: 'ヒ船団棲姫',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 80,
@@ -10854,7 +10854,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2060: {
         name: 'Hi Convoy Princess 2',
         nameJP: 'ヒ船団棲姫',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 98,
@@ -10873,7 +10873,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2061: {
         name: 'Hi Convoy Princess - Damaged 1',
         nameJP: 'ヒ船団棲姫-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 108,
@@ -10892,7 +10892,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2062: {
         name: 'Hi Convoy Princess - Damaged 2',
         nameJP: 'ヒ船団棲姫-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 500,
         FP: 148,
@@ -10911,7 +10911,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2063: {
         name: 'Abyssal Plum Princess 1',
         nameJP: '深海梅棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 600,
         FP: 151,
@@ -10931,7 +10931,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2064: {
         name: 'Abyssal Plum Princess 2',
         nameJP: '深海梅棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 700,
         FP: 181,
@@ -10951,7 +10951,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2065: {
         name: 'Abyssal Plum Princess 3',
         nameJP: '深海梅棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 800,
         FP: 212,
@@ -10971,7 +10971,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2066: {
         name: 'Abyssal Plum Princess - Damaged 1',
         nameJP: '深海梅棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 600,
         FP: 181,
@@ -10991,7 +10991,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2067: {
         name: 'Abyssal Plum Princess - Damaged 2',
         nameJP: '深海梅棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 700,
         FP: 212,
@@ -11011,7 +11011,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2068: {
         name: 'Abyssal Plum Princess - Damaged 3',
         nameJP: '深海梅棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         HP: 800,
         FP: 252,
@@ -11031,8 +11031,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2069: {
         name: 'Yokohama Wharf Princess 1',
         nameJP: '横浜岸壁棲姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 740,
         FP: 96,
         TP: 0,
@@ -11050,8 +11050,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2070: {
         name: 'Yokohama Wharf Princess 2',
         nameJP: '横浜岸壁棲姫',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 840,
         FP: 106,
         TP: 0,
@@ -11069,8 +11069,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2071: {
         name: 'Yokohama Wharf Princess - Damaged 1',
         nameJP: '横浜岸壁棲姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 740,
         FP: 106,
         TP: 0,
@@ -11088,8 +11088,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2072: {
         name: 'Yokohama Wharf Princess - Damaged 2',
         nameJP: '横浜岸壁棲姫-壊',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         HP: 840,
         FP: 169,
         TP: 0,
@@ -11107,7 +11107,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2073: {
         name: 'Abyssal Jade Princess 1',
         nameJP: '深海玉棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 730,
         FP: 190,
         TP: 130,
@@ -11126,7 +11126,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2074: {
         name: 'Abyssal Jade Princess 2',
         nameJP: '深海玉棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 830,
         FP: 220,
         TP: 160,
@@ -11145,7 +11145,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2075: {
         name: 'Abyssal Jade Princess - Damaged 1',
         nameJP: '深海玉棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 730,
         FP: 220,
         TP: 160,
@@ -11164,7 +11164,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2076: {
         name: 'Abyssal Jade Princess - Damaged 2',
         nameJP: '深海玉棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         HP: 830,
         FP: 260,
         TP: 190,
@@ -11183,8 +11183,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2077: {
         name: 'Super Heavy Bombing Airfield Princess 1',
         nameJP: '超重爆飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 600,
         FP: 70,
         TP: 0,
@@ -11202,8 +11202,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2078: {
         name: 'Super Heavy Bombing Airfield Princess 2',
         nameJP: '超重爆飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 600,
         FP: 80,
         TP: 0,
@@ -11221,8 +11221,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2079: {
         name: 'Super Heavy Bombing Airfield Princess 3',
         nameJP: '超重爆飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 600,
         FP: 90,
         TP: 0,
@@ -11240,7 +11240,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2080: {
         name: 'Winter Entombed Anti-Air Guardian Princess 1',
         nameJP: '防空埋護冬姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -11261,7 +11261,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2081: {
         name: 'Winter Entombed Anti-Air Guardian Princess 2',
         nameJP: '防空埋護冬姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 930,
@@ -11282,7 +11282,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2082: {
         name: 'Winter Entombed Anti-Air Guardian Princess - Damaged 1',
         nameJP: '防空埋護冬姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -11303,7 +11303,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2083: {
         name: 'Winter Entombed Anti-Air Guardian Princess - Damaged 2',
         nameJP: '防空埋護冬姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 930,
@@ -11324,8 +11324,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2084: {
         name: 'Supply Depot Princess C 1',
         nameJP: '集積地棲姫III',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 900,
         FP: 60,
         TP: 78,
@@ -11344,8 +11344,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2085: {
         name: 'Supply Depot Princess C - Damaged 1',
         nameJP: '集積地棲姫III-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         HP: 900,
         FP: 110,
@@ -11365,8 +11365,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2086: {
         name: 'Supply Depot Princess C 2',
         nameJP: '集積地棲姫III',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 2000,
         FP: 118,
         TP: 108,
@@ -11385,8 +11385,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2087: {
         name: 'Supply Depot Princess C - Damaged 2',
         nameJP: '集積地棲姫III-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         HP: 2000,
         FP: 110,
@@ -11406,8 +11406,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2088: {
         name: 'Supply Depot Princess C 3',
         nameJP: '集積地棲姫III',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         HP: 6000,
         FP: 133,
         TP: 128,
@@ -11426,8 +11426,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2089: {
         name: 'Supply Depot Princess C - Damaged 3',
         nameJP: '集積地棲姫III-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         HP: 6000,
         FP: 193,
@@ -11447,7 +11447,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2090: {
         name: 'CA Ne-Class Kai 4',
         nameJP: '重巡ネ級改',
-        type: ShipType.CA,
+        type: AbyssalShipType.CA,
         HP: 330,
         FP: 108,
         TP: 88,
@@ -11466,8 +11466,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2091: {
         name: 'Airfield Princess (Patrol Aircraft Deployment) 1',
         nameJP: '飛行場姫(哨戒機配備)',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 300,
         FP: 40,
         TP: 0,
@@ -11485,8 +11485,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2092: {
         name: 'Airfield Princess (Patrol Aircraft Deployment) 2',
         nameJP: '飛行場姫(哨戒機配備)',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 400,
         FP: 50,
         TP: 0,
@@ -11504,8 +11504,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2093: {
         name: 'Airfield Princess (Patrol Aircraft Deployment) 3',
         nameJP: '飛行場姫(哨戒機配備)',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 60,
         TP: 0,
@@ -11523,8 +11523,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2094: {
         name: 'Airfield Princess 16',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 300,
         FP: 40,
         TP: 0,
@@ -11542,8 +11542,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2095: {
         name: 'Airfield Princess 17',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 400,
         FP: 50,
         TP: 0,
@@ -11561,8 +11561,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2096: {
         name: 'Airfield Princess 18',
         nameJP: '飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 60,
         TP: 0,
@@ -11580,7 +11580,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2097: {
         name: 'Outer Southern Sea Destroyer Princess 1',
         nameJP: '外南洋駆逐棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         planeasw: 0,
         HP: 770,
         FP: 144,
@@ -11599,7 +11599,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2098: {
         name: 'Outer Southern Sea Destroyer Princess 2',
         nameJP: '外南洋駆逐棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         planeasw: 0,
         HP: 870,
         FP: 177,
@@ -11618,7 +11618,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2099: {
         name: 'Outer Southern Sea Destroyer Princess - Damaged 1',
         nameJP: '外南洋駆逐棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         planeasw: 0,
         HP: 770,
         FP: 166,
@@ -11637,7 +11637,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2100: {
         name: 'Outer Southern Sea Destroyer Princess - Damaged 2',
         nameJP: '外南洋駆逐棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         planeasw: 0,
         HP: 870,
         FP: 188,
@@ -11656,8 +11656,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2101: {
         name: 'CVL Nu-Class B Elite 1',
         nameJP: '軽母ヌ級IIelite',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         HP: 73,
         FP: 23,
@@ -11676,8 +11676,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2102: {
         name: 'CVL Nu-Class B Elite 2',
         nameJP: '軽母ヌ級IIelite',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         HP: 83,
         FP: 33,
@@ -11696,8 +11696,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2103: {
         name: 'CVL Nu-Class B Elite 3',
         nameJP: '軽母ヌ級IIelite',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         HP: 93,
         FP: 43,
@@ -11716,8 +11716,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2104: {
         name: 'CVL Nu-Class B Flagship',
         nameJP: '軽母ヌ級IIflagship',
-        type: ShipType.CVL,
-        CVs_night_attack_type: ShipType.CL,
+        type: AbyssalShipType.CVL,
+        CVs_night_attack_type: CVsNightAttackType.ImohimeModel,
         has_potential_always_OASW: true,
         HP: 133,
         FP: 53,
@@ -11736,9 +11736,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2105: {
         name: 'Aircraft Carrier Princess B 1',
         nameJP: '空母棲姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 600,
         FP: 168,
         TP: 0,
@@ -11756,9 +11756,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2106: {
         name: 'Aircraft Carrier Princess B 2',
         nameJP: '空母棲姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 600,
         FP: 198,
         TP: 0,
@@ -11776,9 +11776,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2107: {
         name: 'Aircraft Carrier Princess B 3',
         nameJP: '空母棲姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 720,
         FP: 208,
         TP: 0,
@@ -11796,9 +11796,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2108: {
         name: 'Aircraft Carrier Princess B 4',
         nameJP: '空母棲姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 790,
         FP: 228,
         TP: 0,
@@ -11816,7 +11816,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2109: {
         name: 'Modernized Battleship Princess 1',
         nameJP: '近代化戦艦棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 860,
         FP: 320,
         TP: 78,
@@ -11834,7 +11834,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2110: {
         name: 'Modernized Battleship Princess 2',
         nameJP: '近代化戦艦棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 960,
         FP: 330,
         TP: 98,
@@ -11852,7 +11852,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2111: {
         name: 'Modernized Battleship Princess 3',
         nameJP: '近代化戦艦棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1060,
         FP: 350,
         TP: 118,
@@ -11870,7 +11870,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2112: {
         name: 'Modernized Battleship Princess - Damaged 1',
         nameJP: '近代化戦艦棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 860,
         FP: 340,
         TP: 88,
@@ -11888,7 +11888,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2113: {
         name: 'Modernized Battleship Princess - Damaged 2',
         nameJP: '近代化戦艦棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 960,
         FP: 360,
         TP: 108,
@@ -11906,7 +11906,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2114: {
         name: 'Modernized Battleship Princess - Damaged 3',
         nameJP: '近代化戦艦棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1060,
         FP: 380,
         TP: 148,
@@ -11924,9 +11924,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2115: {
         name: 'CV Wo-Class Flagship Kai B 1',
         nameJP: '空母ヲ級改II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 380,
         FP: 66,
         TP: 0,
@@ -11944,9 +11944,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2116: {
         name: 'CV Wo-Class Flagship Kai B 2',
         nameJP: '空母ヲ級改II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 500,
         FP: 88,
         TP: 0,
@@ -11964,9 +11964,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2117: {
         name: 'Aircraft Carrier Summer Princess B 2',
         nameJP: '空母夏姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 830,
         FP: 208,
         TP: 0,
@@ -11984,9 +11984,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2118: {
         name: 'Aircraft Carrier Summer Princess B 3',
         nameJP: '空母夏姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 890,
         FP: 228,
         TP: 0,
@@ -12004,9 +12004,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2119: {
         name: 'Aircraft Carrier Summer Princess B 4',
         nameJP: '空母夏姫II',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 900,
         FP: 248,
         TP: 0,
@@ -12024,7 +12024,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2120: {
         name: 'Fast Light Carrier Water Demon 1',
         nameJP: '高速軽空母水鬼',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 800,
         FP: 178,
@@ -12043,7 +12043,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2121: {
         name: 'Fast Light Carrier Water Demon 2',
         nameJP: '高速軽空母水鬼',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 840,
         FP: 198,
@@ -12062,7 +12062,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2122: {
         name: 'Fast Light Carrier Water Demon 3',
         nameJP: '高速軽空母水鬼',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 880,
         FP: 218,
@@ -12081,7 +12081,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2123: {
         name: 'Fast Light Carrier Water Demon - Damaged 1',
         nameJP: '高速軽空母水鬼-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 800,
         FP: 228,
@@ -12100,7 +12100,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2124: {
         name: 'Fast Light Carrier Water Demon - Damaged 2',
         nameJP: '高速軽空母水鬼-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 840,
         FP: 288,
@@ -12119,7 +12119,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2125: {
         name: 'Fast Light Carrier Water Demon - Damaged 3',
         nameJP: '高速軽空母水鬼-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 880,
         FP: 318,
@@ -12138,9 +12138,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2126: {
         name: 'Prototype Carrier Princess Vacation Mode 1',
         nameJP: '試作空母姫 バカンスmode',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 620,
         FP: 180,
         TP: 0,
@@ -12158,9 +12158,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2127: {
         name: 'Prototype Carrier Princess Vacation Mode 2',
         nameJP: '試作空母姫 バカンスmode',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 720,
         FP: 210,
         TP: 0,
@@ -12178,9 +12178,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2128: {
         name: 'Prototype Carrier Princess Vacation Mode 3',
         nameJP: '試作空母姫 バカンスmode',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 920,
         FP: 240,
         TP: 0,
@@ -12198,9 +12198,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2129: {
         name: 'Prototype Carrier Princess Vacation Mode - Damaged 1',
         nameJP: '試作空母姫 バカンスmode-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 620,
         FP: 230,
         TP: 0,
@@ -12218,9 +12218,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2130: {
         name: 'Prototype Carrier Princess Vacation Mode - Damaged 2',
         nameJP: '試作空母姫 バカンスmode-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 720,
         FP: 290,
         TP: 0,
@@ -12238,9 +12238,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2131: {
         name: 'Prototype Carrier Princess Vacation Mode - Damaged 3',
         nameJP: '試作空母姫 バカンスmode-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 920,
         FP: 320,
         TP: 0,
@@ -12258,7 +12258,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2132: {
         name: 'Incomplete Battleship Princess 1',
         nameJP: '戦艦未完棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 970,
         FP: 340,
         TP: 0,
@@ -12276,7 +12276,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2133: {
         name: 'Incomplete Battleship Princess 2',
         nameJP: '戦艦未完棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1000,
         FP: 360,
         TP: 0,
@@ -12294,7 +12294,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2134: {
         name: 'Incomplete Battleship Princess 3',
         nameJP: '戦艦未完棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1070,
         FP: 400,
         TP: 0,
@@ -12312,7 +12312,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2135: {
         name: 'Incomplete Battleship Princess - Damaged 1',
         nameJP: '戦艦未完棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 970,
         FP: 380,
         TP: 0,
@@ -12330,7 +12330,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2136: {
         name: 'Incomplete Battleship Princess - Damaged 2',
         nameJP: '戦艦未完棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1000,
         FP: 400,
         TP: 0,
@@ -12348,7 +12348,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2137: {
         name: 'Incomplete Battleship Princess - Damaged 3',
         nameJP: '戦艦未完棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1070,
         FP: 440,
         TP: 0,
@@ -12366,7 +12366,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2138: {
         name: 'Supply Depot Princess C Vacation Mode 1',
         nameJP: '集積地棲姫III バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 960,
@@ -12387,7 +12387,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2139: {
         name: 'Supply Depot Princess C Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫III バカンスmode-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 960,
@@ -12408,7 +12408,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2140: {
         name: 'Supply Depot Princess C Vacation Mode 2',
         nameJP: '集積地棲姫III バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 1800,
@@ -12431,7 +12431,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
         nameJP: '集積地棲姫III バカンスmode-壊',
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 1800,
         FP: 178,
         TP: 144,
@@ -12450,7 +12450,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2142: {
         name: 'Supply Depot Princess C Vacation Mode 3',
         nameJP: '集積地棲姫III バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 3600,
@@ -12471,7 +12471,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2143: {
         name: 'Supply Depot Princess C Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫III バカンスmode-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 3600,
@@ -12492,7 +12492,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2144: {
         name: 'Supply Depot Princess C Vacation Mode 4',
         nameJP: '集積地棲姫III バカンスmode',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 7200,
@@ -12513,7 +12513,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2145: {
         name: 'Supply Depot Princess C Vacation Mode - Damaged 4',
         nameJP: '集積地棲姫III バカンスmode-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         is_Supply_Depot: true,
         can_op_torpedo_surface_ship: true,
         HP: 7200,
@@ -12534,7 +12534,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2146: {
         name: 'Remodeled Wartime Cargo Princess 1',
         nameJP: '戦標船改装棲姫',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 830,
         FP: 169,
@@ -12553,7 +12553,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2147: {
         name: 'Remodeled Wartime Cargo Princess 2',
         nameJP: '戦標船改装棲姫',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 930,
         FP: 199,
@@ -12572,7 +12572,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2148: {
         name: 'Remodeled Wartime Cargo Princess 3',
         nameJP: '戦標船改装棲姫',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 1030,
         FP: 219,
@@ -12591,7 +12591,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2149: {
         name: 'Remodeled Wartime Cargo Princess - Damaged 1',
         nameJP: '戦標船改装棲姫-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 830,
         FP: 219,
@@ -12610,7 +12610,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2150: {
         name: 'Remodeled Wartime Cargo Princess - Damaged 2',
         nameJP: '戦標船改装棲姫-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 930,
         FP: 269,
@@ -12629,7 +12629,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2151: {
         name: 'Remodeled Wartime Cargo Princess - Damaged 3',
         nameJP: '戦標船改装棲姫-壊',
-        type: ShipType.CVL,
+        type: AbyssalShipType.CVL,
         has_built_in_night_crew: true,
         HP: 1030,
         FP: 289,
@@ -12648,7 +12648,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2152: {
         name: 'Abyssal Heavy Cruiser Water Princess 1',
         nameJP: '深海重巡水姫',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 740,
         FP: 188,
         TP: 78,
@@ -12666,7 +12666,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2153: {
         name: 'Abyssal Heavy Cruiser Water Princess 2',
         nameJP: '深海重巡水姫',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 840,
         FP: 218,
         TP: 98,
@@ -12684,7 +12684,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2154: {
         name: 'Abyssal Heavy Cruiser Water Princess 3',
         nameJP: '深海重巡水姫',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 940,
         FP: 248,
         TP: 128,
@@ -12702,7 +12702,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2155: {
         name: 'Abyssal Heavy Cruiser Water Princess - Damaged 1',
         nameJP: '深海重巡水姫-壊',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 740,
         FP: 228,
         TP: 88,
@@ -12720,7 +12720,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2156: {
         name: 'Abyssal Heavy Cruiser Water Princess - Damaged 2',
         nameJP: '深海重巡水姫-壊',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 840,
         FP: 258,
         TP: 118,
@@ -12738,7 +12738,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2157: {
         name: 'Abyssal Heavy Cruiser Water Princess - Damaged 3',
         nameJP: '深海重巡水姫-壊',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 940,
         FP: 288,
         TP: 148,
@@ -12756,7 +12756,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2158: {
         name: 'Abyssal Stranded Landing Princess 1',
         nameJP: '深海擱座揚陸姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 44,
         TP: 33,
@@ -12774,7 +12774,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2159: {
         name: 'Abyssal Stranded Landing Princess 2',
         nameJP: '深海擱座揚陸姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 980,
         FP: 88,
         TP: 66,
@@ -12792,7 +12792,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2160: {
         name: 'Abyssal Stranded Landing Princess 3',
         nameJP: '深海擱座揚陸姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1080,
         FP: 121,
         TP: 99,
@@ -12810,7 +12810,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2161: {
         name: 'Abyssal Stranded Landing Princess - Damaged 1',
         nameJP: '深海擱座揚陸姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 880,
         FP: 88,
         TP: 66,
@@ -12828,7 +12828,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2162: {
         name: 'Abyssal Stranded Landing Princess - Damaged 2',
         nameJP: '深海擱座揚陸姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 980,
         FP: 121,
         TP: 99,
@@ -12846,7 +12846,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2163: {
         name: 'Abyssal Stranded Landing Princess - Damaged 3',
         nameJP: '深海擱座揚陸姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1080,
         FP: 161,
         TP: 141,
@@ -12864,8 +12864,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2164: {
         name: 'Supply Depot Princess D 1',
         nameJP: '集積地棲姫IV',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 1200,
         FP: 80,
@@ -12885,8 +12885,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2165: {
         name: 'Supply Depot Princess D - Damaged 1',
         nameJP: '集積地棲姫IV-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 1200,
         FP: 130,
@@ -12906,8 +12906,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2166: {
         name: 'Supply Depot Princess D 2',
         nameJP: '集積地棲姫IV',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 2400,
         FP: 120,
@@ -12927,8 +12927,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2167: {
         name: 'Supply Depot Princess D - Damaged 2',
         nameJP: '集積地棲姫IV-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 2400,
         FP: 140,
@@ -12948,8 +12948,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2168: {
         name: 'Supply Depot Princess D 3',
         nameJP: '集積地棲姫IV',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 4800,
         FP: 120,
@@ -12969,8 +12969,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2169: {
         name: 'Supply Depot Princess D - Damaged 3',
         nameJP: '集積地棲姫IV-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 4800,
         FP: 150,
@@ -12990,8 +12990,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2170: {
         name: 'Supply Depot Princess D 4',
         nameJP: '集積地棲姫IV',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 8000,
         FP: 170,
@@ -13011,8 +13011,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2171: {
         name: 'Supply Depot Princess D - Damaged 4',
         nameJP: '集積地棲姫IV-壊',
-        type: ShipType.BB,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_from_main_fleet: true,
         HP: 8000,
         FP: 200,
@@ -13032,7 +13032,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2172: {
         name: 'Abyssal Kushiro Cloud Princess 1',
         nameJP: '深海釧路沖棲雲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 436,
         FP: 111,
@@ -13052,7 +13052,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2173: {
         name: 'Abyssal Kushiro Cloud Princess 2',
         nameJP: '深海釧路沖棲雲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 536,
         FP: 144,
@@ -13072,7 +13072,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2174: {
         name: 'Abyssal Kushiro Cloud Princess 3',
         nameJP: '深海釧路沖棲雲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 736,
         FP: 177,
@@ -13092,7 +13092,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2175: {
         name: 'Abyssal Kushiro Cloud Princess - Damaged 1',
         nameJP: '深海釧路沖棲雲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 436,
         FP: 133,
@@ -13112,7 +13112,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2176: {
         name: 'Abyssal Kushiro Cloud Princess - Damaged 2',
         nameJP: '深海釧路沖棲雲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 536,
         FP: 177,
@@ -13132,7 +13132,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2177: {
         name: 'Abyssal Kushiro Cloud Princess - Damaged 3',
         nameJP: '深海釧路沖棲雲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_from_main_fleet: true,
         HP: 736,
         FP: 188,
@@ -13152,8 +13152,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2178: {
         name: 'Pillbox Imp 1',
         nameJP: 'トーチカ小鬼',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 180,
         FP: 130,
         TP: 0,
@@ -13171,8 +13171,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2179: {
         name: 'Pillbox Imp Elite 1',
         nameJP: 'トーチカ小鬼elite',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 280,
         FP: 160,
         TP: 0,
@@ -13190,8 +13190,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2180: {
         name: 'Anti-Air Guns Imp',
         nameJP: '対空小鬼',
-        type: ShipType.CAV,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.CAV,
+        install_type: InstallType.PillboxModel,
         HP: 88,
         FP: 48,
         TP: 0,
@@ -13209,8 +13209,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2181: {
         name: 'Anti-Air Guns Imp Elite',
         nameJP: '対空小鬼elite',
-        type: ShipType.CAV,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.CAV,
+        install_type: InstallType.PillboxModel,
         HP: 188,
         FP: 88,
         TP: 0,
@@ -13228,7 +13228,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2182: {
         name: 'Standard Type Battleship Princess 1',
         nameJP: '標準型戦艦棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 830,
         FP: 330,
         TP: 68,
@@ -13247,7 +13247,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2183: {
         name: 'Standard Type Battleship Princess 2',
         nameJP: '標準型戦艦棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 930,
         FP: 340,
         TP: 88,
@@ -13266,7 +13266,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2184: {
         name: 'Standard Type Battleship Princess 3',
         nameJP: '標準型戦艦棲姫',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1030,
         FP: 350,
         TP: 108,
@@ -13285,7 +13285,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2185: {
         name: 'Standard Type Battleship Princess - Damaged 1',
         nameJP: '標準型戦艦棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 830,
         FP: 350,
         TP: 88,
@@ -13304,7 +13304,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2186: {
         name: 'Standard Type Battleship Princess - Damaged 2',
         nameJP: '標準型戦艦棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 930,
         FP: 360,
         TP: 108,
@@ -13323,7 +13323,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2187: {
         name: 'Standard Type Battleship Princess - Damaged 3',
         nameJP: '標準型戦艦棲姫-壊',
-        type: ShipType.BBV,
+        type: AbyssalShipType.BBV,
         HP: 1030,
         FP: 390,
         TP: 148,
@@ -13342,8 +13342,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2188: {
         name: 'Fortified Pillbox Princess 1',
         nameJP: 'トーチカ要塞棲姫',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 1000,
         FP: 300,
         TP: 0,
@@ -13361,8 +13361,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2189: {
         name: 'Fortified Pillbox Princess 2',
         nameJP: 'トーチカ要塞棲姫',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 1600,
         FP: 300,
         TP: 0,
@@ -13380,8 +13380,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2190: {
         name: 'Fortified Pillbox Princess - Damaged 1',
         nameJP: 'トーチカ要塞棲姫-壊',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 1000,
         FP: 300,
         TP: 0,
@@ -13399,8 +13399,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2191: {
         name: 'Fortified Pillbox Princess - Damaged 2',
         nameJP: 'トーチカ要塞棲姫-壊',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 1600,
         FP: 300,
         TP: 0,
@@ -13418,7 +13418,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2192: {
         name: 'Schnellboot Imp Pack 1',
         nameJP: 'Schnellboot小鬼群',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 19,
         FP: 19,
@@ -13438,7 +13438,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2193: {
         name: 'Schnellboot Imp Pack 2',
         nameJP: 'Schnellboot小鬼群',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 29,
         FP: 29,
@@ -13458,7 +13458,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2194: {
         name: 'Schnellboot Imp Pack Elite',
         nameJP: 'Schnellboot小鬼群elite',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         is_PT: true,
         HP: 39,
         FP: 39,
@@ -13478,8 +13478,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2196: {
         name: 'Pillbox Imp 2',
         nameJP: 'トーチカ小鬼',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 180,
         FP: 130,
         TP: 0,
@@ -13497,8 +13497,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2197: {
         name: 'Pillbox Imp Elite 2',
         nameJP: 'トーチカ小鬼elite',
-        type: ShipType.BB,
-        install_type: ShipType.DD,
+        type: AbyssalShipType.BB,
+        install_type: InstallType.PillboxModel,
         HP: 280,
         FP: 160,
         TP: 0,
@@ -13516,7 +13516,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2198: {
         name: 'European Little Sister Princess 1',
         nameJP: '欧州妹姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 900,
         FP: 310,
         TP: 0,
@@ -13534,7 +13534,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2199: {
         name: 'European Little Sister Princess 2',
         nameJP: '欧州妹姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 980,
         FP: 330,
         TP: 0,
@@ -13552,7 +13552,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2200: {
         name: 'European Little Sister Princess 3',
         nameJP: '欧州妹姫',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 1100,
         FP: 360,
         TP: 0,
@@ -13570,7 +13570,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2201: {
         name: 'European Little Sister Princess - Damaged 1',
         nameJP: '欧州妹姫-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         HP: 900,
         FP: 360,
         TP: 121,
@@ -13588,7 +13588,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2202: {
         name: 'European Little Sister Princess - Damaged 2',
         nameJP: '欧州妹姫-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 980,
@@ -13609,7 +13609,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2203: {
         name: 'European Little Sister Princess - Damaged 3',
         nameJP: '欧州妹姫-壊',
-        type: ShipType.BB,
+        type: AbyssalShipType.BB,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 1100,
@@ -13630,7 +13630,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2204: {
         name: 'American Destroyer Princess 1',
         nameJP: '米駆逐棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 500,
@@ -13651,7 +13651,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2205: {
         name: 'American Destroyer Princess 2',
         nameJP: '米駆逐棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 600,
@@ -13672,7 +13672,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2206: {
         name: 'American Destroyer Princess 3',
         nameJP: '米駆逐棲姫',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 760,
@@ -13693,7 +13693,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2207: {
         name: 'American Destroyer Princess - Damaged 1',
         nameJP: '米駆逐棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 500,
@@ -13714,7 +13714,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2208: {
         name: 'American Destroyer Princess - Damaged 2',
         nameJP: '米駆逐棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 600,
@@ -13735,7 +13735,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2209: {
         name: 'American Destroyer Princess - Damaged 3',
         nameJP: '米駆逐棲姫-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 760,
@@ -13756,7 +13756,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2210: {
         name: 'Atoll Aircraft Carrier Anchorage Princess 1',
         nameJP: '環礁空母泊地棲姫',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 700,
         FP: 150,
         TP: 80,
@@ -13774,7 +13774,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2211: {
         name: 'Atoll Aircraft Carrier Anchorage Princess 2',
         nameJP: '環礁空母泊地棲姫',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 900,
         FP: 170,
         TP: 100,
@@ -13792,7 +13792,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2212: {
         name: 'Atoll Aircraft Carrier Anchorage Princess 3',
         nameJP: '環礁空母泊地棲姫',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 1000,
         FP: 200,
         TP: 160,
@@ -13810,7 +13810,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2213: {
         name: 'Atoll Aircraft Carrier Anchorage Princess - Damaged 1',
         nameJP: '環礁空母泊地棲姫-壊',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 700,
         FP: 180,
         TP: 100,
@@ -13828,7 +13828,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2214: {
         name: 'Atoll Aircraft Carrier Anchorage Princess - Damaged 2',
         nameJP: '環礁空母泊地棲姫-壊',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 900,
         FP: 200,
         TP: 160,
@@ -13846,7 +13846,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2215: {
         name: 'Atoll Aircraft Carrier Anchorage Princess - Damaged 3',
         nameJP: '環礁空母泊地棲姫-壊',
-        type: ShipType.CAV,
+        type: AbyssalShipType.CAV,
         HP: 1000,
         FP: 280,
         TP: 240,
@@ -13864,7 +13864,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2216: {
         name: 'American Destroyer Princess (Mass Production Model) 1',
         nameJP: '米駆逐棲姫(量産型)',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_surface_ship: true,
         HP: 460,
         FP: 80,
@@ -13884,7 +13884,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2217: {
         name: 'American Destroyer Princess (Mass Production Model) 2',
         nameJP: '米駆逐棲姫(量産型)',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_surface_ship: true,
         HP: 550,
         FP: 110,
@@ -13904,7 +13904,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2218: {
         name: 'American Destroyer Princess (Mass Production Model) 3',
         nameJP: '米駆逐棲姫(量産型)',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 700,
@@ -13925,7 +13925,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2219: {
         name: 'American Destroyer Princess (Mass Production Model) - Damaged 1',
         nameJP: '米駆逐棲姫(量産型)-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         can_op_torpedo_surface_ship: true,
         HP: 460,
         FP: 110,
@@ -13945,7 +13945,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2220: {
         name: 'American Destroyer Princess (Mass Production Model) - Damaged 2',
         nameJP: '米駆逐棲姫(量産型)-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 550,
@@ -13966,7 +13966,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2221: {
         name: 'American Destroyer Princess (Mass Production Model) - Damaged 3',
         nameJP: '米駆逐棲姫(量産型)-壊',
-        type: ShipType.DD,
+        type: AbyssalShipType.DD,
         has_potential_always_OASW: true,
         can_op_torpedo_surface_ship: true,
         HP: 700,
@@ -13987,9 +13987,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2222: {
         name: 'New Mass-Produced Aircraft Carrier Princess 1',
         nameJP: '新量産空母棲姫',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 600,
         FP: 200,
@@ -14008,9 +14008,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2223: {
         name: 'New Mass-Produced Aircraft Carrier Princess 2',
         nameJP: '新量産空母棲姫',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 800,
         FP: 240,
@@ -14029,9 +14029,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2224: {
         name: 'New Mass-Produced Aircraft Carrier Princess 3',
         nameJP: '新量産空母棲姫',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 980,
         FP: 280,
@@ -14050,9 +14050,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2225: {
         name: 'New Mass-Produced Aircraft Carrier Princess - Damaged 1',
         nameJP: '新量産空母棲姫-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 600,
         FP: 240,
@@ -14071,9 +14071,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2226: {
         name: 'New Mass-Produced Aircraft Carrier Princess - Damaged 2',
         nameJP: '新量産空母棲姫-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 800,
         FP: 280,
@@ -14092,9 +14092,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2227: {
         name: 'New Mass-Produced Aircraft Carrier Princess - Damaged 3',
         nameJP: '新量産空母棲姫-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         can_not_CVCI: true,
         HP: 980,
         FP: 320,
@@ -14113,7 +14113,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2228: {
         name: 'Abyssal I-go Water Princess 1',
         nameJP: '深海伊号水姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 241,
         FP: 55,
@@ -14133,7 +14133,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2229: {
         name: 'Abyssal I-go Water Princess 2',
         nameJP: '深海伊号水姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 441,
         FP: 65,
@@ -14153,7 +14153,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2230: {
         name: 'Abyssal I-go Water Princess 3',
         nameJP: '深海伊号水姫',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 641,
         FP: 85,
@@ -14173,7 +14173,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2231: {
         name: 'Abyssal I-go Water Princess - Damaged 1',
         nameJP: '深海伊号水姫-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 241,
         FP: 69,
@@ -14193,7 +14193,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2232: {
         name: 'Abyssal I-go Water Princess - Damaged 2',
         nameJP: '深海伊号水姫-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 441,
         FP: 79,
@@ -14213,7 +14213,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2233: {
         name: 'Abyssal I-go Water Princess - Damaged 3',
         nameJP: '深海伊号水姫-壊',
-        type: ShipType.SS,
+        type: AbyssalShipType.SS,
         can_op_torpedo_from_main_fleet: true,
         HP: 641,
         FP: 99,
@@ -14233,8 +14233,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2234: {
         name: 'Airfield Summer Princess 1',
         nameJP: '飛行場夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 220,
         FP: 40,
         TP: 0,
@@ -14252,8 +14252,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2235: {
         name: 'Airfield Summer Princess 2',
         nameJP: '飛行場夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 330,
         FP: 54,
         TP: 0,
@@ -14271,8 +14271,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2236: {
         name: 'Airfield Summer Princess 3',
         nameJP: '飛行場夏姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 440,
         FP: 80,
         TP: 0,
@@ -14290,7 +14290,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2237: {
         name: 'French Light Cruiser Princess 1',
         nameJP: '軽巡仏棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 760,
@@ -14311,7 +14311,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2238: {
         name: 'French Light Cruiser Princess 2',
         nameJP: '軽巡仏棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -14332,7 +14332,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2239: {
         name: 'French Light Cruiser Princess 3',
         nameJP: '軽巡仏棲姫',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 910,
@@ -14353,7 +14353,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2240: {
         name: 'French Light Cruiser Princess - Damaged 1',
         nameJP: '軽巡仏棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 760,
@@ -14374,7 +14374,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2241: {
         name: 'French Light Cruiser Princess - Damaged 2',
         nameJP: '軽巡仏棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 830,
@@ -14395,7 +14395,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2242: {
         name: 'French Light Cruiser Princess - Damaged 3',
         nameJP: '軽巡仏棲姫-壊',
-        type: ShipType.CL,
+        type: AbyssalShipType.CL,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 910,
@@ -14416,8 +14416,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2243: {
         name: 'Harbour Princess Holiday Mode 1',
         nameJP: '港湾棲姫 休日mode',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 570,
         FP: 177,
         TP: 0,
@@ -14435,8 +14435,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2244: {
         name: 'Harbour Princess Holiday Mode 2',
         nameJP: '港湾棲姫 休日mode',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 1700,
         FP: 227,
         TP: 0,
@@ -14454,8 +14454,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2245: {
         name: 'Harbour Princess Holiday Mode - Damaged 1',
         nameJP: '港湾棲姫 休日mode-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 570,
         FP: 207,
         TP: 0,
@@ -14473,8 +14473,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2246: {
         name: 'Harbour Princess Holiday Mode - Damaged 2',
         nameJP: '港湾棲姫 休日mode-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CAV,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.HarbourModel,
         HP: 1700,
         FP: 247,
         TP: 0,
@@ -14492,8 +14492,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2247: {
         name: 'Pacific Airfield Princess 1',
         nameJP: '太平洋飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 300,
         FP: 40,
         TP: 0,
@@ -14511,8 +14511,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2248: {
         name: 'Pacific Airfield Princess 2',
         nameJP: '太平洋飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 400,
         FP: 54,
         TP: 0,
@@ -14530,8 +14530,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2249: {
         name: 'Pacific Airfield Princess 3',
         nameJP: '太平洋飛行場姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 500,
         FP: 80,
         TP: 0,
@@ -14549,8 +14549,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2250: {
         name: 'Supply Depot Princess E Vacation Mode 1',
         nameJP: '集積地棲姫V バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 2300,
@@ -14571,8 +14571,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2251: {
         name: 'Supply Depot Princess E Vacation Mode - Damaged 1',
         nameJP: '集積地棲姫V バカンスmode-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 2300,
@@ -14593,8 +14593,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2252: {
         name: 'Supply Depot Princess E Vacation Mode 2',
         nameJP: '集積地棲姫V バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 5200,
@@ -14615,8 +14615,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2253: {
         name: 'Supply Depot Princess E Vacation Mode - Damaged 2',
         nameJP: '集積地棲姫V バカンスmode-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 5200,
@@ -14637,8 +14637,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2254: {
         name: 'Supply Depot Princess E Vacation Mode 3',
         nameJP: '集積地棲姫V バカンスmode',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 8600,
@@ -14659,8 +14659,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2255: {
         name: 'Supply Depot Princess E Vacation Mode - Damaged 3',
         nameJP: '集積地棲姫V バカンスmode-壊',
-        type: ShipType.BBV,
-        install_type: ShipType.CL,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.SupplyDepotModel,
         can_op_torpedo_surface_ship: true,
         can_op_torpedo_from_main_fleet: true,
         HP: 8600,
@@ -14681,9 +14681,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2256: {
         name: 'Abyssal Coral Sea Water Demon 1',
         nameJP: '深海珊瑚海水鬼',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 850,
         FP: 182,
         TP: 0,
@@ -14701,9 +14701,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2257: {
         name: 'Abyssal Coral Sea Water Demon 2',
         nameJP: '深海珊瑚海水鬼',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1050,
         FP: 212,
         TP: 0,
@@ -14721,9 +14721,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2258: {
         name: 'Abyssal Coral Sea Water Demon 3',
         nameJP: '深海珊瑚海水鬼',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1350,
         FP: 242,
         TP: 0,
@@ -14741,9 +14741,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2259: {
         name: 'Abyssal Coral Sea Water Demon - Damaged 1',
         nameJP: '深海珊瑚海水鬼-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 850,
         FP: 202,
         TP: 0,
@@ -14761,9 +14761,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2260: {
         name: 'Abyssal Coral Sea Water Demon - Damaged 2',
         nameJP: '深海珊瑚海水鬼-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1050,
         FP: 232,
         TP: 0,
@@ -14781,9 +14781,9 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     2261: {
         name: 'Abyssal Coral Sea Water Demon - Damaged 3',
         nameJP: '深海珊瑚海水鬼-壊',
-        type: ShipType.CV,
+        type: AbyssalShipType.CV,
         has_built_in_night_crew: true,
-        CVs_night_attack_type: ShipType.DE,
+        CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
         HP: 1350,
         FP: 272,
         TP: 0,
@@ -14798,29 +14798,11 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
         SLOTS: [42, 76, 32, 32, 0],
         EQUIPS: [1650, 1651, 1652, 1648, 1608],
     },
-    3001: {
-        name: '???????',
-        nameJP: '???????',
-        type: ShipType.CVB,
-        HP: 92,
-        FP: 89,
-        TP: 0,
-        AA: 99,
-        AR: 102,
-        EV: 59,
-        ASW: 0,
-        LOS: 89,
-        LUK: 8,
-        RNG: 3,
-        SLOTS: [24, 18, 12, 6],
-        fuel: 250,
-        ammo: 220
-    },
     3003: {
         name: 'Canal Princess 1 (Vita)',
         nameJP: '運河棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 250,
         FP: 70,
         TP: 0,
@@ -14839,8 +14821,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     3004: {
         name: 'Canal Princess 2 (Vita)',
         nameJP: '運河棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 300,
         FP: 90,
         TP: 0,
@@ -14859,8 +14841,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     3005: {
         name: 'Canal Princess 3 (Vita)',
         nameJP: '運河棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 390,
         FP: 110,
         TP: 0,
@@ -14879,8 +14861,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     3006: {
         name: 'Central Princess 1 (Vita)',
         nameJP: '中枢棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 600,
         FP: 100,
         TP: 0,
@@ -14899,8 +14881,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     3007: {
         name: 'Central Princess 2 (Vita)',
         nameJP: '中枢棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 800,
         FP: 160,
         TP: 0,
@@ -14919,8 +14901,8 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
     3008: {
         name: 'Central Princess 3 (Vita)',
         nameJP: '中枢棲姫',
-        type: ShipType.BBV,
-        install_type: ShipType.DE,
+        type: AbyssalShipType.BBV,
+        install_type: InstallType.RegularSoftModel,
         HP: 900,
         FP: 200,
         TP: 0,
