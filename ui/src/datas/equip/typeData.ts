@@ -91,7 +91,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [352, 460, 500, 699, 717],
         can_not_equip_ship_ids: [477, 478, 622, 623, 624, 945],
     },
-    [EquipType.SECCONDARY_GUN_L]: { // (分類C)
+    [EquipType.SECONDARY_GUN_L]: { // (分類C)
         label: 'Secondary Gun',
         icon: 4,
         b_type: SkillTriggerEquipType.B_SECGUN,

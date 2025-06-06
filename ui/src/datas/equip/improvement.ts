@@ -6,8 +6,8 @@ export const enum EquipImprovementType {
     MAIN_GUN_S_AA = 101,
     MAIN_GUN_M = 2,
     MAIN_GUN_L = 3,
-    SECCONDARY_GUN = 4,
-    SECCONDARY_GUN_AA = 104,
+    SECONDARY_GUN = 4,
+    SECONDARY_GUN_AA = 104,
     TORPEDO = 5,
     FIGHTER = 6,
     DIVE_BOMBER = 7,
@@ -44,7 +44,7 @@ export const enum EquipImprovementType {
     MAIN_GUN_XL = 38,
     PICKET = 39,
     SONAR_L = 40,
-    FLYINGBOAT = 41,
+    FLYING_BOAT = 41,
     SEARCHLIGHT_L = 42,
     RATION = 43,
     OILDRUM = 44,
@@ -61,7 +61,7 @@ export const enum EquipImprovementType {
     JET_BOMBER = 57,
     // JETSCOUT = 59,
     RADAR_XL = 93,
-    CARRIERSCOUT_2 = 94,
+    CARRIER_SCOUT_2 = 94,
     SECONDARY_GUN_L = 95,
     OTHER = 99,
 
@@ -127,7 +127,7 @@ export const enum AddStatusType {
     /** 陸攻雷撃 */
     LAND_BASE_TORPEDO = 18,
     /** 煙幕発動率 */
-    SMOKE_SCREEN_RATE_FLAT = 19,
+    SMOKESCREEN_RATE_FLAT = 19,
 }
 
 export type ImprovementData = Partial<Record<AddStatusType, {
@@ -242,7 +242,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SECCONDARY_GUN]: { // (分類A)
+    [EquipImprovementType.SECONDARY_GUN]: { // (分類A)
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: true,
@@ -260,7 +260,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.SECCONDARY_GUN_AA]: { // (分類B)
+    [EquipImprovementType.SECONDARY_GUN_AA]: { // (分類B)
         [AddStatusType.SHELL_POWER]: {
             coeffient: 1,
             is_sqrt: false,
@@ -509,7 +509,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             is_sqrt: true,
         },
     },
-    [EquipImprovementType.CARRIERSCOUT_2]: {
+    [EquipImprovementType.CARRIER_SCOUT_2]: {
         [AddStatusType.LOS]: {
             coeffient: 1.2,
             is_sqrt: true,
@@ -794,7 +794,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
     [EquipImprovementType.SCAMP]: {
 
     },
-    [EquipImprovementType.FLYINGBOAT]: { // ! 明石にはない
+    [EquipImprovementType.FLYING_BOAT]: { // ! 明石にはない
         [AddStatusType.LOS]: {
             coeffient: 1.2,
             is_sqrt: true,
@@ -916,7 +916,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             coeffient: 1.3,
             is_sqrt: true,
         },
-        [AddStatusType.SMOKE_SCREEN_RATE_FLAT]: {
+        [AddStatusType.SMOKESCREEN_RATE_FLAT]: {
             coeffient: 0.3, // ! 制空シミュより
             is_sqrt: false,
         }

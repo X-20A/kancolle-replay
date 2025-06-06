@@ -1,5 +1,6 @@
 import { EquipType } from "@/datas/equip/base"
 import { DeepReadonly } from "."
+import { EquipImprovementType } from "@/datas/equip/improvement"
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
 export const enum SkillTriggerEquipType {
@@ -95,6 +96,7 @@ export type EquipData = {
     nameJP: string,
     /** 装備種別ID */
     type: EquipType,
+    improvement_type: EquipImprovementType,
     /** 対空CIのトリガーになる装備の種別ID */
     a_type?: AACITriggerEquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
