@@ -46,5 +46,5 @@ const BBVStrategy: PlayerShipStrategy = {
  * @returns 
  */
 function isMasterAswPositive(ship: PlayerShip): boolean {
-    return ship.master_status.asw >= 1;
+    return ship.naked_status.asw >= 1;
 }

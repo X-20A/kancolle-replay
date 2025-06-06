@@ -1,6 +1,6 @@
 import { DeepReadonly } from "@/types";
 import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip";
-import { ShipType } from "@/types/ship";
+import { ShipType } from "@/types/ship/ship";
 import { EquipType } from "./base";
 
 /**

@@ -1,9 +1,12 @@
 import { StatusComponent } from "@/types";
-import { UniqueId } from "@/types/brands/ship";
-import { ShipClass, ShipType } from "@/types/ship";
+import { ShipId, ShipLv, UniqueId } from "@/types/brands/ship";
+import { PlayerShipClass, ShipDatas, ShipType } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
-import { createNakedPlayerShip } from "./ShipMaster";
+import { createNakedPlayerShip } from "./NakedShip";
+import { EquipDatas } from "@/types/equip";
+import { CountryDatas } from "@/datas/ship/country";
+import { createEquipBonus } from "../equip/EquipBonus";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -20,15 +23,15 @@ export type PlayerShip = {
     /** 艦種ID */
     readonly type: ShipType;
     /** 艦型ID */
-    readonly class: ShipClass;
+    readonly class: PlayerShipClass;
     /** 国籍ID */
     readonly country: Country;
     /** 装備スロット、および搭載数 */
     readonly slots: number[],
     /** フラグ類 */
     readonly flags: boolean[],
-    /** マスターデータままの艦ステータス(lv適用済み) */
-    readonly master_status: StatusComponent,
+    /** 未装備状態の艦ステータス(lv適用済み) */
+    readonly naked_status: StatusComponent,
     /** 白襷, 海色リボン加算値 */
     readonly special_item_addition: StatusComponent,
     /** 艦マスターデータの艦データ(lv適用済み)に全ての加算値を適用したステータス */
@@ -37,11 +40,21 @@ export type PlayerShip = {
     readonly edited_status: StatusComponent,
 };
 
-export function createShip(
-    master_id: number,
-    lv: number,
-    equips: Equip,
+export function createPlayerShip(
+    ship_datas: ShipDatas,
+    country_datas: CountryDatas,
+    equip_datas: EquipDatas,
+    lv: ShipLv,
+    ship_id: ShipId,
+    equips: Equip[],
     edit_input: StatusComponent,
 ): PlayerShip {
-    const ship_master = createNakedPlayerShip
+    const naked_ship = createNakedPlayerShip(
+        ship_datas,
+        country_datas,
+        lv,
+        ship_id,
+    );
+
+    const equip_bonuses = createEquipBonus(naked_ship, equips);
 }

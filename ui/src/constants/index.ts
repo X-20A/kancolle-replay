@@ -1,4 +1,4 @@
-import { ShipType } from "@/types/ship";
+import { ShipType } from "@/types/ship/ship";
 
 
 /**

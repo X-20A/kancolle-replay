@@ -1,6 +1,6 @@
 import { EquipType } from "@/datas/equip/base";
 import { EquipBonusType } from "@/types/equip";
-import { ShipClass, ShipType as ST } from "@/types/ship";
+import { PlayerShipClass, ShipType as ST } from "@/types/ship/ship";
 
 /** 国籍ID */
 export const enum Country {
@@ -20,6 +20,10 @@ export const enum Country {
     USSR = 7,
     /** オーストラリア */
     Australia = 8,
+    /** スウェーデン */
+    Sweden = 9,
+    /** オランダ */
+    Netherlands = 10,
 }
 
 export type Bonus = {
@@ -31,7 +35,7 @@ export type Bonus = {
     /** 艦種ID */
     ship_type_ids?: ST[],
     /** 艦型ID */
-    ship_class_ids?: ShipClass[],
+    ship_class_ids?: PlayerShipClass[],
     /** 艦の国籍ID */
     ship_country_ids?: Country[],
     /** 重ね掛け上限数 */

@@ -2,6 +2,7 @@ import { Equip } from "./Equip";
 import { PlayerShip } from "../ship/Ship";
 import { SkillTriggerEquipType } from "@/types/equip";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
+import { NakedPlayerShip } from "../ship/NakedShip";
 
 export type EquipBonus = {
     fire_power: number,
@@ -17,6 +18,27 @@ export type EquipBonus = {
 }
 
 /**
+ * ボーナス加算
+ * @param acc 現在の合計
+ * @param bonus 加算するボーナス
+ * @returns 合計
+ */
+function addBonus(acc: EquipBonus, bonus: Partial<EquipBonus>): EquipBonus {
+    return {
+        fire_power: acc.fire_power + (bonus.fire_power ?? 0),
+        armor: acc.armor + (bonus.armor ?? 0),
+        torpedo: acc.torpedo + (bonus.torpedo ?? 0),
+        evasion: acc.evasion + (bonus.evasion ?? 0),
+        anti_air: acc.anti_air + (bonus.anti_air ?? 0),
+        asw: acc.asw + (bonus.asw ?? 0),
+        los: acc.los + (bonus.los ?? 0),
+        shell_accuracy: acc.shell_accuracy + (bonus.shell_accuracy ?? 0),
+        range: acc.range + (bonus.range ?? 0),
+        dive_bomb: acc.dive_bomb + (bonus.dive_bomb ?? 0),
+    };
+}
+
+/**
  * 装備ボーナスデータからトータルのEquipBonusを計算する。
  * stack_limitやシナジー条件も考慮する。
  * @param ship 対象の艦船
@@ -24,7 +46,7 @@ export type EquipBonus = {
  * @returns 合計されたEquipBonus
  */
 export function createEquipBonus(
-    ship: PlayerShip,
+    ship: NakedPlayerShip,
     equips: Equip[],
 ): EquipBonus {
     // レーダー系フラグ
@@ -54,27 +76,6 @@ export function createEquipBonus(
         dive_bomb: 0,
     };
 
-    /**
-     * ボーナス加算
-     * @param acc 現在の合計
-     * @param bonus 加算するボーナス
-     * @returns 合計
-     */
-    function addBonus(acc: EquipBonus, bonus: Partial<EquipBonus>): EquipBonus {
-        return {
-            fire_power: acc.fire_power + (bonus.fire_power ?? 0),
-            armor: acc.armor + (bonus.armor ?? 0),
-            torpedo: acc.torpedo + (bonus.torpedo ?? 0),
-            evasion: acc.evasion + (bonus.evasion ?? 0),
-            anti_air: acc.anti_air + (bonus.anti_air ?? 0),
-            asw: acc.asw + (bonus.asw ?? 0),
-            los: acc.los + (bonus.los ?? 0),
-            shell_accuracy: acc.shell_accuracy + (bonus.shell_accuracy ?? 0),
-            range: acc.range + (bonus.range ?? 0),
-            dive_bomb: acc.dive_bomb + (bonus.dive_bomb ?? 0),
-        };
-    }
-
     // ボーナス合算処理
     const summary = EQUIP_BONUS_DATAS.reduce((total_bonus_acc, equip_bonus_data) => {
         // 対象装備を抽出
@@ -91,7 +92,7 @@ export function createEquipBonus(
             if (bonus.ship_ids && !bonus.ship_ids.includes(ship.master_id)) continue;
             if (bonus.ship_base_ids && !bonus.ship_base_ids.includes(ship.master_id)) continue;
             if (bonus.ship_type_ids && !bonus.ship_type_ids.includes(ship.type)) continue;
-            if (bonus.ship_class_ids && !bonus.ship_class_ids.includes(ship.class)) continue;
+            if (bonus.ship_class_ids && !bonus.ship_class_ids.includes(ship.ship_class)) continue;
             if (bonus.ship_country_ids && !bonus.ship_country_ids.includes(ship.country)) continue;
 
             // レーダー系フラグ条件
