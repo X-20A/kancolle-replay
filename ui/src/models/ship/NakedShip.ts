@@ -30,7 +30,7 @@ function calcStatusFromLevel(
     return Math.floor((max - min) * (level / 99) + min);
 }
 
-export function createNakedPlayerShip(
+export function deriveNakedPlayerShip(
     ship_datas: ShipDatas,
     country_datas: CountryDatas,
     ship_lv: ShipLv,

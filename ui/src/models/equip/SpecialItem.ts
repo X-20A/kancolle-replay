@@ -2,7 +2,7 @@ import { SpecialItemDatas } from "@/datas/equip/SpecialItem";
 import { StatusComponent, StatusComponentKey } from "@/types";
 import { SpecialItemId } from "@/types/ship/ship";
 
-export function createSpecialItemAddition(
+export function deriveSpecialItemAddition(
     special_item_datas: SpecialItemDatas,
     status_keys: StatusComponentKey,
     special_item_id: SpecialItemId,

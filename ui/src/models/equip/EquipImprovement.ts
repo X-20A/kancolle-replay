@@ -74,7 +74,7 @@ export function sumEquipImprovementAdditions(additions: EquipImprovementAddition
     });
 }
 
-export function createEquipImprovementAddition(
+export function deriveEquipImprovementAddition(
     equip_improvement_datas: EquipImprovementDatas,
     improvement_type: EquipImprovementType,
     improvement_lv: number,

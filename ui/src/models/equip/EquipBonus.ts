@@ -44,24 +44,26 @@ function addBonus(acc: EquipBonusAddition, bonus: Partial<EquipBonusAddition>): 
  * @param equips 装備一覧
  * @returns 合計されたEquipBonus
  */
-export function createEquipBonusAddition(
+export function deriveEquipBonusAddition(
     ship: NakedPlayerShip,
     equips: Equip[],
 ): EquipBonusAddition {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
         if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;
-        if (equip.master_addition.los >= 5) acc.has_surface_radar = true;
-        if (equip.master_addition.anti_air >= 2) acc.has_anti_air_radar = true;
-        if (equip.master_addition.shell_accuracy >= 8) acc.has_high_accuracy_radar = true;
-        return acc;
+
+        const addition = equip.master_addition;
+        return {
+            has_surface_radar: acc.has_surface_radar || addition.los >= 5,
+            has_anti_air_radar: acc.has_anti_air_radar || addition.anti_air >= 2,
+            has_high_accuracy_radar: acc.has_high_accuracy_radar || addition.shell_accuracy >= 8,
+        };
     }, {
         has_surface_radar: false,
         has_anti_air_radar: false,
         has_high_accuracy_radar: false,
     });
 
-    // 合計用初期値
     const initial: EquipBonusAddition = {
         fire_power: 0,
         armor: 0,

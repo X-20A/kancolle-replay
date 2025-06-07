@@ -17,7 +17,7 @@ export type EquipMaster = {
     readonly flags: EquipFlags,
 }
 
-export function createEquipMaster(
+export function deriveEquipMaster(
     id: EquipId,
     equip_datas: EquipDatas,
 ): EquipMaster {

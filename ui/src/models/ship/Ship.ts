@@ -3,11 +3,11 @@ import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/br
 import { PlayerShipClass, PlayerShipFlags, ShipDatas, ShipType, SpecialItemId } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
-import { createNakedPlayerShip } from "./NakedShip";
+import { deriveNakedPlayerShip as deriveNakedPlayerShip } from "./NakedShip";
 import { CountryDatas } from "@/datas/ship/country";
-import { createEquipBonusAddition } from "../equip/EquipBonus";
-import { sumEquipImprovementAdditions } from "../equip/EquipImprovement";
-import { createSpecialItemAddition } from "../equip/SpecialItem";
+import { deriveEquipBonusAddition } from "../equip/EquipBonus";
+import { EquipImprovementAddition, sumEquipImprovementAdditions } from "../equip/EquipImprovement";
+import { deriveSpecialItemAddition } from "../equip/SpecialItem";
 import { SpecialItemDatas } from "@/datas/equip/SpecialItem";
 
 /**
@@ -36,10 +36,10 @@ export type PlayerShip = {
     readonly flags: PlayerShipFlags,
     /** 未装備状態の艦ステータス(lv適用済み) */
     readonly naked_status: StatusComponent,
-    /** 装備ボーナス */
-    readonly equip_bonus_addition: StatusComponent,
+    /** 装備ボーナスの総計 */
+    readonly total_equip_bonus_addition: StatusComponent,
     /** 装備改修ボーナスの総計 */
-    readonly equip_improvement_addition: StatusComponent,
+    readonly equip_improvement_addition: EquipImprovementAddition,
     /** 白襷, 海色リボン加算値 */
     readonly special_item_addition: StatusComponent,
     /**
@@ -54,7 +54,7 @@ export type PlayerShip = {
     // readonly edited_status: StatusComponent,
 };
 
-export function createPlayerShip(
+export function derivePlayerShip(
     ship_datas: ShipDatas,
     country_datas: CountryDatas,
     special_item_datas: SpecialItemDatas,
@@ -66,7 +66,7 @@ export function createPlayerShip(
     equips: Equip[],
     edit_input?: StatusComponent,
 ): PlayerShip {
-    const naked_ship = createNakedPlayerShip(
+    const naked_ship = deriveNakedPlayerShip(
         ship_datas,
         country_datas,
         lv,
@@ -83,10 +83,10 @@ export function createPlayerShip(
     const flags = naked_ship.flags;
     const naked_status = naked_ship.status;
 
-    const equip_bonuses = createEquipBonusAddition(naked_ship, equips);
+    const equip_bonuses = deriveEquipBonusAddition(naked_ship, equips);
     const total_equip_improvement_bonus = 
         sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
-    const special_item_addition = createSpecialItemAddition(
+    const special_item_addition = deriveSpecialItemAddition(
         special_item_datas,
         status_keys,
         special_item_id,

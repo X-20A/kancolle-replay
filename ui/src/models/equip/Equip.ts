@@ -1,10 +1,10 @@
 import { StatusComponent } from "@/types";
 import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
-import { createEquipMaster } from "./EquipMaster";
+import { deriveEquipMaster } from "./EquipMaster";
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipImprovementDatas } from "@/datas/equip/improvement";
-import { createEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
-import { createTransportAddition, TransportAddition } from "./TransportPower";
+import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
+import { deriveTransportAddition, TransportAddition } from "./TransportPower";
 import { TransportEquipDatas } from "@/datas/equip/transportEquip";
 import { EquipId } from "@/types/brands/equip";
 
@@ -20,7 +20,7 @@ export type Equip = {
     /** 装備種別ID */
     readonly type: EquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
-    readonly skill_trigger_type: SkillTriggerEquipType | undefined,
+    readonly skill_trigger_type: SkillTriggerEquipType | null,
     /** フラグ類 */
     readonly flags: EquipFlags,
     /** マスターデータままの装備加算値 */
@@ -31,14 +31,14 @@ export type Equip = {
     readonly transport_addition: TransportAddition,
 }
 
-export function createEquip(
+export function deriveEquip(
     equip_datas: EquipDatas,
     equip_improvement_datas: EquipImprovementDatas,
     transport_equip_datas: TransportEquipDatas,
     master_id: EquipId,
     improvement_lv: number,
 ): Equip {
-    const equip_master = createEquipMaster(master_id, equip_datas);
+    const equip_master = deriveEquipMaster(master_id, equip_datas);
 
     const name_jp = equip_master.name_jp;
     const name_en = equip_master.name_en;
@@ -47,13 +47,13 @@ export function createEquip(
     const skill_trigger_type = equip_master.skill_trigger_type;
     const flags = equip_master.flags;
     const equip_master_addition = equip_master.status;
-    const improvement_addition = createEquipImprovementAddition(
+    const improvement_addition = deriveEquipImprovementAddition(
         equip_improvement_datas,
         equip_master.improvement_type,
         improvement_lv,
     );
     const transport_addition =
-        createTransportAddition(transport_equip_datas, equip_master);
+        deriveTransportAddition(transport_equip_datas, equip_master);
 
     return {
         master_id,

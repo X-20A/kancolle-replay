@@ -190,7 +190,7 @@ export type EquipFlags = {
 export type EquipBonusType =
     | 'fire_power'
     | 'armor'
-    | 'torpedo'
+    | 'torpedo_power'
     | 'evasion'
     | 'anti_air'
     | 'asw'

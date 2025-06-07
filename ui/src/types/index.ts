@@ -1,3 +1,5 @@
+import { Range } from "./equip/player";
+
 /**
  * 任意の型Tを再帰的にreadonlyにするユーティリティ型
  */
@@ -20,8 +22,9 @@ export type StatusComponent = {
     los: number,
     luck: number,
     shell_accuracy: number,
-    torpedo_accuracy: number,
-    night_battle_accuracy: number,
+    range: Range,
+    dive_bomb: number,
+    torpedo_bomb: number,
 }
 
 const STATUS_COMPONENT_KEYS = [

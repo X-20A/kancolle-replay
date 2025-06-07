@@ -8,3 +8,9 @@ coreでそれらを使ったテストを動かすには、まずuiを一定程�
 
 通常装備と基地航空隊のマスターデータを分離するのは過剰設計だろうか？
 目的も振る舞いも、それなりに違うとは思うのだが
+
+艦載機系の雷装 装備ボーナスは torpedo_power ではなく、
+別に torpedo_bomb として定義すべきでは？
+表示ステでは空母系は torpedo_power + torpedo_bomb する感じで
+
+TODO: StatusComponentをEquipBonusAdditionに合わせる

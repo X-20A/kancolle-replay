@@ -37,7 +37,7 @@ const calcTransportPowerModelC = (
     findEquipByTypeId(transport_equip_datas, equip.type_id)?.model_C ??
     0;
 
-export function createTransportAddition(
+export function deriveTransportAddition(
     transport_equip_datas: TransportEquipDatas,
     equip_master: EquipMaster,
 ): TransportAddition {

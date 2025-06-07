@@ -2,8 +2,8 @@ export type LandBase = {
 
 }
 
-export function createLandBase(
+export function deriveLandBase(
 
 ): LandBase {
-    
+
 }
