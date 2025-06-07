@@ -140,8 +140,6 @@ export type PlayerEquipData = {
     can_avoid_T_disadvantage?: true,
     /** 対地攻撃可能な艦爆であるか */
     can_shell_install_bomber?: true,
-    /** ロケット戦闘機であるか */
-    is_rocket_fighter?: true,
     /** 夜偵系装備であるか */
     is_night_scout?: true,
     /** 集中配備系の装備であるか */
@@ -158,14 +156,8 @@ export type PlayerEquipData = {
     is_Swordfish_family?: true,
     /** 対空噴進弾幕可能な装備であるか */
     can_barrage?: true,
-    /** 反跳爆撃可能な爆撃機であるか */
-    is_skip_bomber?: true,
     /** 隼(20戦隊)系統の装備であるか */
     is_20th_family?: true,
-    /** 開幕雷撃"不可"な甲標的系装備であるか */
-    can_not_op_torpedo_midgetsub?: true,
-    /** 高高度爆撃可能な爆撃機であるか */
-    high_altitude_bomber?: true,
 }
 
 export type EquipDatas = DeepReadonly<Record<number, PlayerEquipData>>
@@ -175,8 +167,6 @@ export type EquipFlags = {
     can_avoid_T_disadvantage: boolean,
     /** 対地攻撃可能な艦爆であるか */
     can_shell_install_bomber: boolean,
-    /** ロケット戦闘機であるか */
-    is_rocket_fighter: boolean,
     /** 夜偵系装備であるか */
     is_night_scout: boolean,
     /** 集中配備系の装備であるか */
@@ -193,14 +183,8 @@ export type EquipFlags = {
     is_Swordfish_family: boolean,
     /** 対空噴進弾幕可能な装備であるか */
     can_barrage: boolean,
-    /** 反跳爆撃可能な爆撃機であるか */
-    is_skip_bomber: boolean,
     /** 隼(20戦隊)系統の装備であるか */
     is_20th_family: boolean,
-    /** 開幕雷撃"不可"な甲標的系装備であるか */
-    can_not_op_torpedo_midgetsub: boolean,
-    /** 高高度爆撃可能な爆撃機であるか */
-    high_altitude_bomber: boolean,
 }
 
 export type EquipBonusType =

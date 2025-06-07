@@ -11,7 +11,8 @@ export type EquipMaster = {
     readonly name_jp: string,
     readonly type_id: EquipType,
     readonly improvement_type: EquipImprovementType,
-    readonly skill_trigger_type: SkillTriggerEquipType | undefined,
+    /** 特殊攻撃のトリガーになる装備の種別ID 該当装備でなければ null */
+    readonly skill_trigger_type: SkillTriggerEquipType | null,
     readonly status: StatusComponent,
     readonly flags: EquipFlags,
 }
@@ -29,7 +30,7 @@ export function createEquipMaster(
 
     const type_id = equip_data.type;
     const improvement_type = equip_data.improvement_type;
-    const skill_trigger_type = equip_data.b_type;
+    const skill_trigger_type = equip_data.b_type ?? null;
 
     const status: StatusComponent = {
         hp: 0,
@@ -49,7 +50,6 @@ export function createEquipMaster(
     const flags: EquipFlags = {
         can_avoid_T_disadvantage: equip_data.can_avoid_T_disadvantage ?? false,
         can_shell_install_bomber: equip_data.can_shell_install_bomber ?? false,
-        is_rocket_fighter: equip_data.is_rocket_fighter ?? false,
         is_night_scout: equip_data.is_night_scout ?? false,
         is_concentrated: equip_data.is_concentrated ?? false,
         is_special_submarine_CI_torigger: equip_data.is_special_submarine_CI_torigger ?? false,
@@ -58,10 +58,7 @@ export function createEquipMaster(
         can_ASW_penetrate: equip_data.can_ASW_penetrate ?? false,
         is_Swordfish_family: equip_data.is_Swordfish_family ?? false,
         can_barrage: equip_data.can_barrage ?? false,
-        is_skip_bomber: equip_data.is_skip_bomber ?? false,
         is_20th_family: equip_data.is_20th_family ?? false,
-        can_not_op_torpedo_midgetsub: equip_data.can_not_op_torpedo_midgetsub ?? false,
-        high_altitude_bomber: equip_data.high_altitude_bomber ?? false,
     }
 
     return {
