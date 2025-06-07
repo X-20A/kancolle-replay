@@ -53,7 +53,7 @@ export function createEquipBonus(
         if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;
         if (equip.master_addition.los >= 5) acc.has_surface_radar = true;
         if (equip.master_addition.anti_air >= 2) acc.has_anti_air_radar = true;
-        if (equip.master_addition.accuracy >= 8) acc.has_high_accuracy_radar = true;
+        if (equip.master_addition.shell_accuracy >= 8) acc.has_high_accuracy_radar = true;
         return acc;
     }, {
         has_surface_radar: false,

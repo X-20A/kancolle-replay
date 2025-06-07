@@ -73,6 +73,8 @@ export const enum EquipType {
     BARRAGE_BALLOON = 79,
 };
 
+// TODO: 基地航空隊装備も分けるか？
+
 const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     1: {
         name: '12cm Single Cannon',

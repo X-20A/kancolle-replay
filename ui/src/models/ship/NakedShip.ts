@@ -58,7 +58,7 @@ export function createNakedPlayerShip(
         asw: calcStatusFromLevel(ship_data.ASWbase, ship_data.ASW, ship_lv),
         los: calcStatusFromLevel(ship_data.LOSbase, ship_data.LOS, ship_lv),
         luck: ship_data.LUK,
-        accuracy: 0,
+        shell_accuracy: 0,
     }
 
     const flags: PlayerShipFlags = {

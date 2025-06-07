@@ -9,7 +9,6 @@ import { EquipType } from "./base/player";
 export type EquipTypeData = {
     label: string,
     icon: number,
-    tasnsport_power: TransportPowerModel,
     b_type?: SkillTriggerEquipType,
     a_type?: AACITriggerEquipType,
     can_equip_ship_types: ShipType[],
@@ -159,7 +158,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_not_equip_ship_ids: [380, 381, 382, 521, 522, 526, 534, 581, 727, 877, 884, 943, 945],
         can_asw_damage: true,
     },
-    [EquipType.DEPTH_CHARGE]: { // ! 明石では爆雷と爆雷投射機で上昇の挙動が異なる
+    [EquipType.DEPTH_CHARGE]: {
         label: 'Depth Charge',
         icon: 17,
         b_type: SkillTriggerEquipType.B_DEPTHCHARGE,

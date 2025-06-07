@@ -19,9 +19,9 @@ export type StatusComponent = {
     asw: number,
     los: number,
     luck: number,
-    accuracy: number,
-    transport_power: number,
-    support_fire_power: number,
+    shell_accuracy: number,
+    torpedo_accuracy: number,
+    night_battle_accuracy: number,
 }
 
 export type TransportPowerModel = {

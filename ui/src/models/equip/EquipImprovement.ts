@@ -1,5 +1,8 @@
 import { ADD_STATUS_KEYS, EquipImprovementDatas, EquipImprovementType } from "@/datas/equip/improvement";
 
+/**
+ * 装備改修によるボーナス値
+ */
 export type EquipImprovementAddition = {
     shell_power: number,
     shell_accuracy: number,

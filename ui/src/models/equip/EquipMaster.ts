@@ -27,7 +27,7 @@ export function createEquipMaster(
     const name_en = equip_data.name;
     const name_jp = equip_data.nameJP;
 
-    const type = equip_data.type;
+    const type_id = equip_data.type;
     const improvement_type = equip_data.improvement_type;
     const skill_trigger_type = equip_data.b_type;
 
@@ -41,7 +41,9 @@ export function createEquipMaster(
         asw: equip_data.ASW ?? 0,
         los: equip_data.LOS ?? 0,
         luck: 0,
-        accuracy: equip_data.ACC ?? 0,
+        shell_accuracy: equip_data.ACC ?? 0,
+        torpedo_accuracy: 0,
+        night_battle_accuracy: 0,
     }
 
     const flags: EquipFlags = {
@@ -66,7 +68,7 @@ export function createEquipMaster(
         master_id,
         name_en,
         name_jp,
-        type_id: type,
+        type_id,
         improvement_type,
         skill_trigger_type,
         status,
