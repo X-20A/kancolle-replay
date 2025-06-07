@@ -73,7 +73,7 @@ export const enum EquipType {
     BARRAGE_BALLOON = 79,
 };
 
-// TODO: 基地航空隊装備も分けるか？
+// 基地航空隊装備も分けるか？ - 現状分けるほどでも無い
 
 const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     1: {

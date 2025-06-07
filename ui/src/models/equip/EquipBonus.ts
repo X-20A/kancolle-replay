@@ -3,7 +3,7 @@ import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { NakedPlayerShip } from "../ship/NakedShip";
 
-export type EquipBonus = {
+export type EquipBonusAddition = {
     fire_power: number,
     armor: number,
     torpedo_power: number,
@@ -22,7 +22,7 @@ export type EquipBonus = {
  * @param bonus 加算するボーナス
  * @returns 合計
  */
-function addBonus(acc: EquipBonus, bonus: Partial<EquipBonus>): EquipBonus {
+function addBonus(acc: EquipBonusAddition, bonus: Partial<EquipBonusAddition>): EquipBonusAddition {
     return {
         fire_power: acc.fire_power + (bonus.fire_power ?? 0),
         armor: acc.armor + (bonus.armor ?? 0),
@@ -44,10 +44,10 @@ function addBonus(acc: EquipBonus, bonus: Partial<EquipBonus>): EquipBonus {
  * @param equips 装備一覧
  * @returns 合計されたEquipBonus
  */
-export function createEquipBonus(
+export function createEquipBonusAddition(
     ship: NakedPlayerShip,
     equips: Equip[],
-): EquipBonus {
+): EquipBonusAddition {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
         if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;
@@ -62,7 +62,7 @@ export function createEquipBonus(
     });
 
     // 合計用初期値
-    const initial: EquipBonus = {
+    const initial: EquipBonusAddition = {
         fire_power: 0,
         armor: 0,
         torpedo_power: 0,

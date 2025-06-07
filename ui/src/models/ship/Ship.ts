@@ -1,14 +1,14 @@
-import { StatusComponent } from "@/types";
+import { StatusComponent, StatusComponentKey } from "@/types";
 import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
 import { PlayerShipClass, PlayerShipFlags, ShipDatas, ShipType, SpecialItemId } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
 import { createNakedPlayerShip } from "./NakedShip";
-import { EquipDatas } from "@/types/equip/player";
 import { CountryDatas } from "@/datas/ship/country";
-import { createEquipBonus } from "../equip/EquipBonus";
+import { createEquipBonusAddition } from "../equip/EquipBonus";
 import { sumEquipImprovementAdditions } from "../equip/EquipImprovement";
-import { EquipImprovementDatas } from "@/datas/equip/improvement";
+import { createSpecialItemAddition } from "../equip/SpecialItem";
+import { SpecialItemDatas } from "@/datas/equip/SpecialItem";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -36,23 +36,33 @@ export type PlayerShip = {
     readonly flags: PlayerShipFlags,
     /** 未装備状態の艦ステータス(lv適用済み) */
     readonly naked_status: StatusComponent,
+    /** 装備ボーナス */
+    readonly equip_bonus_addition: StatusComponent,
+    /** 装備改修ボーナスの総計 */
+    readonly equip_improvement_addition: StatusComponent,
     /** 白襷, 海色リボン加算値 */
     readonly special_item_addition: StatusComponent,
-    /** 実機のステータス画面に表示される数値 */
-    readonly display_status: StatusComponent,
-    /** ユーザーによって編集された後の艦ステータス */
-    readonly edited_status: StatusComponent,
+    /**
+     * 実機のステータス画面に表示される数値    
+     * TODO: 表示用 構造体は別に生成するか？
+     */
+    // readonly display_status: StatusComponent,
+    /**
+     * ユーザーによって編集された後の艦ステータス    
+     * TODO: Vueが本格的に動き出すまで棚上げ
+     */
+    // readonly edited_status: StatusComponent,
 };
 
 export function createPlayerShip(
     ship_datas: ShipDatas,
     country_datas: CountryDatas,
-    equip_datas: EquipDatas,
-    equip_improvement_datas: EquipImprovementDatas,
+    special_item_datas: SpecialItemDatas,
+    status_keys: StatusComponentKey,
     unique_id: ShipUniqueId,
     lv: ShipLv,
     ship_id: ShipId,
-    special_item: SpecialItemId,
+    special_item_id: SpecialItemId,
     equips: Equip[],
     edit_input?: StatusComponent,
 ): PlayerShip {
@@ -73,10 +83,14 @@ export function createPlayerShip(
     const flags = naked_ship.flags;
     const naked_status = naked_ship.status;
 
-    const equip_bonuses = createEquipBonus(naked_ship, equips);
+    const equip_bonuses = createEquipBonusAddition(naked_ship, equips);
     const total_equip_improvement_bonus = 
         sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
-    const special_item_addition = create
+    const special_item_addition = createSpecialItemAddition(
+        special_item_datas,
+        status_keys,
+        special_item_id,
+    );
 
     return {
         master_id,
@@ -90,6 +104,8 @@ export function createPlayerShip(
         slots,
         flags,
         naked_status,
-
+        equip_bonuses,
+        total_equip_improvement_bonus,
+        special_item_addition,
     }
 }

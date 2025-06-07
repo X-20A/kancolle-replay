@@ -24,6 +24,23 @@ export type StatusComponent = {
     night_battle_accuracy: number,
 }
 
+const STATUS_COMPONENT_KEYS = [
+    "hp",
+    "fire_power",
+    "armor",
+    "torpedo_power",
+    "evasion",
+    "anti_air",
+    "asw",
+    "los",
+    "luck",
+    "shell_accuracy",
+    "torpedo_accuracy",
+    "night_battle_accuracy",
+] as const;
+
+export type StatusComponentKey = typeof STATUS_COMPONENT_KEYS;
+
 export type TransportPowerModel = {
     /** 従来型 通常海域他 */
     model_A: number,
