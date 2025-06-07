@@ -89,55 +89,38 @@ export const enum EquipImprovementType {
     BARRAGE_BALLOON = 79,
 };
 
-export const enum AddStatusType {
-    /** 昼砲戦火力 */
-    SHELL_POWER = 1,
-    /** 昼砲戦命中 */
-    SHELL_ACCURACY = 2,
-    /** 昼砲戦回避 */
-    SHELL_EVASION = 3,
-    /** 夜戦火力 */
-    NIGHT_BATTLE_POWER = 4,
-    /** 夜戦命中 */
-    NIGHT_BATTLE_ACCURACY = 5,
-    /** 雷装 */
-    TORPEDO_POWER = 6,
-    /** 雷撃命中 */
-    TORPEDO_ACCURACY = 7,
-    /** 雷撃回避 */
-    TORPEDO_EVASION = 8,
-    /** 対潜 */
-    ASW_POWER = 9,
-    /** 対潜命中 */
-    ASW_ACCURACY = 10,
-    /** 加重対空 */
-    SELF_ANTI_AIR = 11,
-    /** 艦隊防空 */
-    FLEET_ANTI_AIR = 12,
-    /** 制空力 */
-    AIR_SUPERIORITY = 13,
-    /** 索敵 */
-    LOS = 14,
-    /** 装甲 */
-    ARMOR = 15,
-    /** 対砲台補正 */
-    ANTI_PILLBOX_MOD = 16,
-    /** 陸攻爆装 */
-    LAND_BASE_BOMB = 17,
-    /** 陸攻雷撃 */
-    LAND_BASE_TORPEDO = 18,
-    /** 煙幕発動率 */
-    SMOKESCREEN_RATE_FLAT = 19,
-}
+export const ADD_STATUS_KEYS = [
+    "shell_power",
+    "shell_accuracy",
+    "shell_evasion",
+    "night_battle_power",
+    "night_battle_accuracy",
+    "torpedo_power",
+    "torpedo_accuracy",
+    "torpedo_evasion",
+    "asw_power",
+    "asw_accuracy",
+    "self_anti_air",
+    "fleet_anti_air",
+    "air_superiority",
+    "los",
+    "armor",
+    "anti_pill_box_mod",
+    "land_base_bomb",
+    "land_base_torpedo",
+    "smokescreen_rate_flat",
+] as const;
 
-export type ImprovementData = Partial<Record<AddStatusType, {
-    /** 改修係数 */
-    coeffient: number,
-    /** sqrt処理を行うか */
-    is_sqrt: boolean,
-}>>
+export type AddStatusKey = typeof ADD_STATUS_KEYS[number];
 
-export type EquipImprovementDatas = DeepReadonly<Record<EquipImprovementType, ImprovementData>>;
+export type EquipImprovementAddition = Record<AddStatusKey, number>;
+
+export type ImprovementData = Partial<Record<AddStatusKey, {
+    coeffient: number;
+    is_sqrt: boolean;
+}>>;
+
+export type EquipImprovementDatas = Readonly<Record<EquipImprovementType, ImprovementData>>;
 
 /**
  * 改修による上昇値の計算に必要なデータ    
@@ -145,585 +128,586 @@ export type EquipImprovementDatas = DeepReadonly<Record<EquipImprovementType, Im
  */
 export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
     [EquipImprovementType.MAIN_GUN_S]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.MAIN_GUN_S_AA]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
-        [AddStatusType.SELF_ANTI_AIR]: {
+        self_anti_air: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        [AddStatusType.FLEET_ANTI_AIR]: {
+        fleet_anti_air: {
             coeffient: 2,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.MAIN_GUN_M]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.MAIN_GUN_L]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1.5,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.MAIN_GUN_XL]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1.5,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SECONDARY_GUN]: { // (分類A)
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SECONDARY_GUN_AA]: { // (分類B)
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: false,
 
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: false,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: false,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: false,
         },
-        [AddStatusType.FLEET_ANTI_AIR]: {
+        fleet_anti_air: {
             coeffient: 2,
             is_sqrt: false,
         },
-        [AddStatusType.SELF_ANTI_AIR]: {
+        self_anti_air: {
             coeffient: 1,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.SECONDARY_GUN_L]: { // (分類C)
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: false,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: false,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.AP_SHELL]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
-        }, [AddStatusType.SHELL_ACCURACY]: {
+        }, shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.TORPEDO]: {
-        [AddStatusType.TORPEDO_POWER]: {
+        torpedo_power: {
             coeffient: 1.2,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.TORPEDO_ACCURACY]: {
+        torpedo_accuracy: {
             coeffient: 2,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.TORPEDO_SS]: {
-        [AddStatusType.TORPEDO_POWER]: {
+        torpedo_power: {
             coeffient: 1.2,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
-        }, [AddStatusType.TORPEDO_ACCURACY]: { // ! 明石にはない
+        }, torpedo_accuracy: { // ! 明石にはない
             coeffient: 2,
             is_sqrt: true,
-        }, [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        }, night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.MIDGET_SUBMARINE]: {
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: { // ! 明石にはない
+        night_battle_accuracy: { // ! 明石にはない
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.AA_GUN]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.TORPEDO_POWER]: {
+        torpedo_power: {
             coeffient: 1.2,
             is_sqrt: true,
         },
-        [AddStatusType.TORPEDO_ACCURACY]: { // ! 明石にはない
+        torpedo_accuracy: { // ! 明石にはない
             coeffient: 2,
             is_sqrt: true,
         },
-        [AddStatusType.SELF_ANTI_AIR]: {
+        self_anti_air: {
             coeffient: 2,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.ANTI_AIR_FIRE_DIRECTOR]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
-        [AddStatusType.FLEET_ANTI_AIR]: {
+        fleet_anti_air: {
             coeffient: 2,
             is_sqrt: true,
         },
-        [AddStatusType.SELF_ANTI_AIR]: { // ! 明石の対空と異なる そもそも SELF_ANTI_AIR は 明石の 対空 を指すか？
+        self_anti_air: { // ! 明石の対空と異なる そもそも SELF_ANTI_AIR は 明石の 対空 を指すか？
             coeffient: 1,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SONAR_S]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 0.75,
             is_sqrt: true,
         },
-        [AddStatusType.ASW_POWER]: { // ! 明石0.66
+        asw_power: { // ! 明石0.66
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.ASW_ACCURACY]: {
+        asw_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
-        }, [AddStatusType.TORPEDO_EVASION]: {
+        },
+        torpedo_evasion: {
             coeffient: 1.5,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SONAR_L]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 0.75, // ! 明石0.66
             is_sqrt: true,
         },
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.ASW_ACCURACY]: {
+        asw_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
-        [AddStatusType.TORPEDO_EVASION]: {
+        torpedo_evasion: {
             coeffient: 1.5,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.DEPTH_CHARGE]: { // ! 明石では爆雷と爆雷投射機で上昇の挙動が異なる
-        [AddStatusType.SHELL_POWER]: { // ! 明石に無い
+        shell_power: { // ! 明石に無い
             coeffient: 0.75,
             is_sqrt: true,
         },
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 1, // ! 明石0.66
             is_sqrt: true,
         },
-        [AddStatusType.ASW_ACCURACY]: { // ! 明石に無い
+        asw_accuracy: { // ! 明石に無い
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.FIGHTER]: {
-        [AddStatusType.AIR_SUPERIORITY]: {
+        air_superiority: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.TORPEDO_BOMBER]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.DIVE_BOMBER]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.FIGHTER_BOMBER]: {
-        [AddStatusType.AIR_SUPERIORITY]: {
+        air_superiority: {
             coeffient: 0.25,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.SEAPLANE]: {
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.2,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SEAPLANE_BOMBER]: {
-        [AddStatusType.LOS]: { // ! 爆装がない
+        los: { // ! 爆装がない
             coeffient: 1.15,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.CARRIER_SCOUT]: {
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.2,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.CARRIER_SCOUT_2]: {
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.2,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.AUTOGYRO_LOW]: {
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.AUTOGYRO_HIGH]: {
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 0.3,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.ASW_PLANE_LOW]: {
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.ASW_PLANE_HIGH]: {
-        [AddStatusType.ASW_POWER]: {
+        asw_power: {
             coeffient: 0.3,
             is_sqrt: false,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.RADAR_S_MODEL_A]: {
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
-        [AddStatusType.FLEET_ANTI_AIR]: {
+        fleet_anti_air: {
             coeffient: 1.5,
             is_sqrt: true,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.25,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.RADAR_S_MODEL_B]: {
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1.7,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.6,
             is_sqrt: true,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.25,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.RADAR_S_MODEL_C]: {
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1.7,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.6,
             is_sqrt: true,
         },
-        [AddStatusType.FLEET_ANTI_AIR]: {
+        fleet_anti_air: {
             coeffient: 1.5,
             is_sqrt: true,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.25,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.RADAR_S_MODEL_D]: {
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1.7,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.6,
             is_sqrt: true,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.4,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.RADAR_L]: { // ! 艦隊防空が無い 大型電探もモデルを分ける必要がありそう
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1, // ! 明石: 1.7
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3, // ! 明石: 1.6
             is_sqrt: true,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.4,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.RADAR_XL]: { // ! 艦隊防空がない
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1, // ! 明石: 1.7
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3, // ! 明石1.6
             is_sqrt: true,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.4,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.ENGINE]: {
-        [AddStatusType.SHELL_EVASION]: {
+        shell_evasion: {
             coeffient: 1.5,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.TYPE_3_SHELL]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
-        }, [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        }, night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.BULGE_M]: {
-        [AddStatusType.ARMOR]: {
+        armor: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.BULGE_L]: {
-        [AddStatusType.ARMOR]: {
+        armor: {
             coeffient: 0.3,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.LANDING_CRAFT]: { // ! 砲台特効倍率がない
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SEARCHLIGHT_S]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SEARCHLIGHT_L]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
@@ -732,37 +716,37 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.PICKET]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: { // ! 明石にはない
+        night_battle_accuracy: { // ! 明石にはない
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.WG42]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: { // ! 明石にはない
+        shell_accuracy: { // ! 明石にはない
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: { // ! 明石にはない
+        night_battle_accuracy: { // ! 明石にはない
             coeffient: 1.3,
             is_sqrt: true,
         },
@@ -771,19 +755,19 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.FCF]: { // ! 明石にはない
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
@@ -795,7 +779,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.FLYING_BOAT]: { // ! 明石にはない
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.2,
             is_sqrt: true,
         },
@@ -810,19 +794,19 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.LANDING_TANK]: { // ! 明石では砲台特効倍率が陸戦隊と内火艇で異なる
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
@@ -831,31 +815,31 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.LAND_BASED_BOMBER]: {
-        [AddStatusType.TORPEDO_POWER]: {
+        torpedo_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        [AddStatusType.AIR_SUPERIORITY]: {
+        air_superiority: {
             coeffient: 0.5,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.INTERCEPTOR]: {
-        [AddStatusType.AIR_SUPERIORITY]: {
+        air_superiority: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.LAND_BASED_SCOUT]: { // ! 明石にはない
-        [AddStatusType.AIR_SUPERIORITY]: {
+        air_superiority: {
             coeffient: 0.2,
             is_sqrt: false,
         },
-        [AddStatusType.LOS]: {
+        los: {
             coeffient: 1.2,
             is_sqrt: true,
         },
@@ -867,15 +851,15 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.LAND_BASED_BOMBER_L]: {
-        [AddStatusType.LAND_BASE_TORPEDO]: {
+        land_base_torpedo: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        [AddStatusType.LAND_BASE_BOMB]: {
+        land_base_bomb: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        [AddStatusType.AIR_SUPERIORITY]: {
+        air_superiority: {
             coeffient: 0.5,
             is_sqrt: true,
         },
@@ -884,39 +868,39 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.ARMY_UNIT]: { // ! 明石に無い
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
-        }, [AddStatusType.NIGHT_BATTLE_POWER]: {
+        }, night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
-        }, [AddStatusType.SHELL_ACCURACY]: {
+        }, shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.SMOKESCREEN]: {
-        [AddStatusType.SHELL_POWER]: {
+        shell_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_POWER]: {
+        night_battle_power: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.SHELL_ACCURACY]: {
+        shell_accuracy: {
             coeffient: 1,
             is_sqrt: true,
         },
-        [AddStatusType.NIGHT_BATTLE_ACCURACY]: {
+        night_battle_accuracy: {
             coeffient: 1.3,
             is_sqrt: true,
         },
-        [AddStatusType.SMOKESCREEN_RATE_FLAT]: {
+        smokescreen_rate_flat: {
             coeffient: 0.3, // ! 制空シミュより
             is_sqrt: false,
         }

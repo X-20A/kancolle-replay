@@ -1,5 +1,5 @@
-import { EquipType } from "@/datas/equip/base";
-import { EquipBonusType } from "@/types/equip";
+import { EquipType } from "@/datas/equip/base/player";
+import { EquipBonusType } from "@/types/equip/player";
 import { PlayerShipClass, ShipType as ST } from "@/types/ship/ship";
 
 /** 国籍ID */
@@ -223,7 +223,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [3, 122, 533, 553],
+        ids: [
+            3, // 12.7cm連装砲B型改二
+            122, // 10cm連装高角砲+高射装置
+            533, // 10cm連装高角砲改+高射装置改
+            553, // ! 該当装備なし？
+        ],
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 1 },

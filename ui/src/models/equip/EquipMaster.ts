@@ -1,27 +1,35 @@
-import { EquipType } from "@/datas/equip/base";
+import { EquipType } from "@/datas/equip/base/player";
+import { EquipImprovementType } from "@/datas/equip/improvement";
 import { StatusComponent } from "@/types";
-import { EquipDatas, EquipFlags } from "@/types/equip";
+import { EquipId } from "@/types/brands/equip";
+import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 
 /** マスターデータから直接取得するデータ */
 export type EquipMaster = {
+    readonly master_id: EquipId,
     readonly name_en: string,
     readonly name_jp: string,
-    readonly type: EquipType,
+    readonly type_id: EquipType,
+    readonly improvement_type: EquipImprovementType,
+    readonly skill_trigger_type: SkillTriggerEquipType | undefined,
     readonly status: StatusComponent,
     readonly flags: EquipFlags,
 }
 
 export function createEquipMaster(
-    master_id: number,
+    id: EquipId,
     equip_datas: EquipDatas,
 ): EquipMaster {
-    const equip_data = equip_datas[master_id];
-    if (!equip_data) throw new Error(`id: ${master_id}の装備が見つかりませんでした`);
+    const equip_data = equip_datas[id];
+    if (!equip_data) throw new Error(`id: ${id}の装備が見つかりませんでした`);
 
+    const master_id = id;
     const name_en = equip_data.name;
     const name_jp = equip_data.nameJP;
 
     const type = equip_data.type;
+    const improvement_type = equip_data.improvement_type;
+    const skill_trigger_type = equip_data.b_type;
 
     const status: StatusComponent = {
         hp: 0,
@@ -55,9 +63,12 @@ export function createEquipMaster(
     }
 
     return {
+        master_id,
         name_en,
         name_jp,
-        type,
+        type_id: type,
+        improvement_type,
+        skill_trigger_type,
         status,
         flags,
     }

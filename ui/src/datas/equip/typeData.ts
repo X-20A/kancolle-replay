@@ -1,7 +1,7 @@
-import { DeepReadonly } from "@/types";
-import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip";
+import { DeepReadonly, TransportPowerModel } from "@/types";
+import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
 import { ShipType } from "@/types/ship/ship";
-import { EquipType } from "./base";
+import { EquipType } from "./base/player";
 
 /**
  * 装備種別ごとの諸元
@@ -9,6 +9,7 @@ import { EquipType } from "./base";
 export type EquipTypeData = {
     label: string,
     icon: number,
+    tasnsport_power: TransportPowerModel,
     b_type?: SkillTriggerEquipType,
     a_type?: AACITriggerEquipType,
     can_equip_ship_types: ShipType[],

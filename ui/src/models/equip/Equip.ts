@@ -1,7 +1,9 @@
 import { StatusComponent } from "@/types";
-import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip";
+import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 import { createEquipMaster } from "./EquipMaster";
-import { EquipType } from "@/datas/equip/base";
+import { EquipType } from "@/datas/equip/base/player";
+import { EquipImprovementDatas } from "@/datas/equip/improvement";
+import { createEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
 
 export type Equip = {
     /** 装備マスターID */
@@ -11,43 +13,49 @@ export type Equip = {
     /** 装備名(日) */
     name_jp: string,
     /** 装備改修値 */
-    improvement: number,
+    improvement_lv: number,
     /** 装備種別ID */
     type: EquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
-    skill_trigger_type: SkillTriggerEquipType,
+    skill_trigger_type: SkillTriggerEquipType | undefined,
     /** フラグ類 */
     flags: EquipFlags,
     /** マスターデータままの装備加算値 */
     readonly master_addition: StatusComponent,
-    /** 装備ボーナス加算値 */
-    readonly bonus_addition: StatusComponent,
     /** 装備改修加算値 */
-    readonly improvement_addition: StatusComponent,
+    readonly improvement_addition: EquipImprovementAddition,
 }
 
 export function createEquip(
-    master_id: number,
-    ship_id: number,
-    improvement: number,
     equip_datas: EquipDatas,
+    equip_improvement_datas: EquipImprovementDatas,
+    master_id: number,
+    improvement_lv: number,
 ): Equip {
     const equip_master = createEquipMaster(master_id, equip_datas);
 
     const name_jp = equip_master.name_jp;
     const name_en = equip_master.name_en;
 
-    const type = equip_master.type;
+    const type = equip_master.type_id;
+    const skill_trigger_type = equip_master.skill_trigger_type;
     const flags = equip_master.flags;
     const equip_master_addition = equip_master.status;
+    const improvement_addition = createEquipImprovementAddition(
+        equip_improvement_datas,
+        equip_master.improvement_type,
+        improvement_lv,
+    )
 
     return {
         master_id,
-        name_jp,
         name_en,
-        improvement,
+        name_jp,
+        improvement_lv,
         type,
+        skill_trigger_type,
         flags,
         master_addition: equip_master_addition,
+        improvement_addition,
     }
 }

@@ -20,5 +20,15 @@ export type StatusComponent = {
     los: number,
     luck: number,
     accuracy: number,
+    transport_power: number,
+    support_fire_power: number,
 }
 
+export type TransportPowerModel = {
+    /** 従来型 通常海域他 */
+    model_A: number,
+    /** 2025早春E2 モデル */
+    model_B: number,
+    /** 2025早春E5 モデル */
+    model_C: number,
+};

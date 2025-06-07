@@ -1,5 +1,5 @@
-import { EquipType } from "@/datas/equip/base"
-import { DeepReadonly } from "."
+import { EquipType } from "@/datas/equip/base/player"
+import { DeepReadonly } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
@@ -89,13 +89,14 @@ export const enum SpecialIcon {
     NightDiveBombers = 58,
 }
 
-export type EquipData = {
+export type PlayerEquipData = {
     /** 装備名(EN) */
     name: string,
     /** 装備名(日) */
     nameJP: string,
     /** 装備種別ID */
     type: EquipType,
+    /** 改修種別ID */
     improvement_type: EquipImprovementType,
     /** 対空CIのトリガーになる装備の種別ID */
     a_type?: AACITriggerEquipType,
@@ -167,7 +168,7 @@ export type EquipData = {
     high_altitude_bomber?: true,
 }
 
-export type EquipDatas = DeepReadonly<Record<number, EquipData>>
+export type EquipDatas = DeepReadonly<Record<number, PlayerEquipData>>
 
 export type EquipFlags = {
     /** T字不利回避能力があるか */

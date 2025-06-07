@@ -1,13 +1,12 @@
 import { Equip } from "./Equip";
-import { PlayerShip } from "../ship/Ship";
-import { SkillTriggerEquipType } from "@/types/equip";
+import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { NakedPlayerShip } from "../ship/NakedShip";
 
 export type EquipBonus = {
     fire_power: number,
     armor: number,
-    torpedo: number,
+    torpedo_power: number,
     evasion: number,
     anti_air: number,
     asw: number,
@@ -27,7 +26,7 @@ function addBonus(acc: EquipBonus, bonus: Partial<EquipBonus>): EquipBonus {
     return {
         fire_power: acc.fire_power + (bonus.fire_power ?? 0),
         armor: acc.armor + (bonus.armor ?? 0),
-        torpedo: acc.torpedo + (bonus.torpedo ?? 0),
+        torpedo_power: acc.torpedo_power + (bonus.torpedo_power ?? 0),
         evasion: acc.evasion + (bonus.evasion ?? 0),
         anti_air: acc.anti_air + (bonus.anti_air ?? 0),
         asw: acc.asw + (bonus.asw ?? 0),
@@ -66,7 +65,7 @@ export function createEquipBonus(
     const initial: EquipBonus = {
         fire_power: 0,
         armor: 0,
-        torpedo: 0,
+        torpedo_power: 0,
         evasion: 0,
         anti_air: 0,
         asw: 0,
@@ -110,12 +109,12 @@ export function createEquipBonus(
                 if (synergy_type_count < (bonus.requires_synergy_equip_count ?? 1)) continue;
             }
             if (bonus.requires_synergy_equip_improvement) {
-                const synergy_improve_count = equips.filter(equip => equip.improvement >= bonus.requires_synergy_equip_improvement!).length;
+                const synergy_improve_count = equips.filter(equip => equip.improvement_lv >= bonus.requires_synergy_equip_improvement!).length;
                 if (synergy_improve_count < (bonus.requires_synergy_equip_count ?? 1)) continue;
             }
             if (bonus.required_improvement) {
                 // 装備の改修値条件
-                const has_required_improve = matched_equips.some(equip => (equip.improvement ?? 0) >= bonus.required_improvement!);
+                const has_required_improve = matched_equips.some(equip => (equip.improvement_lv ?? 0) >= bonus.required_improvement!);
                 if (!has_required_improve) continue;
             }
 

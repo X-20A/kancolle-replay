@@ -1,5 +1,5 @@
 import { DeepReadonly } from "..";
-import { CVsNightAttackType, InstallType, PlayerShipClass, ShipFitClass, ShipType, SpecialAttckId, UnknownStatus } from "./ship";
+import { CVsNightAttackType, InstallType, PlayerShipClass, ShipFitClass, SpecialAttckId, UnknownStatus } from "./ship";
 
 /** 艦種 */
 export const enum AbyssalShipType {
