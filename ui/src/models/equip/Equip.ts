@@ -1,7 +1,7 @@
 import { StatusComponent } from "@/types";
 import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 import { deriveEquipMaster } from "./EquipMaster";
-import { EquipType } from "@/datas/equip/base/player";
+import { PlayerEquipType } from "@/datas/equip/base/player";
 import { EquipImprovementDatas } from "@/datas/equip/improvement";
 import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
 import { deriveTransportAddition, TransportAddition } from "./TransportPower";
@@ -18,7 +18,7 @@ export type Equip = {
     /** 装備改修値 */
     readonly improvement_lv: number,
     /** 装備種別ID */
-    readonly type: EquipType,
+    readonly type: PlayerEquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
     readonly skill_trigger_type: SkillTriggerEquipType | null,
     /** フラグ類 */

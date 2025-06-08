@@ -1,6 +1,6 @@
-import { EquipType } from "@/datas/equip/base/player";
 import { AACITriggerEquipType, EquipFitClass, Range, SkillTriggerEquipType, SpecialIcon } from "./player";
 import { DeepReadonly } from "..";
+import { AbyssalEquipType } from "@/datas/equip/base/abbysal";
 
 export type AbyssalEquipData = {
     /** 装備名(EN) */
@@ -8,7 +8,7 @@ export type AbyssalEquipData = {
     /** 装備名(日) */
     nameJP: string,
     /** 装備種別ID */
-    type: EquipType,
+    type: AbyssalEquipType,
     /** 対空CIのトリガーになる装備の種別ID */
     a_type?: AACITriggerEquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
@@ -30,7 +30,9 @@ export type AbyssalEquipData = {
     /** 索敵 */
     LOS?: number,
     /** 爆装 */
-    DIVEBOMB?: number,
+    AERIAL_BOMB?: number,
+    /** 艦攻雷装 */
+    AERIAL_TP?: number,
     /** 対爆 */
     AB?: number,
     /** 迎撃 */

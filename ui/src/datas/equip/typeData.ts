@@ -1,7 +1,7 @@
 import { DeepReadonly, TransportPowerModel } from "@/types";
 import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
 import { ShipType } from "@/types/ship/ship";
-import { EquipType } from "./base/player";
+import { PlayerEquipType } from "./base/player";
 
 /**
  * 装備種別ごとの諸元
@@ -28,10 +28,10 @@ export type EquipTypeData = {
     can_support_asw?: true,
 }
 
-export type EquipTypeDatas = DeepReadonly<Record<EquipType, EquipTypeData>>;
+export type EquipTypeDatas = DeepReadonly<Record<PlayerEquipType, EquipTypeData>>;
 
 export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
-    [EquipType.MAIN_GUN_S]: {
+    [PlayerEquipType.MAIN_GUN_S]: {
         label: 'Main Gun (S)',
         icon: 1,
         b_type: SkillTriggerEquipType.B_MAINGUN,
@@ -40,7 +40,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [541],
         can_not_equip_ship_ids: [507, 645, 650, 717, 900, 943],
     },
-    [EquipType.MAIN_GUN_S_AA]: {
+    [PlayerEquipType.MAIN_GUN_S_AA]: {
         label: 'Main Gun (S)',
         icon: 16,
         b_type: SkillTriggerEquipType.B_MAINGUN,
@@ -49,7 +49,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [541],
         can_not_equip_ship_ids: [507, 645, 650, 717, 900, 943],
     },
-    [EquipType.MAIN_GUN_M]: {
+    [PlayerEquipType.MAIN_GUN_M]: {
         label: 'Main Gun (M)',
         icon: 2,
         b_type: SkillTriggerEquipType.B_MAINGUN,
@@ -58,14 +58,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [372, 491, 500, 507, 581, 586, 634, 635, 639, 640, 690, 911],
         can_not_equip_ship_ids: [877],
     },
-    [EquipType.MAIN_GUN_L]: {
+    [PlayerEquipType.MAIN_GUN_L]: {
         label: 'Main Gun (L)',
         icon: 3,
         b_type: SkillTriggerEquipType.B_MAINGUN,
         a_type: AACITriggerEquipType.A_GUN,
         can_equip_ship_types: [ShipType.FBB, ShipType.BB, ShipType.BBV],
     },
-    [EquipType.MAIN_GUN_XL]: {
+    [PlayerEquipType.MAIN_GUN_XL]: {
         label: 'Main Gun (L)',
         icon: 3,
         b_type: SkillTriggerEquipType.B_MAINGUN,
@@ -73,7 +73,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_types: [],
         can_equip_ship_ids: [131, 136, 143, 148, 275, 276, 541, 546, 573, 911, 916],
     },
-    [EquipType.SECONDARY_GUN]: { // (分類A)
+    [PlayerEquipType.SECONDARY_GUN]: { // (分類A)
         label: 'Secondary Gun',
         icon: 4,
         b_type: SkillTriggerEquipType.B_SECGUN,
@@ -82,7 +82,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [352, 460, 500, 699, 717],
         can_not_equip_ship_ids: [477, 478, 622, 623, 624, 945],
     },
-    [EquipType.SECONDARY_GUN_AA]: { // (分類B)
+    [PlayerEquipType.SECONDARY_GUN_AA]: { // (分類B)
         label: 'Secondary Gun',
         icon: 16,
         b_type: SkillTriggerEquipType.B_SECGUN,
@@ -91,21 +91,21 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [352, 460, 500, 699, 717],
         can_not_equip_ship_ids: [477, 478, 622, 623, 624, 945],
     },
-    [EquipType.SECONDARY_GUN_L]: { // (分類C)
+    [PlayerEquipType.SECONDARY_GUN_L]: { // (分類C)
         label: 'Secondary Gun',
         icon: 4,
         b_type: SkillTriggerEquipType.B_SECGUN,
         a_type: AACITriggerEquipType.A_GUN,
         can_equip_ship_types: [ShipType.CA, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CV, ShipType.CVB],
     },
-    [EquipType.AP_SHELL]: {
+    [PlayerEquipType.AP_SHELL]: {
         label: 'AP Shell',
         icon: 13,
         b_type: SkillTriggerEquipType.B_APSHELL,
         can_equip_ship_types: [ShipType.FBB, ShipType.BB, ShipType.BBV],
         can_not_equip_ship_ids: [877],
     },
-    [EquipType.TORPEDO]: {
+    [PlayerEquipType.TORPEDO]: {
         label: 'Torpedo',
         icon: 5,
         b_type: SkillTriggerEquipType.B_TORPEDO,
@@ -113,20 +113,20 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [178, 507, 591, 592, 593, 877, 879, 954],
         can_not_equip_ship_ids: [657],
     },
-    [EquipType.TORPEDO_SS]: {
+    [PlayerEquipType.TORPEDO_SS]: {
         label: 'Torpedo',
         icon: 5,
         b_type: SkillTriggerEquipType.B_TORPEDO,
         can_equip_ship_types: [ShipType.SS, ShipType.SSV],
     },
-    [EquipType.MIDGET_SUBMARINE]: {
+    [PlayerEquipType.MIDGET_SUBMARINE]: {
         label: 'Midget Sub',
         icon: 5,
         can_equip_ship_types: [ShipType.CLT, ShipType.SS, ShipType.SSV, ShipType.AV],
         can_equip_ship_ids: [200, 488, 506, 623, 657, 668],
         can_not_equip_ship_ids: [372, 445, 450, 491, 539, 605, 731, 939],
     },
-    [EquipType.AA_GUN]: {
+    [PlayerEquipType.AA_GUN]: {
         label: 'Anti-Air Gun',
         icon: 15,
         a_type: AACITriggerEquipType.A_AAGUN,
@@ -134,14 +134,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [530, 539, 939, 940],
         can_not_equip_ship_ids: [645, 650],
     },
-    [EquipType.ANTI_AIR_FIRE_DIRECTOR]: {
+    [PlayerEquipType.ANTI_AIR_FIRE_DIRECTOR]: {
         label: 'Fire Director',
         icon: 30,
         a_type: AACITriggerEquipType.A_AAFD,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.AS, ShipType.AV, ShipType.AO, ShipType.AR, ShipType.LHA, ShipType.DE],
         can_not_equip_ship_ids: [621, 645, 650, 727, 877, 945],
     },
-    [EquipType.SONAR_S]: {
+    [PlayerEquipType.SONAR_S]: {
         label: 'Sonar',
         icon: 18,
         b_type: SkillTriggerEquipType.B_SONAR,
@@ -149,7 +149,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [352, 372, 380, 381, 382, 450, 491, 500, 507, 529, 534, 536, 546, 554, 586, 591, 592, 593, 626, 645, 650, 690, 699, 707, 713, 717, 879, 885, 889, 894, 899, 900, 911, 916, 943, 948, 954],
         can_asw_damage: true,
     },
-    [EquipType.SONAR_L]: {
+    [PlayerEquipType.SONAR_L]: {
         label: 'Sonar',
         icon: 18,
         b_type: SkillTriggerEquipType.B_SONAR,
@@ -158,7 +158,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_not_equip_ship_ids: [380, 381, 382, 521, 522, 526, 534, 581, 727, 877, 884, 943, 945],
         can_asw_damage: true,
     },
-    [EquipType.DEPTH_CHARGE]: {
+    [PlayerEquipType.DEPTH_CHARGE]: {
         label: 'Depth Charge',
         icon: 17,
         b_type: SkillTriggerEquipType.B_DEPTHCHARGE,
@@ -167,7 +167,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_not_equip_ship_ids: [372, 491, 507, 581, 586, 690],
         can_asw_damage: true,
     },
-    [EquipType.FIGHTER]: {
+    [PlayerEquipType.FIGHTER]: {
         label: 'Fighter',
         icon: 6,
         can_equip_ship_types: [ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.LHA],
@@ -177,7 +177,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_plane: true,
         is_fighter: true,
     },
-    [EquipType.TORPEDO_BOMBER]: {
+    [PlayerEquipType.TORPEDO_BOMBER]: {
         label: 'Torpedo Bomber',
         icon: 8,
         can_equip_ship_types: [ShipType.CVL, ShipType.CV, ShipType.CVB],
@@ -192,7 +192,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_asw_damage: true,
         can_support_asw: true,
     },
-    [EquipType.DIVE_BOMBER]: {
+    [PlayerEquipType.DIVE_BOMBER]: {
         label: 'Dive Bomber',
         icon: 7,
         can_equip_ship_types: [ShipType.CVL, ShipType.CV, ShipType.CVB],
@@ -205,7 +205,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_asw_damage: true,
         can_support_asw: true,
     },
-    [EquipType.FIGHTER_BOMBER]: {
+    [PlayerEquipType.FIGHTER_BOMBER]: {
         label: 'Dive Bomber',
         icon: 7,
         can_equip_ship_types: [ShipType.CVL, ShipType.CV, ShipType.CVB],
@@ -218,7 +218,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_asw_damage: true,
         can_support_asw: true,
     },
-    [EquipType.SEAPLANE]: {
+    [PlayerEquipType.SEAPLANE]: {
         label: 'Recon Seaplane',
         icon: 10,
         b_type: SkillTriggerEquipType.B_RECON,
@@ -231,7 +231,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_detect: true,
         can_support_asw: true,
     },
-    [EquipType.SEAPLANE_BOMBER]: {
+    [PlayerEquipType.SEAPLANE_BOMBER]: {
         label: 'Seaplane Bomber',
         icon: 10,
         b_type: SkillTriggerEquipType.B_RECON,
@@ -247,7 +247,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_asw_damage: true,
         can_support_asw: true,
     },
-    [EquipType.CARRIER_SCOUT]: {
+    [PlayerEquipType.CARRIER_SCOUT]: {
         label: 'Scout Plane',
         icon: 9,
         can_equip_ship_types: [ShipType.CVL, ShipType.CV, ShipType.CVB],
@@ -258,7 +258,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_contact: true,
         can_detect: true,
     },
-    [EquipType.CARRIER_SCOUT_2]: {
+    [PlayerEquipType.CARRIER_SCOUT_2]: {
         label: 'Scout Plane',
         icon: 9,
         can_equip_ship_types: [ShipType.CVB],
@@ -267,7 +267,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_contact: true,
         can_detect: true,
     },
-    [EquipType.AUTOGYRO]: {
+    [PlayerEquipType.AUTOGYRO]: {
         label: 'Anti-Sub Plane',
         icon: 21,
         can_equip_ship_types: [ShipType.CAV, ShipType.BBV, ShipType.CVL, ShipType.AS, ShipType.AO, ShipType.AR, ShipType.LHA],
@@ -281,7 +281,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_asw_damage: true,
         can_support_asw: true,
     },
-    [EquipType.ASW_PLANE]: {
+    [PlayerEquipType.ASW_PLANE]: {
         label: 'Anti-Sub Plane',
         icon: 22,
         can_equip_ship_types: [ShipType.CVL, ShipType.LHA],
@@ -295,14 +295,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_asw_damage: true,
         can_support_asw: true,
     },
-    [EquipType.RADAR_S]: {
+    [PlayerEquipType.RADAR_S]: {
         label: 'Radar (S)',
         icon: 11,
         b_type: SkillTriggerEquipType.B_RADAR,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.AS, ShipType.AV, ShipType.AO, ShipType.AR, ShipType.LHA, ShipType.DE],
         can_not_equip_ship_ids: [945],
     },
-    [EquipType.RADAR_L]: {
+    [PlayerEquipType.RADAR_L]: {
         label: 'Radar (L)',
         icon: 11,
         b_type: SkillTriggerEquipType.B_RADAR,
@@ -310,20 +310,20 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [179, 180, 330, 346, 352, 357, 419, 421, 422, 423, 470, 532, 533, 537, 538, 626, 645, 650, 699, 717, 948],
         can_not_equip_ship_ids: [477, 478, 521, 522, 574, 623, 624, 877],
     },
-    [EquipType.RADAR_XL]: {
+    [PlayerEquipType.RADAR_XL]: {
         label: 'Radar (L)',
         icon: 11,
         b_type: SkillTriggerEquipType.B_RADAR,
         can_equip_ship_types: [ShipType.FBB, ShipType.BB, ShipType.BBV],
         can_not_equip_ship_ids: [877],
     },
-    [EquipType.ENGINE]: {
+    [PlayerEquipType.ENGINE]: {
         label: 'Engine',
         icon: 19,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.SS, ShipType.SSV, ShipType.AS, ShipType.AV, ShipType.AO, ShipType.AR, ShipType.LHA],
         can_not_equip_ship_ids: [],
     },
-    [EquipType.TYPE_3_SHELL]: {
+    [PlayerEquipType.TYPE_3_SHELL]: {
         label: 'Anti-Air Shell',
         icon: 12,
         a_type: AACITriggerEquipType.A_TYPE3SHELL,
@@ -331,19 +331,19 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_not_equip_ship_ids: [877],
         can_equip_ship_ids: [507],
     },
-    [EquipType.BULGE_M]: {
+    [PlayerEquipType.BULGE_M]: {
         label: 'Torpedo Bulge',
         icon: 23,
         can_equip_ship_types: [ShipType.CT, ShipType.CA, ShipType.CAV, ShipType.CVL, ShipType.AS, ShipType.AV, ShipType.AR],
         can_equip_ship_ids: [146, 147, 179, 180, 216, 217, 305, 306, 307, 314, 330, 346, 357, 500, 537, 538, 542, 543, 547, 556, 559, 563, 564, 566, 567, 568, 569, 578, 579, 621, 622, 623, 624, 626, 629, 630, 645, 649, 650, 652, 656, 657, 662, 663, 668, 670, 699, 717, 727, 900, 915, 943, 948, 951, 955, 960, 961],
     },
-    [EquipType.BULGE_L]: {
+    [PlayerEquipType.BULGE_L]: {
         label: 'Torpedo Bulge',
         icon: 23,
         can_equip_ship_types: [ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CV, ShipType.CVB],
         can_equip_ship_ids: [650],
     },
-    [EquipType.LANDING_CRAFT]: {
+    [PlayerEquipType.LANDING_CRAFT]: {
         label: 'Misc',
         icon: 20,
         b_type: SkillTriggerEquipType.B_LC1,
@@ -351,65 +351,65 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [147, 198, 199, 200, 260, 352, 382, 418, 419, 434, 435, 464, 468, 469, 470, 478, 487, 488, 489, 490, 498, 500, 506, 541, 547, 548, 559, 563, 587, 623, 630, 645, 647, 650, 657, 666, 667, 699, 703, 707, 716, 718, 720, 725, 889, 899, 908, 915, 916, 951, 959, 960, 975],
         can_not_equip_ship_ids: [445, 491, 727, 945],
     },
-    [EquipType.SEARCHLIGHT_S]: {
+    [PlayerEquipType.SEARCHLIGHT_S]: {
         label: 'Night Equip',
         icon: 24,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.AV],
         can_equip_ship_ids: [343, 356, 500, 626, 639, 640, 645, 650, 699, 727, 948],
     },
-    [EquipType.SEARCHLIGHT_L]: {
+    [PlayerEquipType.SEARCHLIGHT_L]: {
         label: 'Night Equip',
         icon: 24,
         can_equip_ship_types: [ShipType.FBB, ShipType.BB, ShipType.BBV],
         can_equip_ship_ids: [372, 477, 491, 496, 501, 502, 506, 507, 579, 586, 626, 630, 645],
     },
-    [EquipType.STARSHELL]: {
+    [PlayerEquipType.STARSHELL]: {
         label: 'Night Equip',
         icon: 27,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.AS, ShipType.AV, ShipType.AR],
         can_equip_ship_ids: [500, 699, 727],
     },
-    [EquipType.PICKET]: {
+    [PlayerEquipType.PICKET]: {
         label: 'Night Equip',
         icon: 32,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.AS, ShipType.AV, ShipType.DE],
         can_equip_ship_ids: [381, 500, 529, 536, 621, 626, 699, 889, 894, 899],
     },
-    [EquipType.WG42]: {
+    [PlayerEquipType.WG42]: {
         label: 'Misc',
         icon: 31,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CAV, ShipType.BBV, ShipType.SS, ShipType.SSV, ShipType.AS, ShipType.AV, ShipType.LHA],
         can_equip_ship_ids: [500, 573, 591, 592, 593, 699, 877, 878, 879, 954],
         can_not_equip_ship_ids: [445, 553, 554, 943, 948],
     },
-    [EquipType.SRF]: {
+    [PlayerEquipType.SRF]: {
         label: 'Misc',
         icon: 26,
         can_equip_ship_types: [ShipType.AR],
         can_equip_ship_ids: [450],
     },
-    [EquipType.FCF]: {
+    [PlayerEquipType.FCF]: {
         label: 'Misc',
         icon: 28,
         can_equip_ship_types: [ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.AS, ShipType.AV, ShipType.LHA],
         can_equip_ship_ids: [330, 346, 357, 419, 421, 422, 423, 464, 497, 498, 500, 532, 533, 537, 538, 542, 543, 567, 587, 628, 629, 645, 649, 650, 651, 656, 667, 699, 720, 915, 961, 975],
         can_not_equip_ship_ids: [521, 522, 727, 877, 943, 945, 948],
     },
-    [EquipType.DRUM]: {
+    [PlayerEquipType.DRUM]: {
         label: 'Misc',
         icon: 25,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CAV, ShipType.AV, ShipType.AO, ShipType.LHA],
         can_equip_ship_ids: [530, 539, 605, 707, 731, 899, 939, 940],
         can_not_equip_ship_ids: [717, 900, 943, 948],
     },
-    [EquipType.SCAMP]: {
+    [PlayerEquipType.SCAMP]: {
         label: 'Misc',
         icon: 29,
         can_equip_ship_types: [ShipType.CAV, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.AO],
         can_equip_ship_ids: [166, 372, 450, 488, 491, 496, 507, 547, 574, 579, 581, 586, 626, 630, 652, 662, 663, 668, 690, 879, 943, 948],
         can_not_equip_ship_ids: [645, 699],
     },
-    [EquipType.FLYING_BOAT]: {
+    [PlayerEquipType.FLYING_BOAT]: {
         label: 'Recon Seaplane',
         icon: 33,
         can_equip_ship_types: [],
@@ -421,17 +421,17 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_asw_plane: true,
         can_support_asw: true,
     },
-    [EquipType.REPAIR]: {
+    [PlayerEquipType.REPAIR]: {
         label: 'Misc',
         icon: 14,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.SS, ShipType.SSV, ShipType.AS, ShipType.AV, ShipType.AO, ShipType.AR, ShipType.LHA, ShipType.DE],
     },
-    [EquipType.RATION]: {
+    [PlayerEquipType.RATION]: {
         label: 'Misc',
         icon: 34,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.SS, ShipType.SSV, ShipType.AS, ShipType.AV, ShipType.AO, ShipType.AR, ShipType.LHA, ShipType.DE],
     },
-    [EquipType.SEAPLANE_FIGHTER]: {
+    [PlayerEquipType.SEAPLANE_FIGHTER]: {
         label: 'Seaplane Fighter',
         icon: 43,
         can_equip_ship_types: [ShipType.CAV, ShipType.BBV, ShipType.SSV, ShipType.AS, ShipType.AV, ShipType.AO],
@@ -442,7 +442,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_fighter: true,
         can_support_asw: true,
     },
-    [EquipType.LANDING_TANK]: {
+    [PlayerEquipType.LANDING_TANK]: {
         label: 'Misc',
         icon: 36,
         b_type: SkillTriggerEquipType.B_LC3,
@@ -450,13 +450,13 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_ids: [147, 198, 199, 200, 352, 418, 464, 468, 470, 478, 487, 488, 489, 490, 497, 500, 506, 541, 547, 548, 556, 564, 568, 569, 573, 578, 587, 588, 623, 647, 656, 657, 662, 663, 666, 667, 668, 670, 899, 908, 915, 916, 954, 960, 961],
         can_not_equip_ship_ids: [445, 491, 581, 943],
     },
-    [EquipType.OILDRUM]: {
+    [PlayerEquipType.OILDRUM]: {
         label: 'Misc',
         icon: 35,
         can_equip_ship_types: [ShipType.AO],
         can_equip_ship_ids: [943, 948],
     },
-    [EquipType.LAND_BASED_BOMBER]: {
+    [PlayerEquipType.LAND_BASED_BOMBER]: {
         label: 'Misc',
         icon: 37,
         can_equip_ship_types: [],
@@ -466,7 +466,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_torpedo_bomber: true,
         is_land_base_plane: true,
     },
-    [EquipType.INTERCEPTOR]: {
+    [PlayerEquipType.INTERCEPTOR]: {
         label: 'Misc',
         icon: 38,
         can_equip_ship_types: [],
@@ -474,7 +474,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_plane: true,
         is_land_base_plane: true,
     },
-    [EquipType.LAND_BASED_SCOUT]: {
+    [PlayerEquipType.LAND_BASED_SCOUT]: {
         label: 'Misc',
         icon: 9,
         can_equip_ship_types: [],
@@ -482,19 +482,19 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_plane: true,
         can_contact: true,
     },
-    [EquipType.TRANSPORT_ITEM]: {
+    [PlayerEquipType.TRANSPORT_ITEM]: {
         label: 'Transportation Material',
         icon: 41,
         can_equip_ship_types: [ShipType.CAV, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.SSV, ShipType.AV, ShipType.AR, ShipType.LHA],
         can_equip_ship_ids: [500, 530, 539, 605, 645, 650, 699, 717, 731, 900, 939, 940],
         can_not_equip_ship_ids: [502, 507, 621, 626, 916],
     },
-    [EquipType.SUBMARINE_RADAR]: {
+    [PlayerEquipType.SUBMARINE_RADAR]: {
         label: 'Submarine Equipment',
         icon: 42,
         can_equip_ship_types: [ShipType.SS, ShipType.SSV],
     },
-    [EquipType.LAND_BASED_BOMBER_L]: {
+    [PlayerEquipType.LAND_BASED_BOMBER_L]: {
         label: 'Misc',
         icon: 49,
         can_equip_ship_types: [],
@@ -504,7 +504,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_torpedo_bomber: true,
         is_land_base_plane: true,
     },
-    [EquipType.JET_BOMBER]: {
+    [PlayerEquipType.JET_BOMBER]: {
         label: 'Jet Fighter-Bomber',
         icon: 39,
         can_equip_ship_types: [],
@@ -515,25 +515,25 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         is_dive_bomber: true,
         is_jet: true,
     },
-    [EquipType.ARMY_UNIT]: {
+    [PlayerEquipType.ARMY_UNIT]: {
         label: 'Army Unit',
         icon: 52,
         can_equip_ship_types: [],
         can_equip_ship_ids: [727, 945],
     },
-    [EquipType.SMOKESCREEN]: {
+    [PlayerEquipType.SMOKESCREEN]: {
         label: 'Smoke Generator',
         icon: 54,
         can_equip_ship_types: [ShipType.DE, ShipType.DD, ShipType.CL, ShipType.CLT, ShipType.CA, ShipType.CT],
         can_equip_ship_ids: [411, 412, 507, 645, 650, 699],
     },
-    [EquipType.BARRAGE_BALLOON]: {
+    [PlayerEquipType.BARRAGE_BALLOON]: {
         label: 'Barrage Balloon',
         icon: 54,
         can_equip_ship_types: [ShipType.DE, ShipType.DD, ShipType.CL, ShipType.CLT, ShipType.CA, ShipType.CT],
         can_equip_ship_ids: [411, 412, 507, 645, 650, 699],
     },
-    [EquipType.OTHER]: {
+    [PlayerEquipType.OTHER]: {
         label: 'Misc',
         icon: 14,
         can_equip_ship_types: [ShipType.DD, ShipType.CL, ShipType.CT, ShipType.CLT, ShipType.CA, ShipType.CAV, ShipType.FBB, ShipType.BB, ShipType.BBV, ShipType.CVL, ShipType.CV, ShipType.CVB, ShipType.SS, ShipType.SSV, ShipType.AS, ShipType.AV, ShipType.AO, ShipType.AR, ShipType.LHA, ShipType.DE],

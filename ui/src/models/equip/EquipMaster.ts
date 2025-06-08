@@ -1,4 +1,4 @@
-import { EquipType } from "@/datas/equip/base/player";
+import { PlayerEquipType } from "@/datas/equip/base/player";
 import { EquipImprovementType } from "@/datas/equip/improvement";
 import { StatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
@@ -9,7 +9,7 @@ export type EquipMaster = {
     readonly master_id: EquipId,
     readonly name_en: string,
     readonly name_jp: string,
-    readonly type_id: EquipType,
+    readonly type_id: PlayerEquipType,
     readonly improvement_type: EquipImprovementType,
     /** 特殊攻撃のトリガーになる装備の種別ID 該当装備でなければ null */
     readonly skill_trigger_type: SkillTriggerEquipType | null,
@@ -47,7 +47,7 @@ export function deriveEquipMaster(
         torpedo_accuracy: 0,
         night_battle_accuracy: 0,
         aerial_bomb_power: equip_data.AERIAL_BOMB ?? 0,
-        aerial_torpedo_power: equip_data.
+        aerial_torpedo_power: equip_data.AERIAL_TP ?? 0,
     }
 
     const flags: EquipFlags = {

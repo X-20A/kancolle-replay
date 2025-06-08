@@ -1,4 +1,4 @@
-import { EquipType } from "@/datas/equip/base/player"
+import { PlayerEquipType } from "@/datas/equip/base/player"
 import { DeepReadonly, StatusComponentKey } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 
@@ -95,7 +95,7 @@ export type PlayerEquipData = {
     /** 装備名(日) */
     nameJP: string,
     /** 装備種別ID */
-    type: EquipType,
+    type: PlayerEquipType,
     /** 改修種別ID */
     improvement_type: EquipImprovementType,
     /** 対空CIのトリガーになる装備の種別ID */
@@ -120,6 +120,8 @@ export type PlayerEquipData = {
     LOS?: number,
     /** 爆装 */
     AERIAL_BOMB?: number,
+    /** 艦攻雷装 */
+    AERIAL_TP?: number,
     /** 対爆 */
     AB?: number,
     /** 迎撃 */

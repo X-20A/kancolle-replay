@@ -1,5 +1,5 @@
-import { EquipType } from "@/datas/equip/base/player";
-import { EquipBonusType } from "@/types/equip/player";
+import { PlayerEquipType } from "@/datas/equip/base/player";
+import { EquipBonusKey } from "@/types/equip/player";
 import { PlayerShipClass, ShipType as ST } from "@/types/ship/ship";
 
 /** 国籍ID */
@@ -27,7 +27,7 @@ export const enum Country {
 }
 
 export type Bonus = {
-    bonus: Partial<Record<EquipBonusType, number>>,
+    bonus: Partial<Record<EquipBonusKey, number>>,
     /** 艦ID */
     ship_ids?: number[],
     /** 未改造状態での艦ID */
@@ -47,7 +47,7 @@ export type Bonus = {
     /** 必要なシナジー装備の改修値 requires_equip_idを指向 */
     requires_synergy_equip_improvement?: number,
     /** 必要なシナジー装備の種別ID */
-    requires_synergy_equip_type_ids?: EquipType[],
+    requires_synergy_equip_type_ids?: PlayerEquipType[],
     /** 必要改修値 */
     required_improvement?: number,
     /** 水上電探(素索敵5以上)が必要であるか */
@@ -60,13 +60,13 @@ export type Bonus = {
 
 export type EquipBonusData = {
     ids?: number[],
-    types?: EquipType[],
+    types?: PlayerEquipType[],
     bonuses: Bonus[],
 }
 
 export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
     {
-        types: [EquipType.CARRIER_SCOUT],
+        types: [PlayerEquipType.CARRIER_SCOUT],
         bonuses: [
             {
                 bonus: { los: 1 },
@@ -95,7 +95,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEAPLANE],
+        types: [PlayerEquipType.SEAPLANE],
         bonuses: [
             {
                 bonus: { fire_power: 2, asw: 3, evasion: 1 },
@@ -110,7 +110,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEAPLANE_BOMBER],
+        types: [PlayerEquipType.SEAPLANE_BOMBER],
         bonuses: [
             {
                 bonus: { fire_power: 1, asw: 1, evasion: 1 },
@@ -126,7 +126,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.RADAR_S, EquipType.RADAR_L],
+        types: [PlayerEquipType.RADAR_S, PlayerEquipType.RADAR_L],
         bonuses: [
             {
                 bonus: { fire_power: 1, anti_air: 2, evasion: 3 },
@@ -143,7 +143,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.AUTOGYRO],
+        types: [PlayerEquipType.AUTOGYRO],
         bonuses: [
             {
                 bonus: { asw: 4, evasion: 1 },
@@ -158,7 +158,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEARCHLIGHT_S],
+        types: [PlayerEquipType.SEARCHLIGHT_S],
         bonuses: [
             {
                 bonus: { fire_power: 4, evasion: -1 },
@@ -186,7 +186,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEARCHLIGHT_L],
+        types: [PlayerEquipType.SEARCHLIGHT_L],
         bonuses: [
             {
                 bonus: { fire_power: 6, evasion: -2 },

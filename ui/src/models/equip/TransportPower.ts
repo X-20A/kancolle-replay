@@ -1,4 +1,4 @@
-import { EquipType } from "@/datas/equip/base/player";
+import { PlayerEquipType } from "@/datas/equip/base/player";
 import { TransportEquipDatas } from "@/datas/equip/transportEquip";
 import { EquipId } from "@/types/brands/equip";
 import { EquipMaster } from "./EquipMaster";
@@ -12,7 +12,7 @@ export type TransportAddition = {
 const findEquipById = (transport_equip_datas: TransportEquipDatas, id: EquipId) =>
     transport_equip_datas.find(data => data.equip_id === id);
 
-const findEquipByTypeId = (transport_equip_datas: TransportEquipDatas, type_id: EquipType) =>
+const findEquipByTypeId = (transport_equip_datas: TransportEquipDatas, type_id: PlayerEquipType) =>
     transport_equip_datas.find(equip => equip.equip_type_id === type_id);
 
 const calcTransportPowerModelA = (

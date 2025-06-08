@@ -1,8 +1,8 @@
 import { AACITriggerEquipType, EquipDatas as PlayerEquipDatas, SkillTriggerEquipType, SpecialIcon } from "@/types/equip/player";
 import { EquipImprovementType } from "../improvement";
 
-/** 装備種別ID */
-export const enum EquipType {
+/** プレイヤー装備種別ID */
+export const enum PlayerEquipType {
     MAIN_GUN_S = 1,
     MAIN_GUN_S_AA = 101,
     MAIN_GUN_M = 2,
@@ -79,7 +79,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     1: {
         name: '12cm Single Cannon',
         nameJP: '12cm単装砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 1,
         AA: 1,
@@ -88,7 +88,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     2: {
         name: '12.7cm Twin Cannon',
         nameJP: '12.7cm連装砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 2,
         AA: 2,
@@ -97,7 +97,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     3: {
         name: '10cm Twin High-Angle Cannon',
         nameJP: '10cm連装高角砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -107,7 +107,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     4: {
         name: '14cm Single Cannon',
         nameJP: '14cm単装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 101,
         FP: 2,
@@ -117,7 +117,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     5: {
         name: '15.5cm Triple Cannon',
         nameJP: '15.5cm三連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 7,
         AA: 4,
@@ -127,7 +127,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     6: {
         name: '20.3cm Twin Cannon',
         nameJP: '20.3cm連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 8,
         AA: 3,
@@ -137,7 +137,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     7: {
         name: '35.6cm Twin Cannon',
         nameJP: '35.6cm連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 15,
@@ -147,7 +147,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     8: {
         name: '41cm Twin Cannon',
         nameJP: '41cm連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 3,
         FP: 20,
@@ -157,7 +157,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     9: {
         name: '46cm Triple Cannon',
         nameJP: '46cm三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         a_type: AACITriggerEquipType.A_XLGUN,
         fit_class: 5,
@@ -168,7 +168,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     10: {
         name: '12.7cm Twin High-Angle Cannon',
         nameJP: '12.7cm連装高角砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -179,7 +179,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     11: {
         name: '15.2cm Single Cannon',
         nameJP: '15.2cm単装砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         fit_class: 101,
         FP: 2,
@@ -189,7 +189,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     12: {
         name: '15.5cm Triple Secondary Cannon',
         nameJP: '15.5cm三連装副砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         FP: 7,
         AA: 3,
@@ -199,7 +199,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     13: {
         name: '61cm Triple Torpedo',
         nameJP: '61cm三連装魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 5,
         RNG: 1
@@ -207,7 +207,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     14: {
         name: '61cm Quad Torpedo',
         nameJP: '61cm四連装魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 7,
         RNG: 1
@@ -215,7 +215,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     15: {
         name: '61cm Quad (Oxygen) Torpedo',
         nameJP: '61cm四連装(酸素)魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 10,
         RNG: 1
@@ -223,27 +223,27 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     16: {
         name: 'Type 97 Torpedo Bomber',
         nameJP: '九七式艦攻',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 5,
+        AERIAL_TP: 5,
         ASW: 4,
         LOS: 1
     },
     17: {
         name: 'Tenzan',
         nameJP: '天山',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 7,
+        AERIAL_TP: 7,
         ASW: 3,
         LOS: 1
     },
     18: {
         name: 'Ryuusei',
         nameJP: '流星',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 10,
+        AERIAL_TP: 10,
         AA: 1,
         ASW: 4,
         LOS: 1
@@ -251,7 +251,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     19: {
         name: 'Type 96 Fighter',
         nameJP: '九六式艦戦',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 3,
         EV: 1,
@@ -259,28 +259,28 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     20: {
         name: 'Type 21 Zero Fighter',
         nameJP: '零式艦戦21型',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 5
     },
     21: {
         name: 'Type 52 Zero Fighter',
         nameJP: '零式艦戦52型',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 6
     },
     22: {
         name: 'Prototype Reppuu Late Model',
         nameJP: '試製烈風 前期型',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 10
     },
     23: {
         name: 'Type 99 Bomber',
         nameJP: '九九式艦爆',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         ASW: 3,
         AERIAL_BOMB: 5
@@ -288,7 +288,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     24: {
         name: 'Suisei',
         nameJP: '彗星',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         ASW: 3,
         AERIAL_BOMB: 8
@@ -296,7 +296,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     25: {
         name: 'Type 0 Recon Seaplane',
         nameJP: '零式水上偵察機',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AA: 1,
         ASW: 2,
@@ -307,7 +307,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     26: {
         name: 'Zuiun',
         nameJP: '瑞雲',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA: 2,
         ASW: 4,
@@ -318,7 +318,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     27: {
         name: 'Type 13 Air RADAR',
         nameJP: '13号対空電探',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_A,
         AA: 2,
         LOS: 3,
@@ -327,7 +327,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     28: {
         name: 'Type 22 Surface RADAR',
         nameJP: '22号対水上電探',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_B,
         LOS: 5,
         ACC: 3
@@ -335,7 +335,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     29: {
         name: 'Type 33 Surface RADAR',
         nameJP: '33号対水上電探',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_B,
         LOS: 7,
         ACC: 5
@@ -343,7 +343,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     30: {
         name: 'Type 21 Air RADAR',
         nameJP: '21号対空電探',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 4,
         LOS: 4,
@@ -352,7 +352,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     31: {
         name: 'Type 32 Surface RADAR',
         nameJP: '32号対水上電探',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         LOS: 10,
         ACC: 8
@@ -360,7 +360,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     32: {
         name: 'Type 42 Air RADAR',
         nameJP: '42号対空電探',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 6,
         LOS: 5,
@@ -369,28 +369,28 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     33: {
         name: 'Improved Steam Turbine',
         nameJP: '改良型艦本式タービン',
-        type: EquipType.ENGINE,
+        type: PlayerEquipType.ENGINE,
         improvement_type: EquipImprovementType.ENGINE,
         EV: 6
     },
     34: {
         name: 'Enhanced Steam Boiler',
         nameJP: '強化型艦本式缶',
-        type: EquipType.ENGINE,
+        type: PlayerEquipType.ENGINE,
         improvement_type: EquipImprovementType.ENGINE,
         EV: 10
     },
     35: {
         name: 'Type 3 Shell',
         nameJP: '三式弾',
-        type: EquipType.TYPE_3_SHELL,
+        type: PlayerEquipType.TYPE_3_SHELL,
         improvement_type: EquipImprovementType.TYPE_3_SHELL,
         AA: 5
     },
     36: {
         name: 'Type 91 AP Shell',
         nameJP: '九一式徹甲弾',
-        type: EquipType.AP_SHELL,
+        type: PlayerEquipType.AP_SHELL,
         improvement_type: EquipImprovementType.AP_SHELL,
         FP: 8,
         ACC: 1
@@ -398,7 +398,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     37: {
         name: '7.7mm Gun',
         nameJP: '7.7mm機銃',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 2,
         EV: 1
@@ -406,7 +406,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     38: {
         name: '12.7mm Gun',
         nameJP: '12.7mm単装機銃',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 3,
         EV: 1
@@ -414,7 +414,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     39: {
         name: '25mm Dual Gun',
         nameJP: '25mm連装機銃',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 5,
         EV: 1
@@ -422,7 +422,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     40: {
         name: '25mm Triple Gun',
         nameJP: '25mm三連装機銃',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 6,
         EV: 1
@@ -430,26 +430,26 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     41: {
         name: 'Type A Ko-hyoteki',
         nameJP: '甲標的 甲型',
-        type: EquipType.MIDGET_SUBMARINE,
+        type: PlayerEquipType.MIDGET_SUBMARINE,
         improvement_type: EquipImprovementType.MIDGET_SUBMARINE,
         TP: 12
     },
     42: {
         name: 'Repair Team',
         nameJP: '応急修理要員',
-        type: EquipType.REPAIR,
+        type: PlayerEquipType.REPAIR,
         improvement_type: EquipImprovementType.REPAIR,
     },
     43: {
         name: 'Repair Goddess',
         nameJP: '応急修理女神',
-        type: EquipType.REPAIR,
+        type: PlayerEquipType.REPAIR,
         improvement_type: EquipImprovementType.REPAIR,
     },
     44: {
         name: 'Type 94 Depth Charge Projector',
         nameJP: '九四式爆雷投射機',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DCP: true,
         ASW: 5
@@ -457,7 +457,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     45: {
         name: 'Type 3 Depth Charge Projector',
         nameJP: '三式爆雷投射機',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DCP: true,
         ASW: 8
@@ -465,7 +465,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     46: {
         name: 'Type 93 SONAR',
         nameJP: '九三式水中聴音機',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         ASW: 6,
         ACC: 1
@@ -473,7 +473,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     47: {
         name: 'Type 3 SONAR',
         nameJP: '三式水中探信儀',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         ASW: 10,
         ACC: 2
@@ -481,7 +481,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     48: {
         name: '12cm Single High-Angle Cannon',
         nameJP: '12cm単装高角砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -491,7 +491,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     49: {
         name: '25mm Single Gun',
         nameJP: '25mm単装機銃',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 4,
         EV: 1
@@ -499,7 +499,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     50: {
         name: '20.3cm(no.3) Dual Cannon',
         nameJP: '20.3cm(3号)連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 10,
         AA: 4,
@@ -510,16 +510,16 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     51: {
         name: '12cm 30-tube Rocket Launcher',
         nameJP: '12cm30連装噴進砲',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 8
     },
     52: {
         name: 'Ryuusei Kai',
         nameJP: '流星改',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 13,
+        AERIAL_TP: 13,
         AA: 1,
         ASW: 3,
         LOS: 2
@@ -527,14 +527,14 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     53: {
         name: 'Reppuu Model 11',
         nameJP: '烈風 一一型',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 12
     },
     54: {
         name: 'Saiun',
         nameJP: '彩雲',
-        type: EquipType.CARRIER_SCOUT,
+        type: PlayerEquipType.CARRIER_SCOUT,
         improvement_type: EquipImprovementType.CARRIER_SCOUT,
         can_avoid_T_disadvantage: true,
         LOS: 9,
@@ -543,7 +543,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     55: {
         name: 'Shiden Kai 2',
         nameJP: '紫電改二',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 9,
         EV: 3
@@ -551,14 +551,14 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     56: {
         name: 'Shinden Kai',
         nameJP: '震電改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 15
     },
     57: {
         name: 'Suisei Model 12A',
         nameJP: '彗星一二型甲',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         ASW: 3,
         LOS: 1,
@@ -567,7 +567,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     58: {
         name: '61cm Quintuple (Oxygen) Torpedo',
         nameJP: '61cm五連装(酸素)魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 12,
         RNG: 1,
@@ -576,7 +576,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     59: {
         name: 'Type 0 Observation Seaplane',
         nameJP: '零式水上観測機',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AA: 2,
         ASW: 4,
@@ -587,7 +587,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     60: {
         name: 'Type 62 Zero Fighter-Bomber',
         nameJP: '零式艦戦62型(爆戦)',
-        type: EquipType.FIGHTER_BOMBER,
+        type: PlayerEquipType.FIGHTER_BOMBER,
         improvement_type: EquipImprovementType.FIGHTER_BOMBER,
         AA: 4,
         ASW: 3,
@@ -596,7 +596,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     61: {
         name: 'Type 2 Recon Plane',
         nameJP: '二式艦上偵察機',
-        type: EquipType.CARRIER_SCOUT,
+        type: PlayerEquipType.CARRIER_SCOUT,
         improvement_type: EquipImprovementType.CARRIER_SCOUT,
         AA: 1,
         LOS: 7,
@@ -605,7 +605,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     62: {
         name: 'Prototype Seiran',
         nameJP: '試製晴嵐',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         ASW: 6,
         LOS: 6,
@@ -615,7 +615,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     63: {
         name: '12.7cm Twin Cannon B',
         nameJP: '12.7cm連装砲B型改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
@@ -624,7 +624,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     64: {
         name: 'Ju 87C Kai',
         nameJP: 'Ju87C改',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         ASW: 5,
@@ -634,7 +634,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     65: {
         name: '15.2cm Twin Cannon',
         nameJP: '15.2cm連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
@@ -645,7 +645,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     66: {
         name: '8cm High-Angle Cannon',
         nameJP: '8cm高角砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -656,7 +656,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     67: {
         name: '53cm Hull-mount (Oxygen) Torpedo',
         nameJP: '53cm艦首(酸素)魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 15,
         RNG: 1,
@@ -665,13 +665,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     68: {
         name: 'Daihatsu-Class Landing Craft',
         nameJP: '大発動艇',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
     },
     69: {
         name: 'Type Ka Liaison Aircraft',
         nameJP: 'カ号観測機',
-        type: EquipType.AUTOGYRO,
+        type: PlayerEquipType.AUTOGYRO,
         improvement_type: EquipImprovementType.AUTOGYRO_LOW,
         ASW: 9,
         ACC: 1
@@ -679,7 +679,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     70: {
         name: 'Type 3 Liaison Aircraft',
         nameJP: '三式指揮連絡機(対潜)',
-        type: EquipType.ASW_PLANE,
+        type: PlayerEquipType.ASW_PLANE,
         improvement_type: EquipImprovementType.ASW_PLANE_LOW,
         ASW: 7,
         LOS: 1,
@@ -688,7 +688,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     71: {
         name: '10cm Twin High-Angle Cannon(Late Model)',
         nameJP: '10cm連装高角砲(砲架)',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -699,7 +699,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     72: {
         name: 'Anti-Torpedo Bulge (M)',
         nameJP: '増設バルジ(中型艦)',
-        type: EquipType.BULGE_M,
+        type: PlayerEquipType.BULGE_M,
         improvement_type: EquipImprovementType.BULGE_M,
         AR: 7,
         EV: -2
@@ -707,7 +707,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     73: {
         name: 'Anti-Torpedo Bulge (L)',
         nameJP: '増設バルジ(大型艦)',
-        type: EquipType.BULGE_L,
+        type: PlayerEquipType.BULGE_L,
         improvement_type: EquipImprovementType.BULGE_L,
         AR: 9,
         EV: -3
@@ -715,20 +715,20 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     74: {
         name: 'Searchlight',
         nameJP: '探照灯',
-        type: EquipType.SEARCHLIGHT_S,
+        type: PlayerEquipType.SEARCHLIGHT_S,
         improvement_type: EquipImprovementType.SEARCHLIGHT_S,
         LOS: 2
     },
     75: {
         name: 'Drum (Transport)',
         nameJP: 'ドラム缶(輸送用)',
-        type: EquipType.DRUM,
+        type: PlayerEquipType.DRUM,
         improvement_type: EquipImprovementType.DRUM,
     },
     76: {
         name: '38cm Twin Gun Mount',
         nameJP: '38cm連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 16,
@@ -739,7 +739,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     77: {
         name: '15cm Twin Gun Mount',
         nameJP: '15cm連装副砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         FP: 4,
         AA: 2,
@@ -749,7 +749,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     78: {
         name: '12.7cm Naval Gun',
         nameJP: '12.7cm単装砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 2,
         RNG: 1,
@@ -758,7 +758,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     79: {
         name: 'Zuiun(634)',
         nameJP: '瑞雲(六三四空)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA: 2,
@@ -770,7 +770,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     80: {
         name: 'Zuiun Model 12',
         nameJP: '瑞雲12型',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA: 3,
@@ -782,7 +782,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     81: {
         name: 'Zuiun Model 12(634)',
         nameJP: '瑞雲12型(六三四空)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -795,25 +795,25 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     82: {
         name: 'Type 97 Torpedo Bomber(931)',
         nameJP: '九七式艦攻(九三一空)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 6,
+        AERIAL_TP: 6,
         ASW: 7,
         LOS: 2
     },
     83: {
         name: 'Tenzan(931)',
         nameJP: '天山(九三一空)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 9,
+        AERIAL_TP: 9,
         ASW: 8,
         LOS: 2
     },
     84: {
         name: '2cm Flakvierling 38',
         nameJP: '2cm 四連装FlaK 38',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 7,
         ACC: 1
@@ -821,7 +821,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     85: {
         name: '3.7cm FlaK M42',
         nameJP: '3.7cm FlaK M42',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         FP: 1,
         AA: 8,
@@ -830,20 +830,20 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     86: {
         name: 'Ship Repair Facility',
         nameJP: '艦艇修理施設',
-        type: EquipType.SRF,
+        type: PlayerEquipType.SRF,
         improvement_type: EquipImprovementType.SRF,
     },
     87: {
         name: 'New High Pressure-Temperature Steam Boiler',
         nameJP: '新型高温高圧缶',
-        type: EquipType.ENGINE,
+        type: PlayerEquipType.ENGINE,
         improvement_type: EquipImprovementType.ENGINE,
         EV: 13
     },
     88: {
         name: 'Type 22 Surface RADAR Kai 4',
         nameJP: '22号対水上電探改四',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_B,
         ASW: 2,
         LOS: 5,
@@ -852,7 +852,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     89: {
         name: 'Type 21 Air RADAR Kai',
         nameJP: '21号対空電探改',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 5,
         LOS: 6,
@@ -862,7 +862,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     90: {
         name: '20.3cm(no.2) Twin Gun Mount',
         nameJP: '20.3cm(2号)連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 9,
         AA: 3,
@@ -873,7 +873,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     91: {
         name: '12.7cm Twin High-Angle Mount (Late Model)',
         nameJP: '12.7cm連装高角砲(後期型)',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -886,7 +886,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     92: {
         name: 'HI-type 40mm Twin Machine Gun',
         nameJP: '毘式40mm連装機銃',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 6,
         EV: 1
@@ -894,10 +894,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     93: {
         name: 'Type 97 Torpedo Bomber(Tomonaga)',
         nameJP: '九七式艦攻(友永隊)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 11,
+        AERIAL_TP: 11,
         AA: 1,
         ASW: 5,
         LOS: 4,
@@ -906,10 +906,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     94: {
         name: 'Tenzan Model 12(Tomonaga)',
         nameJP: '天山一二型(友永隊)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 14,
+        AERIAL_TP: 14,
         AA: 1,
         ASW: 6,
         LOS: 5,
@@ -918,7 +918,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     95: {
         name: '53cm Submarine Bow Torpedo Mount (8 tubes)',
         nameJP: '潜水艦53cm艦首魚雷(8門)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         TP: 16,
         RNG: 1,
@@ -927,7 +927,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     96: {
         name: 'Type 21 Zero Fighter (Skilled)',
         nameJP: '零式艦戦21型(熟練)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 8,
         LOS: 1,
@@ -937,7 +937,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     97: {
         name: 'Type 99 Bomber(Skilled)',
         nameJP: '九九式艦爆(熟練)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AA: 1,
         ASW: 4,
@@ -948,9 +948,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     98: {
         name: 'Type 97 Torpedo Bomber(Skilled)',
         nameJP: '九七式艦攻(熟練)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 8,
+        AERIAL_TP: 8,
         ASW: 5,
         LOS: 2,
         ACC: 2
@@ -958,7 +958,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     99: {
         name: 'Type 99 Bomber(Egusa)',
         nameJP: '九九式艦爆(江草隊)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AA_resist_ship: .6,
         ASW: 5,
@@ -969,7 +969,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     100: {
         name: 'Suisei(Egusa)',
         nameJP: '彗星(江草隊)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -982,13 +982,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     101: {
         name: 'Star Shell',
         nameJP: '照明弾',
-        type: EquipType.STARSHELL,
+        type: PlayerEquipType.STARSHELL,
         improvement_type: EquipImprovementType.STARSHELL,
     },
     102: {
         name: 'Type 98 Recon Seaplane (Night Scout)',
         nameJP: '九八式水上偵察機(夜偵)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -999,7 +999,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     103: {
         name: 'Prototype 35.6cm Triple Gun Mount',
         nameJP: '試製35.6cm三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 18,
@@ -1010,7 +1010,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     104: {
         name: '35.6cm Twin Gun Mount (Dazzle Camouflage)',
         nameJP: '35.6cm連装砲(ダズル迷彩)',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 15,
@@ -1022,7 +1022,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     105: {
         name: 'Prototype 41cm Triple Cannon',
         nameJP: '試製41cm三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 3,
         FP: 22,
@@ -1033,7 +1033,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     106: {
         name: 'Type 13 Air RADAR Kai',
         nameJP: '13号対空電探改',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_A,
         AA: 4,
         LOS: 4,
@@ -1043,7 +1043,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     107: {
         name: 'Fleet Command Facility',
         nameJP: '艦隊司令部施設',
-        type: EquipType.FCF,
+        type: PlayerEquipType.FCF,
         improvement_type: EquipImprovementType.FCF,
         AA: 1,
         LOS: 1,
@@ -1053,7 +1053,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     108: {
         name: 'Skilled Carrier-based Aircraft Maintenance Personnel',
         nameJP: '熟練艦載機整備員',
-        type: EquipType.SCAMP,
+        type: PlayerEquipType.SCAMP,
         improvement_type: EquipImprovementType.SCAMP,
         FP: 10,
         AA: 1,
@@ -1064,7 +1064,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     109: {
         name: 'Zero Fighter Type 52 Type C (601 Air Group)',
         nameJP: '零戦52型丙(六〇一空)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 9,
         EV: 1,
@@ -1073,7 +1073,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     110: {
         name: 'Reppuu(601)',
         nameJP: '烈風(六〇一空)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 11,
         EV: 2,
@@ -1082,7 +1082,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     111: {
         name: 'Suisei (601 Air Group)',
         nameJP: '彗星(六〇一空)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         ASW: 4,
         LOS: 1,
@@ -1092,9 +1092,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     112: {
         name: 'Tenzan(601)',
         nameJP: '天山(六〇一空)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 10,
+        AERIAL_TP: 10,
         ASW: 4,
         LOS: 2,
         ACC: 1
@@ -1102,9 +1102,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     113: {
         name: 'Ryuusei(601)',
         nameJP: '流星(六〇一空)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 13,
+        AERIAL_TP: 13,
         ASW: 5,
         LOS: 3,
         ACC: 1
@@ -1112,7 +1112,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     114: {
         name: '38cm Twin Gun Mount Kai',
         nameJP: '38cm連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 17,
@@ -1123,7 +1123,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     115: {
         name: 'Ar196 Kai',
         nameJP: 'Ar196改',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AA: 1,
         ASW: 5,
@@ -1134,7 +1134,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     116: {
         name: 'Type 1 AP Shell',
         nameJP: '一式徹甲弾',
-        type: EquipType.AP_SHELL,
+        type: PlayerEquipType.AP_SHELL,
         improvement_type: EquipImprovementType.AP_SHELL,
         FP: 9,
         ACC: 2
@@ -1142,7 +1142,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     117: {
         name: 'Prototype 46cm Twin Gun Mount',
         nameJP: '試製46cm連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 4,
         FP: 23,
@@ -1153,7 +1153,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     118: {
         name: 'Shiun',
         nameJP: '紫雲',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         ASW: 2,
         LOS: 8,
@@ -1163,7 +1163,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     119: {
         name: '14cm Twin Gun Mount',
         nameJP: '14cm連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 4,
@@ -1173,7 +1173,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     120: {
         name: 'Type 91 Anti-Aircraft Fire Director',
         nameJP: '91式高射装置',
-        type: EquipType.ANTI_AIR_FIRE_DIRECTOR,
+        type: PlayerEquipType.ANTI_AIR_FIRE_DIRECTOR,
         improvement_type: EquipImprovementType.ANTI_AIR_FIRE_DIRECTOR,
         AA: 2,
         EV: 1
@@ -1181,7 +1181,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     121: {
         name: 'Type 94 Anti-Aircraft Fire Director',
         nameJP: '94式高射装置',
-        type: EquipType.ANTI_AIR_FIRE_DIRECTOR,
+        type: PlayerEquipType.ANTI_AIR_FIRE_DIRECTOR,
         improvement_type: EquipImprovementType.ANTI_AIR_FIRE_DIRECTOR,
         AA: 3,
         EV: 1
@@ -1189,7 +1189,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     122: {
         name: '10cm Twin High-Angle Cannon+FD',
         nameJP: '10cm連装高角砲+高射装置',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -1201,7 +1201,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     123: {
         name: 'SKC34 20.3cm Twin Cannon',
         nameJP: 'SKC34 20.3cm連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 10,
         AA: 2,
@@ -1211,7 +1211,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     124: {
         name: 'FuMO25 Radar',
         nameJP: 'FuMO25 レーダー',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         FP: 3,
         AA: 7,
@@ -1221,7 +1221,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     125: {
         name: '61cm Triple (Oxygen) Torpedo Mount',
         nameJP: '61cm三連装(酸素)魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 8,
         AR: 1,
@@ -1231,7 +1231,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     126: {
         name: 'WG42 (Wurfgerat 42)',
         nameJP: 'WG42 (Wurfgerät 42)',
-        type: EquipType.WG42,
+        type: PlayerEquipType.WG42,
         improvement_type: EquipImprovementType.WG42,
         FP: 1,
         AR: -1,
@@ -1240,7 +1240,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     127: {
         name: 'Prototype FaT Type 95 Oxygen Torpedo Kai',
         nameJP: '試製FaT仕様九五式酸素魚雷改',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         TP: 14,
         EV: 2,
@@ -1250,7 +1250,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     128: {
         name: 'Prototype 51cm Twin Cannon',
         nameJP: '試製51cm連装砲',
-        type: EquipType.MAIN_GUN_XL,
+        type: PlayerEquipType.MAIN_GUN_XL,
         improvement_type: EquipImprovementType.MAIN_GUN_XL,
         fit_class: 7,
         FP: 30,
@@ -1262,7 +1262,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     129: {
         name: 'Skilled Lookouts',
         nameJP: '熟練見張員',
-        type: EquipType.PICKET,
+        type: PlayerEquipType.PICKET,
         improvement_type: EquipImprovementType.PICKET,
         AA: 1,
         LOS: 2,
@@ -1272,7 +1272,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     130: {
         name: '12.7cm Twin High-angle Mount + Type 94 Anti-Aircraft Fire Director',
         nameJP: '12.7cm高角砲+高射装置',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -1284,7 +1284,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     131: {
         name: '25mm Triple Autocannon Mount (Concentrated Deployment)',
         nameJP: '25mm三連装機銃 集中配備',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         is_concentrated: true,
         AA: 9,
@@ -1293,7 +1293,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     132: {
         name: 'Type 0 Passive Sonar',
         nameJP: '零式水中聴音機',
-        type: EquipType.SONAR_L,
+        type: PlayerEquipType.SONAR_L,
         improvement_type: EquipImprovementType.SONAR_L,
         ASW: 11,
         LOS: 1,
@@ -1303,7 +1303,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     133: {
         name: '381mm / 50 Triple Gun Mount',
         nameJP: '381mm/50 三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 2,
         FP: 20,
@@ -1315,7 +1315,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     134: {
         name: 'OTO 152mm Triple Rapid Fire Gun Mount',
         nameJP: 'OTO 152mm三連装速射砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         FP: 8,
         AA: 2,
@@ -1326,7 +1326,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     135: {
         name: '90mm Single High-angle Gun Mount',
         nameJP: '90mm単装高角砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -1337,7 +1337,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     136: {
         name: 'Pugliese Underwater Protection Bulkhead',
         nameJP: 'プリエーゼ式水中防御隔壁',
-        type: EquipType.BULGE_L,
+        type: PlayerEquipType.BULGE_L,
         improvement_type: EquipImprovementType.BULGE_L,
         AR: 7,
         EV: -1
@@ -1345,7 +1345,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     137: {
         name: '381mm/50 Triple Gun Mount Kai',
         nameJP: '381mm/50 三連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 2,
         FP: 21,
@@ -1357,7 +1357,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     138: {
         name: 'Type 2 Large-sized Flying Boat',
         nameJP: '二式大艇',
-        type: EquipType.FLYING_BOAT,
+        type: PlayerEquipType.FLYING_BOAT,
         improvement_type: EquipImprovementType.FLYING_BOAT,
         ASW: 1,
         LOS: 12,
@@ -1366,7 +1366,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     139: {
         name: '15.2cm Twin Cannon Kai',
         nameJP: '15.2cm連装砲改',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 6,
@@ -1377,7 +1377,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     140: {
         name: 'Type 96 150cm Searchlight',
         nameJP: '96式150cm探照灯',
-        type: EquipType.SEARCHLIGHT_L,
+        type: PlayerEquipType.SEARCHLIGHT_L,
         improvement_type: EquipImprovementType.SEARCHLIGHT_L,
         AA: 1,
         LOS: 3
@@ -1385,7 +1385,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     141: {
         name: 'Type 32 Surface RADAR Kai',
         nameJP: '32号対水上電探改',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         LOS: 11,
         ACC: 9
@@ -1393,7 +1393,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     142: {
         name: '15m Duplex Rangefinder + Type 21 Air Radar Kai2',
         nameJP: '15m二重測距儀+21号電探改二',
-        type: EquipType.RADAR_XL,
+        type: PlayerEquipType.RADAR_XL,
         improvement_type: EquipImprovementType.RADAR_XL,
         FP: 1,
         AA: 8,
@@ -1405,10 +1405,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     143: {
         name: 'Type 97 Torpedo Bomber(Murata)',
         nameJP: '九七式艦攻(村田隊)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 12,
+        AERIAL_TP: 12,
         AA: 1,
         ASW: 5,
         LOS: 4,
@@ -1417,10 +1417,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     144: {
         name: 'Tenzan Model 12(Murata)',
         nameJP: '天山一二型(村田隊)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 15,
+        AERIAL_TP: 15,
         AA: 1,
         ASW: 6,
         LOS: 4,
@@ -1429,20 +1429,20 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     145: {
         name: 'Combat Provisions',
         nameJP: '戦闘糧食',
-        type: EquipType.RATION,
+        type: PlayerEquipType.RATION,
         improvement_type: EquipImprovementType.RATION,
     },
     146: {
         name: 'Underway Replenishment',
         nameJP: '洋上補給',
-        type: EquipType.OILDRUM,
+        type: PlayerEquipType.OILDRUM,
         improvement_type: EquipImprovementType.OILDRUM,
         AR: -2
     },
     147: {
         name: '120mm/50 Twin Gun Mount',
         nameJP: '120mm/50 連装砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
@@ -1452,7 +1452,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     148: {
         name: 'Prototype Nanzan',
         nameJP: '試製南山',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AA: 1,
@@ -1463,7 +1463,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     149: {
         name: 'Type 4 Passive Sonar',
         nameJP: '四式水中聴音機',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         AR: 1,
         ASW: 12,
@@ -1472,13 +1472,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     150: {
         name: 'Canned Saury',
         nameJP: '秋刀魚の缶詰',
-        type: EquipType.RATION,
+        type: PlayerEquipType.RATION,
         improvement_type: EquipImprovementType.RATION,
     },
     151: {
         name: 'Prototype Keiun',
         nameJP: '試製景雲(艦偵型)',
-        type: EquipType.CARRIER_SCOUT_2,
+        type: PlayerEquipType.CARRIER_SCOUT_2,
         improvement_type: EquipImprovementType.CARRIER_SCOUT_2,
         FP: 2,
         ACC: 2,
@@ -1487,7 +1487,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     152: {
         name: 'Type 52 Zero Fighter (Skilled)',
         nameJP: '零式艦戦52型(熟練)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 9,
         ACC: 1,
@@ -1497,7 +1497,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     153: {
         name: 'Type 52 Model C (Iwai Squadron)',
         nameJP: '零戦52型丙(付岩井小隊)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 10,
         ACC: 1,
@@ -1507,7 +1507,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     154: {
         name: 'Type 62 Zero Fighter-Bomber (Iwai Corps)',
         nameJP: '零戦62型(爆戦/岩井隊)',
-        type: EquipType.FIGHTER_BOMBER,
+        type: PlayerEquipType.FIGHTER_BOMBER,
         improvement_type: EquipImprovementType.FIGHTER_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         AA_resist_ship: .6,
@@ -1522,7 +1522,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     155: {
         name: 'Type 21 Zero Fighter (Iwamoto Squadron)',
         nameJP: '零戦21型(付岩本小隊)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 9,
         ACC: 1,
@@ -1532,7 +1532,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     156: {
         name: 'Type 52 Model A (Iwamoto Squadron)',
         nameJP: '零戦52型甲(付岩本小隊)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 11,
         ACC: 1,
@@ -1542,7 +1542,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     157: {
         name: 'Type 53 Zero Fighter (Iwamoto Corps)',
         nameJP: '零式艦戦53型(岩本隊)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 12,
         ACC: 2,
@@ -1552,7 +1552,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     158: {
         name: 'Bf 109T Kai',
         nameJP: 'Bf109T改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 8,
         FP: 1,
@@ -1561,7 +1561,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     159: {
         name: 'Fw 190T Kai',
         nameJP: 'Fw190T改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 10,
         FP: 2,
@@ -1570,7 +1570,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     160: {
         name: '10.5cm Twin Gun Mount',
         nameJP: '10.5cm連装砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -1582,7 +1582,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     161: {
         name: '16inch Triple Gun Mount Mk.7',
         nameJP: '16inch三連装砲 Mk.7',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 6,
         FP: 24,
@@ -1594,7 +1594,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     162: {
         name: '203mm/53 Twin Gun Mount',
         nameJP: '203mm/53 連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 9,
         AA: 1,
@@ -1604,7 +1604,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     163: {
         name: 'Ro.43 Recon Seaplane',
         nameJP: 'Ro.43水偵',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         FP: 1,
         AA: 1,
@@ -1616,7 +1616,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     164: {
         name: 'Ro.44 Seaplane Fighter',
         nameJP: 'Ro.44水上戦闘機',
-        type: EquipType.SEAPLANE_FIGHTER,
+        type: PlayerEquipType.SEAPLANE_FIGHTER,
         improvement_type: EquipImprovementType.SEAPLANE_FIGHTER,
         AA: 2,
         ASW: 1,
@@ -1627,7 +1627,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     165: {
         name: 'Type 2 Seaplane Fighter Kai',
         nameJP: '二式水戦改',
-        type: EquipType.SEAPLANE_FIGHTER,
+        type: PlayerEquipType.SEAPLANE_FIGHTER,
         improvement_type: EquipImprovementType.SEAPLANE_FIGHTER,
         AA: 3,
         ASW: 1,
@@ -1638,20 +1638,20 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     166: {
         name: 'Daihatsu Landing Craft (Type 89 Medium Tank & Landing Force)',
         nameJP: '大発動艇(八九式中戦車&陸戦隊)',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         b_type: SkillTriggerEquipType.B_LC2,
     },
     167: {
         name: 'Special Type 2 Amphibious Landing Craft',
         nameJP: '特二式内火艇',
-        type: EquipType.LANDING_TANK,
+        type: PlayerEquipType.LANDING_TANK,
         improvement_type: EquipImprovementType.LANDING_TANK,
     },
     171: {
         name: 'OS2U',
         nameJP: 'OS2U',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AERIAL_BOMB: 1,
         AA: 1,
@@ -1663,7 +1663,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     172: {
         name: '5inch Twin Gun Mount Mk.28 mod.2',
         nameJP: '5inch連装砲 Mk.28 mod.2',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 4,
@@ -1676,7 +1676,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     173: {
         name: 'Bofors 40mm Quadruple Autocannon Mount',
         nameJP: 'Bofors 40mm四連装機関砲',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         is_concentrated: true,
         FP: 1,
@@ -1688,7 +1688,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     174: {
         name: '53cm Twin Torpedo Mount',
         nameJP: '53cm連装魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 3,
         EV: 2,
@@ -1697,7 +1697,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     178: {
         name: 'PBY-5A Catalina',
         nameJP: 'PBY-5A Catalina',
-        type: EquipType.FLYING_BOAT,
+        type: PlayerEquipType.FLYING_BOAT,
         improvement_type: EquipImprovementType.FLYING_BOAT,
         ASW: 2,
         ACC: 2,
@@ -1706,7 +1706,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     179: {
         name: 'Prototype 61cm Sextuple (Oxygen) Torpedo Mount',
         nameJP: '試製61cm六連装(酸素)魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 14,
         ACC: 2,
@@ -1715,7 +1715,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     181: {
         name: 'Type 0 Fighter Model 32',
         nameJP: '零式艦戦32型',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 5,
         EV: 2,
@@ -1723,7 +1723,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     182: {
         name: 'Type 0 Fighter Model 32 (Skilled)',
         nameJP: '零式艦戦32型(熟練)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 8,
         ACC: 1,
@@ -1732,7 +1732,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     183: {
         name: '16inch Triple Gun Mount Mk.7 + GFCS',
         nameJP: '16inch三連装砲 Mk.7+GFCS',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 6,
         FP: 24,
@@ -1745,7 +1745,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     184: {
         name: 'Re.2001 OR Kai',
         nameJP: 'Re.2001 OR改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 3,
         AA: 6,
@@ -1754,17 +1754,17 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     188: {
         name: 'Re.2001 G Kai',
         nameJP: 'Re.2001 G改',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         FP: 3,
-        TP: 4,
+        AERIAL_TP: 4,
         AA: 4,
         EV: 2,
     },
     189: {
         name: 'Re.2005 Kai',
         nameJP: 'Re.2005 改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 11,
@@ -1773,7 +1773,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     190: {
         name: '38.1cm Mk.I Twin Gun Mount',
         nameJP: '38.1cm Mk.I連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 18,
@@ -1784,7 +1784,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     191: {
         name: 'QF 2-pounder Octuple Pom-pom Gun Mount',
         nameJP: 'QF 2ポンド8連装ポンポン砲',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         is_concentrated: true,
         FP: 1,
@@ -1793,7 +1793,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     192: {
         name: '38.1cm Mk.I/N Twin Gun Mount Kai',
         nameJP: '38.1cm Mk.I/N連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 19,
@@ -1804,13 +1804,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     193: {
         name: 'Toku Daihatsu Landing Craft',
         nameJP: '特大発動艇',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
     },
     194: {
         name: 'Laté 298B',
         nameJP: 'Laté 298B',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         FP: 2,
         AERIAL_BOMB: 5,
@@ -1823,7 +1823,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     195: {
         name: 'SBD',
         nameJP: 'SBD',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         FP: 1,
         AERIAL_BOMB: 6,
@@ -1836,17 +1836,17 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     196: {
         name: 'TBD',
         nameJP: 'TBD',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         FP: 1,
-        TP: 5,
+        AERIAL_TP: 5,
         ASW: 4,
         LOS: 2,
     },
     197: {
         name: 'F4F-3',
         nameJP: 'F4F-3',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 4,
@@ -1855,7 +1855,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     198: {
         name: 'F4F-4',
         nameJP: 'F4F-4',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 5,
@@ -1866,7 +1866,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     199: {
         name: 'Jet Keiun Kai',
         nameJP: '噴式景雲改',
-        type: EquipType.JET_BOMBER,
+        type: PlayerEquipType.JET_BOMBER,
         improvement_type: EquipImprovementType.JET_BOMBER,
         AA_resist_ship: .5,
         AA_resist_fleet: .7,
@@ -1879,7 +1879,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     200: {
         name: 'Kikka Kai',
         nameJP: '橘花改',
-        type: EquipType.JET_BOMBER,
+        type: PlayerEquipType.JET_BOMBER,
         improvement_type: EquipImprovementType.JET_BOMBER,
         icon: SpecialIcon.KikkaKai,
         AA_resist_ship: .5,
@@ -1892,7 +1892,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     203: {
         name: 'New Kanhon Design Anti-Torpedo Bulge (M)',
         nameJP: '艦本新設計 増設バルジ(中型艦)',
-        type: EquipType.BULGE_M,
+        type: PlayerEquipType.BULGE_M,
         improvement_type: EquipImprovementType.BULGE_M,
         AR: 8,
         EV: -1,
@@ -1900,7 +1900,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     204: {
         name: 'New Kanhon Design Anti-Torpedo Bulge (L)',
         nameJP: '艦本新設計 増設バルジ(大型艦)',
-        type: EquipType.BULGE_L,
+        type: PlayerEquipType.BULGE_L,
         improvement_type: EquipImprovementType.BULGE_L,
         AR: 10,
         EV: -2,
@@ -1908,7 +1908,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     205: {
         name: 'F6F-3',
         nameJP: 'F6F-3',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 8,
@@ -1919,7 +1919,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     206: {
         name: 'F6F-5',
         nameJP: 'F6F-5',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 10,
@@ -1930,7 +1930,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     207: {
         name: 'Zuiun (631 Air Group)',
         nameJP: '瑞雲(六三一空)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AERIAL_BOMB: 7,
         AA: 1,
@@ -1941,7 +1941,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     208: {
         name: 'Seiran (631 Air Group)',
         nameJP: '晴嵐(六三一空)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AERIAL_BOMB: 12,
@@ -1952,13 +1952,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     209: {
         name: 'Saiun (Disassembled for Transport)',
         nameJP: '彩雲(輸送用分解済)',
-        type: EquipType.TRANSPORT_ITEM,
+        type: PlayerEquipType.TRANSPORT_ITEM,
         improvement_type: EquipImprovementType.TRANSPORT_ITEM,
     },
     210: {
         name: 'Submarine Radar & Waterproof Telescope',
         nameJP: '潜水艦搭載電探&水防式望遠鏡',
-        type: EquipType.SUBMARINE_RADAR,
+        type: PlayerEquipType.SUBMARINE_RADAR,
         improvement_type: EquipImprovementType.SUBMARINE_RADAR,
         FP: 1,
         AA: 1,
@@ -1969,7 +1969,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     211: {
         name: 'Submarine Radar & Passive Radiolocator (E27)',
         nameJP: '潜水艦搭載電探&逆探(E27)',
-        type: EquipType.SUBMARINE_RADAR,
+        type: PlayerEquipType.SUBMARINE_RADAR,
         improvement_type: EquipImprovementType.SUBMARINE_RADAR,
         FP: 1,
         AA: 1,
@@ -1980,7 +1980,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     212: {
         name: 'Saiun (Eastern Caroline Air Group)',
         nameJP: '彩雲(東カロリン空)',
-        type: EquipType.CARRIER_SCOUT,
+        type: PlayerEquipType.CARRIER_SCOUT,
         improvement_type: EquipImprovementType.CARRIER_SCOUT,
         can_avoid_T_disadvantage: true,
         FP: 1,
@@ -1990,7 +1990,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     213: {
         name: 'Late Model Bow Torpedo Mount (6 tubes)',
         nameJP: '後期型艦首魚雷(6門)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 15,
@@ -2001,7 +2001,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     214: {
         name: 'Skilled Sonar Personnel + Late Model Bow Torpedo Mount (6 tubes)',
         nameJP: '熟練聴音員+後期型艦首魚雷(6門)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 15,
@@ -2013,7 +2013,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     215: {
         name: 'Ro.44 Seaplane Fighter bis',
         nameJP: 'Ro.44水上戦闘機bis',
-        type: EquipType.SEAPLANE_FIGHTER,
+        type: PlayerEquipType.SEAPLANE_FIGHTER,
         improvement_type: EquipImprovementType.SEAPLANE_FIGHTER,
         AA: 3,
         ASW: 1,
@@ -2024,7 +2024,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     216: {
         name: 'Type 2 Seaplane Fighter Kai (Skilled)',
         nameJP: '二式水戦改(熟練)',
-        type: EquipType.SEAPLANE_FIGHTER,
+        type: PlayerEquipType.SEAPLANE_FIGHTER,
         improvement_type: EquipImprovementType.SEAPLANE_FIGHTER,
         AA: 5,
         ASW: 1,
@@ -2035,7 +2035,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     217: {
         name: 'Kyoufuu Kai',
         nameJP: '強風改',
-        type: EquipType.SEAPLANE_FIGHTER,
+        type: PlayerEquipType.SEAPLANE_FIGHTER,
         improvement_type: EquipImprovementType.SEAPLANE_FIGHTER,
         AA: 5,
         EV: 3,
@@ -2044,7 +2044,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     219: {
         name: 'Type 0 Fighter Model 63 (Fighter-bomber)',
         nameJP: '零式艦戦63型(爆戦)',
-        type: EquipType.FIGHTER_BOMBER,
+        type: PlayerEquipType.FIGHTER_BOMBER,
         improvement_type: EquipImprovementType.FIGHTER_BOMBER,
         AERIAL_BOMB: 5,
         AA: 5,
@@ -2053,7 +2053,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     220: {
         name: '8cm High-angle Gun Kai + Extra Machine Guns',
         nameJP: '8cm高角砲改+増設機銃',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -2066,7 +2066,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     226: {
         name: 'Type 95 Depth Charge',
         nameJP: '九五式爆雷',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
@@ -2075,7 +2075,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     227: {
         name: 'Type 2 Depth Charge',
         nameJP: '二式爆雷',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
@@ -2084,7 +2084,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     228: {
         name: 'Type 96 Fighter Kai',
         nameJP: '九六式艦戦改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 4,
         EV: 2,
@@ -2092,7 +2092,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     229: {
         name: '12.7cm Single High-Angle Gun Mount (Late Model)',
         nameJP: '12.7cm単装高角砲(後期型)',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -2105,13 +2105,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     230: {
         name: 'Toku Daihatsu Landing Craft + 11th Tank Regiment',
         nameJP: '特大発動艇+戦車第11連隊',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
     },
     231: {
         name: '30.5cm Triple Gun Mount',
         nameJP: '30.5cm三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 8,
         FP: 16,
@@ -2122,7 +2122,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     232: {
         name: '30.5cm Triple Gun Mount Kai',
         nameJP: '30.5cm三連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 8,
         FP: 17,
@@ -2135,7 +2135,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     233: {
         name: 'F4U-1D',
         nameJP: 'F4U-1D',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 1,
@@ -2148,7 +2148,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     234: {
         name: '15.5cm Triple Secondary Gun Mount Kai',
         nameJP: '15.5cm三連装副砲改',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         FP: 7,
         AA: 5,
@@ -2159,7 +2159,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     235: {
         name: '15.5cm Triple Gun Mount Kai',
         nameJP: '15.5cm三連装砲改',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 7,
         AA: 5,
@@ -2171,7 +2171,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     236: {
         name: '41cm Triple Gun Mount Kai',
         nameJP: '41cm三連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 3,
         FP: 22,
@@ -2183,7 +2183,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     237: {
         name: 'Zuiun (634 Air Group/Skilled)',
         nameJP: '瑞雲(六三四空/熟練)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -2197,7 +2197,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     238: {
         name: 'Type 0 Reconnaissance Seaplane Model 11B',
         nameJP: '零式水上偵察機11型乙',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         FP: 1,
         AA: 1,
@@ -2208,7 +2208,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     239: {
         name: 'Type 0 Reconnaissance Seaplane Model 11B (Skilled)',
         nameJP: '零式水上偵察機11型乙(熟練)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         FP: 2,
         AA: 1,
@@ -2219,7 +2219,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     240: {
         name: 'Type 22 Surface Radar Kai 4 (Calibrated Late Model)',
         nameJP: '22号対水上電探改四(後期調整型)',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_D,
         FP: 1,
         ACC: 9,
@@ -2229,18 +2229,18 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     241: {
         name: 'Combat Ration (Special Onigiri)',
         nameJP: '戦闘糧食(特別なおにぎり)',
-        type: EquipType.RATION,
+        type: PlayerEquipType.RATION,
         improvement_type: EquipImprovementType.RATION,
     },
     242: {
         name: 'Swordfish',
         nameJP: 'Swordfish',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         is_Swordfish_family: true,
         FP: 2,
-        TP: 3,
+        AERIAL_TP: 3,
         ACC: 1,
         ASW: 4,
         LOS: 1,
@@ -2248,12 +2248,12 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     243: {
         name: 'Swordfish Mk.II(Skilled)',
         nameJP: 'Swordfish Mk.II(熟練)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         is_Swordfish_family: true,
         FP: 3,
-        TP: 5,
+        AERIAL_TP: 5,
         ACC: 3,
         ASW: 6,
         LOS: 2,
@@ -2261,12 +2261,12 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     244: {
         name: 'Swordfish Mk.III (Skilled)',
         nameJP: 'Swordfish Mk.III(熟練)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         is_Swordfish_family: true,
         FP: 4,
-        TP: 8,
+        AERIAL_TP: 8,
         ACC: 4,
         ASW: 10,
         LOS: 5,
@@ -2274,7 +2274,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     245: {
         name: '38cm Quadruple Gun Mount',
         nameJP: '38cm四連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 9,
         FP: 21,
@@ -2285,7 +2285,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     246: {
         name: '38cm Quadruple Gun Mount Kai',
         nameJP: '38cm四連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 9,
         FP: 22,
@@ -2297,7 +2297,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     247: {
         name: '15.2cm Triple Gun Mount',
         nameJP: '15.2cm三連装砲',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         FP: 6,
         AA: 1,
@@ -2307,7 +2307,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     248: {
         name: 'Skua',
         nameJP: 'Skua',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AERIAL_BOMB: 4,
         AA: 2,
@@ -2317,7 +2317,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     249: {
         name: 'Fulmar',
         nameJP: 'Fulmar',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 3,
@@ -2329,7 +2329,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     252: {
         name: 'Seafire Mk.III Kai',
         nameJP: 'Seafire Mk.III改',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 9,
@@ -2341,7 +2341,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'F6F-3N',
         nameJP: 'F6F-3N',
         icon: SpecialIcon.NightFighters,
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         AA: 8,
@@ -2354,7 +2354,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'F6F-5N',
         nameJP: 'F6F-5N',
         icon: SpecialIcon.NightFighters,
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         AA: 10,
@@ -2366,10 +2366,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     256: {
         name: 'TBF',
         nameJP: 'TBF',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         FP: 2,
-        TP: 9,
+        AERIAL_TP: 9,
         AA: 1,
         ASW: 6,
         LOS: 2,
@@ -2378,11 +2378,11 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'TBM-3D',
         nameJP: 'TBM-3D',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 2,
-        TP: 9,
+        AERIAL_TP: 9,
         AA: 1,
         ACC: 2,
         ASW: 8,
@@ -2391,7 +2391,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     258: {
         name: 'Night Battle Operation Aviation Personnel',
         nameJP: '夜間作戦航空要員',
-        type: EquipType.SCAMP,
+        type: PlayerEquipType.SCAMP,
         improvement_type: EquipImprovementType.SCAMP,
         b_type: SkillTriggerEquipType.B_NIGHTCREW,
         FP: 1,
@@ -2401,7 +2401,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     259: {
         name: 'Night Battle Operation Aviation Personnel + Skilled Deck Hands',
         nameJP: '夜間作戦航空要員+熟練甲板員',
-        type: EquipType.SCAMP,
+        type: PlayerEquipType.SCAMP,
         improvement_type: EquipImprovementType.SCAMP,
         b_type: SkillTriggerEquipType.B_NIGHTCREW,
         FP: 3,
@@ -2413,7 +2413,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     260: {
         name: 'Type124 ASDIC',
         nameJP: 'Type124 ASDIC',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         ACC: 2,
         EV: 1,
@@ -2422,7 +2422,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     261: {
         name: 'Type144/147 ASDIC',
         nameJP: 'Type144/147 ASDIC',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         ACC: 3,
         EV: 1,
@@ -2431,7 +2431,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     262: {
         name: 'HF/DF + Type144/147 ASDIC',
         nameJP: 'HF/DF + Type144/147 ASDIC',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         ACC: 3,
         EV: 2,
@@ -2441,7 +2441,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     266: {
         name: '12.7cm Twin Gun Mount Model C Kai 2',
         nameJP: '12.7cm連装砲C型改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
@@ -2452,7 +2452,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     267: {
         name: '12.7cm Twin Gun Mount Model D Kai 2',
         nameJP: '12.7cm連装砲D型改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 4,
@@ -2464,7 +2464,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     268: {
         name: 'Arctic Camouflage (+ Arctic Equipment)',
         nameJP: '北方迷彩(+北方装備)',
-        type: EquipType.BULGE_M,
+        type: PlayerEquipType.BULGE_M,
         improvement_type: EquipImprovementType.BULGE_M,
         AR: 2,
         EV: 2,
@@ -2472,7 +2472,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     271: {
         name: 'Shiden Kai 4',
         nameJP: '紫電改四',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 10,
         AR: 1,
@@ -2482,7 +2482,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     272: {
         name: 'Striking Force Fleet Command Facility',
         nameJP: '遊撃部隊 艦隊司令部',
-        type: EquipType.FCF,
+        type: PlayerEquipType.FCF,
         improvement_type: EquipImprovementType.FCF,
         AR: 1,
         ACC: 1,
@@ -2492,7 +2492,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     273: {
         name: 'Saiun (4th Recon)',
         nameJP: '彩雲(偵四)',
-        type: EquipType.CARRIER_SCOUT,
+        type: PlayerEquipType.CARRIER_SCOUT,
         improvement_type: EquipImprovementType.CARRIER_SCOUT,
         can_avoid_T_disadvantage: true,
         AA: 2,
@@ -2502,7 +2502,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     274: {
         name: '12cm 30-tube Rocket Launcher Kai Ni',
         nameJP: '12cm30連装噴進砲改二',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         can_barrage: true,
         AA: 8,
@@ -2513,7 +2513,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     275: {
         name: '10cm Twin High-angle Gun Mount Kai + Additional Machine Guns',
         nameJP: '10cm連装高角砲改+増設機銃',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -2526,7 +2526,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     276: {
         name: '46cm Triple Gun Mount Kai',
         nameJP: '46cm三連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 10,
         FP: 27,
@@ -2538,7 +2538,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     277: {
         name: 'FM-2',
         nameJP: 'FM-2',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 2,
@@ -2551,7 +2551,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     278: {
         name: 'SK Radar',
         nameJP: 'SK レーダー',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 8,
         ACC: 1,
@@ -2561,7 +2561,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     279: {
         name: 'SK+SG Radar',
         nameJP: 'SK+SG レーダー',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         FP: 1,
         AA: 9,
@@ -2573,7 +2573,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     280: {
         name: 'QF 4.7inch Gun Mk.XII Kai',
         nameJP: 'QF 4.7inch砲 Mk.XII改',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 3,
@@ -2585,7 +2585,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     281: {
         name: '51cm Twin Gun Mount',
         nameJP: '51cm連装砲',
-        type: EquipType.MAIN_GUN_XL,
+        type: PlayerEquipType.MAIN_GUN_XL,
         improvement_type: EquipImprovementType.MAIN_GUN_XL,
         FP: 32,
         AA: 5,
@@ -2597,7 +2597,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     282: {
         name: '130mm B-13 Twin Gun Mount',
         nameJP: '130mm B-13連装砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 4,
         AA: 1,
@@ -2607,7 +2607,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     283: {
         name: '533mm Triple Torpedo Mount',
         nameJP: '533mm 三連装魚雷',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         FP: 1,
         TP: 5,
@@ -2617,7 +2617,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     284: {
         name: '5inch Single Gun Mount Mk.30',
         nameJP: '5inch単装砲 Mk.30',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -2630,7 +2630,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     285: {
         name: '61cm Triple (Oxygen) Torpedo Mount Late Model',
         nameJP: '61cm三連装(酸素)魚雷後期型',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 9,
         AR: 1,
@@ -2641,7 +2641,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     286: {
         name: '61cm Quadruple (Oxygen) Torpedo Mount Late Model',
         nameJP: '61cm四連装(酸素)魚雷後期型',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         TP: 11,
         AR: 1,
@@ -2651,7 +2651,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     287: {
         name: 'Type 3 Depth Charge Projector (Concentrated Deployment)',
         nameJP: '三式爆雷投射機 集中配備',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DCP: true,
         ASW: 12,
@@ -2659,7 +2659,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     288: {
         name: 'Prototype 15cm 9-tube ASW Rocket Launcher',
         nameJP: '試製15cm9連装対潜噴進砲',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DCP: true,
         ACC: 1,
@@ -2668,7 +2668,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     289: {
         name: '35.6cm Triple Gun Mount Kai (Dazzle Camouflage)',
         nameJP: '35.6cm三連装砲改(ダズル迷彩仕様)',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 19,
@@ -2680,7 +2680,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     290: {
         name: '41cm Triple Gun Mount Kai Ni',
         nameJP: '41cm三連装砲改二',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 3,
         FP: 23,
@@ -2691,7 +2691,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     291: {
         name: 'Suisei Model 22 (634 Air Group)',
         nameJP: '彗星二二型(六三四空)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AERIAL_BOMB: 11,
         AA: 1,
@@ -2702,7 +2702,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     292: {
         name: 'Suisei Model 22 (634 Air Group / Skilled)',
         nameJP: '彗星二二型(六三四空/熟練)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AERIAL_BOMB: 12,
         AA: 2,
@@ -2714,7 +2714,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     293: {
         name: '12cm Single Gun Mount Kai Ni',
         nameJP: '12cm単装砲改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 1,
         AR: 1,
@@ -2725,7 +2725,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     294: {
         name: '12.7cm Twin Gun Mount Model A Kai Ni',
         nameJP: '12.7cm連装砲A型改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 2,
         AA: 1,
@@ -2736,7 +2736,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     295: {
         name: '12.7cm Twin Gun Mount Model A Kai 3 (Wartime Modification) + Anti-Aircraft Fire Director',
         nameJP: '12.7cm連装砲A型改三(戦時改修)+高射装置',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -2748,7 +2748,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     296: {
         name: '12.7cm Twin Gun Mount Model B Kai 4 (Wartime Modification) + Anti-Aircraft Fire Director',
         nameJP: '12.7cm連装砲B型改四(戦時改修)+高射装置',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -2760,7 +2760,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     297: {
         name: '12.7cm Twin Gun Mount Model A',
         nameJP: '12.7cm連装砲A型',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 2,
         AA: 1,
@@ -2769,7 +2769,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     298: {
         name: '16inch Mk.I Triple Gun Mount',
         nameJP: '16inch Mk.I三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 11,
         FP: 21,
@@ -2780,7 +2780,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     299: {
         name: '16inch Mk.I Triple Gun Mount + AFCT Kai',
         nameJP: '16inch Mk.I三連装砲+AFCT改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 11,
         FP: 22,
@@ -2791,7 +2791,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     300: {
         name: '16inch Mk.I Triple Gun Mount Kai + FCR Type 284',
         nameJP: '16inch Mk.I三連装砲改+FCR type284',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 11,
         FP: 23,
@@ -2804,7 +2804,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     301: {
         name: '20-tube 7inch UP Rocket Launchers',
         nameJP: '20連装7inch UP Rocket Launchers',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 7,
         EV: 2,
@@ -2812,9 +2812,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     302: {
         name: 'Type 97 Torpedo Bomber (931 Air Group / Skilled)',
         nameJP: '九七式艦攻(九三一空/熟練)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 8,
+        AERIAL_TP: 8,
         ACC: 2,
         EV: 1,
         ASW: 9,
@@ -2823,7 +2823,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     303: {
         name: 'Bofors 15.2cm Twin Gun Mount Model 1930',
         nameJP: 'Bofors 15.2cm連装砲 Model 1930',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
@@ -2835,7 +2835,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     304: {
         name: 'S9 Osprey',
         nameJP: 'S9 Osprey',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AA: 1,
         ACC: 2,
@@ -2845,7 +2845,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     305: {
         name: 'Ju 87C Kai Ni (w/ KMX)',
         nameJP: 'Ju87C改二(KMX搭載機)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AERIAL_BOMB: 9,
@@ -2857,7 +2857,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     306: {
         name: 'Ju 87C Kai Ni (w/ KMX / Skilled)',
         nameJP: 'Ju87C改二(KMX搭載機/熟練)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AERIAL_BOMB: 10,
@@ -2870,7 +2870,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     307: {
         name: 'GFCS Mk.37',
         nameJP: 'GFCS Mk.37',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_A,
         FP: 2,
         AA: 7,
@@ -2883,7 +2883,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     308: {
         name: '5inch Single Gun Mount Mk.30 Kai + GFCS Mk.37',
         nameJP: '5inch単装砲 Mk.30改+GFCS Mk.37',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -2897,7 +2897,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     309: {
         name: 'Type C Kouhyouteki',
         nameJP: '甲標的 丙型',
-        type: EquipType.MIDGET_SUBMARINE,
+        type: PlayerEquipType.MIDGET_SUBMARINE,
         improvement_type: EquipImprovementType.MIDGET_SUBMARINE,
         TP: 14,
         ACC: 1,
@@ -2906,7 +2906,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     310: {
         name: '14cm Twin Gun Mount Kai',
         nameJP: '14cm連装砲改',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
@@ -2917,7 +2917,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     313: {
         name: '5inch Single Gun Mount Mk.30 Kai',
         nameJP: '5inch単装砲 Mk.30改',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -2930,7 +2930,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     314: {
         name: '533mm Quintuple Torpedo Mount (Initial Model)',
         nameJP: '533mm五連装魚雷(初期型)',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         FP: 1,
         TP: 8,
@@ -2941,7 +2941,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     315: {
         name: 'SG Radar (Initial Model)',
         nameJP: 'SG レーダー(初期型)',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_C,
         FP: 1,
         AA: 3,
@@ -2954,7 +2954,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     316: {
         name: 'Re.2001 CB Kai',
         nameJP: 'Re.2001 CB改',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         FP: 3,
         AERIAL_BOMB: 6,
@@ -2966,7 +2966,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     317: {
         name: 'Type 3 Shell Kai',
         nameJP: '三式弾改',
-        type: EquipType.TYPE_3_SHELL,
+        type: PlayerEquipType.TYPE_3_SHELL,
         improvement_type: EquipImprovementType.TYPE_3_SHELL,
         FP: 3,
         AA: 6,
@@ -2975,7 +2975,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     318: {
         name: '41cm Twin Gun Mount Kai Ni',
         nameJP: '41cm連装砲改二',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 3,
         FP: 21,
@@ -2988,7 +2988,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     319: {
         name: 'Suisei Model 12 (634 Air Group w/ Type 3 Cluster Bombs)',
         nameJP: '彗星一二型(六三四空/三号爆弾搭載機)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AA_resist_ship: .6,
@@ -3001,7 +3001,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     320: {
         name: 'Suisei Model 12 (w/ Type 31 Photoelectric Fuze Bombs)',
         nameJP: '彗星一二型(三一号光電管爆弾搭載機)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         AA_resist_ship: .6,
@@ -3012,7 +3012,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     322: {
         name: 'Zuiun Kai Ni (634 Air Group)',
         nameJP: '瑞雲改二(六三四空)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .5,
         AA_resist_fleet: .7,
@@ -3027,7 +3027,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     323: {
         name: 'Zuiun Kai Ni (634 Air Group/Skilled)',
         nameJP: '瑞雲改二(六三四空/熟練)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         AA_resist_ship: .5,
         AA_resist_fleet: .5,
@@ -3042,7 +3042,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     324: {
         name: 'O Type Observation Autogyro Kai',
         nameJP: 'オ号観測機改',
-        type: EquipType.AUTOGYRO,
+        type: PlayerEquipType.AUTOGYRO,
         improvement_type: EquipImprovementType.AUTOGYRO_LOW,
         FP: 1,
         ACC: 1,
@@ -3051,7 +3051,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     325: {
         name: 'O Type Observation Autogyro Kai Ni',
         nameJP: 'オ号観測機改二',
-        type: EquipType.AUTOGYRO,
+        type: PlayerEquipType.AUTOGYRO,
         improvement_type: EquipImprovementType.AUTOGYRO_HIGH,
         FP: 1,
         ACC: 1,
@@ -3061,7 +3061,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     326: {
         name: 'S-51J',
         nameJP: 'S-51J',
-        type: EquipType.AUTOGYRO,
+        type: PlayerEquipType.AUTOGYRO,
         improvement_type: EquipImprovementType.AUTOGYRO_HIGH,
         FP: 2,
         ACC: 2,
@@ -3071,7 +3071,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     327: {
         name: 'S-51J Kai',
         nameJP: 'S-51J改',
-        type: EquipType.AUTOGYRO,
+        type: PlayerEquipType.AUTOGYRO,
         improvement_type: EquipImprovementType.AUTOGYRO_HIGH,
         FP: 2,
         ACC: 3,
@@ -3081,7 +3081,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     328: {
         name: '35.6cm Twin Gun Mount Kai',
         nameJP: '35.6cm連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 16,
@@ -3094,7 +3094,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     329: {
         name: '35.6cm Twin Gun Mount Kai Ni',
         nameJP: '35.6cm連装砲改二',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         fit_class: 1,
         FP: 17,
@@ -3107,7 +3107,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     330: {
         name: '16inch Mk.I Twin Gun Mount',
         nameJP: '16inch Mk.I連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 20,
         AR: 1,
@@ -3118,7 +3118,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     331: {
         name: '16inch Mk.V Twin Gun Mount',
         nameJP: '16inch Mk.V連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 21,
         AA: 2,
@@ -3130,7 +3130,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     332: {
         name: '16inch Mk.VIII Twin Gun Mount Kai',
         nameJP: '16inch Mk.VIII連装砲改',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 21,
         AA: 6,
@@ -3142,7 +3142,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     335: {
         name: 'Reppuu Kai (Prototype Carrier-based Model)',
         nameJP: '烈風改(試製艦載型)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 10,
@@ -3153,7 +3153,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     336: {
         name: 'Reppuu Kai Ni',
         nameJP: '烈風改二',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 13,
@@ -3163,7 +3163,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     337: {
         name: 'Reppuu Kai Ni (CarDiv 1/Skilled)',
         nameJP: '烈風改二(一航戦/熟練)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 2,
         AA: 14,
@@ -3174,7 +3174,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'Reppuu Kai Ni Model E',
         nameJP: '烈風改二戊型',
         icon: SpecialIcon.NightFighters,
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         FP: 2,
@@ -3186,7 +3186,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'Reppuu Kai Ni Model E (CarDiv 1/Skilled)',
         nameJP: '烈風改二戊型(一航戦/熟練)',
         icon: SpecialIcon.NightFighters,
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         FP: 2,
@@ -3197,7 +3197,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     340: {
         name: '152mm/55 Triple Rapid Fire Gun Mount',
         nameJP: '152mm/55 三連装速射砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 8,
         AA: 2,
@@ -3208,7 +3208,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     341: {
         name: '152mm/55 Triple Rapid Fire Gun Mount Kai',
         nameJP: '152mm/55 三連装速射砲改',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 9,
         AA: 3,
@@ -3220,9 +3220,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     342: {
         name: 'Ryuusei Kai (CarDiv 1)',
         nameJP: '流星改(一航戦)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 14,
+        AERIAL_TP: 14,
         AA: 2,
         ACC: 1,
         ASW: 6,
@@ -3231,10 +3231,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     343: {
         name: 'Ryuusei Kai (CarDiv 1/Skilled)',
         nameJP: '流星改(一航戦/熟練)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 15,
+        AERIAL_TP: 15,
         AA: 3,
         ACC: 2,
         ASW: 7,
@@ -3244,10 +3244,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'Prototype Type 97 Torpedo Bomber Kai Type 3 Model E (w/ Type 6 Airborne Radar Kai)',
         nameJP: '九七式艦攻改 試製三号戊型(空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
-        TP: 7,
+        AERIAL_TP: 7,
         ACC: 1,
         ASW: 6,
         LOS: 4,
@@ -3256,10 +3256,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'Prototype Type 97 Torpedo Bomber Kai (Skilled) Type 3 Model E (w/ Type 6 Airborne Radar Kai)',
         nameJP: '九七式艦攻改(熟練) 試製三号戊型(空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
-        TP: 9,
+        AERIAL_TP: 9,
         ACC: 2,
         ASW: 7,
         LOS: 5,
@@ -3267,7 +3267,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     346: {
         name: 'Type 2 12cm Mortar Kai',
         nameJP: '二式12cm迫撃砲改',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         EV: 1,
         ASW: 3,
@@ -3275,7 +3275,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     347: {
         name: 'Type 2 12cm Mortar Kai (Concentrated Deployment)',
         nameJP: '二式12cm迫撃砲改 集中配備',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         AR: -1,
         EV: 1,
@@ -3284,14 +3284,14 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     348: {
         name: 'Shipborne Model Type 4 20cm Anti-ground Rocket Launcher',
         nameJP: '艦載型 四式20cm対地噴進砲',
-        type: EquipType.WG42,
+        type: PlayerEquipType.WG42,
         improvement_type: EquipImprovementType.WG42,
         AR: -2,
     },
     349: {
         name: 'Type 4 20cm Anti-ground Rocket Launcher (Concentrated Deployment)',
         nameJP: '四式20cm対地噴進砲 集中配備',
-        type: EquipType.WG42,
+        type: PlayerEquipType.WG42,
         improvement_type: EquipImprovementType.WG42,
         FP: 1,
         AR: -4,
@@ -3299,7 +3299,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     353: {
         name: 'Fw190 A-5 Kai (Skilled)',
         nameJP: 'Fw190 A-5改(熟練)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 2,
         AA: 11,
@@ -3309,7 +3309,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     355: {
         name: 'M4A1 DD',
         nameJP: 'M4A1 DD',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         FP: 2,
         EV: -1,
@@ -3317,7 +3317,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     356: {
         name: '8inch Triple Gun Mount Mk.9',
         nameJP: '8inch三連装砲 Mk.9',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 11,
         AA: 1,
@@ -3327,7 +3327,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     357: {
         name: '8inch Triple Gun Mount Mk.9 mod.2',
         nameJP: '8inch三連装砲 Mk.9 mod.2',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 12,
         AA: 2,
@@ -3338,7 +3338,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     358: {
         name: '5inch Single High-angle Gun Mount Battery',
         nameJP: '5inch 単装高角砲群',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -3351,7 +3351,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     359: {
         name: '6inch Twin Rapid Fire Gun Mount Mk.XXI',
         nameJP: '6inch 連装速射砲 Mk.XXI',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
@@ -3364,7 +3364,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     360: {
         name: 'Bofors 15cm Twin Rapid Fire Gun Mount Mk.9 Model 1938',
         nameJP: 'Bofors 15cm連装速射砲 Mk.9 Model 1938',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 6,
@@ -3376,7 +3376,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     361: {
         name: 'Bofors 15cm Twin Rapid Fire Gun Mount Mk.9 Kai + Single Rapid Fire Gun Mount Mk.10 Kai Model 1938',
         nameJP: 'Bofors 15cm連装速射砲 Mk.9改+単装速射砲 Mk.10改 Model 1938',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 7,
@@ -3389,7 +3389,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     362: {
         name: '5inch Twin Dual-purpose Gun Mount (Concentrated Deployment)',
         nameJP: '5inch連装両用砲(集中配備)',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
@@ -3401,7 +3401,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     363: {
         name: 'GFCS Mk.37 + 5inch Twin Dual-purpose Gun Mount (Concentrated Deployment)',
         nameJP: 'GFCS Mk.37+5inch連装両用砲(集中配備)',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 6,
@@ -3414,7 +3414,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     364: {
         name: 'Type D Kouhyouteki Kai (Kouryuu Kai)',
         nameJP: '甲標的 丁型改(蛟龍改)',
-        type: EquipType.MIDGET_SUBMARINE,
+        type: PlayerEquipType.MIDGET_SUBMARINE,
         improvement_type: EquipImprovementType.MIDGET_SUBMARINE,
         TP: 17,
         ACC: 2,
@@ -3423,7 +3423,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     365: {
         name: 'Type 1 Armor Piercing Shell Kai',
         nameJP: '一式徹甲弾改',
-        type: EquipType.AP_SHELL,
+        type: PlayerEquipType.AP_SHELL,
         improvement_type: EquipImprovementType.AP_SHELL,
         FP: 11,
         ACC: 2,
@@ -3431,7 +3431,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     366: {
         name: '12.7cm Twin Gun Mount Model D Kai 3',
         nameJP: '12.7cm連装砲D型改三',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 4,
@@ -3444,7 +3444,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     367: {
         name: 'Swordfish (Seaplane Model)',
         nameJP: 'Swordfish(水上機型)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         FP: 2,
         AERIAL_BOMB: 5,
@@ -3456,7 +3456,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     368: {
         name: 'Swordfish Mk.III Kai (Seaplane Model)',
         nameJP: 'Swordfish Mk.III改(水上機型)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         FP: 4,
         AERIAL_BOMB: 7,
@@ -3468,7 +3468,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     369: {
         name: 'Swordfish Mk.III Kai (Seaplane Model/Skilled)',
         nameJP: 'Swordfish Mk.III改(水上機型/熟練)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         FP: 4,
         AERIAL_BOMB: 8,
@@ -3480,7 +3480,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     370: {
         name: 'Swordfish Mk.II Kai (Reconnaissance Seaplane Model)',
         nameJP: 'Swordfish Mk.II改(水偵型)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         FP: 1,
         ACC: 2,
@@ -3490,7 +3490,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     371: {
         name: 'Fairey Seafox Kai',
         nameJP: 'Fairey Seafox改',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         FP: 2,
         AA: 1,
@@ -3502,9 +3502,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     372: {
         name: 'Tenzan Model 12A',
         nameJP: '天山一二型甲',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 9,
+        AERIAL_TP: 9,
         AA: 1,
         ASW: 4,
         LOS: 2,
@@ -3513,10 +3513,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'Tenzan Model 12 A Kai (w/ Type 6 Airborne Radar Kai)',
         nameJP: '天山一二型甲改(空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
-        TP: 11,
+        AERIAL_TP: 11,
         AA: 1,
         ACC: 1,
         ASW: 6,
@@ -3526,11 +3526,11 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'Tenzan Model 12 A Kai (Skilled/ w/ Type 6 Airborne Radar Kai)',
         nameJP: '天山一二型甲改(熟練/空六号電探改装備機)',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         AA_resist_ship: .6,
-        TP: 13,
+        AERIAL_TP: 13,
         AA: 1,
         ACC: 2,
         ASW: 7,
@@ -3539,7 +3539,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     375: {
         name: 'XF5U',
         nameJP: 'XF5U',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 12,
         EV: 2,
@@ -3548,7 +3548,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     376: {
         name: '533mm Quintuple Torpedo Mount (Late Model)',
         nameJP: '533mm五連装魚雷(後期型)',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         FP: 1,
         TP: 11,
@@ -3559,7 +3559,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     377: {
         name: 'RUR-4A Weapon Alpha Kai',
         nameJP: 'RUR-4A Weapon Alpha改',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DCP: true,
         can_ASW_penetrate: true,
@@ -3571,7 +3571,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     378: {
         name: 'Lightweight ASW Torpedo (Initial Test Model)',
         nameJP: '対潜短魚雷(試作初期型)',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
@@ -3581,7 +3581,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     379: {
         name: '12.7cm Single High-angle Gun Mount Kai Ni',
         nameJP: '12.7cm単装高角砲改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -3594,7 +3594,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     380: {
         name: '12.7cm Twin High-angle Gun Mount Kai Ni',
         nameJP: '12.7cm連装高角砲改二',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -3607,7 +3607,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     381: {
         name: '16inch Triple Gun Mount Mk.6',
         nameJP: '16inch三連装砲 Mk.6',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 22,
         AA: 2,
@@ -3618,7 +3618,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     382: {
         name: '12cm Single High-angle Gun Mount Model E',
         nameJP: '12cm単装高角砲E型',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -3630,7 +3630,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     383: {
         name: 'Late Model 53cm Bow Torpedo Mount (8 tubes)',
         nameJP: '後期型53cm艦首魚雷(8門)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 19,
@@ -3641,7 +3641,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     384: {
         name: 'Late Model Submarine Radar & Passive Radiolocator',
         nameJP: '後期型潜水艦搭載電探&逆探',
-        type: EquipType.SUBMARINE_RADAR,
+        type: PlayerEquipType.SUBMARINE_RADAR,
         improvement_type: EquipImprovementType.SUBMARINE_RADAR,
         FP: 2,
         TP: 4,
@@ -3653,7 +3653,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     385: {
         name: '16inch Triple Gun Mount Mk.6 mod.2',
         nameJP: '16inch三連装砲 Mk.6 mod.2',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 23,
         AA: 2,
@@ -3664,7 +3664,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     386: {
         name: '6inch Triple Rapid Fire Gun Mount Mk.16',
         nameJP: '6inch三連装速射砲 Mk.16',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 7,
         AA: 2,
@@ -3675,7 +3675,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     387: {
         name: '6inch Triple Rapid Fire Gun Mount Mk.16 mod.2',
         nameJP: '6inch三連装速射砲 Mk.16 mod.2',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 8,
         AA: 3,
@@ -3688,12 +3688,12 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         name: 'TBM-3W+3S',
         nameJP: 'TBM-3W+3S',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 3,
         AERIAL_BOMB: 7,
-        TP: 10,
+        AERIAL_TP: 10,
         ACC: 3,
         ASW: 13,
         LOS: 10,
@@ -3701,7 +3701,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     390: {
         name: '16inch Triple Gun Mount Mk.6 + GFCS',
         nameJP: '16inch三連装砲 Mk.6+GFCS',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 23,
         AA: 3,
@@ -3713,7 +3713,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     391: {
         name: 'Type 99 Dive Bomber Model 22',
         nameJP: '九九式艦爆二二型',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AERIAL_BOMB: 6,
@@ -3724,7 +3724,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     392: {
         name: 'Type 99 Dive Bomber Model 22 (Skilled)',
         nameJP: '九九式艦爆二二型(熟練)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         AERIAL_BOMB: 8,
@@ -3736,7 +3736,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     393: {
         name: '120mm/50 Twin Gun Mount mod.1936',
         nameJP: '120mm/50 連装砲 mod.1936',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 3,
@@ -3746,7 +3746,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     394: {
         name: '120mm/50 Twin Gun Mount Kai A.mod.1937',
         nameJP: '120mm/50 連装砲改 A.mod.1937',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 4,
@@ -3756,7 +3756,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     397: {
         name: 'Locally Modified 12.7cm Twin High-angle Gun Mount',
         nameJP: '現地改装12.7cm連装高角砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -3768,7 +3768,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     398: {
         name: 'Locally Modified 10cm Twin High-angle Gun Mount',
         nameJP: '現地改装10cm連装高角砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
@@ -3780,7 +3780,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     399: {
         name: '6inch Mk.XXIII Triple Gun Mount',
         nameJP: '6inch Mk.XXIII三連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 7,
         AA: 2,
@@ -3792,7 +3792,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     400: {
         name: '533mm Triple Torpedo Mount (Model 53-39)',
         nameJP: '533mm 三連装魚雷(53-39型)',
-        type: EquipType.TORPEDO,
+        type: PlayerEquipType.TORPEDO,
         improvement_type: EquipImprovementType.TORPEDO,
         FP: 1,
         TP: 6,
@@ -3803,13 +3803,13 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     402: {
         name: 'Arctic Gear & Deck Personnel',
         nameJP: '寒冷地装備&甲板要員',
-        type: EquipType.SCAMP,
+        type: PlayerEquipType.SCAMP,
         improvement_type: EquipImprovementType.SCAMP,
     },
     407: {
         name: '15.2cm Twin Gun Mount Kai Ni',
         nameJP: '15.2cm連装砲改二',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 6,
@@ -3821,7 +3821,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     408: {
         name: 'Soukoutei (Armored Boat Class)',
         nameJP: '装甲艇(AB艇)',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         FP: 1,
         AR: 1,
@@ -3830,7 +3830,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     409: {
         name: 'Armed Daihatsu',
         nameJP: '武装大発',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         FP: 1,
         AA: 1,
@@ -3839,7 +3839,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     410: {
         name: 'Type 21 Air Radar Kai Ni',
         nameJP: '21号対空電探改二',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 7,
         ACC: 4,
@@ -3849,7 +3849,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     411: {
         name: 'Type 42 Air Radar Kai Ni',
         nameJP: '42号対空電探改二',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 7,
         ACC: 8,
@@ -3859,7 +3859,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     412: {
         name: 'Torpedo Squadron Skilled Lookouts',
         nameJP: '水雷戦隊 熟練見張員',
-        type: EquipType.PICKET,
+        type: PlayerEquipType.PICKET,
         improvement_type: EquipImprovementType.PICKET,
         TP: 3,
         AA: 1,
@@ -3871,7 +3871,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     413: {
         name: 'Elite Torpedo Squadron Command Facility',
         nameJP: '精鋭水雷戦隊 司令部',
-        type: EquipType.FCF,
+        type: PlayerEquipType.FCF,
         improvement_type: EquipImprovementType.FCF,
         TP: 3,
         ACC: 2,
@@ -3880,7 +3880,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     414: {
         name: 'SOC Seagull',
         nameJP: 'SOC Seagull',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AERIAL_BOMB: 1,
         ACC: 2,
@@ -3891,7 +3891,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     415: {
         name: 'SO3C Seamew Kai',
         nameJP: 'SO3C Seamew改',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AA: 1,
         ACC: 3,
@@ -3901,7 +3901,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     419: {
         name: 'SBD-5',
         nameJP: 'SBD-5',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         FP: 1,
         AERIAL_BOMB: 7,
@@ -3914,7 +3914,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     420: {
         name: 'SB2C-3',
         nameJP: 'SB2C-3',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 1,
@@ -3928,7 +3928,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     421: {
         name: 'SB2C-5',
         nameJP: 'SB2C-5',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         can_shell_install_bomber: true,
         FP: 2,
@@ -3942,7 +3942,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     422: {
         name: 'FR-1 Fireball',
         nameJP: 'FR-1 Fireball',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 2,
         AA: 11,
@@ -3952,7 +3952,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     423: {
         name: 'Fulmar (Reconnaissance Fighter/Skilled)',
         nameJP: 'Fulmar(戦闘偵察/熟練)',
-        type: EquipType.CARRIER_SCOUT,
+        type: PlayerEquipType.CARRIER_SCOUT,
         improvement_type: EquipImprovementType.CARRIER_SCOUT,
         FP: 2,
         AA: 4,
@@ -3964,9 +3964,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     424: {
         name: 'Barracuda Mk.II',
         nameJP: 'Barracuda Mk.II',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 7,
+        AERIAL_TP: 7,
         ACC: 1,
         ASW: 5,
         LOS: 2,
@@ -3974,9 +3974,9 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     425: {
         name: 'Barracuda Mk.III',
         nameJP: 'Barracuda Mk.III',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
-        TP: 6,
+        AERIAL_TP: 6,
         ACC: 1,
         ASW: 9,
         LOS: 3,
@@ -3984,7 +3984,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     426: {
         name: '305mm/46 Twin Gun Mount',
         nameJP: '305mm/46 連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 13,
         AR: 1,
@@ -3995,7 +3995,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     427: {
         name: '305mm/46 Triple Gun Mount',
         nameJP: '305mm/46 三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 14,
         AR: 1,
@@ -4006,7 +4006,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     428: {
         name: '320mm/44 Twin Gun Mount',
         nameJP: '320mm/44 連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 15,
         AR: 1,
@@ -4017,7 +4017,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     429: {
         name: '320mm/44 Triple Gun Mount',
         nameJP: '320mm/44 三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 16,
         AR: 1,
@@ -4028,7 +4028,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     430: {
         name: '65mm/64 Single Rapid Fire Gun Mount Kai',
         nameJP: '65mm/64 単装速射砲改',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -4039,7 +4039,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     434: {
         name: 'Corsair Mk.II',
         nameJP: 'Corsair Mk.II',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 10,
@@ -4049,7 +4049,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     435: {
         name: 'Corsair Mk.II (Ace)',
         nameJP: 'Corsair Mk.II(Ace)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 2,
         AA: 11,
@@ -4060,7 +4060,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     436: {
         name: 'Daihatsu Landing Craft (Panzer II / North African Specification)',
         nameJP: '大発動艇(II号戦車/北アフリカ仕様)',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         FP: 1,
         ACC: 1,
@@ -4068,7 +4068,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     437: {
         name: 'Prototype Jinpuu',
         nameJP: '試製 陣風',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         AA: 13,
         ACC: 1,
@@ -4077,7 +4077,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     438: {
         name: 'Type 3 Active Sonar Kai',
         nameJP: '三式水中探信儀改',
-        type: EquipType.SONAR_S,
+        type: PlayerEquipType.SONAR_S,
         improvement_type: EquipImprovementType.SONAR_S,
         AR: 1,
         ACC: 2,
@@ -4087,7 +4087,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     439: {
         name: 'Hedgehog (Initial Model)',
         nameJP: 'Hedgehog(初期型)',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
@@ -4098,7 +4098,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     440: {
         name: '21inch 6-tube Bow Torpedo Launcher (Initial Model)',
         nameJP: '21inch艦首魚雷発射管6門(初期型)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         TP: 10,
         EV: 2,
@@ -4107,7 +4107,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     441: {
         name: '21inch 6-tube Bow Torpedo Launcher (Late Model)',
         nameJP: '21inch艦首魚雷発射管6門(後期型)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 14,
@@ -4118,7 +4118,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     442: {
         name: 'Submarine 4-tube Stern Torpedo Launcher (Initial Model)',
         nameJP: '潜水艦後部魚雷発射管4門(初期型)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         TP: 6,
         ACC: 1,
@@ -4128,7 +4128,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     443: {
         name: 'Submarine 4-tube Stern Torpedo Launcher (Late Model)',
         nameJP: '潜水艦後部魚雷発射管4門(後期型)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 9,
@@ -4139,7 +4139,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     447: {
         name: 'Type 0 Fighter Model 64 (Two-seat w/ KMX)',
         nameJP: '零式艦戦64型(複座KMX搭載機)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AERIAL_BOMB: 3,
         AA: 4,
@@ -4149,7 +4149,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     449: {
         name: 'Toku Daihatsu Landing Craft + Type 1 Gun Tank',
         nameJP: '特大発動艇+一式砲戦車',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         b_type: SkillTriggerEquipType.B_LC2,
         FP: 2,
@@ -4157,7 +4157,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     450: {
         name: 'Type 13 Air Radar Kai (Late Model)',
         nameJP: '13号対空電探改(後期型)',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_A,
         AA: 6,
         ACC: 2,
@@ -4167,7 +4167,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     451: {
         name: 'Type 3 Command Liaison Aircraft Kai',
         nameJP: '三式指揮連絡機改',
-        type: EquipType.ASW_PLANE,
+        type: PlayerEquipType.ASW_PLANE,
         improvement_type: EquipImprovementType.ASW_PLANE_HIGH,
         FP: 1,
         ACC: 2,
@@ -4177,7 +4177,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     455: {
         name: 'Prototype Long-barrel 12.7cm Twin Gun Mount Model A Kai 4',
         nameJP: '試製 長12.7cm連装砲A型改四',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 4,
         AA: 3,
@@ -4188,7 +4188,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     456: {
         name: 'SG Radar (Late Model)',
         nameJP: 'SG レーダー(後期型)',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_C,
         FP: 2,
         AA: 3,
@@ -4201,7 +4201,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     457: {
         name: 'Late Model Bow Torpedo Mount (4 tubes)',
         nameJP: '後期型艦首魚雷(4門)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 12,
@@ -4213,7 +4213,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     458: {
         name: 'Late Model Radar & Passive Radiolocator + Snorkel Equipment',
         nameJP: '後期型電探&逆探+シュノーケル装備',
-        type: EquipType.SUBMARINE_RADAR,
+        type: PlayerEquipType.SUBMARINE_RADAR,
         improvement_type: EquipImprovementType.SUBMARINE_RADAR,
         TP: 4,
         AR: 2,
@@ -4224,7 +4224,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     460: {
         name: '15m Duplex Rangefinder Kai + Type 21 Radar Kai Ni + Skilled Fire Direction Center',
         nameJP: '15m二重測距儀改+21号電探改二+熟練射撃指揮所',
-        type: EquipType.RADAR_XL,
+        type: PlayerEquipType.RADAR_XL,
         improvement_type: EquipImprovementType.RADAR_XL,
         FP: 4,
         AA: 8,
@@ -4236,7 +4236,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     461: {
         name: 'Skilled Sonar Personnel + Late Model Bow Torpedo Mount (4 tubes)',
         nameJP: '熟練聴音員+後期型艦首魚雷(4門)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 13,
@@ -4248,7 +4248,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     463: {
         name: '15.5cm Triple Secondary Gun Mount Kai Ni',
         nameJP: '15.5cm三連装副砲改二',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         FP: 9,
         AA: 5,
@@ -4260,7 +4260,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     464: {
         name: '10cm Twin High-angle Gun Mount Battery Concentrated Deployment',
         nameJP: '10cm連装高角砲群 集中配備',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -4273,7 +4273,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     465: {
         name: 'Prototype 51cm Triple Gun Mount',
         nameJP: '試製51cm三連装砲',
-        type: EquipType.MAIN_GUN_XL,
+        type: PlayerEquipType.MAIN_GUN_XL,
         improvement_type: EquipImprovementType.MAIN_GUN_XL,
         FP: 36,
         AA: 5,
@@ -4285,10 +4285,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     466: {
         name: 'Ryuusei Kai (Skilled)',
         nameJP: '流星改(熟練)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 13,
+        AERIAL_TP: 13,
         AA: 3,
         ACC: 1,
         ASW: 6,
@@ -4297,7 +4297,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     467: {
         name: '5inch Twin Gun Mount (Secondary Armament) Concentrated Deployment',
         nameJP: '5inch連装砲(副砲配置) 集中配備',
-        type: EquipType.SECONDARY_GUN_L,
+        type: PlayerEquipType.SECONDARY_GUN_L,
         improvement_type: EquipImprovementType.SECONDARY_GUN_L,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
@@ -4310,7 +4310,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     468: {
         name: '38cm Quadruple Gun Mount Kai Deux',
         nameJP: '38cm四連装砲改 deux',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 24,
         AA: 5,
@@ -4321,7 +4321,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     469: {
         name: 'Type 0 Reconnaissance Seaplane Model 11B Kai (Night Recon)',
         nameJP: '零式水上偵察機11型乙改(夜偵)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -4334,7 +4334,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     470: {
         name: '12.7cm Twin Gun Mount Model C Kai 3',
         nameJP: '12.7cm連装砲C型改三',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 2,
@@ -4347,7 +4347,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     471: {
         name: 'Loire 130M',
         nameJP: 'Loire 130M',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -4358,7 +4358,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     472: {
         name: 'Mk.32 ASW Torpedo (Mk.2 Thrower)',
         nameJP: 'Mk.32 対潜魚雷(Mk.2落射機)',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DCP: true,
         can_ASW_penetrate: true,
@@ -4369,7 +4369,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     473: {
         name: 'F4U-2 Night Corsair',
         nameJP: 'F4U-2 Night Corsair',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         icon: SpecialIcon.NightFighters,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
@@ -4383,7 +4383,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     474: {
         name: 'F4U-4',
         nameJP: 'F4U-4',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AA_resist_ship: .6,
         can_shell_install_bomber: true,
@@ -4397,12 +4397,12 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     475: {
         name: 'AU-1',
         nameJP: 'AU-1',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AA_resist_ship: .6,
         FP: 3,
         AERIAL_BOMB: 12,
-        TP: 6,
+        AERIAL_TP: 6,
         AA: 9,
         EV: 1,
         ASW: 5,
@@ -4411,12 +4411,12 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     476: {
         name: 'F4U-7',
         nameJP: 'F4U-7',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AA_resist_ship: .6,
         FP: 3,
         AERIAL_BOMB: 11,
-        TP: 8,
+        AERIAL_TP: 8,
         AA: 10,
         EV: 2,
         ASW: 4,
@@ -4425,7 +4425,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     477: {
         name: 'Skilled Deck Personnel',
         nameJP: '熟練甲板要員',
-        type: EquipType.SCAMP,
+        type: PlayerEquipType.SCAMP,
         improvement_type: EquipImprovementType.SCAMP,
         FP: 2,
         AA: 1,
@@ -4437,7 +4437,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     478: {
         name: 'Skilled Deck Personnel + Aviation Maintenance Hands',
         nameJP: '熟練甲板要員+航空整備員',
-        type: EquipType.SCAMP,
+        type: PlayerEquipType.SCAMP,
         improvement_type: EquipImprovementType.SCAMP,
         FP: 7,
         AERIAL_BOMB: 1,
@@ -4453,10 +4453,10 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     481: {
         name: 'Mosquito TR Mk.33',
         nameJP: 'Mosquito TR Mk.33',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         AA_resist_ship: .6,
-        TP: 8,
+        AERIAL_TP: 8,
         AA: 5,
         ACC: 1,
         ASW: 6,
@@ -4465,7 +4465,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     482: {
         name: 'Toku Daihatsu Landing Craft + Panzer III (North African Specification)',
         nameJP: '特大発動艇+Ⅲ号戦車(北アフリカ仕様)',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         FP: 1,
         AA: 1,
@@ -4473,7 +4473,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     483: {
         name: 'Type 3 Shell Kai Ni',
         nameJP: '三式弾改二',
-        type: EquipType.TYPE_3_SHELL,
+        type: PlayerEquipType.TYPE_3_SHELL,
         improvement_type: EquipImprovementType.TYPE_3_SHELL,
         FP: 5,
         AA: 7,
@@ -4483,7 +4483,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     485: {
         name: 'Kyoufuu Kai Ni',
         nameJP: '強風改二',
-        type: EquipType.SEAPLANE_FIGHTER,
+        type: PlayerEquipType.SEAPLANE_FIGHTER,
         improvement_type: EquipImprovementType.SEAPLANE_FIGHTER,
         AA: 6,
         ACC: 1,
@@ -4493,7 +4493,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     486: {
         name: 'Type 0 Fighter Model 64 (Air Superiority Fighter Specification)',
         nameJP: '零式艦戦64型(制空戦闘機仕様)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 9,
@@ -4504,7 +4504,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     487: {
         name: 'Type 0 Fighter Model 64 (Skilled Fighter-Bomber)',
         nameJP: '零式艦戦64型(熟練爆戦)',
-        type: EquipType.FIGHTER_BOMBER,
+        type: PlayerEquipType.FIGHTER_BOMBER,
         improvement_type: EquipImprovementType.FIGHTER_BOMBER,
         AA_resist_ship: .6,
         FP: 1,
@@ -4517,7 +4517,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     488: {
         name: 'Type 2 Depth Charge Kai Ni',
         nameJP: '二式爆雷改二',
-        type: EquipType.DEPTH_CHARGE,
+        type: PlayerEquipType.DEPTH_CHARGE,
         improvement_type: EquipImprovementType.DEPTH_CHARGE,
         is_DC_only: true,
         can_ASW_penetrate: true,
@@ -4529,7 +4529,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     489: {
         name: 'Type 1 Fighter Hayabusa Model II Kai (20th Squadron)',
         nameJP: '一式戦 隼II型改(20戦隊)',
-        type: EquipType.ASW_PLANE,
+        type: PlayerEquipType.ASW_PLANE,
         improvement_type: EquipImprovementType.ASW_PLANE_HIGH,
         is_20th_family: true,
         FP: 2,
@@ -4541,7 +4541,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     490: {
         name: 'Prototype Night Zuiun (Attack Equipment)',
         nameJP: '試製 夜間瑞雲(攻撃装備)',
-        type: EquipType.SEAPLANE_BOMBER,
+        type: PlayerEquipType.SEAPLANE_BOMBER,
         improvement_type: EquipImprovementType.SEAPLANE_BOMBER,
         icon: SpecialIcon.NightSeaplaneBombers,
         AA_resist_ship: .5,
@@ -4556,7 +4556,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     491: {
         name: 'Type 1 Fighter Hayabusa Model III Kai (Skilled / 20th Squadron)',
         nameJP: '一式戦 隼III型改(熟練/20戦隊)',
-        type: EquipType.ASW_PLANE,
+        type: PlayerEquipType.ASW_PLANE,
         improvement_type: EquipImprovementType.ASW_PLANE_HIGH,
         is_20th_family: true,
         AA_resist_ship: .6,
@@ -4570,7 +4570,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     492: {
         name: 'Zero Fighter Model 52C (Hachiman Force)',
         nameJP: '零戦52型丙(八幡部隊)',
-        type: EquipType.FIGHTER,
+        type: PlayerEquipType.FIGHTER,
         improvement_type: EquipImprovementType.FIGHTER,
         FP: 1,
         AA: 10,
@@ -4580,58 +4580,58 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     494: {
         name: 'Toku Daihatsu Landing Craft + Chi-Ha',
         nameJP: '特大発動艇+チハ',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
     },
     495: {
         name: 'Toku Daihatsu Landing Craft + Chi-Ha Kai',
         nameJP: '特大発動艇+チハ改',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         FP: 1,
     },
     496: {
         name: 'Army Infantry Corps',
         nameJP: '陸軍歩兵部隊',
-        type: EquipType.ARMY_UNIT,
+        type: PlayerEquipType.ARMY_UNIT,
         improvement_type: EquipImprovementType.ARMY_UNIT,
     },
     497: {
         name: 'Type 97 Medium Tank (Chi-Ha)',
         nameJP: '九七式中戦車(チハ)',
-        type: EquipType.ARMY_UNIT,
+        type: PlayerEquipType.ARMY_UNIT,
         improvement_type: EquipImprovementType.ARMY_UNIT,
     },
     498: {
         name: 'Type 97 Medium Tank New Turret (Chi-Ha Kai)',
         nameJP: '九七式中戦車 新砲塔(チハ改)',
-        type: EquipType.ARMY_UNIT,
+        type: PlayerEquipType.ARMY_UNIT,
         improvement_type: EquipImprovementType.ARMY_UNIT,
     },
     499: {
         name: 'Army Infantry Corps + Chi-Ha Kai',
         nameJP: '陸軍歩兵部隊+チハ改',
-        type: EquipType.ARMY_UNIT,
+        type: PlayerEquipType.ARMY_UNIT,
         improvement_type: EquipImprovementType.ARMY_UNIT,
     },
     500: {
         name: 'Smoke Generator (Smoke Screen)',
         nameJP: '発煙装置(煙幕)',
-        type: EquipType.SMOKESCREEN,
+        type: PlayerEquipType.SMOKESCREEN,
         improvement_type: EquipImprovementType.SMOKESCREEN,
         EV: 1,
     },
     501: {
         name: 'Smoke Generator Kai (Smoke Screen)',
         nameJP: '発煙装置改(煙幕)',
-        type: EquipType.SMOKESCREEN,
+        type: PlayerEquipType.SMOKESCREEN,
         improvement_type: EquipImprovementType.SMOKESCREEN,
         EV: 3,
     },
     502: {
         name: '35.6cm Twin Gun Mount Kai 3 (Dazzle Camouflage)',
         nameJP: '35.6cm連装砲改三(ダズル迷彩仕様)',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 20,
         AA: 6,
@@ -4643,7 +4643,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     503: {
         name: '35.6cm Twin Gun Mount Kai 4',
         nameJP: '35.6cm連装砲改四',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 22,
         AA: 5,
@@ -4655,7 +4655,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     505: {
         name: '25mm Anti-Aircraft Autocannon Expansion',
         nameJP: '25mm対空機銃増備',
-        type: EquipType.AA_GUN,
+        type: PlayerEquipType.AA_GUN,
         improvement_type: EquipImprovementType.AA_GUN,
         AA: 7,
         EV: 2,
@@ -4663,7 +4663,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     506: {
         name: 'Radar Equipment Mast (Type 13 Kai + Type 22 Radar Kai 4)',
         nameJP: '電探装備マスト(13号改+22号電探改四)',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_A,
         AA: 4,
         ACC: 6,
@@ -4674,7 +4674,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     507: {
         name: '14inch/45 Twin Gun Mount',
         nameJP: '14inch/45 連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 16,
         AR: 1,
@@ -4684,7 +4684,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     508: {
         name: '14inch/45 Triple Gun Mount',
         nameJP: '14inch/45 三連装砲',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 19,
         AR: 1,
@@ -4693,7 +4693,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     509: {
         name: '12cm Single High-angle Gun Mount Model E Kai',
         nameJP: '12cm単装高角砲E型改',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -4707,7 +4707,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     510: {
         name: 'Walrus',
         nameJP: 'Walrus',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -4718,7 +4718,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     511: {
         name: '21inch 4-tube Bow Torpedo Launcher (Initial Model)',
         nameJP: '21inch艦首魚雷発射管4門(初期型)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         TP: 8,
         EV: 4,
@@ -4727,7 +4727,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     512: {
         name: '21inch 4-tube Bow Torpedo Launcher (Late Model)',
         nameJP: '21inch艦首魚雷発射管4門(後期型)',
-        type: EquipType.TORPEDO_SS,
+        type: PlayerEquipType.TORPEDO_SS,
         improvement_type: EquipImprovementType.TORPEDO_SS,
         is_special_submarine_CI_torigger: true,
         TP: 12,
@@ -4738,7 +4738,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     513: {
         name: 'Barrage Balloon',
         nameJP: '阻塞気球',
-        type: EquipType.BARRAGE_BALLOON,
+        type: PlayerEquipType.BARRAGE_BALLOON,
         improvement_type: EquipImprovementType.BARRAGE_BALLOON,
         icon: SpecialIcon.BarrageBalloons,
         EV: 1,
@@ -4746,7 +4746,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     514: {
         name: 'Toku Daihatsu Landing Craft + Panzer III Ausf. J',
         nameJP: '特大発動艇+Ⅲ号戦車J型',
-        type: EquipType.LANDING_CRAFT,
+        type: PlayerEquipType.LANDING_CRAFT,
         improvement_type: EquipImprovementType.LANDING_CRAFT,
         b_type: SkillTriggerEquipType.B_LC2,
         FP: 2,
@@ -4756,7 +4756,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     515: {
         name: 'Sea Otter',
         nameJP: 'Sea Otter',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -4767,7 +4767,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     517: {
         name: 'Passive Radiolocator (E27) + Type 22 Surface Radar Kai 4 (Calibrated Late Model)',
         nameJP: '逆探(E27)+22号対水上電探改四(後期調整型)',
-        type: EquipType.RADAR_S,
+        type: PlayerEquipType.RADAR_S,
         improvement_type: EquipImprovementType.RADAR_S_MODEL_D,
         FP: 2,
         ACC: 9,
@@ -4778,7 +4778,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     518: {
         name: '14cm Twin Gun Mount Kai 2',
         nameJP: '14cm連装砲改二',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         fit_class: 102,
         FP: 5,
@@ -4790,7 +4790,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     519: {
         name: 'SJ Radar + Submarine Conning Tower Equipment',
         nameJP: 'SJレーダー+潜水艦司令塔装備',
-        type: EquipType.SUBMARINE_RADAR,
+        type: PlayerEquipType.SUBMARINE_RADAR,
         improvement_type: EquipImprovementType.SUBMARINE_RADAR,
         TP: 5,
         ACC: 5,
@@ -4800,7 +4800,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     520: {
         name: 'Prototype 20.3cm (No.4) Twin Gun Mount',
         nameJP: '試製20.3cm(4号)連装砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 11,
         AA: 4,
@@ -4811,7 +4811,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     521: {
         name: 'Shiun (Skilled)',
         nameJP: '紫雲(熟練)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AERIAL_BOMB: 1,
         ACC: 2,
@@ -4822,7 +4822,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     522: {
         name: 'Type 0 Small Reconnaissance Seaplane',
         nameJP: '零式小型水上機',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AERIAL_BOMB: 1,
         EV: 1,
@@ -4832,7 +4832,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     523: {
         name: 'Type 0 Small Reconnaissance Seaplane (Skilled)',
         nameJP: '零式小型水上機(熟練)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AERIAL_BOMB: 1,
         ACC: 1,
@@ -4843,7 +4843,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     524: {
         name: '12cm Single High-angle Gun + 25mm Machine Gun',
         nameJP: '12cm単装高角砲+25mm機銃増備',
-        type: EquipType.SECONDARY_GUN,
+        type: PlayerEquipType.SECONDARY_GUN,
         improvement_type: EquipImprovementType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
@@ -4855,7 +4855,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     525: {
         name: 'Special Type 4 Amphibious Tank',
         nameJP: '特四式内火艇',
-        type: EquipType.LANDING_TANK,
+        type: PlayerEquipType.LANDING_TANK,
         improvement_type: EquipImprovementType.LANDING_TANK,
         b_type: SkillTriggerEquipType.B_OTHER,
         TP: 1,
@@ -4864,7 +4864,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     526: {
         name: 'Special Type 4 Amphibious Tank Kai',
         nameJP: '特四式内火艇改',
-        type: EquipType.LANDING_TANK,
+        type: PlayerEquipType.LANDING_TANK,
         improvement_type: EquipImprovementType.LANDING_TANK,
         b_type: SkillTriggerEquipType.B_OTHER,
         TP: 3,
@@ -4874,7 +4874,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     527: {
         name: 'Type 281 Radar',
         nameJP: 'Type281 レーダー',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         AA: 7,
         ACC: 1,
@@ -4884,7 +4884,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     528: {
         name: 'Type 274 Fire Control Radar',
         nameJP: 'Type274 射撃管制レーダー',
-        type: EquipType.RADAR_L,
+        type: PlayerEquipType.RADAR_L,
         improvement_type: EquipImprovementType.RADAR_L,
         FP: 2,
         AA: 3,
@@ -4897,7 +4897,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     529: {
         name: '12.7cm Twin Gun Mount Model C Kai 3 H',
         nameJP: '12.7cm連装砲C型改三H',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         FP: 3,
         AA: 5,
@@ -4910,7 +4910,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     530: {
         name: '35.6cm Twin Gun Mount Kai 3C',
         nameJP: '35.6cm連装砲改三丙',
-        type: EquipType.MAIN_GUN_L,
+        type: PlayerEquipType.MAIN_GUN_L,
         improvement_type: EquipImprovementType.MAIN_GUN_L,
         FP: 21,
         AA: 3,
@@ -4921,7 +4921,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     531: {
         name: 'Fleet Communication Antenna',
         nameJP: '艦隊通信アンテナ',
-        type: EquipType.FCF,
+        type: PlayerEquipType.FCF,
         improvement_type: EquipImprovementType.FCF,
         ACC: 1,
         LOS: 1,
@@ -4929,14 +4929,14 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     532: {
         name: 'Communication Equipment & Personnel',
         nameJP: '通信装置&要員',
-        type: EquipType.FCF,
+        type: PlayerEquipType.FCF,
         improvement_type: EquipImprovementType.FCF,
         LOS: 1,
     },
     533: {
         name: '10cm Twin High-angle Gun Mount Kai + Anti-Aircraft Fire Director Kai',
         nameJP: '10cm連装高角砲改+高射装置改',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 3,
@@ -4949,7 +4949,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     534: {
         name: '13.8cm Twin Gun Mount',
         nameJP: '13.8cm連装砲',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         fit_class: 102,
         FP: 4,
@@ -4959,7 +4959,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     535: {
         name: '13.8cm Twin Gun Mount Kai',
         nameJP: '13.8cm連装砲改',
-        type: EquipType.MAIN_GUN_S,
+        type: PlayerEquipType.MAIN_GUN_S,
         improvement_type: EquipImprovementType.MAIN_GUN_S,
         fit_class: 102,
         FP: 5,
@@ -4971,7 +4971,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     536: {
         name: '15.2cm Triple Main Gun Mount',
         nameJP: '15.2cm三連装主砲',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 7,
         AA: 2,
@@ -4981,7 +4981,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     537: {
         name: '15.2cm Triple Main Gun Mount Kai',
         nameJP: '15.2cm三連装主砲改',
-        type: EquipType.MAIN_GUN_M,
+        type: PlayerEquipType.MAIN_GUN_M,
         improvement_type: EquipImprovementType.MAIN_GUN_M,
         FP: 8,
         AA: 3,
@@ -4992,7 +4992,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     538: {
         name: 'Loire 130M Kai (Skilled)',
         nameJP: 'Loire 130M改(熟練)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -5004,7 +5004,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     539: {
         name: 'SOC Seagull Late Model (Skilled)',
         nameJP: 'SOC Seagull 後期型(熟練)',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         AERIAL_BOMB: 2,
         ACC: 3,
@@ -5015,7 +5015,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     540: {
         name: 'Type 0 Reconnaissance Seaplane Model 11A Kai 2',
         nameJP: '零式水上偵察機11型甲改二',
-        type: EquipType.SEAPLANE,
+        type: PlayerEquipType.SEAPLANE,
         improvement_type: EquipImprovementType.SEAPLANE,
         icon: SpecialIcon.NightScout,
         is_night_scout: true,
@@ -5028,7 +5028,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     541: {
         name: 'SBD (Yellow Wings)',
         nameJP: 'SBD(Yellow Wings)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         FP: 1,
         AERIAL_BOMB: 7,
@@ -5041,17 +5041,17 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     542: {
         name: 'TBD (Yellow Wings)',
         nameJP: 'TBD(Yellow Wings)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         FP: 1,
-        TP: 6,
+        AERIAL_TP: 6,
         ASW: 4,
         LOS: 2,
     },
     543: {
         name: 'SBD VS-2 (Reconnaissance Squadron)',
         nameJP: 'SBD VS-2(偵察飛行隊)',
-        type: EquipType.CARRIER_SCOUT,
+        type: PlayerEquipType.CARRIER_SCOUT,
         improvement_type: EquipImprovementType.CARRIER_SCOUT,
         FP: 2,
         AERIAL_BOMB: 6,
@@ -5064,7 +5064,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     544: {
         name: 'SBD VB-2 (Bombing Squadron)',
         nameJP: 'SBD VB-2(爆撃飛行隊)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         FP: 3,
         AERIAL_BOMB: 8,
@@ -5077,12 +5077,12 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     545: {
         name: 'Tenzan Model 12A Kai 2 (Murata Squadron w/ Radar)',
         nameJP: '天山一二型甲改二(村田隊/電探装備)',
-        type: EquipType.TORPEDO_BOMBER,
+        type: PlayerEquipType.TORPEDO_BOMBER,
         improvement_type: EquipImprovementType.TORPEDO_BOMBER,
         icon: SpecialIcon.NightTorpedoBombers,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         AA_resist_ship: .6,
-        TP: 16,
+        AERIAL_TP: 16,
         AA: 1,
         ACC: 3,
         ASW: 7,
@@ -5091,7 +5091,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     549: {
         name: 'Type 3 Command Liaison Aircraft Kai 2',
         nameJP: '三式指揮連絡機改二',
-        type: EquipType.ASW_PLANE,
+        type: PlayerEquipType.ASW_PLANE,
         improvement_type: EquipImprovementType.ASW_PLANE_HIGH,
         FP: 2,
         AERIAL_BOMB: 2,
@@ -5102,7 +5102,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     550: {
         name: 'Prototype Myoujou (Additional Trial Model)',
         nameJP: '試製 明星(増加試作機)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AERIAL_BOMB: 4,
         ASW: 4,
@@ -5111,7 +5111,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     551: {
         name: 'Myoujou Kai',
         nameJP: '明星改',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         AERIAL_BOMB: 5,
         ASW: 5,
@@ -5120,7 +5120,7 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     552: {
         name: 'Type 99 Training Bomber Model 22 Kai (Experimental w/ Night Equipment)',
         nameJP: '九九式練爆二二型改(夜間装備実験機)',
-        type: EquipType.DIVE_BOMBER,
+        type: PlayerEquipType.DIVE_BOMBER,
         improvement_type: EquipImprovementType.DIVE_BOMBER,
         icon: SpecialIcon.NightDiveBombers,
         AERIAL_BOMB: 6,
