@@ -5513,7 +5513,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [423],
+        ids: [423], // Fulmar(戦闘偵察/熟練)
         bonuses: [
             {
                 bonus: { fire_power: 2, anti_air: 2, evasion: 2, los: 2 },
@@ -5906,7 +5906,10 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [442, 443],
+        ids: [
+            442, // 潜水艦後部魚雷発射管4門(初期型)
+            443, // 潜水艦後部魚雷発射管4門(後期型)
+        ],
         bonuses: [
             {
                 bonus: { torpedo_power: 2 },
@@ -6098,7 +6101,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [455],
+        ids: [455], // 試製 長12.7cm連装砲A型改四
         bonuses: [
             {
                 bonus: { fire_power: 2, anti_air: 1 },
@@ -6205,7 +6208,10 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [457, 461],
+        ids: [
+            457, // 後期型艦首魚雷(4門)
+            461, // 熟練聴音員+後期型艦首魚雷(4門)
+        ],
         bonuses: [
             {
                 bonus: { torpedo_power: 3, evasion: 3 },
@@ -6225,7 +6231,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [461],
+        ids: [461], // 熟練聴音員+後期型艦首魚雷(4門)
         bonuses: [
             {
                 bonus: { torpedo_power: 1 },
@@ -6265,7 +6271,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [458],
+        ids: [458], // 後期型電探&逆探+シュノーケル装備
         bonuses: [
             {
                 bonus: { torpedo_power: 3, evasion: 6 },
@@ -6580,7 +6586,10 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [470, 529],
+        ids: [
+            470, // 12.7cm連装砲C型改三
+            529, // 12.7cm連装砲C型改三H
+        ],
         bonuses: [
             {
                 bonus: { fire_power: 1 },
@@ -7706,7 +7715,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [503],
+        ids: [503], // 35.6cm連装砲改四
         bonuses: [
             {
                 bonus: { fire_power: 4, anti_air: 4, shell_accuracy: 2 },
@@ -8065,7 +8074,10 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [511, 512],
+        ids: [
+            511, // 21inch艦首魚雷発射管4門(初期型)
+            512, // 21inch艦首魚雷発射管4門(後期型)
+        ],
         bonuses: [
             {
                 bonus: { torpedo_power: 3, evasion: 4 },
@@ -8183,7 +8195,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [519],
+        ids: [519], // SJレーダー+潜水艦司令塔装備
         bonuses: [
             {
                 bonus: { shell_accuracy: 2, evasion: 2 },
@@ -8198,7 +8210,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [520],
+        ids: [520], // 試製20.3cm(4号)連装砲
         bonuses: [
             {
                 bonus: { fire_power: 1 },
@@ -8293,7 +8305,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [521],
+        ids: [521], // 紫雲(熟練)
         bonuses: [
             {
                 bonus: { fire_power: 1, evasion: 2, los: 2 },
@@ -8388,7 +8400,10 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [522, 523],
+        ids: [
+            522, // 零式小型水上機
+            523, // 零式小型水上機(熟練)
+        ],
         bonuses: [
             {
                 bonus: { torpedo_power: 1, evasion: 5, shell_accuracy: 1, los: 3 },
@@ -8427,7 +8442,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [523],
+        ids: [523], // 零式小型水上機(熟練)
         bonuses: [
             {
                 bonus: { torpedo_power: 2, dive_bomb: 2, evasion: 1, shell_accuracy: 1, los: 1 },
@@ -8491,7 +8506,10 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [525, 526],
+        ids: [
+            525, // 特四式内火艇
+            526, // 特四式内火艇改
+        ],
         bonuses: [
             {
                 bonus: { fire_power: 1, torpedo_power: 2, evasion: -1 },
@@ -8525,7 +8543,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [526],
+        ids: [526], // 特四式内火艇改
         bonuses: [
             {
                 bonus: { fire_power: 1, torpedo_power: 1, shell_accuracy: 1 },
@@ -8777,7 +8795,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        ids: [530],
+        ids: [530], // 35.6cm連装砲改三丙
         bonuses: [
             {
                 bonus: { fire_power: 2 },
