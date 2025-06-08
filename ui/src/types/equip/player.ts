@@ -197,4 +197,5 @@ export type EquipBonusType =
     | 'los'
     | 'shell_accuracy'
     | 'range'
-    | 'dive_bomb'
+    | 'aerial_bomb_power'
+    | 'aerial_torpedo_power'

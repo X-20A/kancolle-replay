@@ -3810,7 +3810,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [75, 92, 110, 111, 153]
             },
             {
-                bonus: { torpedo_power: 1 },
+                bonus: { aerial_torpedo_power: 1 },
                 ship_base_ids: [110, 111, 153],
                 stack_limit: 1
             },
@@ -3823,7 +3823,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [74, 116, 117, 185, 282, 318, 555, 560]
             },
             {
-                bonus: { torpedo_power: 1 },
+                bonus: { aerial_torpedo_power: 1 },
                 ship_ids: [318, 555, 560],
                 stack_limit: 1
             },
@@ -3832,7 +3832,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [883, 888]
             },
             {
-                bonus: { torpedo_power: 2 },
+                bonus: { aerial_torpedo_power: 2 },
                 ship_ids: [883, 888],
                 stack_limit: 1
             }
@@ -3850,17 +3850,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [75, 92, 111, 153]
             },
             {
-                bonus: { torpedo_power: 2, evasion: 2 },
+                bonus: { aerial_torpedo_power: 2, evasion: 2 },
                 ship_base_ids: [110, 153],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 2, evasion: 3 },
+                bonus: { aerial_torpedo_power: 2, evasion: 3 },
                 ship_base_ids: [111],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 1, evasion: 1 },
+                bonus: { aerial_torpedo_power: 1, evasion: 1 },
                 ship_base_ids: [75, 92],
                 stack_limit: 1
             },
@@ -3885,22 +3885,22 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [888]
             },
             {
-                bonus: { torpedo_power: 1 },
+                bonus: { aerial_torpedo_power: 1 },
                 ship_ids: [117, 185, 282, 291, 292],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 1, evasion: 1 },
+                bonus: { aerial_torpedo_power: 1, evasion: 1 },
                 ship_ids: [296, 297, 318, 555, 560],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 2, evasion: 2 },
+                bonus: { aerial_torpedo_power: 2, evasion: 2 },
                 ship_ids: [508, 509, 888],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 3, evasion: 4 },
+                bonus: { aerial_torpedo_power: 3, evasion: 4 },
                 ship_ids: [883],
                 stack_limit: 1
             }
@@ -3922,22 +3922,22 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [75, 92]
             },
             {
-                bonus: { torpedo_power: 3, evasion: 3 },
+                bonus: { aerial_torpedo_power: 3, evasion: 3 },
                 ship_base_ids: [110],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 3, evasion: 4 },
+                bonus: { aerial_torpedo_power: 3, evasion: 4 },
                 ship_base_ids: [111],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 3, evasion: 2 },
+                bonus: { aerial_torpedo_power: 3, evasion: 2 },
                 ship_base_ids: [153],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 2, evasion: 2 },
+                bonus: { aerial_torpedo_power: 2, evasion: 2 },
                 ship_base_ids: [75, 92],
                 stack_limit: 1
             },
@@ -3966,27 +3966,27 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [888]
             },
             {
-                bonus: { torpedo_power: 1 },
+                bonus: { aerial_torpedo_power: 1 },
                 ship_ids: [108, 109, 291, 292],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 1, evasion: 1 },
+                bonus: { aerial_torpedo_power: 1, evasion: 1 },
                 ship_ids: [117, 185, 282, 296, 297],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 1, evasion: 2 },
+                bonus: { aerial_torpedo_power: 1, evasion: 2 },
                 ship_ids: [318, 555, 560],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 2, evasion: 3 },
+                bonus: { aerial_torpedo_power: 2, evasion: 3 },
                 ship_ids: [508, 509, 888],
                 stack_limit: 1
             },
             {
-                bonus: { torpedo_power: 3, evasion: 5 },
+                bonus: { aerial_torpedo_power: 3, evasion: 5 },
                 ship_ids: [883],
                 stack_limit: 1
             }
@@ -5533,7 +5533,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [424], //Barracuda Mk.II // !
         bonuses: [
             {
-                bonus: { fire_power: 2, torpedo_power: 3 },
+                bonus: { fire_power: 2, aerial_torpedo_power: 3 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112]
             },
             {
@@ -5561,7 +5561,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [425], // Barracuda Mk.III // !
         bonuses: [
             {
-                bonus: { fire_power: 2, asw: 2, torpedo_power: 1, los: 1 },
+                bonus: { fire_power: 2, asw: 2, aerial_torpedo_power: 1, los: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112]
             },
             {
@@ -5585,7 +5585,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                bonus: { torpedo_power: 1 },
+                bonus: { aerial_torpedo_power: 1 },
                 ship_class_ids: [67, 78, 82, 88, 108, 112],
                 required_improvement: 8
             },
@@ -7067,7 +7067,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                bonus: { dive_bomb: 1 },
+                bonus: { aerial_bomb_power: 1 },
                 required_improvement: 4,
                 stack_limit: 1
             },
@@ -8445,7 +8445,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [523], // 零式小型水上機(熟練)
         bonuses: [
             {
-                bonus: { torpedo_power: 2, dive_bomb: 2, evasion: 1, shell_accuracy: 1, los: 1 },
+                bonus: { torpedo_power: 2, aerial_bomb_power: 2, evasion: 1, shell_accuracy: 1, los: 1 },
                 ship_type_ids: [ST.SSV]
             }
         ]
