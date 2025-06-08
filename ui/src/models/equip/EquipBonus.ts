@@ -1,20 +1,8 @@
 import { Equip } from "./Equip";
-import { SkillTriggerEquipType } from "@/types/equip/player";
+import { EquipBonusType, SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { NakedPlayerShip } from "../ship/NakedShip";
-
-export type EquipBonusAddition = {
-    fire_power: number,
-    armor: number,
-    torpedo_power: number,
-    evasion: number,
-    anti_air: number,
-    asw: number,
-    los: number,
-    shell_accuracy: number,
-    range: number,
-    dive_bomb: number,
-}
+import { StatusComponent } from "@/types";
 
 /**
  * ボーナス加算
@@ -22,7 +10,7 @@ export type EquipBonusAddition = {
  * @param bonus 加算するボーナス
  * @returns 合計
  */
-function addBonus(acc: EquipBonusAddition, bonus: Partial<EquipBonusAddition>): EquipBonusAddition {
+function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBonusType {
     return {
         fire_power: acc.fire_power + (bonus.fire_power ?? 0),
         armor: acc.armor + (bonus.armor ?? 0),
@@ -33,7 +21,8 @@ function addBonus(acc: EquipBonusAddition, bonus: Partial<EquipBonusAddition>): 
         los: acc.los + (bonus.los ?? 0),
         shell_accuracy: acc.shell_accuracy + (bonus.shell_accuracy ?? 0),
         range: acc.range + (bonus.range ?? 0),
-        dive_bomb: acc.dive_bomb + (bonus.dive_bomb ?? 0),
+        aerial_bomb_power: acc.aerial_bomb_power + (bonus.aerial_bomb_power ?? 0),
+        aerial_torpedo_power: acc.aerial_torpedo_power + (bonus.aerial_torpedo_power ?? 0),
     };
 }
 
@@ -47,7 +36,7 @@ function addBonus(acc: EquipBonusAddition, bonus: Partial<EquipBonusAddition>): 
 export function deriveEquipBonusAddition(
     ship: NakedPlayerShip,
     equips: Equip[],
-): EquipBonusAddition {
+): StatusComponent {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
         if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;
@@ -64,7 +53,7 @@ export function deriveEquipBonusAddition(
         has_high_accuracy_radar: false,
     });
 
-    const initial: EquipBonusAddition = {
+    const initial: EquipBonusType = {
         fire_power: 0,
         armor: 0,
         torpedo_power: 0,
@@ -74,7 +63,8 @@ export function deriveEquipBonusAddition(
         los: 0,
         shell_accuracy: 0,
         range: 0,
-        dive_bomb: 0,
+        aerial_bomb_power: 0,
+        aerial_torpedo_power: 0,
     };
 
     // ボーナス合算処理
@@ -130,5 +120,11 @@ export function deriveEquipBonusAddition(
         return total_bonus_acc;
     }, initial);
 
-    return summary;
+    return {
+        ...summary,
+        hp: 0,
+        luck: 0,
+        torpedo_accuracy: 0,
+        night_battle_accuracy: 0,
+    };
 }

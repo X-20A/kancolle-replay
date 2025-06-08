@@ -42,9 +42,12 @@ export function deriveEquipMaster(
         asw: equip_data.ASW ?? 0,
         los: equip_data.LOS ?? 0,
         luck: 0,
+        range: equip_data.RNG ?? 0,
         shell_accuracy: equip_data.ACC ?? 0,
         torpedo_accuracy: 0,
         night_battle_accuracy: 0,
+        aerial_bomb_power: equip_data.AERIAL_BOMB ?? 0,
+        aerial_torpedo_power: equip_data.
     }
 
     const flags: EquipFlags = {

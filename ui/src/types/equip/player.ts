@@ -1,5 +1,5 @@
 import { EquipType } from "@/datas/equip/base/player"
-import { DeepReadonly } from ".."
+import { DeepReadonly, StatusComponentKey } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
@@ -119,7 +119,7 @@ export type PlayerEquipData = {
     /** 索敵 */
     LOS?: number,
     /** 爆装 */
-    DIVEBOMB?: number,
+    AERIAL_BOMB?: number,
     /** 対爆 */
     AB?: number,
     /** 迎撃 */
@@ -187,15 +187,22 @@ export type EquipFlags = {
     is_20th_family: boolean,
 }
 
-export type EquipBonusType =
-    | 'fire_power'
-    | 'armor'
-    | 'torpedo_power'
-    | 'evasion'
-    | 'anti_air'
-    | 'asw'
-    | 'los'
-    | 'shell_accuracy'
-    | 'range'
-    | 'aerial_bomb_power'
-    | 'aerial_torpedo_power'
+const EQUIP_BONUS_KEYS = [
+    'fire_power',
+    'armor',
+    'torpedo_power',
+    'evasion',
+    'anti_air',
+    'asw',
+    'los',
+    'shell_accuracy',
+    'range',
+    'aerial_bomb_power',
+    'aerial_torpedo_power',
+] as const satisfies readonly StatusComponentKey[];
+
+export type EquipBonusKey = typeof EQUIP_BONUS_KEYS[number];
+
+export type EquipBonusType = {
+    [K in EquipBonusKey]: number;
+}
