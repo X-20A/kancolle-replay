@@ -1,4 +1,4 @@
-import { PlayerEquipType } from "@/datas/equip/base/player"
+import { EquipType } from "@/datas/equip/base/player"
 import { DeepReadonly, StatusComponentKey } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 
@@ -95,7 +95,7 @@ export type PlayerEquipData = {
     /** 装備名(日) */
     nameJP: string,
     /** 装備種別ID */
-    type: PlayerEquipType,
+    type: EquipType,
     /** 改修種別ID */
     improvement_type: EquipImprovementType,
     /** 対空CIのトリガーになる装備の種別ID */
@@ -144,6 +144,10 @@ export type PlayerEquipData = {
     can_shell_install_bomber?: true,
     /** 夜偵系装備であるか */
     is_night_scout?: true,
+    /** ロケット戦闘機であるか */
+    is_rocket_fighter?: true,
+    /** 反跳爆撃可能な機体であるか */
+    is_skip_bomber?: true,
     /** 集中配備系の装備であるか */
     is_concentrated?: true,
     /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */
@@ -171,6 +175,10 @@ export type EquipFlags = {
     can_shell_install_bomber: boolean,
     /** 夜偵系装備であるか */
     is_night_scout: boolean,
+    /** ロケット戦闘機であるか */
+    is_rocket_fighter: boolean,
+    /** 反跳爆撃可能な機体であるか */
+    is_skip_bomber: boolean,
     /** 集中配備系の装備であるか */
     is_concentrated: boolean,
     /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */

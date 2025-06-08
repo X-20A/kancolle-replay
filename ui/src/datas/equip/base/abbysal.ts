@@ -1,99 +1,26 @@
 import { AACITriggerEquipType, SkillTriggerEquipType, SpecialIcon } from "@/types/equip/player";
 import { AbyssalEquipDatas } from "@/types/equip/abbysal";
-
-/** プレイヤー装備種別ID */
-export const enum AbyssalEquipType {
-    MAIN_GUN_S = 1,
-    MAIN_GUN_S_AA = 101,
-    MAIN_GUN_M = 2,
-    MAIN_GUN_L = 3,
-    SECONDARY_GUN = 4,
-    SECONDARY_GUN_AA = 104,
-    TORPEDO = 5,
-    FIGHTER = 6,
-    DIVE_BOMBER = 7,
-    TORPEDO_BOMBER = 8,
-    CARRIER_SCOUT = 9,
-    SEAPLANE = 10,
-    SEAPLANE_BOMBER = 11,
-    RADAR_S = 12,
-    RADAR_L = 13,
-    SONAR_S = 14,
-    /** 爆雷 && 爆雷投射機 */
-    DEPTH_CHARGE = 15,
-    ENGINE = 17,
-    TYPE_3_SHELL = 18,
-    AP_SHELL = 19,
-    AA_GUN = 21,
-    MIDGET_SUBMARINE = 22,
-    REPAIR = 23,
-    LANDING_CRAFT = 24,
-    AUTOGYRO = 25,
-    ASW_PLANE = 26,
-    BULGE_M = 27,
-    BULGE_L = 28,
-    SEARCHLIGHT_S = 29,
-    DRUM = 30,
-    SRF = 31,
-    TORPEDO_SS = 32,
-    STARSHELL = 33,
-    FCF = 34,
-    SCAMP = 35,
-    ANTI_AIR_FIRE_DIRECTOR = 36,
-    WG42 = 37,
-    MAIN_GUN_XL = 38,
-    PICKET = 39,
-    SONAR_L = 40,
-    FLYING_BOAT = 41,
-    SEARCHLIGHT_L = 42,
-    RATION = 43,
-    OILDRUM = 44,
-    SEAPLANE_FIGHTER = 45,
-    LANDING_TANK = 46,
-
-    // 深海は陸攻も艦装備
-    LAND_BASED_BOMBER = 47,
-
-
-    TRANSPORT_ITEM = 50,
-    SUBMARINE_RADAR = 51,
-    ARMY_UNIT = 52,
-
-    SMOKESCREEN = 54,
-    JET_BOMBER = 57,
-    // JETSCOUT = 59,
-    RADAR_XL = 93,
-    CARRIER_SCOUT_2 = 94,
-    SECONDARY_GUN_L = 95,
-    OTHER = 99,
-
-    // 新規
-
-    /** 爆戦 */
-    FIGHTER_BOMBER = 70,
-    /** 阻塞気球 */
-    BARRAGE_BALLOON = 79,
-};
+import { EquipType } from "./player";
 
 export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1501: {
         name: '5inch Single Cannon',
         nameJP: '5inch単装砲',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 1,
         RNG: 1,
     },
     1502: {
         name: '5inch Twin Cannon',
         nameJP: '5inch連装砲',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 2,
         RNG: 1,
     },
     1503: {
         name: '3inch Single High-Angle Mount',
         nameJP: '3inch単装高角砲',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         a_type: AACITriggerEquipType.A_GUN, //regular gun in AA calculation?
         FP: 1,
@@ -103,7 +30,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1504: {
         name: '5inch Single AA Cannon',
         nameJP: '5inch単装高射砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 2,
         AA: 2,
         RNG: 2,
@@ -111,7 +38,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1505: {
         name: '8inch Triple Cannon',
         nameJP: '8inch三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 2,
         RNG: 2,
@@ -119,7 +46,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1506: {
         name: '6inch Twin Rapid-fire Cannon',
         nameJP: '6inch連装速射砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 3,
         AA: 3,
         RNG: 2,
@@ -127,7 +54,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1507: {
         name: '14inch Twin Cannon',
         nameJP: '14inch連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 10,
         AA: 4,
         RNG: 3,
@@ -135,7 +62,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1508: {
         name: '16inch Twin Cannon',
         nameJP: '16inch連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 15,
         AA: 4,
         RNG: 3,
@@ -143,7 +70,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1509: {
         name: '16inch Triple Cannon',
         nameJP: '16inch三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 20,
         AA: 5,
         RNG: 3,
@@ -151,7 +78,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1510: {
         name: '5inch High-Angle Mount (Secondary)',
         nameJP: '5inch単装高射砲',
-        type: AbyssalEquipType.SECONDARY_GUN,
+        type: EquipType.SECONDARY_GUN,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 2,
@@ -160,14 +87,14 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1511: {
         name: '6inch Single Cannon',
         nameJP: '6inch単装砲',
-        type: AbyssalEquipType.SECONDARY_GUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 1,
         RNG: 2,
     },
     1512: {
         name: '12.5inch Twin Secondary Cannon',
         nameJP: '12.5inch連装副砲',
-        type: AbyssalEquipType.SECONDARY_GUN,
+        type: EquipType.SECONDARY_GUN,
         FP: 7,
         AA: 3,
         RNG: 2,
@@ -175,28 +102,28 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1513: {
         name: '21inch Torpedo Mk.I',
         nameJP: '21inch魚雷前期型',
-        type: AbyssalEquipType.TORPEDO,
+        type: EquipType.TORPEDO,
         TP: 2,
         RNG: 1,
     },
     1514: {
         name: '21inch Torpedo Mk.II',
         nameJP: '21inch魚雷後期型',
-        type: AbyssalEquipType.TORPEDO,
+        type: EquipType.TORPEDO,
         TP: 5,
         RNG: 1,
     },
     1515: {
         name: 'High-speed Abyssal Torpedo',
         nameJP: '高速深海魚雷',
-        type: AbyssalEquipType.TORPEDO,
+        type: EquipType.TORPEDO,
         TP: 10,
         RNG: 1,
     },
     1516: {
         name: 'Abyssal Torpedo Bomber Mk.I',
         nameJP: '深海棲艦攻',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AERIAL_TP: 4,
         ASW: 2,
         LOS: 5,
@@ -204,7 +131,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1517: {
         name: 'Abyssal Torpedo Bomber Mk.II',
         nameJP: '深海棲艦攻 Mark.II',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AERIAL_TP: 6,
         ASW: 4,
         LOS: 5,
@@ -212,7 +139,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1518: {
         name: 'Abyssal Torpedo Bomber Mk.III',
         nameJP: '深海棲艦攻 Mark.III',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AERIAL_TP: 11,
         AA: 4,
         ASW: 7,
@@ -221,45 +148,45 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1519: {
         name: 'Abyssal Fighter',
         nameJP: '深海棲艦戦',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         AA: 2,
     },
     1520: {
         name: 'Abyssal Fighter Mk.II',
         nameJP: '深海棲艦戦 Mark.II',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         AA: 5,
     },
     1521: {
         name: 'Abyssal Fighter Mk.III',
         nameJP: '深海棲艦戦 Mark.III',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         AA: 9,
     },
     1522: {
         name: 'Flying-fish Fighter',
         nameJP: '飛び魚艦戦',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         AA: 13,
     },
     1523: {
         name: 'Abyssal Dive Bomber Mk.I',
         nameJP: '深海棲艦爆',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 3,
         ASW: 1,
     },
     1524: {
         name: 'Abyssal Dive Bomber Mk.II',
         nameJP: '深海棲艦爆 Mark.II',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 6,
         ASW: 2,
     },
     1525: {
         name: 'Abyssal Recon Plane',
         nameJP: '深海棲艦偵察機',
-        type: AbyssalEquipType.SEAPLANE,
+        type: EquipType.SEAPLANE,
         AERIAL_BOMB: 1,
         AA: 1,
         ASW: 1,
@@ -268,7 +195,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1526: {
         name: 'Flying-fish Recon Plane',
         nameJP: '飛び魚偵察機',
-        type: AbyssalEquipType.SEAPLANE,
+        type: EquipType.SEAPLANE,
         AERIAL_BOMB: 4,
         AA: 2,
         ASW: 2,
@@ -277,7 +204,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1527: {
         name: 'Air Radar Mark.I',
         nameJP: '対空レーダ― Mark.I',
-        type: AbyssalEquipType.RADAR_S,
+        type: EquipType.RADAR_S,
         AA: 5,
         LOS: 5,
         ACC: 5,
@@ -285,21 +212,21 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1528: {
         name: 'Surface Radar Mark.I',
         nameJP: '水上レーダ― Mark.I',
-        type: AbyssalEquipType.RADAR_S,
+        type: EquipType.RADAR_S,
         LOS: 5,
         ACC: 10,
     },
     1529: {
         name: 'Surface Radar Mark.II',
         nameJP: '水上レーダ― Mark.II',
-        type: AbyssalEquipType.RADAR_S,
+        type: EquipType.RADAR_S,
         LOS: 10,
         ACC: 15,
     },
     1530: {
         name: 'Air Radar Mark.II',
         nameJP: '対空レーダ― Mark.II',
-        type: AbyssalEquipType.RADAR_L,
+        type: EquipType.RADAR_L,
         AA: 10,
         LOS: 10,
         ACC: 5,
@@ -307,7 +234,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1531: {
         name: 'Abyssal Surface Radar',
         nameJP: '深海水上レーダー',
-        type: AbyssalEquipType.RADAR_L,
+        type: EquipType.RADAR_L,
         AA: 5,
         EV: 3,
         ASW: 5,
@@ -317,7 +244,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1532: {
         name: 'Abyssal Air Radar',
         nameJP: '深海対空レーダ―',
-        type: AbyssalEquipType.RADAR_L,
+        type: EquipType.RADAR_L,
         AA: 18,
         EV: 2,
         ASW: 5,
@@ -327,57 +254,57 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1533: {
         name: 'Improved Abyssal Turbine',
         nameJP: '改良型深海タービン',
-        type: AbyssalEquipType.ENGINE,
+        type: EquipType.ENGINE,
         EV: 10,
     },
     1534: {
         name: 'Enhanced Abyssal Engine',
         nameJP: '強化型深海缶',
-        type: AbyssalEquipType.ENGINE,
+        type: EquipType.ENGINE,
         EV: 15,
     },
     1535: {
         name: 'Abyssal AA Dispersal Shell',
         nameJP: '対空散弾',
-        type: AbyssalEquipType.TYPE_3_SHELL,
+        type: EquipType.TYPE_3_SHELL,
         AA: 10,
     },
     1536: {
         name: 'Depleted AP Shell',
         nameJP: '劣化徹甲弾',
-        type: AbyssalEquipType.AP_SHELL,
+        type: EquipType.AP_SHELL,
         FP: 15,
         ACC: 5,
     },
     1537: {
         name: '12.7mm Abyssal Gun',
         nameJP: '12.7mm機銃',
-        type: AbyssalEquipType.AA_GUN,
+        type: EquipType.AA_GUN,
         AA: 2,
     },
     1538: {
         name: '20mm Abyssal Gun',
         nameJP: '20mm機銃',
-        type: AbyssalEquipType.AA_GUN,
+        type: EquipType.AA_GUN,
         AA: 4,
     },
     1539: {
         name: '40mm Abyssal Twin Autocannon',
         nameJP: '40mm二連装機関砲',
-        type: AbyssalEquipType.AA_GUN,
+        type: EquipType.AA_GUN,
         AA: 8,
     },
     1540: {
         name: '40mm Abyssal Quad Autocannon',
         nameJP: '40mm四連装機関砲',
-        type: AbyssalEquipType.AA_GUN,
+        type: EquipType.AA_GUN,
         is_concentrated: true,
         AA: 12,
     },
     1541: {
         name: 'Abyssal Cuttlefish Torpedo',
         nameJP: '深海烏賊魚雷',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 18,
         ACC: 5,
         RNG: 1,
@@ -385,31 +312,31 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1542: {
         name: 'Abyssal Depth Charge Projector',
         nameJP: '深海爆雷投射機',
-        type: AbyssalEquipType.DEPTH_CHARGE,
+        type: EquipType.DEPTH_CHARGE,
         ASW: 7,
     },
     1543: {
         name: 'Abyssal Sonar',
         nameJP: '深海ソナー',
-        type: AbyssalEquipType.SONAR_S,
+        type: EquipType.SONAR_S,
         ASW: 9,
     },
     1544: {
         name: 'Abyssal Depth Charge Projector Mk.II',
         nameJP: '深海爆雷投射機 Mk.II',
-        type: AbyssalEquipType.DEPTH_CHARGE,
+        type: EquipType.DEPTH_CHARGE,
         ASW: 13,
     },
     1545: {
         name: 'Abyssal Sonar Mk.II',
         nameJP: '深海ソナー Mk.II',
-        type: AbyssalEquipType.SONAR_S,
+        type: EquipType.SONAR_S,
         ASW: 16,
     },
     1546: {
         name: 'Flying-fish Dive Bomber',
         nameJP: '飛び魚艦爆',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 10,
         AA: 8,
         ASW: 7,
@@ -417,14 +344,14 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1547: {
         name: 'Abyssal Cat Fighter',
         nameJP: '深海猫艦戦',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         AA: 10,
         ACC: 1,
     },
     1548: {
         name: 'Abyssal Hell Diver',
         nameJP: '深海地獄艦爆',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 11,
         ASW: 4,
         LOS: 3,
@@ -433,7 +360,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1549: {
         name: 'Avenger Torpedo Bomber',
         nameJP: '深海復讐艦攻',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AERIAL_TP: 13,
         AA: 4,
         ASW: 5,
@@ -443,7 +370,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1550: {
         name: '5inch Twin Dual-Purpose Cannon',
         nameJP: '5inch連装両用莢砲',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 9,
@@ -453,7 +380,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1551: {
         name: '20inch Twin Cannon',
         nameJP: '20inch連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 27,
         AA: 4,
         RNG: 3,
@@ -462,7 +389,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1552: {
         name: '15inch Fortress Gun',
         nameJP: '15inch要塞砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 13,
         AR: 3,
         RNG: 3,
@@ -471,7 +398,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1553: {
         name: '4inch Dual-Purpose+CIC',
         nameJP: '4inch連装両用砲+CIC',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
         AA: 15,
@@ -481,7 +408,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1554: {
         name: 'Abyssal Attack Seaplane',
         nameJP: '深海水上攻撃機',
-        type: AbyssalEquipType.SEAPLANE_BOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AERIAL_BOMB: 8,
         AA: 4,
         ASW: 8,
@@ -491,7 +418,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1555: {
         name: 'Abyssal Attack Seaplane Kai',
         nameJP: '深海水上攻撃機改',
-        type: AbyssalEquipType.SEAPLANE_BOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         AERIAL_BOMB: 13,
         AA: 9,
         ASW: 10,
@@ -501,7 +428,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1556: {
         name: 'Abyssal Cat Fighter Kai',
         nameJP: '深海猫艦戦改',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         AA: 12,
         EV: 2,
         ACC: 2,
@@ -509,7 +436,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1557: {
         name: 'Abyssal Hell Diver Kai',
         nameJP: '深海地獄艦爆改',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 15,
         ASW: 8,
         LOS: 5,
@@ -518,7 +445,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1558: {
         name: 'Avenger Torpedo Bomber Kai',
         nameJP: '深海復讐艦攻改',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         AERIAL_TP: 16,
         AA: 5,
         ASW: 9,
@@ -528,7 +455,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1559: {
         name: 'Abyssal FCS + CIC',
         nameJP: '深海FCS+CIC',
-        type: AbyssalEquipType.SONAR_S,
+        type: EquipType.SONAR_S,
         a_type: AACITriggerEquipType.A_GUN, //.2 mult
         AA: 6,
         ASW: 20,
@@ -539,14 +466,14 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1560: {
         name: 'Abyssal Searchlight',
         nameJP: '深海探照灯',
-        type: AbyssalEquipType.SEARCHLIGHT_S,
+        type: EquipType.SEARCHLIGHT_S,
         FP: 2,
         LOS: 2
     },
     1561: {
         name: 'Abyssal Liberation Land-based Dive Bomber',
         nameJP: '深海解放陸爆',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 11,
         AA: 3,
         ASW: 5,
@@ -556,7 +483,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1562: {
         name: 'Abyssal Liberation Land-based Dive Bomber Ace',
         nameJP: '深海解放陸爆Ace',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 16,
         AA: 5,
         ASW: 7,
@@ -566,7 +493,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1563: {
         name: '8inch Long Range Twin Gun Mount',
         nameJP: '8inch長射程連装砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 1,
         ACC: -1,
@@ -575,7 +502,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1564: {
         name: 'Abyssal Reconnaissance Observation Seaplane',
         nameJP: '深海水上偵察観測機',
-        type: AbyssalEquipType.SEAPLANE,
+        type: EquipType.SEAPLANE,
         AA: 2,
         ASW: 2,
         ACC: 5,
@@ -584,7 +511,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1565: {
         name: '5inch Coastal Gun',
         nameJP: '5inch沿岸設置砲',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 3,
         AR: 2,
         ACC: 3,
@@ -593,7 +520,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1566: {
         name: 'Abyssal Cat Fighter (Bombing)',
         nameJP: '深海猫艦戦(爆装)',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AERIAL_BOMB: 8,
         AA: 7,
         ASW: 2,
@@ -602,7 +529,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1567: {
         name: 'Coastal Radar',
         nameJP: '沿岸設置レーダー',
-        type: AbyssalEquipType.RADAR_L,
+        type: EquipType.RADAR_L,
         AA: 4,
         ACC: 16,
         LOS: 8
@@ -610,7 +537,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1568: {
         name: '16inch Triple Gun Mount (Abyssal)',
         nameJP: '16inch三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 24,
         AA: 3,
         AR: 1,
@@ -620,7 +547,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1569: {
         name: 'Abyssal Reconnaissance Flying Boat',
         nameJP: '深海偵察飛行艇',
-        type: AbyssalEquipType.SEAPLANE,
+        type: EquipType.SEAPLANE,
         FP: 3,
         AA: 1,
         ASW: 2,
@@ -630,7 +557,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1570: {
         name: 'High-speed Abyssal Torpedo mod. 2',
         nameJP: '高速深海魚雷 mod.2',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 13,
         ACC: 3,
@@ -639,7 +566,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1571: {
         name: 'Abyssal Seaplane Tender Imp Aircraft',
         nameJP: '深海水母小鬼機',
-        type: AbyssalEquipType.SEAPLANE_BOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 4,
         AERIAL_BOMB: 15,
         AA: 11,
@@ -652,7 +579,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1572: {
         name: 'Abyssal Bearcat Fighter',
         nameJP: '深海熊猫艦戦',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         FP: 8,
         AA: 18,
         AR: 8,
@@ -662,7 +589,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1573: {
         name: 'Abyssal Submarine Floatplane',
         nameJP: '深海潜水下駄履き',
-        type: AbyssalEquipType.SEAPLANE_BOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         FP: 6,
         AERIAL_BOMB: 18,
         AA: 6,
@@ -676,7 +603,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1574: {
         name: 'Abyssal Patrolling Attack Hawk',
         nameJP: '深海攻撃哨戒鷹',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 3,
         AERIAL_BOMB: 14,
         AA: 8,
@@ -690,7 +617,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1575: {
         name: 'Abyssal Patrolling Attack Hawk Kai',
         nameJP: '深海攻撃哨戒鷹改',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 5,
         AERIAL_BOMB: 18,
         AA: 9,
@@ -704,7 +631,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1576: {
         name: 'Abyssal 12inch Triple Gun Mount',
         nameJP: '深海12inch三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         AA: 3,
         AR: 2,
@@ -715,7 +642,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1577: {
         name: 'Abyssal 15inch Quadruple Gun Mount',
         nameJP: '深海15inch四連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 24,
         AA: 4,
         AR: 2,
@@ -727,7 +654,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
         name: 'Abyssal 15inch Late Model Twin Gun Mount',
         nameJP: '深海15inch連装砲後期型',
         icon: SpecialIcon.MainHighAngleGun,
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         a_type: AACITriggerEquipType.A_HAFD,
         FP: 19,
         AA: 8,
@@ -739,7 +666,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1579: {
         name: 'Abyssal 14inch Straight Twin Gun Mount',
         nameJP: '深海14inch海峡連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         icon: SpecialIcon.AbyssalLargeCaliberMainGun,
         FP: 17,
         AA: 4,
@@ -751,7 +678,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1580: {
         name: 'Abyssal Ambush Torpedo',
         nameJP: '深海待伏魚雷',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 19,
         ACC: 9,
@@ -761,7 +688,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
         name: 'Abyssal Night Cat Fighter',
         nameJP: '夜猫深海艦戦',
         icon: SpecialIcon.NightFighters,
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         FP: 2,
         AA: 11,
@@ -773,7 +700,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1582: {
         name: 'Abyssal Night Dive Bomber',
         nameJP: '夜深海艦爆',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -789,7 +716,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
         name: 'Abyssal Night Revenge Torpedo Bomber',
         nameJP: '夜復讐深海艦攻',
         icon: SpecialIcon.NightTorpedoBombers,
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
@@ -804,7 +731,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1584: {
         name: 'Abyssal 14inch Twin Gun Mount Kai',
         nameJP: '深海14inch連装砲改',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 22,
         AA: 4,
         AR: 4,
@@ -815,7 +742,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1585: {
         name: 'Abyssal 16inch Triple Gun Mount Kai',
         nameJP: '深海16inch三連装砲改',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 27,
         AA: 4,
         AR: 5,
@@ -825,7 +752,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1586: {
         name: 'Abyssal Patrolling Attack Hawk Kai Ni',
         nameJP: '深海攻撃哨戒鷹改二',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         FP: 9,
         AERIAL_BOMB: 27,
         AA: 10,
@@ -839,7 +766,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1587: {
         name: 'Abyssal 16inch Triple Gun Mount Kai Ni',
         nameJP: '深海16inch三連装砲改二',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 28,
         AA: 5,
         AR: 6,
@@ -850,7 +777,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1588: {
         name: 'Abyssal 5inch Twin Gun Mount Model C',
         nameJP: '深海5inch連装砲C型',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 6,
         AA: 3,
         ACC: 18,
@@ -861,7 +788,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1589: {
         name: 'Abyssal 5.5inch Twin Gun Mount Kai',
         nameJP: '深海5.5inch連装砲改',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 8,
         AA: 4,
         AR: 4,
@@ -873,7 +800,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1590: {
         name: 'Abyssal Target',
         nameJP: '深海標的',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         FP: 4,
         TP: 18,
@@ -884,7 +811,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1591: {
         name: 'Abyssal 5inch Single Gun Mount Mk.30',
         nameJP: '深海5inch単装砲 Mk.30',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 5,
         AA: 7,
@@ -896,7 +823,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1592: {
         name: 'Abyssal 16inch Mk.VIII Twin Gun Mount Kai',
         nameJP: '深海16inch Mk.VIII連装砲改',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 23,
         AA: 4,
         AR: 3,
@@ -906,7 +833,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1593: {
         name: 'High-speed Abyssal Torpedo mod. 3',
         nameJP: '高速深海魚雷 mod.3',
-        type: AbyssalEquipType.TORPEDO,
+        type: EquipType.TORPEDO,
         TP: 15,
         ACC: 10,
         EV: 3,
@@ -915,7 +842,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1594: {
         name: 'Abyssal Sky Fortress (Reconnaissance Model)',
         nameJP: '深海空要塞(偵察型)',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         AERIAL_BOMB: 3,
@@ -927,7 +854,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1595: {
         name: 'Abyssal Sky Fortress Ace (Reconnaissance Model)',
         nameJP: '深海空要塞Ace(偵察型)',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         AERIAL_BOMB: 7,
@@ -939,7 +866,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1596: {
         name: 'Abyssal 6inch Triple New Rapid Fire Gun Mount',
         nameJP: '深海6inch三連装新型速射砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 14,
         AA: 13,
         ACC: 9,
@@ -948,7 +875,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1597: {
         name: 'Abyssal Sky Fortress (Heavy Bomber Model)',
         nameJP: '深海空要塞(重爆型)',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         AERIAL_BOMB: 27,
@@ -960,7 +887,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1598: {
         name: 'Abyssal Sky Fortress Ace (Heavy Bomber Model)',
         nameJP: '深海空要塞Ace(重爆型)',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         high_altitude_bomber: true,
         FP: 17,
         AERIAL_BOMB: 37,
@@ -972,7 +899,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1599: {
         name: 'Abyssal 4.7inch Gun Mk.XII',
         nameJP: '深海4.7inch砲 Mk.XII',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 6,
         AA: 6,
@@ -984,7 +911,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1600: {
         name: 'Abyssal 8inch Twin Rapid Fire Gun Mount',
         nameJP: '深海8inch連装速射砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 10,
         AA: 2,
         ACC: 8,
@@ -993,7 +920,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1601: {
         name: 'Abyssal 8inch Triple Gun Mount Mk.9',
         nameJP: '深海8inch三連装砲 Mk.9',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 12,
         AA: 2,
         ACC: 9,
@@ -1002,7 +929,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1602: {
         name: 'Abyssal 5inch Twin Dual-purpose Gun Mount (Concentrated Deployment)',
         nameJP: '深海5inch連装両用砲(集中配備)',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 7,
         AA: 18,
@@ -1013,7 +940,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1603: {
         name: 'Abyssal Air Radar Mark.III + FCS',
         nameJP: '深海対空レーダーMark.III+FCS',
-        type: AbyssalEquipType.RADAR_L,
+        type: EquipType.RADAR_L,
         AA: 19,
         ACC: 16,
         EV: 3,
@@ -1023,7 +950,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1604: {
         name: 'Abyssal 5inch Twin Gun Mount Model A',
         nameJP: '深海5inch連装砲A型',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 6,
         TP: 6,
         AA: 2,
@@ -1035,7 +962,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1605: {
         name: 'Abyssal Submarine Electronic Armament',
         nameJP: '深海潜水艦搭載電子兵装',
-        type: AbyssalEquipType.SUBMARINE_RADAR,
+        type: EquipType.SUBMARINE_RADAR,
         TP: 6,
         ACC: 22,
         EV: 6,
@@ -1045,7 +972,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1606: {
         name: 'Abyssal 5inch Single High-angle Gun Mount Kai Ni',
         nameJP: '深海5inch単装高角砲改二',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 1,
         AA: 5,
@@ -1057,7 +984,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1607: {
         name: 'Abyssal 5inch Twin High-angle Gun Mount Kai Ni',
         nameJP: '深海5inch連装高角砲改二',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 2,
         AA: 6,
@@ -1069,7 +996,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1608: {
         name: 'Abyssal Night Operation Aviation Equipment',
         nameJP: '深海夜間航空作戦装備',
-        type: AbyssalEquipType.RADAR_L,
+        type: EquipType.RADAR_L,
         FP: 3,
         ACC: 3,
         RNG: 4,
@@ -1077,7 +1004,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1609: {
         name: 'Abyssal 16inch Triple Gun Mount Mk.6',
         nameJP: '深海16inch三連装砲 Mk6',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 25,
         AA: 3,
         AR: 3,
@@ -1088,7 +1015,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1610: {
         name: 'Abyssal Seagull Reconnaissance Seaplane',
         nameJP: '深海カモメ水偵',
-        type: AbyssalEquipType.SEAPLANE,
+        type: EquipType.SEAPLANE,
         ACC: 4,
         EV: 3,
         ASW: 4,
@@ -1097,7 +1024,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1611: {
         name: 'Abyssal Seamew Reconnaissance Seaplane',
         nameJP: '深海海猫水偵',
-        type: AbyssalEquipType.SEAPLANE,
+        type: EquipType.SEAPLANE,
         FP: 3,
         AA: 7,
         ACC: 6,
@@ -1108,7 +1035,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1612: {
         name: 'Abyssal 6inch Triple Main Gun Mount Mk.16',
         nameJP: '深海6inch三連装主砲 Mk.16',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 13,
         AA: 6,
         ACC: 9,
@@ -1118,7 +1045,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1613: {
         name: 'Mediterranean 12inch/46 Twin Gun Mount',
         nameJP: '地中海12inch/46 連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 14,
         AR: 3,
         ACC: 8,
@@ -1128,7 +1055,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1614: {
         name: 'Mediterranean 12inch/46 Triple Gun Mount',
         nameJP: '地中海12inch/46 三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 17,
         AR: 3,
         ACC: 9,
@@ -1138,7 +1065,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1615: {
         name: 'Mediterranean 12.6inch/44 Twin Gun Mount',
         nameJP: '地中海12.6inch/44 連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         TP: 7,
         AR: 3,
@@ -1149,7 +1076,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1616: {
         name: 'Mediterranean 12.6inch/44 Triple Gun Mount',
         nameJP: '地中海12.6inch/44 三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 19,
         TP: 7,
         AR: 3,
@@ -1160,7 +1087,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1617: {
         name: 'Abyssal Night Cat Fighter II',
         nameJP: '夜猫深海艦戦II',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         icon: SpecialIcon.NightFighters,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         FP: 3,
@@ -1173,7 +1100,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1618: {
         name: 'Abyssal Night Dive Bomber II',
         nameJP: '夜深海艦爆II',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         FP: 4,
         AERIAL_BOMB: 17,
@@ -1186,7 +1113,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1619: {
         name: 'Abyssal Night Revenge Torpedo Bomber II',
         nameJP: '夜復讐深海艦攻II',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         icon: SpecialIcon.NightTorpedoBombers,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 5,
@@ -1200,7 +1127,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1620: {
         name: 'Abyssal Two-seat Fighter-bomber Hawk',
         nameJP: '深海戦爆複座鷹',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         FP: 5,
@@ -1216,7 +1143,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1621: {
         name: 'Abyssal Two-seat Fighter-bomber Hawk Kai',
         nameJP: '深海戦爆複座鷹改',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         AA_resist_ship: .6,
         AA_resist_fleet: .7,
         FP: 6,
@@ -1232,7 +1159,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1622: {
         name: 'Abyssal Quadruple (Oxygen) Torpedo Mount Late Model',
         nameJP: '深海四連装(酸素)魚雷後期型',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 14,
         ACC: 8,
@@ -1242,7 +1169,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1623: {
         name: 'Abyssal 5inch Twin Gun Mount Model D',
         nameJP: '深海5inch連装砲D型',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 7,
         AA: 4,
         AR: 1,
@@ -1254,7 +1181,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1624: {
         name: 'Abyssal Quintuple (Oxygen) Torpedo Mount Late Model',
         nameJP: '深海五連装(酸素)魚雷後期型',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         can_not_op_torpedo_midgetsub: true,
         TP: 18,
         ACC: 9,
@@ -1264,7 +1191,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1625: {
         name: 'Abyssal Twin-engine Land-based Dive Bomber',
         nameJP: '深海双発陸爆',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         is_skip_bomber: true,
         AERIAL_BOMB: 12,
         AERIAL_TP: 6,
@@ -1276,7 +1203,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1626: {
         name: 'Abyssal Twin-engine Land-based Dive Bomber Ace',
         nameJP: '深海双発陸爆Ace',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         is_skip_bomber: true,
         AERIAL_BOMB: 17,
         AERIAL_TP: 7,
@@ -1288,7 +1215,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1627: {
         name: 'Abyssal 5inch Twin Gun Mount Model C',
         nameJP: '深海5inch連装砲C型',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 6,
         AA: 2,
         AR: 2,
@@ -1300,7 +1227,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1630: {
         name: 'Abyssal Sky Super Fortress',
         nameJP: '深海空超要塞',
-        type: AbyssalEquipType.LAND_BASED_BOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         FP: 18,
         AERIAL_BOMB: 33,
         AA: 12,
@@ -1311,7 +1238,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1631: {
         name: 'Abyssal Sky Super Fortress Kai',
         nameJP: '深海空超要塞改',
-        type: AbyssalEquipType.LAND_BASED_BOMBER,
+        type: EquipType.LAND_BASED_BOMBER,
         FP: 18,
         AERIAL_BOMB: 44,
         AA: 19,
@@ -1322,7 +1249,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1632: {
         name: 'Abyssal Aviation Maintenance Bugs',
         nameJP: '深海航空整備蟲',
-        type: AbyssalEquipType.SCAMP,
+        type: EquipType.SCAMP,
         FP: 16,
         AERIAL_BOMB: 12,
         TP: 12,
@@ -1334,7 +1261,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1633: {
         name: 'Abyssal Aviation Maintenance Bugs Pro',
         nameJP: '深海航空整備蟲pro',
-        type: AbyssalEquipType.SCAMP,
+        type: EquipType.SCAMP,
         FP: 24,
         AERIAL_BOMB: 16,
         TP: 16,
@@ -1346,7 +1273,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1634: {
         name: 'Abyssal Rigging Assault General Seaplane',
         nameJP: '深海艤装水上汎用襲撃機',
-        type: AbyssalEquipType.SEAPLANE_BOMBER,
+        type: EquipType.SEAPLANE_BOMBER,
         is_skip_bomber: true,
         FP: 7,
         AERIAL_BOMB: 17,
@@ -1359,7 +1286,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1635: {
         name: 'Abyssal Assault Torpedo Bomber',
         nameJP: '深海突破襲撃機',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         is_skip_bomber: true,
         FP: 6,
         AERIAL_BOMB: 11,
@@ -1371,7 +1298,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1636: {
         name: 'Abyssal Assault Torpedo Bomber Ace',
         nameJP: '深海突破襲撃機Ace',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         is_skip_bomber: true,
         FP: 9,
         AERIAL_BOMB: 16,
@@ -1383,7 +1310,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1637: {
         name: 'Coastal Ambush Semi-Submersible Torpedo Boat',
         nameJP: '沿岸突撃半水中魚雷艇',
-        type: AbyssalEquipType.MIDGET_SUBMARINE,
+        type: EquipType.MIDGET_SUBMARINE,
         TP: 18,
         ACC: 9,
         RNG: 1,
@@ -1391,7 +1318,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1638: {
         name: 'Abyssal 3inch Single High-angle Gun Mount + Deck Machine Gun',
         nameJP: '深海3inch単装高角砲+甲板機銃',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         FP: 5,
         AA: 7,
         ACC: 3,
@@ -1400,7 +1327,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1639: {
         name: 'Abyssal Active Sonar & Abyssal Calibrated Radar',
         nameJP: '深海水中探信儀 & 深海調整電探',
-        type: AbyssalEquipType.RADAR_S,
+        type: EquipType.RADAR_S,
         icon: SpecialIcon.AbyssalSmallSonar,
         AA: 3,
         ACC: 13,
@@ -1412,7 +1339,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1640: {
         name: 'Abyssal Observation Barrage Balloon',
         nameJP: '深海観測阻塞気球',
-        type: AbyssalEquipType.BARRAGE_BALLOON,
+        type: EquipType.BARRAGE_BALLOON,
         icon: SpecialIcon.BarrageBalloons,
         FP: 1,
         AR: 1,
@@ -1422,7 +1349,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1641: {
         name: 'Abyssal Standard 14inch/45 Twin Gun Mount',
         nameJP: '深海標準14inch/45 連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 16,
         AR: 3,
         ACC: 4,
@@ -1432,7 +1359,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1642: {
         name: 'Abyssal Standard 14inch/45 Triple Gun Mount',
         nameJP: '深海標準14inch/45 三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_L,
+        type: EquipType.MAIN_GUN_L,
         FP: 19,
         AR: 4,
         ACC: 6,
@@ -1442,7 +1369,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1643: {
         name: 'Abyssal 3.7cm FlaK',
         nameJP: '深海3.7cm FlaK',
-        type: AbyssalEquipType.AA_GUN,
+        type: EquipType.AA_GUN,
         FP: 1,
         AA: 8,
         ACC: 4,
@@ -1451,7 +1378,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1644: {
         name: 'Abyssal 5inch Single Gun Mount Mk.30 + GFCS',
         nameJP: '深海5inch単装砲 Mk.30+GFCS',
-        type: AbyssalEquipType.MAIN_GUN_S,
+        type: EquipType.MAIN_GUN_S,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 6,
         AA: 12,
@@ -1463,7 +1390,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1645: {
         name: 'Abyssal 533mm Quintuple Torpedo Mount + Abyssal SG',
         nameJP: '深海533mm 5連装魚雷+深海SG',
-        type: AbyssalEquipType.TORPEDO,
+        type: EquipType.TORPEDO,
         TP: 18,
         ACC: 12,
         EV: 4,
@@ -1474,7 +1401,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1646: {
         name: 'Abyssal Hedgehog Mk.10',
         nameJP: '深海Hedgehog Mk.10',
-        type: AbyssalEquipType.DEPTH_CHARGE,
+        type: EquipType.DEPTH_CHARGE,
         ACC: 4,
         EV: 2,
         ASW: 22,
@@ -1482,7 +1409,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1647: {
         name: 'GFCS + Abyssal 5inch Twin Gun Mount Mk.32',
         nameJP: 'GFCS+深海5inch連装砲 Mk.32',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         icon: SpecialIcon.MainHighAngleGun,
         FP: 11,
         AA: 19,
@@ -1494,7 +1421,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1648: {
         name: 'Abyssal Combat Autogyro Seagull',
         nameJP: '深海対戦回転翼海鴎',
-        type: AbyssalEquipType.AUTOGYRO,
+        type: EquipType.AUTOGYRO,
         FP: 8,
         AERIAL_BOMB: 18,
         ACC: 18,
@@ -1505,7 +1432,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1649: {
         name: '15.2cm Abyssal Triple Gun Mount',
         nameJP: '15.2cm深海三連装砲',
-        type: AbyssalEquipType.MAIN_GUN_M,
+        type: EquipType.MAIN_GUN_M,
         FP: 9,
         AA: 3,
         ACC: 3,
@@ -1515,7 +1442,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1650: {
         name: 'Abyssal Buffalo Fighter Mk.II',
         nameJP: '深海野牛艦戦 Mk.II',
-        type: AbyssalEquipType.FIGHTER,
+        type: EquipType.FIGHTER,
         icon: SpecialIcon.NightFighters,
         b_type: SkillTriggerEquipType.B_NIGHTFIGHTER,
         FP: 1,
@@ -1528,7 +1455,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1651: {
         name: 'Abyssal Dauntless Dive Bomber Mk.II',
         nameJP: '深海不屈艦爆 Mk.II',
-        type: AbyssalEquipType.DIVE_BOMBER,
+        type: EquipType.DIVE_BOMBER,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER2,
         FP: 2,
         AERIAL_BOMB: 13,
@@ -1542,7 +1469,7 @@ export const ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
     1652: {
         name: 'Abyssal Devastation Torpedo Bomber Mk.II',
         nameJP: '深海打撃艦攻 Mk.II',
-        type: AbyssalEquipType.TORPEDO_BOMBER,
+        type: EquipType.TORPEDO_BOMBER,
         icon: SpecialIcon.NightTorpedoBombers,
         b_type: SkillTriggerEquipType.B_NIGHTBOMBER,
         FP: 3,

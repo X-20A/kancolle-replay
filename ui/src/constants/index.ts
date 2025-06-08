@@ -7,11 +7,11 @@ import { ShipType } from "@/types/ship/ship";
  * AO（補給艦）は航空機装備時のみ例外的に2となるため、ここには含めない
  */
 export type PlaneAswCapableShipType =
-    | typeof ShipType.CAV
-    | typeof ShipType.CVL
-    | typeof ShipType.BBV
-    | typeof ShipType.AV
-    | typeof ShipType.LHA;
+    | ShipType.CAV
+    | ShipType.CVL
+    | ShipType.BBV
+    | ShipType.AV
+    | ShipType.LHA;
 
 /**
  * 各航空機運用艦種ごとのplaneaswデフォルト値

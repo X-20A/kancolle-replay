@@ -1,4 +1,4 @@
-import { PlayerEquipType } from "@/datas/equip/base/player";
+import { EquipType } from "@/datas/equip/base/player";
 import { EquipImprovementType } from "@/datas/equip/improvement";
 import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
@@ -9,7 +9,7 @@ export type EquipMaster = {
     readonly master_id: EquipId,
     readonly name_en: string,
     readonly name_jp: string,
-    readonly type_id: PlayerEquipType,
+    readonly type_id: EquipType,
     readonly improvement_type: EquipImprovementType,
     /** 特殊攻撃のトリガーになる装備の種別ID 該当装備でなければ null */
     readonly skill_trigger_type: SkillTriggerEquipType | null,
@@ -55,6 +55,8 @@ export function deriveEquipMaster(
         can_shell_install_bomber: equip_data.can_shell_install_bomber ?? false,
         is_night_scout: equip_data.is_night_scout ?? false,
         is_concentrated: equip_data.is_concentrated ?? false,
+        is_rocket_fighter: equip_data.is_rocket_fighter ?? false,
+        is_skip_bomber: equip_data.is_skip_bomber ?? false,
         is_special_submarine_CI_torigger: equip_data.is_special_submarine_CI_torigger ?? false,
         is_DC_only: equip_data.is_DC_only ?? false,
         is_DCP: equip_data.is_DCP ?? false,
