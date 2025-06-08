@@ -1,6 +1,6 @@
 import { DeepReadonly } from "@/types"
-import { EquipImprovementType } from "../improvement"
 import { SpecialIcon } from "@/types/equip/player"
+import { EquipImprovementType } from "../equip/improvement"
 
 export const enum LandBasedPlaneType {
     LAND_BASED_BOMBER = 47,

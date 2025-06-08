@@ -1,6 +1,6 @@
 import { ShipType } from "@/types/ship/ship";
 import { PlayerShip } from "../Ship";
-
+/*
 type ShipStrategy = (ship: PlayerShip) => boolean;
 
 const shipStrategies: Record<ShipType, ShipStrategy> = {
@@ -25,7 +25,7 @@ const shipStrategies: Record<ShipType, ShipStrategy> = {
     [ShipType.CT]: (ship) => ,
     [ShipType.AO]: (ship) => ,
 };
-
+*/
 /**
  * 艦の素の対潜値が1以上か判定して返す
  * @param ship 

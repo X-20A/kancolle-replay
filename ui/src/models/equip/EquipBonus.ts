@@ -2,7 +2,7 @@ import { Equip } from "./Equip";
 import { EquipBonusType, SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { NakedPlayerShip } from "../ship/NakedShip";
-import { StatusComponent } from "@/types";
+import { TStatusComponent } from "@/types";
 
 /**
  * ボーナス加算
@@ -36,7 +36,7 @@ function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBon
 export function deriveEquipBonusAddition(
     ship: NakedPlayerShip,
     equips: Equip[],
-): StatusComponent {
+): TStatusComponent {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
         if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;

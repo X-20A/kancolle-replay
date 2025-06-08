@@ -1,6 +1,6 @@
 import { Country } from "@/datas/equip/bonus";
 import { CountryDatas } from "@/datas/ship/country";
-import { StatusComponent } from "@/types";
+import { TStatusComponent } from "@/types";
 import { brandShipNameEN, brandShipNameJP, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
 import { ShipDatas, PlayerShipFlags, ShipType, PlayerShipClass } from "@/types/ship/ship";
 
@@ -13,7 +13,7 @@ export type NakedPlayerShip = {
     readonly ship_class: PlayerShipClass,
     readonly country: Country,
     readonly slots: Readonly<number[]>,
-    readonly status: StatusComponent,
+    readonly status: TStatusComponent,
     readonly flags: PlayerShipFlags,
 }
 
@@ -48,7 +48,7 @@ export function deriveNakedPlayerShip(
     const country = country_datas[ship_class];
     const slots = ship_data.SLOTS;
 
-    const status: StatusComponent = {
+    const status: TStatusComponent = {
         hp: ship_data.HP,
         fire_power: ship_data.FP,
         armor: ship_data.AR,
@@ -58,7 +58,12 @@ export function deriveNakedPlayerShip(
         asw: calcStatusFromLevel(ship_data.ASWbase, ship_data.ASW, ship_lv),
         los: calcStatusFromLevel(ship_data.LOSbase, ship_data.LOS, ship_lv),
         luck: ship_data.LUK,
+        range: ship_data.RNG,
         shell_accuracy: 0,
+        torpedo_accuracy: 0,
+        night_battle_accuracy: 0,
+        aerial_bomb_power: 0,
+        aerial_torpedo_power: 0,
     }
 
     const flags: PlayerShipFlags = {

@@ -1,4 +1,4 @@
-import { StatusComponent, StatusComponentKey } from "@/types";
+import { TStatusComponent, StatusComponentKey } from "@/types";
 import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
 import { PlayerShipClass, PlayerShipFlags, ShipDatas, ShipType, SpecialItemId } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
@@ -35,13 +35,13 @@ export type PlayerShip = {
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
     /** 未装備状態の艦ステータス(lv適用済み) */
-    readonly naked_status: StatusComponent,
+    readonly naked_status: TStatusComponent,
     /** 装備ボーナスの総計 */
-    readonly total_equip_bonus_addition: StatusComponent,
+    readonly total_equip_bonus_addition: TStatusComponent,
     /** 装備改修ボーナスの総計 */
-    readonly equip_improvement_addition: EquipImprovementAddition,
+    readonly total_equip_improvement_addition: EquipImprovementAddition,
     /** 白襷, 海色リボン加算値 */
-    readonly special_item_addition: StatusComponent,
+    readonly special_item_addition: TStatusComponent,
     /**
      * 実機のステータス画面に表示される数値    
      * TODO: 表示用 構造体は別に生成するか？
@@ -58,13 +58,12 @@ export function derivePlayerShip(
     ship_datas: ShipDatas,
     country_datas: CountryDatas,
     special_item_datas: SpecialItemDatas,
-    status_keys: StatusComponentKey,
     unique_id: ShipUniqueId,
     lv: ShipLv,
     ship_id: ShipId,
     special_item_id: SpecialItemId,
     equips: Equip[],
-    edit_input?: StatusComponent,
+    edit_input?: TStatusComponent,
 ): PlayerShip {
     const naked_ship = deriveNakedPlayerShip(
         ship_datas,
@@ -83,12 +82,11 @@ export function derivePlayerShip(
     const flags = naked_ship.flags;
     const naked_status = naked_ship.status;
 
-    const equip_bonuses = deriveEquipBonusAddition(naked_ship, equips);
-    const total_equip_improvement_bonus = 
+    const total_equip_bonus_addition = deriveEquipBonusAddition(naked_ship, equips);
+    const total_equip_improvement_addition = 
         sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
     const special_item_addition = deriveSpecialItemAddition(
         special_item_datas,
-        status_keys,
         special_item_id,
     );
 
@@ -104,8 +102,8 @@ export function derivePlayerShip(
         slots,
         flags,
         naked_status,
-        equip_bonuses,
-        total_equip_improvement_bonus,
+        total_equip_bonus_addition,
+        total_equip_improvement_addition,
         special_item_addition,
     }
 }

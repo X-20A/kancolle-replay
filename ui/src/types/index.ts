@@ -31,7 +31,7 @@ export const STATUS_COMPONENT_KEYS = [
 
 export type StatusComponentKey = typeof STATUS_COMPONENT_KEYS[number];
 
-export type StatusComponent = {
+export type TStatusComponent = {
     [K in StatusComponentKey]: number; // number以外の型は無いという前提
 }
 

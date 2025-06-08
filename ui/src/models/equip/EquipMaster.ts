@@ -1,6 +1,6 @@
 import { PlayerEquipType } from "@/datas/equip/base/player";
 import { EquipImprovementType } from "@/datas/equip/improvement";
-import { StatusComponent } from "@/types";
+import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
 import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 
@@ -13,7 +13,7 @@ export type EquipMaster = {
     readonly improvement_type: EquipImprovementType,
     /** 特殊攻撃のトリガーになる装備の種別ID 該当装備でなければ null */
     readonly skill_trigger_type: SkillTriggerEquipType | null,
-    readonly status: StatusComponent,
+    readonly status: TStatusComponent,
     readonly flags: EquipFlags,
 }
 
@@ -32,7 +32,7 @@ export function deriveEquipMaster(
     const improvement_type = equip_data.improvement_type;
     const skill_trigger_type = equip_data.b_type ?? null;
 
-    const status: StatusComponent = {
+    const status: TStatusComponent = {
         hp: 0,
         fire_power: equip_data.FP ?? 0,
         armor: equip_data.AR ?? 0,

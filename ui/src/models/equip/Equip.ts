@@ -1,4 +1,4 @@
-import { StatusComponent } from "@/types";
+import { TStatusComponent } from "@/types";
 import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 import { deriveEquipMaster } from "./EquipMaster";
 import { PlayerEquipType } from "@/datas/equip/base/player";
@@ -24,7 +24,7 @@ export type Equip = {
     /** フラグ類 */
     readonly flags: EquipFlags,
     /** マスターデータままの装備加算値 */
-    readonly master_addition: StatusComponent,
+    readonly master_addition: TStatusComponent,
     /** 装備改修加算値 */
     readonly improvement_addition: EquipImprovementAddition,
     /** TP加算値 */

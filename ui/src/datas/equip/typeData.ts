@@ -1,4 +1,4 @@
-import { DeepReadonly, TransportPowerModel } from "@/types";
+import { DeepReadonly } from "@/types";
 import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
 import { ShipType } from "@/types/ship/ship";
 import { PlayerEquipType } from "./base/player";
@@ -456,32 +456,6 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         can_equip_ship_types: [ShipType.AO],
         can_equip_ship_ids: [943, 948],
     },
-    [PlayerEquipType.LAND_BASED_BOMBER]: {
-        label: 'Misc',
-        icon: 37,
-        can_equip_ship_types: [],
-        can_equip_land_base: true,
-        is_plane: true,
-        is_dive_bomber: true,
-        is_torpedo_bomber: true,
-        is_land_base_plane: true,
-    },
-    [PlayerEquipType.INTERCEPTOR]: {
-        label: 'Misc',
-        icon: 38,
-        can_equip_ship_types: [],
-        can_equip_land_base: true,
-        is_plane: true,
-        is_land_base_plane: true,
-    },
-    [PlayerEquipType.LAND_BASED_SCOUT]: {
-        label: 'Misc',
-        icon: 9,
-        can_equip_ship_types: [],
-        can_equip_land_base: true,
-        is_plane: true,
-        can_contact: true,
-    },
     [PlayerEquipType.TRANSPORT_ITEM]: {
         label: 'Transportation Material',
         icon: 41,
@@ -493,16 +467,6 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
         label: 'Submarine Equipment',
         icon: 42,
         can_equip_ship_types: [ShipType.SS, ShipType.SSV],
-    },
-    [PlayerEquipType.LAND_BASED_BOMBER_L]: {
-        label: 'Misc',
-        icon: 49,
-        can_equip_ship_types: [],
-        can_equip_land_base: true,
-        is_plane: true,
-        is_dive_bomber: true,
-        is_torpedo_bomber: true,
-        is_land_base_plane: true,
     },
     [PlayerEquipType.JET_BOMBER]: {
         label: 'Jet Fighter-Bomber',

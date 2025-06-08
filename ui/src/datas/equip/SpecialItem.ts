@@ -1,7 +1,7 @@
-import { StatusComponent } from "@/types"
+import { TStatusComponent } from "@/types"
 import { SpecialItemId } from "@/types/ship/ship"
 
-export type SpecialItemDatas = Record<SpecialItemId, Partial<StatusComponent>>
+export type SpecialItemDatas = Record<SpecialItemId, Partial<TStatusComponent>>
 
 export const SPECIAL_ITEM_BONUS_DATAS: SpecialItemDatas = {
     [SpecialItemId.None]: {},
