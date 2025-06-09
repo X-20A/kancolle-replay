@@ -324,13 +324,16 @@ export type PlayerShipData = {
     CVs_night_attack_type?: CVsNightAttackType,
     /** 旗艦時に発動する特殊砲撃の種別ID */
     attack_special_ids?: SpecialAttckId[],
-    // ?
+    /**
+     * 空母系の対潜挙動ID    
+     * ! データ駆動にあらず
+     */
     planeasw?: 0 | 2,
 }
 
 export type ShipDatas = DeepReadonly<Record<number, PlayerShipData>>;
 
-export type PlayerShipFlags = {
+export type PlayerNakedShipFlags = {
     has_potential_always_OASW: boolean,
     /** 高射装置内蔵艦(秋月型のみ 25/06/04)であるか */
     has_built_in_fire_director: boolean,
@@ -354,3 +357,20 @@ export type PlayerShipFlags = {
     /** 条件次第で対潜攻撃可能なCV(加賀改二護) */
     has_ASW_potential_CV: boolean,
 }
+
+export type AswEquipFlags = {
+    /** ソナー系が含まれるか */
+    has_sonar: boolean,
+    /** 小型ソナーが含まれるか */
+    has_sonar_S: boolean,
+    /** 爆雷系が含まれるか */
+    has_DC: boolean,
+    /** 爆雷投射機が含まれるか */
+    has_DCP: boolean,
+    /** 爆雷が含まれるか */
+    has_DC_only: boolean,
+}
+
+export type PlayerShipFlags = PlayerNakedShipFlags & {
+    asw_equip: AswEquipFlags;
+  };

@@ -1,5 +1,6 @@
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipImprovementType } from "@/datas/equip/improvement";
+import { EquipTypeDatas } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
 import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
@@ -18,8 +19,9 @@ export type EquipMaster = {
 }
 
 export function deriveEquipMaster(
-    id: EquipId,
     equip_datas: EquipDatas,
+    equip_type_datas: EquipTypeDatas,
+    id: EquipId,
 ): EquipMaster {
     const equip_data = equip_datas[id];
     if (!equip_data) throw new Error(`id: ${id}の装備が見つかりませんでした`);
@@ -30,7 +32,7 @@ export function deriveEquipMaster(
 
     const type_id = equip_data.type;
     const improvement_type = equip_data.improvement_type;
-    const skill_trigger_type = equip_data.b_type ?? null;
+    const skill_trigger_type = equip_data.b_type ?? (equip_type_datas[type_id].b_type ?? null);
 
     const status: TStatusComponent = {
         hp: 0,

@@ -4,6 +4,7 @@
 		"dev": "cd ui; bun run dev",
 		"build": "cd ui; bun run build",
 		"preview": "cd ui; bun run preview",
+		"test:watch": "cd ui; bun run vitest watch tests/watch",
 		"wasm:build": "cd ui; bun run wasm:build"
 	}
 }

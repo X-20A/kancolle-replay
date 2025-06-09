@@ -10,7 +10,7 @@ type TransportEquipData = {
 
 export type TransportEquipDatas = TransportEquipData[]
 
-export const TRANSPORT_EQUIPS: TransportEquipDatas = [
+export const TRANSPORT_EQUIP_DATAS: TransportEquipDatas = [
     // equip_type_idベース
     {
         equip_type_id: EquipType.LANDING_CRAFT,

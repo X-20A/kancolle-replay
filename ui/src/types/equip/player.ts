@@ -100,7 +100,10 @@ export type PlayerEquipData = {
     improvement_type: EquipImprovementType,
     /** 対空CIのトリガーになる装備の種別ID */
     a_type?: AACITriggerEquipType,
-    /** 特殊攻撃のトリガーになる装備の種別ID */
+    /**
+     * 特殊攻撃のトリガーになる装備の種別ID    
+     * ! データ駆動にあらず
+     */
     b_type?: SkillTriggerEquipType,
     /** 装備種別とは別制御の装備アイコンID */
     icon?: SpecialIcon,

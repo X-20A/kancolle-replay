@@ -41,7 +41,7 @@ export function deriveEquipBonusAddition(
     const flags = equips.reduce((acc, equip) => {
         if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;
 
-        const addition = equip.master_addition;
+        const addition = equip.natural_addition;
         return {
             has_surface_radar: acc.has_surface_radar || addition.los >= 5,
             has_anti_air_radar: acc.has_anti_air_radar || addition.anti_air >= 2,
@@ -71,7 +71,7 @@ export function deriveEquipBonusAddition(
     const summary = EQUIP_BONUS_DATAS.reduce((total_bonus_acc, equip_bonus_data) => {
         // 対象装備を抽出
         const matched_equips = equips.filter(equip => {
-            if (equip_bonus_data.types && !equip_bonus_data.types.includes(equip.type)) return false;
+            if (equip_bonus_data.types && !equip_bonus_data.types.includes(equip.type_id)) return false;
             if (equip_bonus_data.ids && !equip_bonus_data.ids.includes(equip.master_id)) return false;
             return true;
         });
@@ -97,7 +97,7 @@ export function deriveEquipBonusAddition(
                 if (synergy_count < (bonus.requires_synergy_equip_count ?? 1)) continue;
             }
             if (bonus.requires_synergy_equip_type_ids) {
-                const synergy_type_count = equips.filter(equip => bonus.requires_synergy_equip_type_ids!.includes(equip.type)).length;
+                const synergy_type_count = equips.filter(equip => bonus.requires_synergy_equip_type_ids!.includes(equip.type_id)).length;
                 if (synergy_type_count < (bonus.requires_synergy_equip_count ?? 1)) continue;
             }
             if (bonus.requires_synergy_equip_improvement) {

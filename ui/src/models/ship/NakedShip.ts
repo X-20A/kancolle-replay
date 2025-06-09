@@ -2,7 +2,7 @@ import { Country } from "@/datas/equip/bonus";
 import { CountryDatas } from "@/datas/ship/country";
 import { TStatusComponent } from "@/types";
 import { brandShipNameEN, brandShipNameJP, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
-import { ShipDatas, PlayerShipFlags, ShipType, PlayerShipClass } from "@/types/ship/ship";
+import { ShipDatas, PlayerNakedShipFlags, ShipType, PlayerShipClass } from "@/types/ship/ship";
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */
 export type NakedPlayerShip = {
@@ -14,7 +14,7 @@ export type NakedPlayerShip = {
     readonly country: Country,
     readonly slots: Readonly<number[]>,
     readonly status: TStatusComponent,
-    readonly flags: PlayerShipFlags,
+    readonly flags: PlayerNakedShipFlags,
 }
 
 function calcStatusFromLevel(
@@ -66,7 +66,7 @@ export function deriveNakedPlayerShip(
         aerial_torpedo_power: 0,
     }
 
-    const flags: PlayerShipFlags = {
+    const flags: PlayerNakedShipFlags = {
         has_potential_always_OASW: ship_data.has_potential_always_OASW ?? false,
         has_built_in_fire_director: ship_data.has_built_in_fire_director ?? false,
         has_potential_air_attack: ship_data.has_potential_air_attack ?? false,
