@@ -67,7 +67,8 @@ export function deriveNakedPlayerShip(
     }
 
     const flags: PlayerNakedShipFlags = {
-        has_potential_always_OASW: ship_data.has_potential_always_OASW ?? false,
+        has_advantage_OASW_CVs: ship_data.has_advantage_OASW_CVs ?? false,
+        can_unconditional_OASW: ship_data.can_unconditional_OASW ?? false,
         has_built_in_fire_director: ship_data.has_built_in_fire_director ?? false,
         has_potential_air_attack: ship_data.has_potential_air_attack ?? false,
         is_air_craft_carrier_BB: ship_data.is_air_craft_carrier_BB ?? false,

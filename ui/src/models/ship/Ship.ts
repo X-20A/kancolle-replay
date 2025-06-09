@@ -46,20 +46,14 @@ export type PlayerShip = {
     readonly total_equip_improvement_addition: EquipImprovementAddition,
     /** 白襷, 海色リボン加算値 */
     readonly special_item_addition: TStatusComponent,
-    /**
-     * 実機のステータス画面に表示される数値    
-     * TODO: 表示用 構造体は別に生成するか？
-     */
-    // readonly display_status: StatusComponent,
-    /**
-     * ユーザーによって編集された後の艦ステータス    
-     * TODO: Vueが本格的に動き出すまで棚上げ
-     */
-    // readonly edited_status: StatusComponent,
+    /** 実機のステータス画面に表示される数値 */
+    readonly view_status: TStatusComponent,
+    /** ユーザーによって編集された後の艦ステータス */
+    readonly edited_status: TStatusComponent,
 };
 
 /**
- * StatusComponentの各プロパティを総計したStatusComponentを返す
+ * StatusComponentの各プロパティを合算したStatusComponentを返す
  */
 function sumStatusComponents(
     a: TStatusComponent,
@@ -110,11 +104,13 @@ export function derivePlayerShip(
     const ship_class = naked_ship.ship_class;
     const country = naked_ship.country;
     const slots = naked_ship.slots;
+
     const asw_flags = deriveAswFlags(equip_type_datas, equips);
     const flags = {
         ...naked_ship.flags,
         asw_equip: asw_flags,
     };
+
     const naked_status = naked_ship.status;
     const total_natural_equip_addition = equips
         .map(equip => equip.natural_addition)
@@ -126,6 +122,15 @@ export function derivePlayerShip(
         special_item_datas,
         special_item_id,
     );
+
+    const view_status = [
+        naked_status,
+        total_natural_equip_addition,
+        total_equip_bonus_addition,
+        special_item_addition,
+    ].reduce(sumStatusComponents);
+
+    const edited_status = edit_input ?? view_status;
 
     return {
         master_id,
@@ -143,5 +148,7 @@ export function derivePlayerShip(
         total_equip_bonus_addition,
         total_equip_improvement_addition,
         special_item_addition,
+        view_status,
+        edited_status,
     }
 }

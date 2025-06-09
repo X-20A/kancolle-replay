@@ -293,12 +293,15 @@ export type PlayerShipData = {
     // 以下フラグ類
 
     /**
-     * 無条件開幕対潜艦はtrue    
-     * 大鷹型改/改二, 加賀改二護 にも付与されているが、    
-     * 対潜値1以上の艦攻/艦爆 or 三式指揮連絡機(対潜) or 回転翼機を装備している場合のみ発動する    
-     * ロジック側で実装すること
+     * 先制対潜条件が緩い空母級    
+     * 大鷹型改/改二, 加賀改二護    
+     * https://wikiwiki.jp/kancolle/対潜攻撃#trigger_conditions   
      */
-    has_potential_always_OASW?: true,
+    has_advantage_OASW_CVs?: true,
+    /**
+     * 無条件開幕対潜艦であるか
+     */
+    can_unconditional_OASW?: true,
     /** 高射装置内蔵艦(秋月型のみ 25/06/04)であるか */
     has_built_in_fire_director?: true,
     /**
@@ -334,7 +337,16 @@ export type PlayerShipData = {
 export type ShipDatas = DeepReadonly<Record<number, PlayerShipData>>;
 
 export type PlayerNakedShipFlags = {
-    has_potential_always_OASW: boolean,
+    /**
+     * 先制対潜条件が緩い空母級    
+     * 大鷹型改/改二, 加賀改二護    
+     * https://wikiwiki.jp/kancolle/対潜攻撃#trigger_conditions   
+     */
+    has_advantage_OASW_CVs: boolean,
+    /**
+     * 無条件開幕対潜艦であるか
+     */
+    can_unconditional_OASW: boolean,
     /** 高射装置内蔵艦(秋月型のみ 25/06/04)であるか */
     has_built_in_fire_director: boolean,
     /**
@@ -359,16 +371,32 @@ export type PlayerNakedShipFlags = {
 }
 
 export type AswEquipFlags = {
+    /** 対潜値1以上の艦爆 が含まれるか */
+    has_positive_asw_dive_bomber: boolean,
+    /** 対潜値1以上の艦攻 が含まれるか */
+    has_positive_asw_torpedo_bomber: boolean,
+    /** 対潜哨戒機が含まれるか */
+    has_asw_plane: boolean,
+    /** 回転翼機が含まれるか */
+    has_autogyro: boolean,
+    /** 対潜値7以上の艦攻が含まれるか */
+    has_high_asw_torpedo_bomber: boolean,
+    /** 水上爆撃機が含まれるか */
+    has_seaplane_bomber: boolean,
+    /** S-51J/改が含まれるか */
+    has_any_S51J: boolean,
+    /** カ号/オ号改/改二 が2スロ以上含まれるか */
+    has_multiple_low_autogyro: boolean,
     /** ソナー系が含まれるか */
-    has_sonar: boolean,
+    has_any_sonar: boolean,
     /** 小型ソナーが含まれるか */
-    has_sonar_S: boolean,
+    has_small_sonar: boolean,
     /** 爆雷系が含まれるか */
-    has_DC: boolean,
+    has_any_DC: boolean,
     /** 爆雷投射機が含まれるか */
     has_DCP: boolean,
     /** 爆雷が含まれるか */
-    has_DC_only: boolean,
+    has_DC: boolean,
 }
 
 export type PlayerShipFlags = PlayerNakedShipFlags & {

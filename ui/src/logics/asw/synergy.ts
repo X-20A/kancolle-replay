@@ -3,11 +3,11 @@ import { AswEquipFlags } from "@/types/ship/ship";
 export function calcAswSynergy(
     flags: AswEquipFlags,
 ): number {
-    const has_sonar = flags.has_sonar;
-    const has_sonar_S = flags.has_sonar_S;
-    const has_DC = flags.has_DC;
+    const has_sonar = flags.has_any_sonar;
+    const has_sonar_S = flags.has_small_sonar;
+    const has_DC = flags.has_any_DC;
     const has_DCP = flags.has_DCP;
-    const has_DC_only = flags.has_DC_only;
+    const has_DC_only = flags.has_DC;
     
     let damage_bonus = 1;
 

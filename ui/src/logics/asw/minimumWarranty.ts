@@ -6,7 +6,7 @@ type CalcBasicAswAttackStrategy = (ship: PlayerShip) => number;
 const WITH_DROP_EFFECT_VALUE = 13;
 
 const NON_DROP_EFFECT_VALUE = 8;
-
+/*
 const calcBasicAswAttackStrategies: Record<ShipType, CalcBasicAswAttackStrategy> = {
     [ShipType.DE]: (ship) => WITH_DROP_EFFECT_VALUE,
     [ShipType.DD]: (ship) => WITH_DROP_EFFECT_VALUE,
@@ -30,8 +30,9 @@ const calcBasicAswAttackStrategies: Record<ShipType, CalcBasicAswAttackStrategy>
     [ShipType.AO]: (ship) => ,
 };
 
+
 export function calcBasicAswAttackPower(ship: PlayerShip): number {
     const strategy = calcBasicAswAttackStrategies[ship.type_id];
     
     return strategy(ship);
-}
+}*/

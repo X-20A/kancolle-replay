@@ -21,3 +21,5 @@ rust: can_night_battle_attack
 
 制空値の文脈における「対空」はanti_airとは区別して、
 air_superiority とする
+
+// TODO: フラグ類は取り敢えずオブジェクトに全入れ 外に出す/出さないは使い勝手をみて判断
