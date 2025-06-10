@@ -114,11 +114,15 @@ export function deriveEquipBonusAddition(
             const stack_limit = bonus.stack_limit ?? matched_equips.length;
             const apply_count = Math.min(matched_equips.length, stack_limit);
             for (let i = 0; i < apply_count; i++) {
-                total_bonus_acc = addBonus(total_bonus_acc, bonus.bonus);
+                total_bonus_acc = addBonus(total_bonus_acc, bonus.addition);
             }
         }
         return total_bonus_acc;
     }, initial);
+
+    if (summary.aerial_torpedo_power) {
+
+    }
 
     return {
         ...summary,

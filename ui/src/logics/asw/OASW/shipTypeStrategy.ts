@@ -4,7 +4,7 @@ import { ShipType } from "@/types/ship/ship";
 type HasPotentialOAswStrategy = (ship: PlayerShip) => boolean;
 
 /**
- * 艦種ごとの対潜攻撃のポテンシャルの有無を判定して返す    
+ * 艦種ごとの対潜攻撃の可/不可を判定して返す    
  * 特殊条件の艦は予め判定されている前提    
  * 艦・装備・艦載機残存数の判定はRust    
  * https://wikiwiki.jp/kancolle/戦闘について#AntiSubmarine
@@ -49,30 +49,33 @@ function isCVLCapableOfOpeningAsw(ship: PlayerShip): boolean {
     const asw_flags = ship.flags.asw_equip;
     const asw = ship.view_status.asw;
 
-    const cond_1 =
+    if (
         asw >= 50 &&
         asw_flags.has_any_sonar &&
-        (asw_flags.has_asw_plane || asw_flags.has_autogyro);
+        (asw_flags.has_asw_plane || asw_flags.has_autogyro)
+    ) return true;
 
-    const cond_2 =
+    if (
         asw >= 65 &&
         (
             asw_flags.has_high_asw_torpedo_bomber ||
             asw_flags.has_asw_plane ||
             asw_flags.has_autogyro
-        );
+        )
+    ) return true;
 
-    const cond_3 =
+    if (
         asw >= 100 &&
         asw_flags.has_any_sonar &&
         (
             asw_flags.has_positive_asw_dive_bomber ||
             asw_flags.has_high_asw_torpedo_bomber
-        );
+        )
+    ) return true;
 
-    return cond_1 || cond_2 || cond_3;
+    return false;
 }
-
+ 
 /**
  * 艦の表示対潜ステータスが指定された値以上かを判定して返す
  * @param ship 艦情報

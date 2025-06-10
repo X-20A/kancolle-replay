@@ -1,16 +1,14 @@
 import { TStatusComponent } from "@/types";
 import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { PlayerShipClass, ShipDatas, ShipType, SpecialItemId, PlayerShipFlags } from "@/types/ship/ship";
+import { PlayerShipClass, ShipType, SpecialItemId, PlayerShipFlags, ModernizationType } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
 import { deriveNakedPlayerShip as deriveNakedPlayerShip } from "./NakedShip";
-import { CountryDatas } from "@/datas/ship/country";
 import { deriveEquipBonusAddition } from "../equip/EquipBonus";
 import { EquipImprovementAddition, sumEquipImprovementAdditions } from "../equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "../equip/SpecialItem";
-import { SpecialItemDatas } from "@/datas/equip/SpecialItem";
 import { deriveAswFlags } from "./aswFlags";
-import { EquipTypeDatas } from "@/datas/equip/typeData";
+import { TShipDataSet } from "@/datas";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -50,6 +48,8 @@ export type PlayerShip = {
     readonly view_status: TStatusComponent,
     /** ユーザーによって編集された後の艦ステータス */
     readonly edited_status: TStatusComponent,
+    /** 対潜攻撃力計算に有効な対潜値の総計 */
+    readonly total_valid_asw: number,
 };
 
 /**
@@ -79,20 +79,18 @@ function sumStatusComponents(
 }
 
 export function derivePlayerShip(
-    ship_datas: ShipDatas,
-    country_datas: CountryDatas,
-    equip_type_datas: EquipTypeDatas,
-    special_item_datas: SpecialItemDatas,
+    data_set: TShipDataSet,
     unique_id: ShipUniqueId,
     lv: ShipLv,
-    ship_id: ShipId,
     special_item_id: SpecialItemId,
+    ship_id: ShipId,
     equips: Equip[],
+    modernizations?: ModernizationType,  
     edit_input?: TStatusComponent,
 ): PlayerShip {
     const naked_ship = deriveNakedPlayerShip(
-        ship_datas,
-        country_datas,
+        data_set.ship_datas,
+        data_set.country_datas,
         lv,
         ship_id,
     );
@@ -105,7 +103,7 @@ export function derivePlayerShip(
     const country = naked_ship.country;
     const slots = naked_ship.slots;
 
-    const asw_flags = deriveAswFlags(equip_type_datas, equips);
+    const asw_flags = deriveAswFlags(equips);
     const flags = {
         ...naked_ship.flags,
         asw_equip: asw_flags,
@@ -119,7 +117,7 @@ export function derivePlayerShip(
     const total_equip_improvement_addition = 
         sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
     const special_item_addition = deriveSpecialItemAddition(
-        special_item_datas,
+        data_set.special_item_datas,
         special_item_id,
     );
 
@@ -129,6 +127,12 @@ export function derivePlayerShip(
         total_equip_bonus_addition,
         special_item_addition,
     ].reduce(sumStatusComponents);
+
+    const total_valid_asw = equips
+        .map(equip => equip.valid_asw)
+        .reduce((acc, curr) => {
+            return acc + curr;
+        });
 
     const edited_status = edit_input ?? view_status;
 
@@ -150,5 +154,6 @@ export function derivePlayerShip(
         special_item_addition,
         view_status,
         edited_status,
+        total_valid_asw,
     }
 }

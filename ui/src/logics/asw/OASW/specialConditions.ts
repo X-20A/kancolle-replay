@@ -16,16 +16,19 @@ export function evaluateSpecialOaswCondition(ship: PlayerShip): boolean | undefi
             || asw_flags.has_autogyro;
     }
     switch (ship.master_id) {
-        case 626: case 916: // 神州丸改 || 大和改二重
+        case 626: // 神州丸改
+        case 916: // 大和改二重
             return asw_flags.has_any_sonar
                 || asw_flags.has_seaplane_bomber
                 || asw_flags.has_autogyro;
-        case 943: case 948: // 熊野丸/改
+        case 943: // 熊野丸
+        case 948: // 熊野丸改
             return asw_flags.has_any_sonar
                 || asw_flags.has_positive_asw_dive_bomber
                 || asw_flags.has_asw_plane
                 || asw_flags.has_autogyro;
-        case 411: case 412: // 扶桑改二/山城改二
+        case 411: // 扶桑改二
+        case 412: // 山城改二
             return asw_flags.has_any_sonar
                 || asw_flags.has_seaplane_bomber
                 || asw_flags.has_autogyro

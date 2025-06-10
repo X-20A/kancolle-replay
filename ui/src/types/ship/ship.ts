@@ -202,6 +202,12 @@ export const enum SpecialAttckId {
     YamatoDuoTouch = 401,
 }
 
+export type ModernizationType = {
+    hp?: number,
+    asw?: number,
+    luck?: number,
+}
+
 export enum SpecialItemId {
     None = 0, // なし
     Ribbon = 1, // 海色リボン
@@ -371,6 +377,8 @@ export type PlayerNakedShipFlags = {
 }
 
 export type AswEquipFlags = {
+    /** 艦攻/艦爆 が含まれるか */
+    has_any_plane_bomber: boolean,
     /** 対潜値1以上の艦爆 が含まれるか */
     has_positive_asw_dive_bomber: boolean,
     /** 対潜値1以上の艦攻 が含まれるか */

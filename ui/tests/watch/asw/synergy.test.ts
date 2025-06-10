@@ -1,42 +1,30 @@
-import PLAYER_EQUIP_DATAS from "@/datas/equip/base/player";
-import { EQUIP_IMPLOVEMENT_DATAS } from "@/datas/equip/improvement";
-import { TRANSPORT_EQUIP_DATAS } from "@/datas/equip/transportEquip";
-import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { calcAswSynergy } from "@/logics/asw/synergy";
 import { Equip } from "@/models/equip/Equip";
 import { brandEquipId } from "@/types/brands/equip";
 import { pipe } from "fp-ts/lib/function";
-import { curryCreateEquip, curryDeriveAswFlags } from "tests/setup";
 import { describe, expect, it } from "vitest"
+import { deriveAswFlags } from "@/models/ship/aswFlags";
+import { make_equip_from_id } from "tests/setup";
 
 describe('対潜系テスト', () => {
     it('装備の組み合わせごとに正しい対潜シナジーボーナスを返すことを確認', () => {
-        const makeEquip = curryCreateEquip(
-            PLAYER_EQUIP_DATAS,
-            EQUIP_TYPE_DATAS,
-            EQUIP_IMPLOVEMENT_DATAS,
-            TRANSPORT_EQUIP_DATAS
-        );
-
         /** 流星改(一航戦/熟練) */
-        const RYUUSEI_KAI_SKILLED = makeEquip(brandEquipId(343), 0);
+        const RYUUSEI_KAI_SKILLED = make_equip_from_id(brandEquipId(343));
         /** 三式水中探信儀 */
-        const SANSHIKI_SONAR = makeEquip(brandEquipId(47), 0);
+        const SANSHIKI_SONAR = make_equip_from_id(brandEquipId(47));
         /** 零式水中聴音機 */
-        const REISHIKI_SONAR = makeEquip(brandEquipId(132), 0);
+        const REISHIKI_SONAR = make_equip_from_id(brandEquipId(132));
         /** 三式爆雷投射機 */
-        const SANSHIKI_DCP = makeEquip(brandEquipId(45), 0);
+        const SANSHIKI_DCP = make_equip_from_id(brandEquipId(45));
         /** 二式爆雷 */
-        const NISHIKI_DC = makeEquip(brandEquipId(227), 0);
+        const NISHIKI_DC = make_equip_from_id(brandEquipId(227));
         /** 対潜短魚雷(試作初期型) */
-        const TAN_GYORAI = makeEquip(brandEquipId(378), 0);
+        const TAN_GYORAI = make_equip_from_id(brandEquipId(378));
         /** 二式12cm迫撃砲改 */
-        const NISHIKI_HAKUGEKI = makeEquip(brandEquipId(346), 0);
-        
-        const make_flags = curryDeriveAswFlags(EQUIP_TYPE_DATAS);
+        const NISHIKI_HAKUGEKI = make_equip_from_id(brandEquipId(346));
 
         const test = (expected: number, equips: Equip[]) => {
-            expect(expected).toBe(pipe(equips, make_flags, calcAswSynergy));
+            expect(expected).toBe(pipe(equips, deriveAswFlags, calcAswSynergy));
         };
 
         test(1, []);

@@ -1,6 +1,6 @@
 import { CVsNightAttackType, ShipDatas, ShipType } from "@/types/ship/ship";
 
-export const PLAYER_SHIP_DATA: ShipDatas = {
+export const PLAYER_SHIP_DATAS: ShipDatas = {
     1: {
         name: 'Mutsuki',
         nameJP: '睦月',

@@ -1,5 +1,10 @@
 import { AswEquipFlags } from "@/types/ship/ship";
 
+/**
+ * 対潜シナジー値を計算して返す
+ * @param flags 
+ * @returns 
+ */
 export function calcAswSynergy(
     flags: AswEquipFlags,
 ): number {

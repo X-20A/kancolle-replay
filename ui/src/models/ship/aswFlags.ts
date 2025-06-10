@@ -1,14 +1,13 @@
-import { EquipTypeDatas } from "@/datas/equip/typeData";
 import { AswEquipFlags } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "@/datas/equip/base/player";
 
 export function deriveAswFlags(
-    equip_type_datas: EquipTypeDatas,
     equips: Equip[],
 ): AswEquipFlags {
     const {
+        has_any_plane_bomber,
         has_positive_asw_dive_bomber,
         has_positive_asw_torpedo_bomber,
         has_asw_plane,
@@ -25,6 +24,11 @@ export function deriveAswFlags(
         has_DC,
     } = equips.reduce(
         (acc, equip) => {
+            const has_any_plane_bomber = [
+                EquipType.DIVE_BOMBER,
+                EquipType.FIGHTER_BOMBER,
+                EquipType.TORPEDO_BOMBER,
+            ].includes(equip.type_id);
             const has_positive_asw_dive_bomber =
                 [EquipType.DIVE_BOMBER, EquipType.FIGHTER_BOMBER].includes(equip.type_id)
                 && equip.natural_addition.asw >= 1;
@@ -50,6 +54,7 @@ export function deriveAswFlags(
             const has_DC = equip.flags.is_DC_only;
 
             return {
+                has_any_plane_bomber: acc.has_any_plane_bomber || has_any_plane_bomber,
                 has_positive_asw_dive_bomber: acc.has_positive_asw_dive_bomber || has_positive_asw_dive_bomber,
                 has_positive_asw_torpedo_bomber: acc.has_positive_asw_torpedo_bomber || has_positive_asw_torpedo_bomber,
                 has_asw_plane: acc.has_asw_plane || has_asw_plane,
@@ -67,6 +72,7 @@ export function deriveAswFlags(
             };
         },
         {
+            has_any_plane_bomber: false,
             has_positive_asw_dive_bomber: false,
             has_positive_asw_torpedo_bomber: false,
             has_asw_plane: false,
@@ -87,6 +93,7 @@ export function deriveAswFlags(
     const has_multiple_low_autogyro = low_autogyro_count >= 2;
 
     return {
+        has_any_plane_bomber,
         has_positive_asw_dive_bomber,
         has_positive_asw_torpedo_bomber,
         has_asw_plane,

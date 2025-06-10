@@ -1,13 +1,11 @@
 import { TStatusComponent } from "@/types";
-import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
+import { EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 import { deriveEquipMaster } from "./EquipMaster";
 import { EquipType } from "@/datas/equip/base/player";
-import { EquipImprovementDatas } from "@/datas/equip/improvement";
 import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
 import { deriveTransportAddition, TransportAddition } from "./TransportPower";
-import { TransportEquipDatas } from "@/datas/equip/transportEquip";
 import { EquipId } from "@/types/brands/equip";
-import { EquipTypeDatas } from "@/datas/equip/typeData";
+import { TEquipDataSet } from "@/datas";
 
 export type Equip = {
     /** 装備マスターID */
@@ -30,19 +28,21 @@ export type Equip = {
     readonly improvement_addition: EquipImprovementAddition,
     /** TP加算値 */
     readonly transport_addition: TransportAddition,
+    /**
+     * 対潜攻撃力計算に関与する対潜値    
+     * TODO: StatusComponentに入れるかどうか
+     */
+    readonly valid_asw: number,
 }
 
 export function deriveEquip(
-    equip_datas: EquipDatas,
-    equip_type_datas: EquipTypeDatas,
-    equip_improvement_datas: EquipImprovementDatas,
-    transport_equip_datas: TransportEquipDatas,
-    master_id: EquipId,
+    data_set: TEquipDataSet,
     improvement_lv: number,
+    master_id: EquipId,
 ): Equip {
     const equip_master = deriveEquipMaster(
-        equip_datas,
-        equip_type_datas,
+        data_set.equip_datas,
+        data_set.equip_type_datas,
         master_id,
     );
 
@@ -54,12 +54,20 @@ export function deriveEquip(
     const flags = equip_master.flags;
     const natural_addition = equip_master.status;
     const improvement_addition = deriveEquipImprovementAddition(
-        equip_improvement_datas,
+        data_set.equip_improvement_datas,
         equip_master.improvement_type,
         improvement_lv,
     );
     const transport_addition =
-        deriveTransportAddition(transport_equip_datas, equip_master);
+        deriveTransportAddition(data_set.transport_equip_datas, equip_master);
+    const valid_asw = [
+        EquipType.DIVE_BOMBER,
+        EquipType.FIGHTER_BOMBER,
+        EquipType.TORPEDO_BOMBER,
+        EquipType.SONAR_S,
+        EquipType.SONAR_L,
+        EquipType.DEPTH_CHARGE
+    ].includes(type_id) ? equip_master.status.asw : 0;
 
     return {
         master_id,
@@ -72,5 +80,6 @@ export function deriveEquip(
         natural_addition,
         improvement_addition,
         transport_addition,
+        valid_asw,
     }
 }

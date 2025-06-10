@@ -2,7 +2,7 @@ import { Country } from "@/datas/equip/bonus";
 import { CountryDatas } from "@/datas/ship/country";
 import { TStatusComponent } from "@/types";
 import { brandShipNameEN, brandShipNameJP, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
-import { ShipDatas, PlayerNakedShipFlags, ShipType, PlayerShipClass } from "@/types/ship/ship";
+import { ShipDatas, PlayerNakedShipFlags, ShipType, PlayerShipClass, ModernizationType } from "@/types/ship/ship";
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */
 export type NakedPlayerShip = {
