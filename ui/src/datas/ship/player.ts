@@ -1,10 +1,10 @@
-import { CVsNightAttackType, ShipDatas, ShipType } from "@/types/ship/ship";
+import { CVsNightAttackType, ShipDatas } from "@/types/ship/ship";
 
 export const PLAYER_SHIP_DATAS: ShipDatas = {
     1: {
         name: 'Mutsuki',
         nameJP: '睦月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 31,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -25,7 +25,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     2: {
         name: 'Kisaragi',
         nameJP: '如月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 32,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -46,7 +46,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     6: {
         name: 'Nagatsuki',
         nameJP: '長月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 35,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -67,7 +67,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     7: {
         name: 'Mikazuki',
         nameJP: '三日月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 37,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -88,7 +88,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     9: {
         name: 'Fubuki',
         nameJP: '吹雪',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 11,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -109,7 +109,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     10: {
         name: 'Shirayuki',
         nameJP: '白雪',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 12,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -130,7 +130,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     11: {
         name: 'Miyuki',
         nameJP: '深雪',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 14,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -151,7 +151,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     12: {
         name: 'Isonami',
         nameJP: '磯波',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 16,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -172,7 +172,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     13: {
         name: 'Ayanami',
         nameJP: '綾波',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 17,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -193,7 +193,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     14: {
         name: 'Shikinami',
         nameJP: '敷波',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 18,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -214,7 +214,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     15: {
         name: 'Akebono',
         nameJP: '曙',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 68,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -235,7 +235,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     16: {
         name: 'Ushio',
         nameJP: '潮',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 70,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -256,7 +256,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     17: {
         name: 'Kagerou',
         nameJP: '陽炎',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 91,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -277,7 +277,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     18: {
         name: 'Shiranui',
         nameJP: '不知火',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 92,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -298,7 +298,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     19: {
         name: 'Kuroshio',
         nameJP: '黒潮',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 93,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -319,7 +319,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     20: {
         name: 'Yukikaze',
         nameJP: '雪風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 5,
         HP: 16, HPmax: 39,
         FP: 29, FPbase: 10,
@@ -489,7 +489,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     28: {
         name: 'Satsuki',
         nameJP: '皐月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 33,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -510,7 +510,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     29: {
         name: 'Fumizuki',
         nameJP: '文月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 34,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -531,7 +531,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     30: {
         name: 'Kikuzuki',
         nameJP: '菊月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 36,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -552,7 +552,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     31: {
         name: 'Mochizuki',
         nameJP: '望月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 38,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -573,7 +573,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     32: {
         name: 'Hatsuyuki',
         nameJP: '初雪',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 13,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -594,7 +594,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     33: {
         name: 'Murakumo',
         nameJP: '叢雲',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 15,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -615,7 +615,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     34: {
         name: 'Akatsuki',
         nameJP: '暁',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 71,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -636,7 +636,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     35: {
         name: 'Hibiki',
         nameJP: '響',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 72,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -657,7 +657,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     36: {
         name: 'Ikazuchi',
         nameJP: '雷',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 73,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -678,7 +678,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     37: {
         name: 'Inazuma',
         nameJP: '電',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 74,
         HP: 15, HPmax: 30,
         FP: 29, FPbase: 10,
@@ -699,7 +699,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     38: {
         name: 'Hatsuharu',
         nameJP: '初春',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 75,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -720,7 +720,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     39: {
         name: 'Nenohi',
         nameJP: '子日',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 76,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -741,7 +741,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     40: {
         name: 'Wakaba',
         nameJP: '若葉',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 77,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -762,7 +762,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     41: {
         name: 'Hatsushimo',
         nameJP: '初霜',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 78,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -783,7 +783,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     42: {
         name: 'Shiratsuyu',
         nameJP: '白露',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 79,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -804,7 +804,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     43: {
         name: 'Shigure',
         nameJP: '時雨',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 80,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -825,7 +825,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     44: {
         name: 'Murasame',
         nameJP: '村雨',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 81,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -846,7 +846,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     45: {
         name: 'Yuudachi',
         nameJP: '夕立',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 82,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -867,7 +867,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     46: {
         name: 'Samidare',
         nameJP: '五月雨',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 83,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -888,7 +888,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     47: {
         name: 'Suzukaze',
         nameJP: '涼風',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 84,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -909,7 +909,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     48: {
         name: 'Arare',
         nameJP: '霰',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 89,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -930,7 +930,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     49: {
         name: 'Kasumi',
         nameJP: '霞',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 90,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -951,7 +951,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     50: {
         name: 'Shimakaze',
         nameJP: '島風',
-        type: ShipType.DD, ship_class: 22,
+        type: "DD", ship_class: 22,
         nid: 10,
         HP: 19, HPmax: 39,
         FP: 29, FPbase: 12,
@@ -1864,7 +1864,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     93: {
         name: 'Oboro',
         nameJP: '朧',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 67,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -1885,7 +1885,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     94: {
         name: 'Sazanami',
         nameJP: '漣',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 69,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -1906,7 +1906,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     95: {
         name: 'Asashio',
         nameJP: '朝潮',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 85,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1927,7 +1927,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     96: {
         name: 'Ooshio',
         nameJP: '大潮',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 86,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1948,7 +1948,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     97: {
         name: 'Michishio',
         nameJP: '満潮',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 87,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -1969,7 +1969,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     98: {
         name: 'Arashio',
         nameJP: '荒潮',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 88,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -2473,7 +2473,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     122: {
         name: 'Maikaze',
         nameJP: '舞風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 119,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -2684,7 +2684,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     132: {
         name: 'Akigumo',
         nameJP: '秋雲',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 132,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -2705,7 +2705,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     133: {
         name: 'Yuugumo',
         nameJP: '夕雲',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 133,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -2726,7 +2726,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     134: {
         name: 'Makigumo',
         nameJP: '巻雲',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 134,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -2747,7 +2747,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     135: {
         name: 'Naganami',
         nameJP: '長波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 135,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -2939,7 +2939,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     144: {
         name: 'Yuudachi Kai 2',
         nameJP: '夕立改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 144,
         HP: 31, HPmax: 58,
         FP: 73, FPbase: 17,
@@ -2960,7 +2960,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     145: {
         name: 'Shigure Kai 2',
         nameJP: '時雨改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 145,
         HP: 31, HPmax: 49,
         FP: 62, FPbase: 13,
@@ -3002,7 +3002,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     147: {
         name: 'Verniy',
         nameJP: 'Верный',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 147,
         HP: 37, HPmax: 49,
         FP: 58, FPbase: 13,
@@ -3364,7 +3364,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     164: {
         name: 'Yayoi',
         nameJP: '弥生',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 164,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -3385,7 +3385,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     165: {
         name: 'Uzuki',
         nameJP: '卯月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 165,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -3427,7 +3427,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     167: {
         name: 'Isokaze',
         nameJP: '磯風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 167,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3448,7 +3448,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     168: {
         name: 'Urakaze',
         nameJP: '浦風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 168,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3469,7 +3469,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     169: {
         name: 'Tanikaze',
         nameJP: '谷風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 169,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3490,7 +3490,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     170: {
         name: 'Hamakaze',
         nameJP: '浜風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 170,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3577,7 +3577,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     174: {
         name: 'Z1',
         nameJP: 'Z1',
-        type: ShipType.DD, ship_class: 48,
+        type: "DD", ship_class: 48,
         nid: 174,
         HP: 18, HPmax: 29,
         FP: 26, FPbase: 8,
@@ -3598,7 +3598,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     175: {
         name: 'Z3',
         nameJP: 'Z3',
-        type: ShipType.DD, ship_class: 48,
+        type: "DD", ship_class: 48,
         nid: 175,
         HP: 18, HPmax: 29,
         FP: 26, FPbase: 8,
@@ -3683,7 +3683,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     179: {
         name: 'Z1 Zwei',
         nameJP: 'Z1 zwei',
-        type: ShipType.DD, ship_class: 48,
+        type: "DD", ship_class: 48,
         nid: 179,
         HP: 35, HPmax: 59,
         FP: 49, FPbase: 12,
@@ -3704,7 +3704,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     180: {
         name: 'Z3 Zwei',
         nameJP: 'Z3 zwei',
-        type: ShipType.DD, ship_class: 48,
+        type: "DD", ship_class: 48,
         nid: 180,
         HP: 35, HPmax: 59,
         FP: 47, FPbase: 10,
@@ -3725,7 +3725,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     181: {
         name: 'Amatsukaze',
         nameJP: '天津風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 181,
         HP: 18, HPmax: 37,
         FP: 29, FPbase: 10,
@@ -3830,7 +3830,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     186: {
         name: 'Tokitsukaze',
         nameJP: '時津風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 186,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -3914,7 +3914,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     190: {
         name: 'Hatsukaze',
         nameJP: '初風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 118,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -4019,7 +4019,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     195: {
         name: 'Ayanami Kai 2',
         nameJP: '綾波改二',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 195,
         HP: 32, HPmax: 54,
         FP: 75, FPbase: 17,
@@ -4082,7 +4082,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     198: {
         name: 'Arare Kai 2',
         nameJP: '霰改二',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 198,
         HP: 31, HPmax: 53,
         FP: 66, FPbase: 16,
@@ -4103,7 +4103,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     199: {
         name: 'Ooshio Kai 2',
         nameJP: '大潮改二',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 199,
         HP: 31, HPmax: 53,
         FP: 67, FPbase: 17,
@@ -4145,7 +4145,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     201: {
         name: 'Fubuki Kai',
         nameJP: '吹雪改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1301,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4166,7 +4166,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     202: {
         name: 'Shirayuki Kai',
         nameJP: '白雪改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1302,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4187,7 +4187,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     203: {
         name: 'Hatsuyuki Kai',
         nameJP: '初雪改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1303,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4208,7 +4208,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     204: {
         name: 'Miyuki Kai',
         nameJP: '深雪改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1304,
         HP: 30, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -4229,7 +4229,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     205: {
         name: 'Murakumo Kai',
         nameJP: '叢雲改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1305,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4250,7 +4250,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     206: {
         name: 'Isonami Kai',
         nameJP: '磯波改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1306,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4271,7 +4271,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     207: {
         name: 'Ayanami Kai',
         nameJP: '綾波改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1307,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4292,7 +4292,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     208: {
         name: 'Shikinami Kai',
         nameJP: '敷波改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1308,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4653,7 +4653,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     225: {
         name: 'Kagerou Kai',
         nameJP: '陽炎改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1325,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4674,7 +4674,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     226: {
         name: 'Shiranui Kai',
         nameJP: '不知火改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1326,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4695,7 +4695,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     227: {
         name: 'Kuroshio Kai',
         nameJP: '黒潮改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1327,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4716,7 +4716,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     228: {
         name: 'Yukikaze Kai',
         nameJP: '雪風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1328,
         HP: 32, HPmax: 49,
         FP: 59, FPbase: 12,
@@ -4737,7 +4737,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     229: {
         name: 'Shimakaze Kai',
         nameJP: '島風改',
-        type: ShipType.DD, ship_class: 22,
+        type: "DD", ship_class: 22,
         nid: 1329,
         HP: 36, HPmax: 59,
         FP: 59, FPbase: 14,
@@ -4758,7 +4758,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     230: {
         name: 'Oboro Kai',
         nameJP: '朧改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1330,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4779,7 +4779,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     231: {
         name: 'Akebono Kai',
         nameJP: '曙改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1331,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4800,7 +4800,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     232: {
         name: 'Sazanami Kai',
         nameJP: '漣改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1332,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4821,7 +4821,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     233: {
         name: 'Ushio Kai',
         nameJP: '潮改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1333,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4842,7 +4842,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     234: {
         name: 'Akatsuki Kai',
         nameJP: '暁改',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 1334,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4863,7 +4863,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     235: {
         name: 'Hibiki Kai',
         nameJP: '響改',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 1335,
         HP: 30, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -4884,7 +4884,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     236: {
         name: 'Ikazuchi Kai',
         nameJP: '雷改',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 1336,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4905,7 +4905,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     237: {
         name: 'Inazuma Kai',
         nameJP: '電改',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 1337,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -4926,7 +4926,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     238: {
         name: 'Hatsuharu Kai',
         nameJP: '初春改',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 1338,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -4947,7 +4947,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     239: {
         name: 'Nenohi Kai',
         nameJP: '子日改',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 1339,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -4968,7 +4968,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     240: {
         name: 'Wakaba Kai',
         nameJP: '若葉改',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 1340,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -4989,7 +4989,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     241: {
         name: 'Hatsushimo Kai',
         nameJP: '初霜改',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 1341,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5010,7 +5010,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     242: {
         name: 'Shiratsuyu Kai',
         nameJP: '白露改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1342,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5031,7 +5031,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     243: {
         name: 'Shigure Kai',
         nameJP: '時雨改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1343,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5052,7 +5052,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     244: {
         name: 'Murasame Kai',
         nameJP: '村雨改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1344,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5073,7 +5073,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     245: {
         name: 'Yuudachi Kai',
         nameJP: '夕立改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1345,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5094,7 +5094,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     246: {
         name: 'Samidare Kai',
         nameJP: '五月雨改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1346,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5115,7 +5115,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     247: {
         name: 'Suzukaze Kai',
         nameJP: '涼風改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1347,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -5136,7 +5136,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     248: {
         name: 'Asashio Kai',
         nameJP: '朝潮改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1348,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5157,7 +5157,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     249: {
         name: 'Ooshio Kai',
         nameJP: '大潮改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1349,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5178,7 +5178,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     250: {
         name: 'Michishio Kai',
         nameJP: '満潮改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1350,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5199,7 +5199,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     251: {
         name: 'Arashio Kai',
         nameJP: '荒潮改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1351,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5220,7 +5220,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     252: {
         name: 'Arare Kai',
         nameJP: '霰改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1352,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5241,7 +5241,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     253: {
         name: 'Kasumi Kai',
         nameJP: '霞改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1353,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -5262,7 +5262,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     254: {
         name: 'Mutsuki Kai',
         nameJP: '睦月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1354,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5283,7 +5283,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     255: {
         name: 'Kisaragi Kai',
         nameJP: '如月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1355,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5304,7 +5304,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     256: {
         name: 'Satsuki Kai',
         nameJP: '皐月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1356,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5325,7 +5325,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     257: {
         name: 'Fumizuki Kai',
         nameJP: '文月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1357,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5346,7 +5346,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     258: {
         name: 'Nagatsuki Kai',
         nameJP: '長月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1358,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5367,7 +5367,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     259: {
         name: 'Kikuzuki Kai',
         nameJP: '菊月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1359,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5388,7 +5388,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     260: {
         name: 'Mikazuki Kai',
         nameJP: '三日月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1360,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -5409,7 +5409,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     261: {
         name: 'Mochizuki Kai',
         nameJP: '望月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1361,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -6106,7 +6106,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     294: {
         name: 'Maikaze Kai',
         nameJP: '舞風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1394,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6211,7 +6211,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     300: {
         name: 'Hatsukaze Kai',
         nameJP: '初風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1396,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6232,7 +6232,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     301: {
         name: 'Akigumo Kai',
         nameJP: '秋雲改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1397,
         HP: 32, HPmax: 49,
         FP: 44, FPbase: 8,
@@ -6253,7 +6253,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     302: {
         name: 'Yuugumo Kai',
         nameJP: '夕雲改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1398,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6274,7 +6274,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     303: {
         name: 'Makigumo Kai',
         nameJP: '巻雲改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1399,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6295,7 +6295,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     304: {
         name: 'Naganami Kai',
         nameJP: '長波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1400,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6379,7 +6379,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     308: {
         name: 'Yayoi Kai',
         nameJP: '弥生改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1404,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -6400,7 +6400,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     309: {
         name: 'Uzuki Kai',
         nameJP: '卯月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1405,
         HP: 24, HPmax: 39,
         FP: 34, FPbase: 7,
@@ -6421,7 +6421,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     310: {
         name: 'Z1 Kai',
         nameJP: 'Z1改',
-        type: ShipType.DD, ship_class: 48,
+        type: "DD", ship_class: 48,
         nid: 1406,
         HP: 33, HPmax: 59,
         FP: 45, FPbase: 11,
@@ -6442,7 +6442,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     311: {
         name: 'Z3 Kai',
         nameJP: 'Z3改',
-        type: ShipType.DD, ship_class: 48,
+        type: "DD", ship_class: 48,
         nid: 1407,
         HP: 33, HPmax: 59,
         FP: 45, FPbase: 11,
@@ -6463,7 +6463,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     312: {
         name: 'Hamakaze Kai',
         nameJP: '浜風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1408,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6484,7 +6484,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     313: {
         name: 'Tanikaze Kai',
         nameJP: '谷風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1409,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6526,7 +6526,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     316: {
         name: 'Amatsukaze Kai',
         nameJP: '天津風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1411,
         HP: 34, HPmax: 54,
         FP: 49, FPbase: 12,
@@ -6547,7 +6547,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     317: {
         name: 'Urakaze Kai',
         nameJP: '浦風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1412,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6610,7 +6610,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     320: {
         name: 'Isokaze Kai',
         nameJP: '磯風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1413,
         HP: 33, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6652,7 +6652,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     322: {
         name: 'Tokitsukaze Kai',
         nameJP: '時津風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1415,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6673,7 +6673,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     323: {
         name: 'Harusame Kai',
         nameJP: '春雨改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1416,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6694,7 +6694,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     324: {
         name: 'Hayashimo Kai',
         nameJP: '早霜改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1417,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6715,7 +6715,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     325: {
         name: 'Kiyoshimo Kai',
         nameJP: '清霜改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1418,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -6736,7 +6736,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     326: {
         name: 'Hatsuharu Kai 2',
         nameJP: '初春改二',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 204,
         HP: 31, HPmax: 52,
         FP: 55, FPbase: 13,
@@ -6757,7 +6757,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     327: {
         name: 'Asagumo Kai',
         nameJP: '朝雲改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1419,
         HP: 31, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6778,7 +6778,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     328: {
         name: 'Yamagumo Kai',
         nameJP: '山雲改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1420,
         HP: 31, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -6799,7 +6799,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     329: {
         name: 'Nowaki Kai',
         nameJP: '野分改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1421,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 12,
@@ -6820,7 +6820,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     330: {
         name: 'Akizuki Kai',
         nameJP: '秋月改',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 1422,
         HP: 37, HPmax: 57,
         FP: 57, FPbase: 24,
@@ -6926,7 +6926,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     344: {
         name: 'Asashimo Kai',
         nameJP: '朝霜改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1424,
         HP: 33, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -6947,7 +6947,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     345: {
         name: 'Takanami Kai',
         nameJP: '高波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1425,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -6968,7 +6968,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     346: {
         name: 'Teruzuki Kai',
         nameJP: '照月改',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 1426,
         HP: 37, HPmax: 57,
         FP: 58, FPbase: 24,
@@ -6990,7 +6990,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     347: {
         name: 'Libeccio Kai',
         nameJP: 'Libeccio改',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 1427,
         HP: 29, HPmax: 46,
         FP: 48, FPbase: 11,
@@ -7032,7 +7032,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     349: {
         name: 'Kazagumo Kai',
         nameJP: '風雲改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1429,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -7053,7 +7053,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     350: {
         name: 'Umikaze Kai',
         nameJP: '海風改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1430,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -7074,7 +7074,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     351: {
         name: 'Kawakaze Kai',
         nameJP: '江風改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1431,
         HP: 30, HPmax: 48,
         FP: 49, FPbase: 12,
@@ -7139,7 +7139,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     354: {
         name: 'Arashi Kai',
         nameJP: '嵐改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1434,
         HP: 32, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -7160,7 +7160,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     355: {
         name: 'Hagikaze Kai',
         nameJP: '萩風改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1435,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 13,
@@ -7202,7 +7202,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     357: {
         name: 'Hatsuzuki Kai',
         nameJP: '初月改',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 1437,
         HP: 37, HPmax: 57,
         FP: 60, FPbase: 25,
@@ -7245,7 +7245,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     359: {
         name: 'Okinami Kai',
         nameJP: '沖波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1439,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -7309,7 +7309,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     362: {
         name: 'Oyashio Kai',
         nameJP: '親潮改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1442,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 13,
@@ -7330,7 +7330,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     363: {
         name: 'Harukaze Kai',
         nameJP: '春風改',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 1443,
         HP: 23, HPmax: 38,
         FP: 38, FPbase: 7,
@@ -7394,7 +7394,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     366: {
         name: 'Minazuki Kai',
         nameJP: '水無月改',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 1446,
         HP: 24, HPmax: 39,
         FP: 39, FPbase: 9,
@@ -7436,7 +7436,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     368: {
         name: 'Uranami Kai',
         nameJP: '浦波改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1448,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -7457,7 +7457,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     369: {
         name: 'Yamakaze Kai',
         nameJP: '山風改',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 1449,
         HP: 30, HPmax: 48,
         FP: 51, FPbase: 13,
@@ -7478,7 +7478,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     370: {
         name: 'Asakaze Kai',
         nameJP: '朝風改',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 1450,
         HP: 23, HPmax: 38,
         FP: 42, FPbase: 8,
@@ -7499,7 +7499,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     371: {
         name: 'Matsukaze Kai',
         nameJP: '松風改',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 1451,
         HP: 23, HPmax: 38,
         FP: 39, FPbase: 7,
@@ -7541,7 +7541,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     373: {
         name: 'Fujinami Kai',
         nameJP: '藤波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1453,
         HP: 32, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -7838,7 +7838,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     387: {
         name: 'Hatakaze Kai',
         nameJP: '旗風改',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 1467,
         HP: 23, HPmax: 38,
         FP: 40, FPbase: 7,
@@ -7859,7 +7859,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     390: {
         name: 'Amagiri Kai',
         nameJP: '天霧改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1470,
         HP: 30, HPmax: 50,
         FP: 52, FPbase: 12,
@@ -7880,7 +7880,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     391: {
         name: 'Sagiri Kai',
         nameJP: '狭霧改',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 1471,
         HP: 30, HPmax: 49,
         FP: 50, FPbase: 11,
@@ -7945,7 +7945,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     394: {
         name: 'Jervis Kai',
         nameJP: 'Jervis改',
-        type: ShipType.DD, ship_class: 82,
+        type: "DD", ship_class: 82,
         nid: 1474,
         can_unconditional_OASW: true,
         HP: 31, HPmax: 47,
@@ -7967,7 +7967,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     395: {
         name: 'Tashkent Kai',
         nameJP: 'Ташкент改',
-        type: ShipType.DD, ship_class: 81,
+        type: "DD", ship_class: 81,
         nid: 1475,
         HP: 39, HPmax: 59,
         FP: 66, FPbase: 28,
@@ -8177,7 +8177,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     405: {
         name: 'Harusame',
         nameJP: '春雨',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 205,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -8219,7 +8219,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     407: {
         name: 'Ushio Kai 2',
         nameJP: '潮改二',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 207,
         HP: 33, HPmax: 53,
         FP: 59, FPbase: 10,
@@ -8261,7 +8261,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     409: {
         name: 'Hayashimo',
         nameJP: '早霜',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 209,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -8282,7 +8282,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     410: {
         name: 'Kiyoshimo',
         nameJP: '清霜',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 210,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -8347,7 +8347,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     413: {
         name: 'Asagumo',
         nameJP: '朝雲',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 213,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -8368,7 +8368,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     414: {
         name: 'Yamagumo',
         nameJP: '山雲',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 214,
         HP: 16, HPmax: 33,
         FP: 29, FPbase: 10,
@@ -8389,7 +8389,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     415: {
         name: 'Nowaki',
         nameJP: '野分',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 215,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -8452,7 +8452,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     418: {
         name: 'Satsuki Kai 2',
         nameJP: '皐月改二',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 218,
         HP: 28, HPmax: 44,
         FP: 42, FPbase: 8,
@@ -8473,7 +8473,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     419: {
         name: 'Hatsushimo Kai 2',
         nameJP: '初霜改二',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 219,
         HP: 32, HPmax: 53,
         FP: 63, FPbase: 12,
@@ -8494,7 +8494,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     420: {
         name: 'Murakumo Kai 2',
         nameJP: '叢雲改二',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 220,
         HP: 31, HPmax: 49,
         FP: 57, FPbase: 14,
@@ -8515,7 +8515,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     421: {
         name: 'Akizuki',
         nameJP: '秋月',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 221,
         HP: 20, HPmax: 40,
         FP: 48, FPbase: 16,
@@ -8537,7 +8537,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     422: {
         name: 'Teruzuki',
         nameJP: '照月',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 222,
         HP: 20, HPmax: 40,
         FP: 49, FPbase: 16,
@@ -8559,7 +8559,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     423: {
         name: 'Hatsuzuki',
         nameJP: '初月',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 223,
         HP: 20, HPmax: 40,
         FP: 50, FPbase: 18,
@@ -8581,7 +8581,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     424: {
         name: 'Takanami',
         nameJP: '高波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 224,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -8602,7 +8602,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     425: {
         name: 'Asashimo',
         nameJP: '朝霜',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 225,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -8623,7 +8623,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     426: {
         name: 'Fubuki Kai 2',
         nameJP: '吹雪改二',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 226,
         HP: 31, HPmax: 49,
         FP: 59, FPbase: 15,
@@ -8793,7 +8793,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     434: {
         name: 'Mutsuki Kai 2',
         nameJP: '睦月改二',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 234,
         HP: 27, HPmax: 43,
         FP: 45, FPbase: 10,
@@ -8814,7 +8814,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     435: {
         name: 'Kisaragi Kai 2',
         nameJP: '如月改二',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 235,
         HP: 27, HPmax: 43,
         FP: 46, FPbase: 10,
@@ -8856,7 +8856,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     437: {
         name: 'Akatsuki Kai 2',
         nameJP: '暁改二',
-        type: ShipType.DD, ship_class: 5,
+        type: "DD", ship_class: 5,
         nid: 237,
         HP: 31, HPmax: 50,
         FP: 62, FPbase: 14,
@@ -8986,7 +8986,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     443: {
         name: 'Libeccio',
         nameJP: 'Libeccio',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 243,
         HP: 15, HPmax: 30,
         FP: 27, FPbase: 9,
@@ -9179,7 +9179,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     452: {
         name: 'Okinami',
         nameJP: '沖波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 252,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -9200,7 +9200,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     453: {
         name: 'Kazagumo',
         nameJP: '風雲',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 253,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -9221,7 +9221,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     454: {
         name: 'Arashi',
         nameJP: '嵐',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 254,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -9242,7 +9242,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     455: {
         name: 'Hagikaze',
         nameJP: '萩風',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 255,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 11,
@@ -9263,7 +9263,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     456: {
         name: 'Oyashio',
         nameJP: '親潮',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 256,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -9284,7 +9284,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     457: {
         name: 'Yamakaze',
         nameJP: '山風',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 257,
         HP: 16, HPmax: 32,
         FP: 31, FPbase: 11,
@@ -9305,7 +9305,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     458: {
         name: 'Umikaze',
         nameJP: '海風',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 258,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -9326,7 +9326,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     459: {
         name: 'Kawakaze',
         nameJP: '江風',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 259,
         HP: 16, HPmax: 32,
         FP: 29, FPbase: 10,
@@ -9410,7 +9410,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     463: {
         name: 'Asashio Kai 2',
         nameJP: '朝潮改二',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 263,
         HP: 31, HPmax: 53,
         FP: 68, FPbase: 18,
@@ -9431,7 +9431,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     464: {
         name: 'Kasumi Kai 2',
         nameJP: '霞改二',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 264,
         HP: 31, HPmax: 53,
         FP: 65, FPbase: 16,
@@ -9515,7 +9515,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     468: {
         name: 'Asashio Kai 2 D',
         nameJP: '朝潮改二丁',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 268,
         HP: 34, HPmax: 59,
         FP: 55, FPbase: 12,
@@ -9536,7 +9536,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     469: {
         name: 'Kawakaze Kai 2',
         nameJP: '江風改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 269,
         HP: 31, HPmax: 54,
         FP: 62, FPbase: 16,
@@ -9557,7 +9557,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     470: {
         name: 'Kasumi Kai 2 B',
         nameJP: '霞改二乙',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 270,
         HP: 31, HPmax: 53,
         FP: 61, FPbase: 12,
@@ -9578,7 +9578,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     471: {
         name: 'Kamikaze',
         nameJP: '神風',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 271,
         HP: 12, HPmax: 23,
         FP: 28, FPbase: 5,
@@ -9599,7 +9599,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     472: {
         name: 'Asakaze',
         nameJP: '朝風',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 272,
         HP: 12, HPmax: 23,
         FP: 29, FPbase: 5,
@@ -9620,7 +9620,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     473: {
         name: 'Harukaze',
         nameJP: '春風',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 273,
         HP: 12, HPmax: 23,
         FP: 27, FPbase: 5,
@@ -9641,7 +9641,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     474: {
         name: 'Matsukaze',
         nameJP: '松風',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 274,
         HP: 12, HPmax: 23,
         FP: 28, FPbase: 5,
@@ -9662,7 +9662,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     475: {
         name: 'Hatakaze',
         nameJP: '旗風',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 275,
         HP: 12, HPmax: 23,
         FP: 29, FPbase: 5,
@@ -9683,7 +9683,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     476: {
         name: 'Kamikaze Kai',
         nameJP: '神風改',
-        type: ShipType.DD, ship_class: 66,
+        type: "DD", ship_class: 66,
         nid: 276,
         HP: 23, HPmax: 38,
         FP: 41, FPbase: 8,
@@ -9747,7 +9747,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     479: {
         name: 'Amagiri',
         nameJP: '天霧',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 279,
         HP: 15, HPmax: 29,
         FP: 30, FPbase: 10,
@@ -9768,7 +9768,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     480: {
         name: 'Sagiri',
         nameJP: '狭霧',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 280,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -9789,7 +9789,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     481: {
         name: 'Minazuki',
         nameJP: '水無月',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 281,
         HP: 13, HPmax: 24,
         FP: 29, FPbase: 6,
@@ -9831,7 +9831,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     484: {
         name: 'Hamanami',
         nameJP: '浜波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 284,
         HP: 16, HPmax: 34,
         FP: 31, FPbase: 10,
@@ -9852,7 +9852,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     485: {
         name: 'Fujinami',
         nameJP: '藤波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 285,
         HP: 16, HPmax: 34,
         FP: 31, FPbase: 10,
@@ -9873,7 +9873,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     486: {
         name: 'Uranami',
         nameJP: '浦波',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 286,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -9936,7 +9936,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     489: {
         name: 'Michishio Kai 2',
         nameJP: '満潮改二',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 289,
         HP: 31, HPmax: 54,
         FP: 69, FPbase: 19,
@@ -9957,7 +9957,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     490: {
         name: 'Arashio Kai 2',
         nameJP: '荒潮改二',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 290,
         HP: 31, HPmax: 54,
         FP: 69, FPbase: 19,
@@ -10105,7 +10105,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     497: {
         name: 'Shiratsuyu Kai 2',
         nameJP: '白露改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 297,
         HP: 31, HPmax: 49,
         FP: 69, FPbase: 16,
@@ -10126,7 +10126,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     498: {
         name: 'Murasame Kai 2',
         nameJP: '村雨改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 298,
         HP: 31, HPmax: 49,
         FP: 68, FPbase: 16,
@@ -10467,7 +10467,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     516: {
         name: 'Tashkent',
         nameJP: 'Ташкент',
-        type: ShipType.DD, ship_class: 81,
+        type: "DD", ship_class: 81,
         nid: 313,
         HP: 22, HPmax: 42,
         FP: 50, FPbase: 18,
@@ -10530,7 +10530,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     519: {
         name: 'Jervis',
         nameJP: 'Jervis',
-        type: ShipType.DD, ship_class: 82,
+        type: "DD", ship_class: 82,
         nid: 319,
         HP: 15, HPmax: 33,
         FP: 32, FPbase: 12,
@@ -10551,7 +10551,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     520: {
         name: 'Janus',
         nameJP: 'Janus',
-        type: ShipType.DD, ship_class: 82,
+        type: "DD", ship_class: 82,
         nid: 320,
         HP: 15, HPmax: 33,
         FP: 33, FPbase: 12,
@@ -10677,7 +10677,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     527: {
         name: 'Kishinami',
         nameJP: '岸波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 327,
         HP: 16, HPmax: 34,
         FP: 31, FPbase: 10,
@@ -10698,7 +10698,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     528: {
         name: 'Hayanami',
         nameJP: '早波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 328,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -10784,7 +10784,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     532: {
         name: 'Suzutsuki',
         nameJP: '涼月',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 332,
         HP: 21, HPmax: 41,
         FP: 47, FPbase: 16,
@@ -10806,7 +10806,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     533: {
         name: 'Fuyutsuki',
         nameJP: '冬月',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 333,
         has_built_in_fire_director: true,
         HP: 21, HPmax: 41,
@@ -10893,7 +10893,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     537: {
         name: 'Suzutsuki Kai',
         nameJP: '涼月改',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 337,
         HP: 38, HPmax: 58,
         FP: 56, FPbase: 22,
@@ -10915,7 +10915,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     538: {
         name: 'Fuyutsuki Kai',
         nameJP: '冬月改',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 338,
         has_built_in_fire_director: true,
         HP: 38, HPmax: 58,
@@ -11002,7 +11002,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     542: {
         name: 'Yuugumo Kai 2',
         nameJP: '夕雲改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 342,
         HP: 33, HPmax: 56,
         FP: 67, FPbase: 18,
@@ -11023,7 +11023,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     543: {
         name: 'Naganami Kai 2',
         nameJP: '長波改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 343,
         HP: 33, HPmax: 56,
         FP: 69, FPbase: 18,
@@ -11131,7 +11131,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     548: {
         name: 'Fumizuki Kai 2',
         nameJP: '文月改二',
-        type: ShipType.DD, ship_class: 28,
+        type: "DD", ship_class: 28,
         nid: 348,
         HP: 27, HPmax: 44,
         FP: 45, FPbase: 7,
@@ -11303,7 +11303,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     556: {
         name: 'Urakaze D Kai',
         nameJP: '浦風丁改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 356,
         HP: 33, HPmax: 54,
         FP: 62, FPbase: 12,
@@ -11324,7 +11324,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     557: {
         name: 'Isokaze B Kai',
         nameJP: '磯風乙改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 357,
         HP: 34, HPmax: 55,
         FP: 65, FPbase: 10,
@@ -11345,7 +11345,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     558: {
         name: 'Hamakaze B Kai',
         nameJP: '浜風乙改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 358,
         HP: 33, HPmax: 54,
         FP: 63, FPbase: 10,
@@ -11366,7 +11366,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     559: {
         name: 'Tanikaze D Kai',
         nameJP: '谷風丁改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 359,
         HP: 33, HPmax: 54,
         FP: 59, FPbase: 11,
@@ -11408,7 +11408,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     561: {
         name: 'Samuel B. Roberts',
         nameJP: 'Samuel B.Roberts',
-        type: ShipType.DD, ship_class: 87,
+        type: "DD", ship_class: 87,
         nid: 361,
         HP: 14, HPmax: 27,
         FP: 24, FPbase: 8,
@@ -11429,7 +11429,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     562: {
         name: 'Johnston',
         nameJP: 'Johnston',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 362,
         can_unconditional_OASW: true,
         HP: 17, HPmax: 35,
@@ -11451,7 +11451,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     563: {
         name: 'Makigumo Kai 2',
         nameJP: '巻雲改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 363,
         HP: 33, HPmax: 56,
         FP: 65, FPbase: 18,
@@ -11472,7 +11472,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     564: {
         name: 'Kazagumo Kai 2',
         nameJP: '風雲改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 364,
         HP: 33, HPmax: 57,
         FP: 67, FPbase: 18,
@@ -11514,7 +11514,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     566: {
         name: 'Kagerou Kai 2',
         nameJP: '陽炎改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 366,
         HP: 33, HPmax: 55,
         FP: 68, FPbase: 18,
@@ -11535,7 +11535,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     567: {
         name: 'Shiranui Kai 2',
         nameJP: '不知火改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 367,
         HP: 33, HPmax: 55,
         FP: 67, FPbase: 18,
@@ -11556,7 +11556,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     568: {
         name: 'Kuroshio Kai 2',
         nameJP: '黒潮改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 368,
         HP: 33, HPmax: 55,
         FP: 69, FPbase: 18,
@@ -11577,7 +11577,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     569: {
         name: 'Okinami Kai 2',
         nameJP: '沖波改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 369,
         HP: 33, HPmax: 57,
         FP: 65, FPbase: 18,
@@ -11708,7 +11708,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     575: {
         name: 'Maestrale',
         nameJP: 'Maestrale',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 375,
         HP: 15, HPmax: 30,
         FP: 27, FPbase: 9,
@@ -11774,7 +11774,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     578: {
         name: 'Asashimo Kai 2',
         nameJP: '朝霜改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 378,
         HP: 33, HPmax: 57,
         FP: 69, FPbase: 18,
@@ -11816,7 +11816,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     580: {
         name: 'Maestrale Kai',
         nameJP: 'Maestrale改',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 380,
         HP: 29, HPmax: 46,
         FP: 54, FPbase: 13,
@@ -11858,7 +11858,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     582: {
         name: 'Natsugumo',
         nameJP: '夏雲',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 382,
         HP: 16, HPmax: 33,
         FP: 31, FPbase: 10,
@@ -11879,7 +11879,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     583: {
         name: 'Minegumo',
         nameJP: '峯雲',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 383,
         HP: 16, HPmax: 33,
         FP: 30, FPbase: 10,
@@ -11963,7 +11963,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     587: {
         name: 'Umikaze Kai 2',
         nameJP: '海風改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 387,
         HP: 31, HPmax: 54,
         FP: 61, FPbase: 15,
@@ -11984,7 +11984,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     588: {
         name: 'Yamakaze Kai Ni',
         nameJP: '山風改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 388,
         HP: 30, HPmax: 52,
         FP: 60, FPbase: 14,
@@ -12157,7 +12157,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     596: {
         name: 'Fletcher',
         nameJP: 'Fletcher',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 396,
         can_unconditional_OASW: true,
         HP: 18, HPmax: 38,
@@ -12518,7 +12518,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     614: {
         name: 'Grecale',
         nameJP: 'Grecale',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 414,
         HP: 15, HPmax: 30,
         FP: 26, FPbase: 9,
@@ -12623,7 +12623,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     619: {
         name: 'Grecale Kai',
         nameJP: 'Grecale改',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 419,
         HP: 29, HPmax: 46,
         FP: 55, FPbase: 12,
@@ -12750,7 +12750,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     625: {
         name: 'Akishimo',
         nameJP: '秋霜',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 425,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -12792,7 +12792,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     627: {
         name: 'Shikinami Kai 2',
         nameJP: '敷波改二',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 427,
         HP: 31, HPmax: 53,
         FP: 61, FPbase: 13,
@@ -12813,7 +12813,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     628: {
         name: 'Fletcher Kai Mod.2',
         nameJP: 'Fletcher改 Mod.2',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 428,
         can_unconditional_OASW: true,
         HP: 37, HPmax: 56,
@@ -12835,7 +12835,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     629: {
         name: 'Fletcher Mk.II',
         nameJP: 'Fletcher Mk.II',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 429,
         can_unconditional_OASW: true,
         HP: 38, HPmax: 57,
@@ -12878,7 +12878,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     631: {
         name: 'Usugumo',
         nameJP: '薄雲',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 431,
         HP: 15, HPmax: 29,
         FP: 29, FPbase: 10,
@@ -12899,7 +12899,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     632: {
         name: 'Ariake',
         nameJP: '有明',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 432,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -12920,7 +12920,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     633: {
         name: 'Yuugure',
         nameJP: '夕暮',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 433,
         HP: 16, HPmax: 31,
         FP: 29, FPbase: 10,
@@ -13088,7 +13088,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     641: {
         name: 'Matsu',
         nameJP: '松',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 441,
         HP: 14, HPmax: 27,
         FP: 26, FPbase: 5,
@@ -13109,7 +13109,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     642: {
         name: 'Take',
         nameJP: '竹',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 442,
         HP: 14, HPmax: 27,
         FP: 25, FPbase: 5,
@@ -13130,7 +13130,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     643: {
         name: 'Ume',
         nameJP: '梅',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 443,
         HP: 14, HPmax: 27,
         FP: 24, FPbase: 5,
@@ -13151,7 +13151,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     644: {
         name: 'Momo',
         nameJP: '桃',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 444,
         HP: 14, HPmax: 27,
         FP: 23, FPbase: 5,
@@ -13218,7 +13218,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     647: {
         name: 'Uranami Kai 2',
         nameJP: '浦波改二',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 447,
         HP: 31, HPmax: 49,
         FP: 59, FPbase: 14,
@@ -13239,7 +13239,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     648: {
         name: 'Akigumo Kai 2',
         nameJP: '秋雲改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 448,
         HP: 33, HPmax: 56,
         FP: 65, FPbase: 18,
@@ -13260,7 +13260,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     649: {
         name: 'Takanami Kai 2',
         nameJP: '高波改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 449,
         HP: 33, HPmax: 56,
         FP: 68, FPbase: 16,
@@ -13302,7 +13302,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     651: {
         name: 'Dan Yang',
         nameJP: '丹陽',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 451,
         HP: 35, HPmax: 55,
         FP: 68, FPbase: 18,
@@ -13344,7 +13344,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     653: {
         name: 'Scirocco',
         nameJP: 'Scirocco',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 453,
         HP: 15, HPmax: 30,
         FP: 27, FPbase: 9,
@@ -13407,7 +13407,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     656: {
         name: 'Yukikaze Kai 2',
         nameJP: '雪風改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 456,
         HP: 35, HPmax: 55,
         FP: 66, FPbase: 17,
@@ -13449,7 +13449,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     658: {
         name: 'Scirocco Kai',
         nameJP: 'Scirocco改',
-        type: ShipType.DD, ship_class: 61,
+        type: "DD", ship_class: 61,
         nid: 1707,
         HP: 28, HPmax: 45,
         FP: 55, FPbase: 13,
@@ -13554,7 +13554,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     665: {
         name: 'Akebono Kai 2',
         nameJP: '曙改二',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 465,
         HP: 31, HPmax: 51,
         FP: 60, FPbase: 10,
@@ -13575,7 +13575,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     666: {
         name: 'Isonami Kai 2',
         nameJP: '磯波改二',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 466,
         HP: 30, HPmax: 49,
         FP: 58, FPbase: 13,
@@ -13596,7 +13596,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     667: {
         name: 'Yamakaze Kai Ni D',
         nameJP: '山風改二丁',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 467,
         HP: 30, HPmax: 52,
         FP: 60, FPbase: 14,
@@ -13638,7 +13638,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     670: {
         name: 'Oyashio Kai 2',
         nameJP: '親潮改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 470,
         HP: 33, HPmax: 55,
         FP: 68, FPbase: 18,
@@ -13659,7 +13659,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     671: {
         name: 'Makinami',
         nameJP: '巻波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 471,
         HP: 16, HPmax: 34,
         FP: 32, FPbase: 10,
@@ -13680,7 +13680,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     674: {
         name: 'Tamanami',
         nameJP: '玉波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 474,
         HP: 16, HPmax: 34,
         FP: 30, FPbase: 10,
@@ -13701,7 +13701,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     675: {
         name: 'Suzunami',
         nameJP: '涼波',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 475,
         HP: 16, HPmax: 34,
         FP: 32, FPbase: 10,
@@ -13764,7 +13764,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     680: {
         name: 'Hamanami Kai',
         nameJP: '浜波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1480,
         HP: 32, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -13785,7 +13785,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     681: {
         name: 'Samuel B. Roberts Kai',
         nameJP: 'Samuel B.Roberts改',
-        type: ShipType.DD, ship_class: 87,
+        type: "DD", ship_class: 87,
         nid: 1481,
         can_unconditional_OASW: true,
         HP: 27, HPmax: 42,
@@ -13849,7 +13849,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     686: {
         name: 'Kishinami Kai',
         nameJP: '岸波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1486,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 12,
@@ -13870,7 +13870,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     687: {
         name: 'Minegumo Kai',
         nameJP: '峯雲改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1487,
         HP: 31, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -13891,7 +13891,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     688: {
         name: 'Hayanami Kai',
         nameJP: '早波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1488,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -13912,7 +13912,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     689: {
         name: 'Johnston Kai',
         nameJP: 'Johnston改',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 1489,
         can_unconditional_OASW: true,
         HP: 34, HPmax: 50,
@@ -13976,7 +13976,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     692: {
         name: 'Fletcher Kai',
         nameJP: 'Fletcher改',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 1492,
         can_unconditional_OASW: true,
         HP: 35, HPmax: 52,
@@ -14042,7 +14042,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     695: {
         name: 'Akishimo Kai',
         nameJP: '秋霜改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1495,
         HP: 32, HPmax: 49,
         FP: 50, FPbase: 11,
@@ -14147,7 +14147,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     700: {
         name: 'Usugumo Kai',
         nameJP: '薄雲改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1700,
         HP: 30, HPmax: 49,
         FP: 49, FPbase: 12,
@@ -14189,7 +14189,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     702: {
         name: 'Matsu Kai',
         nameJP: '松改',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 1702,
         HP: 27, HPmax: 45,
         FP: 43, FPbase: 7,
@@ -14210,7 +14210,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     703: {
         name: 'Ariake Kai',
         nameJP: '有明改',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 1703,
         HP: 30, HPmax: 48,
         FP: 48, FPbase: 7,
@@ -14273,7 +14273,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     706: {
         name: 'Take Kai',
         nameJP: '竹改',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 1706,
         HP: 26, HPmax: 45,
         FP: 42, FPbase: 7,
@@ -14315,7 +14315,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     708: {
         name: 'Momo Kai',
         nameJP: '桃改',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 1708,
         HP: 26, HPmax: 45,
         FP: 41, FPbase: 7,
@@ -14336,7 +14336,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     709: {
         name: 'Makinami Kai',
         nameJP: '巻波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1709,
         HP: 32, HPmax: 49,
         FP: 54, FPbase: 12,
@@ -14357,7 +14357,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     710: {
         name: 'Suzunami Kai',
         nameJP: '涼波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1710,
         HP: 32, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -14483,7 +14483,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     716: {
         name: 'Ume Kai',
         nameJP: '梅改',
-        type: ShipType.DD, ship_class: 101,
+        type: "DD", ship_class: 101,
         nid: 1716,
         HP: 27, HPmax: 45,
         FP: 42, FPbase: 7,
@@ -14526,7 +14526,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     718: {
         name: 'Tamanami Kai',
         nameJP: '玉波改',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 1718,
         HP: 32, HPmax: 49,
         FP: 51, FPbase: 12,
@@ -14568,7 +14568,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     720: {
         name: 'Hayashio Kai',
         nameJP: '早潮改',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 1720,
         HP: 32, HPmax: 49,
         FP: 48, FPbase: 13,
@@ -14589,7 +14589,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     721: {
         name: 'Natsugumo Kai',
         nameJP: '夏雲改',
-        type: ShipType.DD, ship_class: 18,
+        type: "DD", ship_class: 18,
         nid: 1721,
         HP: 31, HPmax: 49,
         FP: 52, FPbase: 12,
@@ -14674,7 +14674,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     725: {
         name: 'Yuugure Kai',
         nameJP: '夕暮改',
-        type: ShipType.DD, ship_class: 10,
+        type: "DD", ship_class: 10,
         nid: 1725,
         HP: 30, HPmax: 48,
         FP: 47, FPbase: 7,
@@ -14695,7 +14695,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     726: {
         name: 'Heywood L.E. Kai',
         nameJP: 'Heywood L.E.改',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 1726,
         can_unconditional_OASW: true,
         HP: 34, HPmax: 50,
@@ -14760,7 +14760,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     729: {
         name: 'Shirakumo Kai',
         nameJP: '白雲改',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 1729,
         HP: 30, HPmax: 50,
         FP: 48, FPbase: 11,
@@ -15077,7 +15077,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     886: {
         name: 'Hayashio',
         nameJP: '早潮',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 486,
         HP: 16, HPmax: 34,
         FP: 29, FPbase: 10,
@@ -15205,7 +15205,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     893: {
         name: 'Janus Kai',
         nameJP: 'Janus改',
-        type: ShipType.DD, ship_class: 82,
+        type: "DD", ship_class: 82,
         nid: 1493,
         can_unconditional_OASW: true,
         HP: 31, HPmax: 47,
@@ -15374,7 +15374,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     901: {
         name: 'Javelin',
         nameJP: 'Javelin',
-        type: ShipType.DD, ship_class: 82,
+        type: "DD", ship_class: 82,
         nid: 501,
         HP: 15, HPmax: 33,
         FP: 34, FPbase: 12,
@@ -15395,7 +15395,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     903: {
         name: 'Amagiri Kai 2',
         nameJP: '天霧改二',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 503,
         is_anti_PT_ship: true,
         HP: 31, HPmax: 54,
@@ -15459,7 +15459,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     906: {
         name: 'Javelin Kai',
         nameJP: 'Javelin改',
-        type: ShipType.DD, ship_class: 82,
+        type: "DD", ship_class: 82,
         nid: 506,
         can_unconditional_OASW: true,
         HP: 31, HPmax: 47,
@@ -15481,7 +15481,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     908: {
         name: 'Amagiri Kai 2 D',
         nameJP: '天霧改二丁',
-        type: ShipType.DD, ship_class: 1,
+        type: "DD", ship_class: 1,
         nid: 508,
         is_anti_PT_ship: true,
         HP: 31, HPmax: 54,
@@ -15590,7 +15590,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     915: {
         name: 'Hayashio Kai 2',
         nameJP: '早潮改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 515,
         HP: 33, HPmax: 55,
         FP: 67, FPbase: 17,
@@ -15656,7 +15656,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     920: {
         name: 'Samuel B. Roberts Mk.II',
         nameJP: 'Samuel B.Roberts Mk.II',
-        type: ShipType.DD, ship_class: 87,
+        type: "DD", ship_class: 87,
         nid: 520,
         can_unconditional_OASW: true,
         HP: 29, HPmax: 45,
@@ -16056,7 +16056,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     941: {
         name: 'Heywood L.E.',
         nameJP: 'Heywood L.E.',
-        type: ShipType.DD, ship_class: 91,
+        type: "DD", ship_class: 91,
         nid: 541,
         HP: 17, HPmax: 35,
         FP: 30, FPbase: 12,
@@ -16183,7 +16183,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     951: {
         name: 'Amatsukaze Kai 2',
         nameJP: '天津風改二',
-        type: ShipType.DD, ship_class: 30,
+        type: "DD", ship_class: 30,
         nid: 551,
         HP: 35, HPmax: 55,
         FP: 65, FPbase: 16,
@@ -16268,7 +16268,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     955: {
         name: 'Kiyoshimo Kai 2',
         nameJP: '清霜改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 555,
         HP: 33, HPmax: 56,
         FP: 69, FPbase: 18,
@@ -16289,7 +16289,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     956: {
         name: 'Hayashimo Kai 2',
         nameJP: '早霜改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 556,
         HP: 33, HPmax: 56,
         FP: 67, FPbase: 18,
@@ -16352,7 +16352,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     959: {
         name: 'Miyuki Kai 2',
         nameJP: '深雪改二',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 559,
         HP: 31, HPmax: 48,
         FP: 60, FPbase: 14,
@@ -16373,7 +16373,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     960: {
         name: 'Kiyoshimo Kai 2 D',
         nameJP: '清霜改二丁',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 560,
         HP: 33, HPmax: 56,
         FP: 66, FPbase: 16,
@@ -16394,7 +16394,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     961: {
         name: 'Shigure Kai 3',
         nameJP: '時雨改三',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 561,
         HP: 34, HPmax: 54,
         FP: 67, FPbase: 16,
@@ -16415,7 +16415,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     962: {
         name: 'Mogador',
         nameJP: 'Mogador',
-        type: ShipType.DD, ship_class: 129,
+        type: "DD", ship_class: 129,
         nid: 562,
         HP: 21, HPmax: 41,
         FP: 52, FPbase: 32,
@@ -16436,7 +16436,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     964: {
         name: 'Shirakumo',
         nameJP: '白雲',
-        type: ShipType.DD, ship_class: 12,
+        type: "DD", ship_class: 12,
         nid: 564,
         HP: 15, HPmax: 29,
         FP: 30, FPbase: 10,
@@ -16500,7 +16500,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     967: {
         name: 'Mogador Kai',
         nameJP: 'Mogador改',
-        type: ShipType.DD, ship_class: 129,
+        type: "DD", ship_class: 129,
         nid: 567,
         HP: 38, HPmax: 57,
         FP: 72, FPbase: 40,
@@ -16521,7 +16521,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     968: {
         name: 'Hatsuzuki Kai 2',
         nameJP: '初月改二',
-        type: ShipType.DD, ship_class: 54,
+        type: "DD", ship_class: 54,
         nid: 568,
         HP: 39, HPmax: 58,
         FP: 70, FPbase: 28,
@@ -16627,7 +16627,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     975: {
         name: 'Harusame Kai 2',
         nameJP: '春雨改二',
-        type: ShipType.DD, ship_class: 23,
+        type: "DD", ship_class: 23,
         nid: 575,
         HP: 31, HPmax: 49,
         FP: 66, FPbase: 16,
@@ -16711,7 +16711,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     981: {
         name: 'Fujinami Kai 2',
         nameJP: '藤波改二',
-        type: ShipType.DD, ship_class: 38,
+        type: "DD", ship_class: 38,
         nid: 581,
         HP: 33, HPmax: 56,
         FP: 64, FPbase: 18,

@@ -82,7 +82,7 @@ export function deriveEquipBonusAddition(
             // 艦船条件
             if (bonus.ship_ids && !bonus.ship_ids.includes(ship.master_id)) continue;
             if (bonus.ship_base_ids && !bonus.ship_base_ids.includes(ship.master_id)) continue;
-            if (bonus.ship_type_ids && !bonus.ship_type_ids.includes(ship.type)) continue;
+            if (bonus.ship_type_ids && !bonus.ship_type_ids.includes(ship.type_id)) continue;
             if (bonus.ship_class_ids && !bonus.ship_class_ids.includes(ship.ship_class)) continue;
             if (bonus.ship_country_ids && !bonus.ship_country_ids.includes(ship.country)) continue;
 

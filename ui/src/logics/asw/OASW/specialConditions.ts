@@ -4,7 +4,7 @@ import { PlayerShip } from "@/models/ship/Ship";
  * 特定艦に対する例外的な先制対潜条件の判定を行う。
  * 条件を満たす場合は true、該当艦で条件未満なら false、それ以外の艦なら undefined を返す。
  */
-export function evaluateSpecialOaswCondition(ship: PlayerShip): boolean | undefined {
+export function evaluate_special_OASW_condition(ship: PlayerShip): boolean | undefined {
     const asw_flags = ship.flags.asw_equip;
 
     if (ship.flags.can_unconditional_OASW) return true;

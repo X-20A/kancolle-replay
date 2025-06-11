@@ -11,29 +11,23 @@ export type DeepReadonly<T> = {
     : T[P];
 };
 
-export const STATUS_COMPONENT_KEYS = [
-    'hp',
-    'fire_power',
-    'armor',
-    'torpedo_power',
-    'evasion',
-    'anti_air',
-    'asw',
-    'los',
-    'luck',
-    'range',
-    'shell_accuracy',
-    'torpedo_accuracy',
-    'night_battle_accuracy',
-    'aerial_bomb_power',
-    'aerial_torpedo_power',
-] as const;
-
-export type StatusComponentKey = typeof STATUS_COMPONENT_KEYS[number];
-
 export type TStatusComponent = {
-    [K in StatusComponentKey]: number; // number以外の型は無いという前提
-}
+    readonly hp: number;
+    readonly fire_power: number;
+    readonly armor: number;
+    readonly torpedo_power: number;
+    readonly evasion: number;
+    readonly anti_air: number;
+    readonly asw: number;
+    readonly los: number;
+    readonly luck: number;
+    readonly range: number;
+    readonly shell_accuracy: number;
+    readonly torpedo_accuracy: number;
+    readonly night_battle_accuracy: number;
+    readonly aerial_bomb_power: number;
+    readonly aerial_torpedo_power: number;
+};
 
 export type TransportPowerModel = {
     /** 従来型 通常海域他 */

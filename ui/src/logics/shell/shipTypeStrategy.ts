@@ -1,5 +1,5 @@
 import { PlayerShip } from "@/models/ship/Ship";
-import { ShipType } from "@/types/ship/ship";
+import { ShipType } from "@/wasm/kssw";
 
 type HasPotentialOAswStrategy = (ship: PlayerShip) => number;
 
@@ -36,6 +36,5 @@ function calcCVsShellPower(ship: PlayerShip): number {
     return ship.view_status.fire_power
         + ship.total_equip_improvement_addition.shell_power
         + ship.view_status.torpedo_power
-        + ship.total_equip_improvement_addition.torpedo_power
-
+        + ship.total_equip_improvement_addition.torpedo_power;
 }

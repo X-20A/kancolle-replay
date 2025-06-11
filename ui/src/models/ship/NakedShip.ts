@@ -1,15 +1,17 @@
 import { Country } from "@/datas/equip/bonus";
-import { CountryDatas } from "@/datas/ship/country";
+import { COUNTRY_DATAS } from "@/datas/ship/country";
+import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { TStatusComponent } from "@/types";
 import { brandShipNameEN, brandShipNameJP, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
-import { ShipDatas, PlayerNakedShipFlags, ShipType, PlayerShipClass, ModernizationType } from "@/types/ship/ship";
+import { PlayerNakedShipFlags, PlayerShipClass } from "@/types/ship/ship";
+import { ShipType } from "@/wasm/kssw";
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */
 export type NakedPlayerShip = {
     readonly master_id: ShipId,
     readonly name_en: ShipNameEN,
     readonly name_jp: ShipNameJP,
-    readonly type: ShipType,
+    readonly type_id: ShipType,
     readonly ship_class: PlayerShipClass,
     readonly country: Country,
     readonly slots: Readonly<number[]>,
@@ -22,7 +24,7 @@ function calcStatusFromLevel(
     max: number,
     level: ShipLv,
 ): number {
-    if (min >= max) throw new Error('最小値が最大値以上になっています');
+    if (min > max) throw new Error('最小値が最大値以上になっています'); // 重巡asw等は 00 なので同値は見逃す
 
     if (level === 99) return max;
     if (level === 1) return min;
@@ -31,21 +33,19 @@ function calcStatusFromLevel(
 }
 
 export function deriveNakedPlayerShip(
-    ship_datas: ShipDatas,
-    country_datas: CountryDatas,
     ship_lv: ShipLv,
     id: ShipId,
 ): NakedPlayerShip {
-    const ship_data = ship_datas[id];
+    const ship_data = PLAYER_SHIP_DATAS[id];
     if (!ship_data) throw new Error(`id: ${id}の艦が見つかりませんでした`);
 
     const master_id = id;
 
     const name_en = brandShipNameEN(ship_data.name);
     const name_jp = brandShipNameJP(ship_data.nameJP);
-    const type = ship_data.type;
+    const type_id = ship_data.type;
     const ship_class = ship_data.ship_class;
-    const country = country_datas[ship_class];
+    const country = COUNTRY_DATAS[ship_class];
     const slots = ship_data.SLOTS;
 
     const status: TStatusComponent = {
@@ -84,7 +84,7 @@ export function deriveNakedPlayerShip(
         master_id,
         name_en,
         name_jp,
-        type,
+        type_id,
         ship_class,
         country,
         slots,

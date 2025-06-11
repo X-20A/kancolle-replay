@@ -1,7 +1,7 @@
-import { DeepReadonly, TransportPowerModel } from "@/types";
+import { DeepReadonly } from "@/types";
 import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
-import { ShipType } from "@/types/ship/ship";
 import { EquipType } from "./base/player";
+import { ShipType } from "@/wasm/kssw";
 
 /**
  * 装備種別ごとの諸元

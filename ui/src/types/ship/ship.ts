@@ -1,31 +1,12 @@
+import { ShipType } from "@/wasm/kssw";
 import { DeepReadonly } from "..";
 
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
 // TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
-/** 艦種 */
-export const enum ShipType {
-    DE = 1,
-    DD = 2,
-    CL = 3,
-    CLT = 4,
-    CA = 5,
-    CAV = 6,
-    CVL = 7,
-    FBB = 8, // ?
-    BB = 9,
-    BBV = 10,
-    CV = 11,
-    SS = 13,
-    SSV = 14,
-    // AO_2 = 15,
-    AV = 16,
-    LHA = 17,
-    CVB = 18,
-    AR = 19,
-    AS = 20,
-    CT = 21,
-    AO = 22,
-};
+/** ShipType の値のユニオン型を生成 */
+export type ShipTypeLiteral = `${ShipType}` extends `${infer _}`
+    ? ShipType
+    : never;
 
 export const enum UnclearLevel {
     Caution = 2,

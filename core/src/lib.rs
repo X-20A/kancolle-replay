@@ -1,6 +1,8 @@
+
 use types::PlayerFleet;
 use wasm_bindgen::prelude::*;
-// use rand::Rng;
+use rand::{Rng, SeedableRng};
+use rand::rngs::SmallRng;
 
 pub mod types;
 
@@ -124,7 +126,27 @@ pub fn update_settings() -> String {
 }
 
 #[wasm_bindgen] // Functions that can be called from js
-pub fn sim() -> String {
+pub fn start_sim() -> String {
 	"run sim".to_string()
 }
 
+#[wasm_bindgen] // Functions that can be called from js
+pub fn rand_test() -> String {
+	let mut rng = SmallRng::seed_from_u64(42);
+	let mut sum: u64 = 0;
+
+	for _ in 0..1_000_000 {
+		let n: u32 = rng.gen();
+		sum = sum.wrapping_add(n as u64);
+	}
+
+	sum.to_string()
+}
+
+#[wasm_bindgen]
+pub fn rand_noop() {}
+
+#[wasm_bindgen]
+pub fn echo_data(input: &[u8]) -> Vec<u8> {
+    input.to_vec() // 受け取ったデータをそのまま返すだけ
+}

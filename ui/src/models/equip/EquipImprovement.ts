@@ -1,4 +1,4 @@
-import { ADD_STATUS_KEYS, EquipImprovementDatas, EquipImprovementType } from "@/datas/equip/improvement";
+import { ADD_STATUS_KEYS, EQUIP_IMPLOVEMENT_DATAS, EquipImprovementDatas, EquipImprovementType } from "@/datas/equip/improvement";
 
 /**
  * 装備改修によるボーナス値
@@ -75,11 +75,10 @@ export function sumEquipImprovementAdditions(additions: EquipImprovementAddition
 }
 
 export function deriveEquipImprovementAddition(
-    equip_improvement_datas: EquipImprovementDatas,
     improvement_type: EquipImprovementType,
     improvement_lv: number,
 ): EquipImprovementAddition {
-    const base = equip_improvement_datas[improvement_type] ?? {};
+    const base = EQUIP_IMPLOVEMENT_DATAS[improvement_type] ?? {};
 
     return ADD_STATUS_KEYS.reduce((acc, key) => {
         const config = base[key];

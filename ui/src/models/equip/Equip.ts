@@ -5,7 +5,6 @@ import { EquipType } from "@/datas/equip/base/player";
 import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
 import { deriveTransportAddition, TransportAddition } from "./TransportPower";
 import { EquipId } from "@/types/brands/equip";
-import { TEquipDataSet } from "@/datas";
 
 export type Equip = {
     /** 装備マスターID */
@@ -36,13 +35,10 @@ export type Equip = {
 }
 
 export function deriveEquip(
-    data_set: TEquipDataSet,
     improvement_lv: number,
     master_id: EquipId,
 ): Equip {
     const equip_master = deriveEquipMaster(
-        data_set.equip_datas,
-        data_set.equip_type_datas,
         master_id,
     );
 
@@ -54,12 +50,11 @@ export function deriveEquip(
     const flags = equip_master.flags;
     const natural_addition = equip_master.status;
     const improvement_addition = deriveEquipImprovementAddition(
-        data_set.equip_improvement_datas,
         equip_master.improvement_type,
         improvement_lv,
     );
     const transport_addition =
-        deriveTransportAddition(data_set.transport_equip_datas, equip_master);
+        deriveTransportAddition(equip_master);
     const valid_asw = [
         EquipType.DIVE_BOMBER,
         EquipType.FIGHTER_BOMBER,

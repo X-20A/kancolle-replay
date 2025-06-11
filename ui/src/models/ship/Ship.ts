@@ -1,6 +1,6 @@
 import { TStatusComponent } from "@/types";
 import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { PlayerShipClass, ShipType, SpecialItemId, PlayerShipFlags, ModernizationType } from "@/types/ship/ship";
+import { PlayerShipClass, SpecialItemId, PlayerShipFlags, ModernizationType } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
 import { deriveNakedPlayerShip as deriveNakedPlayerShip } from "./NakedShip";
@@ -8,7 +8,8 @@ import { deriveEquipBonusAddition } from "../equip/EquipBonus";
 import { EquipImprovementAddition, sumEquipImprovementAdditions } from "../equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "../equip/SpecialItem";
 import { deriveAswFlags } from "./aswFlags";
-import { TShipDataSet } from "@/datas";
+import { DEFAULT_STATUS_COMPONENT } from "@/datas";
+import { ShipType } from "@/wasm/kssw";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -79,7 +80,6 @@ function sumStatusComponents(
 }
 
 export function derivePlayerShip(
-    data_set: TShipDataSet,
     unique_id: ShipUniqueId,
     lv: ShipLv,
     special_item_id: SpecialItemId,
@@ -89,8 +89,6 @@ export function derivePlayerShip(
     edit_input?: TStatusComponent,
 ): PlayerShip {
     const naked_ship = deriveNakedPlayerShip(
-        data_set.ship_datas,
-        data_set.country_datas,
         lv,
         ship_id,
     );
@@ -98,7 +96,7 @@ export function derivePlayerShip(
     const master_id = naked_ship.master_id;
     const name_en = naked_ship.name_en;
     const name_jp = naked_ship.name_jp;
-    const type_id = naked_ship.type;
+    const type_id = naked_ship.type_id;
     const ship_class = naked_ship.ship_class;
     const country = naked_ship.country;
     const slots = naked_ship.slots;
@@ -112,27 +110,24 @@ export function derivePlayerShip(
     const naked_status = naked_ship.status;
     const total_natural_equip_addition = equips
         .map(equip => equip.natural_addition)
-        .reduce(sumStatusComponents);
+        .reduce(sumStatusComponents, DEFAULT_STATUS_COMPONENT);
     const total_equip_bonus_addition = deriveEquipBonusAddition(naked_ship, equips);
     const total_equip_improvement_addition = 
         sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
-    const special_item_addition = deriveSpecialItemAddition(
-        data_set.special_item_datas,
-        special_item_id,
-    );
+    const special_item_addition = deriveSpecialItemAddition(special_item_id);
 
     const view_status = [
         naked_status,
         total_natural_equip_addition,
         total_equip_bonus_addition,
         special_item_addition,
-    ].reduce(sumStatusComponents);
+    ].reduce(sumStatusComponents, DEFAULT_STATUS_COMPONENT);
 
     const total_valid_asw = equips
         .map(equip => equip.valid_asw)
         .reduce((acc, curr) => {
             return acc + curr;
-        });
+        }, 0);
 
     const edited_status = edit_input ?? view_status;
 

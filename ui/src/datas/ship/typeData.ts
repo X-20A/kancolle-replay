@@ -1,5 +1,5 @@
 import { DeepReadonly, TransportPowerModel } from "@/types";
-import { ShipType } from "@/types/ship/ship";
+import { ShipType } from "@/wasm/kssw";
 
 /**
  * 装備種別ごとの諸元

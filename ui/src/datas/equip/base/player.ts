@@ -78,7 +78,7 @@ export const enum EquipType {
 
 // 基地航空隊装備も分けるか？ - 現状分けるほどでも無い
 
-const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
+export const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     1: {
         name: '12cm Single Cannon',
         nameJP: '12cm単装砲',
@@ -5813,5 +5813,3 @@ const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         LOS: 4,
     },
 }; // ! 基地航空隊装備は ./landBase.tsに追加のこと
-
-export default PLAYER_EQUIP_DATAS;

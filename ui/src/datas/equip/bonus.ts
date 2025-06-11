@@ -1,6 +1,7 @@
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipBonusKey } from "@/types/equip/player";
-import { PlayerShipClass, ShipType as ST } from "@/types/ship/ship";
+import { PlayerShipClass } from "@/types/ship/ship";
+import { ShipType as ST } from "@/wasm/kssw";
 
 /** 国籍ID */
 export const enum Country {
