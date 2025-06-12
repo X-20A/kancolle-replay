@@ -1,6 +1,6 @@
 import { TStatusComponent } from "@/types";
 import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { PlayerShipClass, SpecialItemId, PlayerShipFlags, ModernizationType } from "@/types/ship/ship";
+import { SpecialItemId, PlayerShipFlags, ModernizationType } from "@/types/ship/ship";
 import { Equip } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
 import { deriveNakedPlayerShip as deriveNakedPlayerShip } from "./NakedShip";
@@ -10,6 +10,7 @@ import { deriveSpecialItemAddition } from "../equip/SpecialItem";
 import { deriveAswFlags } from "./aswFlags";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { ShipType } from "@/wasm/kssw";
+import { PlayerShipClass } from "@/types/ship/ship_class";
 
 /**
  * Ship型: 艦船の情報を表現する型

@@ -4,7 +4,7 @@ use wasm_bindgen::prelude::*;
 use rand::{Rng, SeedableRng};
 use rand::rngs::SmallRng;
 
-pub mod types;
+mod types;
 
 use types::PlayerShip;
 use types::ShipType::*;
@@ -130,23 +130,24 @@ pub fn start_sim() -> String {
 	"run sim".to_string()
 }
 
-#[wasm_bindgen] // Functions that can be called from js
-pub fn rand_test() -> String {
-	let mut rng = SmallRng::seed_from_u64(42);
-	let mut sum: u64 = 0;
-
-	for _ in 0..1_000_000 {
-		let n: u32 = rng.gen();
-		sum = sum.wrapping_add(n as u64);
-	}
-
-	sum.to_string()
+#[wasm_bindgen]
+pub fn fill_buffer(seed: u32, ptr: *mut f64, len: usize) {
+    let mut rng = SmallRng::seed_from_u64(seed as u64);
+    let buffer = unsafe { std::slice::from_raw_parts_mut(ptr, len) };
+    buffer.fill_with(|| rng.gen());
 }
 
 #[wasm_bindgen]
-pub fn rand_noop() {}
+pub fn allocate_buffer(size: usize) -> *mut f64 {
+    let mut vec = Vec::with_capacity(size);
+    let ptr = vec.as_mut_ptr();
+    std::mem::forget(vec); // メモリ解放を防ぐ
+    ptr
+}
 
 #[wasm_bindgen]
-pub fn echo_data(input: &[u8]) -> Vec<u8> {
-    input.to_vec() // 受け取ったデータをそのまま返すだけ
+pub fn deallocate_buffer(ptr: *mut f64, size: usize) {
+    unsafe {
+        let _ = Vec::from_raw_parts(ptr, size, size);
+    }
 }

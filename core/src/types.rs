@@ -1,6 +1,12 @@
+
+
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use tsify::Tsify;
+
+mod ship;
+
+pub use ship::*;
 
 pub struct Equip {
 	pub id: u32,

@@ -9,7 +9,7 @@
     "preview": "vite preview",
 	"ex-type": "cd ../core; cargo test --bin ../ui/src/wasm",
     "test:watch": "vitest watch tests/watch",
-    "wasm:build": "cd ../core; wasm-pack build --target web --out-dir ../ui/src/wasm",
+    "wasm:build": "cd ../core; wasm-pack build --target web  --out-dir ../ui/src/wasm",
     "wasm:build-pro": "cd ../core; wasm-pack build --release --target web --out-dir ../ui/src/wasm"
   },
   "dependencies": {

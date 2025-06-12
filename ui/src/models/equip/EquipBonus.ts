@@ -1,8 +1,28 @@
 import { Equip } from "./Equip";
-import { EquipBonusType, SkillTriggerEquipType } from "@/types/equip/player";
+import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { NakedPlayerShip } from "../ship/NakedShip";
 import { TStatusComponent } from "@/types";
+
+type EquipBonusType = Omit<TStatusComponent,
+    'hp' | 'torpedo_accuracy' | 'night_battle_accuracy' | 'luck'>;
+
+// hpを除外したデフォルト値
+export const DEFAULT_EQUIP_BONUS_COMPONENT: EquipBonusType = {
+    fire_power: 0,
+    armor: 0,
+    torpedo_power: 0,
+    evasion: 0,
+    anti_air: 0,
+    asw: 0,
+    los: 0,
+    range: 0,
+    shell_accuracy: 0,
+    aerial_bomb_power: 0,
+    aerial_torpedo_power: 0,
+};
+
+export type EquipBonusKey = keyof EquipBonusType
 
 /**
  * ボーナス加算
@@ -53,20 +73,6 @@ export function deriveEquipBonusAddition(
         has_high_accuracy_radar: false,
     });
 
-    const initial: EquipBonusType = {
-        fire_power: 0,
-        armor: 0,
-        torpedo_power: 0,
-        evasion: 0,
-        anti_air: 0,
-        asw: 0,
-        los: 0,
-        shell_accuracy: 0,
-        range: 0,
-        aerial_bomb_power: 0,
-        aerial_torpedo_power: 0,
-    };
-
     // ボーナス合算処理
     const summary = EQUIP_BONUS_DATAS.reduce((total_bonus_acc, equip_bonus_data) => {
         // 対象装備を抽出
@@ -83,7 +89,7 @@ export function deriveEquipBonusAddition(
             if (bonus.ship_ids && !bonus.ship_ids.includes(ship.master_id)) continue;
             if (bonus.ship_base_ids && !bonus.ship_base_ids.includes(ship.master_id)) continue;
             if (bonus.ship_type_ids && !bonus.ship_type_ids.includes(ship.type_id)) continue;
-            if (bonus.ship_class_ids && !bonus.ship_class_ids.includes(ship.ship_class)) continue;
+            if (bonus.ship_class_names && !bonus.ship_class_names.includes(ship.ship_class)) continue;
             if (bonus.ship_country_ids && !bonus.ship_country_ids.includes(ship.country)) continue;
 
             // レーダー系フラグ条件
@@ -118,7 +124,7 @@ export function deriveEquipBonusAddition(
             }
         }
         return total_bonus_acc;
-    }, initial);
+    }, DEFAULT_EQUIP_BONUS_COMPONENT);
 
     if (summary.aerial_torpedo_power) {
 

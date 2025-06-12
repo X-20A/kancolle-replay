@@ -3,7 +3,8 @@ import { COUNTRY_DATAS } from "@/datas/ship/country";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { TStatusComponent } from "@/types";
 import { brandShipNameEN, brandShipNameJP, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
-import { PlayerNakedShipFlags, PlayerShipClass } from "@/types/ship/ship";
+import { PlayerNakedShipFlags } from "@/types/ship/ship";
+import { PlayerShipClass } from "@/types/ship/ship_class";
 import { ShipType } from "@/wasm/kssw";
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */

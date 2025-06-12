@@ -16,7 +16,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import init, { echo_data, rand_noop, rand_test, start_sim } from './wasm/kssw';
+import { start_sim, WasmRng } from './wasm/kssw';
+import { SeedableRand } from './effects/random';
 
 const sim_result = ref<string>('');
 const is_loading = ref<boolean>(true);
@@ -27,55 +28,74 @@ const is_loading = ref<boolean>(true);
  * @returns {void}
  */
 function runSim(): void {
-  try {
-    sim_result.value = start_sim();
-  } catch (error) {
-    sim_result.value = `sim実行時エラー: ${String(error)}`;
-  }
+	try {
+		sim_result.value = start_sim();
+	} catch (error) {
+		sim_result.value = `sim実行時エラー: ${String(error)}`;
+	}
+}
+class CachedRNG {
+	private cache: Float64Array;
+	private index: number;
+	private rng: WasmRng;
+	private chunkSize: number;
+
+	constructor(seed: number, chunkSize: number = 64) {
+		this.rng = new WasmRng(seed);
+		this.chunkSize = chunkSize;
+		this.cache = new Float64Array(chunkSize);
+		this.index = chunkSize; // 初期状態で補充が必要
+	}
+
+	private async refill() {
+		const newChunk = this.rng.generate_batch(this.chunkSize);
+		this.cache = new Float64Array(newChunk);
+		this.index = 0;
+	}
+
+	public async next(): Promise<number> {
+		if (this.index >= this.cache.length) {
+			this.refill(); // 非同期補充
+		}
+		return this.cache[this.index++];
+	}
 }
 
 onMounted(async () => {
-	init()
-		.then(async () => {
-			// 純粋なts - rs -ts やり取り計測用の空関数（Wasm呼び出しのみ）
-			console.time('wasm-overhead');
-			await rand_noop();
-			console.timeEnd('wasm-overhead'); // 0.01904296875 ms
+	try {
+		/*
+		// 純粋なts - rs -ts やり取り計測用の空関数（Wasm呼び出しのみ）
+		console.time('wasm-overhead');
+		await rand_noop();
+		console.timeEnd('wasm-overhead'); // 0.01904296875 ms
 
-			// 1MBのデータを渡して帰ってくるまでを計測
-			const input = new Uint8Array(1024 * 1024).fill(0x55);
+		// 1MBのデータを渡して帰ってくるまでを計測
+		const input = new Uint8Array(1024 * 1024).fill(0x55);
 
-			console.time('wasm-data-transfer');
-			const output = await echo_data(input);
-			console.timeEnd('wasm-data-transfer'); // 1.12109375 ms
+		console.time('wasm-data-transfer');
+		const output = await echo_data(input);
+		console.timeEnd('wasm-data-transfer'); // 1.12109375 ms
 
-			console.log('output length:', output.length);
+		console.log('output length:', output.length);
 
-			// 100万回乱数生成して合算する時間を比較(wasmはオーバーヘッド込み)
+		// 100万回乱数生成して合算する時間を比較(wasmはオーバーヘッド込み)
 
-			// wasm側計測
-			console.time('wasm-rand');
-			const result = await rand_test();
-			console.log('rust sum: ', result);
-			console.timeEnd('wasm-rand'); // 4.090087890625 ms
+		// wasm側計測
+		console.time('wasm-rand');
+		const result = await rand_test();
+		console.log('rust sum: ', result);
+		console.timeEnd('wasm-rand'); // 4.090087890625 ms */
 
-			// ts側計測
-			console.time('ts-rand');
-			let sum = 0;
-			for (let i = 0; i < 1_000_000; i++) {
-				sum += Math.floor(Math.random() * 0x100000000);
-			}
-			console.log('ts-rand sum', sum);
-			console.timeEnd('ts-rand'); // 5.748046875 ms
+		// NOTE: 処理時間に劇的な短縮はないが妥当なコストといえる。やりとり時間は小さいがシミュで毎周とかは避けるべき
+		// NOTE: tsでseed固定しようとすると、Math.randomよりかなり低速なライブラリを使うことになる
 
-			// NOTE: 処理時間に劇的な短縮はないが妥当なコストといえる。やりとり時間は小さいがシミュで毎周とかは避けるべき
-			// NOTE: tsでseed固定しようとすると、Math.randomよりかなり低速なライブラリを使うことになる
-		}).catch((e) => {
-			console.error('Wasmの初期化に失敗', e);
-		});
+		const TAKEN_COUNT = 1000000;
+
+		SeedableRand.benchmark(2501, 1000000, TAKEN_COUNT);
+	} catch (e) {
+		console.error(e);
+	};
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
