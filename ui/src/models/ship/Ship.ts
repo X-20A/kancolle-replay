@@ -36,7 +36,7 @@ export type PlayerShip = {
     /** 所持装備 */
     readonly equips: EquipBase[];
     /** 装備スロット、および搭載数 */
-    readonly slots: SlotType,
+    readonly slots: ReadonlyArray<number>,
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
     /** 未装備状態の艦ステータス(lv適用済み) */
@@ -126,10 +126,7 @@ export function derivePlayerShip(
     const ship_class = naked_ship.ship_class;
     const country = naked_ship.country;
     const equips = _equips;
-    const slots: SlotType = {
-        master: naked_ship.slots,
-        edited: edit_input?.slots ?? naked_ship.slots,
-    }
+    const slots = edit_input?.slots ?? naked_ship.slots
     
     const asw_flags = deriveAswFlags(_equips);
     const flags = {

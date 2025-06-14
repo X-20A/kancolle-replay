@@ -6,7 +6,7 @@ import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./Equi
 import { deriveTransportAddition, TransportAddition } from "./TransportPower";
 import { EquipId } from "@/types/brands/equip";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
-import { calc_plane_proficiency_rank, PlaneProficiencyRank } from "@/logics/air_superiority";
+import { PlaneProficiencyRank } from "@/logics/proficiency";
 
 export type EquipBase = {
     /** 装備マスターID */
@@ -41,8 +41,6 @@ export type EquipBase = {
 export type PlaneEquip = EquipBase & {
     /** 航空機熟練度 */
     readonly plane_proficiency: number,
-    /** 航空機熟練度ランク */
-    readonly plane_proficiency_rank: PlaneProficiencyRank,
 }
 
 export type Equip = EquipBase | PlaneEquip
@@ -81,12 +79,10 @@ export function deriveEquip(
     // 航空機かどうかで分岐
     if (equip_master.flags.is_plane) {
         const plane_proficiency = proficiency ?? 100;
-        const plane_proficiency_rank = calc_plane_proficiency_rank(plane_proficiency);
         
         const planeEquip: PlaneEquip = {
             ...base,
             plane_proficiency,
-            plane_proficiency_rank,
         };
         return planeEquip;
     }
