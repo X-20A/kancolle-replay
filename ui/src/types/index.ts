@@ -1,4 +1,3 @@
-import { Range } from "./equip/player";
 
 /**
  * 任意の型Tを再帰的にreadonlyにするユーティリティ型

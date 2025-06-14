@@ -1,5 +1,5 @@
 import { DeepReadonly, TransportPowerModel } from "@/types";
-import { ShipType } from "@/wasm/kssw";
+import { ShipType } from "@/types/ship/ship";
 
 /**
  * 装備種別ごとの諸元
@@ -14,140 +14,140 @@ export type ShipTypeData = {
 export type ShipTypeDatas = DeepReadonly<Record<ShipType, ShipTypeData>>;
 
 export const SHIP_TYPE_DATAS: ShipTypeDatas = {
-    [ShipType.DE]: {
+    ["DE"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.DD]: {
+    ["DD"]: {
         transport_power: {
             model_A: 5,
             model_B: 3.25,
             model_C: 4,
         },
     },
-    [ShipType.CL]: {
+    ["CL"]: {
         transport_power: {
             model_A: 2,
             model_B: 1.3,
             model_C: 1.6,
         },
     },
-    [ShipType.CLT]: {
+    ["CLT"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.CA]: {
+    ["CA"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.CAV]: {
+    ["CAV"]: {
         transport_power: {
             model_A: 4,
             model_B: 2.6,
             model_C: 3.2,
         },
     },
-    [ShipType.CVL]: {
+    ["CVL"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.FBB]: {
+    ["FBB"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.BB]: {
+    ["BB"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.BBV]: {
+    ["BBV"]: {
         transport_power: {
             model_A: 7,
             model_B: 4.55,
             model_C: 5.6,
         },
     },
-    [ShipType.CV]: {
+    ["CV"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.SS]: {
+    ["SS"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.SSV]: {
+    ["SSV"]: {
         transport_power: {
             model_A: 1,
             model_B: 0.65,
             model_C: 0.8,
         },
     },
-    [ShipType.AV]: {
+    ["AV"]: {
         transport_power: {
             model_A: 9,
             model_B: 5.85,
             model_C: 7.2,
         },
     },
-    [ShipType.LHA]: {
+    ["LHA"]: {
         transport_power: {
             model_A: 12,
             model_B: 7.8,
             model_C: 9.6,
         },
     },
-    [ShipType.CVB]: {
+    ["CVB"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.AR]: {
+    ["AR"]: {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    [ShipType.AS]: {
+    ["AS"]: {
         transport_power: {
             model_A: 7,
             model_B: 4.55,
             model_C: 5.6,
         },
     },
-    [ShipType.CT]: {
+    ["CT"]: {
         transport_power: {
             model_A: 6,
             model_B: 3.9,
             model_C: 4.8,
         },
     },
-    [ShipType.AO]: {
+    ["AO"]: {
         transport_power: {
             model_A: 15,
             model_B: 9.75,

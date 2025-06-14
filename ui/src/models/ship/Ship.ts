@@ -1,7 +1,7 @@
 import { TStatusComponent } from "@/types";
-import { ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { SpecialItemId, PlayerShipFlags, ModernizationType } from "@/types/ship/ship";
-import { Equip } from "../equip/Equip";
+import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
+import { SpecialItemId, PlayerShipFlags, ModernizationType, ShipType, SlotType } from "@/types/ship/ship";
+import { EquipBase } from "../equip/Equip";
 import { Country } from "@/datas/equip/bonus";
 import { deriveNakedPlayerShip as deriveNakedPlayerShip } from "./NakedShip";
 import { deriveEquipBonusAddition } from "../equip/EquipBonus";
@@ -9,8 +9,7 @@ import { EquipImprovementAddition, sumEquipImprovementAdditions } from "../equip
 import { deriveSpecialItemAddition } from "../equip/SpecialItem";
 import { deriveAswFlags } from "./aswFlags";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
-import { ShipType } from "@/wasm/kssw";
-import { PlayerShipClass } from "@/types/ship/ship_class";
+import { PlayerShipClass } from "@/types/ship/shipClass";
 
 /**
  * Ship型: 艦船の情報を表現する型
@@ -18,6 +17,8 @@ import { PlayerShipClass } from "@/types/ship/ship_class";
 export type PlayerShip = {
     /** 艦ID(データ由来) */
     readonly master_id: number;
+    /** 未改造時 艦ID */
+    readonly base_id: ShipBaseId,
     /** 艦隊内における一意の識別ID */
     readonly unique_id: ShipUniqueId;
     /** 艦名(EN) */
@@ -32,8 +33,10 @@ export type PlayerShip = {
     readonly ship_class: PlayerShipClass;
     /** 国籍ID */
     readonly country: Country;
+    /** 所持装備 */
+    readonly equips: EquipBase[];
     /** 装備スロット、および搭載数 */
-    readonly slots: Readonly<number[]>,
+    readonly slots: SlotType,
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
     /** 未装備状態の艦ステータス(lv適用済み) */
@@ -51,7 +54,7 @@ export type PlayerShip = {
     /** ユーザーによって編集された後の艦ステータス */
     readonly edited_status: TStatusComponent,
     /** 対潜攻撃力計算に有効な対潜値の総計 */
-    readonly total_valid_asw: number,
+    readonly total_contribute_asw_attack_power: number,
 };
 
 /**
@@ -80,14 +83,35 @@ function sumStatusComponents(
     };
 }
 
+/**
+ * 2つのステータスコンポーネントを合成する。
+ * range のみ Math.max、それ以外は加算される。
+ * 
+ * @param a - 合成対象のステータス1
+ * @param b - 合成対象のステータス2
+ * @returns 合成後のステータス
+ */
+function mergeStatusComponentsWithMaxRange(
+    a: TStatusComponent,
+    b: TStatusComponent,
+): TStatusComponent {
+    const summed = sumStatusComponents(a, b);
+    return {
+        ...summed,
+        range: Math.max(a.range, b.range),
+    };
+}
+
 export function derivePlayerShip(
     unique_id: ShipUniqueId,
     lv: ShipLv,
     special_item_id: SpecialItemId,
     ship_id: ShipId,
-    equips: Equip[],
+    _equips: EquipBase[],
     modernizations?: ModernizationType,  
-    edit_input?: TStatusComponent,
+    edit_input?: TStatusComponent & {
+        slots: number[],
+    },
 ): PlayerShip {
     const naked_ship = deriveNakedPlayerShip(
         lv,
@@ -95,37 +119,46 @@ export function derivePlayerShip(
     );
 
     const master_id = naked_ship.master_id;
+    const base_id = naked_ship.base_id;
     const name_en = naked_ship.name_en;
     const name_jp = naked_ship.name_jp;
     const type_id = naked_ship.type_id;
     const ship_class = naked_ship.ship_class;
     const country = naked_ship.country;
-    const slots = naked_ship.slots;
-
-    const asw_flags = deriveAswFlags(equips);
+    const equips = _equips;
+    const slots: SlotType = {
+        master: naked_ship.slots,
+        edited: edit_input?.slots ?? naked_ship.slots,
+    }
+    
+    const asw_flags = deriveAswFlags(_equips);
     const flags = {
         ...naked_ship.flags,
         asw_equip: asw_flags,
     };
 
     const naked_status = naked_ship.status;
-    const total_natural_equip_addition = equips
+    const total_natural_equip_addition = _equips
         .map(equip => equip.natural_addition)
-        .reduce(sumStatusComponents, DEFAULT_STATUS_COMPONENT);
-    const total_equip_bonus_addition = deriveEquipBonusAddition(naked_ship, equips);
+        .reduce(mergeStatusComponentsWithMaxRange, DEFAULT_STATUS_COMPONENT);
+    const total_equip_bonus_addition = deriveEquipBonusAddition(naked_ship, _equips);
     const total_equip_improvement_addition = 
-        sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
+        sumEquipImprovementAdditions(_equips.map(equip => equip.improvement_addition));
     const special_item_addition = deriveSpecialItemAddition(special_item_id);
-
-    const view_status = [
+    
+    // 射程は素ステータスと装備素射程の最大値に装備ボーナスを加算
+    const partial_status = [
         naked_status,
         total_natural_equip_addition,
+    ].reduce(mergeStatusComponentsWithMaxRange, DEFAULT_STATUS_COMPONENT);
+    const view_status = [
+        partial_status,
         total_equip_bonus_addition,
         special_item_addition,
     ].reduce(sumStatusComponents, DEFAULT_STATUS_COMPONENT);
 
-    const total_valid_asw = equips
-        .map(equip => equip.valid_asw)
+    const total_valid_asw = _equips
+        .map(equip => equip.contribute_asw_attack_power)
         .reduce((acc, curr) => {
             return acc + curr;
         }, 0);
@@ -134,6 +167,7 @@ export function derivePlayerShip(
 
     return {
         master_id,
+        base_id,
         unique_id,
         name_en,
         name_jp,
@@ -141,6 +175,7 @@ export function derivePlayerShip(
         type_id,
         ship_class,
         country,
+        equips,
         slots,
         flags,
         naked_status,
@@ -150,6 +185,6 @@ export function derivePlayerShip(
         special_item_addition,
         view_status,
         edited_status,
-        total_valid_asw,
+        total_contribute_asw_attack_power: total_valid_asw,
     }
 }

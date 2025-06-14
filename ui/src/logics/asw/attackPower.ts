@@ -7,7 +7,7 @@ export function calcAswPower(ship: PlayerShip): number {
     /** 基本攻撃力 */
     const base_attack_power =
         2 * Math.sqrt(ship.naked_status.asw)
-        + 1.5 * (ship.total_valid_asw + ship.total_equip_bonus_addition.asw)
+        + 1.5 * (ship.total_contribute_asw_attack_power + ship.total_equip_bonus_addition.asw)
         + ship.total_equip_improvement_addition.asw_power + ship_type_constant;
 
     const synergy = calcAswSynergy(ship.flags.asw_equip);

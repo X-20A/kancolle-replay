@@ -1,4 +1,4 @@
-import { deriveEquip, Equip } from "@/models/equip/Equip";
+import { deriveEquip, EquipBase } from "@/models/equip/Equip";
 import { derivePlayerShip } from "@/models/ship/Ship";
 import { brandEquipId } from "@/types/brands/equip";
 import { brandShipId, brandShipLv, brandUniqueId } from "@/types/brands/ship";
@@ -31,15 +31,18 @@ const curryDeriveShip = curryN(5, derivePlayerShip);
  * 艦IDと装備配列から艦オブジェクトを生成して返す    
  * ユニークid: 1, 艦Lv: 99 固定
  */
-const make_ship_from_id_equips = curryDeriveShip(
+export const make_ship_from_id_equips = curryDeriveShip(
     brandUniqueId(1),
     brandShipLv(99),
     SpecialItemId.None,
 );
 
-export const short_make_ship_from_id_equips = (id: number, equips: Equip[]) =>
+export const short_make_ship_from_id_equips = (id: number, equips: EquipBase[]) =>
     pipe(
         id,
         brandShipId,
         ship_id => make_ship_from_id_equips(ship_id, equips),
     );
+
+export const make_ship_from_id = (id: number) =>
+    (equips: EquipBase[]) => short_make_ship_from_id_equips(id, equips);

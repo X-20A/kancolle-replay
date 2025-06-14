@@ -1,4 +1,4 @@
-import { PLAYER_SHIP_CLASS, PlayerShipClass, PlayerShipClassId } from "@/types/ship/ship_class";
+import { PLAYER_SHIP_CLASS, PlayerShipClass, PlayerShipClassId } from "@/types/ship/shipClass";
 import { Country } from "../equip/bonus"
 
 type CountryOriginalDatas = Record<Country, PlayerShipClassId[]>;

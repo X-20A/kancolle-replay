@@ -1,7 +1,7 @@
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipBonusKey } from "@/models/equip/EquipBonus";
-import { PlayerShipClass } from "@/types/ship/ship_class";
-import { ShipType as ST } from "@/wasm/kssw";
+import { ShipType } from "@/types/ship/ship";
+import { PlayerShipClass } from "@/types/ship/shipClass";
 
 /** 国籍ID */
 export const enum Country {
@@ -34,7 +34,7 @@ export type Bonus = {
     /** 未改造状態での艦ID */
     ship_base_ids?: number[],
     /** 艦種ID */
-    ship_type_ids?: ST[],
+    ship_type_ids?: ShipType[],
     /** 艦型ID */
     ship_class_names?: PlayerShipClass[],
     /** 艦の国籍ID */

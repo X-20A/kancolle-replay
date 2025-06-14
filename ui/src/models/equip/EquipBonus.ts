@@ -1,4 +1,4 @@
-import { Equip } from "./Equip";
+import { EquipBase } from "./Equip";
 import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { NakedPlayerShip } from "../ship/NakedShip";
@@ -8,7 +8,7 @@ type EquipBonusType = Omit<TStatusComponent,
     'hp' | 'torpedo_accuracy' | 'night_battle_accuracy' | 'luck'>;
 
 // hpを除外したデフォルト値
-export const DEFAULT_EQUIP_BONUS_COMPONENT: EquipBonusType = {
+const DEFAULT_EQUIP_BONUS_COMPONENT: EquipBonusType = {
     fire_power: 0,
     armor: 0,
     torpedo_power: 0,
@@ -55,7 +55,7 @@ function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBon
  */
 export function deriveEquipBonusAddition(
     ship: NakedPlayerShip,
-    equips: Equip[],
+    equips: EquipBase[],
 ): TStatusComponent {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
@@ -87,7 +87,7 @@ export function deriveEquipBonusAddition(
         for (const bonus of equip_bonus_data.bonuses) {
             // 艦船条件
             if (bonus.ship_ids && !bonus.ship_ids.includes(ship.master_id)) continue;
-            if (bonus.ship_base_ids && !bonus.ship_base_ids.includes(ship.master_id)) continue;
+            if (bonus.ship_base_ids && !bonus.ship_base_ids.includes(ship.base_id)) continue;
             if (bonus.ship_type_ids && !bonus.ship_type_ids.includes(ship.type_id)) continue;
             if (bonus.ship_class_names && !bonus.ship_class_names.includes(ship.ship_class)) continue;
             if (bonus.ship_country_ids && !bonus.ship_country_ids.includes(ship.country)) continue;

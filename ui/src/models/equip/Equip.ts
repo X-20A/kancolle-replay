@@ -5,8 +5,10 @@ import { EquipType } from "@/datas/equip/base/player";
 import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./EquipImprovement";
 import { deriveTransportAddition, TransportAddition } from "./TransportPower";
 import { EquipId } from "@/types/brands/equip";
+import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
+import { calc_plane_proficiency_rank, PlaneProficiencyRank } from "@/logics/air_superiority";
 
-export type Equip = {
+export type EquipBase = {
     /** 装備マスターID */
     readonly master_id: number,
     /** 装備名(EN) */
@@ -28,53 +30,66 @@ export type Equip = {
     /** TP加算値 */
     readonly transport_addition: TransportAddition,
     /**
-     * 対潜攻撃力計算に関与する対潜値    
+     * 対潜攻撃力計算に寄与する対潜値    
      * TODO: StatusComponentに入れるかどうか
      */
-    readonly valid_asw: number,
+    readonly contribute_asw_attack_power: number,
+}
+
+// 速い話、航空機以外にはそもそも 航空機熟練度 を持たせたくないのだ
+
+export type PlaneEquip = EquipBase & {
+    /** 航空機熟練度 */
+    readonly plane_proficiency: number,
+    /** 航空機熟練度ランク */
+    readonly plane_proficiency_rank: PlaneProficiencyRank,
+}
+
+export type Equip = EquipBase | PlaneEquip
+
+export function is_plane_equip(equip: Equip): equip is PlaneEquip {
+    return equip.flags.is_plane;
 }
 
 export function deriveEquip(
     improvement_lv: number,
     master_id: EquipId,
+    proficiency?: number,
 ): Equip {
-    const equip_master = deriveEquipMaster(
+    const equip_master = deriveEquipMaster(master_id);
+
+    // 基本フィールド
+    const base: EquipBase = {
         master_id,
-    );
-
-    const name_jp = equip_master.name_jp;
-    const name_en = equip_master.name_en;
-
-    const type_id = equip_master.type_id;
-    const skill_trigger_type = equip_master.skill_trigger_type;
-    const flags = equip_master.flags;
-    const natural_addition = equip_master.status;
-    const improvement_addition = deriveEquipImprovementAddition(
-        equip_master.improvement_type,
+        name_en: equip_master.name_en,
+        name_jp: equip_master.name_jp,
         improvement_lv,
-    );
-    const transport_addition =
-        deriveTransportAddition(equip_master);
-    const valid_asw = [
-        EquipType.DIVE_BOMBER,
-        EquipType.FIGHTER_BOMBER,
-        EquipType.TORPEDO_BOMBER,
-        EquipType.SONAR_S,
-        EquipType.SONAR_L,
-        EquipType.DEPTH_CHARGE
-    ].includes(type_id) ? equip_master.status.asw : 0;
+        type_id: equip_master.type_id,
+        skill_trigger_type: equip_master.skill_trigger_type,
+        flags: equip_master.flags,
+        natural_addition: equip_master.status,
+        improvement_addition: deriveEquipImprovementAddition(
+            equip_master.improvement_type,
+            improvement_lv,
+        ),
+        transport_addition: deriveTransportAddition(equip_master),
+        contribute_asw_attack_power: EQUIP_TYPE_DATAS[equip_master.type_id].is_contribute_asw_attack_power
+            ? equip_master.status.asw
+            : 0,
+    };
 
-    return {
-        master_id,
-        name_en,
-        name_jp,
-        improvement_lv,
-        type_id,
-        skill_trigger_type,
-        flags,
-        natural_addition,
-        improvement_addition,
-        transport_addition,
-        valid_asw,
+    // 航空機かどうかで分岐
+    if (equip_master.flags.is_plane) {
+        const plane_proficiency = proficiency ?? 100;
+        const plane_proficiency_rank = calc_plane_proficiency_rank(plane_proficiency);
+        
+        const planeEquip: PlaneEquip = {
+            ...base,
+            plane_proficiency,
+            plane_proficiency_rank,
+        };
+        return planeEquip;
     }
+    
+    return base;
 }

@@ -1,6 +1,4 @@
-import { ShipType } from "@/wasm/kssw";
-import { DeepReadonly } from "..";
-import { PlayerShipClass } from "./ship_class";
+import { PlayerShipClass } from "./shipClass";
 
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
 // TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
@@ -17,6 +15,31 @@ export type UnknownStatus = {
     LUK?: UnclearLevel,
     TP_ACC?: UnclearLevel,
 }
+
+const SHIP_TYPE = {
+    DE: 1,
+    DD: 2,
+    CL: 3,
+    CLT: 4,
+    CA: 5,
+    CAV: 6,
+    CVL: 7,
+    FBB: 8,
+    BB: 9,
+    BBV: 10,
+    CV: 11,
+    SS: 13,
+    SSV: 14,
+    AV: 16,
+    LHA: 17,
+    CVB: 18,
+    AR: 19,
+    AS: 20,
+    CT: 21,
+    AO: 22,
+} as const
+
+export type ShipType = keyof typeof SHIP_TYPE
 
 export type ShipFitClass =
     | 1
@@ -185,7 +208,7 @@ export type PlayerShipData = {
     planeasw?: 0 | 2,
 }
 
-export type ShipDatas = DeepReadonly<Record<number, PlayerShipData>>;
+export type ShipDatas = Record<number, PlayerShipData>;
 
 export type PlayerNakedShipFlags = {
     /**
@@ -255,3 +278,8 @@ export type AswEquipFlags = {
 export type PlayerShipFlags = PlayerNakedShipFlags & {
     asw_equip: AswEquipFlags;
   };
+
+export type SlotType = {
+    master: Readonly<number[]>,
+    edited: Readonly<number[]>,
+}

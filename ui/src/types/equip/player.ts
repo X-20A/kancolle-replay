@@ -53,8 +53,6 @@ export type EquipFitClass =
     | 101
     | 102
 
-export type Range = 1 | 2 | 3 | 4 | 5
-
 /** 装備種別とは別制御の装備アイコンID */
 export const enum SpecialIcon {
     /** 深海14inch海峡連装砲 */
@@ -130,7 +128,7 @@ export type PlayerEquipData = {
     /** 迎撃 */
     IN?: number,
     /** 射程 */
-    RNG?: Range,
+    RNG?: number,
     /** 命中 */
     ACC?: number,
     /** 加重対空に対する対空射撃回避 */
@@ -198,4 +196,31 @@ export type EquipFlags = {
     can_barrage: boolean,
     /** 隼(20戦隊)系統の装備であるか */
     is_20th_family: boolean,
+
+
+    /**
+     * 対潜攻撃力計算に有効な装備種別であるか    
+     * https://wikiwiki.jp/kancolle/戦闘について#AntiSubmarine
+     */
+    is_contribute_asw_attack_power: boolean,
+    can_equip_land_base: boolean,
+    /**
+     * 航空機であるか    
+     * 熟練度をもつ
+     */
+    is_plane: boolean,
+    /**
+     * 制空状態の決定に関与する装備種別であるか    
+     * 対空0でも敵の制空値が0の状況では制空に関与する    
+     * https://wikiwiki.jp/kancolle/航空戦#AirSupremacy
+     */
+    is_involve_air_superiority: boolean,
+    is_torpedo_bomber: boolean,
+    can_contact: boolean,
+    can_detect: boolean,
+    is_dive_bomber: boolean,
+    is_asw_plane: boolean,
+    is_land_base_plane: boolean,
+    is_jet: boolean,
+    can_support_asw: boolean,
 }

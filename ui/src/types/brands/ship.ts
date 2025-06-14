@@ -5,6 +5,10 @@ import { brand, Brand } from ".";
  */
 export type ShipId = Brand<number, 'ShipId'>
 /**
+ * 未改造時 艦ID
+ */
+export type ShipBaseId = Brand<number, 'ShipBaseId'>
+/**
  * 艦を一意に識別するためのID
  */
 export type ShipUniqueId = Brand<number, 'ShipUniqueId'>
@@ -25,6 +29,9 @@ export type ShipLv = Brand<number, 'ShipLv'>
 
 export const brandShipId =
     (value: number) => brand<number, 'ShipId'>(value);
+
+export const brandShipBaseId =
+    (value: number): ShipBaseId => brand<number, 'ShipBaseId'>(value);
 
 export const brandUniqueId =
     (value: number): ShipUniqueId => brand<number, 'ShipUniqueId'>(value);

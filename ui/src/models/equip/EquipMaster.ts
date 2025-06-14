@@ -1,9 +1,9 @@
 import { EquipType, PLAYER_EQUIP_DATAS } from "@/datas/equip/base/player";
 import { EquipImprovementType } from "@/datas/equip/improvement";
-import { EQUIP_TYPE_DATAS, EquipTypeDatas } from "@/datas/equip/typeData";
+import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
-import { EquipDatas, EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
+import { EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 
 /** マスターデータから直接取得するデータ */
 export type EquipMaster = {
@@ -50,6 +50,8 @@ export function deriveEquipMaster(
         aerial_torpedo_power: equip_data.AERIAL_TP ?? 0,
     }
 
+    const type_data = EQUIP_TYPE_DATAS[type_id];
+
     const flags: EquipFlags = {
         can_avoid_T_disadvantage: equip_data.can_avoid_T_disadvantage ?? false,
         can_shell_install_bomber: equip_data.can_shell_install_bomber ?? false,
@@ -64,6 +66,20 @@ export function deriveEquipMaster(
         is_Swordfish_family: equip_data.is_Swordfish_family ?? false,
         can_barrage: equip_data.can_barrage ?? false,
         is_20th_family: equip_data.is_20th_family ?? false,
+
+        // type_data系
+        is_contribute_asw_attack_power: type_data.is_contribute_asw_attack_power ?? false,
+        can_equip_land_base: type_data.can_equip_land_base ?? false,
+        is_plane: type_data.is_plane ?? false,
+        is_involve_air_superiority: type_data.is_involve_air_superiority ?? false,
+        is_torpedo_bomber: type_data.is_torpedo_bomber ?? false,
+        can_contact: type_data.can_contact ?? false,
+        can_detect: type_data.can_detect ?? false,
+        is_dive_bomber: type_data.is_dive_bomber ?? false,
+        is_asw_plane: type_data.is_asw_plane ?? false,
+        is_land_base_plane: type_data.is_land_base_plane ?? false,
+        is_jet: type_data.is_jet ?? false,
+        can_support_asw: type_data.can_support_asw ?? false,
     }
 
     return {

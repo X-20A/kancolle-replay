@@ -2,14 +2,14 @@ import { Country } from "@/datas/equip/bonus";
 import { COUNTRY_DATAS } from "@/datas/ship/country";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { TStatusComponent } from "@/types";
-import { brandShipNameEN, brandShipNameJP, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
-import { PlayerNakedShipFlags } from "@/types/ship/ship";
-import { PlayerShipClass } from "@/types/ship/ship_class";
-import { ShipType } from "@/wasm/kssw";
+import { brandShipBaseId, brandShipId, brandShipNameEN, brandShipNameJP, ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
+import { PlayerNakedShipFlags, ShipType } from "@/types/ship/ship";
+import { PlayerShipClass } from "@/types/ship/shipClass";
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */
 export type NakedPlayerShip = {
     readonly master_id: ShipId,
+    readonly base_id: ShipBaseId,
     readonly name_en: ShipNameEN,
     readonly name_jp: ShipNameJP,
     readonly type_id: ShipType,
@@ -20,6 +20,25 @@ export type NakedPlayerShip = {
     readonly flags: PlayerNakedShipFlags,
 }
 
+function calcBaseId(current_id: ShipId): ShipBaseId {
+    let id = current_id;
+
+    while (true) {
+        const data = PLAYER_SHIP_DATAS[id];
+        if (data.prev_id === 0) break;
+        id = brandShipId(data.prev_id);
+    }
+
+    return brandShipBaseId(id);
+}
+
+/**
+ * レベル時点でのステータスを計算して返す
+ * @param min 
+ * @param max 
+ * @param level 
+ * @returns 
+ */
 function calcStatusFromLevel(
     min: number,
     max: number,
@@ -41,6 +60,7 @@ export function deriveNakedPlayerShip(
     if (!ship_data) throw new Error(`id: ${id}の艦が見つかりませんでした`);
 
     const master_id = id;
+    const base_id = calcBaseId(master_id);
 
     const name_en = brandShipNameEN(ship_data.name);
     const name_jp = brandShipNameJP(ship_data.nameJP);
@@ -83,6 +103,7 @@ export function deriveNakedPlayerShip(
 
     return {
         master_id,
+        base_id,
         name_en,
         name_jp,
         type_id,
