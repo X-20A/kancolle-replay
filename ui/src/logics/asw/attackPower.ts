@@ -1,8 +1,8 @@
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { calcShipTypeConstant } from "./shipTypeConstant";
 import { calcAswSynergy } from "./synergy";
 
-export function calcAswPower(ship: PlayerShip): number {
+export function calcAswPower(ship: EquippedPlayerShip): number {
     const ship_type_constant = calcShipTypeConstant(ship);
     /** 基本攻撃力 */
     const base_attack_power =

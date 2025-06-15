@@ -1,5 +1,5 @@
 import { evaluateCanOASW } from "@/logics/asw/OASW/evaluate";
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { pipe } from "fp-ts/lib/function";
 import { F4U_1D, MK_32_DCP, TAN_GYORAI_DC, TYPE_144_SONAR } from "tests/setups/assets/equip";
 import { make_Kiyoshimo_kai, make_Shiratsuyu_kai_2, make_Fletcher, make_Kako_kai_ni, make_Mutsuki, make_Oyashio, make_Kaga_kai_ni_go, make_Ukuru_kai } from "tests/setups/assets/ship";
@@ -17,7 +17,7 @@ describe('対潜系テスト', () => {
         const KAGA = make_Kaga_kai_ni_go([F4U_1D]);
         const UKURU = make_Ukuru_kai([]);
 
-        const test = (expected: boolean, ship: PlayerShip) => {
+        const test = (expected: boolean, ship: EquippedPlayerShip) => {
             expect(expected).toBe(pipe(ship, evaluateCanOASW));
         };
 

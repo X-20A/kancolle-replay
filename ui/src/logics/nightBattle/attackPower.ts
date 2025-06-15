@@ -1,4 +1,4 @@
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 
 export const enum NightScountAdditionType {
     model_5 = 1,
@@ -12,7 +12,7 @@ export type NightBattlePowers = {
     [NightScountAdditionType.model_9]: number,
 }
 
-export function calcNightBattlePower(ship: PlayerShip): NightBattlePowers {
+export function calcNightBattlePower(ship: EquippedPlayerShip): NightBattlePowers {
     const base_power =
         ship.naked_status.fire_power
         + ship.total_natural_equip_addition.fire_power

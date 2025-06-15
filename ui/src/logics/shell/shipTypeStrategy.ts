@@ -1,7 +1,7 @@
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { ShipType } from "@/wasm/kssw";
 
-type HasPotentialOAswStrategy = (ship: PlayerShip) => number;
+type HasPotentialOAswStrategy = (ship: EquippedPlayerShip) => number;
 
 export const shipTypeStrategies: Record<ShipType, HasPotentialOAswStrategy> = {
     [ShipType.DE]: (ship) => calcSurfaceShellPower(ship),
@@ -26,13 +26,13 @@ export const shipTypeStrategies: Record<ShipType, HasPotentialOAswStrategy> = {
     [ShipType.AO]: (ship) => calcSurfaceShellPower(ship),
 }
 
-function calcSurfaceShellPower(ship: PlayerShip): number {
+function calcSurfaceShellPower(ship: EquippedPlayerShip): number {
     return ship.view_status.fire_power
         + ship.total_equip_improvement_addition.shell_power
         + 5;
 }
 
-function calcCVsShellPower(ship: PlayerShip): number {
+function calcCVsShellPower(ship: EquippedPlayerShip): number {
     return ship.view_status.fire_power
         + ship.total_equip_improvement_addition.shell_power
         + ship.view_status.torpedo_power

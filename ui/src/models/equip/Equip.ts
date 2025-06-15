@@ -6,7 +6,6 @@ import { deriveEquipImprovementAddition, EquipImprovementAddition } from "./Equi
 import { deriveTransportAddition, TransportAddition } from "./TransportPower";
 import { EquipId } from "@/types/brands/equip";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
-import { PlaneProficiencyRank } from "@/logics/proficiency";
 
 export type EquipBase = {
     /** 装備マスターID */

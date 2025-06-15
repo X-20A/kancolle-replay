@@ -1,10 +1,22 @@
 import { deriveEquip, EquipBase } from "@/models/equip/Equip";
-import { derivePlayerShip } from "@/models/ship/Ship";
+import { derive_equipped_ship } from "@/models/ship/equipped/base";
 import { brandEquipId } from "@/types/brands/equip";
-import { brandShipId, brandShipLv, brandUniqueId } from "@/types/brands/ship";
+import { brandShipId, brandShipLv, brandUniqueId, ShipId, ShipLv } from "@/types/brands/ship";
 import { SpecialItemId } from "@/types/ship/ship";
 import { curry, curryN } from "ramda";
 import { pipe } from "fp-ts/lib/function"; // fp-tsのpipeは関数以外も渡せる
+import { NakedShip } from "@/models/ship/naked/base";
+import { derive_player_naked_ship } from "@/models/ship/naked/player";
+import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
+
+function derive_naked_ship(
+    ship_lv: ShipLv,
+    id: ShipId,
+): NakedShip {
+    return id < 1500
+        ? derive_player_naked_ship(ship_lv, id)
+        : derive_abyssal_naked_ship(id);
+}
 
 const curryDeriveEquip = curry(deriveEquip)
 
@@ -25,7 +37,7 @@ const make_equip_from_id = curryDeriveEquip(
  */
 export const short_make_equip_from_id = (id: number) => pipe(id, brandEquipId, make_equip_from_id)
 
-const curryDeriveShip = curryN(5, derivePlayerShip);
+const curryDeriveShip = curryN(5, derive_equipped_ship);
 
 /**
  * 艦IDと装備配列から艦オブジェクトを生成して返す    

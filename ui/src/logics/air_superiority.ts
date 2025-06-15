@@ -1,4 +1,4 @@
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { calc_plane_proficiency_flat } from "./proficiency";
 
 /// 制空系
@@ -8,7 +8,7 @@ import { calc_plane_proficiency_flat } from "./proficiency";
  * @param ship 
  * @returns 
  */
-export function calc_ship_air_superiority_power(ship: PlayerShip): number {
+export function calc_ship_air_superiority_power(ship: EquippedPlayerShip): number {
     return ship.equips.reduce((total, equip, index) => {
         if (!equip.flags.is_involve_air_superiority) return total;
 

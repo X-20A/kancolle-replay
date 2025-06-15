@@ -1,7 +1,7 @@
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { ShipType } from "@/types/ship/ship";
 
-type calcShipTypeConstantStrategy = (ship: PlayerShip) => number;
+type calcShipTypeConstantStrategy = (ship: EquippedPlayerShip) => number;
 
 const calcBasicAswAttackStrategies: Record<ShipType, calcShipTypeConstantStrategy> = (() => {
     const WITH_DROP_EFFECT = 13;
@@ -40,7 +40,7 @@ const calcBasicAswAttackStrategies: Record<ShipType, calcShipTypeConstantStrateg
 })();
 
 
-export function calcShipTypeConstant(ship: PlayerShip): number {
+export function calcShipTypeConstant(ship: EquippedPlayerShip): number {
     const strategy = calcBasicAswAttackStrategies[ship.type_id];
     
     return strategy(ship);

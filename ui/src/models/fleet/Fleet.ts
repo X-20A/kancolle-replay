@@ -1,5 +1,5 @@
-import { PlayerShip } from "../ship/Ship"
+import { EquippedShip } from "../ship/equipped/base"
 
 export type Fleet = {
-    ships: PlayerShip[],
+    ships: EquippedShip[],
 }

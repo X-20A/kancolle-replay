@@ -1,6 +1,6 @@
 import { is_plane_equip } from "@/models/equip/Equip";
 import { Fleet } from "@/models/fleet/Fleet";
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { SeedableRand } from "@/effects/random";
 
@@ -11,7 +11,7 @@ import { SeedableRand } from "@/effects/random";
  * @param ship 
  * @returns 
  */
-const is_CVs = (ship: PlayerShip): boolean => {
+const is_CVs = (ship: EquippedPlayerShip): boolean => {
     return [
         'CV',
         'CVB',

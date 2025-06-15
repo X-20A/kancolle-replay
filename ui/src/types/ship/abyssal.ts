@@ -1,38 +1,12 @@
 import { DeepReadonly } from "..";
-import { CVsNightAttackType, InstallType, PlayerShipClass, ShipFitClass, SpecialAttckId, UnknownStatus } from "./ship";
+import { CVsNightAttackType, InstallType, ShipType, UnknownStatus } from "./ship";
 
-/** 艦種 */
-export const enum AbyssalShipType {
-    DE = 1,
-    DD = 2,
-    CL = 3,
-    CLT = 4,
-    CA = 5,
-    CAV = 6,
-    CVL = 7,
-    FBB = 8, // ?
-    BB = 9,
-    BBV = 10,
-    CV = 11,
-    SS = 13,
-    SSV = 14,
-    // AO_2 = 15,
-    AV = 16,
-    LHA = 17,
-    CVB = 18,
-    AR = 19,
-    AS = 20,
-    CT = 21,
-    AO = 22,
-    AT = 23,
-};
+export type AbyssalShipType = ShipType | 'AT'
 
 export type AbyssalShipData = {
     name: string,
-    nameJP: string,
+    name_jp: string,
     type: AbyssalShipType,
-    ship_class?: PlayerShipClass,
-    fit_class?: ShipFitClass,
     HP: number,
     FP: number,
     TP: number,
@@ -46,44 +20,19 @@ export type AbyssalShipData = {
     /** 雷撃命中 */
     TP_ACC?: number,
     SLOTS: Array<number>,
-    /** 最大燃料消費量 */
-    fuel?: number,
-    /** 最大弾薬消費量 */
-    ammo?: number,
-    /** 改造後艦ID */
-    next_id?: number,
-    /** 改造前艦ID */
-    prev_id?: number,
+    EQUIPS?: Array<number>,
     /** 艦爆被弱点キャップ前補正値 */
     dive_bomb_weak_mod?: number,
     /** 陸攻被弱点キャップ前補正値 */
     land_based_weak_mod?: number,
-    /**
-     * 無条件開幕対潜艦はtrue    
-     * 大鷹型改/改二, 加賀改二護 にも付与されているが、    
-     * 対潜値1以上の艦攻/艦爆 or 三式指揮連絡機(対潜) or 回転翼機を装備している場合のみ発動する    
-     * ロジック側で実装すること
-     */
-    has_potential_always_OASW?: true,
-    /** 高射装置内蔵艦(秋月型のみ 25/06/04)であるか */
-    has_buil_in_fire_director?: true,
+    /** 無条件開幕対潜艦はtrue */
+    can_OASW?: true,
     /**
      *  航空攻撃可能な補給艦であるか    
      *  実際の攻撃には航空機が必要
      */
-    can_air_attack?: true,
-    /** 水上機が搭載可能な戦艦であるか */
-    is_air_craft_carrier_BB?: true,
-    /** 対潜劣後な軽空(鈴熊のみ 25/06/04)であるか */
-    is_ASW_subordinated_CVL?: true,
-    /** 海空立体攻撃 | 瑞雲立体攻撃 発動可能な艦であるか */
-    can_zuiun_CI?: true,
     /** 夜間作戦航空要員 内蔵艦であるか */
     has_built_in_night_crew?: true,
-    /** 対PT特効 かつ 対PT優先ターゲティング 艦であるか */
-    is_anti_PT_ship?: true,
-    /** 対陸上型優先ターゲティング 艦であるか */
-    is_anti_install_ship?: true,
     /** 空母CI"不可能"艦であるか */
     can_not_CVCI?: true,
     /** PT系(含S boat)の艦であるか */
@@ -112,37 +61,25 @@ export type AbyssalShipData = {
     can_not_op_torpedo_submarine?: true,
     /** 無条件開幕雷撃可能な水上艦であるか */
     can_op_torpedo_surface_ship?: true,
-    /** 条件次第で対潜攻撃可能なCV(加賀改二護) */
-    has_potential_ASW_CV?: true,
     /** 空母系の夜戦における振る舞いの型のID */
     CVs_night_attack_type?: CVsNightAttackType,
-    /** 旗艦時に発動する特殊砲撃の種別ID */
-    attack_special_ids?: SpecialAttckId[],
 
     install_type?: InstallType,
 
     planeasw?: 0 | 2,
     /** 正確な値が不明なステータス */
-    unknownstats?: UnknownStatus,
-
-    EQUIPS?: Array<number>,
-
-    ACCbonus?: number,
+    unknown_status?: UnknownStatus,
 }
 
 export type AbyssalShipDatas = DeepReadonly<Record<number, AbyssalShipData>>;
 
 export type AbyssalShipFlags = {
-    has_potential_always_OASW: boolean,
-    /** 高射装置内蔵艦(秋月型のみ 25/06/04)であるか */
-    has_built_in_fire_director: boolean,
+    /** 無条件開幕対潜艦はtrue */
+    can_OASW: boolean,
     /**
      *  航空攻撃可能な補給艦であるか    
      *  実際の攻撃には航空機が必要
      */
-    can_air_attack: boolean,
-    /** 水上機が搭載可能な戦艦であるか */
-    is_ASW_subordinated_CVL: boolean,
     /** 夜間作戦航空要員 内蔵艦であるか */
     has_built_in_night_crew: boolean,
     /** 空母CI"不可能"艦であるか */
@@ -173,6 +110,4 @@ export type AbyssalShipFlags = {
     can_not_op_torpedo_submarine: boolean,
     /** 無条件開幕雷撃可能な水上艦であるか */
     can_op_torpedo_surface_ship: boolean,
-    /** 条件次第で対潜攻撃可能なCV(加賀改二護) */
-    has_ASW_potential_CV: boolean,
 }

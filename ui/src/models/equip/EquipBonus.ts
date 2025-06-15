@@ -1,7 +1,7 @@
 import { EquipBase } from "./Equip";
 import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
-import { NakedPlayerShip } from "../ship/NakedShip";
+import { NakedShip } from "../ship/naked/base";
 import { TStatusComponent } from "@/types";
 
 type EquipBonusType = Omit<TStatusComponent,
@@ -54,7 +54,7 @@ function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBon
  * @returns 合計されたEquipBonus
  */
 export function deriveEquipBonusAddition(
-    ship: NakedPlayerShip,
+    ship: NakedShip,
     equips: EquipBase[],
 ): TStatusComponent {
     // レーダー系フラグ

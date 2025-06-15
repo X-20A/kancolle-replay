@@ -1,6 +1,6 @@
-import { PlayerShip } from "@/models/ship/Ship";
+import { EquippedPlayerShip } from "@/models/ship/equipped/base";
 import { ShipType } from "@/types/ship/ship";
-type HasPotentialAswStrategy = (ship: PlayerShip) => boolean;
+type HasPotentialAswStrategy = (ship: EquippedPlayerShip) => boolean;
 
 /**
  * 艦種として対潜攻撃のポテンシャルがあるかを返す    
@@ -35,6 +35,6 @@ const hasPotentialAswStrategies: Record<ShipType, HasPotentialAswStrategy> = {
  * @param ship 
  * @returns 
  */
-function isNakedAswPositive(ship: PlayerShip): boolean {
+function isNakedAswPositive(ship: EquippedPlayerShip): boolean {
     return ship.naked_status.asw >= 1;
 }
