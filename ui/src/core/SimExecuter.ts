@@ -1,4 +1,4 @@
-import { SeedableRand } from "@/effects/random";
+import { Rand } from "@/effects/random";
 import { analyze_fleet_detection, calc_detection_success_rate, calc_shotdowned_recon_fleet } from "@/logics/detection";
 import { Fleet } from "@/models/fleet/Fleet";
 
@@ -10,7 +10,7 @@ type DetectionPhaseResult = {
 export const calc_detection_phase = (
     our_fleet: Fleet,
     enemy_fleet: Fleet,
-    rand: SeedableRand,
+    rand: Rand,
 ): DetectionPhaseResult => {
     const detect_status = analyze_fleet_detection(our_fleet);
     const success_rate = calc_detection_success_rate(detect_status.detection_power);
@@ -33,7 +33,7 @@ export const calc_detection_phase = (
 export function sim_execute(
     our_fleet: Fleet,
     enemy_fleet: Fleet,
-    rand: SeedableRand,
+    rand: Rand,
 ) {
     const detection_result = calc_detection_phase(
         our_fleet,
