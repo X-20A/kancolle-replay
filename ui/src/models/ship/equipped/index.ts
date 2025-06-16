@@ -1,14 +1,15 @@
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { SpecialItemId, PlayerShipFlags, ModernizationType, ShipType } from "@/types/ship/ship";
-import { Equip, EquipBase } from "../../equip/Equip";
+import { SpecialItemId, PlayerShipFlags, ModernizationType, ShipType, ShipTypeBase } from "@/types/ship/ship";
+import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { derive_equipped_player_ship } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
+import { AbyssalShipFlags } from "@/types/ship/abyssal";
 
-export function is_player_ship(ship: EquippedShip): ship is EquippedPlayerShip {
+export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip {
     return ship.master_id < 1500;
 }
 
@@ -23,8 +24,6 @@ type EquipedShipBase = {
     readonly name_jp: ShipNameJP;
     /** レベル */
     readonly lv: ShipLv;
-    /** 艦種ID */
-    readonly type_id: ShipType;
     /** 所持装備 */
     readonly equips: Equip[];
     /** 装備スロット、および搭載数 */
@@ -39,7 +38,9 @@ type EquipedShipBase = {
     readonly edited_status: TStatusComponent,
 }
 
-export type EquippedPlayerShip = EquipedShipBase & {
+export type PlayerEquippedShip = EquipedShipBase & {
+    /** 艦種ID */
+    readonly type_id: ShipTypeBase;
     /** 未改造時 艦ID */
     readonly base_id: ShipBaseId,
     /** 艦型ID */
@@ -58,16 +59,19 @@ export type EquippedPlayerShip = EquipedShipBase & {
     readonly flags: PlayerShipFlags,
 };
 
-export type EquippedAbyssalShip = EquipedShipBase & {
-
+export type AbyssalEquippedShip = EquipedShipBase & {
+    /** 艦種ID */
+    readonly type_id: ShipType;
+    /** フラグ類 */
+    readonly flags: AbyssalShipFlags,
 }
 
-export type EquippedShip = EquippedPlayerShip | EquippedAbyssalShip
+export type EquippedShip = PlayerEquippedShip | AbyssalEquippedShip
 
 /**
  * StatusComponentの各プロパティを合算したStatusComponentを返す
  */
-export function sum_statusC_components(
+export function sum_status_components(
     a: TStatusComponent,
     b: TStatusComponent,
 ): TStatusComponent {
@@ -102,7 +106,7 @@ export function merge_status_components_with_max_range(
     a: TStatusComponent,
     b: TStatusComponent,
 ): TStatusComponent {
-    const summed = sum_statusC_components(a, b);
+    const summed = sum_status_components(a, b);
     return {
         ...summed,
         range: Math.max(a.range, b.range),
@@ -114,21 +118,24 @@ export function derive_equipped_ship(
     lv: ShipLv,
     special_item_id: SpecialItemId,
     ship_id: ShipId,
-    _equips: EquipBase[],
-    modernizations?: ModernizationType,  
+    equips: Equip[],
+    modernizations?: ModernizationType,
     edit_input?: TStatusComponent,
     slots?: number[],
-): EquippedPlayerShip {
+): EquippedShip {
     return ship_id < 1500
-            ? derive_equipped_player_ship(
-                unique_id,
-                lv,
-                special_item_id,
-                ship_id,
-                _equips,
-                modernizations,
-                edit_input,
-                slots,
-            )
-            : derive_equipped_abyssal_ship(ship_id);
+        ? derive_equipped_player_ship(
+            unique_id,
+            lv,
+            special_item_id,
+            ship_id,
+            equips,
+            modernizations,
+            edit_input,
+            slots,
+        )
+        : derive_equipped_abyssal_ship(
+            unique_id,
+            ship_id,
+        );
 }

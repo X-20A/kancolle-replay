@@ -169,7 +169,7 @@ export type PlayerEquipData = {
 
 export type EquipDatas = DeepReadonly<Record<number, PlayerEquipData>>
 
-export type EquipFlags = {
+export type PlayerEquipFlags = {
     /** T字不利回避能力があるか */
     can_avoid_T_disadvantage: boolean,
     /** 対地攻撃可能な艦爆であるか */

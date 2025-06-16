@@ -1,5 +1,5 @@
 import { EquipType } from "@/datas/equip/base/player";
-import { Equip, is_plane_equip, PlaneEquip } from "@/models/equip/Equip";
+import { Equip, is_plane_equip, is_player_equip, PlaneEquip, PlayerEquip } from "@/models/equip/basic";
 
 /// 航空機熟練度系
 
@@ -78,7 +78,7 @@ const calc_internal_bonus =
  * @returns 
  */
 export function calc_plane_proficiency_flat(
-    equip: Equip,
+    equip: PlayerEquip,
 ): number {
     if (!is_plane_equip(equip)) return 0;
     if (equip.type_id === EquipType.ASW_PLANE && !equip.flags.is_20th_family) return 0;
@@ -111,7 +111,7 @@ const calc_constant = (equip: PlaneEquip): number => {
  * @param equips 
  * @returns 
  */
-export function calc_plane_proficiency_critical_mod(equips: Equip[]): number {
+export function calc_plane_proficiency_critical_mod(equips: PlayerEquip[]): number {
     return equips.reduce((total, equip, index) => {
         if (!is_plane_equip(equip)) return total;
 

@@ -1,4 +1,4 @@
-import { EquippedPlayerShip } from "@/models/ship/equipped/base";
+import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { match } from "ts-pattern";
 
 /**
@@ -7,7 +7,7 @@ import { match } from "ts-pattern";
  * 艦・装備・艦載機残存数の判定はRust    
  * https://wikiwiki.jp/kancolle/戦闘について#AntiSubmarine
  */
-export function can_OASW_by_ship_type(ship: EquippedPlayerShip): boolean {
+export function can_OASW_by_ship_type(ship: PlayerEquippedShip): boolean {
     return match(ship.type_id)
         .with("DE", () => is_DE_capable_of_OASW(ship))
         .with(
@@ -43,7 +43,7 @@ export function can_OASW_by_ship_type(ship: EquippedPlayerShip): boolean {
  * @param ship 
  * @returns 
  */
-function is_DE_capable_of_OASW(ship: EquippedPlayerShip): boolean {
+function is_DE_capable_of_OASW(ship: PlayerEquippedShip): boolean {
     return has_sonar_and_view_ASW_at_least(ship, 60)
         || (has_view_ASW_at_least(ship, 75) && ship.total_natural_equip_addition.asw >= 4);
 }
@@ -51,7 +51,7 @@ function is_DE_capable_of_OASW(ship: EquippedPlayerShip): boolean {
 /**
  * 軽空母が先制対潜可能か判定して返す
  */
-function is_CVL_capable_of_OASW(ship: EquippedPlayerShip): boolean {
+function is_CVL_capable_of_OASW(ship: PlayerEquippedShip): boolean {
     const asw_flags = ship.flags.asw_equip;
     const asw = ship.view_status.asw;
 
@@ -88,7 +88,7 @@ function is_CVL_capable_of_OASW(ship: EquippedPlayerShip): boolean {
  * @param threshold 閾値（例：60, 100）
  * @returns 閾値以上かどうか
  */
-function has_view_ASW_at_least(ship: EquippedPlayerShip, threshold: number): boolean {
+function has_view_ASW_at_least(ship: PlayerEquippedShip, threshold: number): boolean {
     return ship.view_status.asw >= threshold;
 }
 
@@ -98,6 +98,6 @@ function has_view_ASW_at_least(ship: EquippedPlayerShip, threshold: number): boo
  * @param threshold 閾値（例：60, 100）
  * @returns 条件をすべて満たすかどうか
  */
-function has_sonar_and_view_ASW_at_least(ship: EquippedPlayerShip, threshold: number): boolean {
+function has_sonar_and_view_ASW_at_least(ship: PlayerEquippedShip, threshold: number): boolean {
     return ship.flags.asw_equip.has_any_sonar && has_view_ASW_at_least(ship, threshold);
 }

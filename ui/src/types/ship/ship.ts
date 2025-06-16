@@ -1,3 +1,4 @@
+import { AbyssalShipType } from "./abyssal";
 import { PlayerShipClass } from "./shipClass";
 
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
@@ -39,7 +40,9 @@ const SHIP_TYPE = {
     AO: 22,
 } as const
 
-export type ShipType = keyof typeof SHIP_TYPE
+export type ShipTypeBase = keyof typeof SHIP_TYPE
+
+export type ShipType = ShipTypeBase | AbyssalShipType
 
 export type ShipFitClass =
     | 1
@@ -131,7 +134,7 @@ export const enum PlaneCarrierAswBefavior {
 export type PlayerShipData = {
     name: string,
     nameJP: string,
-    type: ShipType,
+    type: ShipTypeBase,
     ship_class: PlayerShipClass,
     fit_class?: ShipFitClass,
     nid: number,

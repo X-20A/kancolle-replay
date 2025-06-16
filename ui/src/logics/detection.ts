@@ -1,8 +1,9 @@
-import { is_plane_equip } from "@/models/equip/Equip";
+import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
 import { Fleet } from "@/models/fleet/Fleet";
-import { EquippedPlayerShip } from "@/models/ship/equipped/base";
+import { EquippedShip } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { SeedableRand } from "@/effects/random";
+import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 
 /// 索敵系
 
@@ -11,7 +12,7 @@ import { SeedableRand } from "@/effects/random";
  * @param ship 
  * @returns 
  */
-const is_CVs = (ship: EquippedPlayerShip): boolean => {
+const is_CVs = (ship: EquippedShip): boolean => {
     return [
         'CV',
         'CVB',
@@ -44,10 +45,9 @@ const calc_mod_ship_count = (ships_length: number): number => {
 }
 
 const calc_mod_carrier = (CVs_count: number): number => {
-    return (
-        20 * (CVs_count - 1)
-        + 30 * (CVs_count >= 1 ? 1 : 0)
-    );
+    return CVs_count === 0
+        ? 0
+        : 10 * (CVs_count - 1) + 30;
 }
 
 type ShipSummary = {
@@ -59,7 +59,7 @@ type ShipSummary = {
     /** 艦隊内の空母系の数に応じた加算値 */
     CVs_count: number;
     /** 索敵に参加する機体の数 */
-    participating_plane_count: number;
+    participate_plane_count: number;
     /** 航空機熟練度ボーナス */
     proficiency_flat: number;
 };
@@ -68,33 +68,38 @@ type EquipSummary = {
     /** 索敵に参加する機体の索敵値 */
     total_plane_los: number,
     /** 索敵に参加する機体の数 */
-    participating_plane_count: number,
+    participate_plane_count: number,
     /** 航空機熟練度ボーナス */
     proficiency_flat: number,
 }
 
-type FleetDetection = {
-    recon_power: number,
-    detection_power: number,
+type FleetDetectionStatus = {
+    recon_power: ReconPower,
+    detection_power: DetectionPower,
 }
 
 /**
- * 艦隊の recon_power と detection_power を返す    
- * NOTE: SRP的にはグレーなのでなんとかしたくはある
+ * 艦隊の索敵能力評価してを返す    
+ * NOTE: 索敵 成功/失敗 による命中・回避への補正に有意差は確認されていない    
+ * NOTE: しかし、失敗時は自艦隊が航空戦に参加できない仕様があるので判定は必要    
  * @param fleet 
  * @returns 
  */
-const analyze_fleet_detection = (fleet: Fleet): FleetDetection => {
+export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
     const ships = fleet.ships;
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
         const equip_summary: EquipSummary = ship.equips.reduce((equip_total, equip) => {
-            if (!is_plane_equip(equip) || !equip.flags.can_detect) return equip_total;
+            if (
+                !is_player_equip(equip)
+                || !is_plane_equip(equip)
+                || !equip.flags.can_detect
+            ) return equip_total;
 
             const total_plane_los = equip_total.total_plane_los
                 + equip.natural_addition.los
                 + equip.improvement_addition.los; // 装備ボーナス未考慮 入ってそうではあるが、どうしよっかな
 
-            const participating_plane_count = equip_total.participating_plane_count + 1;
+            const participate_plane_count = equip_total.participate_plane_count + 1;
 
             const proficiency_flat =
                 equip_total.proficiency_flat
@@ -102,12 +107,12 @@ const analyze_fleet_detection = (fleet: Fleet): FleetDetection => {
 
             return {
                 total_plane_los,
-                participating_plane_count,
+                participate_plane_count,
                 proficiency_flat,
             }
         }, {
             total_plane_los: 0,
-            participating_plane_count: 0,
+            participate_plane_count: 0,
             proficiency_flat: 0,
         });
 
@@ -122,13 +127,13 @@ const analyze_fleet_detection = (fleet: Fleet): FleetDetection => {
         return {
             position_value,
             CVs_count,
-            participating_plane_count: equip_summary.participating_plane_count,
+            participate_plane_count: equip_summary.participate_plane_count,
             proficiency_flat: equip_summary.proficiency_flat,
         }
     }, {
         position_value: 0,
         CVs_count: 0,
-        participating_plane_count: 0,
+        participate_plane_count: 0,
         proficiency_flat: 0,
     });
 
@@ -138,7 +143,7 @@ const analyze_fleet_detection = (fleet: Fleet): FleetDetection => {
     const mod_ship_count = calc_mod_ship_count(ships.length);
 
     const recon_power =
-        ship_summary.participating_plane_count
+        ship_summary.participate_plane_count
         + ship_summary.proficiency_flat
         + mod_carrier;
 
@@ -146,11 +151,11 @@ const analyze_fleet_detection = (fleet: Fleet): FleetDetection => {
         ship_summary.position_value
         + mod_ship_count
         - 20
-        + Math.trunc(Math.floor(10 * recon_power));
+        + Math.trunc(Math.sqrt(10 * recon_power));
 
     return {
-        recon_power,
-        detection_power,
+        recon_power: brandReconPower(recon_power),
+        detection_power: brandDetectionPower(detection_power),
     }
 }
 
@@ -160,7 +165,7 @@ const analyze_fleet_detection = (fleet: Fleet): FleetDetection => {
  * @param fleet 
  * @returns 
  */
-export function calc_detection_success_rate(detection_power: number): number {
+export function calc_detection_success_rate(detection_power: DetectionPower): number {
     return (detection_power + 1) / 20;
 }
 
@@ -181,11 +186,13 @@ const def_fighter = (enemy_fighter_count: number) => {
 export function calc_shotdowned_recon_fleet(
     our_fleet: Fleet,
     enemy_fleet: Fleet,
-    recon_power: number,
+    recon_power: ReconPower,
     rand: SeedableRand,
 ): Fleet {
     const enemy_fighter_count = enemy_fleet.ships.reduce((total, ship) => {
         return total + ship.equips.reduce((count, equip) => {
+            if (!is_player_equip(equip)) return count;
+
             return count + (equip.flags.is_involve_air_superiority ? 1 : 0);
         }, 0);
     }, 0);
@@ -194,7 +201,11 @@ export function calc_shotdowned_recon_fleet(
     const updated_ships = our_fleet.ships.map((ship) => {
         const updated_slots = ship.slots.map((slot, i) => {
             const equip = ship.equips[i];
-            if (!equip.flags.can_detect || slot > 0) return slot;
+            if (
+                !is_player_equip(equip)
+                || !equip.flags.can_detect
+                || slot > 0
+            ) return slot;
 
             const rand_val = rand.next() * 0.4 + 1.0; // [1.0, 1.4)
             const shotdown_val = recon_power - Math.floor(def_fighter(enemy_fighter_count) * rand_val);

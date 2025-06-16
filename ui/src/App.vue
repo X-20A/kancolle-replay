@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { start_sim, WasmRng } from './wasm/kssw';
+import { start_sim } from './wasm/kssw';
 import { SeedableRand } from './effects/random';
 
 const sim_result = ref<string>('');
@@ -32,32 +32,6 @@ function runSim(): void {
 		sim_result.value = start_sim();
 	} catch (error) {
 		sim_result.value = `sim実行時エラー: ${String(error)}`;
-	}
-}
-class CachedRNG {
-	private cache: Float64Array;
-	private index: number;
-	private rng: WasmRng;
-	private chunkSize: number;
-
-	constructor(seed: number, chunkSize: number = 64) {
-		this.rng = new WasmRng(seed);
-		this.chunkSize = chunkSize;
-		this.cache = new Float64Array(chunkSize);
-		this.index = chunkSize; // 初期状態で補充が必要
-	}
-
-	private async refill() {
-		const newChunk = this.rng.generate_batch(this.chunkSize);
-		this.cache = new Float64Array(newChunk);
-		this.index = 0;
-	}
-
-	public async next(): Promise<number> {
-		if (this.index >= this.cache.length) {
-			this.refill(); // 非同期補充
-		}
-		return this.cache[this.index++];
 	}
 }
 

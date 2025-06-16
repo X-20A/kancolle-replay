@@ -1,4 +1,4 @@
-import { AACITriggerEquipType, EquipFitClass, Range, SkillTriggerEquipType, SpecialIcon } from "./player";
+import { AACITriggerEquipType, SkillTriggerEquipType, SpecialIcon } from "./player";
 import { DeepReadonly } from "..";
 import { EquipType } from "@/datas/equip/base/player";
 
@@ -38,47 +38,59 @@ export type AbyssalEquipData = {
     /** 迎撃 */
     IN?: number,
     /** 射程 */
-    RNG?: Range,
+    RNG?: number,
     /** 命中 */
     ACC?: number,
     /** 加重対空に対する対空射撃回避 */
     AA_resist_ship?: number,
     /** 艦隊防空に対する対空射撃回避 */
     AA_resist_fleet?: number,
-    /** 装備フィット種別ID(艦のものとは別?) */
-    fit_class?: EquipFitClass,
-    /** 重巡級が装備したときの夜戦における命中ボーナス値 */
-    CA_NB_bonus?: number,
-    /** T字不利回避能力があるか */
-    can_avoid_T_disadvantage?: true,
-    /** 対地攻撃可能な艦爆であるか */
-    can_shell_install_bomber?: true,
-    /** ロケット戦闘機であるか */
-    is_rocket_fighter?: true,
-    /** 夜偵系装備であるか */
-    is_night_scout?: true,
     /** 集中配備系の装備であるか */
     is_concentrated?: true,
-    /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */
-    is_special_submarine_CI_torigger?: true,
-    /** 【爆雷】カテゴリであるか(￢含投射機) */
-    is_DC_only?: true,
-    /** 【爆雷投射機】カテゴリであるか(￢含爆雷) */
-    is_DCP?: true,
-    /** 爆雷の装甲減少補正 効果を持つか */
-    can_ASW_penetrate?: true,
-    /** Swordfish系統の装備であるか */
-    is_Swordfish_family?: true,
-    /** 対空噴進弾幕可能な装備であるか */
-    can_barrage?: true,
     /** 反跳爆撃可能な爆撃機であるか */
     is_skip_bomber?: true,
-    /** 隼(20戦隊)系統の装備であるか */
-    is_20th_family?: true,
     /** 開幕雷撃"不可"な甲標的系装備であるか */
     can_not_op_torpedo_midgetsub?: true,
     /** 高高度爆撃可能な爆撃機であるか */
     high_altitude_bomber?: true,
 }
 
+export type AbyssalEquipFlags = {
+    /** 集中配備系の装備であるか */
+    is_concentrated: boolean,
+    /** 反跳爆撃可能な爆撃機であるか */
+    is_skip_bomber: boolean,
+    /** 開幕雷撃"不可"な甲標的系装備であるか */
+    can_not_op_torpedo_midgetsub: boolean,
+    /** 高高度爆撃可能な爆撃機であるか */
+    high_altitude_bomber: boolean,
+
+    /**
+     * 対潜攻撃力計算に有効な装備種別であるか    
+     * https://wikiwiki.jp/kancolle/戦闘について#AntiSubmarine
+     */
+    is_contribute_asw_attack_power: boolean,
+    can_equip_land_base: boolean,
+    /**
+     * 航空機であるか    
+     * 熟練度をもつ
+     */
+    is_plane: boolean,
+    /**
+     * 制空状態の決定に関与する装備種別であるか    
+     * 対空0でも敵の制空値が0の状況では制空に関与する    
+     * https://wikiwiki.jp/kancolle/航空戦#AirSupremacy
+     */
+    is_involve_air_superiority: boolean,
+    is_torpedo_bomber: boolean,
+    can_contact: boolean,
+    can_detect: boolean,
+    is_dive_bomber: boolean,
+    is_asw_plane: boolean,
+    is_land_base_plane: boolean,
+    is_jet: boolean,
+    can_support_asw: boolean,
+}
+
 export type AbyssalEquipDatas = DeepReadonly<Record<number, AbyssalEquipData>>
+

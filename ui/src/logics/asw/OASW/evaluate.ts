@@ -1,4 +1,4 @@
-import { EquippedPlayerShip } from '@/models/ship/equipped/base';
+import { EquippedShip, is_player_ship } from '@/models/ship/equipped';
 import { evaluate_special_OASW_condition } from './specialConditions';
 import { can_OASW_by_ship_type } from './shipTypeStrategy';
 
@@ -6,7 +6,9 @@ import { can_OASW_by_ship_type } from './shipTypeStrategy';
  * 艦が先制対潜可能か判定して返す    
  * NOTE: 先制対潜は損傷状態、艦載機残存数に影響されないので、装備時点で静的に決定する
  */
-export function evaluateCanOASW(ship: EquippedPlayerShip): boolean {
+export function evaluateCanOASW(ship: EquippedShip): boolean {
+    if (!is_player_ship(ship)) return ship.flags.can_OASW;
+
     return evaluate_special_OASW_condition(ship) === true
         ? true
         : can_OASW_by_ship_type(ship);

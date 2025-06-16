@@ -1,7 +1,7 @@
 import { EquipType } from "@/datas/equip/base/player";
 import { TRANSPORT_EQUIP_DATAS } from "@/datas/equip/transportEquip";
 import { EquipId } from "@/types/brands/equip";
-import { EquipMaster } from "./EquipMaster";
+import { PlayerEquipMaster } from "./master";
 
 export type TransportAddition = {
     model_A: number,
@@ -16,26 +16,26 @@ const findEquipByTypeId = (type_id: EquipType) =>
     TRANSPORT_EQUIP_DATAS.find(equip => equip.equip_type_id === type_id);
 
 const calcTransportPowerModelA = (
-    equip: EquipMaster,
+    equip: PlayerEquipMaster,
 ): number =>
     findEquipByTypeId(equip.type_id)?.model_A ?? 0;
 
 const calcTransportPowerModelB = (
-    equip: EquipMaster,
+    equip: PlayerEquipMaster,
 ): number =>
     findEquipById(equip.master_id)?.model_B ??
     findEquipByTypeId(equip.type_id)?.model_B ??
     0;
 
 const calcTransportPowerModelC = (
-    equip: EquipMaster,
+    equip: PlayerEquipMaster,
 ): number =>
     findEquipById(equip.master_id)?.model_C ??
     findEquipByTypeId(equip.type_id)?.model_C ??
     0;
 
 export function deriveTransportAddition(
-    equip_master: EquipMaster,
+    equip_master: PlayerEquipMaster,
 ): TransportAddition {
     const model_A = calcTransportPowerModelA(equip_master);
     const model_B = calcTransportPowerModelB(equip_master);

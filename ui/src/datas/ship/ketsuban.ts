@@ -1,4 +1,3 @@
-import { ShipType } from "../../types/ship/ship";
 
 /**
  * ! 一段落するまで触らない
@@ -7,7 +6,7 @@ const KETSUBAN_SHIP_DATAS = {
     9001: {
         name: 'Iona',
         nameJP: 'イオナ',
-        type: ShipType.SS,
+        type: "SS",
         HP: 70, HPmax: 78,
         FP: 129, FPbase: 100,
         TP: 129, TPbase: 110,
@@ -25,7 +24,7 @@ const KETSUBAN_SHIP_DATAS = {
     9002: {
         name: 'Takao (Fog)',
         nameJP: 'タカオ',
-        type: ShipType.CA,
+        type: "CA",
         can_laser: true,
         HP: 77, HPmax: 85,
         FP: 139, FPbase: 120,
@@ -44,7 +43,7 @@ const KETSUBAN_SHIP_DATAS = {
     9003: {
         name: 'Haruna (Fog)',
         nameJP: 'ハルナ',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 102, HPmax: 111,
         FP: 149, FPbase: 135,
@@ -63,7 +62,7 @@ const KETSUBAN_SHIP_DATAS = {
     9011: {
         name: 'Nagara-Class mist',
         nameJP: 'ナガラ級mist',
-        type: ShipType.CL,
+        type: "CL",
         can_laser: true,
         HP: 55,
         FP: 75,
@@ -83,7 +82,7 @@ const KETSUBAN_SHIP_DATAS = {
     9012: {
         name: 'Takao mist',
         nameJP: 'タカオmist',
-        type: ShipType.CA,
+        type: "CA",
         can_laser: true,
         HP: 77,
         FP: 150,
@@ -103,7 +102,7 @@ const KETSUBAN_SHIP_DATAS = {
     9013: {
         name: 'Maya mist',
         nameJP: 'マヤmist',
-        type: ShipType.CA,
+        type: "CA",
         can_laser: true,
         HP: 79,
         FP: 160,
@@ -123,7 +122,7 @@ const KETSUBAN_SHIP_DATAS = {
     9014: {
         name: 'Haruna mist',
         nameJP: 'ハルナmist',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 102,
         FP: 200,
@@ -143,7 +142,7 @@ const KETSUBAN_SHIP_DATAS = {
     9015: {
         name: 'Kirishima mist',
         nameJP: 'キリシマmist',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 102,
         FP: 200,
@@ -163,7 +162,7 @@ const KETSUBAN_SHIP_DATAS = {
     9016: {
         name: 'Kongou mist',
         nameJP: 'コンゴウmist',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 142,
         FP: 280,
@@ -183,7 +182,7 @@ const KETSUBAN_SHIP_DATAS = {
     9017: {
         name: 'Nagara-Class *mist*',
         nameJP: 'ナガラ級*mist*',
-        type: ShipType.CL,
+        type: "CL",
         can_laser: true,
         HP: 55,
         FP: 60,
@@ -203,7 +202,7 @@ const KETSUBAN_SHIP_DATAS = {
     9018: {
         name: 'Takao *mist*',
         nameJP: 'タカオ*mist*',
-        type: ShipType.CA,
+        type: "CA",
         can_laser: true,
         HP: 77,
         FP: 88,
@@ -223,7 +222,7 @@ const KETSUBAN_SHIP_DATAS = {
     9019: {
         name: 'Maya *mist*',
         nameJP: 'マヤ*mist*',
-        type: ShipType.CA,
+        type: "CA",
         can_laser: true,
         HP: 79,
         FP: 98,
@@ -243,7 +242,7 @@ const KETSUBAN_SHIP_DATAS = {
     9020: {
         name: 'Haruna *mist*',
         nameJP: 'ハルナ*mist*',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 102,
         FP: 150,
@@ -263,7 +262,7 @@ const KETSUBAN_SHIP_DATAS = {
     9021: {
         name: 'Kirishima *mist*',
         nameJP: 'キリシマ*mist*',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 102,
         FP: 150,
@@ -283,7 +282,7 @@ const KETSUBAN_SHIP_DATAS = {
     9022: {
         name: 'Kongou *mist*',
         nameJP: 'コンゴウ*mist*',
-        type: ShipType.FBB,
+        type: "FBB",
         can_laser: true,
         HP: 142,
         FP: 180,
@@ -303,7 +302,7 @@ const KETSUBAN_SHIP_DATAS = {
     3001: {
         name: '???????',
         nameJP: '???????',
-        type: ShipType.CVB,
+        type: "CVB",
         HP: 92,
         FP: 89,
         TP: 0,
@@ -321,7 +320,7 @@ const KETSUBAN_SHIP_DATAS = {
     3002: {
         name: '????? ?????????? ??????',
         nameJP: '????? ?????????? ??????',
-        type: ShipType.BBV,
+        type: "BBV",
         can_laser: true,
         HP: 999,
         FP: 999,

@@ -1,16 +1,26 @@
-import { make_ship_from_id } from "../generator";
+import { pre_make_player_ship_from_name } from "../generator";
 
-export const make_Ukuru_kai = make_ship_from_id(926);
+/** 鵜来改 */
+export const make_Ukuru_kai = pre_make_player_ship_from_name('鵜来改');
 
-export const make_Mutsuki = make_ship_from_id(1);
-export const make_Fletcher = make_ship_from_id(596);
-export const make_Oyashio = make_ship_from_id(456);
-export const make_Kiyoshimo_kai = make_ship_from_id(325);
-export const make_Shiratsuyu_kai_2 = make_ship_from_id(497);
+/** 睦月 */
+export const make_Mutsuki = pre_make_player_ship_from_name('睦月');
+/** Fletcher */
+export const make_Fletcher = pre_make_player_ship_from_name('Fletcher');
+/** 親潮 */
+export const make_Oyashio = pre_make_player_ship_from_name('親潮');
+/** 清霜改 */
+export const make_Kiyoshimo_kai = pre_make_player_ship_from_name('清霜改');
+/** 白露改二 */
+export const make_Shiratsuyu_kai_2 = pre_make_player_ship_from_name('白露改二');
 
-export const make_Kako_kai_ni = make_ship_from_id(417);
+/** 加古改二 */
+export const make_Kako_kai_ni = pre_make_player_ship_from_name('加古改二');
 
-export const make_Kaga_kai_ni_go = make_ship_from_id(646);
+/** 加賀改二護 */
+export const make_Kaga_kai_ni_go = pre_make_player_ship_from_name('加賀改二護');
+/** Ranger */
+export const make_Ranger = pre_make_player_ship_from_name('Ranger');
 
-export const make_Ise_kai_2 = make_ship_from_id(553);
-
+/** 伊勢改二 */
+export const make_Ise_kai_2 = pre_make_player_ship_from_name('伊勢改二');

@@ -1,35 +1,17 @@
-import { EquipType, PLAYER_EQUIP_DATAS } from "@/datas/equip/base/player";
-import { EquipImprovementType } from "@/datas/equip/improvement";
+import { EquipId } from "@/types/brands/equip";
+import { ABYSSAL_EQUIP_DATAS } from "@/datas/equip/base/abbysal";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
-import { EquipId } from "@/types/brands/equip";
-import { EquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
+import { AbyssalEquipFlags } from "@/types/equip/abbysal";
+import { AbyssalEquipMaster } from ".";
 
-/** マスターデータから直接取得するデータ */
-export type EquipMaster = {
-    readonly master_id: EquipId,
-    readonly name_en: string,
-    readonly name_jp: string,
-    readonly type_id: EquipType,
-    readonly improvement_type: EquipImprovementType,
-    /** 特殊攻撃のトリガーになる装備の種別ID 該当装備でなければ null */
-    readonly skill_trigger_type: SkillTriggerEquipType | null,
-    readonly status: TStatusComponent,
-    readonly flags: EquipFlags,
-}
-
-export function deriveEquipMaster(
+export function derive_abyssal_equip_master(
     id: EquipId,
-): EquipMaster {
-    const equip_data = PLAYER_EQUIP_DATAS[id];
+): AbyssalEquipMaster {
+    const equip_data = ABYSSAL_EQUIP_DATAS[id];
     if (!equip_data) throw new Error(`id: ${id}の装備が見つかりませんでした`);
 
-    const master_id = id;
-    const name_en = equip_data.name;
-    const name_jp = equip_data.nameJP;
-
     const type_id = equip_data.type;
-    const improvement_type = equip_data.improvement_type;
     const skill_trigger_type = equip_data.b_type ?? (EQUIP_TYPE_DATAS[type_id].b_type ?? null);
 
     const status: TStatusComponent = {
@@ -52,21 +34,12 @@ export function deriveEquipMaster(
 
     const type_data = EQUIP_TYPE_DATAS[type_id];
 
-    const flags: EquipFlags = {
-        can_avoid_T_disadvantage: equip_data.can_avoid_T_disadvantage ?? false,
-        can_shell_install_bomber: equip_data.can_shell_install_bomber ?? false,
-        is_night_scout: equip_data.is_night_scout ?? false,
+    const flags: AbyssalEquipFlags = {
         is_concentrated: equip_data.is_concentrated ?? false,
-        is_rocket_fighter: equip_data.is_rocket_fighter ?? false,
         is_skip_bomber: equip_data.is_skip_bomber ?? false,
-        is_special_submarine_CI_torigger: equip_data.is_special_submarine_CI_torigger ?? false,
-        is_DC_only: equip_data.is_DC_only ?? false,
-        is_DCP: equip_data.is_DCP ?? false,
-        can_ASW_penetrate: equip_data.can_ASW_penetrate ?? false,
-        is_Swordfish_family: equip_data.is_Swordfish_family ?? false,
-        can_barrage: equip_data.can_barrage ?? false,
-        is_20th_family: equip_data.is_20th_family ?? false,
-
+        can_not_op_torpedo_midgetsub: equip_data.can_not_op_torpedo_midgetsub ?? false,
+        high_altitude_bomber: equip_data.high_altitude_bomber ?? false,
+    
         // type_data系
         is_contribute_asw_attack_power: type_data.is_contribute_asw_attack_power ?? false,
         can_equip_land_base: type_data.can_equip_land_base ?? false,
@@ -83,11 +56,10 @@ export function deriveEquipMaster(
     }
 
     return {
-        master_id,
-        name_en,
-        name_jp,
+        master_id: id,
+        name_en: equip_data.name,
+        name_jp: equip_data.nameJP,
         type_id,
-        improvement_type,
         skill_trigger_type,
         status,
         flags,

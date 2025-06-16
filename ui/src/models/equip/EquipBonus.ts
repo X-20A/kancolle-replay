@@ -1,7 +1,7 @@
-import { EquipBase } from "./Equip";
+import { PlayerEquip } from "./basic";
 import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
-import { NakedShip } from "../ship/naked/base";
+import { PlayerNakedShip } from "../ship/naked/base";
 import { TStatusComponent } from "@/types";
 
 type EquipBonusType = Omit<TStatusComponent,
@@ -54,8 +54,8 @@ function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBon
  * @returns 合計されたEquipBonus
  */
 export function deriveEquipBonusAddition(
-    ship: NakedShip,
-    equips: EquipBase[],
+    ship: PlayerNakedShip,
+    equips: PlayerEquip[],
 ): TStatusComponent {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
@@ -126,7 +126,7 @@ export function deriveEquipBonusAddition(
         return total_bonus_acc;
     }, DEFAULT_EQUIP_BONUS_COMPONENT);
 
-    if (summary.aerial_torpedo_power) {
+    if (summary.aerial_torpedo_power) { // TODO: ここで艦攻艦爆の変な適用処理のやつできるとうれしい
 
     }
 

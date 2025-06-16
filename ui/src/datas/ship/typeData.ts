@@ -1,5 +1,5 @@
 import { DeepReadonly, TransportPowerModel } from "@/types";
-import { ShipType } from "@/types/ship/ship";
+import { ShipTypeBase } from "@/types/ship/ship";
 
 /**
  * 装備種別ごとの諸元
@@ -11,143 +11,143 @@ export type ShipTypeData = {
     // TODO: CI種別なんかもここがいいかな？
 }
 
-export type ShipTypeDatas = DeepReadonly<Record<ShipType, ShipTypeData>>;
+export type ShipTypeDatas = DeepReadonly<Record<ShipTypeBase, ShipTypeData>>;
 
 export const SHIP_TYPE_DATAS: ShipTypeDatas = {
-    ["DE"]: {
+    "DE": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["DD"]: {
+    "DD": {
         transport_power: {
             model_A: 5,
             model_B: 3.25,
             model_C: 4,
         },
     },
-    ["CL"]: {
+    "CL": {
         transport_power: {
             model_A: 2,
             model_B: 1.3,
             model_C: 1.6,
         },
     },
-    ["CLT"]: {
+    "CLT": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["CA"]: {
+    "CA": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["CAV"]: {
+    "CAV": {
         transport_power: {
             model_A: 4,
             model_B: 2.6,
             model_C: 3.2,
         },
     },
-    ["CVL"]: {
+    "CVL": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["FBB"]: {
+    "FBB": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["BB"]: {
+    "BB": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["BBV"]: {
+    "BBV": {
         transport_power: {
             model_A: 7,
             model_B: 4.55,
             model_C: 5.6,
         },
     },
-    ["CV"]: {
+    "CV": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["SS"]: {
+    "SS": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["SSV"]: {
+    "SSV": {
         transport_power: {
             model_A: 1,
             model_B: 0.65,
             model_C: 0.8,
         },
     },
-    ["AV"]: {
+    "AV": {
         transport_power: {
             model_A: 9,
             model_B: 5.85,
             model_C: 7.2,
         },
     },
-    ["LHA"]: {
+    "LHA": {
         transport_power: {
             model_A: 12,
             model_B: 7.8,
             model_C: 9.6,
         },
     },
-    ["CVB"]: {
+    "CVB": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["AR"]: {
+    "AR": {
         transport_power: {
             model_A: 0,
             model_B: 0,
             model_C: 0,
         },
     },
-    ["AS"]: {
+    "AS": {
         transport_power: {
             model_A: 7,
             model_B: 4.55,
             model_C: 5.6,
         },
     },
-    ["CT"]: {
+    "CT": {
         transport_power: {
             model_A: 6,
             model_B: 3.9,
             model_C: 4.8,
         },
     },
-    ["AO"]: {
+    "AO": {
         transport_power: {
             model_A: 15,
             model_B: 9.75,

@@ -1,7 +1,7 @@
 import { DeepReadonly } from "..";
-import { CVsNightAttackType, InstallType, ShipType, UnknownStatus } from "./ship";
+import { CVsNightAttackType, InstallType, ShipType, ShipTypeBase, UnknownStatus } from "./ship";
 
-export type AbyssalShipType = ShipType | 'AT'
+export type AbyssalShipType = ShipTypeBase | 'AT'
 
 export type AbyssalShipData = {
     name: string,

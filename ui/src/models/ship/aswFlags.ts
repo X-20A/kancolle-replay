@@ -1,10 +1,10 @@
 import { AswEquipFlags } from "@/types/ship/ship";
-import { EquipBase } from "../equip/Equip";
+import { PlayerEquip } from "../equip/basic";
 import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "@/datas/equip/base/player";
 
-export function deriveAswFlags(
-    equips: EquipBase[],
+export function derive_asw_flags(
+    equips: PlayerEquip[],
 ): AswEquipFlags {
     const {
         has_any_plane_bomber,
