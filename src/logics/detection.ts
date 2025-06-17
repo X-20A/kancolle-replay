@@ -1,9 +1,9 @@
 import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
-import { Fleet } from "@/models/fleet/Fleet";
+import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { EquippedShip } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
-import { SeedableRand } from "@/effects/random";
-import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
+import { brandDetectionPower, brandReconPower, DetectionPower, EnemyFleet, OwnFleet, ReconPower } from "@/types/brands/fleet";
+import { Rand } from "@/effects/random";
 
 /// 索敵系
 
@@ -37,7 +37,7 @@ const calc_mod_order = (ship_index: number): number => {
  * @returns 
  */
 const calc_mod_ship_count = (ships_length: number): number => {
-    if (ships_length >= 6) return 4;
+    if (ships_length >=  6) return 4;
     if (ships_length === 5) return 3;
     if (ships_length === 4) return 2;
     if (ships_length === 3) return 1;
@@ -73,20 +73,19 @@ type EquipSummary = {
     proficiency_flat: number,
 }
 
-type FleetDetectionStatus = {
+export type FleetDetectionStatus = {
     recon_power: ReconPower,
     detection_power: DetectionPower,
 }
 
 /**
- * 艦隊の索敵能力評価してを返す    
- * NOTE: 索敵 成功/失敗 による命中・回避への補正に有意差は確認されていない    
- * NOTE: しかし、失敗時は自艦隊が航空戦に参加できない仕様があるので判定は必要    
+ * 艦群の索敵能力評価してを返す
  * @param fleet 
  * @returns 
  */
-export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
-    const ships = fleet.ships;
+export const analyze_ships_detection = (
+    ships: EquippedShip[],
+): FleetDetectionStatus => {
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
         const equip_summary: EquipSummary = ship.equips.reduce((equip_total, equip) => {
             if (
@@ -159,6 +158,30 @@ export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
     }
 }
 
+const sum_fleet_detection_status = (
+    a: FleetDetectionStatus,
+    b: FleetDetectionStatus,
+): FleetDetectionStatus => {
+    return {
+        recon_power: brandReconPower(a.recon_power + b.recon_power),
+        detection_power: brandDetectionPower(a.detection_power + b.detection_power),
+    }
+}
+
+/**
+ * 艦隊の索敵能力評価してを返す    
+ * NOTE: 索敵 成功/失敗 による命中・回避への補正に有意差は確認されていない    
+ * NOTE: しかし、失敗時は自艦隊が航空戦に参加できない仕様があるので判定は必要    
+ * @param fleet 
+ * @returns 
+ */
+export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
+    return sum_fleet_detection_status(
+        analyze_ships_detection(fleet.main_fleet_ships),
+        analyze_ships_detection(fleet.is_combined ? fleet.escort_fleet_ships : []),
+    );
+}
+
 /**
  * 索敵成功率を返す    
  * https://en.kancollewiki.net/Combat/Day_Battle#Detection
@@ -179,26 +202,17 @@ const def_fighter = (enemy_fighter_count: number) => {
 };
 
 /**
- * 索敵フェイズにおける、索敵機の被撃墜数を返す
+ * 索敵フェイズにおける索敵機の被撃墜を反映した EquippedShip[] を返す
  * @param recon_power 
  * @param rand 
  */
-export function calc_shotdowned_recon_fleet(
-    our_fleet: Fleet,
-    enemy_fleet: Fleet,
+const calc_shotdowned_recon_ships = (
     recon_power: ReconPower,
-    rand: SeedableRand,
-): Fleet {
-    const enemy_fighter_count = enemy_fleet.ships.reduce((total, ship) => {
-        return total + ship.equips.reduce((count, equip) => {
-            if (!is_player_equip(equip)) return count;
-
-            return count + (equip.flags.is_involve_air_superiority ? 1 : 0);
-        }, 0);
-    }, 0);
-
-    // 味方艦隊の ship ごとに撃墜処理を実施
-    const updated_ships = our_fleet.ships.map((ship) => {
+    ships: EquippedShip[],
+    total_enemy_fighter_count: number,
+    rand: Rand,
+): EquippedShip[] => {
+    return ships.map((ship) => {
         const updated_slots = ship.slots.map((slot, i) => {
             const equip = ship.equips[i];
             if (
@@ -208,7 +222,8 @@ export function calc_shotdowned_recon_fleet(
             ) return slot;
 
             const rand_val = rand.next() * 0.4 + 1.0; // [1.0, 1.4)
-            const shotdown_val = recon_power - Math.floor(def_fighter(enemy_fighter_count) * rand_val);
+            const shotdown_val =
+                recon_power - Math.floor(def_fighter(total_enemy_fighter_count) * rand_val);
 
             if (shotdown_val <= 0) {
                 const loss = Math.floor(rand.next() * 3); // 0~2
@@ -220,9 +235,60 @@ export function calc_shotdowned_recon_fleet(
 
         return { ...ship, slots: updated_slots };
     });
+}
+
+/**
+ * 敵艦隊の制空に関与する航空機の数を返す
+ * @param enemy_fleet 
+ * @returns 
+ */
+export function calc_enemy_fighter_count(
+    enemy_fleet: EnemyFleet,
+): number {
+    return concat_fleet_ships(enemy_fleet).reduce((total, ship) => {
+        return total + ship.equips.reduce((count, equip) => {
+            if (!is_player_equip(equip)) return count;
+
+            return count + (equip.flags.is_involve_air_superiority ? 1 : 0);
+        }, 0);
+    }, 0);
+}
+
+/**
+ * 索敵フェイズにおける索敵機の被撃墜を反映した Fleet を返す
+ * @param recon_power 
+ * @param rand 
+ */
+export function calc_shotdowned_recon_fleet(
+    own_fleet: OwnFleet,
+    recon_power: ReconPower,
+    total_enemy_fighter_count: number,
+    rand: Rand,
+): OwnFleet {
+    // 味方艦隊の ship ごとに撃墜処理を実施
+    // ? 随伴艦隊も索敵機を飛ばすとして
+    const updated_main_fleet_ships = calc_shotdowned_recon_ships(
+        recon_power,
+        own_fleet.main_fleet_ships,
+        total_enemy_fighter_count,
+        rand,
+    );
+
+    if (!own_fleet.is_combined) return {
+        ...own_fleet,
+        main_fleet_ships: updated_main_fleet_ships,
+    };
+
+    const updated_escort_fleet_ships = calc_shotdowned_recon_ships(
+        recon_power,
+        own_fleet.escort_fleet_ships,
+        total_enemy_fighter_count,
+        rand,
+    );
 
     return {
-        ...our_fleet,
-        ships: updated_ships,
-    };
+        ...own_fleet,
+        main_fleet_ships: updated_main_fleet_ships,
+        escort_fleet_ships: updated_escort_fleet_ships,
+    }
 }
