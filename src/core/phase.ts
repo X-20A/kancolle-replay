@@ -2,13 +2,44 @@ import { Rand } from "@/effects/random";
 import { analyze_fleet_detection, calc_detection_success_rate, calc_enemy_fighter_count, calc_shotdowned_recon_fleet } from "@/logics/detection";
 import { UserSettings } from "./SimExecuter";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/logics/smokeScreen";
-import { EnemyFleet, OwnFleet } from "@/types/brands/fleet";
+import { EnemyFleet, OwnFleet, OwnFleetState } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
+import { calc_maritime_resupply_count, calc_supplied_fleet_state, calc_supply_ratio } from "@/logics/maritimeResupply";
 
 /// 各フェイズを制御する
 /// sim_execute と logics を繋ぐ
 /// 新しい構造体へのマージはここでやって、logics とは必要な値だけやりとりする
+
+/**
+ * 海上補給フェイズ    
+ * NOTE: おにぎり系はひとまず無視
+ * NOTE: 残燃料・弾薬条件は無視してボス前自動発動のみ
+ * @param own_fleet 
+ * @param node 
+ * @returns 
+ */
+export function calc_maritime_resupply_phase(
+    own_fleet: OwnFleet,
+    own_fleet_state: OwnFleetState,
+    node: Node,
+): OwnFleetState {
+    if (!node.type.is_boss) return own_fleet_state;
+
+    const maritime_resupply_locations = calc_maritime_resupply_count(own_fleet, own_fleet_state);
+    if (!maritime_resupply_locations.length) return own_fleet_state;
+
+    const supply_ratio = calc_supply_ratio(
+        own_fleet,
+        maritime_resupply_locations.length,
+    );
+
+    return calc_supplied_fleet_state(
+        own_fleet_state,
+        supply_ratio,
+        maritime_resupply_locations,
+    );
+}
 
 type DetectionPhaseResult = {
     post_detection_phase_node: Node,
