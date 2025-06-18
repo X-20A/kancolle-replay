@@ -26,6 +26,12 @@ export const SG_INITIAL_RADAR = make_player_equip_from_name('SG レーダー(初
 /** GFCS Mk.37 */
 export const GFCS_RADAR = make_player_equip_from_name('GFCS Mk.37');
 
+/** 試製烈風 後期型 */
+export const REPPUU = make_player_equip_from_name('試製烈風 後期型');
+/** XF5U */
+export const XF5U = make_player_equip_from_name('XF5U');
+
+
 /** F4U-1D asw: 1 */
 export const F4U_1D = make_player_equip_from_name('F4U-1D');
 

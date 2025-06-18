@@ -39,12 +39,19 @@ export type OtherEquip = EquipBase & {
     readonly contribute_asw_attack_power: number,
 }
 
+/** 航空機熟練度を持つ航空機全般 */
 export type PlaneEquip = OtherEquip & {
     /** 航空機熟練度 */
     readonly plane_proficiency: number,
 }
 
-export type PlayerEquip = OtherEquip | PlaneEquip
+/** 噴式強襲可能なジェット機系 */
+export type JetBomberEquip = PlaneEquip & {
+    /** 噴式強襲回数 */
+    readonly jet_assault_count: number,
+}
+
+export type PlayerEquip = OtherEquip | PlaneEquip | JetBomberEquip
 
 export type AbyssalEquip = EquipBase & { // PlayerEquipは航空機なら追加で航空機熟練度がありますよ
     readonly flags: AbyssalEquipFlags,
@@ -58,6 +65,10 @@ export function is_player_equip(equip: Equip): equip is PlayerEquip {
 
 export function is_plane_equip(equip: PlayerEquip): equip is PlaneEquip {
     return equip.flags.is_plane;
+}
+
+export function is_jet_bomber_equip(equip: PlayerEquip): equip is JetBomberEquip {
+    return equip.type_id === EquipType.JET_BOMBER;
 }
 
 export function derive_equip(

@@ -4,6 +4,8 @@ import { EnemyFleet, OwnFleet } from "@/types/brands/fleet.js";
 import { Node } from "@/models/Node.js";
 import { LBAS } from "@/models/LBAS.js";
 
+/// 1つのNodeにおいて実行する処理
+
 export type UserSettings = {
     smoke_screen_trigger_node_index: number[],
 }
@@ -13,7 +15,7 @@ export function sim_execute(
     settings: UserSettings,
     own_fleet: OwnFleet,
     enemy_fleet: EnemyFleet,
-    lbas: LBAS,
+    lbases: LBAS[],
     rand: Rand,
 ) { // NOTE: 更新していくデータをcontextにまとめてpipeすると見やすくなるかもだけど、コピーコスト嵩みそう
     const detection_phase_result = calc_detection_phase(

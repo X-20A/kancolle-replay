@@ -145,14 +145,12 @@ export function calc_triggered_smoke_type(
     rand: Rand,
 ): SmokeScreenType {
     const rand_value = rand.next() * 100; // 0～100
-    console.log('rand: ', rand_value);
 
     // 確率の累積値を計算
     const misfire = rates.Misfire;
     const single = misfire + rates.Single;
     const twofold = single + rates.Twofold;
 
-    console.log('single: ', single);
 
     // 低い効果から順に判定
     if (rand_value < misfire) return 'Misfire';

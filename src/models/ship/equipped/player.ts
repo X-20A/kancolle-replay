@@ -1,4 +1,4 @@
-import { ShipId, ShipLv, ShipUniqueId } from "@/types/brands/ship";
+import { brandUniqueId, ShipId, ShipLv, ShipUniqueId } from "@/types/brands/ship";
 import { PlayerEquippedShip, merge_status_components_with_max_range, sum_status_components } from ".";
 import { Equip, is_player_equip } from "@/models/equip/basic";
 import { ModernizationType, SpecialItemId } from "@/types/ship/ship";
@@ -54,8 +54,6 @@ export function derive_equipped_player_ship(
             return total + equip.contribute_asw_attack_power;
         }, 0);
 
-    const edited_status = edit_input ?? view_status;
-
     const asw_flags = derive_asw_flags(player_equips);
     const flags = {
         ...naked_ship.flags,
@@ -65,7 +63,7 @@ export function derive_equipped_player_ship(
     return {
         master_id: naked_ship.master_id,
         base_id: naked_ship.base_id,
-        unique_id,
+        unique_id: brandUniqueId(crypto.randomUUID()),
         name_en: naked_ship.name_en,
         name_jp: naked_ship.name_jp,
         lv,
@@ -81,7 +79,7 @@ export function derive_equipped_player_ship(
         total_equip_improvement_addition,
         special_item_addition,
         view_status,
-        edited_status,
+        edited_status: edit_input ?? view_status,
         total_contribute_asw_attack_power: total_valid_asw,
     }
 }

@@ -94,6 +94,7 @@ export const analyze_ships_detection = (
                 || !equip.flags.can_detect
             ) return equip_total;
 
+            // NOTE: 索敵機は残機0でも有効
             const total_plane_los = equip_total.total_plane_los
                 + equip.natural_addition.los
                 + equip.improvement_addition.los; // 装備ボーナス未考慮 入ってそうではあるが、どうしよっかな
@@ -213,10 +214,11 @@ const calc_shotdowned_recon_ships = (
     rand: Rand,
 ): EquippedShip[] => {
     return ships.map((ship) => {
-        const updated_slots = ship.slots.map((slot, i) => {
-            const equip = ship.equips[i];
+        const updated_slots = ship.slots.map((slot, index) => {
+            const equip = ship.equips[index];
             if (
-                !is_player_equip(equip)
+                !equip
+                || !is_player_equip(equip)
                 || !equip.flags.can_detect
                 || slot > 0
             ) return slot;

@@ -2,8 +2,9 @@ import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { deriveEquipImprovementAddition } from "../EquipImprovement";
 import { derive_player_equip_master } from "../master/player";
 import { deriveTransportAddition } from "../TransportPower";
-import { PlaneEquip, PlayerEquip } from ".";
+import { JetBomberEquip, OtherEquip, PlaneEquip, PlayerEquip } from ".";
 import { EquipId } from "@/types/brands/equip";
+import { EquipType } from "@/datas/equip/base/player";
 
 export function derive_player_equip(
     improvement_lv: number,
@@ -12,8 +13,7 @@ export function derive_player_equip(
 ): PlayerEquip {
     const equip_master = derive_player_equip_master(master_id);
 
-    // 基本プロパティ
-    const base: PlayerEquip = {
+    const other_equip: OtherEquip = {
         master_id,
         name_en: equip_master.name_en,
         name_jp: equip_master.name_jp,
@@ -32,16 +32,19 @@ export function derive_player_equip(
             : 0,
     };
 
-    // 航空機かどうかで分岐
-    if (equip_master.flags.is_plane) {
-        const plane_proficiency = proficiency ?? 100;
-        
-        const plane_equip: PlaneEquip = {
-            ...base,
-            plane_proficiency,
-        };
-        return plane_equip;
+    if (!equip_master.flags.is_plane) return other_equip;
+
+    const plane_equip: PlaneEquip = {
+        ...other_equip,
+        plane_proficiency: proficiency ?? 100,
+    };
+
+    if (equip_master.type_id !== EquipType.JET_BOMBER) return plane_equip;
+
+    const jet_bomber_equip: JetBomberEquip = {
+        ...plane_equip,
+        jet_assault_count: 0,
     }
-    
-    return base;
+
+    return jet_bomber_equip;
 }

@@ -1,4 +1,4 @@
-import { brandShipLv, ShipId, ShipUniqueId } from "@/types/brands/ship";
+import { brandShipLv, brandUniqueId, ShipId, ShipUniqueId } from "@/types/brands/ship";
 import { AbyssalEquippedShip, merge_status_components_with_max_range } from ".";
 import { derive_abyssal_naked_ship } from "../naked/abyssal";
 import { brandEquipId } from "@/types/brands/equip";
@@ -36,7 +36,7 @@ export function derive_equipped_abyssal_ship(
 
     return {
         master_id: naked_ship.master_id,
-        unique_id: unique_id,
+        unique_id: brandUniqueId(crypto.randomUUID()),
         name_en: naked_ship.name_en,
         name_jp: naked_ship.name_jp,
         lv: brandShipLv(1),

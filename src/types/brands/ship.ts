@@ -11,7 +11,7 @@ export type ShipBaseId = Brand<number, 'ShipBaseId'>
 /**
  * 艦を一意に識別するためのID
  */
-export type ShipUniqueId = Brand<number, 'ShipUniqueId'>
+export type ShipUniqueId = Brand<string, 'ShipUniqueId'>
 /**
  * 艦名(EN)
  */
@@ -34,7 +34,7 @@ export const brandShipBaseId =
     (value: number): ShipBaseId => brand<number, 'ShipBaseId'>(value);
 
 export const brandUniqueId =
-    (value: number): ShipUniqueId => brand<number, 'ShipUniqueId'>(value);
+    (value: string): ShipUniqueId => brand<string, 'ShipUniqueId'>(value);
 
 export const brandShipNameEN =
     (value: string): ShipNameEN => brand<string, 'ShipNameEN'>(value);

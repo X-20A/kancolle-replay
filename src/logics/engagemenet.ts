@@ -1,6 +1,6 @@
 import { Rand } from "@/effects/random"
 import { is_player_equip } from "@/models/equip/basic";
-import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
+import { concat_fleet_ships } from "@/models/fleet/Fleet"
 import { OwnFleet } from "@/types/brands/fleet";
 
 const ENGAGEMENT_TYPE = {
@@ -37,8 +37,10 @@ export function calc_engagement(
                     'Disadvantage_T';
 
     const has_saiun = concat_fleet_ships(own_fleet).some(ship => {
-        ship.equips.some(equip => {
-            is_player_equip(equip) && equip.flags.can_avoid_T_disadvantage;
+        ship.equips.some((equip, index) => {
+            is_player_equip(equip)
+            && equip.flags.can_avoid_T_disadvantage
+            && ship.slots[index] >= 1;
         });
     });
 
