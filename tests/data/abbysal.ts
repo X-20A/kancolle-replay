@@ -21,7 +21,7 @@ export const REGACY_ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
         nameJP: '3inch単装高角砲',
         type: "MAIN_GUN_S",
         icon: SpecialIcon.MainHighAngleGun,
-        a_type: AACITriggerEquipType.A_GUN, //regular gun in AA calculation?
+        a_type: 'A_GUN', //regular gun in AA calculation?
         FP: 1,
         AA: 1,
         RNG: 1,
@@ -455,7 +455,7 @@ export const REGACY_ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
         name: 'Abyssal FCS + CIC',
         nameJP: '深海FCS+CIC',
         type: "SONAR_S",
-        a_type: AACITriggerEquipType.A_GUN, //.2 mult
+        a_type: 'A_GUN', //.2 mult
         AA: 6,
         ASW: 20,
         EV: 3,
@@ -654,7 +654,7 @@ export const REGACY_ABYSSAL_EQUIP_DATAS: AbyssalEquipDatas = {
         nameJP: '深海15inch連装砲後期型',
         icon: SpecialIcon.MainHighAngleGun,
         type: "MAIN_GUN_L",
-        a_type: AACITriggerEquipType.A_HAFD,
+        a_type: 'A_HAFD',
         FP: 19,
         AA: 8,
         AR: 1,
