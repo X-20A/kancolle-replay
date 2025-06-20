@@ -25,17 +25,20 @@ export const enum SkillTriggerEquipType {
 }
 
 /** 対空CIのトリガーになる装備の種別ID */
-export const enum AACITriggerEquipType {
-    A_HAGUN = 1,
-    A_AAFD = 2,
-    A_HAFD = 3,
-    A_MAINGUNL = 4,
-    A_TYPE3SHELL = 5,
-    A_AIRRADAR = 6,
-    A_AAGUN = 7,
-    A_GUN = 8,
-    A_XLGUN = 9,
-}
+const AACI_TRIGGER_EQUIP_TYPE = {
+    NONE: 0,
+    A_HAGUN: 1,
+    A_AAFD: 2,
+    A_HAFD: 3,
+    A_MAINGUNL: 4,
+    A_TYPE3SHELL: 5,
+    A_AIRRADAR: 6,
+    A_AAGUN: 7,
+    A_GUN: 8,
+    A_XLGUN: 9,
+} as const;
+
+export type AACITriggerEquipType = keyof typeof AACI_TRIGGER_EQUIP_TYPE
 
 /** 装備フィット種別ID(艦のものとは別?) */
 export type EquipFitClass =

@@ -1,86 +1,9 @@
+import { EquipImprovementType } from "@/datas/equip/improvement";
 import { AACITriggerEquipType, EquipDatas as PlayerEquipDatas, SkillTriggerEquipType, SpecialIcon } from "@/types/equip/player";
-import { EquipImprovementType } from "../improvement";
-
-/** プレイヤー装備種別ID */
-export const EQUIP_TYPE = {
-    MAIN_GUN_S: 1,
-    MAIN_GUN_S_AA: 101,
-    MAIN_GUN_M: 2,
-    MAIN_GUN_L: 3,
-    SECONDARY_GUN: 4,
-    SECONDARY_GUN_AA: 104,
-    TORPEDO: 5,
-    FIGHTER: 6,
-    DIVE_BOMBER: 7,
-    TORPEDO_BOMBER: 8,
-    CARRIER_SCOUT: 9,
-    SEAPLANE: 10,
-    SEAPLANE_BOMBER: 11,
-    RADAR_S: 12,
-    RADAR_L: 13,
-    SONAR_S: 14,
-    /** 爆雷 && 爆雷投射機 */
-    DEPTH_CHARGE: 15,
-    ENGINE: 17,
-    TYPE_3_SHELL: 18,
-    AP_SHELL: 19,
-    AA_GUN: 21,
-    MIDGET_SUBMARINE: 22,
-    REPAIR: 23,
-    LANDING_CRAFT: 24,
-    AUTOGYRO: 25,
-    ASW_PLANE: 26,
-    BULGE_M: 27,
-    BULGE_L: 28,
-    SEARCHLIGHT_S: 29,
-    DRUM: 30,
-    SRF: 31,
-    TORPEDO_SS: 32,
-    STARSHELL: 33,
-    FCF: 34,
-    SCAMP: 35,
-    ANTI_AIR_FIRE_DIRECTOR: 36,
-    WG42: 37,
-    MAIN_GUN_XL: 38,
-    PICKET: 39,
-    SONAR_L: 40,
-    FLYING_BOAT: 41,
-    SEARCHLIGHT_L: 42,
-    RATION: 43,
-    OILDRUM: 44,
-    SEAPLANE_FIGHTER: 45,
-    LANDING_TANK: 46,
-    LAND_BASED_BOMBER: 47,
-    INTERCEPTOR: 48,
-    LAND_BASED_SCOUT: 49,
-    LAND_BASED_BOMBER_L: 53,
-
-
-    TRANSPORT_ITEM: 50,
-    SUBMARINE_RADAR: 51,
-    ARMY_UNIT: 52,
-
-    SMOKESCREEN: 54,
-    JET_BOMBER: 57,
-    // JETSCOUT: 59,
-    RADAR_XL: 93,
-    CARRIER_SCOUT_2: 94,
-    SECONDARY_GUN_L: 95,
-    OTHER: 99,
-
-    // 新規
-
-    /** 爆戦 */
-    FIGHTER_BOMBER: 70,
-    /** 阻塞気球 */
-    BARRAGE_BALLOON: 79,
-} as const;
-
-export type EquipType = keyof typeof EQUIP_TYPE
 
 // 基地航空隊装備も分けるか？ - 現状分けるほどでも無い
 
-export const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
+export const REGACY_PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
     1: {
         name: '12cm Single Cannon',
         nameJP: '12cm単装砲',

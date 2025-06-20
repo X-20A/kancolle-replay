@@ -55,14 +55,15 @@ export function derive_abyssal_equip_master(
         can_support_asw: type_data.can_support_asw ?? false,
     }
 
-    const icon = equip_data.icon ?? type_data.icon;
-    const aaci_trigger_type = calc_aaci_trigger_type(skill_trigger_type, equip_data, type_data, icon, status.anti_air);
+    const icon_id = equip_data.icon ?? type_data.icon;
+    const aaci_trigger_type = calc_aaci_trigger_type(skill_trigger_type, equip_data, type_data, icon_id, status.anti_air);
 
     return {
         master_id: id,
         name_en: equip_data.name,
         name_jp: equip_data.nameJP,
         type_id,
+        icon_id,
         skill_trigger_type,
         aaci_trigger_type,
         status,

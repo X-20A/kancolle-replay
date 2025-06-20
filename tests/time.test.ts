@@ -25,6 +25,7 @@ describe('処理時間テスト', () => {
                 is_aerial_combat: false,
                 is_airstrike_supported: false,
                 is_ambush: false,
+                is_ss_only: false,
             },
             index: 0,
             is_detection_success: false,
