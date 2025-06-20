@@ -67,7 +67,7 @@ export type EquipBonusData = {
 
 export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
     {
-        types: [EquipType.CARRIER_SCOUT],
+        types: ["CARRIER_SCOUT"],
         bonuses: [
             {
                 addition: { los: 1 },
@@ -96,7 +96,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEAPLANE],
+        types: ["SEAPLANE"],
         bonuses: [
             {
                 addition: { fire_power: 2, asw: 3, evasion: 1 },
@@ -111,7 +111,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEAPLANE_BOMBER],
+        types: ["SEAPLANE_BOMBER"],
         bonuses: [
             {
                 addition: { fire_power: 1, asw: 1, evasion: 1 },
@@ -127,7 +127,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.RADAR_S, EquipType.RADAR_L],
+        types: ["RADAR_S", "RADAR_L"],
         bonuses: [
             {
                 addition: { fire_power: 1, anti_air: 2, evasion: 3 },
@@ -144,7 +144,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.AUTOGYRO],
+        types: ["AUTOGYRO"],
         bonuses: [
             {
                 addition: { asw: 4, evasion: 1 },
@@ -159,7 +159,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEARCHLIGHT_S],
+        types: ["SEARCHLIGHT_S"],
         bonuses: [
             {
                 addition: { fire_power: 4, evasion: -1 },
@@ -187,7 +187,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ]
     },
     {
-        types: [EquipType.SEARCHLIGHT_L],
+        types: ["SEARCHLIGHT_L"],
         bonuses: [
             {
                 addition: { fire_power: 6, evasion: -2 },
@@ -4301,7 +4301,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
             {
                 addition: { fire_power: 1, anti_air: 2, evasion: 1 },
                 ship_ids: [407, 665],
-                requires_synergy_equip_type_ids: [21],
+                requires_synergy_equip_type_ids: ['AA_GUN'],
                 stack_limit: 1
             }
         ]
@@ -4732,7 +4732,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
             {
                 addition: { fire_power: 3, asw: 6 },
                 ship_ids: [646],
-                requires_synergy_equip_type_ids: [25],
+                requires_synergy_equip_type_ids: ['AUTOGYRO'],
                 stack_limit: 1
             },
             {

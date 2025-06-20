@@ -5,7 +5,6 @@ import { DeepReadonly, TStatusComponent } from "@/types"
 import { EquipId } from "@/types/brands/equip"
 import { AbyssalEquipData, AbyssalEquipFlags } from "@/types/equip/abbysal"
 import { AACITriggerEquipType, PlayerEquipData, PlayerEquipFlags, SkillTriggerEquipType, SpecialIcon } from "@/types/equip/player"
-import { PlayerShipData } from "@/types/ship/ship"
 
 /** マスターデータから直接取得するデータ */
 export type EquipMasterBase = {

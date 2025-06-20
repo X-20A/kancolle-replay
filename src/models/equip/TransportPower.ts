@@ -13,7 +13,7 @@ const findEquipById = (id: EquipId) =>
     TRANSPORT_EQUIP_DATAS.find(data => data.equip_id === id);
 
 const findEquipByTypeId = (type_id: EquipType) =>
-    TRANSPORT_EQUIP_DATAS.find(equip => equip.equip_type_id === type_id);
+    TRANSPORT_EQUIP_DATAS.find(equip => equip.equip_type === type_id);
 
 const calcTransportPowerModelA = (
     equip: PlayerEquipMaster,

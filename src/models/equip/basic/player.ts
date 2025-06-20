@@ -4,7 +4,6 @@ import { derive_player_equip_master } from "../master/player";
 import { deriveTransportAddition } from "../TransportPower";
 import { JetBomberEquip, OtherEquip, PlaneEquip, PlayerEquip } from ".";
 import { EquipId } from "@/types/brands/equip";
-import { EquipType } from "@/datas/equip/base/player";
 
 export function derive_player_equip(
     improvement_lv: number,
@@ -40,7 +39,7 @@ export function derive_player_equip(
         plane_proficiency: proficiency ?? 100,
     };
 
-    if (equip_master.type_id !== EquipType.JET_BOMBER) return plane_equip;
+    if (equip_master.type_id !== "JET_BOMBER") return plane_equip;
 
     const jet_bomber_equip: JetBomberEquip = {
         ...plane_equip,

@@ -2,7 +2,7 @@ import { EquipType } from "./base/player";
 
 type TransportEquipData = {
     equip_id?: number;
-    equip_type_id?: number;
+    equip_type?: EquipType;
     model_A?: number; // calcTransportPowerModelA()
     model_B?: number; // calcTransportPowerModelB()
     model_C?: number; // calcTransportPowerModelC()
@@ -13,25 +13,25 @@ export type TransportEquipDatas = TransportEquipData[]
 export const TRANSPORT_EQUIP_DATAS: TransportEquipDatas = [
     // equip_type_idベース
     {
-        equip_type_id: EquipType.LANDING_CRAFT,
+        equip_type: "LANDING_CRAFT",
         model_A: 8,
         model_B: 5.2,
         model_C: 6.4,
     },
     {
-        equip_type_id: EquipType.DRUM,
+        equip_type: "DRUM",
         model_A: 5,
         model_B: 3.25,
         model_C: 4,
     },
     {
-        equip_type_id: EquipType.RATION,
+        equip_type: "RATION",
         model_A: 1,
         model_B: 0.65,
         model_C: 0.8,
     },
     {
-        equip_type_id: EquipType.LANDING_TANK,
+        equip_type: "LANDING_TANK",
         model_A: 2,
     },
 

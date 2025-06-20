@@ -70,7 +70,7 @@ export function is_plane_equip(equip: PlayerEquip): equip is PlaneEquip {
 }
 
 export function is_jet_bomber_equip(equip: PlayerEquip): equip is JetBomberEquip {
-    return equip.type_id === EquipType.JET_BOMBER;
+    return equip.type_id === "JET_BOMBER";
 }
 
 export function derive_equip(

@@ -25,30 +25,30 @@ export function derive_asw_flags(
     } = equips.reduce(
         (acc, equip) => {
             const has_any_plane_bomber = [
-                EquipType.DIVE_BOMBER,
-                EquipType.FIGHTER_BOMBER,
-                EquipType.TORPEDO_BOMBER,
+                "DIVE_BOMBER",
+                "FIGHTER_BOMBER",
+                "TORPEDO_BOMBER",
             ].includes(equip.type_id);
             const has_positive_asw_dive_bomber =
-                [EquipType.DIVE_BOMBER, EquipType.FIGHTER_BOMBER].includes(equip.type_id)
+                ["DIVE_BOMBER", "FIGHTER_BOMBER"].includes(equip.type_id)
                 && equip.natural_addition.asw >= 1;
             const has_positive_asw_torpedo_bomber =
-                equip.type_id === EquipType.TORPEDO_BOMBER
+                equip.type_id === "TORPEDO_BOMBER"
                 && equip.natural_addition.asw >= 1;
-            const has_asw_plane = equip.type_id === EquipType.ASW_PLANE;
-            const has_autogyro = equip.type_id === EquipType.AUTOGYRO;
+            const has_asw_plane = equip.type_id === "ASW_PLANE";
+            const has_autogyro = equip.type_id === "AUTOGYRO";
             const has_high_asw_torpedo_bomber =
-                equip.type_id === EquipType.TORPEDO_BOMBER
+                equip.type_id === "TORPEDO_BOMBER"
                 && equip.natural_addition.asw >= 7;
-            const has_seaplane_bomber = equip.type_id === EquipType.SEAPLANE_BOMBER;
+            const has_seaplane_bomber = equip.type_id === "SEAPLANE_BOMBER";
             const has_any_S51J = [
                 326, // S-51J
                 327, // S-51J改
             ].includes(equip.master_id);
-            const is_low_autogyro = equip.type_id === EquipType.AUTOGYRO && !has_any_S51J;
+            const is_low_autogyro = equip.type_id === "AUTOGYRO" && !has_any_S51J;
 
             const has_any_sonar = equip.skill_trigger_type === SkillTriggerEquipType.B_SONAR;
-            const has_small_sonar = equip.type_id === EquipType.SONAR_S;
+            const has_small_sonar = equip.type_id === "SONAR_S";
             const has_any_DC = equip.skill_trigger_type === SkillTriggerEquipType.B_DEPTHCHARGE;
             const has_DCP = equip.flags.is_DCP;
             const has_DC = equip.flags.is_DC_only;

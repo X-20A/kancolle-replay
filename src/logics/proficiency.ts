@@ -46,12 +46,12 @@ const calc_air_superiority_bonus = (equip: PlaneEquip): number => {
     const type_id = equip.type_id;
 
     const is_fighter = [
-        EquipType.FIGHTER,
-        EquipType.SEAPLANE_FIGHTER,
-        EquipType.INTERCEPTOR
+        "FIGHTER",
+        "SEAPLANE_FIGHTER",
+        "INTERCEPTOR"
     ].includes(type_id) || equip.flags.is_20th_family;
 
-    const is_seaplane_bomber = type_id === EquipType.SEAPLANE_BOMBER;
+    const is_seaplane_bomber = type_id === "SEAPLANE_BOMBER";
 
     return (
         plane_proficiency >= 100 ? (is_fighter ? 22 : is_seaplane_bomber ? 6 : 0) :
@@ -81,7 +81,7 @@ export function calc_plane_proficiency_flat(
     equip: PlayerEquip,
 ): number {
     if (!is_plane_equip(equip)) return 0;
-    if (equip.type_id === EquipType.ASW_PLANE && !equip.flags.is_20th_family) return 0;
+    if (equip.type_id === "ASW_PLANE" && !equip.flags.is_20th_family) return 0;
 
     return calc_air_superiority_bonus(equip) + calc_internal_bonus(equip.plane_proficiency);
 }

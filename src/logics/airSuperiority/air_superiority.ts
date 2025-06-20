@@ -102,8 +102,8 @@ const calc_Ks = (
     air_state: AirStateType,
 ): Ks => {
     if (
-        (unit.type_id === EquipType.ASW_PLANE && !unit.flags.is_20th_family)
-        || unit.type_id === EquipType.AUTOGYRO
+        (unit.type_id === "ASW_PLANE" && !unit.flags.is_20th_family)
+        || unit.type_id === "AUTOGYRO"
     ) {
         return match(air_state)
             .with(P.union('Supremacy', 'Superiority', 'Parity'), () => ({
