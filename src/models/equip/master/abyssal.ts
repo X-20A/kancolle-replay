@@ -3,7 +3,7 @@ import { ABYSSAL_EQUIP_DATAS } from "@/datas/equip/base/abbysal";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { AbyssalEquipFlags } from "@/types/equip/abbysal";
-import { AbyssalEquipMaster, calc_aaci_trigger_type } from ".";
+import { AbyssalEquipMaster } from ".";
 
 export function derive_abyssal_equip_master(
     id: EquipId,
@@ -56,8 +56,7 @@ export function derive_abyssal_equip_master(
     }
 
     const icon_id = equip_data.icon ?? type_data.icon;
-    const aaci_trigger_type = calc_aaci_trigger_type(skill_trigger_type, equip_data, type_data, icon_id, status.anti_air);
-
+    
     return {
         master_id: id,
         name_en: equip_data.name,
@@ -65,7 +64,7 @@ export function derive_abyssal_equip_master(
         type_id,
         icon_id,
         skill_trigger_type,
-        aaci_trigger_type,
+        aaci_trigger_type: equip_data.aaci_type,
         status,
         flags,
     }

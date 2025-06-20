@@ -3,7 +3,7 @@ import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
 import { PlayerEquipFlags } from "@/types/equip/player";
-import { calc_aaci_trigger_type, PlayerEquipMaster } from ".";
+import { PlayerEquipMaster } from ".";
 
 export function derive_player_equip_master(
     id: EquipId,
@@ -73,7 +73,7 @@ export function derive_player_equip_master(
         icon_id,
         improvement_type: equip_data.improvement_type,
         skill_trigger_type,
-        aaci_trigger_type: calc_aaci_trigger_type(skill_trigger_type, equip_data, type_data, icon_id, status.anti_air),
+        aaci_trigger_type: equip_data.aaci_type,
         status,
         flags,
     }

@@ -9,11 +9,8 @@ export type AbyssalEquipData = {
     nameJP: string,
     /** 装備種別ID */
     type: EquipType,
-    /**
-     * 対空CIのトリガーになる装備の種別ID    
-     * ! データ駆動にあらず
-     */
-    a_type?: AACITriggerEquipType,
+    /** 対空CIのトリガーになる装備の種別ID */
+    aaci_type: AACITriggerEquipType,
     /**
      * 特殊攻撃のトリガーになる装備の種別ID    
      * ! データ駆動にあらず
