@@ -10,7 +10,7 @@ import { AACITriggerEquipType } from "@/types/equip/player";
 
 
 /**
- * 艦隊から対空に参加可能な艦を抽出して返す
+ * 艦隊から対空射撃に参加可能な艦を抽出して返す
  * @param fleet 
  * @returns 
  */
@@ -21,7 +21,9 @@ const extract_defender_ships = (fleet: Fleet): EquippedShip[] => {
 }
 
 /**
- * 装備倍率を返す
+ * 装備倍率を返す    
+ * NOTE: wikiでは4,6,3となっているが、それは艦これ改解析前の検証であるらしい
+ * NOTE: どちらにせよ、割合撃墜と固定撃墜では帳尻が合う
  * @param equip 
  * @returns 
  */
@@ -29,15 +31,15 @@ const calc_equip_type_mod = (
     equip: Equip,
 ): number => {
     console.log('a_type: ', equip.aaci_trigger_type);
-    switch (equip.aaci_trigger_type) {
+    switch (equip.type_id) {
         case AACITriggerEquipType.A_HAGUN:
         case AACITriggerEquipType.A_HAFD:
         case AACITriggerEquipType.A_AAFD:
-            return 4;
+            return 2;
         case AACITriggerEquipType.A_AAGUN:
-            return 6;
-        case AACITriggerEquipType.A_AIRRADAR:
             return 3;
+        case AACITriggerEquipType.A_AIRRADAR:
+            return 1.5;
         default:
             return 0;
     }
@@ -55,7 +57,9 @@ const calc_total_N = (
     }, 0);
 }
 
-/** 艦の加重対空値を返す */
+/**
+ * 艦の加重対空値を返す
+ */
 export function calc_weighted_anti_air(
     ship: EquippedShip,
 ): number {
@@ -74,12 +78,21 @@ export function calc_weighted_anti_air(
     }
 }
 
+/**
+ * 割合撃墜数を返す
+ */
 const calc_prop_shotdown_count = (
 
 ): number => {
 
 }
 
+/**
+ * 対空射撃を受けた後のLBASを返す
+ * @param lbas 
+ * @param enemy_fleet 
+ * @param rand 
+ */
 export function calc_anti_air_fired_lbas<T extends LBAS | JetOnlyLBAS>(
     lbas: T,
     enemy_fleet: EnemyFleet,
