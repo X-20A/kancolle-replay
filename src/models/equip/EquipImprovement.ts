@@ -59,18 +59,18 @@ export function deriveEquipImprovementAddition(
     improvement_type: EquipImprovementType,
     improvement_lv: number,
 ): EquipImprovementAddition {
-    const base = EQUIP_IMPLOVEMENT_DATAS[improvement_type] ?? {};
+    const improvement_data = EQUIP_IMPLOVEMENT_DATAS[improvement_type];
 
-    return ADD_STATUS_KEYS.reduce((acc, key) => {
-        const config = base[key];
-        if (!config) return acc;
+    return ADD_STATUS_KEYS.reduce((total, key) => {
+        const config = improvement_data[key];
+        if (!config) return total;
 
         const value =
             config.coeffient * (config.is_sqrt ? Math.sqrt(improvement_lv) : improvement_lv)
 
         return {
-            ...acc,
+            ...total,
             [key]: value,
         };
-    }, {} as EquipImprovementAddition);
+    }, DEFAULT_IMPROVEMENT_ADDITION);
 }

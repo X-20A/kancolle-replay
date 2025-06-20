@@ -87,6 +87,8 @@ export const analyze_ships_detection = (
     ships: EquippedShip[],
 ): FleetDetectionStatus => {
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
+        if (ship.state.is_sunk) return ship_total;
+
         const equip_summary: EquipSummary = ship.equips.reduce((equip_total, equip) => {
             if (
                 !is_player_equip(equip)
@@ -214,7 +216,9 @@ const calc_shotdowned_recon_ships = (
     rand: Rand,
 ): EquippedShip[] => {
     return ships.map((ship) => {
-        const updated_slots = ship.slots.map((slot, index) => {
+        if (ship.state.is_sunk) return ship;
+
+        const updated_slots = ship.slot_counts.map((slot, index) => {
             const equip = ship.equips[index];
             if (
                 !equip
@@ -235,7 +239,7 @@ const calc_shotdowned_recon_ships = (
             return slot;
         });
 
-        return { ...ship, slots: updated_slots };
+        return { ...ship, slot_counts: updated_slots };
     });
 }
 
@@ -248,6 +252,7 @@ export function calc_enemy_fighter_count(
     enemy_fleet: EnemyFleet,
 ): number {
     return concat_fleet_ships(enemy_fleet).reduce((total, ship) => {
+        // NOTE: 索敵フェイズ前に敵艦が沈むことは無いので判定省略
         return total + ship.equips.reduce((count, equip) => {
             if (!is_player_equip(equip)) return count;
 

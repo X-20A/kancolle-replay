@@ -110,4 +110,7 @@ export type AbyssalShipFlags = {
     can_not_op_torpedo_submarine: boolean,
     /** 無条件開幕雷撃可能な水上艦であるか */
     can_op_torpedo_surface_ship: boolean,
+
+    /** 対潜空襲マスにおける無敵空母であるか */
+    is_faraway: boolean,
 }

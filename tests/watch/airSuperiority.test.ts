@@ -10,7 +10,7 @@ import { describe, expect, it } from "vitest";
 describe('制空系テスト', () => {
     it('装備によって正しい制空値を返すことを確認', () => {
         const IMPROVED_77mm = derive_equip(10, brandEquipId(37));
-        const HAGE_REPPUU = derive_equip(0, brandEquipId(55), 0);
+        const HAGE_REPPUU = derive_equip(0, brandEquipId(22), 0);
         const IMPROVED_SHIDEN = derive_equip(10, brandEquipId(55), 100);
         
 

@@ -96,7 +96,10 @@ export type PlayerEquipData = {
     type: EquipType,
     /** 改修種別ID */
     improvement_type: EquipImprovementType,
-    /** 対空CIのトリガーになる装備の種別ID */
+    /**
+     * 対空CIのトリガーになる装備の種別ID
+     * ! データ駆動にあらず
+     */
     a_type?: AACITriggerEquipType,
     /**
      * 特殊攻撃のトリガーになる装備の種別ID    
@@ -149,7 +152,7 @@ export type PlayerEquipData = {
     is_rocket_fighter?: true,
     /** 反跳爆撃可能な機体であるか */
     is_skip_bomber?: true,
-    /** 集中配備系の装備であるか */
+    /** 集中配備系の機銃であるか */
     is_concentrated?: true,
     /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */
     is_special_submarine_CI_torigger?: true,
@@ -180,7 +183,7 @@ export type PlayerEquipFlags = {
     is_rocket_fighter: boolean,
     /** 反跳爆撃可能な機体であるか */
     is_skip_bomber: boolean,
-    /** 集中配備系の装備であるか */
+    /** 集中配備系の機銃であるか */
     is_concentrated: boolean,
     /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */
     is_special_submarine_CI_torigger: boolean,

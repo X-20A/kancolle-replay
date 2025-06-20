@@ -8,6 +8,7 @@ import { PlayerShipClass } from "@/types/ship/shipClass";
 import { derive_equipped_player_ship } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
+import { PlayerShipState, ShipStateBase } from "../state";
 
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip {
     return ship.master_id < 1500;
@@ -27,7 +28,7 @@ type EquipedShipBase = {
     /** 所持装備 */
     readonly equips: Equip[];
     /** 装備スロット、および搭載数 */
-    readonly slots: ReadonlyArray<number>,
+    readonly slot_counts: ReadonlyArray<number>,
     /** 未装備状態の艦ステータス(lv適用済み) */
     readonly naked_status: TStatusComponent,
     /** 装備の素加算値の総計 */
@@ -57,6 +58,8 @@ export type PlayerEquippedShip = EquipedShipBase & {
     readonly total_contribute_asw_attack_power: number,
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
+    /** simで更新されるあれこれ */
+    readonly state: PlayerShipState,
 };
 
 export type AbyssalEquippedShip = EquipedShipBase & {
@@ -64,6 +67,8 @@ export type AbyssalEquippedShip = EquipedShipBase & {
     readonly type_id: ShipType;
     /** フラグ類 */
     readonly flags: AbyssalShipFlags,
+    /** simで更新されるあれこれ */
+    readonly state: ShipStateBase,
 }
 
 export type EquippedShip = PlayerEquippedShip | AbyssalEquippedShip

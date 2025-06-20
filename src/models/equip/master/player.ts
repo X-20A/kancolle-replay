@@ -3,7 +3,7 @@ import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
 import { PlayerEquipFlags } from "@/types/equip/player";
-import { PlayerEquipMaster } from ".";
+import { calc_aaci_trigger_type, PlayerEquipMaster } from ".";
 
 export function derive_player_equip_master(
     id: EquipId,
@@ -13,7 +13,7 @@ export function derive_player_equip_master(
 
     const type_id = equip_data.type;
     const skill_trigger_type = equip_data.b_type ?? (EQUIP_TYPE_DATAS[type_id].b_type ?? null);
-
+    
     const status: TStatusComponent = {
         hp: 0,
         fire_power: equip_data.FP ?? 0,
@@ -63,6 +63,7 @@ export function derive_player_equip_master(
         is_jet: type_data.is_jet ?? false,
         can_support_asw: type_data.can_support_asw ?? false,
     }
+    const icon = equip_data.icon ?? type_data.icon;
 
     return {
         master_id: id,
@@ -71,6 +72,7 @@ export function derive_player_equip_master(
         type_id,
         improvement_type: equip_data.improvement_type,
         skill_trigger_type,
+        aaci_trigger_type: calc_aaci_trigger_type(skill_trigger_type, equip_data, type_data, icon, status.anti_air),
         status,
         flags,
     }

@@ -37,10 +37,12 @@ export function calc_engagement(
                     'Disadvantage_T';
 
     const has_saiun = concat_fleet_ships(own_fleet).some(ship => {
+        if (ship.state.is_sunk) return false;
+        
         ship.equips.some((equip, index) => {
             is_player_equip(equip)
             && equip.flags.can_avoid_T_disadvantage
-            && ship.slots[index] >= 1;
+            && ship.slot_counts[index] >= 1;
         });
     });
 

@@ -1,6 +1,7 @@
+import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships } from "@/models/fleet/Fleet";
-import { consume_equip_and_shift, ShipState } from "@/models/fleet/fleetState";
-import { OwnFleet, OwnFleetState } from "@/types/brands/fleet";
+import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
+import { OwnFleet } from "@/types/brands/fleet";
 import { ShipUniqueId } from "@/types/brands/ship";
 
 export type MaritimeResupplyLocation = {
@@ -16,14 +17,14 @@ export type MaritimeResupplyLocation = {
  */
 export function calc_maritime_resupply_count(
     own_fleet: OwnFleet,
-    own_fleet_state: OwnFleetState,
 ): MaritimeResupplyLocation[] {
     const UNDERWAY_REPLENISHMENT_ID = 146;
     const AVAILABLE_LIMIT = 3;
     const result: MaritimeResupplyLocation[] = [];
 
     for (const ship of concat_fleet_ships(own_fleet)) {
-        if (own_fleet_state.ships.get(ship.unique_id)?.is_sunk) continue;
+        if (ship.state.is_sunk) continue;
+
         for (let equip_index = 0; equip_index < ship.equips.length; equip_index++) {
             const equip = ship.equips[equip_index];
             if (equip.master_id === UNDERWAY_REPLENISHMENT_ID) {
@@ -66,54 +67,98 @@ export function calc_supply_ratio(
     }
 }
 
-/**
- * 洋上補給後のFleetStateを返す
- * @param own_fleet_state 
- * @param supply_ratio 
- * @param maritime_resupply_locations 
- * @returns 
- */
-export function calc_supplied_fleet_state(
-    own_fleet_state: OwnFleetState,
+const calc_supplied_ships = (
+    ships: EquippedShip[],
     supply_ratio: number,
     maritime_resupply_locations: MaritimeResupplyLocation[],
-): OwnFleetState {
-    const supplied_ships = new Map<ShipUniqueId, ShipState>();
-
+): EquippedShip[] => {
     // 各艦船の状態を更新
-    for (const [ship_unique_id, ship_state] of own_fleet_state.ships) {
+    return ships.map(ship => {
+        if (!is_player_ship(ship) || ship.state.is_sunk) return ship;
+
         // 燃料補給計算
         const new_fuel_ratio = Math.min(
             100,
-            ship_state.fuel_remain_ratio + supply_ratio,
+            ship.state.fuel_remain_ratio + supply_ratio,
         );
 
         // 弾薬補給計算
         const new_ammo_ratio = Math.min(
             100,
-            ship_state.ammo_remain_ratio + supply_ratio,
+            ship.state.ammo_remain_ratio + supply_ratio,
         );
 
         // 発動した洋上補給を装備していた艦なら装備をスライド
         const new_equips = consume_equip_and_shift(
-            ship_state,
+            ship,
             maritime_resupply_locations,
         )
 
         // 新しい艦船状態を作成
-        supplied_ships.set(ship_unique_id, {
-            ...ship_state,
+        return {
+            ...ship,
             equips: new_equips,
             fuel_remain_ratio: new_fuel_ratio,
             ammo_remain_ratio: new_ammo_ratio,
-            maritime_resupply_fuel: new_fuel_ratio - ship_state.fuel_remain_ratio,
-            maritime_resupply_ammo: new_ammo_ratio - ship_state.ammo_remain_ratio,
-        });
-    }
+            maritime_resupply_fuel: new_fuel_ratio - ship.state.fuel_remain_ratio,
+            maritime_resupply_ammo: new_ammo_ratio - ship.state.ammo_remain_ratio,
+        }
+    });
+}
 
-    // 新しい艦隊状態を返す
-    return {
-        ...own_fleet_state,
-        ships: supplied_ships,
+/**
+ * 洋上補給後のFleetを返す
+ * @param own_fleet_state 
+ * @param supply_ratio 
+ * @param maritime_resupply_locations 
+ * @returns 
+ */
+export function calc_supplied_fleet(
+    own_fleet: OwnFleet,
+    supply_ratio: number,
+    maritime_resupply_locations: MaritimeResupplyLocation[],
+): OwnFleet {
+    const main_fleet_ships = calc_supplied_ships(
+        own_fleet.main_fleet_ships,
+        supply_ratio,
+        maritime_resupply_locations,
+    )
+
+    if (!own_fleet.is_combined) return {
+        ...own_fleet,
+        main_fleet_ships
     };
+
+    const escort_fleet_ships = calc_supplied_ships(
+        own_fleet.escort_fleet_ships,
+        supply_ratio,
+        maritime_resupply_locations,
+    );
+
+    return {
+        ...own_fleet,
+        main_fleet_ships,
+        escort_fleet_ships,
+    };
+}
+
+/**
+ * 装備を消費し、後続装備を前詰めでスライドさせる
+ * 
+ * @param ship - 処理対象の艦の状態
+ * @param equip_index - 消費する装備のインデックス
+ * @returns 更新された新しいShipStateオブジェクト
+ */
+export function consume_equip_and_shift(
+    ship: EquippedShip,
+    maritime_resupply_locations: MaritimeResupplyLocation[]
+): Equip[] {
+    const match = maritime_resupply_locations.find(location =>
+        location.ship_unique_id === ship.unique_id
+    );
+
+    if (!match) return ship.equips;
+
+    const new_equips = [...ship.equips];
+    return new_equips.splice(match.equip_index, 1);
 }

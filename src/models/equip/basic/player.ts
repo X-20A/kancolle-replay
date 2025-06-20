@@ -20,6 +20,7 @@ export function derive_player_equip(
         improvement_lv,
         type_id: equip_master.type_id,
         skill_trigger_type: equip_master.skill_trigger_type,
+        aaci_trigger_type: equip_master.aaci_trigger_type,
         flags: equip_master.flags,
         natural_addition: equip_master.status,
         improvement_addition: deriveEquipImprovementAddition(

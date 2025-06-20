@@ -3,7 +3,6 @@ import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_pha
 import { EnemyFleet, OwnFleet, OwnFleetState } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";
-import { FleetState } from "@/models/fleet/fleetState";
 
 /// 1つのNodeにおいて実行する処理
 
@@ -16,25 +15,18 @@ export function sim_execute(
     node: Node,
     settings: UserSettings,
     own_fleet: OwnFleet,
-    own_fleet_state: OwnFleetState,
     enemy_fleet: EnemyFleet,
-    enemy_fleet_state: FleetState,
     lbases: LBAS[],
     rand: Rand,
 ) { // NOTE: 更新していくデータをcontextにまとめてpipeすると見やすくなるかもだけど、コピーコスト嵩みそう
-
-    // NOTE: この関数内でFleetやLBASはいわば定数で、参照するだけで再生成もしない
-    // NOTE: 変更は対応するStateに反映していく
-
-    const post_maritime_resupply_phase_own_fleet_state = calc_maritime_resupply_phase(
+    const post_maritime_resupply_phase_own_fleet = calc_maritime_resupply_phase(
         own_fleet,
-        own_fleet_state,
         node,
-    )
+    );
 
     const detection_phase_result = calc_detection_phase(
         node,
-        own_fleet,
+        post_maritime_resupply_phase_own_fleet,
         enemy_fleet,
         rand,
     );

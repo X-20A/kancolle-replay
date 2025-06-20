@@ -9,6 +9,7 @@ import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { sumEquipImprovementAdditions } from "@/models/equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
+import { derive_player_ship_state } from "../state";
 
 export function derive_equipped_player_ship(
     unique_id: ShipUniqueId,
@@ -18,7 +19,7 @@ export function derive_equipped_player_ship(
     all_equips: Equip[],
     modernizations?: ModernizationType,
     edit_input?: TStatusComponent,
-    slots?: number[],
+    _slots?: number[],
 ): PlayerEquippedShip {
     const naked_ship = derive_player_naked_ship(
         lv,
@@ -49,6 +50,8 @@ export function derive_equipped_player_ship(
         special_item_addition,
     ].reduce(sum_status_components, DEFAULT_STATUS_COMPONENT);
 
+    const edited_status = edit_input ?? view_status;
+
     const total_valid_asw = player_equips
         .reduce((total, equip) => {
             return total + equip.contribute_asw_attack_power;
@@ -59,6 +62,8 @@ export function derive_equipped_player_ship(
         ...naked_ship.flags,
         asw_equip: asw_flags,
     };
+
+    const state = derive_player_ship_state();
 
     return {
         master_id: naked_ship.master_id,
@@ -71,15 +76,16 @@ export function derive_equipped_player_ship(
         ship_class: naked_ship.ship_class,
         country: naked_ship.country,
         equips: all_equips,
-        slots: slots ?? naked_ship.slots,
+        slot_counts: _slots ?? naked_ship.slots,
         flags,
+        state,
         naked_status,
         total_natural_equip_addition,
         total_equip_bonus_addition,
         total_equip_improvement_addition,
         special_item_addition,
         view_status,
-        edited_status: edit_input ?? view_status,
+        edited_status,
         total_contribute_asw_attack_power: total_valid_asw,
     }
 }

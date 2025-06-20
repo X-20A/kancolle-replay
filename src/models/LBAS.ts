@@ -1,8 +1,8 @@
 import { PlaneEquip } from "./equip/basic";
 
 export type LBAS = {
-    readonly equips: PlaneEquip[],
-    readonly slots: readonly number[],
+    readonly units: PlaneEquip[],
+    readonly slot_counts: readonly number[],
     readonly hp: number,
     readonly armor: number,
 }
@@ -13,8 +13,8 @@ export function derive_LBAS(
 ): LBAS {
     const DEFAULT_LBAS_SLOTS: readonly number[] = [18, 18, 18, 18]
     return {
-        equips,
-        slots: edit_slots ?? DEFAULT_LBAS_SLOTS,
+        units: equips,
+        slot_counts: edit_slots ?? DEFAULT_LBAS_SLOTS,
         hp: 200,
         armor: 0,
     }

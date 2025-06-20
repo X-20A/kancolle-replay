@@ -1,5 +1,5 @@
 import { TStatusComponent } from "@/types";
-import { PlayerEquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
+import { AACITriggerEquipType, PlayerEquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipImprovementAddition } from "../EquipImprovement";
 import { TransportAddition } from "../TransportPower";
@@ -19,6 +19,8 @@ type EquipBase = {
     readonly type_id: EquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
     readonly skill_trigger_type: SkillTriggerEquipType | null,
+    /** 対空CIのトリガーになる装備の種別ID */
+    readonly aaci_trigger_type?: AACITriggerEquipType | null,
     /** マスターデータままの装備加算値 */
     readonly natural_addition: TStatusComponent,
 }
@@ -53,7 +55,7 @@ export type JetBomberEquip = PlaneEquip & {
 
 export type PlayerEquip = OtherEquip | PlaneEquip | JetBomberEquip
 
-export type AbyssalEquip = EquipBase & { // PlayerEquipは航空機なら追加で航空機熟練度がありますよ
+export type AbyssalEquip = EquipBase & {
     readonly flags: AbyssalEquipFlags,
 }
 

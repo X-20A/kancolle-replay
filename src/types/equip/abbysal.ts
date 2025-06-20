@@ -9,9 +9,15 @@ export type AbyssalEquipData = {
     nameJP: string,
     /** 装備種別ID */
     type: EquipType,
-    /** 対空CIのトリガーになる装備の種別ID */
+    /**
+     * 対空CIのトリガーになる装備の種別ID    
+     * ! データ駆動にあらず
+     */
     a_type?: AACITriggerEquipType,
-    /** 特殊攻撃のトリガーになる装備の種別ID */
+    /**
+     * 特殊攻撃のトリガーになる装備の種別ID    
+     * ! データ駆動にあらず
+     */
     b_type?: SkillTriggerEquipType,
     /** 装備種別とは別制御の装備アイコンID */
     icon?: SpecialIcon,
@@ -56,7 +62,7 @@ export type AbyssalEquipData = {
 }
 
 export type AbyssalEquipFlags = {
-    /** 集中配備系の装備であるか */
+    /** 集中配備系の機銃であるか */
     is_concentrated: boolean,
     /** 反跳爆撃可能な爆撃機であるか */
     is_skip_bomber: boolean,

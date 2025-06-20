@@ -4,7 +4,10 @@ import { AbyssalShipFlags } from "@/types/ship/abyssal";
 import { TStatusComponent } from "@/types";
 import { ABYSSAL_SHIP_DATAS } from "@/datas/ship/abyssal";
 
-export function derive_abyssal_naked_ship(id: ShipId): AbyssalNakedShip {
+export function derive_abyssal_naked_ship(
+    id: ShipId,
+    is_faraway?: boolean,
+): AbyssalNakedShip {
     const ship_data = ABYSSAL_SHIP_DATAS[id];
     if (!ship_data) throw new Error(`id: ${id}の艦が見つかりませんでした`);
 
@@ -43,6 +46,8 @@ export function derive_abyssal_naked_ship(id: ShipId): AbyssalNakedShip {
         can_not_shell: ship_data.can_not_shell ?? false,
         can_not_op_torpedo_submarine: ship_data.can_not_op_torpedo_submarine ?? false,
         can_op_torpedo_surface_ship: ship_data.can_op_torpedo_surface_ship ?? false,
+
+        is_faraway: is_faraway ?? false,
     };
 
     return {

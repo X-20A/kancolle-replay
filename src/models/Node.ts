@@ -19,6 +19,9 @@ type NodeType = {
     is_airstrike_supported: boolean,
     /** レーダー射撃マスであるか */
     is_ambush: boolean,
+
+    /** 潜水艦のみのマスであるか */
+    is_ss_only: boolean,
 }
 
 export type Node = {
