@@ -1,12 +1,11 @@
 import { Rand } from "@/effects/random";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
-import { LBAS } from "@/models/LBAS";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { EnemyFleet } from "@/types/brands/fleet";
-import { JetOnlyLBAS } from "./aerialCombat/jetAssault";
 import { Equip } from "@/models/equip/basic";
 import { FormationType } from "@/types";
 import { match, P } from "ts-pattern";
+import { JetOnlySquadron } from "@/models/LBAS";
 
 /// 対空射撃系
 
@@ -161,20 +160,20 @@ const calc_prop_shotdown_count_rate = (
 
 /**
  * 対空射撃を受けた後のLBASを返す
- * @param lbas 
+ * @param jet_only_squadrons 
  * @param enemy_fleet 
  * @param rand 
  */
-export function calc_anti_air_fired_lbas<T extends LBAS | JetOnlyLBAS>(
-    lbas: T,
+export function calc_anti_air_fired_lbas(
+    jet_only_squadrons: JetOnlySquadron[],
     enemy_fleet: EnemyFleet,
     formation: FormationType,
     rand: Rand,
-): T {
+): JetOnlySquadron[] {
     const defender_ships = extract_defender_ships(enemy_fleet);
 
-    const new_slot_counts = lbas.slot_counts.map((slot_count, index) => {
-        if (slot_count === 0) return slot_count;
+    return jet_only_squadrons.map((squadron) => {
+        if (squadron.slot_count === 0) return squadron;
 
         const defender_ship =
             defender_ships[Math.floor(rand.next() * defender_ships.length)];
@@ -183,7 +182,7 @@ export function calc_anti_air_fired_lbas<T extends LBAS | JetOnlyLBAS>(
 
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5 // 発動率
-            ? Math.floor(calc_prop_shotdown_count_rate(weighted_anti_air) * slot_count)
+            ? Math.floor(calc_prop_shotdown_count_rate(weighted_anti_air) * squadron.slot_count)
             : 0;
         
         // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire
@@ -192,13 +191,13 @@ export function calc_anti_air_fired_lbas<T extends LBAS | JetOnlyLBAS>(
             ? Math.floor(weighted_anti_air + calc_fleet_anti_air(enemy_fleet, formation) / 10)
             : 0;
 
-        return slot_count
+        const new_slot_count = squadron.slot_count
             - prop_shootdown_count
             - flat_shootdown_count;
-    });
 
-    return {
-        ...lbas,
-        slot_counts: new_slot_counts,
-    }
+        return {
+            ...squadron,
+            slot_count: new_slot_count,
+        }
+    });
 }

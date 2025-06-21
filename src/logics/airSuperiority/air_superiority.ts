@@ -4,11 +4,9 @@ import { calc_plane_proficiency_flat } from "../proficiency";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { Rand } from "@/effects/random";
-import { EquipType } from "@/datas/equip/base/player";
 import { match, P } from "ts-pattern";
 import { EnemyFleet } from "@/types/brands/fleet";
-import { JetOnlyLBAS } from "../aerialCombat/jetAssault";
-import { LBAS } from "@/models/LBAS";
+import { JetOnlySquadron } from "@/models/LBAS";
 
 /// 制空系
 
@@ -184,29 +182,29 @@ export function calc_enemy_air_state_shootdowned_slots(
 
 /**
  * 制空状態による被撃墜数を反映した新しいLBASを返す
- * @param lbas 
+ * @param jet_only_squadrons 
  * @param air_state 
  * @param rand 
  * @returns 
  */
-export function calc_air_state_shootdowned_lbas<T extends LBAS | JetOnlyLBAS>(
-    lbas: T,
+export function calc_air_state_shootdowned_lbas(
+    jet_only_squadrons: JetOnlySquadron[],
     air_state: AirStateType,
     rand: Rand,
-): T {
-    const new_slot_counts = lbas.slot_counts.map((slot_count, index) => {
-        return calc_own_air_state_shootdowned_slots(
-            lbas.units[index],
-            slot_count,
+): JetOnlySquadron[] {
+    return jet_only_squadrons.map((squadron, index) => {
+        const new_slot_count = calc_own_air_state_shootdowned_slots(
+            squadron.unit,
+            squadron.slot_count,
             air_state,
             rand,
         );
-    });
 
-    return {
-        ...lbas,
-        slot_counts: new_slot_counts,
-    }
+        return {
+            ...squadron,
+            slot_count: new_slot_count,
+        }
+    });
 }
 
 const calc_air_state_shootdowned_enemy_ships = (
