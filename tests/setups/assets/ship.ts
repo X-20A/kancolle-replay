@@ -16,6 +16,8 @@ export const make_Shiratsuyu_kai_2 = pre_make_player_ship_from_name('白露改�
 
 /** 加古改二 */
 export const make_Kako_kai_ni = pre_make_player_ship_from_name('加古改二');
+/** 摩耶改二 */
+export const make_Maya_kai_ni = pre_make_player_ship_from_name('摩耶改二');
 
 /** 加賀改二護 */
 export const make_Kaga_kai_ni_go = pre_make_player_ship_from_name('加賀改二護');

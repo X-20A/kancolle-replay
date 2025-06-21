@@ -36,3 +36,13 @@ export type TransportPowerModel = {
     /** 2025早春E5 モデル */
     model_C: number,
 };
+
+const FORMATION = {
+    LineAhead: 1,
+    DoubleLine: 2,
+    Diamond: 3,
+    Echelon: 4,
+    LineAbreast: 5,
+    Vanguard: 6,
+} as const;
+export type FormationType = keyof typeof FORMATION

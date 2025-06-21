@@ -51,4 +51,5 @@ export const ENMAKU = make_player_equip_from_name('発煙装置(煙幕)');
 /** 発煙装置改(煙幕) */
 export const ENMAKU_KAI = make_player_equip_from_name('発煙装置改(煙幕)');
 
-
+/** 25mm対空機銃増備 */
+export const ZOUBI_25 = make_player_equip_from_name('25mm対空機銃増備');
