@@ -8,8 +8,8 @@ import { TStatusComponent } from "@/types";
 import { derive_abyssal_ship_state } from "../state";
 
 export function derive_equipped_abyssal_ship(
-    unique_id: ShipUniqueId,
     id: ShipId,
+    HP_remain?: number,
     edit_input?: TStatusComponent,
     _slots?: readonly number[],
 ): AbyssalEquippedShip {
@@ -45,7 +45,9 @@ export function derive_equipped_abyssal_ship(
         name_jp: naked_ship.name_jp,
         lv: brandShipLv(1),
         type_id: naked_ship.type_id,
+        install_type: naked_ship.install_type,
         equips,
+        hp_remain: HP_remain ?? naked_ship.status.hp,
         slot_counts: _slots ?? naked_ship.slots,
         naked_status: naked_ship.status,
         total_natural_equip_addition,

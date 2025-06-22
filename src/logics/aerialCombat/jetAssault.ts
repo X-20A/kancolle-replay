@@ -1,10 +1,11 @@
 import { Rand } from "@/effects/random";
-import { is_jet_bomber_equip } from "@/models/equip/basic";
-import { concat_fleet_ships } from "@/models/fleet/Fleet";
+import { is_jet_bomber_equip, JetBomberEquip } from "@/models/equip/basic";
 import { JetOnlySquadron, LBAS } from "@/models/LBAS";
 import { EquippedShip } from "@/models/ship/equipped";
+import { FormationType } from "@/types";
 import { EnemyFleet } from "@/types/brands/fleet";
-import { ExtractedFleet } from "@/types/fleet";
+import { ExtractedShip } from "@/types/fleet";
+import { calc_selected_target } from "../target";
 
 /**
  * ジェット機スロットだけを抽出した基地航空隊を返す
@@ -45,7 +46,7 @@ export function calc_returned_origin_lbas(
         if (match_jet_squadrons.length === 0) return lbas;
 
         const new_squadrons = lbas.squadrons.map((squadron, squadron_index) => {
-            const jet_squadron = match_jet_squadrons.find(jet_squadron => 
+            const jet_squadron = match_jet_squadrons.find(jet_squadron =>
                 jet_squadron.original_squadron_index === squadron_index
             );
 
@@ -65,9 +66,15 @@ export function calc_returned_origin_lbas(
 }
 
 export function calc_basic_jet_assault_attack_power(
-
+    squadron: JetOnlySquadron,
 ): number {
+    return 1.0 * (squadron.unit.natural_addition.aerial_bomb_power * Math.sqrt(squadron.slot_count))
+        + 25;
+}
 
+type TargetShips = {
+    main_fleet: ExtractedShip[],
+    escort_fleet: ExtractedShip[],
 }
 
 /**
@@ -77,24 +84,58 @@ export function calc_basic_jet_assault_attack_power(
  */
 const calc_extract_valid_targets = (
     enemy_fleet: EnemyFleet,
-): ExtractedFleet => {
-    const ships: EquippedShip[] = [];
-    return concat_fleet_ships(enemy_fleet).flatMap(ship => {
-        if (ship.type_id !== 'SS' && ship.type_id !== 'SSV') {
-            return {
-
+): ExtractedShip[] => {
+    const calc_extracted_ships = (ships: EquippedShip[], is_main: boolean): ExtractedShip[] =>
+        ships.reduce((acc, ship, index) => {
+            if (!['SS', 'SSV'].includes(ship.type_id)) {
+                acc.push({
+                    ship,
+                    is_original_fleet_main: is_main,
+                    original_index: index,
+                });
             }
-        }
-    });
+            return acc;
+        }, [] as ExtractedShip[]);
+
+    const main_fleet_ships = calc_extracted_ships(enemy_fleet.main_fleet_ships, true);
+
+    return enemy_fleet.is_combined
+        ? [...main_fleet_ships, ...calc_extracted_ships(enemy_fleet.escort_fleet_ships, false)]
+        : main_fleet_ships;
 }
 
-export function calc_attacked_enemy_fleet(
+export function calc_attacked_single_enemy_fleet(
     jet_only_squadrons: JetOnlySquadron[],
     enemy_fleet: EnemyFleet,
+    formation: FormationType,
     rand: Rand,
 ): EnemyFleet {
-    const target_ships = calc_extract_valid_targets(enemy_fleet);
-    jet_only_squadrons.units.forEach(unit => {
+    jet_only_squadrons.forEach(squadron => {
+        const target_ships = enemy_fleet.main_fleet_ships.reduce((acc, ship, index) => {
+            if (!['SS', 'SSV'].includes(ship.type_id)) {
+                acc.push({
+                    ship,
+                    is_original_fleet_main: true,
+                    original_index: index,
+                    is_flagship: index === 0,
+                });
+            }
+            return acc;
+        }, [] as ExtractedShip[]);
 
+        const target_ship = calc_selected_target(
+            target_ships,
+            formation,
+            rand,
+        );
+
+        const basic_attack_power = calc_basic_jet_assault_attack_power(squadron);
+
+        // NOTE: 基地噴式強襲の命中率について、航空戦 | 基地航空隊 どちらの形式をとるか
+        // NOTE: wikiでは見つけられなかった。Sortie sim では基地航空隊を採用してるっぽい
+        // NOTE: 橘花改 → 景雲 にするとおおよそ命中 1 * 7 分、上昇が見られる
+        // NOTE: ひとまず基地航空隊式を採用
+
+        
     })
 }

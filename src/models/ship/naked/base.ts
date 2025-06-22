@@ -1,7 +1,7 @@
 import { Country } from "@/datas/equip/bonus";
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
-import { PlayerNakedShipFlags, ShipTypeBase, UnknownStatus } from "@/types/ship/ship";
+import { InstallType, PlayerNakedShipFlags, ShipTypeBase, UnknownStatus } from "@/types/ship/ship";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { AbyssalShipFlags, AbyssalShipType } from "@/types/ship/abyssal";
 
@@ -23,6 +23,7 @@ export type PlayerNakedShip = NakedShipBase & {
 
 export type AbyssalNakedShip = NakedShipBase & {
     readonly type_id: AbyssalShipType,
+    readonly install_type: InstallType,
     readonly unknown_status: UnknownStatus,
     readonly EQUIPS: Array<number>,
     readonly flags: AbyssalShipFlags,

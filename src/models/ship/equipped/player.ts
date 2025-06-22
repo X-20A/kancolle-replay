@@ -12,11 +12,11 @@ import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
 
 export function derive_equipped_player_ship(
-    unique_id: ShipUniqueId,
     lv: ShipLv,
     special_item_id: SpecialItemId,
     ship_id: ShipId,
     all_equips: Equip[],
+    hp_remain?: number,
     modernizations?: ModernizationType,
     edit_input?: TStatusComponent,
     _slots?: number[],
@@ -76,6 +76,7 @@ export function derive_equipped_player_ship(
         ship_class: naked_ship.ship_class,
         country: naked_ship.country,
         equips: all_equips,
+        hp_remain: hp_remain ?? naked_ship.status.hp,
         slot_counts: _slots ?? naked_ship.slots,
         flags,
         state,

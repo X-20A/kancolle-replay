@@ -55,6 +55,7 @@ export function derive_abyssal_naked_ship(
         name_en: brandShipNameEN(ship_data.name),
         name_jp: brandShipNameJP(ship_data.name_jp),
         type_id: ship_data.type,
+        install_type: ship_data.install_type ?? 'No',
         unknown_status: ship_data.unknown_status ?? {},
         EQUIPS: ship_data.EQUIPS ?? [],
         slots: ship_data.SLOTS,

@@ -85,24 +85,27 @@ export enum SpecialItemId {
     Sash = 2, // 白たすき
 }
 
+const INSTALL_TYPE_IDS = {
+    /** 陸上型でない */
+    No: 0,
+    /** ソフトスキン(従来型) */
+    RegularSoftModel: 1,
+    /** 砲台・トーチカ */
+    PillboxModel: 2,
+    /** 集積地系 */
+    SupplyDepotModel: 3,
+    /** 離島・中枢棲姫系 */
+    IsolatedIslandModel: 4,
+    /** 北端上陸姫系 */
+    NorthernmostModel: 5,
+    /** 港湾棲姫系 */
+    HarbourModel: 6,
+} as const;
 /**
  * 陸上型種別ID    
  * 同じ系統の艦でもバージョンによって変わったりするので命名は目安
  */
-export const enum InstallType {
-    /** ソフトスキン(従来型) */
-    RegularSoftModel = 1,
-    /** 砲台・トーチカ */
-    PillboxModel = 2,
-    /** 集積地系 */
-    SupplyDepotModel = 3,
-    /** 離島・中枢棲姫系 */
-    IsolatedIslandModel = 4,
-    /** 北端上陸姫系 */
-    NorthernmostModel = 5,
-    /** 港湾棲姫系 */
-    HarbourModel = 6,
-} 
+export type InstallType = keyof typeof INSTALL_TYPE_IDS
 
 /**
  * 空母系の夜戦における振る舞いのパターンのID    

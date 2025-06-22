@@ -7,8 +7,8 @@ import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_count, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { LBAS } from "@/models/LBAS";
-import { calc_attacked_enemy_fleet, calc_basic_jet_assault_attack_power, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
-import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_equips_air_superiority_power, calc_fleet_air_superiority_power } from "@/logics/airSuperiority/air_superiority";
+import { calc_attacked_enemy_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
+import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_equip_air_superiority_power, calc_equips_air_superiority_power, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_lbas } from "@/logics/antiAir";
 import { FormationType } from "@/types";
@@ -128,9 +128,8 @@ export function jet_lbas_phase(
 
     // 1.制空状態の決定
 
-    const jets_air_superiority_power = calc_equips_air_superiority_power(
-        jet_only_lbases.map(lbas => lbas.unit),
-        jet_only_lbases.map(lbas => lbas.slot_count),
+    const jets_air_superiority_power = calc_squadrons_air_superriority_power(
+        jet_only_lbases,
     );
     const enemy_air_superiority_power =
         calc_fleet_air_superiority_power(enemy_fleet);
@@ -191,11 +190,9 @@ export function calc_engagement_phase(
     own_fleet: OwnFleet,
     rand: Rand,
 ): Node {
-    const engagement_type = calc_engagement(own_fleet, rand);
-
     return {
         ...node,
-        engagement_type,
+        engagement_type: calc_engagement(own_fleet, rand),
     }
 }
 

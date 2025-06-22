@@ -1,6 +1,6 @@
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { SpecialItemId, PlayerShipFlags, ModernizationType, ShipType, ShipTypeBase } from "@/types/ship/ship";
+import { SpecialItemId, PlayerShipFlags, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
 import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
@@ -10,8 +10,31 @@ import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 
+/**
+ * 艦がPlayer艦であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip {
     return ship.master_id < 1500;
+}
+
+/**
+ * 艦が潜水艦系であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_submarine_category(ship: EquippedShip): boolean {
+    return ['SS', 'SSV'].includes(ship.type_id)
+}
+
+/**
+ * 艦のダメージが小破以上であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
+    return ship.hp_remain / ship.edited_status.hp <= 0.75;
 }
 
 type EquipedShipBase = {
@@ -29,6 +52,7 @@ type EquipedShipBase = {
     readonly equips: Equip[];
     /** 装備スロット、および搭載数 */
     readonly slot_counts: ReadonlyArray<number>,
+    readonly hp_remain: number,
     /** 未装備状態の艦ステータス(lv適用済み) */
     readonly naked_status: TStatusComponent,
     /** 装備の素加算値の総計 */
@@ -65,6 +89,11 @@ export type PlayerEquippedShip = EquipedShipBase & {
 export type AbyssalEquippedShip = EquipedShipBase & {
     /** 艦種ID */
     readonly type_id: ShipType;
+    /**
+     * 陸上型種別ID
+     * 同じ系統の艦でもバージョンによって変わったりするので命名は目安
+     */
+    readonly install_type: InstallType,
     /** フラグ類 */
     readonly flags: AbyssalShipFlags,
     /** simで更新されるあれこれ */
@@ -100,7 +129,7 @@ export function sum_status_components(
 }
 
 /**
- * 2つのステータスコンポーネントを合成する。
+ * 2つのStatusComponentを合成する。
  * range のみ Math.max、それ以外は加算される。
  * 
  * @param a - 合成対象のステータス1
@@ -119,28 +148,28 @@ export function merge_status_components_with_max_range(
 }
 
 export function derive_equipped_ship(
-    unique_id: ShipUniqueId,
     lv: ShipLv,
     special_item_id: SpecialItemId,
     ship_id: ShipId,
     equips: Equip[],
+    HP_remain?: number,
     modernizations?: ModernizationType,
     edit_input?: TStatusComponent,
     slots?: number[],
 ): EquippedShip {
     return ship_id < 1500
         ? derive_equipped_player_ship(
-            unique_id,
             lv,
             special_item_id,
             ship_id,
             equips,
+            HP_remain,
             modernizations,
             edit_input,
             slots,
         )
         : derive_equipped_abyssal_ship(
-            unique_id,
             ship_id,
+            HP_remain,
         );
 }

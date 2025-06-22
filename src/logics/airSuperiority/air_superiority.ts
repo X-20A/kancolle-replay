@@ -11,6 +11,43 @@ import { JetOnlySquadron } from "@/models/LBAS";
 /// 制空系
 
 /**
+ * 装備と残スロット数から制空値を返す
+ * @param equip 
+ * @param remain_plane_count 
+ * @returns 
+ */
+export function calc_equip_air_superiority_power(
+    equip: Equip,
+    remain_plane_count: number,
+): number {
+    if (is_player_equip(equip)) {
+        const equip_air_superiority_power =
+            equip.natural_addition.anti_air
+            + equip.improvement_addition.air_superiority;
+
+        return Math.floor(
+            equip_air_superiority_power * Math.sqrt(remain_plane_count)
+            + calc_plane_proficiency_flat(equip)
+        );
+    } else {
+        return Math.floor(
+            equip.natural_addition.anti_air * Math.sqrt(remain_plane_count)
+        );
+    }
+}
+
+export function calc_squadrons_air_superriority_power(
+    squadrons: JetOnlySquadron[],
+): number {
+    return squadrons.reduce((total, squadron) => {
+        return total + calc_equip_air_superiority_power(
+            squadron.unit,
+            squadron.slot_count,
+        );
+    }, 0);
+}
+
+/**
  * 装備群の制空値を返す
  * @param equips 
  * @param slots 
