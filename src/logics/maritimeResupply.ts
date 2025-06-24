@@ -1,6 +1,6 @@
 import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships } from "@/models/fleet/Fleet";
-import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { OwnFleet } from "@/types/brands/fleet";
 import { ShipUniqueId } from "@/types/brands/ship";
 
@@ -27,14 +27,14 @@ export function calc_maritime_resupply_count(
 
         for (let equip_index = 0; equip_index < ship.equips.length; equip_index++) {
             const equip = ship.equips[equip_index];
-            if (equip.master_id === UNDERWAY_REPLENISHMENT_ID) {
-                result.push({
-                    ship_unique_id: ship.unique_id,
-                    equip_index: equip_index
-                });
+            if (equip.master_id !== UNDERWAY_REPLENISHMENT_ID) continue;
 
-                if (result.length >= AVAILABLE_LIMIT) return result;
-            }
+            result.push({
+                ship_unique_id: ship.unique_id,
+                equip_index: equip_index
+            });
+
+            if (result.length >= AVAILABLE_LIMIT) return result;
         }
     }
 

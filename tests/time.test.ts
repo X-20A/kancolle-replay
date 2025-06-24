@@ -1,4 +1,4 @@
-import { sim_execute, UserSettings } from "@/core/SimExecuter";
+import { sim_execute, UserSettings } from "@/core/flows/SimExecuter";
 import { Rand } from "@/effects/random";
 import { PlaneEquip } from "@/models/equip/basic";
 import { derive_fleet } from "@/models/fleet/Fleet";

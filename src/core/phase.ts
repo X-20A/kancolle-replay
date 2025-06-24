@@ -1,17 +1,17 @@
 import { Rand } from "@/effects/random";
 import { analyze_fleet_detection, calc_detection_success_rate, calc_enemy_fighter_count, calc_shotdowned_recon_fleet } from "@/logics/detection";
-import { UserSettings } from "./SimExecuter";
+import { UserSettings } from "./flows/SimExecuter";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/logics/smokeScreen";
-import { EnemyFleet, OwnFleet } from "@/types/brands/fleet";
+import { EnemyFleet, EnemySingleFleet, OwnFleet } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_count, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { LBAS } from "@/models/LBAS";
-import { calc_attacked_enemy_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
-import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_equip_air_superiority_power, calc_equips_air_superiority_power, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
+import { calc_attacked_enemy_combined_fleet, calc_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
+import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_lbas } from "@/logics/antiAir";
-import { FormationType } from "@/types";
+import { SingleFleetFormationType } from "@/types";
 
 /// 各フェイズを制御する
 /// sim_execute と logics を繋ぐ
@@ -107,8 +107,8 @@ type JetLbasPhaseResult = {
 export function jet_lbas_phase(
     node: Node,
     lbases: LBAS[],
-    enemy_fleet: EnemyFleet,
-    formation: FormationType,
+    enemy_fleet: EnemySingleFleet,
+    formation: SingleFleetFormationType,
     rand: Rand,
 ): JetLbasPhaseResult {
     // NOTE: 索敵の成否は関係ない
@@ -144,17 +144,26 @@ export function jet_lbas_phase(
         own_air_state,
         rand,
     );
+
     const air_state_shootdowned_enemy_fleet = calc_air_state_shootdowned_enemy_fleet(
         enemy_fleet,
         enemy_air_state,
         rand,
     );
 
+    if (air_state_shootdowned_lbas.every(squadron => squadron.slot_count === 0)) return {
+        post_jet_lbas_phase_lbases: calc_returned_origin_lbas(
+            air_state_shootdowned_lbas,
+            lbases,
+        ),
+        post_jet_lbas_phase_enemy_fleet: air_state_shootdowned_enemy_fleet,
+    } // 枯れたらreturn
+
     // NOTE: 2.触接判定 ジェット基地による強襲では触接は発生しない
 
     // 3.水上艦の対空砲火による航空機の撃墜
 
-    const anti_air_fired_lbas = calc_anti_air_fired_lbas(
+    const anti_air_fired_squadrons = calc_anti_air_fired_lbas(
         air_state_shootdowned_lbas,
         air_state_shootdowned_enemy_fleet,
         formation,
@@ -163,15 +172,16 @@ export function jet_lbas_phase(
 
     // 4.航空機による開幕航空攻撃
 
-    const attacked_enemy_fleet = calc_attacked_enemy_fleet(
-        anti_air_fired_lbas,
+    const attacked_enemy_fleet = calc_attacked_enemy_single_fleet(
+        anti_air_fired_squadrons,
         air_state_shootdowned_enemy_fleet,
+        formation,
         rand,
     );
 
     return {
         post_jet_lbas_phase_lbases: calc_returned_origin_lbas(
-            anti_air_fired_lbas,
+            anti_air_fired_squadrons,
             lbases,
         ),
         post_jet_lbas_phase_enemy_fleet: attacked_enemy_fleet,

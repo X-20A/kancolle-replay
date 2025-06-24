@@ -1,4 +1,3 @@
-import { Equip, PlayerEquip } from "@/models/equip/basic";
 
 export type ShipStateBase = {
     /** 轟沈状態であるか */
@@ -14,6 +13,8 @@ export type PlayerShipState = ShipStateBase & {
     readonly maritime_resupply_fuel_ratio: number,
     /** 洋上補給 弾薬追徴割合 0-1 */
     readonly maritime_resupply_ammo_ratio: number,
+    /** 疲労度 */
+    readonly morale: number,
 
     /** 轟沈ストッパーが有効であるか */
     readonly enable_sink_safety: boolean,
@@ -29,6 +30,7 @@ export function derive_player_ship_state(): PlayerShipState {
         maritime_resupply_fuel_ratio: 0,
         /** 洋上補給 弾薬追徴割合 0-1 */
         maritime_resupply_ammo_ratio: 0,
+        morale: 49,
 
         is_sunk: false,
         /** 轟沈ストッパーが有効であるか */

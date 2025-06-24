@@ -20,6 +20,37 @@ export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip {
 }
 
 /**
+ * 艦が撃沈されているか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_sunk(ship: EquippedShip): boolean {
+    return ship.hp_remain <= 0;
+}
+
+/**
+ * PT系の艦であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_PT(
+    ship: EquippedShip,
+): boolean {
+    return !is_player_ship(ship) && ship.flags.is_PT;
+}
+
+/**
+ * 陸上型の艦であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_install(
+    ship: EquippedShip,
+): boolean {
+    return !is_player_ship(ship) && ship.install_type !== 'No';
+}
+
+/**
  * 艦が潜水艦系であるか判定して返す
  * @param ship 
  * @returns 
@@ -90,7 +121,7 @@ export type AbyssalEquippedShip = EquipedShipBase & {
     /** 艦種ID */
     readonly type_id: ShipType;
     /**
-     * 陸上型種別ID
+     * 陸上型種別ID    
      * 同じ系統の艦でもバージョンによって変わったりするので命名は目安
      */
     readonly install_type: InstallType,

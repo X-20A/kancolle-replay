@@ -37,7 +37,7 @@ export type TransportPowerModel = {
     model_C: number,
 };
 
-const FORMATION = {
+const SINGLE_FLEET_FORMATION = {
     LineAhead: 1,
     DoubleLine: 2,
     Diamond: 3,
@@ -45,4 +45,14 @@ const FORMATION = {
     LineAbreast: 5,
     Vanguard: 6,
 } as const;
-export type FormationType = keyof typeof FORMATION
+export type SingleFleetFormationType = keyof typeof SINGLE_FLEET_FORMATION
+
+const COMBINED_FLEET_FORMATION = {
+    CruisingFormation_1: 1,
+    CruisingFormation_2: 2,
+    CruisingFormation_3: 3,
+    CruisingFormation_4: 4,
+} as const;
+export type CombinedFleetFormationType = keyof typeof COMBINED_FLEET_FORMATION
+
+export type FormationType = SingleFleetFormationType | CombinedFleetFormationType

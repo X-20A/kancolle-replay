@@ -1,10 +1,22 @@
 import { Rand } from "@/effects/random";
-import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "./phase";
-import { EnemyFleet, OwnFleet, OwnFleetState } from "@/types/brands/fleet";
+import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phase";
+import { EnemyFleet, EnemySingleFleet, OwnFleet, OwnSingleFleet } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";
 
-/// 1つのNodeにおいて実行する処理
+/**
+ * 戦闘の流れの種類
+	通常-通常
+	連合(機動|輸送)-通常
+	連合(水上)-通常
+	通常-連合
+	連合(機動|輸送)-連合
+	連合(水上)-連合
+	航空戦
+	空襲戦
+ */
+
+/// 通常 vs 通常
 
 export type UserSettings = {
     /** 煙幕発動Node 0オリジン */
@@ -14,11 +26,13 @@ export type UserSettings = {
 export function sim_execute(
     node: Node,
     settings: UserSettings,
-    own_fleet: OwnFleet,
-    enemy_fleet: EnemyFleet,
+    own_fleet: OwnSingleFleet,
+    enemy_fleet: EnemySingleFleet,
     lbases: LBAS[],
     rand: Rand,
 ) { // NOTE: 更新していくデータをcontextにまとめてpipeすると見やすくなるかもだけど、コピーコスト嵩みそう
+    // ひとまずそれぞれの艦隊に陣形は設定されているという前提で
+    
     const post_maritime_resupply_phase_own_fleet = calc_maritime_resupply_phase(
         own_fleet,
         node,

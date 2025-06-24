@@ -3,7 +3,7 @@ import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { EnemyFleet } from "@/types/brands/fleet";
 import { Equip } from "@/models/equip/basic";
-import { FormationType } from "@/types";
+import { SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
 import { JetOnlySquadron } from "@/models/LBAS";
 
@@ -123,7 +123,7 @@ export function calc_ship_fleet_anti_air(
  * @returns 
  */
 const calc_formation_mod = (
-    formation: FormationType,
+    formation: SingleFleetFormationType,
 ): number => {
     return match(formation)
         .with(P.union('LineAhead', 'Echelon', 'LineAbreast'), () => 1)
@@ -139,7 +139,7 @@ const calc_formation_mod = (
  */
 export function calc_fleet_anti_air(
     fleet: Fleet,
-    formation: FormationType,
+    formation: SingleFleetFormationType,
 ): number {
     const ships_total = concat_fleet_ships(fleet).reduce((total, ship) => {
         return total
@@ -167,7 +167,7 @@ const calc_prop_shotdown_count_rate = (
 export function calc_anti_air_fired_lbas(
     jet_only_squadrons: JetOnlySquadron[],
     enemy_fleet: EnemyFleet,
-    formation: FormationType,
+    formation: SingleFleetFormationType,
     rand: Rand,
 ): JetOnlySquadron[] {
     const defender_ships = extract_defender_ships(enemy_fleet);

@@ -1,5 +1,6 @@
 import { EngagementType } from "@/logics/engagemenet"
 import { SmokeScreenType } from "@/logics/smokeScreen"
+import { FormationType } from "@/types"
 
 /// Node単位に持たせる情報
 /// Fleetとどっちに持たせるかのラインは微妙
@@ -24,6 +25,11 @@ type NodeType = {
     is_ss_only: boolean,
 }
 
+type EachFormation = {
+    own_formation: FormationType,
+    enemy_formation: FormationType,
+}
+
 export type Node = {
     /** 何番目のNodeか 0オリジン */
     index: number,
@@ -44,4 +50,8 @@ export type Node = {
      * 煙幕フェイズ前はnull
      */
     triggered_smoke_screen_type: SmokeScreenType | null,
+    /**
+     * 彼我の指定陣形
+     */
+    each_formation: EachFormation,
 }

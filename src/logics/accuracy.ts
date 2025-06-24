@@ -2,8 +2,16 @@ import { PlaneEquip } from "@/models/equip/basic";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { EnemyFleet } from "@/types/brands/fleet";
 import { PreAccuracy } from "@/types/brands/other";
+import { calc_morale_evasion_mod } from "./morale";
+import { calc_air_combat_evasion } from "./evasion";
 
-const calc_lbas_bomber_accuracy_flat = (
+/**
+ * 陸攻の目標艦種別の命中加算値を返す
+ * @param unit 
+ * @param target_ship 
+ * @returns 
+ */
+const calc_bomber_accuracy_flat = (
     unit: PlaneEquip,
     target_ship: EquippedShip,
 ): number => {
@@ -61,13 +69,33 @@ export function calc_lbas_pre_accuracy(
     const ACCURACY_CONSTANT = 0.95;
     const combined_fleet_mod = enemy_fleet.is_combined ? 1.1 : 0;
 
-    // NOTE: 疲労度補正は見送り
+    // NOTE: 機体の疲労度補正は見送り
     // NOTE: 基地噴式強襲では熟練度補正は無し
     return (
         ACCURACY_CONSTANT
         + 7 * unit.natural_addition.shell_accuracy
-        + calc_lbas_bomber_accuracy_flat(unit, target_ship)
+        + calc_bomber_accuracy_flat(unit, target_ship)
     ) * combined_fleet_mod as PreAccuracy;
 }
 
-export function calc_final_accuracy()
+/**
+ * 噴式強襲の最終命中率を返す
+ * @param air_combat_pre_accuracy 
+ * @param air_combat_evasion 
+ * @param target_ship 
+ */
+export function calc_final_jet_assault_accuracy(
+    unit: PlaneEquip,
+    enemy_fleet: EnemyFleet,
+    target_ship: EquippedShip,
+): number {
+    const pre_accuracy = calc_lbas_pre_accuracy(unit, enemy_fleet, target_ship);
+    const evasion = calc_air_combat_evasion(target_ship);
+
+    return Math.max(96,
+        Math.min(10,
+            (pre_accuracy - evasion)
+        * (is_player_ship(target_ship) ? calc_morale_evasion_mod(target_ship) : 0)
+         // 艦載機熟練度
+    ));
+}
