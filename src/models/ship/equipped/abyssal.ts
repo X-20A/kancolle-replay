@@ -5,13 +5,11 @@ import { brandEquipId } from "@/types/brands/equip";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { TStatusComponent } from "@/types";
-import { derive_abyssal_ship_state } from "../state";
+import { EquippedPlayerShipOptions } from "./player";
 
 export function derive_equipped_abyssal_ship(
     id: ShipId,
-    HP_remain?: number,
-    edit_input?: TStatusComponent,
-    _slots?: readonly number[],
+    options: EquippedPlayerShipOptions = {},
 ): AbyssalEquippedShip {
     const naked_ship = derive_abyssal_naked_ship(
         id,
@@ -34,9 +32,7 @@ export function derive_equipped_abyssal_ship(
         total_natural_equip_addition,
     ].reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
 
-    const edited_status = edit_input ?? view_status;
-
-    const state = derive_abyssal_ship_state();
+    const edited_status = options.edit_input ?? view_status;
 
     return {
         master_id: naked_ship.master_id,
@@ -47,13 +43,12 @@ export function derive_equipped_abyssal_ship(
         type_id: naked_ship.type_id,
         install_type: naked_ship.install_type,
         equips,
-        hp_remain: HP_remain ?? naked_ship.status.hp,
-        slot_counts: _slots ?? naked_ship.slots,
+        hp_remain: options.hp_remain ?? naked_ship.status.hp,
+        slot_counts: options.slots ?? naked_ship.slots,
         naked_status: naked_ship.status,
         total_natural_equip_addition,
         view_status,
         edited_status,
         flags: naked_ship.flags,
-        state,
     }
 }

@@ -1,6 +1,6 @@
 import { sim_execute, UserSettings } from "@/core/flows/SimExecuter";
 import { Rand } from "@/effects/random";
-import { PlaneEquip } from "@/models/equip/basic";
+import { PlayerPlaneEquip } from "@/models/equip/basic";
 import { derive_fleet } from "@/models/fleet/Fleet";
 import { derive_LBAS } from "@/models/LBAS";
 import { Node } from "@/models/Node";
@@ -37,7 +37,7 @@ describe('処理時間テスト', () => {
             smoke_screen_trigger_node_index: [0],
         }
 
-        const lbas = derive_LBAS([REPPUU as PlaneEquip]);
+        const lbas = derive_LBAS([REPPUU as PlayerPlaneEquip]);
 
         const count = 100000;
         const start = performance.now();

@@ -1,6 +1,6 @@
 import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
-import { EquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, is_sunk } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, EnemyFleet, OwnFleet, ReconPower } from "@/types/brands/fleet";
 import { Rand } from "@/effects/random";
@@ -87,7 +87,7 @@ export const analyze_ships_detection = (
     ships: EquippedShip[],
 ): FleetDetectionStatus => {
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
-        if (ship.state.is_sunk) return ship_total;
+        if (is_sunk(ship)) return ship_total;
 
         const equip_summary: EquipSummary = ship.equips.reduce((equip_total, equip) => {
             if (
@@ -216,7 +216,7 @@ const calc_shotdowned_recon_ships = (
     rand: Rand,
 ): EquippedShip[] => {
     return ships.map((ship) => {
-        if (ship.state.is_sunk) return ship;
+        if (is_sunk(ship)) return ship;
 
         const updated_slots = ship.slot_counts.map((slot, index) => {
             const equip = ship.equips[index];

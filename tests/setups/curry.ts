@@ -7,4 +7,4 @@ import { curryN } from "ramda";
 
 export const curry_derive_equip = curryN(2, derive_equip);
 
-export const curry_derive_ship = curryN(5, derive_equipped_ship);
+export const curry_derive_ship = curryN(4, derive_equipped_ship);

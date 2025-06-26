@@ -1,9 +1,10 @@
-import { PlaneEquip } from "@/models/equip/basic";
+import { PlayerPlaneEquip } from "@/models/equip/basic";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { EnemyFleet } from "@/types/brands/fleet";
 import { PreAccuracy } from "@/types/brands/other";
 import { calc_morale_evasion_mod } from "./morale";
 import { calc_air_combat_evasion } from "./evasion";
+import { calc_plane_proficiency_accuracy_flat } from "./proficiency";
 
 /**
  * 陸攻の目標艦種別の命中加算値を返す
@@ -12,7 +13,7 @@ import { calc_air_combat_evasion } from "./evasion";
  * @returns 
  */
 const calc_bomber_accuracy_flat = (
-    unit: PlaneEquip,
+    unit: PlayerPlaneEquip,
     target_ship: EquippedShip,
 ): number => {
     const equip_id = unit.master_id;
@@ -62,7 +63,7 @@ export function calc_air_combat_pre_accuracy(): number {
  * @returns 
  */
 export function calc_lbas_pre_accuracy(
-    unit: PlaneEquip,
+    unit: PlayerPlaneEquip,
     enemy_fleet: EnemyFleet,
     target_ship: EquippedShip,
 ): PreAccuracy {
@@ -85,17 +86,17 @@ export function calc_lbas_pre_accuracy(
  * @param target_ship 
  */
 export function calc_final_jet_assault_accuracy(
-    unit: PlaneEquip,
+    unit: PlayerPlaneEquip,
+    unit_proficiency: number,
     enemy_fleet: EnemyFleet,
     target_ship: EquippedShip,
 ): number {
     const pre_accuracy = calc_lbas_pre_accuracy(unit, enemy_fleet, target_ship);
     const evasion = calc_air_combat_evasion(target_ship);
 
-    return Math.max(96,
-        Math.min(10,
+    return Math.min(96,
+        Math.max(10,
             (pre_accuracy - evasion)
         * (is_player_ship(target_ship) ? calc_morale_evasion_mod(target_ship) : 0)
-         // 艦載機熟練度
-    ));
+        )) + calc_plane_proficiency_accuracy_flat(unit_proficiency);
 }

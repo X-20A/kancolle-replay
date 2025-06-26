@@ -65,6 +65,8 @@ export function derive_abyssal_equip_master(
         icon_id,
         skill_trigger_type,
         aaci_trigger_type: equip_data.aaci_type,
+        AA_resist_ship: equip_data.AA_resist_ship ?? 1,
+        AA_resist_fleet: equip_data.AA_resist_fleet ?? 1,
         status,
         flags,
     }

@@ -1,6 +1,6 @@
 import { Equip, PlayerEquip } from "@/models/equip/basic";
 import { brandEquipId } from "@/types/brands/equip";
-import { brandShipId, brandShipLv, brandUniqueId } from "@/types/brands/ship";
+import { brandShipId, brandShipLv } from "@/types/brands/ship";
 import { SpecialItemId } from "@/types/ship/ship";
 import { pipe } from "fp-ts/lib/function"; // fp-tsのpipeは関数以外も渡せる
 import { curry_derive_equip, curry_derive_ship } from "./curry";
@@ -44,7 +44,6 @@ export const make_player_equip_from_name = (name: string): PlayerEquip => {
  * ユニークid: 1, 艦Lv: 99 固定
  */
 export const make_ship_from_id_equips = curry_derive_ship(
-    brandUniqueId(1),
     brandShipLv(99),
     SpecialItemId.None,
 );

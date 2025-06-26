@@ -6,8 +6,23 @@ import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
 import { ExtractedShipStruct } from "@/types/fleet";
 import { extract_jet_assault_targets, calc_general_target_fleet, choice_target_in_single_vs_single } from "../target/target";
-import { calc_air_combat_evasion } from "../evasion";
 import { calc_final_jet_assault_accuracy } from "../accuracy";
+import { calc_defence } from "../defense";
+import { calc_jet_assault_damage } from "../damage";
+import { produce } from "immer";
+
+/**
+ * 基地航空隊の平均航空機熟練度を返す
+ * @param lbas 
+ * @returns 
+ */
+const calc_average_lbas_proficiency = (
+    lbas: LBAS,
+): number => {
+    return lbas.squadrons.reduce((total, squdron) => {
+        return total + squdron.proficiency;
+    }, 0);
+}
 
 /**
  * ジェット機スロットだけを抽出した基地航空隊を返す
@@ -21,6 +36,7 @@ export function derive_jet_only_lbas(bases: LBAS[]): JetOnlySquadron[] {
                 jet_only_squadrons.push({
                     unit: squadron.unit,
                     slot_count: squadron.slot_count,
+                    original_lbas_average_proficiency: calc_average_lbas_proficiency(base),
                     original_lbas_index: base_index,
                     original_squadron_index: slot_index,
                 });
@@ -119,34 +135,27 @@ export function calc_attacked_enemy_single_fleet(
     enemy_fleet: EnemySingleFleet,
     formation: SingleFleetFormationType,
     rand: Rand,
-): EnemyCombinedFleet {
-    jet_only_squadrons.forEach(squadron => {
-        const target_ship_structs = extract_jet_assault_targets(enemy_fleet.main_fleet_ships);
-
+): EnemySingleFleet {
+    return jet_only_squadrons.reduce((current_fleet, squadron) => {
+        const target_ship_structs = extract_jet_assault_targets(current_fleet.main_fleet_ships);
         const target_ship_struct = choice_target_in_single_vs_single(
             target_ship_structs,
             formation,
-            enemy_fleet,
+            current_fleet,
             rand,
         );
 
-        // NOTE: 基地噴式強襲の命中率について、航空戦 | 基地航空隊 どちらの形式をとるか
-        // NOTE: wikiでは見つけられなかった。Sortie sim では基地航空隊を採用してるっぽい
-        // NOTE: 橘花改 → 景雲 にするとおおよそ命中 1 * 7 分、上昇が見られる
-        // NOTE: ひとまず基地航空隊式を採用
-
-        const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
-            squadron.unit,
-            enemy_fleet,
-            target_ship_struct.ship
+        const damage = calc_jet_assault_damage(
+            squadron,
+            current_fleet,
+            target_ship_struct.ship,
+            rand,
         );
 
-        const is_hit = rand.next() < final_jet_assault_accuracy;
-
-        if (!is_hit) return;
-
-        const basic_attack_power = calc_basic_jet_assault_attack_power(squadron);
-    })
+        return produce(current_fleet, (draft) => {
+            draft.main_fleet_ships[target_ship_struct.original_index].hp_remain -= damage;
+        });
+    }, enemy_fleet);
 }
 
 /**

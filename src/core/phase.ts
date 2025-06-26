@@ -5,12 +5,12 @@ import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/lo
 import { EnemyFleet, EnemySingleFleet, OwnFleet } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
-import { calc_maritime_resupply_count, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
+import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { LBAS } from "@/models/LBAS";
-import { calc_attacked_enemy_combined_fleet, calc_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
-import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
+import { calc_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
+import { calc_air_state_shootdowned_enemy_single_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
-import { calc_anti_air_fired_lbas } from "@/logics/antiAir";
+import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
 import { SingleFleetFormationType } from "@/types";
 
 /// 各フェイズを制御する
@@ -31,7 +31,7 @@ export function calc_maritime_resupply_phase(
 ): OwnFleet {
     if (!node.type.is_boss) return own_fleet;
 
-    const maritime_resupply_locations = calc_maritime_resupply_count(own_fleet);
+    const maritime_resupply_locations = calc_maritime_resupply_locations(own_fleet);
     if (!maritime_resupply_locations.length) return own_fleet;
 
     const supply_ratio = calc_supply_ratio(
@@ -67,8 +67,8 @@ export function calc_detection_phase(
 ): DetectionPhaseResult {
     const node_type = node.type;
     if ( // NOTE: 発生条件の資料が見つからなかったので推測
-        node_type.is_night_battle_only
-        || node_type.is_ambush
+        node_type.is_night_battle_only ||
+        node_type.is_ambush
     ) return {
         post_detection_phase_node: node,
         post_detection_phase_own_fleet: own_fleet,
@@ -119,9 +119,9 @@ export function jet_lbas_phase(
 
     // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが棚上げ
 
-    const jet_only_lbases = derive_jet_only_lbas(lbases);
+    const jet_only_squadrons = derive_jet_only_lbas(lbases);
 
-    if (jet_only_lbases.length === 0) return {
+    if (jet_only_squadrons.length === 0) return {
         post_jet_lbas_phase_lbases: lbases,
         post_jet_lbas_phase_enemy_fleet: enemy_fleet,
     }
@@ -129,7 +129,7 @@ export function jet_lbas_phase(
     // 1.制空状態の決定
 
     const jets_air_superiority_power = calc_squadrons_air_superriority_power(
-        jet_only_lbases,
+        jet_only_squadrons,
     );
     const enemy_air_superiority_power =
         calc_fleet_air_superiority_power(enemy_fleet);
@@ -139,21 +139,21 @@ export function jet_lbas_phase(
         enemy_air_superiority_power,
     );
 
-    const air_state_shootdowned_lbas = calc_air_state_shootdowned_lbas(
-        jet_only_lbases,
+    const air_state_shootdowned_squadrons = calc_air_state_shootdowned_lbas(
+        jet_only_squadrons,
         own_air_state,
         rand,
     );
 
-    const air_state_shootdowned_enemy_fleet = calc_air_state_shootdowned_enemy_fleet(
+    const air_state_shootdowned_enemy_fleet = calc_air_state_shootdowned_enemy_single_fleet(
         enemy_fleet,
         enemy_air_state,
         rand,
     );
 
-    if (air_state_shootdowned_lbas.every(squadron => squadron.slot_count === 0)) return {
+    if (air_state_shootdowned_squadrons.every(squadron => squadron.slot_count <= 0)) return {
         post_jet_lbas_phase_lbases: calc_returned_origin_lbas(
-            air_state_shootdowned_lbas,
+            air_state_shootdowned_squadrons,
             lbases,
         ),
         post_jet_lbas_phase_enemy_fleet: air_state_shootdowned_enemy_fleet,
@@ -163,8 +163,8 @@ export function jet_lbas_phase(
 
     // 3.水上艦の対空砲火による航空機の撃墜
 
-    const anti_air_fired_squadrons = calc_anti_air_fired_lbas(
-        air_state_shootdowned_lbas,
+    const anti_air_fired_squadrons = calc_anti_air_fired_squadrons(
+        air_state_shootdowned_squadrons,
         air_state_shootdowned_enemy_fleet,
         formation,
         rand,

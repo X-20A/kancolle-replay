@@ -1,5 +1,5 @@
 import { EquipType } from "@/datas/equip/base/player";
-import { Equip, is_plane_equip, is_player_equip, PlaneEquip, PlayerEquip } from "@/models/equip/basic";
+import { Equip, is_plane_equip, is_player_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
 
 /// 航空機熟練度系
 
@@ -41,7 +41,7 @@ const calc_plane_proficiency_rank =
  * @param equip 
  * @returns 
  */
-const calc_air_superiority_bonus = (equip: PlaneEquip): number => {
+const calc_air_superiority_bonus = (equip: PlayerPlaneEquip): number => {
     const plane_proficiency = equip.plane_proficiency;
     const type_id = equip.type_id;
 
@@ -70,7 +70,7 @@ const calc_air_superiority_bonus = (equip: PlaneEquip): number => {
  * @returns 
  */
 const calc_internal_bonus =
-    (plane_proficiency: number): number => Math.sqrt(plane_proficiency / 10);
+    (plane_proficiency: number): number => Math.sqrt(plane_proficiency / 10); // 切り捨てなし
 
 /**
  * 航空機熟練度による制空値上昇値を返す
@@ -87,11 +87,11 @@ export function calc_plane_proficiency_flat(
 }
 
 /**
- * 練度ごとの定数Cを返す    
+ * 練度ごとのクリティカル定数Cを返す    
  * @param equip 
  * @returns 
  */
-const calc_constant = (equip: PlaneEquip): number => {
+const calc_critical_constant = (equip: PlayerPlaneEquip): number => {
     const plane_proficiency = equip.plane_proficiency;
 
     if (plane_proficiency >= 100) return 10;
@@ -115,7 +115,7 @@ export function calc_plane_proficiency_critical_mod(equips: PlayerEquip[]): numb
     return equips.reduce((total, equip, index) => {
         if (!is_plane_equip(equip)) return total;
 
-        total += Math.floor(Math.sqrt(equip.plane_proficiency) + calc_constant(equip))
+        total += Math.floor(Math.sqrt(equip.plane_proficiency) + calc_critical_constant(equip))
             / (index === 0 ? 100 : 200);
 
         return total;
@@ -129,11 +129,40 @@ export function calc_plane_proficiency_critical_mod(equips: PlayerEquip[]): numb
  * @returns 
  */
 export function calc_plane_proficiency_detection_flat(
-    equip: PlaneEquip,
+    equip: PlayerPlaneEquip,
 ): number {
     if (equip.plane_proficiency >= 100) return 30;
     if (equip.plane_proficiency >=  55) return 15;
     if (equip.plane_proficiency >=  25) return  5;
 
     return 0;
+}
+
+/**
+ * 艦載機熟練度命中補正の定数を返す
+ * @param proficiency 
+ * @returns 
+ */
+const calc_accuracy_constant = (
+    proficiency: number,
+): number => {
+    if (proficiency >= 100) return 9;
+    if (proficiency >= 85) return 6;
+    if (proficiency >= 70) return 4;
+    if (proficiency >= 55) return 3;
+    if (proficiency >= 40) return 2;
+    if (proficiency >= 25) return 1;
+    return 0;
+}
+
+/**
+ * 艦載機熟練度命中補正を返す
+ * @param proficiency 
+ * @returns 
+ */
+export function calc_plane_proficiency_accuracy_flat(
+    proficiency: number,
+): number {
+    return Math.sqrt(0.1 * proficiency)
+        + calc_accuracy_constant(proficiency);
 }

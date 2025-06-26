@@ -1,9 +1,9 @@
 import { Rand } from "@/effects/random";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
-import { EnemyFleet } from "@/types/brands/fleet";
-import { Equip } from "@/models/equip/basic";
-import { SingleFleetFormationType } from "@/types";
+import { EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
+import { Equip, PlaneEquip } from "@/models/equip/basic";
+import { FormationType, SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
 import { JetOnlySquadron } from "@/models/LBAS";
 
@@ -153,9 +153,27 @@ export function calc_fleet_anti_air(
  * 艦の割合撃墜率を返す
  */
 const calc_prop_shotdown_count_rate = (
-    weighted_anti_air: number
+    weighted_anti_air: number,
+    unit: PlaneEquip,
 ): number => {
-    return weighted_anti_air / 200;
+    return weighted_anti_air * unit.anti_air_resist_ship / 200;
+}
+
+/**
+ * 艦の固定撃墜数を返す
+ * @param weighted_anti_air 
+ * @param unit 
+ */
+export function calc_fixed_shotdown_count(
+    enemy_fleet: EnemySingleFleet,
+    weighted_anti_air: number,
+    unit: PlaneEquip,
+): number {
+    const fleet_anti_air = calc_fleet_anti_air(enemy_fleet, enemy_fleet.formation)
+    return (
+        Math.floor(weighted_anti_air * unit.anti_air_resist_ship)
+        + Math.floor(fleet_anti_air * unit.anti_air_resist_fleet)
+    ) / 5
 }
 
 /**
@@ -164,9 +182,9 @@ const calc_prop_shotdown_count_rate = (
  * @param enemy_fleet 
  * @param rand 
  */
-export function calc_anti_air_fired_lbas(
+export function calc_anti_air_fired_squadrons(
     jet_only_squadrons: JetOnlySquadron[],
-    enemy_fleet: EnemyFleet,
+    enemy_fleet: EnemySingleFleet,
     formation: SingleFleetFormationType,
     rand: Rand,
 ): JetOnlySquadron[] {
@@ -182,13 +200,13 @@ export function calc_anti_air_fired_lbas(
 
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5 // 発動率
-            ? Math.floor(calc_prop_shotdown_count_rate(weighted_anti_air) * squadron.slot_count)
+            ? Math.floor(calc_prop_shotdown_count_rate(weighted_anti_air, squadron.unit) * squadron.slot_count)
             : 0;
         
         // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? Math.floor(weighted_anti_air + calc_fleet_anti_air(enemy_fleet, formation) / 10)
+            ? Math.floor(weighted_anti_air + calc_fixed_shotdown_count(enemy_fleet, weighted_anti_air, squadron.unit) / 10)
             : 0;
 
         const new_slot_count = squadron.slot_count

@@ -16,6 +16,8 @@ export type EquipMasterBase = {
     readonly skill_trigger_type: SkillTriggerEquipType | null,
     /** 対空CIのトリガーになる装備の種別ID */
     readonly aaci_trigger_type: AACITriggerEquipType,
+    readonly AA_resist_ship: number,
+    readonly AA_resist_fleet: number,
     readonly status: TStatusComponent,
 }
 

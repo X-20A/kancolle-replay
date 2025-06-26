@@ -1,10 +1,4 @@
-
-export type ShipStateBase = {
-    /** 轟沈状態であるか */
-    readonly is_sunk: boolean,
-}
-
-export type PlayerShipState = ShipStateBase & {
+export type PlayerShipState =  {
     /** 残燃料割合 0-1 */
     readonly fuel_remain_ratio: number,
     /** 残弾薬割合 0-1 */
@@ -32,14 +26,7 @@ export function derive_player_ship_state(): PlayerShipState {
         maritime_resupply_ammo_ratio: 0,
         morale: 49,
 
-        is_sunk: false,
         /** 轟沈ストッパーが有効であるか */
         enable_sink_safety: true,
-    }
-}
-
-export function derive_abyssal_ship_state (): ShipStateBase {
-    return {
-        is_sunk: false,
     }
 }

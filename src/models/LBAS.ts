@@ -1,8 +1,9 @@
-import { JetBomberEquip, PlaneEquip } from "./equip/basic";
+import { JetBomberEquip, PlayerPlaneEquip } from "./equip/basic";
 
 export type Squadron = {
-    readonly unit: PlaneEquip,
+    readonly unit: PlayerPlaneEquip,
     readonly slot_count: number,
+    readonly proficiency: number,
 }
 
 export type LBAS = {
@@ -14,12 +15,13 @@ export type LBAS = {
 export type JetOnlySquadron = {
     readonly unit: JetBomberEquip,
     readonly slot_count: number,
+    readonly original_lbas_average_proficiency: number,
     readonly original_lbas_index: number,
     readonly original_squadron_index: number,
 }
 
 export function derive_LBAS(
-    param_units: PlaneEquip[],
+    param_units: PlayerPlaneEquip[],
     edit_slot_counts?: readonly number[],
 ): LBAS {
     const DEFAULT_LBAS_SLOTS: readonly number[] = [18, 18, 18, 18];
@@ -36,6 +38,7 @@ export function derive_LBAS(
         return {
             unit: unit,
             slot_count: slot_counts[index],
+            proficiency: 100,
         }
     })
     return {

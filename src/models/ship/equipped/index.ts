@@ -5,10 +5,10 @@ import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
-import { derive_equipped_player_ship } from "./player";
+import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
-import { PlayerShipState, ShipStateBase } from "../state";
+import { PlayerShipState } from "../state";
 
 /**
  * 艦がPlayer艦であるか判定して返す
@@ -70,7 +70,7 @@ export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
 
 type EquipedShipBase = {
     /** 艦ID(データ由来) */
-    readonly master_id: number;
+    readonly master_id: ShipId;
     /** 艦隊内における一意の識別ID */
     readonly unique_id: ShipUniqueId;
     /** 艦名(EN) */
@@ -103,6 +103,9 @@ export type PlayerEquippedShip = EquipedShipBase & {
     readonly ship_class: PlayerShipClass;
     /** 国籍ID */
     readonly country: Country;
+
+    readonly special_item_id: SpecialItemId,
+    readonly modernizations: ModernizationType,
     /** 装備ボーナスの総計 */
     readonly total_equip_bonus_addition: TStatusComponent,
     /** 装備改修ボーナスの総計 */
@@ -127,8 +130,6 @@ export type AbyssalEquippedShip = EquipedShipBase & {
     readonly install_type: InstallType,
     /** フラグ類 */
     readonly flags: AbyssalShipFlags,
-    /** simで更新されるあれこれ */
-    readonly state: ShipStateBase,
 }
 
 export type EquippedShip = PlayerEquippedShip | AbyssalEquippedShip
@@ -183,10 +184,7 @@ export function derive_equipped_ship(
     special_item_id: SpecialItemId,
     ship_id: ShipId,
     equips: Equip[],
-    HP_remain?: number,
-    modernizations?: ModernizationType,
-    edit_input?: TStatusComponent,
-    slots?: number[],
+    options: EquippedPlayerShipOptions,
 ): EquippedShip {
     return ship_id < 1500
         ? derive_equipped_player_ship(
@@ -194,13 +192,9 @@ export function derive_equipped_ship(
             special_item_id,
             ship_id,
             equips,
-            HP_remain,
-            modernizations,
-            edit_input,
-            slots,
+            options,
         )
         : derive_equipped_abyssal_ship(
             ship_id,
-            HP_remain,
         );
 }

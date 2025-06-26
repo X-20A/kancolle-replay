@@ -1,11 +1,11 @@
 import { EquippedShip } from "@/models/ship/equipped";
-import { Equip, is_jet_bomber_equip, is_player_equip, PlaneEquip } from "@/models/equip/basic";
+import { Equip, is_jet_bomber_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { Rand } from "@/effects/random";
 import { match, P } from "ts-pattern";
-import { EnemyFleet } from "@/types/brands/fleet";
+import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
 import { JetOnlySquadron } from "@/models/LBAS";
 
 /// 制空系
@@ -133,7 +133,7 @@ type Ks = {
  * @returns 
  */
 const calc_Ks = (
-    unit: PlaneEquip,
+    unit: PlayerPlaneEquip,
     air_state: AirStateType,
 ): Ks => {
     if (
@@ -175,7 +175,7 @@ const calc_Ks = (
  * @param air_state 
  */
 export function calc_own_air_state_shootdowned_slots(
-    unit: PlaneEquip,
+    unit: PlayerPlaneEquip,
     slot_count: number,
     air_state: AirStateType,
     rand: Rand,
@@ -229,7 +229,7 @@ export function calc_air_state_shootdowned_lbas(
     air_state: AirStateType,
     rand: Rand,
 ): JetOnlySquadron[] {
-    return jet_only_squadrons.map((squadron, index) => {
+    return jet_only_squadrons.map(squadron => {
         const new_slot_count = calc_own_air_state_shootdowned_slots(
             squadron.unit,
             squadron.slot_count,
@@ -267,25 +267,42 @@ const calc_air_state_shootdowned_enemy_ships = (
 }
 
 /**
- * 制空状態による被撃墜数を反映した新しい敵艦隊を返す
+ * 制空状態による被撃墜数を反映した新しい敵通常艦隊を返す
  * @param fleet 
  * @param air_state 
  * @param rand 
  * @returns 
  */
-export function calc_air_state_shootdowned_enemy_fleet(
-    fleet: EnemyFleet,
+export function calc_air_state_shootdowned_enemy_single_fleet(
+    fleet: EnemySingleFleet,
     air_state: AirStateType,
     rand: Rand,
-): EnemyFleet {
+): EnemySingleFleet {
     const new_main_fleet_ships = fleet.main_fleet_ships.map(ship => {
         return calc_air_state_shootdowned_enemy_ships(ship, air_state, rand);
     });
 
-    if (!fleet.is_combined) return {
+    return {
         ...fleet,
         main_fleet_ships: new_main_fleet_ships,
     }
+}
+
+/**
+ * 制空状態による被撃墜数を反映した新しい敵連合艦隊を返す
+ * @param fleet 
+ * @param air_state 
+ * @param rand 
+ * @returns 
+ */
+export function calc_air_state_shootdowned_enemy_combined_fleet(
+    fleet: EnemyCombinedFleet,
+    air_state: AirStateType,
+    rand: Rand,
+): EnemyCombinedFleet {
+    const new_main_fleet_ships = fleet.main_fleet_ships.map(ship => {
+        return calc_air_state_shootdowned_enemy_ships(ship, air_state, rand);
+    });
 
     const new_escort_fleet_ships = fleet.escort_fleet_ships.map(ship => {
         return calc_air_state_shootdowned_enemy_ships(ship, air_state, rand);

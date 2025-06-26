@@ -1,11 +1,18 @@
 import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships } from "@/models/fleet/Fleet";
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, is_player_ship, is_sunk } from "@/models/ship/equipped";
+import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "@/models/ship/equipped/player";
+import { PlayerShipState } from "@/models/ship/state";
 import { OwnFleet } from "@/types/brands/fleet";
 import { ShipUniqueId } from "@/types/brands/ship";
 
+/**
+ * 艦隊内における洋上補給の装備位置
+ */
 export type MaritimeResupplyLocation = {
+    /** 洋上補給を装備していた艦のユニークID */
     ship_unique_id: ShipUniqueId,
+    /** 装備していたスロット 0オリジン */
     equip_index: number,
 }
 
@@ -15,15 +22,16 @@ export type MaritimeResupplyLocation = {
  * @param own_fleet 
  * @returns 
  */
-export function calc_maritime_resupply_count(
+export function calc_maritime_resupply_locations(
     own_fleet: OwnFleet,
 ): MaritimeResupplyLocation[] {
     const UNDERWAY_REPLENISHMENT_ID = 146;
     const AVAILABLE_LIMIT = 3;
     const result: MaritimeResupplyLocation[] = [];
 
-    for (const ship of concat_fleet_ships(own_fleet)) {
-        if (ship.state.is_sunk) continue;
+    const ships = concat_fleet_ships(own_fleet);
+    for (const ship of ships) {
+        if (is_sunk(ship)) continue;
 
         for (let equip_index = 0; equip_index < ship.equips.length; equip_index++) {
             const equip = ship.equips[equip_index];
@@ -43,7 +51,8 @@ export function calc_maritime_resupply_count(
 
 /**
  * 洋上補給の数に応じた回復割合を返す    
- * 回復上限は考慮しない
+ * 回復上限は考慮しない    
+ * https://wikiwiki.jp/kancolle/洋上補給#operation
  * @param own_fleet 
  * @param maritime_resupply_count 
  * @returns 
@@ -57,24 +66,30 @@ export function calc_supply_ratio(
             maritime_resupply_count === 1 ? 15 :
                 maritime_resupply_count === 2 ? 27.5 :
                     40 // maritime_resupply_count >= 3
-        )
+        );
     } else {
         return (
             maritime_resupply_count === 1 ? 25 :
                 maritime_resupply_count === 2 ? 36 :
                     47 // maritime_resupply_count >= 3
-        )
+        );
     }
 }
 
+/**
+ * 洋上補給後の艦を返す(洋上補給の消滅も反映)
+ * @param ships 
+ * @param supply_ratio 
+ * @param maritime_resupply_locations 
+ * @returns 
+ */
 const calc_supplied_ships = (
     ships: EquippedShip[],
     supply_ratio: number,
     maritime_resupply_locations: MaritimeResupplyLocation[],
 ): EquippedShip[] => {
-    // 各艦船の状態を更新
     return ships.map(ship => {
-        if (!is_player_ship(ship) || ship.state.is_sunk) return ship;
+        if (!is_player_ship(ship) || is_sunk(ship)) return ship;
 
         // 燃料補給計算
         const new_fuel_ratio = Math.min(
@@ -92,17 +107,34 @@ const calc_supplied_ships = (
         const new_equips = consume_equip_and_shift(
             ship,
             maritime_resupply_locations,
-        )
+        );
 
-        // 新しい艦船状態を作成
-        return {
-            ...ship,
-            equips: new_equips,
+        // 要は洋上補給の装甲-2が無くなるだけ 一応再生成の筋は通しとく
+        const options: EquippedPlayerShipOptions = {
+            unique_id: ship.unique_id,
+            hp_remain: ship.hp_remain,
+            slots: ship.slot_counts,
+        };
+        const new_ship = derive_equipped_player_ship(
+            ship.lv,
+            ship.special_item_id,
+            ship.master_id,
+            new_equips,
+            options,
+        );
+
+        const new_state: PlayerShipState = {
+            ...ship.state,
             fuel_remain_ratio: new_fuel_ratio,
             ammo_remain_ratio: new_ammo_ratio,
-            maritime_resupply_fuel: new_fuel_ratio - ship.state.fuel_remain_ratio,
-            maritime_resupply_ammo: new_ammo_ratio - ship.state.ammo_remain_ratio,
-        }
+            maritime_resupply_fuel_ratio: new_fuel_ratio - ship.state.fuel_remain_ratio,
+            maritime_resupply_ammo_ratio: new_ammo_ratio - ship.state.ammo_remain_ratio,
+        };
+
+        return {
+            ...new_ship,
+            state: new_state,
+        };
     });
 }
 

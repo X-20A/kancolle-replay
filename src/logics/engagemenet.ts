@@ -1,6 +1,7 @@
 import { Rand } from "@/effects/random"
 import { is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships } from "@/models/fleet/Fleet"
+import { is_sunk } from "@/models/ship/equipped";
 import { OwnFleet } from "@/types/brands/fleet";
 
 const ENGAGEMENT_TYPE = {
@@ -37,7 +38,7 @@ export function calc_engagement(
                     'Disadvantage_T';
 
     const has_saiun = concat_fleet_ships(own_fleet).some(ship => {
-        if (ship.state.is_sunk) return false;
+        if (is_sunk(ship)) return false;
         
         ship.equips.some((equip, index) => {
             is_player_equip(equip)

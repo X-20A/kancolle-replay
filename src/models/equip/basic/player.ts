@@ -2,7 +2,7 @@ import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { deriveEquipImprovementAddition } from "../EquipImprovement";
 import { derive_player_equip_master } from "../master/player";
 import { deriveTransportAddition } from "../TransportPower";
-import { JetBomberEquip, OtherEquip, PlaneEquip, PlayerEquip } from ".";
+import { JetBomberEquip, OtherEquip, PlayerPlaneEquip, PlayerEquip } from ".";
 import { EquipId } from "@/types/brands/equip";
 
 export function derive_player_equip(
@@ -34,16 +34,18 @@ export function derive_player_equip(
 
     if (!equip_master.flags.is_plane) return other_equip;
 
-    const plane_equip: PlaneEquip = {
+    const plane_equip: PlayerPlaneEquip = {
         ...other_equip,
         plane_proficiency: proficiency ?? 100,
+        anti_air_resist_ship: equip_master.AA_resist_ship,
+        anti_air_resist_fleet: equip_master.AA_resist_fleet,
     };
 
     if (equip_master.type_id !== "JET_BOMBER") return plane_equip;
 
     const jet_bomber_equip: JetBomberEquip = {
         ...plane_equip,
-        jet_assault_count: 0,
+        total_jet_assault_cost: 0,
     }
 
     return jet_bomber_equip;

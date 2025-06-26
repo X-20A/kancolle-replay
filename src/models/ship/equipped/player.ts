@@ -11,15 +11,20 @@ import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
 
+export type EquippedPlayerShipOptions = {
+    unique_id?: ShipUniqueId,
+    hp_remain?: number,
+    modernizations?: ModernizationType,
+    edit_input?: TStatusComponent,
+    slots?: readonly number[],
+}
+
 export function derive_equipped_player_ship(
     lv: ShipLv,
     special_item_id: SpecialItemId,
     ship_id: ShipId,
     all_equips: Equip[],
-    hp_remain?: number,
-    modernizations?: ModernizationType,
-    edit_input?: TStatusComponent,
-    _slots?: number[],
+    options: EquippedPlayerShipOptions = {},
 ): PlayerEquippedShip {
     const naked_ship = derive_player_naked_ship(
         lv,
@@ -50,7 +55,7 @@ export function derive_equipped_player_ship(
         special_item_addition,
     ].reduce(sum_status_components, DEFAULT_STATUS_COMPONENT);
 
-    const edited_status = edit_input ?? view_status;
+    const edited_status = options.edit_input ?? view_status;
 
     const total_valid_asw = player_equips
         .reduce((total, equip) => {
@@ -75,9 +80,11 @@ export function derive_equipped_player_ship(
         type_id: naked_ship.type_id,
         ship_class: naked_ship.ship_class,
         country: naked_ship.country,
+        special_item_id,
+        modernizations: options.modernizations ?? {},
         equips: all_equips,
-        hp_remain: hp_remain ?? naked_ship.status.hp,
-        slot_counts: _slots ?? naked_ship.slots,
+        hp_remain: options.hp_remain ?? naked_ship.status.hp,
+        slot_counts: options.slots ?? naked_ship.slots,
         flags,
         state,
         naked_status,
