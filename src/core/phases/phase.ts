@@ -1,6 +1,6 @@
 import { Rand } from "@/effects/random";
 import { analyze_fleet_detection, calc_detection_success_rate, calc_enemy_fighter_count, calc_shotdowned_recon_fleet } from "@/logics/detection";
-import { UserSettings } from "./flows/SimExecuter";
+import { UserSettings } from "../flows/SimExecuter";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/logics/smokeScreen";
 import { EnemyFleet, EnemySingleFleet, OwnFleet } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";

@@ -1,5 +1,5 @@
 import { Rand } from "@/effects/random";
-import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phase";
+import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
 import { EnemyFleet, EnemySingleFleet, OwnFleet, OwnSingleFleet } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";

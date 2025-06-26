@@ -9,6 +9,7 @@ import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState } from "../state";
+import { EquipBuilt } from "@/models/equip/EquipBuilt";
 
 /**
  * 艦がPlayer艦であるか判定して返す
@@ -80,7 +81,7 @@ type EquipedShipBase = {
     /** レベル */
     readonly lv: ShipLv;
     /** 所持装備 */
-    readonly equips: Equip[];
+    readonly equip_builts: EquipBuilt[];
     /** 装備スロット、および搭載数 */
     readonly slot_counts: ReadonlyArray<number>,
     readonly hp_remain: number,

@@ -89,9 +89,11 @@ export const analyze_ships_detection = (
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
         if (is_sunk(ship)) return ship_total;
 
-        const equip_summary: EquipSummary = ship.equips.reduce((equip_total, equip) => {
+        const equip_summary: EquipSummary = ship.equip_builts.reduce((equip_total, equip_built) => {
+            const equip = equip_built.equip;
             if (
-                !is_player_equip(equip)
+                !equip
+                || !is_player_equip(equip)
                 || !is_plane_equip(equip)
                 || !equip.flags.can_detect
             ) return equip_total;
@@ -219,7 +221,7 @@ const calc_shotdowned_recon_ships = (
         if (is_sunk(ship)) return ship;
 
         const updated_slots = ship.slot_counts.map((slot, index) => {
-            const equip = ship.equips[index];
+            const equip = ship.equip_builts[index].equip;
             if (
                 !equip
                 || !is_player_equip(equip)
@@ -253,8 +255,9 @@ export function calc_enemy_fighter_count(
 ): number {
     return concat_fleet_ships(enemy_fleet).reduce((total, ship) => {
         // NOTE: 索敵フェイズ前に敵艦が沈むことは無いので判定省略
-        return total + ship.equips.reduce((count, equip) => {
-            if (!is_player_equip(equip)) return count;
+        return total + ship.equip_builts.reduce((count, equip_built) => {
+            const equip = equip_built.equip;
+            if (!equip || !is_player_equip(equip)) return count;
 
             return count + (equip.flags.is_involve_air_superiority ? 1 : 0);
         }, 0);

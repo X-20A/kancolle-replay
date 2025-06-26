@@ -33,9 +33,9 @@ export function calc_maritime_resupply_locations(
     for (const ship of ships) {
         if (is_sunk(ship)) continue;
 
-        for (let equip_index = 0; equip_index < ship.equips.length; equip_index++) {
-            const equip = ship.equips[equip_index];
-            if (equip.master_id !== UNDERWAY_REPLENISHMENT_ID) continue;
+        for (let equip_index = 0; equip_index < ship.equip_builts.length; equip_index++) {
+            const equip = ship.equip_builts[equip_index].equip;
+            if (!equip || equip.master_id !== UNDERWAY_REPLENISHMENT_ID) continue;
 
             result.push({
                 ship_unique_id: ship.unique_id,
@@ -104,16 +104,25 @@ const calc_supplied_ships = (
         );
 
         // 発動した洋上補給を装備していた艦なら装備をスライド
-        const new_equips = consume_equip_and_shift(
-            ship,
-            maritime_resupply_locations,
+        const maritime_resupply_location = maritime_resupply_locations.find(location =>
+            location.ship_unique_id === ship.unique_id
         );
+        if (!maritime_resupply_location) return ship;
+
+        const new_equips: Equip[] = ship.equip_builts.flatMap((equip_built, index) => {
+            if (
+                index === maritime_resupply_location.equip_index ||
+                !equip_built.equip
+            ) return [];
+
+            return equip_built.equip;
+        });
 
         // 要は洋上補給の装甲-2が無くなるだけ 一応再生成の筋は通しとく
         const options: EquippedPlayerShipOptions = {
             unique_id: ship.unique_id,
             hp_remain: ship.hp_remain,
-            slots: ship.slot_counts,
+            slots: ship.equip_builts.map(equip_built => equip_built.slot_count),
         };
         const new_ship = derive_equipped_player_ship(
             ship.lv,
@@ -172,25 +181,4 @@ export function calc_supplied_fleet(
         main_fleet_ships,
         escort_fleet_ships,
     };
-}
-
-/**
- * 装備を消費し、後続装備を前詰めでスライドさせる
- * 
- * @param ship - 処理対象の艦の状態
- * @param equip_index - 消費する装備のインデックス
- * @returns 更新された新しいShipStateオブジェクト
- */
-export function consume_equip_and_shift(
-    ship: EquippedShip,
-    maritime_resupply_locations: MaritimeResupplyLocation[]
-): Equip[] {
-    const match = maritime_resupply_locations.find(location =>
-        location.ship_unique_id === ship.unique_id
-    );
-
-    if (!match) return ship.equips;
-
-    const new_equips = [...ship.equips];
-    return new_equips.splice(match.equip_index, 1);
 }

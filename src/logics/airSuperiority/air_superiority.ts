@@ -1,5 +1,5 @@
 import { EquippedShip } from "@/models/ship/equipped";
-import { Equip, is_jet_bomber_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { Equip, is_jet_bomber_equip, is_plane_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
@@ -7,6 +7,7 @@ import { Rand } from "@/effects/random";
 import { match, P } from "ts-pattern";
 import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
 import { JetOnlySquadron } from "@/models/LBAS";
+import { EquipBuilt } from "@/models/equip/EquipBuilt";
 
 /// 制空系
 
@@ -54,13 +55,15 @@ export function calc_squadrons_air_superriority_power(
  * @returns 
  */
 export function calc_equips_air_superiority_power(
-    equips: Equip[],
+    equip_builts: EquipBuilt[],
     slots: readonly number[],
 ): number {
-    return equips.reduce((total, equip, index) => {
+    return equip_builts.reduce((total, equip_built, index) => {
+        const equip = equip_built.equip;
         if (
-            !equip.flags.is_involve_air_superiority
-            || slots[index] === 0
+            !equip ||
+            !equip.flags.is_involve_air_superiority ||
+            slots[index] === 0
         ) return total;
 
         const remain_plane_count = slots[index];
@@ -89,7 +92,7 @@ export function calc_equips_air_superiority_power(
  * @returns 
  */
 export function calc_ship_air_superiority_power(ship: EquippedShip): number {
-    return calc_equips_air_superiority_power(ship.equips, ship.slot_counts);
+    return calc_equips_air_superiority_power(ship.equip_builts, ship.slot_counts);
 }
 
 /**
@@ -244,25 +247,37 @@ export function calc_air_state_shootdowned_lbas(
     });
 }
 
+/**
+ * 制空による被撃墜を反映した新しい敵艦隊を返す
+ * @param ship 
+ * @param air_state 
+ * @param rand 
+ * @returns 
+ */
 const calc_air_state_shootdowned_enemy_ships = (
     ship: EquippedShip,
     air_state: AirStateType,
     rand: Rand,
 ): EquippedShip => {
-    const new_slots = ship.slot_counts.map((slot_count, index) => {
-        const equip = ship.equips[index];
-        if (!equip || !equip.flags.is_plane) return slot_count;
+    const new_equip_builts = ship.equip_builts.map(equip_built => {
+        const equip = equip_built.equip;
+        if (!equip || !is_plane_equip(equip)) return equip_built;
 
-        return calc_enemy_air_state_shootdowned_slots(
-            slot_count,
+        const new_slot_count = calc_enemy_air_state_shootdowned_slots(
+            equip_built.slot_count,
             air_state,
             rand,
         );
+
+        return {
+            ...equip_built,
+            slot_count: new_slot_count,
+        }
     });
 
     return {
         ...ship,
-        slot_counts: new_slots,
+        equip_builts: new_equip_builts,
     }
 }
 

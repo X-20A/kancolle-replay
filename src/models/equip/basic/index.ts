@@ -63,14 +63,13 @@ export type JetBomberEquip = PlayerPlaneEquip & {
 
 export type PlayerEquip = OtherEquip | PlayerPlaneEquip | JetBomberEquip
 
-/** 深海棲艦の航空機装備 */
-export type AbyssalPlaneEquip = EquipBase & PlaneTrait
-
-export type PlaneEquip = PlayerPlaneEquip | AbyssalPlaneEquip
-
 export type AbyssalOtherEquip = EquipBase & {
     readonly flags: AbyssalEquipFlags,
 }
+/** 深海棲艦の航空機装備 */
+export type AbyssalPlaneEquip = AbyssalOtherEquip & PlaneTrait
+
+export type PlaneEquip = PlayerPlaneEquip | AbyssalPlaneEquip
 
 export type AbyssalEquip = AbyssalOtherEquip | AbyssalPlaneEquip
 
@@ -80,7 +79,7 @@ export function is_player_equip(equip: Equip): equip is PlayerEquip {
     return equip.master_id < 1500;
 }
 
-export function is_plane_equip(equip: PlayerEquip): equip is PlayerPlaneEquip {
+export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
     return equip.flags.is_plane;
 }
 

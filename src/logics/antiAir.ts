@@ -6,6 +6,7 @@ import { Equip, PlaneEquip } from "@/models/equip/basic";
 import { FormationType, SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
 import { JetOnlySquadron } from "@/models/LBAS";
+import { EquipBuilt } from "@/models/equip/EquipBuilt";
 
 /// 対空射撃系
 
@@ -46,10 +47,13 @@ const calc_equip_type_mod_for_weighted_anti_air = (
 
 /** N: 装備倍率 ×(装備対空値) の合計を返す */
 const calc_total_N = (
-    equips: Equip[],
+    equip_builts: EquipBuilt[],
 ): number => {
     
-    return equips.reduce((total, equip) => {
+    return equip_builts.reduce((total, equip_built) => {
+        const equip = equip_built.equip;
+        if (!equip) return total;
+
         return total
             + calc_equip_type_mod_for_weighted_anti_air(equip) * equip.natural_addition.anti_air
     }, 0);
@@ -64,13 +68,13 @@ export function calc_weighted_anti_air(
 ): number {
     if (is_player_ship(ship)) {
         const X = ship.naked_status.anti_air / 2
-            + calc_total_N(ship.equips)
+            + calc_total_N(ship.equip_builts)
             + (ship.total_equip_improvement_addition.self_anti_air)
             + (0.75 * ship.total_equip_bonus_addition.anti_air);
         // wikiの A を使った処理は2倍である為に必要になるのであって、半値ならfloorでok
         return Math.floor(X);
     } else {
-        const X = ship.naked_status.anti_air + calc_total_N(ship.equips);
+        const X = ship.naked_status.anti_air + calc_total_N(ship.equip_builts);
         return Math.floor(X);
     }
 }
@@ -106,7 +110,10 @@ const calc_equip_type_mod_for_fleet_anti_air = (
 export function calc_ship_fleet_anti_air(
     ship: EquippedShip,
 ): number {
-    const equips_fleet_anti_air = ship.equips.reduce((total, equip) => {
+    const equips_fleet_anti_air = ship.equip_builts.reduce((total, equip_built) => {
+        const equip = equip_built.equip;
+        if (!equip) return total;
+
         return total + calc_equip_type_mod_for_fleet_anti_air(equip);
     }, 0);
 

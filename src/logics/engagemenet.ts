@@ -40,8 +40,11 @@ export function calc_engagement(
     const has_saiun = concat_fleet_ships(own_fleet).some(ship => {
         if (is_sunk(ship)) return false;
         
-        ship.equips.some((equip, index) => {
-            is_player_equip(equip)
+        ship.equip_builts.some((equip_built, index) => {
+            const equip = equip_built.equip;
+            if (!equip) return false;
+
+            return is_player_equip(equip)
             && equip.flags.can_avoid_T_disadvantage
             && ship.slot_counts[index] >= 1;
         });

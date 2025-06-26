@@ -41,8 +41,9 @@ const calc_premise = (
     const SMOKE_GENERATOR_KAI_ID = 501;
 
     return ships.reduce((total, ship) => {
-        ship.equips.forEach((equip) => {
-            if (!is_player_equip(equip)) return total;
+        ship.equip_builts.forEach((equip_built) => {
+            const equip = equip_built.equip;
+            if (!equip || !is_player_equip(equip)) return total;
 
             if (equip.master_id === SMOKE_GENERATOR_ID) {
                 total.substantial_smoke_count += 1;

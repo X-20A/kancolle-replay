@@ -10,6 +10,7 @@ import { sumEquipImprovementAdditions } from "@/models/equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
+import { derive_equip_built } from "@/models/equip/EquipBuilt";
 
 export type EquippedPlayerShipOptions = {
     unique_id?: ShipUniqueId,
@@ -82,7 +83,7 @@ export function derive_equipped_player_ship(
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equips: all_equips,
+        equip_builts: derive_equip_built(all_equips, naked_ship.slots),
         hp_remain: options.hp_remain ?? naked_ship.status.hp,
         slot_counts: options.slots ?? naked_ship.slots,
         flags,
