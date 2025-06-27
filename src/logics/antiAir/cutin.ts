@@ -97,6 +97,32 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_fire_director &&
             info.has_anti_air_radar
         )
+        .with(5, () => (ship, info) =>
+            ship.class !== 'Akizuki' &&
+            info.special_high_angle_gun_count >= 2 &&
+            info.has_anti_air_radar
+        )
+        .with(6, () => (ship, info) =>
+            ['BB', 'BBV', 'FBB'].includes(ship.type) &&
+            info.has_any_L_gun &&
+            info.has_type_3_shell &&
+            info.has_fire_director
+        )
+        .with(7, () => (ship, info) =>
+            ship.class !== 'Akizuki' &&
+            info.high_angle_gun_count >= 1 &&
+            info.has_fire_director &&
+            info.has_anti_air_radar
+        )
+        .with(8, () => (ship, info) =>
+            ship.class !== 'Akizuki' &&
+            info.special_high_angle_gun_count >= 1 &&
+            info.has_anti_air_radar
+        )
+        .with(9, () => (_, info) =>
+            info.high_angle_gun_count >= 1 &&
+            info.has_fire_director
+        )
         .with(10, () => (ship, info) =>
             ship.name === '摩耶改二' &&
             info.special_anti_air_gun_count >= 1 &&
@@ -107,6 +133,17 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             ship.name === '摩耶改二' &&
             info.special_anti_air_gun_count >= 1 &&
             (info.high_angle_gun_count >= 1 || info.special_high_angle_gun_count >= 1)
+        )
+        .with(12, () => (_, info) =>
+            info.special_anti_air_gun_count >= 1 &&
+            info.has_aa3_gun &&
+            info.has_anti_air_radar
+        )
+        .with(13, () => (ship, info) =>
+            ship.name !== '摩耶改二' &&
+            info.special_high_angle_gun_count >= 1 &&
+            info.special_anti_air_gun_count >= 1 &&
+            info.has_anti_air_radar
         )
         .with(14, () => (ship, info) =>
             ship.name === '五十鈴改二' &&
