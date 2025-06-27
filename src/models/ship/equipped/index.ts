@@ -8,15 +8,19 @@ import { PlayerShipClass } from "@/types/ship/shipClass";
 import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
-import { PlayerShipState } from "../state";
+import { PlayerShipState, ShipStateBase } from "../state";
 import { EquipBuilt } from "@/models/equip/EquipBuilt";
+import { PrepareAaciInfo } from "../aaciPreparate";
+import { NakedShip, PlayerNakedShip } from "../naked/base";
 
+export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
+export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
 /**
  * 艦がPlayer艦であるか判定して返す
  * @param ship 
  * @returns 
  */
-export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip {
+export function is_player_ship(ship: EquippedShip | NakedShip): ship is PlayerEquippedShip {
     return ship.master_id < 1500;
 }
 
@@ -26,7 +30,7 @@ export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip {
  * @returns 
  */
 export function is_sunk(ship: EquippedShip): boolean {
-    return ship.hp_remain <= 0;
+    return ship.state.hp_remain <= 0;
 }
 
 /**
@@ -66,7 +70,7 @@ export function is_submarine_category(ship: EquippedShip): boolean {
  * @returns 
  */
 export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
-    return ship.hp_remain / ship.edited_status.hp <= 0.75;
+    return ship.state.hp_remain / ship.edited_status.hp <= 0.75;
 }
 
 type EquipedShipBase = {
@@ -84,7 +88,7 @@ type EquipedShipBase = {
     readonly equip_builts: EquipBuilt[];
     /** 装備スロット、および搭載数 */
     readonly slot_counts: ReadonlyArray<number>,
-    readonly hp_remain: number,
+    readonly max_hp: number,
     /** 未装備状態の艦ステータス(lv適用済み) */
     readonly naked_status: TStatusComponent,
     /** 装備の素加算値の総計 */
@@ -93,6 +97,7 @@ type EquipedShipBase = {
     readonly view_status: TStatusComponent,
     /** ユーザーによって編集された後の艦ステータス */
     readonly edited_status: TStatusComponent,
+    readonly prepare_aaci_info: PrepareAaciInfo,
 }
 
 export type PlayerEquippedShip = EquipedShipBase & {
@@ -131,6 +136,7 @@ export type AbyssalEquippedShip = EquipedShipBase & {
     readonly install_type: InstallType,
     /** フラグ類 */
     readonly flags: AbyssalShipFlags,
+    readonly state: ShipStateBase,
 }
 
 export type EquippedShip = PlayerEquippedShip | AbyssalEquippedShip

@@ -1,6 +1,6 @@
 import { Rand } from "@/effects/random";
 import { is_jet_bomber_equip } from "@/models/equip/basic";
-import { JetOnlySquadron, LBAS } from "@/models/LBAS";
+import { JetSquadron, LBAS } from "@/models/LBAS";
 import { EquippedShip } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
@@ -27,8 +27,8 @@ const calc_average_lbas_proficiency = (
 /**
  * ジェット機スロットだけを抽出した基地航空隊を返す
  */
-export function derive_jet_only_lbas(bases: LBAS[]): JetOnlySquadron[] {
-    const jet_only_squadrons: JetOnlySquadron[] = [];
+export function derive_jet_only_lbas(bases: LBAS[]): JetSquadron[] {
+    const jet_only_squadrons: JetSquadron[] = [];
 
     bases.forEach((base, base_index) => {
         base.squadrons.forEach((squadron, slot_index) => {
@@ -54,7 +54,7 @@ export function derive_jet_only_lbas(bases: LBAS[]): JetOnlySquadron[] {
  * @returns 
  */
 export function calc_returned_origin_lbas(
-    jet_only_squadrons: readonly JetOnlySquadron[],
+    jet_only_squadrons: readonly JetSquadron[],
     original_lbases: readonly LBAS[],
 ): LBAS[] {
     return original_lbases.map((lbas, lbas_index) => {
@@ -84,7 +84,7 @@ export function calc_returned_origin_lbas(
 }
 
 export function calc_basic_jet_assault_attack_power(
-    squadron: JetOnlySquadron,
+    squadron: JetSquadron,
 ): number {
     return 1.0 * (squadron.unit.natural_addition.aerial_bomb_power * Math.sqrt(squadron.slot_count))
         + 25;
@@ -131,7 +131,7 @@ const calc_extract_valid_targets = (
  * @param rand 
  */
 export function calc_attacked_enemy_single_fleet(
-    jet_only_squadrons: JetOnlySquadron[],
+    jet_only_squadrons: JetSquadron[],
     enemy_fleet: EnemySingleFleet,
     formation: SingleFleetFormationType,
     rand: Rand,
@@ -166,7 +166,7 @@ export function calc_attacked_enemy_single_fleet(
  * @param rand 
  */
 export function calc_attacked_enemy_combined_fleet(
-    jet_only_squadrons: JetOnlySquadron[],
+    jet_only_squadrons: JetSquadron[],
     enemy_fleet: EnemyCombinedFleet,
     formation: CombinedFleetFormationType,
     rand: Rand,

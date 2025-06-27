@@ -1,7 +1,5 @@
 import { AswEquipFlags } from "@/types/ship/ship";
 import { PlayerEquip } from "../equip/basic";
-import { SkillTriggerEquipType } from "@/types/equip/player";
-import { EquipType } from "@/datas/equip/base/player";
 
 export function derive_asw_flags(
     equips: PlayerEquip[],
@@ -47,9 +45,9 @@ export function derive_asw_flags(
             ].includes(equip.master_id);
             const is_low_autogyro = equip.type_id === "AUTOGYRO" && !has_any_S51J;
 
-            const has_any_sonar = equip.skill_trigger_type === SkillTriggerEquipType.B_SONAR;
+            const has_any_sonar = equip.skill_trigger_type === 'B_SONAR';
             const has_small_sonar = equip.type_id === "SONAR_S";
-            const has_any_DC = equip.skill_trigger_type === SkillTriggerEquipType.B_DEPTHCHARGE;
+            const has_any_DC = equip.skill_trigger_type === 'B_DEPTHCHARGE';
             const has_DCP = equip.flags.is_DCP;
             const has_DC = equip.flags.is_DC_only;
 

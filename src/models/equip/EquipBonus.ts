@@ -59,7 +59,7 @@ export function deriveEquipBonusAddition(
 ): TStatusComponent {
     // レーダー系フラグ
     const flags = equips.reduce((acc, equip) => {
-        if (equip.skill_trigger_type !== SkillTriggerEquipType.B_RADAR) return acc;
+        if (equip.skill_trigger_type !== 'B_RADAR') return acc;
 
         const addition = equip.natural_addition;
         return {

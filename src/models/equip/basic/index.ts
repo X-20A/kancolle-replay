@@ -18,7 +18,7 @@ type EquipBase = {
     /** 装備種別ID */
     readonly type_id: EquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
-    readonly skill_trigger_type: SkillTriggerEquipType | null,
+    readonly skill_trigger_type: SkillTriggerEquipType,
     /** 対空CIのトリガーになる装備の種別ID */
     readonly aaci_trigger_type: AACITriggerEquipType,
     /** マスターデータままの装備加算値 */

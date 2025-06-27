@@ -11,6 +11,7 @@ import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
 import { derive_equip_built } from "@/models/equip/EquipBuilt";
+import { derive_prepare_AACI_info } from "../aaciPreparate";
 
 export type EquippedPlayerShipOptions = {
     unique_id?: ShipUniqueId,
@@ -95,6 +96,7 @@ export function derive_equipped_player_ship(
         special_item_addition,
         view_status,
         edited_status,
+        prepare_aaci_info: derive_prepare_AACI_info(all_equips),
         total_contribute_asw_attack_power: total_valid_asw,
     }
 }

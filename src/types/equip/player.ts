@@ -3,26 +3,28 @@ import { DeepReadonly } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
-export const enum SkillTriggerEquipType {
-    B_MAINGUN = 1,
-    B_SECGUN = 2,
-    B_RECON = 3,
-    B_RADAR = 4,
-    B_APSHELL = 5,
-    B_SONAR = 6,
-    B_DEPTHCHARGE = 7,
-    B_TORPEDO = 8,
-    B_TYPE3SHELL = 9,
-    B_LC1 = 10,
-    B_LC2 = 11,
-    B_LC3 = 12,
-    B_DEPTHCHARGE2 = 13,
-    B_NIGHTFIGHTER = 14,
-    B_NIGHTBOMBER = 15,
-    B_NIGHTBOMBER2 = 16,
-    B_NIGHTCREW = 17,
-    B_OTHER = 0,
-}
+export const SKILL_TRIGGER_TYPE = {
+    NONE: 0,
+    B_MAINGUN: 1,
+    B_SECGUN: 2,
+    B_RECON: 3,
+    B_RADAR: 4,
+    B_APSHELL: 5,
+    B_SONAR: 6,
+    B_DEPTHCHARGE: 7,
+    B_TORPEDO: 8,
+    B_TYPE3SHELL: 9,
+    B_LC1: 10,
+    B_LC2: 11,
+    B_LC3: 12,
+    B_DEPTHCHARGE2: 13,
+    B_NIGHTFIGHTER: 14,
+    B_NIGHTBOMBER: 15,
+    B_NIGHTBOMBER2: 16,
+    B_NIGHTCREW: 17,
+    B_OTHER: 18,
+} as const;
+export type SkillTriggerEquipType = keyof typeof SKILL_TRIGGER_TYPE
 
 /** 対空CIのトリガーになる装備の種別ID */
 const AACI_TRIGGER_EQUIP_TYPE = {

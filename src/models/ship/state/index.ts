@@ -1,4 +1,8 @@
-export type PlayerShipState =  {
+export type ShipStateBase = {
+    hp_remain: number,
+}
+
+export type PlayerShipState =  ShipStateBase & {
     /** 残燃料割合 0-1 */
     readonly fuel_remain_ratio: number,
     /** 残弾薬割合 0-1 */
@@ -14,8 +18,11 @@ export type PlayerShipState =  {
     readonly enable_sink_safety: boolean,
 }
 
-export function derive_player_ship_state(): PlayerShipState {
+export function derive_player_ship_state(
+    hp_remain: number,
+): PlayerShipState {
     return {
+        hp_remain,
         /** 残燃料割合 0-1 */
         fuel_remain_ratio: 1,
         /** 残弾薬割合 0-1 */
@@ -25,7 +32,6 @@ export function derive_player_ship_state(): PlayerShipState {
         /** 洋上補給 弾薬追徴割合 0-1 */
         maritime_resupply_ammo_ratio: 0,
         morale: 49,
-
         /** 轟沈ストッパーが有効であるか */
         enable_sink_safety: true,
     }

@@ -26,6 +26,7 @@ export const enum Country {
     /** オランダ */
     Netherlands = 10,
 }
+export type CountryType = keyof typeof Country
 
 export type Bonus = {
     addition: Partial<Record<EquipBonusKey, number>>,

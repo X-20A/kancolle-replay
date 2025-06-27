@@ -12,7 +12,7 @@ export type LBAS = {
     readonly armor: number,
 }
 
-export type JetOnlySquadron = {
+export type JetSquadron = {
     readonly unit: JetBomberEquip,
     readonly slot_count: number,
     readonly original_lbas_average_proficiency: number,

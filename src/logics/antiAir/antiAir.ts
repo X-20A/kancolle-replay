@@ -1,12 +1,13 @@
 import { Rand } from "@/effects/random";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
-import { EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
+import { EnemySingleFleet } from "@/types/brands/fleet";
 import { Equip, PlaneEquip } from "@/models/equip/basic";
-import { FormationType, SingleFleetFormationType } from "@/types";
+import { SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
-import { JetOnlySquadron } from "@/models/LBAS";
+import { JetSquadron } from "@/models/LBAS";
 import { EquipBuilt } from "@/models/equip/EquipBuilt";
+import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
 
 /// 対空射撃系
 
@@ -65,17 +66,17 @@ const calc_total_N = (
  */
 export function calc_weighted_anti_air(
     ship: EquippedShip,
-): number {
+): WeightedAntiAir {
     if (is_player_ship(ship)) {
         const X = ship.naked_status.anti_air / 2
             + calc_total_N(ship.equip_builts)
             + (ship.total_equip_improvement_addition.self_anti_air)
             + (0.75 * ship.total_equip_bonus_addition.anti_air);
         // wikiの A を使った処理は2倍である為に必要になるのであって、半値ならfloorでok
-        return Math.floor(X);
+        return brandWeightedAntiAir(Math.floor(X));
     } else {
         const X = ship.naked_status.anti_air + calc_total_N(ship.equip_builts);
-        return Math.floor(X);
+        return brandWeightedAntiAir(Math.floor(X));
     }
 }
 
@@ -159,10 +160,10 @@ export function calc_fleet_anti_air(
 /**
  * 艦の割合撃墜率を返す
  */
-const calc_prop_shotdown_count_rate = (
-    weighted_anti_air: number,
+export function calc_prop_shotdown_count_rate(
+    weighted_anti_air: WeightedAntiAir,
     unit: PlaneEquip,
-): number => {
+): number {
     return weighted_anti_air * unit.anti_air_resist_ship / 200;
 }
 
@@ -173,7 +174,7 @@ const calc_prop_shotdown_count_rate = (
  */
 export function calc_fixed_shotdown_count(
     enemy_fleet: EnemySingleFleet,
-    weighted_anti_air: number,
+    weighted_anti_air: WeightedAntiAir,
     unit: PlaneEquip,
 ): number {
     const fleet_anti_air = calc_fleet_anti_air(enemy_fleet, enemy_fleet.formation)
@@ -190,11 +191,10 @@ export function calc_fixed_shotdown_count(
  * @param rand 
  */
 export function calc_anti_air_fired_squadrons(
-    jet_only_squadrons: JetOnlySquadron[],
+    jet_only_squadrons: JetSquadron[],
     enemy_fleet: EnemySingleFleet,
-    formation: SingleFleetFormationType,
     rand: Rand,
-): JetOnlySquadron[] {
+): JetSquadron[] {
     const defender_ships = extract_defender_ships(enemy_fleet);
 
     return jet_only_squadrons.map((squadron) => {

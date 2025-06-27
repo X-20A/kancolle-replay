@@ -6,7 +6,7 @@ import { AirStateType } from "./compare";
 import { Rand } from "@/effects/random";
 import { match, P } from "ts-pattern";
 import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
-import { JetOnlySquadron } from "@/models/LBAS";
+import { JetSquadron } from "@/models/LBAS";
 import { EquipBuilt } from "@/models/equip/EquipBuilt";
 
 /// 制空系
@@ -38,7 +38,7 @@ export function calc_equip_air_superiority_power(
 }
 
 export function calc_squadrons_air_superriority_power(
-    squadrons: JetOnlySquadron[],
+    squadrons: JetSquadron[],
 ): number {
     return squadrons.reduce((total, squadron) => {
         return total + calc_equip_air_superiority_power(
@@ -228,10 +228,10 @@ export function calc_enemy_air_state_shootdowned_slots(
  * @returns 
  */
 export function calc_air_state_shootdowned_lbas(
-    jet_only_squadrons: JetOnlySquadron[],
+    jet_only_squadrons: JetSquadron[],
     air_state: AirStateType,
     rand: Rand,
-): JetOnlySquadron[] {
+): JetSquadron[] {
     return jet_only_squadrons.map(squadron => {
         const new_slot_count = calc_own_air_state_shootdowned_slots(
             squadron.unit,

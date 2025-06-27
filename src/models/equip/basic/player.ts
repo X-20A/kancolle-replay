@@ -11,14 +11,15 @@ export function derive_player_equip(
     proficiency?: number,
 ): PlayerEquip {
     const equip_master = derive_player_equip_master(master_id);
+    const type_id = equip_master.type_id;
 
     const other_equip: OtherEquip = {
         master_id,
         name_en: equip_master.name_en,
         name_jp: equip_master.name_jp,
         improvement_lv,
-        type_id: equip_master.type_id,
-        skill_trigger_type: equip_master.skill_trigger_type,
+        type_id,
+        skill_trigger_type: equip_master.skill_trigger_type ?? EQUIP_TYPE_DATAS[type_id] ?? 'NONE',
         aaci_trigger_type: equip_master.aaci_trigger_type,
         flags: equip_master.flags,
         natural_addition: equip_master.status,

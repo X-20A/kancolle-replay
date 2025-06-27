@@ -7,6 +7,7 @@ import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { TStatusComponent } from "@/types";
 import { EquippedPlayerShipOptions } from "./player";
 import { derive_equip_built } from "@/models/equip/EquipBuilt";
+import { derive_prepare_AACI_info } from "../aaciPreparate";
 
 export function derive_equipped_abyssal_ship(
     id: ShipId,
@@ -21,6 +22,8 @@ export function derive_equipped_abyssal_ship(
             brandEquipId(equip_id),
         );
     });
+
+    const max_hp = options.hp_remain ?? naked_ship.status.hp;
 
     const naked_status = naked_ship.status;
 
@@ -44,12 +47,16 @@ export function derive_equipped_abyssal_ship(
         type_id: naked_ship.type_id,
         install_type: naked_ship.install_type,
         equip_builts: derive_equip_built(equips, naked_ship.slots),
-        hp_remain: options.hp_remain ?? naked_ship.status.hp,
+        max_hp,
         slot_counts: options.slots ?? naked_ship.slots,
         naked_status: naked_ship.status,
         total_natural_equip_addition,
         view_status,
         edited_status,
+        prepare_aaci_info: derive_prepare_AACI_info(equips),
         flags: naked_ship.flags,
-    }
+        state: {
+            hp_remain: max_hp,
+        },
+    };
 }

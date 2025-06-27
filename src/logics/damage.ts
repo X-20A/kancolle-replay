@@ -1,4 +1,4 @@
-import { JetOnlySquadron } from "@/models/LBAS";
+import { JetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy } from "./accuracy";
 import { calc_basic_jet_assault_attack_power } from "./aerialCombat/jetAssault";
 import { Rand } from "@/effects/random";
@@ -17,7 +17,7 @@ const calc_scrach_damage = (
 }
 
 export function calc_jet_assault_damage(
-    squadron: JetOnlySquadron,
+    squadron: JetSquadron,
     enemy_fleet: EnemySingleFleet,
     target_ship: EquippedShip,
     rand: Rand,

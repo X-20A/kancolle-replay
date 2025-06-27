@@ -50,7 +50,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_S: {
         label: 'Main Gun (S)',
         icon: 1,
-        b_type: SkillTriggerEquipType.B_MAINGUN,
+        b_type: 'B_MAINGUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "AS", "AV", "AO", "AR", "LHA", "DE"],
         equippable_ship_ids: [541],
@@ -59,7 +59,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_S_AA: {
         label: 'Main Gun (S)',
         icon: 16,
-        b_type: SkillTriggerEquipType.B_MAINGUN,
+        b_type: 'B_MAINGUN',
         a_type: 'A_HAGUN',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "AS", "AV", "AO", "AR", "LHA", "DE"],
         equippable_ship_ids: [541],
@@ -68,7 +68,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_M: {
         label: 'Main Gun (M)',
         icon: 2,
-        b_type: SkillTriggerEquipType.B_MAINGUN,
+        b_type: 'B_MAINGUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "BB", "BBV"],
         equippable_ship_ids: [372, 491, 500, 507, 581, 586, 634, 635, 639, 640, 690, 911],
@@ -77,14 +77,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_L: {
         label: 'Main Gun (L)',
         icon: 3,
-        b_type: SkillTriggerEquipType.B_MAINGUN,
+        b_type: 'B_MAINGUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["FBB", "BB", "BBV"],
     },
     MAIN_GUN_XL: {
         label: 'Main Gun (L)',
         icon: 3,
-        b_type: SkillTriggerEquipType.B_MAINGUN,
+        b_type: 'B_MAINGUN',
         a_type: 'A_GUN',
         equippable_ship_types: [],
         equippable_ship_ids: [131, 136, 143, 148, 275, 276, 541, 546, 573, 911, 916],
@@ -92,7 +92,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SECONDARY_GUN: { // (分類A)
         label: 'Secondary Gun',
         icon: 4,
-        b_type: SkillTriggerEquipType.B_SECGUN,
+        b_type: 'B_SECGUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AS", "AV", "AR", "LHA"],
         equippable_ship_ids: [352, 460, 500, 699, 717],
@@ -101,7 +101,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SECONDARY_GUN_AA: { // (分類B)
         label: 'Secondary Gun',
         icon: 16,
-        b_type: SkillTriggerEquipType.B_SECGUN,
+        b_type: 'B_SECGUN',
         a_type: 'A_HAGUN',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AS", "AV", "AR", "LHA"],
         equippable_ship_ids: [352, 460, 500, 699, 717],
@@ -110,21 +110,21 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SECONDARY_GUN_L: { // (分類C)
         label: 'Secondary Gun',
         icon: 4,
-        b_type: SkillTriggerEquipType.B_SECGUN,
+        b_type: 'B_SECGUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["CA", "FBB", "BB", "BBV", "CV", "CVB"],
     },
     AP_SHELL: {
         label: 'AP Shell',
         icon: 13,
-        b_type: SkillTriggerEquipType.B_APSHELL,
+        b_type: 'B_APSHELL',
         equippable_ship_types: ["FBB", "BB", "BBV"],
         unequippable_ship_ids: [877],
     },
     TORPEDO: {
         label: 'Torpedo',
         icon: 5,
-        b_type: SkillTriggerEquipType.B_TORPEDO,
+        b_type: 'B_TORPEDO',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "CA", "CAV", "SS", "SSV"],
         equippable_ship_ids: [178, 507, 591, 592, 593, 877, 879, 954],
         unequippable_ship_ids: [657],
@@ -132,7 +132,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     TORPEDO_SS: {
         label: 'Torpedo',
         icon: 5,
-        b_type: SkillTriggerEquipType.B_TORPEDO,
+        b_type: 'B_TORPEDO',
         equippable_ship_types: ["SS", "SSV"],
     },
     MIDGET_SUBMARINE: {
@@ -160,7 +160,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SONAR_S: {
         label: 'Sonar',
         icon: 18,
-        b_type: SkillTriggerEquipType.B_SONAR,
+        b_type: 'B_SONAR',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "SS", "SSV", "DE"],
         equippable_ship_ids: [352, 372, 380, 381, 382, 450, 491, 500, 507, 529, 534, 536, 546, 554, 586, 591, 592, 593, 626, 645, 650, 690, 699, 707, 713, 717, 879, 885, 889, 894, 899, 900, 911, 916, 943, 948, 954],
         is_contribute_asw_attack_power: true,
@@ -168,7 +168,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SONAR_L: {
         label: 'Sonar',
         icon: 18,
-        b_type: SkillTriggerEquipType.B_SONAR,
+        b_type: 'B_SONAR',
         equippable_ship_types: ["CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AS", "AV", "LHA"],
         equippable_ship_ids: [330, 346, 357, 500, 537, 538, 624, 629, 650, 662, 663, 668, 717],
         unequippable_ship_ids: [380, 381, 382, 521, 522, 526, 534, 581, 727, 877, 884, 943, 945],
@@ -177,7 +177,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     DEPTH_CHARGE: {
         label: 'Depth Charge',
         icon: 17,
-        b_type: SkillTriggerEquipType.B_DEPTHCHARGE,
+        b_type: 'B_DEPTHCHARGE',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "AV", "DE"],
         equippable_ship_ids: [380, 381, 382, 411, 412, 500, 529, 534, 536, 699, 717, 889, 900],
         unequippable_ship_ids: [372, 491, 507, 581, 586, 690],
@@ -237,7 +237,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SEAPLANE: {
         label: 'Recon Seaplane',
         icon: 10,
-        b_type: SkillTriggerEquipType.B_RECON,
+        b_type: 'B_RECON',
         equippable_ship_types: ["CL", "CT", "CA", "CAV", "FBB", "BB", "BBV", "SSV", "AS", "AV", "AO"],
         equippable_ship_ids: [621, 626],
         unequippable_ship_ids: [477, 478, 622, 623, 624, 645, 650, 657, 699, 717, 900],
@@ -250,7 +250,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SEAPLANE_BOMBER: {
         label: 'Seaplane Bomber',
         icon: 10,
-        b_type: SkillTriggerEquipType.B_RECON,
+        b_type: 'B_RECON',
         equippable_ship_types: ["CAV", "BBV", "SSV", "AV", "AO"],
         equippable_ship_ids: [305, 306, 307, 314, 358, 361, 392, 446, 447, 488, 496, 547, 574, 579, 591, 593, 626, 630, 639, 640, 652, 662, 663, 668, 724, 879, 911, 954],
         unequippable_ship_ids: [645, 650, 699, 717, 900],
@@ -314,14 +314,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     RADAR_S: {
         label: 'Radar (S)',
         icon: 11,
-        b_type: SkillTriggerEquipType.B_RADAR,
+        b_type: 'B_RADAR',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AS", "AV", "AO", "AR", "LHA", "DE"],
         unequippable_ship_ids: [945],
     },
     RADAR_L: {
         label: 'Radar (L)',
         icon: 11,
-        b_type: SkillTriggerEquipType.B_RADAR,
+        b_type: 'B_RADAR',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AV"],
         equippable_ship_ids: [179, 180, 330, 346, 352, 357, 419, 421, 422, 423, 470, 532, 533, 537, 538, 626, 645, 650, 699, 717, 948],
         unequippable_ship_ids: [477, 478, 521, 522, 574, 623, 624, 877],
@@ -329,7 +329,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     RADAR_XL: {
         label: 'Radar (L)',
         icon: 11,
-        b_type: SkillTriggerEquipType.B_RADAR,
+        b_type: 'B_RADAR',
         equippable_ship_types: ["FBB", "BB", "BBV"],
         unequippable_ship_ids: [877],
     },
@@ -362,7 +362,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     LANDING_CRAFT: {
         label: 'Misc',
         icon: 20,
-        b_type: SkillTriggerEquipType.B_LC1,
+        b_type: 'B_LC1',
         equippable_ship_types: ["AV", "LHA"],
         equippable_ship_ids: [147, 198, 199, 200, 260, 352, 382, 418, 419, 434, 435, 464, 468, 469, 470, 478, 487, 488, 489, 490, 498, 500, 506, 541, 547, 548, 559, 563, 587, 623, 630, 645, 647, 650, 657, 666, 667, 699, 703, 707, 716, 718, 720, 725, 889, 899, 908, 915, 916, 951, 959, 960, 975],
         unequippable_ship_ids: [445, 491, 727, 945],
@@ -461,7 +461,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     LANDING_TANK: {
         label: 'Misc',
         icon: 36,
-        b_type: SkillTriggerEquipType.B_LC3,
+        b_type: 'B_LC3',
         equippable_ship_types: ["SS", "SSV", "AV", "LHA"],
         equippable_ship_ids: [147, 198, 199, 200, 352, 418, 464, 468, 470, 478, 487, 488, 489, 490, 497, 500, 506, 541, 547, 548, 556, 564, 568, 569, 573, 578, 587, 588, 623, 647, 656, 657, 662, 663, 666, 667, 668, 670, 899, 908, 915, 916, 954, 960, 961],
         unequippable_ship_ids: [445, 491, 581, 943],
