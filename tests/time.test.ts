@@ -4,10 +4,11 @@ import { PlayerPlaneEquip } from "@/models/equip/basic";
 import { derive_fleet } from "@/models/fleet/Fleet";
 import { derive_LBAS } from "@/models/LBAS";
 import { Node } from "@/models/Node";
-import { brandEnemyFleet, brandOwnFleet } from "@/types/brands/fleet";
-import { GFCS_RADAR, REPPUU, SAIUN, XF5U } from "tests/setups/assets/equip";
 import { make_Fletcher, make_Ranger } from "tests/setups/assets/ship";
 import { describe, it } from "vitest";
+import { REPPUU, SAIUN, XF5U } from "./setups/assets/equips/plane";
+import { GFCS_RADAR } from "./setups/assets/equips/radar";
+import { brandOwnFleet } from "@/types/brands/other";
 
 describe('処理時間テスト', () => {
     it('sim_execute', () => {

@@ -15,7 +15,7 @@ const ANTI_AIR_CUTIN_TYPES = [
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
     51, 52,
 ] as const;
-type AntiAirCutinType = typeof ANTI_AIR_CUTIN_TYPES[number];
+export type AntiAirCutinType = typeof ANTI_AIR_CUTIN_TYPES[number];
 
 export type AntiAirCutIn = {
     /** カットイン種別id */
@@ -136,7 +136,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         )
         .with(12, () => (_, info) =>
             info.special_anti_air_gun_count >= 1 &&
-            info.has_aa3_gun &&
+            info.aa3_gun_count >= 2 &&
             info.has_anti_air_radar
         )
         .with(13, () => (ship, info) =>
@@ -340,7 +340,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             ['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) &&
             info.Shirayuki_gun_count + info.hatsuzuki_gun_count >= 1 &&
             info.has_aa4_radar &&
-            info.has_aa3_gun
+            info.aa3_gun_count >= 1
         )
         .with(52, () => (ship, info) =>
             ['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) &&
@@ -362,6 +362,7 @@ export function calc_triggerable_AACIs(
     }
     return ANTI_AIR_CUTIN_TYPES.filter((cutin_type) => {
         const condition = AACI_CONDITIONS(cutin_type);
+        // console.log(condition(param_ship, info));
         return condition(param_ship, info);
     });
 }

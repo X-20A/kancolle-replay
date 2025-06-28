@@ -3,7 +3,7 @@ import { derive_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
 import { pipe } from "fp-ts/lib/function";
-import { REPPUU, XF5U } from "tests/setups/assets/equip";
+import { REPPUU, XF5U } from "tests/setups/assets/equips/plane";
 import { make_Ranger } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 

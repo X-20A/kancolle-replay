@@ -1,6 +1,6 @@
 import { Equip, PlayerEquip } from "@/models/equip/basic";
 import { brandEquipId } from "@/types/brands/equip";
-import { brandShipId, brandShipLv } from "@/types/brands/ship";
+import { brandShipId, brandShipLv, ShipId } from "@/types/brands/ship";
 import { SpecialItemId } from "@/types/ship/ship";
 import { pipe } from "fp-ts/lib/function"; // fp-tsのpipeは関数以外も渡せる
 import { curry_derive_equip, curry_derive_ship } from "./curry";
@@ -27,7 +27,9 @@ const make_player_equip_from_id =
     (id: number): PlayerEquip => pipe(id, brandEquipId, make_equip_from_id) as PlayerEquip;
 
 /**
- * 装備名から装備オブジェクトを生成して返す
+ * 装備名から装備オブジェクトを生成して返す    
+ * ! 存在しない名前を渡しても必ずしも直ちにエラーが出ないことがある    
+ * ! おそらくvitestの仕様で、テストコード内で生成するのでなければキャッシュ扱いになる為
  */
 export const make_player_equip_from_name = (name: string): PlayerEquip => {
     const data = Object.entries(PLAYER_EQUIP_DATAS)
@@ -58,14 +60,20 @@ export const short_make_ship_from_id_equips = (id: number, equips: Equip[]) =>
 const pre_make_player_ship_from_id = (id: number) =>
     (equips: Equip[]) => short_make_ship_from_id_equips(id, equips);
 
-export const pre_make_player_ship_from_name = (
+export function calc_ship_id_from_name(
     name: string,
-): (equips: Equip[]) => EquippedShip => {
+): ShipId {
     const data = Object.entries(PLAYER_SHIP_DATAS)
         .find(([, data]) => data.nameJP === name);
     if (!data) throw new Error(`指定された名前の装備は存在しません: ${name}`);
 
-    const id = Number(data[0]);
+    return brandShipId(Number(data[0]));
+}
+
+export const pre_make_player_ship_from_name = (
+    name: string,
+): (equips: Equip[]) => EquippedShip => {
+    const id = calc_ship_id_from_name(name);
 
     return pre_make_player_ship_from_id(id);
 }

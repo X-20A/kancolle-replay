@@ -1,7 +1,8 @@
 import { evaluateCanOASW } from "@/logics/asw/OASW/evaluate";
 import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";
-import { F4U_1D, MK_32_DCP, TAN_GYORAI_DC, TYPE_144_SONAR } from "tests/setups/assets/equip";
+import { MK_32_DCP, TAN_GYORAI_DC, TYPE_144_SONAR } from "tests/setups/assets/equips/asw";
+import { F4U_1D } from "tests/setups/assets/equips/plane";
 import { make_Kiyoshimo_kai, make_Shiratsuyu_kai_2, make_Fletcher, make_Kako_kai_ni, make_Mutsuki, make_Oyashio, make_Kaga_kai_ni_go, make_Ukuru_kai } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest"
 

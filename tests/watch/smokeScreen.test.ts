@@ -2,7 +2,7 @@ import { Rand } from "@/effects/random";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type, SmokeScreenType, SmokeScreenValues } from "@/logics/smokeScreen";
 import { derive_fleet } from "@/models/fleet/Fleet";
 import { OwnFleet } from "@/types/brands/fleet";
-import { ENMAKU, ENMAKU_KAI } from "tests/setups/assets/equip";
+import { ENMAKU, ENMAKU_KAI } from "tests/setups/assets/equips/other";
 import { make_Fletcher } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 

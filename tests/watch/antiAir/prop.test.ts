@@ -3,14 +3,12 @@ import { derive_equip, Equip, is_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
 import { pipe } from "fp-ts/lib/function";
-import { SAIUN } from "tests/setups/assets/equip";
+import { SAIUN } from "tests/setups/assets/equips/plane";
 import { make_Fletcher } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 
 describe('制空系テスト', () => {
     it('割合撃墜率', () => {
-        const IMPROVED_77mm = derive_equip(9, brandEquipId(37));
-
         const FLETCHER = make_Fletcher([]);
 
         const test = (

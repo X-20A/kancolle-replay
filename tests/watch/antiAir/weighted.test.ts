@@ -3,7 +3,9 @@ import { derive_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
 import { pipe } from "fp-ts/lib/function";
-import { GFCS_RADAR, XF5U, ZOUBI_25 } from "tests/setups/assets/equip";
+import { ZOUBI_25 } from "tests/setups/assets/equips/antiAir";
+import { XF5U } from "tests/setups/assets/equips/plane";
+import { GFCS_RADAR } from "tests/setups/assets/equips/radar";
 import { make_Maya_kai_ni, make_Ranger } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 

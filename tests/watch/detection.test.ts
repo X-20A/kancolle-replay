@@ -1,5 +1,5 @@
 import { analyze_ships_detection, FleetDetectionStatus } from "@/logics/detection";
-import { SAIUN } from "tests/setups/assets/equip";
+import { SAIUN } from "tests/setups/assets/equips/plane";
 import { make_Fletcher, make_Ranger } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 
