@@ -48,6 +48,12 @@ export type PrepareAaciInfo = {
     has_anti_air_radar: boolean,
     /** 対空値4以上の電探 が含まれるか */
     has_aa4_radar: boolean,
+    /** 素対空7以下の高角砲 が含まれるか */
+    has_aa7_or_less_high_gun: boolean,
+    /** 素対空3～8の機銃 が含まれるか */
+    has_aa3to8_gun: boolean,
+    /** 対空値4以上の機銃 が含まれるか */
+    has_aa4_gun: boolean,
     /** 対空値6以上の機銃 が含まれるか */
     has_aa6_gun: boolean,
     /** 12cm30連装噴進砲改二 が含まれるか */
@@ -104,6 +110,9 @@ export function derive_prepare_AACI_info(
         has_fire_director: false,
         has_anti_air_radar: false,
         has_aa4_radar: false,
+        has_aa7_or_less_high_gun: false,
+        has_aa3to8_gun: false,
+        has_aa4_gun: false,
         has_aa6_gun: false,
         has_hunshin_kai_ni: false,
         has_ohyodo_gun: false,
@@ -143,10 +152,13 @@ export function derive_prepare_AACI_info(
         if (!acc.has_fire_director && (equip.aaci_trigger_type === 'A_AAFD')) acc.has_fire_director = true;
         if (!acc.has_anti_air_radar && equip.aaci_trigger_type === 'A_AIRRADAR') acc.has_anti_air_radar = true;
         if (!acc.has_aa4_radar && equip.skill_trigger_type === 'B_RADAR' && equip.natural_addition.anti_air >= 4) acc.has_aa4_radar = true;
+        if ((equip.aaci_trigger_type === 'A_HAGUN' || equip.aaci_trigger_type === 'A_HAFD') && equip.natural_addition.anti_air <= 7) acc.has_aa7_or_less_high_gun = true;
+        if (!acc.has_aa3to8_gun && equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 3 && equip.natural_addition.anti_air <= 8) acc.has_aa3to8_gun = true;
+        if (!acc.has_aa4_gun && equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 4) acc.has_aa4_gun = true;
         if (!acc.has_aa6_gun && equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 6) acc.has_aa6_gun = true;
         if (!acc.has_hunshin_kai_ni && equip.name_jp === '12cm30連装噴進砲改二') acc.has_hunshin_kai_ni = true;
         if (!acc.has_ohyodo_gun && equip.name_jp === '10cm連装高角砲改+増設機銃') acc.has_ohyodo_gun = true;
-        if (!acc.has_FCR_284 && equip.name_jp === '16inch Mk.I三連装砲改+FCR type28') acc.has_FCR_284 = true;
+        if (!acc.has_FCR_284 && equip.name_jp === '16inch Mk.I三連装砲改+FCR type284') acc.has_FCR_284 = true;
         if (!acc.has_kai_3_gun && equip.name_jp === '35.6cm連装砲改三(ダズル迷彩仕様)') acc.has_kai_3_gun = true;
         if (!acc.has_kai_4_gun && equip.name_jp === '35.6cm連装砲改四') acc.has_kai_4_gun = true;
         if (!acc.has_ponpon && equip.name_jp === 'QF 2ポンド8連装ポンポン砲') acc.has_ponpon = true;

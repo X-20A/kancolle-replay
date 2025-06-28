@@ -74,6 +74,9 @@ const KONGOU_CLASS_KAI_NI = [
     '霧島改二丙',
 ];
 
+/** 戦艦級 */
+const BB_category: ShipType[] = ['BB', 'FBB', 'BBV'];
+
 const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
     return match<AntiAirCutinType, AaciCondition>(type)
         .with(1, () => (ship, info) =>
@@ -91,7 +94,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.high_angle_gun_count >= 2
         )
         .with(4, () => (ship, info) =>
-            ['BB', 'BBV', 'FBB'].includes(ship.type) &&
+            BB_category.includes(ship.type) &&
             info.has_any_L_gun &&
             info.has_type_3_shell &&
             info.has_fire_director &&
@@ -103,7 +106,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_anti_air_radar
         )
         .with(6, () => (ship, info) =>
-            ['BB', 'BBV', 'FBB'].includes(ship.type) &&
+            BB_category.includes(ship.type) &&
             info.has_any_L_gun &&
             info.has_type_3_shell &&
             info.has_fire_director
@@ -136,7 +139,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         )
         .with(12, () => (_, info) =>
             info.special_anti_air_gun_count >= 1 &&
-            info.aa3_gun_count >= 2 &&
+            info.aa3_gun_count >= 2 && // 特殊機銃と条件が重複するので1つ増し
             info.has_anti_air_radar
         )
         .with(13, () => (ship, info) =>
@@ -173,7 +176,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         )
         .with(19, () => (ship, info) =>
             ship.name === '鬼怒改二' &&
-            info.high_angle_gun_count >= 1 &&
+            info.has_aa7_or_less_high_gun &&
             info.special_anti_air_gun_count >= 1
         )
         .with(20, () => (ship, info) =>
@@ -191,11 +194,11 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         )
         .with(23, () => (ship, info) =>
             ['UIT-25', '伊504'].includes(ship.name) &&
-            info.anti_air_gun_count >= 1
+            info.has_aa3to8_gun
         )
         .with(24, () => (ship, info) =>
             ['天龍改二', '龍田改二'].includes(ship.name) &&
-            info.anti_air_gun_count >= 1 &&
+            info.has_aa3to8_gun &&
             info.high_angle_gun_count >= 1
         )
         .with(25, () => (ship, info) =>
@@ -233,23 +236,24 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             ['天龍改二', '稲木改二'].includes(ship.name) &&
             info.high_angle_gun_count >= 2
         )
-        .with(32, () => (ship, info) => {
+        .with(32, () => (ship, info) => { // 🤧
             if (
-                (ship.country === Country.UK && ['BB', 'FBB', 'BBV'].includes(ship.type) ||
+                (ship.country === Country.UK && BB_category.includes(ship.type) ||
                 KONGOU_CLASS_KAI_NI.includes(ship.name))
                 && info.has_FCR_284
                 && info.has_ponpon
             ) return true;
             if (
-                ship.country === Country.UK &&
-                (info.UP_rocket_count >= 2 || (info.UP_rocket_count >= 1 && info.has_ponpon))
+                (ship.country === Country.UK ||
+                KONGOU_CLASS_KAI_NI.includes(ship.name))
+                && (info.UP_rocket_count >= 2 || (info.UP_rocket_count >= 1 && info.has_ponpon))
             ) return true;
             return false;
         })
         .with(33, () => (ship, info) =>
             ['Gotland改', 'Gotland andra'].includes(ship.name) &&
             info.high_angle_gun_count >= 1 &&
-            info.anti_air_gun_count >= 1
+            info.has_aa4_gun
         )
         .with(34, () => (ship, info) =>
             ship.class === 'Fletcher' &&
@@ -258,7 +262,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         .with(35, () => (ship, info) =>
             ship.class === 'Fletcher' &&
             info.Mk30_GFCS_count >= 1 &&
-            (info.Mk30_kai_count >= 1 || info.Mk30_count >= 1)
+            info.Mk30_kai_count + info.Mk30_count >= 1
         )
         .with(36, () => (ship, info) =>
             ship.class === 'Fletcher' &&

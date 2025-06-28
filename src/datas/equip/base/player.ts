@@ -6360,4 +6360,17 @@ export const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         ASW: 6,
         LOS: 4,
     },
+    553: {
+        name: '10cm Twin High-angle Gun Mount Kai',
+        nameJP: '10cm連装高角砲改',
+        type: 'MAIN_GUN_S',
+        aaci_type: 'A_HAGUN',
+        improvement_type: EquipImprovementType.MAIN_GUN_S,
+        icon: SpecialIcon.MainHighAngleGun,
+        FP: 2,
+        AA: 7,
+        AR: 1,
+        ACC: 1,
+        RNG: 1,
+    },
 };
