@@ -334,7 +334,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.special_high_angle_gun_count >= 2 &&
             info.has_aa4_radar
         )
-        .with(50, () => (ship, info) =>
+        .with(50, () => (ship, info) => 
             (['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) || ship.class === 'Akizuki') &&
             info.Shirayuki_gun_count + info.hatsuzuki_gun_count >= 2 &&
             info.has_aa4_radar &&
@@ -347,7 +347,9 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.aa3_gun_count >= 1
         )
         .with(52, () => (ship, info) =>
-            ['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) &&
+            // 秋月型ok:
+            // https://x.com/yukicacoon/status/1922247484606210062/photo/1
+            (['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) || ship.class === 'Akizuki') &&
             info.Shirayuki_gun_count >= 2 &&
             info.has_94_FD
         )

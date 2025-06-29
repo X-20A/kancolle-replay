@@ -108,7 +108,7 @@ describe('制空系テスト', () => {
         test([24], TENRYUU_KAI_NI, [HIGH_10, GUN_127]);
         test([24], TATSUTA_KAI_NI, [HIGH_10, GUN_127]);
         test([25, 28], ISE_KAI, [HUNSHIN_KAI_NI, RADAR_13, TYPE_3_SHELL]);
-        test([26, 8], YAMATO_KAI_NI, [OOYODO_GUN, RADAR_13]); // ACSim check
+        test([26, 8], YAMATO_KAI_NI, [OOYODO_GUN, RADAR_13]);
         test([27, 8], OOYODO_KAI, [OOYODO_GUN, HUNSHIN_KAI_NI, RADAR_13]);
         test([28], ISE_KAI, [HUNSHIN_KAI_NI, RADAR_13]);
         test([28], MUSASHI_KAI, [HUNSHIN_KAI_NI, RADAR_13]);
@@ -145,7 +145,7 @@ describe('制空系テスト', () => {
         test([48, 1, 2, 3], AKIZUKI_KAI, [HATSUZUKI_GUN, HATSUZUKI_GUN, RADAR_13_KAI]);
         test([49, 5, 8], FUJINAMI_KAI_NI, [TANYAN_GUN, TANYAN_GUN, RADAR_13_KAI]);
         test([50, 52, 7, 9], FUJINAMI_KAI_NI, [SHIRAYUKI_GUN, SHIRAYUKI_GUN, RADAR_13_KAI, FD_94]);
-        test([50, 1, 2, 3, 9], AKIZUKI, [SHIRAYUKI_GUN, SHIRAYUKI_GUN, RADAR_13_KAI, FD_94]);
+        test([50, 52, 1, 2, 3, 9], AKIZUKI, [SHIRAYUKI_GUN, SHIRAYUKI_GUN, RADAR_13_KAI, FD_94]);
         test([51], FUJINAMI_KAI_NI, [SHIRAYUKI_GUN, RADAR_13_KAI, GUN_127]);
         test([52, 9], FUJINAMI_KAI_NI, [SHIRAYUKI_GUN, SHIRAYUKI_GUN, FD_94]);
 
