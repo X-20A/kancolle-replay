@@ -1,0 +1,53 @@
+import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
+import { calc_AACI_rates } from "@/logics/antiAir/cutin/rate";
+import { Equip } from "@/models/equip/basic";
+import { derive_prepare_AACI_info } from "@/models/ship/aaciPreparate";
+import { NakedShip } from "@/models/ship/naked/base";
+import { ATLANTA_GUN, HIGH_10 } from "tests/setups/assets/equips/gun";
+import { GFCS_RADAR, SURFACE_22 } from "tests/setups/assets/equips/radar";
+import { derive_naked_ship_from_name } from "tests/setups/generator";
+import { describe, expect, it } from "vitest";
+
+describe('制空系テスト', () => {
+    it('対空CI率', () => {
+        const AKIZUKI = derive_naked_ship_from_name('秋月');
+        const ATLANTA = derive_naked_ship_from_name('Atlanta');
+
+        type ResultType = {
+            rates: number[],
+            missfire_rate: number,
+        }
+        const test = (
+            expected: ResultType,
+            ship: NakedShip,
+            equips: Equip[],
+        ) => {
+            const info = derive_prepare_AACI_info(equips);
+            const aaci_ids = calc_triggerable_AACIs(ship, info);
+            const result = calc_AACI_rates(aaci_ids);
+            const result_rates = result.AACI_rates;
+
+            expect(expected.rates.length).toBe(result_rates.length);
+            expected.rates.forEach((expected_rate, index) => {
+                expect(expected_rate.toString()).toBe(result_rates[index].rate.toString());
+            })
+        };
+
+        test(
+            {
+                rates: [0.65, 0.1925, 0.07875],
+                missfire_rate: 0.07875,
+            },
+            AKIZUKI,
+            [HIGH_10, HIGH_10, SURFACE_22],
+        );
+        test(
+            {
+                rates: [0.56, 0.242, 0.099, 0.0495],
+                missfire_rate: 0.0495,
+            },
+            ATLANTA,
+            [ATLANTA_GUN, ATLANTA_GUN, GFCS_RADAR],
+        );
+    });
+});

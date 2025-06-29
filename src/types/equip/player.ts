@@ -101,6 +101,7 @@ export type PlayerEquipData = {
     type: EquipType,
     /** 改修種別ID */
     improvement_type: EquipImprovementType,
+    // TODO: オリジナルのaaci_type導出ロジックをdebugに実装する
     /** 対空CIのトリガーになる装備の種別ID */
     aaci_type: AACITriggerEquipType,
     /**

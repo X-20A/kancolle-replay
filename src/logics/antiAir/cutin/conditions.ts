@@ -1,3 +1,4 @@
+import { AACI_DATAS } from "@/datas/aaci";
 import { Country } from "@/datas/equip/bonus";
 import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
 import { is_player_ship } from "@/models/ship/equipped";
@@ -356,6 +357,12 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         .exhaustive();
 };
 
+/**
+ * 艦の発動可能なAACI種別の配列を返す
+ * @param ship 
+ * @param info 
+ * @returns 
+ */
 export function calc_triggerable_AACIs(
     ship: NakedShip,
     info: PrepareAaciInfo,

@@ -7,6 +7,9 @@ import { curry_derive_equip, curry_derive_ship } from "./curry";
 import { PLAYER_EQUIP_DATAS } from "@/datas/equip/base/player";
 import { EquippedShip } from "@/models/ship/equipped";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
+import { derive_player_naked_ship } from "@/models/ship/naked/player";
+import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
+import { NakedShip } from "@/models/ship/naked/base";
 
 /**
  * 装備idから装備オブジェクトを生成して返す
@@ -76,4 +79,21 @@ export const pre_make_player_ship_from_name = (
     const id = calc_ship_id_from_name(name);
 
     return pre_make_player_ship_from_id(id);
+}
+
+export function derive_naked_ship (
+    id: number,
+): NakedShip {
+    const ship_id = brandShipId(id);
+    return id < 1500
+        ? derive_player_naked_ship(brandShipLv(99), ship_id)
+        : derive_abyssal_naked_ship(ship_id)
+}
+
+export function derive_naked_ship_from_name (
+    name: string,
+): NakedShip {
+    const id = calc_ship_id_from_name(name);
+
+    return derive_naked_ship(id);
 }

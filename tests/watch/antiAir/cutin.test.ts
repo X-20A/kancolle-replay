@@ -1,33 +1,15 @@
-import { AntiAirCutinType, calc_triggerable_AACIs } from "@/logics/antiAir/cutin";
+import { AntiAirCutinType, calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip } from "@/models/equip/basic";
 import { derive_prepare_AACI_info } from "@/models/ship/aaciPreparate";
-import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
 import { NakedShip } from "@/models/ship/naked/base";
-import { derive_player_naked_ship } from "@/models/ship/naked/player";
-import { brandShipId, brandShipLv } from "@/types/brands/ship";
 import { FD_91, FD_94, GUN_127, GUN_77, HUNSHIN_KAI_NI, PONPON, SINGLE_25, TRIPLE_25, UP_ROCKET, ZOUBI_25 } from "tests/setups/assets/equips/antiAir";
 import { AKIZUKI_GUN, ATLANTA_GUN, HATSUZUKI_GUN, HIGH_10, HIGH_127, large_356, MIKUMA_GUN, FCR_284, OOYODO_GUN, TANYAN_GUN, MK30_GFCS, MK30, MK30_KAI, ATLANTA_GFCS_GUN, YAMATO_10CM_CLUSTER, HARUNA_GUN_3, HARUNA_GUN_4, HARUSAME_GUN, SHIRAYUKI_GUN } from "tests/setups/assets/equips/gun";
 import { TYPE_3_SHELL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR, RADAR_13, RADAR_13_KAI, SURFACE_22, YAMATO_RADAR } from "tests/setups/assets/equips/radar";
-import { calc_ship_id_from_name } from "tests/setups/generator";
+import { derive_naked_ship_from_name } from "tests/setups/generator";
 import { describe, expect, it } from "vitest";
 
-const derive_naked_ship = (
-    id: number,
-): NakedShip => {
-    const ship_id = brandShipId(id);
-    return id < 1500
-        ? derive_player_naked_ship(brandShipLv(99), ship_id)
-        : derive_abyssal_naked_ship(ship_id)
-}
 
-const derive_naked_ship_from_name = (
-    name: string,
-): NakedShip => {
-    const id = calc_ship_id_from_name(name);
-
-    return derive_naked_ship(id);
-}
 
 describe('制空系テスト', () => {
     it('対空CI', () => {
