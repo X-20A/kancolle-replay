@@ -13,6 +13,8 @@ export const make_Oyashio = pre_make_player_ship_from_name('親潮');
 export const make_Kiyoshimo_kai = pre_make_player_ship_from_name('清霜改');
 /** 白露改二 */
 export const make_Shiratsuyu_kai_2 = pre_make_player_ship_from_name('白露改二');
+/** 秋月 */
+export const make_Akizuki = pre_make_player_ship_from_name('秋月');
 
 /** 加古改二 */
 export const make_Kako_kai_ni = pre_make_player_ship_from_name('加古改二');

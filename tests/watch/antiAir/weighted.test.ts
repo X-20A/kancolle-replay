@@ -1,8 +1,6 @@
-import { calc_weighted_anti_air } from "@/logics/antiAir/antiAir";
 import { derive_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
-import { pipe } from "fp-ts/lib/function";
 import { ZOUBI_25 } from "tests/setups/assets/equips/antiAir";
 import { XF5U } from "tests/setups/assets/equips/plane";
 import { GFCS_RADAR } from "tests/setups/assets/equips/radar";
@@ -21,7 +19,7 @@ describe('制空系テスト', () => {
 
 
         const test = (expected: number, ship: EquippedShip) => {
-            expect(expected).toBe(pipe(ship, calc_weighted_anti_air));
+            expect(expected).toBe(ship.weighted_anti_air);
         };
 
         test(35, SUPPIN_RANGER);

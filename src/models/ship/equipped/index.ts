@@ -10,8 +10,9 @@ import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { EquipBuilt } from "@/models/equip/EquipBuilt";
-import { PrepareAaciInfo } from "../aaciPreparate";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
+import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
+import { WeightedAntiAir } from "@/types/brands/other";
 
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
 export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
@@ -97,7 +98,10 @@ type EquipedShipBase = {
     readonly view_status: TStatusComponent,
     /** ユーザーによって編集された後の艦ステータス */
     readonly edited_status: TStatusComponent,
-    readonly prepare_aaci_info: PrepareAaciInfo,
+    /** 加重対空値 */
+    readonly weighted_anti_air: WeightedAntiAir,
+    /** 発動可能な対空CIのID配列 */
+    readonly triggerable_AACIs: AntiAirCutinType[],
 }
 
 export type PlayerEquippedShip = EquipedShipBase & {

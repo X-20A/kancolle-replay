@@ -48,9 +48,10 @@ export function is_all_sunk(
 
 export function derive_fleet(
     main_fleet_ships: EquippedShip[],
-    escort_fleet_ships: EquippedShip[],
+    escort_fleet_ships?: EquippedShip[],
 ): Fleet {
-    const is_combined = escort_fleet_ships.length >= 1;
+    const is_combined =
+        escort_fleet_ships !== undefined && escort_fleet_ships.length >= 1;
 
     if (is_combined) {
         return {

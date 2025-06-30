@@ -8,16 +8,20 @@ import { TStatusComponent } from "@/types";
 import { EquippedPlayerShipOptions } from "./player";
 import { derive_equip_built } from "@/models/equip/EquipBuilt";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
+import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
+import { Equip } from "@/models/equip/basic";
+import { calc_abyssal_weighted_anti_air } from "@/logics/antiAir/weighted";
 
 export function derive_equipped_abyssal_ship(
     id: ShipId,
+    input_equips?: Equip[],
     options: EquippedPlayerShipOptions = {},
 ): AbyssalEquippedShip {
     const naked_ship = derive_abyssal_naked_ship(
         id,
     );
 
-    const equips = naked_ship.EQUIPS.map(equip_id => {
+    const equips = input_equips ?? naked_ship.EQUIPS.map(equip_id => {
         return derive_abyssal_equip(
             brandEquipId(equip_id),
         );
@@ -38,6 +42,11 @@ export function derive_equipped_abyssal_ship(
 
     const edited_status = options.edit_input ?? view_status;
 
+    const weighted_anti_air = calc_abyssal_weighted_anti_air(equips, naked_status);
+
+    const prepare_AACI_info = derive_prepare_AACI_info(equips);
+    const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
+
     return {
         master_id: naked_ship.master_id,
         unique_id: brandUniqueId(crypto.randomUUID()),
@@ -53,7 +62,8 @@ export function derive_equipped_abyssal_ship(
         total_natural_equip_addition,
         view_status,
         edited_status,
-        prepare_aaci_info: derive_prepare_AACI_info(equips),
+        weighted_anti_air,
+        triggerable_AACIs,
         flags: naked_ship.flags,
         state: {
             hp_remain: max_hp,

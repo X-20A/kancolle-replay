@@ -12,6 +12,8 @@ import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
 import { derive_equip_built } from "@/models/equip/EquipBuilt";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
+import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
+import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 
 export type EquippedPlayerShipOptions = {
     unique_id?: ShipUniqueId,
@@ -70,7 +72,17 @@ export function derive_equipped_player_ship(
         asw_equip: asw_flags,
     };
 
-    const state = derive_player_ship_state();
+    const state = derive_player_ship_state(options.hp_remain ?? edited_status.hp);
+
+    const weighted_anti_air = calc_player_weighted_anti_air(
+        all_equips,
+        naked_status,
+        total_equip_bonus_addition,
+        total_equip_improvement_addition,
+    );
+
+    const prepare_AACI_info = derive_prepare_AACI_info(all_equips);
+    const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
     return {
         master_id: naked_ship.master_id,
@@ -85,8 +97,8 @@ export function derive_equipped_player_ship(
         special_item_id,
         modernizations: options.modernizations ?? {},
         equip_builts: derive_equip_built(all_equips, naked_ship.slots),
-        hp_remain: options.hp_remain ?? naked_ship.status.hp,
         slot_counts: options.slots ?? naked_ship.slots,
+        max_hp: naked_status.hp,
         flags,
         state,
         naked_status,
@@ -96,7 +108,8 @@ export function derive_equipped_player_ship(
         special_item_addition,
         view_status,
         edited_status,
-        prepare_aaci_info: derive_prepare_AACI_info(all_equips),
+        weighted_anti_air,
+        triggerable_AACIs,
         total_contribute_asw_attack_power: total_valid_asw,
     }
 }

@@ -1,13 +1,16 @@
 import { Rand } from "@/effects/random";
-import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
+import { concat_fleet_ships, Fleet, SingleFleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { EnemySingleFleet } from "@/types/brands/fleet";
 import { Equip, PlaneEquip } from "@/models/equip/basic";
-import { SingleFleetFormationType } from "@/types";
+import { SingleFleetFormationType, TStatusComponent } from "@/types";
 import { match, P } from "ts-pattern";
 import { JetSquadron } from "@/models/LBAS";
-import { EquipBuilt } from "@/models/equip/EquipBuilt";
 import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
+import { AntiAirCutinType } from "./cutin/conditions";
+import { EquipImprovementAddition } from "@/datas/equip/improvement";
+import { calc_fleet_weighted_anti_air } from "./weighted";
+import { AACI_DATAS } from "@/datas/aaci";
 
 /// 対空射撃系
 
@@ -23,69 +26,11 @@ const extract_defender_ships = (fleet: Fleet): EquippedShip[] => {
 }
 
 /**
- * 装備倍率を返す    
- * NOTE: wikiでは4,6,3となっているが、それは艦これ改解析前の検証であるらしい
- * NOTE: どちらにせよ、割合撃墜と固定撃墜では帳尻が合う
- * @param equip 
- * @returns 
- */
-const calc_equip_type_mod_for_weighted_anti_air = (
-    equip: Equip,
-): number => {
-    switch (equip.aaci_trigger_type) {
-        case 'A_HAGUN':
-        case 'A_HAFD':
-        case 'A_AAFD':
-            return 2;
-        case 'A_AAGUN':
-            return 3;
-        case 'A_AIRRADAR':
-            return 1.5;
-        default:
-            return 0;
-    }
-}
-
-/** N: 装備倍率 ×(装備対空値) の合計を返す */
-const calc_total_N = (
-    equip_builts: EquipBuilt[],
-): number => {
-    
-    return equip_builts.reduce((total, equip_built) => {
-        const equip = equip_built.equip;
-        if (!equip) return total;
-
-        return total
-            + calc_equip_type_mod_for_weighted_anti_air(equip) * equip.natural_addition.anti_air
-    }, 0);
-}
-
-/**
- * 単艦の加重対空値を返す    
- * TODO: たぶん静的に決まるのでsim前に持たせてもいいかも
- */
-export function calc_weighted_anti_air(
-    ship: EquippedShip,
-): WeightedAntiAir {
-    if (is_player_ship(ship)) {
-        const X = ship.naked_status.anti_air / 2
-            + calc_total_N(ship.equip_builts)
-            + (ship.total_equip_improvement_addition.self_anti_air)
-            + (0.75 * ship.total_equip_bonus_addition.anti_air);
-        // wikiの A を使った処理は2倍である為に必要になるのであって、半値ならfloorでok
-        return brandWeightedAntiAir(Math.floor(X));
-    } else {
-        const X = ship.naked_status.anti_air + calc_total_N(ship.equip_builts);
-        return brandWeightedAntiAir(Math.floor(X));
-    }
-}
-
-/**
  * 加重対空値計算の為の装備倍率を返す
  * @param equip 
  * @returns 
  */
-const calc_equip_type_mod_for_fleet_anti_air = (
+export const calc_equip_type_mod_for_fleet_anti_air = (
     equip: Equip,
 ): number => {
     switch (equip.aaci_trigger_type) {
@@ -130,7 +75,7 @@ export function calc_ship_fleet_anti_air(
  * @param formation 
  * @returns 
  */
-const calc_formation_mod = (
+export const calc_formation_mod = (
     formation: SingleFleetFormationType,
 ): number => {
     return match(formation)
@@ -160,28 +105,59 @@ export function calc_fleet_anti_air(
 /**
  * 艦の割合撃墜率を返す
  */
-export function calc_prop_shotdown_count_rate(
+export function calc_prop_shotdown_rate(
     weighted_anti_air: WeightedAntiAir,
-    unit: PlaneEquip,
+    target_unit: PlaneEquip,
 ): number {
-    return weighted_anti_air * unit.anti_air_resist_ship / 200;
+    return weighted_anti_air * target_unit.anti_air_resist_ship / 200;
 }
 
 /**
- * 艦の固定撃墜数を返す
+ * 艦の割合撃墜数を返す
+ */
+export function calc_prop_shootdown_count(
+    weighted_anti_air: WeightedAntiAir,
+    target_unit: PlaneEquip,
+    target_slot_count: number,
+): number {
+    const prop_shotdown_rate = calc_prop_shotdown_rate(
+        weighted_anti_air,
+        target_unit,
+    )
+    console.log('prop_rate: ', prop_shotdown_rate);
+    return Math.floor(prop_shotdown_rate * target_slot_count);
+}
+
+/**
+ * 艦隊の固定撃墜数を返す
  * @param weighted_anti_air 
- * @param unit 
+ * @param target_unit 
  */
 export function calc_fixed_shotdown_count(
-    enemy_fleet: EnemySingleFleet,
-    weighted_anti_air: WeightedAntiAir,
+    defender_ship: EquippedShip,
+    aaci_type: AntiAirCutinType | 'Misfire',
+    defender_fleet: SingleFleet,
+    formation: SingleFleetFormationType,
+    target_unit: PlaneEquip,
+): number {
+    return Math.floor(
+        (
+            Math.floor(defender_ship.weighted_anti_air * target_unit.anti_air_resist_ship)
+            + Math.floor(calc_fleet_weighted_anti_air(defender_fleet, formation) * target_unit.anti_air_resist_fleet)
+        ) * (aaci_type === 'Misfire' ? 1 : AACI_DATAS[aaci_type].mod) / 5
+    )
+}
+
+/**
+ * 最低保証値を返す
+ * @param aaci_type 
+ * @param unit 
+ */
+export function calc_guaranteed(
+    aaci_type: AntiAirCutinType,
     unit: PlaneEquip,
 ): number {
-    const fleet_anti_air = calc_fleet_anti_air(enemy_fleet, enemy_fleet.formation)
-    return (
-        Math.floor(weighted_anti_air * unit.anti_air_resist_ship)
-        + Math.floor(fleet_anti_air * unit.anti_air_resist_fleet)
-    ) / 5
+
 }
 
 /**
@@ -203,17 +179,15 @@ export function calc_anti_air_fired_squadrons(
         const defender_ship =
             defender_ships[Math.floor(rand.next() * defender_ships.length)];
 
-        const weighted_anti_air = calc_weighted_anti_air(defender_ship);
-
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5 // 発動率
-            ? Math.floor(calc_prop_shotdown_count_rate(weighted_anti_air, squadron.unit) * squadron.slot_count)
+            ? calc_prop_shootdown_count(defender_ship.weighted_anti_air, squadron.unit, squadron.slot_count)
             : 0;
-        
+
         // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? Math.floor(weighted_anti_air + calc_fixed_shotdown_count(enemy_fleet, weighted_anti_air, squadron.unit) / 10)
+            ? calc_fixed_shotdown_count(enemy_fleet, defender_ship.weighted_anti_air, squadron.unit)
             : 0;
 
         const new_slot_count = squadron.slot_count

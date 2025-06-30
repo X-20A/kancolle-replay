@@ -1,13 +1,12 @@
-import { calc_prop_shotdown_count_rate, calc_weighted_anti_air } from "@/logics/antiAir/antiAir";
-import { derive_equip, Equip, is_plane_equip } from "@/models/equip/basic";
+import { calc_prop_shotdown_rate } from "@/logics/antiAir/antiAir";
+import { Equip, is_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
-import { brandEquipId } from "@/types/brands/equip";
 import { pipe } from "fp-ts/lib/function";
 import { SAIUN } from "tests/setups/assets/equips/plane";
 import { make_Fletcher } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 
-describe('制空系テスト', () => {
+describe('対空系テスト', () => {
     it('割合撃墜率', () => {
         const FLETCHER = make_Fletcher([]);
 
@@ -18,9 +17,7 @@ describe('制空系テスト', () => {
         ) => {
             if (!is_plane_equip(attacked_unit)) throw new Error(`${attacked_unit.name_jp} は航空機ではありません`);
             const result = pipe(
-                attacker_ship,
-                calc_weighted_anti_air,
-                weigihted_anti_air => calc_prop_shotdown_count_rate(weigihted_anti_air, attacked_unit),
+                calc_prop_shotdown_rate(attacker_ship.weighted_anti_air, attacked_unit),
             );
             expect(expected).toBe(result);
         };
