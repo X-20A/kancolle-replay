@@ -16,6 +16,13 @@ const priority_comparator = (
     return AACI_DATAS[a].priority - AACI_DATAS[b].priority
 }
 
+/**
+ * 発動可能なAACIの配列から実際に発動したAACIのIDを返す    
+ * 発動したものが無ければ 'Misfire' を返す
+ * @param aaci_types 
+ * @param rand 
+ * @returns 
+ */
 export function calc_triggered_AACI(
     aaci_types: AntiAirCutinType[],
     rand: Rand,

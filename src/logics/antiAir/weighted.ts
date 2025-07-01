@@ -5,6 +5,7 @@ import { FormationType, SingleFleetFormationType, TStatusComponent } from "@/typ
 import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
 import { match } from "ts-pattern";
 import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from "./antiAir";
+import { EnemyFleet, OwnFleet } from "@/types/brands/fleet";
 
 /**
  * 装備倍率を返す    
@@ -64,11 +65,11 @@ export function calc_abyssal_weighted_anti_air(
 }
 
 /**
- * 艦隊加重対空値を返す(艦の加重対空値合計に非ず)
+ * プレイヤー側の艦隊加重対空値を返す(艦の加重対空値合計に非ず)
  * @param defender_fleet 
  */
-export function calc_fleet_weighted_anti_air(
-    defender_fleet: Fleet,
+export function calc_own_fleet_weighted_anti_air(
+    defender_fleet: OwnFleet,
     formation: SingleFleetFormationType,
 ): number {
     const ship_total = defender_fleet.main_fleet_ships.reduce((total, ship) => {
@@ -77,12 +78,13 @@ export function calc_fleet_weighted_anti_air(
                 const equip = equip_built.equip;
                 if (!equip) return total;
 
-                return total + equip.natural_addition.anti_air
-                    + calc_equip_type_mod_for_fleet_anti_air(equip)
+                return total + (
+                    equip.natural_addition.anti_air * calc_equip_type_mod_for_fleet_anti_air(equip)
                     + (is_player_equip(equip) ? equip.improvement_addition.fleet_anti_air : 0)
+                );
             }, 0)
         );
     }, 0);
-
-    return Math.floor(ship_total * calc_formation_mod(formation)) * (2 / 1.3)
+    
+    return Math.floor(ship_total * calc_formation_mod(formation)) / 1.3
 }

@@ -1,7 +1,7 @@
 import { AACI_DATAS } from "@/datas/aaci";
 import { Country } from "@/datas/equip/bonus";
 import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
-import { is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { NakedShip } from "@/models/ship/naked/base";
 import { ShipNameJP } from "@/types/brands/ship";
 import { ShipType } from "@/types/ship/ship";

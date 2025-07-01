@@ -121,7 +121,7 @@ const calc_supplied_ships = (
         // 要は洋上補給の装甲-2が無くなるだけ 一応再生成の筋は通しとく
         const options: EquippedPlayerShipOptions = {
             unique_id: ship.unique_id,
-            hp_remain: ship.hp_remain,
+            hp_remain: ship.state.hp_remain,
             slots: ship.equip_builts.map(equip_built => equip_built.slot_count),
         };
         const new_ship = derive_equipped_player_ship(

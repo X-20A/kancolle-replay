@@ -8,7 +8,7 @@ import { make_Maya_kai_ni, make_Ranger } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
 
 describe('制空系テスト', () => {
-    it('加重対空値チェック', () => {
+    it('加重対空値チェック', () => { // 加重対空値は割合撃墜や固定撃墜の為の過渡的な値に過ぎないけども表示する可能性はある
         const IMPROVED_77mm = derive_equip(9, brandEquipId(37));
 
         const SUPPIN_RANGER = make_Ranger([]);

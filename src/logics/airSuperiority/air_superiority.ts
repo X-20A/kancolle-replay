@@ -221,7 +221,7 @@ export function calc_enemy_air_state_shootdowned_slots(
 }
 
 /**
- * 制空状態による被撃墜数を反映した新しいLBASを返す
+ * 制空状態による被撃墜数を反映した新しいジェット航空隊を返す
  * @param jet_only_squadrons 
  * @param air_state 
  * @param rand 

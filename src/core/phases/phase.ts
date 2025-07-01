@@ -18,7 +18,7 @@ import { SingleFleetFormationType } from "@/types";
 /// 新しい構造体へのマージはここでやって、logics とは必要な値だけやりとりする
 
 /**
- * 海上補給フェイズ    
+ * 洋上補給フェイズ    
  * NOTE: おにぎり系はひとまず無視
  * NOTE: 残燃料・弾薬条件は無視してボス前自動発動のみ
  * @param own_fleet 
@@ -77,7 +77,7 @@ export function calc_detection_phase(
     const main_fleet_detect_status = analyze_fleet_detection(own_fleet);
     const success_rate = calc_detection_success_rate(main_fleet_detect_status.detection_power);
 
-    const is_detection_success = rand.next() > success_rate;
+    const is_detection_success = rand.next() >= success_rate;
 
     const post_detection_phase_node = {
         ...node,
@@ -151,13 +151,13 @@ export function jet_lbas_phase(
         rand,
     );
 
-    if (air_state_shootdowned_squadrons.every(squadron => squadron.slot_count <= 0)) return {
+    if (air_state_shootdowned_squadrons.every(squadron => squadron.slot_count <= 0)) return { // 枯れたらreturn
         post_jet_lbas_phase_lbases: calc_returned_origin_lbas(
             air_state_shootdowned_squadrons,
             lbases,
         ),
         post_jet_lbas_phase_enemy_fleet: air_state_shootdowned_enemy_fleet,
-    } // 枯れたらreturn
+    }
 
     // NOTE: 2.触接判定 ジェット基地による強襲では触接は発生しない
 
@@ -166,6 +166,7 @@ export function jet_lbas_phase(
     const anti_air_fired_squadrons = calc_anti_air_fired_squadrons(
         air_state_shootdowned_squadrons,
         air_state_shootdowned_enemy_fleet,
+        formation,
         rand,
     );
 
