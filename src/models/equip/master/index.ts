@@ -13,7 +13,7 @@ export type EquipMasterBase = {
     readonly type_id: EquipType,
     readonly icon_id: number,
     /** 特殊攻撃のトリガーになる装備の種別ID 該当装備でなければ null */
-    readonly skill_trigger_type: SkillTriggerEquipType,
+    readonly skill_trigger_type: SkillTriggerEquipType | null,
     /** 対空CIのトリガーになる装備の種別ID */
     readonly aaci_trigger_type: AACITriggerEquipType,
     readonly AA_resist_ship: number,

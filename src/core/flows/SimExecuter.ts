@@ -1,8 +1,8 @@
 import { Rand } from "@/effects/random";
 import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
-import { EnemyFleet, EnemySingleFleet, OwnFleet, OwnSingleFleet } from "@/types/brands/fleet";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";
+import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 
 /**
  * 戦闘の流れの種類
@@ -26,27 +26,27 @@ export type UserSettings = {
 export function sim_execute(
     node: Node,
     settings: UserSettings,
-    own_fleet: OwnSingleFleet,
-    enemy_fleet: EnemySingleFleet,
+    player_fleet: PlayerSingleFleet,
+    enemy_fleet: AbyssalSingleFleet,
     lbases: LBAS[],
     rand: Rand,
 ) { // NOTE: 更新していくデータをcontextにまとめてpipeすると見やすくなるかもだけど、コピーコスト嵩みそう
     // ひとまずそれぞれの艦隊に陣形は設定されているという前提で
     
-    const post_maritime_resupply_phase_own_fleet = calc_maritime_resupply_phase(
-        own_fleet,
+    const post_maritime_resupply_phase_player_fleet = calc_maritime_resupply_phase(
+        player_fleet,
         node,
     );
 
     const detection_phase_result = calc_detection_phase(
         node,
-        post_maritime_resupply_phase_own_fleet,
+        post_maritime_resupply_phase_player_fleet,
         enemy_fleet,
         rand,
     );
     const {
         post_detection_phase_node,
-        post_detection_phase_own_fleet,
+        post_detection_phase_player_fleet: post_detection_phase_own_fleet,
     } = detection_phase_result;
 
     const post_engagement_phase_node = calc_engagement_phase(
@@ -63,7 +63,7 @@ export function sim_execute(
     );
     const {
         post_smoke_screen_phase_node,
-        post_smoke_screen_phase_own_fleet,
+        post_smoke_screen_phase_player_fleet: post_smoke_screen_phase_own_fleet,
     } = smoke_screen_phase_result;
 
 }

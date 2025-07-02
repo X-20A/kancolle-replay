@@ -1,7 +1,6 @@
 import { Rand } from "@/effects/random";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type, SmokeScreenType, SmokeScreenValues } from "@/logics/smokeScreen";
-import { derive_fleet } from "@/models/fleet/Fleet";
-import { OwnFleet } from "@/types/brands/fleet";
+import { derive_player_fleet } from "@/models/fleet/Fleet";
 import { ENMAKU, ENMAKU_KAI } from "tests/setups/assets/equips/other";
 import { make_Fletcher } from "tests/setups/assets/ship";
 import { describe, expect, it } from "vitest";
@@ -14,11 +13,11 @@ describe('煙幕系テスト', () => {
         const ENMAKU_KAI_FLETCHER = make_Fletcher([ENMAKU_KAI]);
         const OOMORI_FLETCHER = make_Fletcher([ENMAKU_KAI, ENMAKU_KAI]);
 
-        const fleet_1 = derive_fleet([FLETCHER], []) as OwnFleet;
-        const fleet_2 = derive_fleet([ENMAKU_FLETCHER], []) as OwnFleet;
-        const fleet_3 = derive_fleet([DOUBLE_ENMAKU_FLETCHER], []) as OwnFleet;
-        const fleet_4 = derive_fleet([ENMAKU_KAI_FLETCHER], []) as OwnFleet;
-        const fleet_5 = derive_fleet([OOMORI_FLETCHER], []) as OwnFleet;
+        const fleet_1 = derive_player_fleet([FLETCHER], []);
+        const fleet_2 = derive_player_fleet([ENMAKU_FLETCHER], []);
+        const fleet_3 = derive_player_fleet([DOUBLE_ENMAKU_FLETCHER], []);
+        const fleet_4 = derive_player_fleet([ENMAKU_KAI_FLETCHER], []);
+        const fleet_5 = derive_player_fleet([OOMORI_FLETCHER], []);
 
         const rates_1 = calc_smoke_screen_activate_rate(fleet_1);
         const rates_2 = calc_smoke_screen_activate_rate(fleet_2);

@@ -12,7 +12,7 @@ export function derive_player_equip_master(
     if (!equip_data) throw new Error(`id: ${id}の装備が見つかりませんでした`);
 
     const type_id = equip_data.type;
-    const skill_trigger_type = equip_data.b_type ?? (EQUIP_TYPE_DATAS[type_id].b_type ?? null);
+    const skill_trigger_type = equip_data.b_type ?? EQUIP_TYPE_DATAS[type_id].b_type ?? null;
     
     const status: TStatusComponent = {
         hp: 0,
@@ -75,7 +75,7 @@ export function derive_player_equip_master(
         skill_trigger_type,
         aaci_trigger_type: equip_data.aaci_type,
         AA_resist_ship: equip_data.AA_resist_ship ?? 1,
-        AA_resist_fleet: equip_data.AA_resist_fleet ?? 0,
+        AA_resist_fleet: equip_data.AA_resist_fleet ?? 1,
         status,
         flags,
     }

@@ -16,6 +16,8 @@ export type PlayerShipState =  ShipStateBase & {
 
     /** 轟沈ストッパーが有効であるか */
     readonly enable_sink_safety: boolean,
+    /** 退避艦であるか */
+    readonly is_retreated: boolean,
 }
 
 export function derive_player_ship_state(
@@ -23,16 +25,12 @@ export function derive_player_ship_state(
 ): PlayerShipState {
     return {
         hp_remain,
-        /** 残燃料割合 0-1 */
         fuel_remain_ratio: 1,
-        /** 残弾薬割合 0-1 */
         ammo_remain_ratio: 1,
-        /** 洋上補給 燃料追徴割合 0-1 */
         maritime_resupply_fuel_ratio: 0,
-        /** 洋上補給 弾薬追徴割合 0-1 */
         maritime_resupply_ammo_ratio: 0,
         morale: 49,
-        /** 轟沈ストッパーが有効であるか */
         enable_sink_safety: true,
+        is_retreated: false,
     }
 }

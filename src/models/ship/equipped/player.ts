@@ -1,6 +1,6 @@
 import { brandUniqueId, ShipId, ShipLv, ShipUniqueId } from "@/types/brands/ship";
 import { PlayerEquippedShip, merge_status_components_with_max_range, sum_status_components } from ".";
-import { Equip, is_player_equip } from "@/models/equip/basic";
+import { Equip, is_player_equip, is_player_equips, PlayerEquip } from "@/models/equip/basic";
 import { ModernizationType, SpecialItemId } from "@/types/ship/ship";
 import { TStatusComponent } from "@/types";
 import { derive_player_naked_ship } from "../naked/player";
@@ -10,10 +10,10 @@ import { sumEquipImprovementAdditions } from "@/models/equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
-import { derive_equip_built } from "@/models/equip/EquipBuilt";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
+import { derive_player_equip_built } from "@/models/equip/EquipBuilt";
 
 export type EquippedPlayerShipOptions = {
     unique_id?: ShipUniqueId,
@@ -30,6 +30,7 @@ export function derive_equipped_player_ship(
     all_equips: Equip[],
     options: EquippedPlayerShipOptions = {},
 ): PlayerEquippedShip {
+    if (all_equips && !is_player_equips(all_equips)) throw new Error('艦娘に深海装備は持たせられません');
     const naked_ship = derive_player_naked_ship(
         lv,
         ship_id,
@@ -96,7 +97,7 @@ export function derive_equipped_player_ship(
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equip_builts: derive_equip_built(all_equips, naked_ship.slots),
+        equip_builts: derive_player_equip_built(all_equips, naked_ship.slots),
         slot_counts: options.slots ?? naked_ship.slots,
         max_hp: naked_status.hp,
         flags,

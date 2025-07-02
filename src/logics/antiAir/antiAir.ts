@@ -1,24 +1,24 @@
 import { Rand } from "@/effects/random";
-import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet"
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
-import { EnemySingleFleet } from "@/types/brands/fleet";
+import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, PlayerFleet } from "@/models/fleet/Fleet"
+import { AbyssalEquippedShip, EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
 import { SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
 import { JetSquadron } from "@/models/LBAS";
-import { calc_triggered_AACI } from "./cutin/rate";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
-import { calc_fixed_shotdown_count } from "./fixed";
+import { calc_abyssal_fixed_shootdown_count, calc_player_fixed_shootdown_count } from "./fixed";
 
 /// 対空射撃系
 
+function extract_defender_ships(fleet: PlayerFleet): PlayerEquippedShip[];
+function extract_defender_ships(fleet: AbyssalFleet): AbyssalEquippedShip[];
 /**
  * 艦隊から対空射撃に参加可能な艦を抽出して返す
  * @param fleet 
  * @returns 
  */
-const extract_defender_ships = (fleet: Fleet): EquippedShip[] => {
+function extract_defender_ships(fleet: Fleet): EquippedShip[] {
     return concat_fleet_ships(fleet).filter(ship =>
         // NOTE: 潜水艦も迎撃艦として選ばれる
         is_player_ship(ship) || !ship.flags.is_faraway
@@ -103,7 +103,7 @@ export function calc_fleet_anti_air(
  */
 export function calc_anti_air_fired_squadrons(
     jet_only_squadrons: JetSquadron[],
-    enemy_fleet: EnemySingleFleet,
+    enemy_fleet: AbyssalSingleFleet,
     formation: SingleFleetFormationType,
     rand: Rand,
 ): JetSquadron[] {
@@ -125,11 +125,11 @@ export function calc_anti_air_fired_squadrons(
         // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? calc_fixed_shotdown_count(defender_ship, triggered_aaci, enemy_fleet, formation, squadron.unit)
+            ? calc_abyssal_fixed_shootdown_count(defender_ship, triggered_aaci, enemy_fleet, formation, squadron.unit)
             : 0;
 
         /** 最低保証 */
-        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci);
+        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci, squadron.unit);
 
         const new_slot_count = squadron.slot_count
             - prop_shootdown_count

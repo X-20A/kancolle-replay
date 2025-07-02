@@ -1,8 +1,8 @@
 import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
-import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
-import { EquippedShip, is_sunk } from "@/models/ship/equipped";
+import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { EquippedShip, is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
-import { brandDetectionPower, brandReconPower, DetectionPower, EnemyFleet, OwnFleet, ReconPower } from "@/types/brands/fleet";
+import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { Rand } from "@/effects/random";
 
 /// 索敵系
@@ -183,7 +183,7 @@ const sum_fleet_detection_status = (
 export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
     return sum_fleet_detection_status(
         analyze_ships_detection(fleet.main_fleet_ships),
-        analyze_ships_detection(fleet.is_combined ? fleet.escort_fleet_ships : []),
+        analyze_ships_detection(is_combined_fleet(fleet) ? fleet.escort_fleet_ships : []),
     );
 }
 
@@ -207,16 +207,16 @@ const def_fighter = (enemy_fighter_count: number) => {
 };
 
 /**
- * 索敵フェイズにおける索敵機の被撃墜を反映した EquippedShip[] を返す
+ * 索敵フェイズにおける索敵機の被撃墜を反映した PlayerEquippedShip[] を返す
  * @param recon_power 
  * @param rand 
  */
 const calc_shotdowned_recon_ships = (
     recon_power: ReconPower,
-    ships: EquippedShip[],
+    ships: PlayerEquippedShip[],
     total_enemy_fighter_count: number,
     rand: Rand,
-): EquippedShip[] => {
+): PlayerEquippedShip[] => {
     return ships.map((ship) => {
         if (is_sunk(ship)) return ship;
 
@@ -224,7 +224,6 @@ const calc_shotdowned_recon_ships = (
             const equip = ship.equip_builts[index].equip;
             if (
                 !equip
-                || !is_player_equip(equip)
                 || !equip.flags.can_detect
                 || slot > 0
             ) return slot;
@@ -247,17 +246,17 @@ const calc_shotdowned_recon_ships = (
 
 /**
  * 敵艦隊の制空に関与する航空機の数を返す
- * @param enemy_fleet 
+ * @param abyssal_fleet 
  * @returns 
  */
 export function calc_enemy_fighter_count(
-    enemy_fleet: EnemyFleet,
+    abyssal_fleet: AbyssalFleet,
 ): number {
-    return concat_fleet_ships(enemy_fleet).reduce((total, ship) => {
-        // NOTE: 索敵フェイズ前に敵艦が沈むことは無いので判定省略
+    return concat_fleet_ships(abyssal_fleet).reduce((total, ship) => {
+        // NOTE: 索敵フェイズ前に敵艦が沈むことは無いので撃沈判定省略
         return total + ship.equip_builts.reduce((count, equip_built) => {
             const equip = equip_built.equip;
-            if (!equip || !is_player_equip(equip)) return count;
+            if (!equip) return count;
 
             return count + (equip.flags.is_involve_air_superiority ? 1 : 0);
         }, 0);
@@ -270,34 +269,34 @@ export function calc_enemy_fighter_count(
  * @param rand 
  */
 export function calc_shotdowned_recon_fleet(
-    own_fleet: OwnFleet,
+    player_fleet: PlayerFleet,
     recon_power: ReconPower,
     total_enemy_fighter_count: number,
     rand: Rand,
-): OwnFleet {
+): PlayerFleet {
     // 味方艦隊の ship ごとに撃墜処理を実施
     // ? 随伴艦隊も索敵機を飛ばすとして
     const updated_main_fleet_ships = calc_shotdowned_recon_ships(
         recon_power,
-        own_fleet.main_fleet_ships,
+        player_fleet.main_fleet_ships,
         total_enemy_fighter_count,
         rand,
     );
 
-    if (!own_fleet.is_combined) return {
-        ...own_fleet,
+    if (!is_combined_fleet(player_fleet)) return {
+        ...player_fleet,
         main_fleet_ships: updated_main_fleet_ships,
     };
 
     const updated_escort_fleet_ships = calc_shotdowned_recon_ships(
         recon_power,
-        own_fleet.escort_fleet_ships,
+        player_fleet.escort_fleet_ships,
         total_enemy_fighter_count,
         rand,
     );
 
     return {
-        ...own_fleet,
+        ...player_fleet,
         main_fleet_ships: updated_main_fleet_ships,
         escort_fleet_ships: updated_escort_fleet_ships,
     }

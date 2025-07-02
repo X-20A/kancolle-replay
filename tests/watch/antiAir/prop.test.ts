@@ -1,4 +1,4 @@
-import { calc_prop_shotdown_rate } from "@/logics/antiAir/antiAir";
+import { calc_prop_shotdown_rate } from "@/logics/antiAir/prop";
 import { Equip, is_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";

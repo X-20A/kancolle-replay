@@ -9,7 +9,7 @@ import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
-import { EquipBuilt } from "@/models/equip/EquipBuilt";
+import { AbyssalEquipBuilt, EquipBuilt, PlayerEquipBuilt } from "@/models/equip/EquipBuilt";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { WeightedAntiAir } from "@/types/brands/other";
@@ -23,6 +23,15 @@ export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
  */
 export function is_player_ship(ship: EquippedShip | NakedShip): ship is PlayerEquippedShip {
     return ship.master_id < 1500;
+}
+export function is_player_ships(ships: EquippedShip[]): ships is PlayerEquippedShip[] {
+    return ships.every(is_player_ship);
+}
+export function is_abyssal_ship(ship: EquippedShip): ship is AbyssalEquippedShip {
+    return !is_player_ship(ship);
+}
+export function is_abyssal_ships(ships: EquippedShip[]): ships is AbyssalEquippedShip[] {
+    return ships.every(ship => !is_player_ship(ship));
 }
 
 /**
@@ -74,7 +83,7 @@ export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
     return ship.state.hp_remain / ship.edited_status.hp <= 0.75;
 }
 
-type EquipedShipBase = {
+type EquippedShipBase = {
     /** 艦ID(データ由来) */
     readonly master_id: ShipId;
     /** 艦隊内における一意の識別ID */
@@ -85,8 +94,6 @@ type EquipedShipBase = {
     readonly name_jp: ShipNameJP;
     /** レベル */
     readonly lv: ShipLv;
-    /** 所持装備 */
-    readonly equip_builts: EquipBuilt[];
     /** 装備スロット、および搭載数 */
     readonly slot_counts: ReadonlyArray<number>,
     readonly max_hp: number,
@@ -104,7 +111,7 @@ type EquipedShipBase = {
     readonly triggerable_AACIs: AntiAirCutinType[],
 }
 
-export type PlayerEquippedShip = EquipedShipBase & {
+export type PlayerEquippedShip = EquippedShipBase & {
     /** 艦種ID */
     readonly type_id: ShipTypeBase;
     /** 未改造時 艦ID */
@@ -113,6 +120,9 @@ export type PlayerEquippedShip = EquipedShipBase & {
     readonly ship_class: PlayerShipClass;
     /** 国籍ID */
     readonly country: Country;
+
+    /** 所持装備 */
+    readonly equip_builts: PlayerEquipBuilt[];
 
     readonly special_item_id: SpecialItemId,
     readonly modernizations: ModernizationType,
@@ -130,9 +140,11 @@ export type PlayerEquippedShip = EquipedShipBase & {
     readonly state: PlayerShipState,
 };
 
-export type AbyssalEquippedShip = EquipedShipBase & {
+export type AbyssalEquippedShip = EquippedShipBase & {
     /** 艦種ID */
     readonly type_id: ShipType;
+    /** 所持装備 */
+    readonly equip_builts: AbyssalEquipBuilt[];
     /**
      * 陸上型種別ID    
      * 同じ系統の艦でもバージョンによって変わったりするので命名は目安

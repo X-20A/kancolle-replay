@@ -1,14 +1,35 @@
 import { AACI_DATAS } from "@/datas/aaci";
 import { AntiAirCutinType } from "./cutin/conditions";
+import { PlaneEquip } from "@/models/equip/basic";
 
 /// 最低保証
 
-const _calc_defence_guaranteed_base = (
+const calc_defence_guaranteed_base = (
     aaci_type: AntiAirCutinType | 'Misfire',
-    initial_guaranteed: number
+    unit: PlaneEquip,
+    initial_guaranteed: number,
 ): number => {
-    return initial_guaranteed
-        + (aaci_type !== 'Misfire' ? AACI_DATAS[aaci_type].guaranteed_bonus : 0);
+    let n1 = initial_guaranteed;
+    let n2 = 0;
+    let guaranteed = initial_guaranteed + (aaci_type !== 'Misfire' ? AACI_DATAS[aaci_type].guaranteed_bonus: 0);
+
+    if (aaci_type !== 'Misfire') {
+        n1 = AACI_DATAS[aaci_type].flat_A;
+        n2 = initial_guaranteed - AACI_DATAS[aaci_type].flat_A;
+    }
+    if (unit.anti_air_resist_ship < 1) {
+        if (unit.anti_air_resist_ship <= 0.5) { // めちゃつよ射撃回避
+            guaranteed = Math.max(
+                0,
+                initial_guaranteed - 3,
+            );
+        } else {
+            guaranteed = Math.floor(n1 * 0.6 + n2);
+        }
+    }
+    
+
+    return guaranteed;
 }
 
 /**
@@ -16,11 +37,16 @@ const _calc_defence_guaranteed_base = (
  * @param aaci_type 
  * @param unit 
  */
-export function calc_own_defence_guaranteed(
+export function calc_player_defence_guaranteed(
     aaci_type: AntiAirCutinType | 'Misfire',
+    unit: PlaneEquip,
 ): number {
-    const OWN_INITIAL_GUARANTEE = 1;
-    return _calc_defence_guaranteed_base(aaci_type, OWN_INITIAL_GUARANTEE);
+    const PLAYER_INITIAL_GUARANTEE = 1;
+    return calc_defence_guaranteed_base(
+        aaci_type,
+        unit,
+        PLAYER_INITIAL_GUARANTEE,
+    );
 }
 
 /**
@@ -30,7 +56,14 @@ export function calc_own_defence_guaranteed(
  */
 export function calc_enemy_defence_guaranteed(
     aaci_type: AntiAirCutinType | 'Misfire',
+    unit: PlaneEquip,
 ): number {
-    const ENEMY_INITIAL_GUARANTEE = 0;
-    return _calc_defence_guaranteed_base(aaci_type, ENEMY_INITIAL_GUARANTEE);
+    // 敵艦隊でもなんらかのAACIが発動すれば+1
+    // ACSim, Sortie Sim共通しているがソースは見つけられなかった
+    const ENEMY_INITIAL_GUARANTEE = (aaci_type !== 'Misfire' ? 1 : 0);
+    return calc_defence_guaranteed_base(
+        aaci_type,
+        unit,
+        ENEMY_INITIAL_GUARANTEE,
+    );
 }

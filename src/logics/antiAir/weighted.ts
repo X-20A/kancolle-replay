@@ -1,11 +1,11 @@
 import { EquipImprovementAddition } from "@/datas/equip/improvement";
-import { Equip, is_player_equip } from "@/models/equip/basic";
-import { Fleet } from "@/models/fleet/Fleet";
-import { FormationType, SingleFleetFormationType, TStatusComponent } from "@/types";
+import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "@/models/equip/basic";
+import { SingleFleetFormationType, TStatusComponent } from "@/types";
 import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
 import { match } from "ts-pattern";
 import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from "./antiAir";
-import { EnemyFleet, OwnFleet } from "@/types/brands/fleet";
+import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
+import { is_sunk } from "@/models/ship/equipped";
 
 /**
  * 装備倍率を返す    
@@ -40,7 +40,7 @@ const calc_total_N = (
  * プレイヤー艦単艦の加重対空値を返す    
  */
 export function calc_player_weighted_anti_air(
-    equips: Equip[],
+    equips: PlayerEquip[],
     naked_status: TStatusComponent,
     total_equip_bonus_addition: TStatusComponent,
     total_equip_improvement_addition: EquipImprovementAddition,
@@ -56,30 +56,53 @@ export function calc_player_weighted_anti_air(
 /**
  * 深海艦単艦の加重対空値を返す    
  */
-export function calc_abyssal_weighted_anti_air(
-    equips: Equip[],
+export function calc_abyssal_ship_weighted_anti_air(
+    equips: AbyssalEquip[],
     naked_status: TStatusComponent,
 ): WeightedAntiAir {
-    const X = naked_status.anti_air + calc_total_N(equips);
+    const equip_total_anti_air = equips.reduce((total, equip) => {
+        return total + equip.natural_addition.anti_air;
+    }, 0);
+
+    const X = Math.sqrt(naked_status.anti_air + equip_total_anti_air)
+        + calc_total_N(equips);
+
     return brandWeightedAntiAir(Math.floor(X));
+}
+
+/**
+ * M: AA_Equip * Mod(Equip-Fleet) を返す
+ */
+const calc_M = (
+    equip: Equip,
+): number => {
+    console.log(equip.name_jp);
+    console.log('AA: ', equip.natural_addition.anti_air);
+    console.log('mod: ', calc_equip_type_mod_for_fleet_anti_air(equip));
+    return equip.natural_addition.anti_air * calc_equip_type_mod_for_fleet_anti_air(equip);
 }
 
 /**
  * プレイヤー側の艦隊加重対空値を返す(艦の加重対空値合計に非ず)
  * @param defender_fleet 
  */
-export function calc_own_fleet_weighted_anti_air(
-    defender_fleet: OwnFleet,
+export function calc_player_fleet_weighted_anti_air(
+    defender_fleet: PlayerSingleFleet,
     formation: SingleFleetFormationType,
 ): number {
     const ship_total = defender_fleet.main_fleet_ships.reduce((total, ship) => {
+        if (
+            is_sunk(ship) ||
+            ship.state.is_retreated
+        ) return total;
+
         return Math.floor(
             total + ship.equip_builts.reduce((total, equip_built) => {
                 const equip = equip_built.equip;
                 if (!equip) return total;
 
                 return total + (
-                    equip.natural_addition.anti_air * calc_equip_type_mod_for_fleet_anti_air(equip)
+                    calc_M(equip)
                     + (is_player_equip(equip) ? equip.improvement_addition.fleet_anti_air : 0)
                 );
             }, 0)
@@ -87,4 +110,31 @@ export function calc_own_fleet_weighted_anti_air(
     }, 0);
     
     return Math.floor(ship_total * calc_formation_mod(formation)) / 1.3
+}
+
+/**
+ * 深海側の艦隊加重対空値を返す(艦の加重対空値合計に非ず)
+ * @param defender_fleet 
+ */
+export function calc_abyssal_fleet_weighted_anti_air(
+    defender_fleet: AbyssalSingleFleet,
+    formation: SingleFleetFormationType,
+): number {
+    const ship_total = defender_fleet.main_fleet_ships.reduce((total, ship) => {
+        if (
+            is_sunk(ship) ||
+            ship.flags.is_faraway
+        ) return total;
+
+        return Math.floor(
+            total + ship.equip_builts.reduce((total, equip_built) => {
+                const equip = equip_built.equip;
+                if (!equip) return total;
+
+                return total + calc_M(equip);
+            }, 0)
+        );
+    }, 0);
+
+    return Math.floor(ship_total * calc_formation_mod(formation));
 }

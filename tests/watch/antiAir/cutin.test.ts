@@ -6,13 +6,12 @@ import { FD_91, FD_94, GUN_127, GUN_77, HUNSHIN_KAI_NI, PONPON, SINGLE_25, TRIPL
 import { AKIZUKI_GUN, ATLANTA_GUN, HATSUZUKI_GUN, HIGH_10, HIGH_127, large_356, MIKUMA_GUN, FCR_284, OOYODO_GUN, TANYAN_GUN, MK30_GFCS, MK30, MK30_KAI, ATLANTA_GFCS_GUN, YAMATO_10CM_CLUSTER, HARUNA_GUN_3, HARUNA_GUN_4, HARUSAME_GUN, SHIRAYUKI_GUN } from "tests/setups/assets/equips/gun";
 import { TYPE_3_SHELL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR, RADAR_13, RADAR_13_KAI, SURFACE_22, YAMATO_RADAR } from "tests/setups/assets/equips/radar";
+import { LANDING_WA } from "tests/setups/assets/ship";
 import { derive_naked_ship_from_name } from "tests/setups/generator";
 import { describe, expect, it } from "vitest";
 
-
-
 describe('制空系テスト', () => {
-    it('対空CI', () => {
+    it('艦娘対空CI', () => {
         const AKIZUKI = derive_naked_ship_from_name('秋月');
         const HIEI_KAI = derive_naked_ship_from_name('比叡改');
         const NAGATO = derive_naked_ship_from_name('長門');
@@ -152,5 +151,17 @@ describe('制空系テスト', () => {
         // 24種は素対空3～8の機銃でしか発動しない
         test([], TENRYUU_KAI_NI, [HIGH_10, GUN_77]);
         test([], TENRYUU_KAI_NI, [HIGH_10, PONPON]);
+    });
+    
+    it('深海対空CI', () => {
+        const test = (
+            expected: AntiAirCutinType[],
+            result: AntiAirCutinType[],
+        ) => {
+            expect(result).toHaveLength(expected.length);
+            expect(result).toEqual(expect.arrayContaining(expected));
+        };
+
+        test([5, 8], LANDING_WA.triggerable_AACIs);
     });
 });

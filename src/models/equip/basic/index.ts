@@ -79,6 +79,18 @@ export function is_player_equip(equip: Equip): equip is PlayerEquip {
     return equip.master_id < 1500;
 }
 
+export function is_player_equips(equips: Equip[]): equips is PlayerEquip[] {
+    return equips.every(is_player_equip);
+}
+
+export function is_abyssal_equip(equip: Equip): equip is AbyssalEquip {
+    return !is_player_equip(equip);
+}
+
+export function is_abyssal_equips(equips: Equip[]): equips is AbyssalEquip[] {
+    return equips.every(equip => !is_player_equip(equip));
+}
+
 export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
     return equip.flags.is_plane;
 }

@@ -1,9 +1,8 @@
 import { Equip } from "@/models/equip/basic";
-import { concat_fleet_ships } from "@/models/fleet/Fleet";
-import { EquippedShip, is_player_ship, is_sunk } from "@/models/ship/equipped";
+import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
 import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "@/models/ship/equipped/player";
 import { PlayerShipState } from "@/models/ship/state";
-import { OwnFleet } from "@/types/brands/fleet";
 import { ShipUniqueId } from "@/types/brands/ship";
 
 /**
@@ -19,17 +18,17 @@ export type MaritimeResupplyLocation = {
 /**
  * 艦隊内の洋上補給の数を返す    
  * ※4つ以上は数えない
- * @param own_fleet 
+ * @param player_fleet 
  * @returns 
  */
 export function calc_maritime_resupply_locations(
-    own_fleet: OwnFleet,
+    player_fleet: PlayerFleet,
 ): MaritimeResupplyLocation[] {
     const UNDERWAY_REPLENISHMENT_ID = 146;
     const AVAILABLE_LIMIT = 3;
     const result: MaritimeResupplyLocation[] = [];
 
-    const ships = concat_fleet_ships(own_fleet);
+    const ships = concat_fleet_ships(player_fleet);
     for (const ship of ships) {
         if (is_sunk(ship)) continue;
 
@@ -53,15 +52,15 @@ export function calc_maritime_resupply_locations(
  * 洋上補給の数に応じた回復割合を返す    
  * 回復上限は考慮しない    
  * https://wikiwiki.jp/kancolle/洋上補給#operation
- * @param own_fleet 
+ * @param player_fleet 
  * @param maritime_resupply_count 
  * @returns 
  */
 export function calc_supply_ratio(
-    own_fleet: OwnFleet,
+    player_fleet: PlayerFleet,
     maritime_resupply_count: number,
 ): number {
-    if (own_fleet.is_combined) {
+    if (player_fleet.is_combined) {
         return(
             maritime_resupply_count === 1 ? 15 :
                 maritime_resupply_count === 2 ? 27.5 :
@@ -84,12 +83,12 @@ export function calc_supply_ratio(
  * @returns 
  */
 const calc_supplied_ships = (
-    ships: EquippedShip[],
+    ships: PlayerEquippedShip[],
     supply_ratio: number,
     maritime_resupply_locations: MaritimeResupplyLocation[],
-): EquippedShip[] => {
+): PlayerEquippedShip[] => {
     return ships.map(ship => {
-        if (!is_player_ship(ship) || is_sunk(ship)) return ship;
+        if (is_sunk(ship)) return ship;
 
         // 燃料補給計算
         const new_fuel_ratio = Math.min(
@@ -155,29 +154,29 @@ const calc_supplied_ships = (
  * @returns 
  */
 export function calc_supplied_fleet(
-    own_fleet: OwnFleet,
+    player_fleet: PlayerFleet,
     supply_ratio: number,
     maritime_resupply_locations: MaritimeResupplyLocation[],
-): OwnFleet {
+): PlayerFleet {
     const main_fleet_ships = calc_supplied_ships(
-        own_fleet.main_fleet_ships,
+        player_fleet.main_fleet_ships,
         supply_ratio,
         maritime_resupply_locations,
     )
 
-    if (!own_fleet.is_combined) return {
-        ...own_fleet,
+    if (!is_combined_fleet(player_fleet)) return {
+        ...player_fleet,
         main_fleet_ships
     };
 
     const escort_fleet_ships = calc_supplied_ships(
-        own_fleet.escort_fleet_ships,
+        player_fleet.escort_fleet_ships,
         supply_ratio,
         maritime_resupply_locations,
     );
 
     return {
-        ...own_fleet,
+        ...player_fleet,
         main_fleet_ships,
         escort_fleet_ships,
     };

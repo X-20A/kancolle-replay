@@ -1,22 +1,22 @@
-import { brandShipLv, brandUniqueId, ShipId, ShipUniqueId } from "@/types/brands/ship";
+import { brandShipLv, brandUniqueId, ShipId } from "@/types/brands/ship";
 import { AbyssalEquippedShip, merge_status_components_with_max_range } from ".";
 import { derive_abyssal_naked_ship } from "../naked/abyssal";
 import { brandEquipId } from "@/types/brands/equip";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
-import { TStatusComponent } from "@/types";
 import { EquippedPlayerShipOptions } from "./player";
-import { derive_equip_built } from "@/models/equip/EquipBuilt";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
-import { Equip } from "@/models/equip/basic";
-import { calc_abyssal_weighted_anti_air } from "@/logics/antiAir/weighted";
+import { Equip, is_abyssal_equips } from "@/models/equip/basic";
+import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
+import { derive_abyssal_equip_built } from "@/models/equip/EquipBuilt";
 
 export function derive_equipped_abyssal_ship(
     id: ShipId,
     input_equips?: Equip[],
     options: EquippedPlayerShipOptions = {},
 ): AbyssalEquippedShip {
+    if (input_equips && !is_abyssal_equips(input_equips)) throw new Error('深海棲艦に艦娘装備は持たせられません');
     const naked_ship = derive_abyssal_naked_ship(
         id,
     );
@@ -42,7 +42,7 @@ export function derive_equipped_abyssal_ship(
 
     const edited_status = options.edit_input ?? view_status;
 
-    const weighted_anti_air = calc_abyssal_weighted_anti_air(equips, naked_status);
+    const weighted_anti_air = calc_abyssal_ship_weighted_anti_air(equips, naked_status);
 
     const prepare_AACI_info = derive_prepare_AACI_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
@@ -55,7 +55,7 @@ export function derive_equipped_abyssal_ship(
         lv: brandShipLv(1),
         type_id: naked_ship.type_id,
         install_type: naked_ship.install_type,
-        equip_builts: derive_equip_built(equips, naked_ship.slots),
+        equip_builts: derive_abyssal_equip_built(equips, naked_ship.slots),
         max_hp,
         slot_counts: options.slots ?? naked_ship.slots,
         naked_status: naked_ship.status,
