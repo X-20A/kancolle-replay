@@ -1,4 +1,4 @@
-import { calc_prop_shotdown_rate } from "@/logics/antiAir/prop";
+import { calc_prop_shootdown_rate } from "@/logics/antiAir/prop";
 import { Equip, is_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";
@@ -17,7 +17,7 @@ describe('対空系テスト', () => {
         ) => {
             if (!is_plane_equip(attacked_unit)) throw new Error(`${attacked_unit.name_jp} は航空機ではありません`);
             const result = pipe(
-                calc_prop_shotdown_rate(attacker_ship.weighted_anti_air, attacked_unit),
+                calc_prop_shootdown_rate(attacker_ship.weighted_anti_air, attacked_unit),
             );
             expect(expected).toBe(result);
         };

@@ -9,7 +9,7 @@ import { LBAS } from "@/models/LBAS";
 import { calc_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
 import { calc_air_state_shootdowned_enemy_single_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
-import { calc_anti_air_fired_squadrons } from "@/logics/antiAir/antiAir";
+import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
 import { SingleFleetFormationType } from "@/types";
 import { AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
 

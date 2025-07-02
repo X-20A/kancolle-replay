@@ -3,7 +3,7 @@ import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "@/models/equi
 import { SingleFleetFormationType, TStatusComponent } from "@/types";
 import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
 import { match } from "ts-pattern";
-import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from "./antiAir";
+import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from ".";
 import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { is_sunk } from "@/models/ship/equipped";
 

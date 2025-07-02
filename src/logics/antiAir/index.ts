@@ -1,5 +1,5 @@
 import { Rand } from "@/effects/random";
-import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, PlayerFleet } from "@/models/fleet/Fleet"
+import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet"
 import { AbyssalEquippedShip, EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
 import { SingleFleetFormationType } from "@/types";
@@ -7,7 +7,9 @@ import { match, P } from "ts-pattern";
 import { JetSquadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
-import { calc_abyssal_fixed_shootdown_count, calc_player_fixed_shootdown_count } from "./fixed";
+import { calc_abyssal_fixed_shootdown_count } from "./fixed";
+import { Node } from "@/models/Node";
+import { ExtractedShipStruct } from "@/types/fleet";
 
 /// 対空射撃系
 
@@ -23,6 +25,22 @@ function extract_defender_ships(fleet: Fleet): EquippedShip[] {
         // NOTE: 潜水艦も迎撃艦として選ばれる
         is_player_ship(ship) || !ship.flags.is_faraway
     );
+}
+
+/**
+ * 割合撃墜と固定撃墜の為の連合艦隊補正を返す
+ * @param ship_struct 
+ * @param node 
+ * @returns 
+ */
+export function calc_combined_fleet_mod(
+    ship_struct: ExtractedShipStruct,
+    node: Node,
+): number {
+    if (ship_struct.fleet_type === 'single') return 1
+    if (ship_struct.fleet_type === 'escort') return 0.48; 
+    if (node.type.is_air_raid_only) return 0.72;
+    return 0.8;
 }
 
 /**

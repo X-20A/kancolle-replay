@@ -3,13 +3,11 @@ import { is_jet_bomber_equip } from "@/models/equip/basic";
 import { JetSquadron, LBAS } from "@/models/LBAS";
 import { EquippedShip } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
-import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
 import { ExtractedShipStruct } from "@/types/fleet";
-import { extract_jet_assault_targets, calc_general_target_fleet, choice_target_in_single_vs_single } from "../target/target";
-import { calc_final_jet_assault_accuracy } from "../accuracy";
-import { calc_defence } from "../defense";
+import { extract_jet_assault_targets_from_single_fleet, calc_general_target_fleet, choice_target_in_single_vs_single } from "../target/target";
 import { calc_jet_assault_damage } from "../damage";
 import { produce } from "immer";
+import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 
 /**
  * 基地航空隊の平均航空機熟練度を返す
@@ -90,39 +88,6 @@ export function calc_basic_jet_assault_attack_power(
         + 25;
 }
 
-type TargetShips = {
-    main_fleet: ExtractedShipStruct[],
-    escort_fleet: ExtractedShipStruct[],
-}
-
-/**
- * 敵艦隊から基地ジェット強襲の対象になる艦群を抽出して返す
- * @param enemy_fleet 
- * @returns 
- */
-const calc_extract_valid_targets = (
-    enemy_fleet: EnemyFleet,
-): ExtractedShipStruct[] => {
-    const calc_extracted_ships = (ships: EquippedShip[], is_main: boolean): ExtractedShipStruct[] =>
-        ships.reduce((acc, ship, index) => {
-            if (!['SS', 'SSV'].includes(ship.type_id)) {
-                acc.push({
-                    ship,
-                    is_original_fleet_main: true,
-                    original_index: index,
-                    is_flagship: index === 0,
-                });
-            }
-            return acc;
-        }, [] as ExtractedShipStruct[]);
-
-    const main_fleet_ships = calc_extracted_ships(enemy_fleet.main_fleet_ships, true);
-
-    return enemy_fleet.is_combined
-        ? [...main_fleet_ships, ...calc_extracted_ships(enemy_fleet.escort_fleet_ships, false)]
-        : main_fleet_ships;
-}
-
 /**
  * 攻撃後の敵通常艦隊を返す
  * @param jet_only_squadrons 
@@ -132,12 +97,12 @@ const calc_extract_valid_targets = (
  */
 export function calc_attacked_enemy_single_fleet(
     jet_only_squadrons: JetSquadron[],
-    enemy_fleet: EnemySingleFleet,
+    enemy_fleet: AbyssalSingleFleet,
     formation: SingleFleetFormationType,
     rand: Rand,
-): EnemySingleFleet {
+): AbyssalSingleFleet {
     return jet_only_squadrons.reduce((current_fleet, squadron) => {
-        const target_ship_structs = extract_jet_assault_targets(current_fleet.main_fleet_ships);
+        const target_ship_structs = extract_jet_assault_targets_from_single_fleet(enemy_fleet.main_fleet_ships);
         const target_ship_struct = choice_target_in_single_vs_single(
             target_ship_structs,
             formation,
@@ -153,7 +118,11 @@ export function calc_attacked_enemy_single_fleet(
         );
 
         return produce(current_fleet, (draft) => {
-            draft.main_fleet_ships[target_ship_struct.original_index].hp_remain -= damage;
+            const new_hp_remain = Math.max(
+                0,
+                draft.main_fleet_ships[target_ship_struct.original_index].state.hp_remain - damage
+            );
+            draft.main_fleet_ships[target_ship_struct.original_index].state.hp_remain = new_hp_remain;
         });
     }, enemy_fleet);
 }
@@ -167,10 +136,10 @@ export function calc_attacked_enemy_single_fleet(
  */
 export function calc_attacked_enemy_combined_fleet(
     jet_only_squadrons: JetSquadron[],
-    enemy_fleet: EnemyCombinedFleet,
+    enemy_fleet: AbyssalCombinedFleet,
     formation: CombinedFleetFormationType,
     rand: Rand,
-): EnemyCombinedFleet {
+): AbyssalCombinedFleet {
     jet_only_squadrons.forEach(squadron => {
         const target_fleet_ships = calc_general_target_fleet(
             enemy_fleet,
@@ -180,11 +149,12 @@ export function calc_attacked_enemy_combined_fleet(
             ? enemy_fleet.main_fleet_ships
             : enemy_fleet.escort_fleet_ships;
 
-        const target_ship_structs = extract_jet_assault_targets(target_fleet_ships);
+        const target_ship_structs = extract_jet_assault_targets_from_single_fleet(target_fleet_ships);
 
-        const target_ship_struct = choice_target_from_combined_fleet(
+        const target_ship_struct = choice_target_in_single_vs_single(
             target_ship_structs,
             formation,
+            enemy_fleet,
             rand,
         );
 

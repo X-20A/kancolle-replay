@@ -2,7 +2,6 @@ import { EquippedShip } from "@/models/ship/equipped"
 
 export type ExtractedShipStruct = {
     ship: EquippedShip,
-    is_original_fleet_main: boolean,
+    fleet_type: 'single' | 'main' | 'escort' ,
     original_index: number,
-    is_flagship: boolean,
 }
