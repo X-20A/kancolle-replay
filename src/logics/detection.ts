@@ -182,8 +182,8 @@ const sum_fleet_detection_status = (
  */
 export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
     return sum_fleet_detection_status(
-        analyze_ships_detection(fleet.main_fleet_ships),
-        analyze_ships_detection(is_combined_fleet(fleet) ? fleet.escort_fleet_ships : []),
+        analyze_ships_detection(fleet.main_fleet_units),
+        analyze_ships_detection(is_combined_fleet(fleet) ? fleet.escort_fleet_units : []),
     );
 }
 
@@ -278,26 +278,26 @@ export function calc_shotdowned_recon_fleet(
     // ? 随伴艦隊も索敵機を飛ばすとして
     const updated_main_fleet_ships = calc_shotdowned_recon_ships(
         recon_power,
-        player_fleet.main_fleet_ships,
+        player_fleet.main_fleet_units,
         total_enemy_fighter_count,
         rand,
     );
 
     if (!is_combined_fleet(player_fleet)) return {
         ...player_fleet,
-        main_fleet_ships: updated_main_fleet_ships,
+        main_fleet_units: updated_main_fleet_ships,
     };
 
     const updated_escort_fleet_ships = calc_shotdowned_recon_ships(
         recon_power,
-        player_fleet.escort_fleet_ships,
+        player_fleet.escort_fleet_units,
         total_enemy_fighter_count,
         rand,
     );
 
     return {
         ...player_fleet,
-        main_fleet_ships: updated_main_fleet_ships,
-        escort_fleet_ships: updated_escort_fleet_ships,
+        main_fleet_units: updated_main_fleet_ships,
+        escort_fleet_units: updated_escort_fleet_ships,
     }
 }

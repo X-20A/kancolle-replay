@@ -1,44 +1,44 @@
 import { Rand } from "@/effects/random";
-import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet"
-import { AbyssalEquippedShip, EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped"
+import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
+import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
 import { SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
-import { JetSquadron } from "@/models/LBAS";
+import { JetSquadron, Squadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
 import { calc_abyssal_fixed_shootdown_count } from "./fixed";
 import { Node } from "@/models/Node";
-import { ExtractedShipStruct } from "@/types/fleet";
+import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 /// 対空射撃系
 
-function extract_defender_ships(fleet: PlayerFleet): PlayerEquippedShip[];
-function extract_defender_ships(fleet: AbyssalFleet): AbyssalEquippedShip[];
+function extract_defender_ships(fleet: PlayerFleet): PlayerFleetUnit[];
+function extract_defender_ships(fleet: AbyssalFleet): AbyssalFleetUnit[];
 /**
  * 艦隊から対空射撃に参加可能な艦を抽出して返す
  * @param fleet 
  * @returns 
  */
-function extract_defender_ships(fleet: Fleet): EquippedShip[] {
-    return concat_fleet_ships(fleet).filter(ship =>
+function extract_defender_ships(fleet: Fleet): FleetUnit[] {
+    return concat_fleet_ships(fleet).filter(unit =>
         // NOTE: 潜水艦も迎撃艦として選ばれる
-        is_player_ship(ship) || !ship.flags.is_faraway
+        is_player_ship(unit.ship) || !unit.ship.flags.is_faraway
     );
 }
 
 /**
  * 割合撃墜と固定撃墜の為の連合艦隊補正を返す
- * @param ship_struct 
+ * @param fleet_unit 
  * @param node 
  * @returns 
  */
 export function calc_combined_fleet_mod(
-    ship_struct: ExtractedShipStruct,
+    fleet_unit: FleetUnit,
     node: Node,
 ): number {
-    if (ship_struct.fleet_type === 'single') return 1
-    if (ship_struct.fleet_type === 'escort') return 0.48; 
+    if (fleet_unit.fleet_type === 'single') return 1
+    if (fleet_unit.fleet_type === 'escort') return 0.48; 
     if (node.type.is_air_raid_only) return 0.72;
     return 0.8;
 }
@@ -105,9 +105,9 @@ export function calc_fleet_anti_air(
     fleet: Fleet,
     formation: SingleFleetFormationType,
 ): number {
-    const ships_total = concat_fleet_ships(fleet).reduce((total, ship) => {
+    const ships_total = concat_fleet_ships(fleet).reduce((total, unit) => {
         return total
-            + calc_ship_fleet_anti_air(ship);
+            + calc_ship_fleet_anti_air(unit.ship);
     }, 0);
 
     return Math.floor(calc_formation_mod(formation) * ships_total) * (2 / 1.3);
@@ -115,39 +115,38 @@ export function calc_fleet_anti_air(
 
 /**
  * 敵通常艦隊の対空射撃を受けた後のLBASを返す
- * @param jet_only_squadrons 
+ * @param squadrons 
  * @param enemy_fleet 
  * @param rand 
  */
-export function calc_anti_air_fired_squadrons(
-    jet_only_squadrons: JetSquadron[],
+export function calc_anti_air_fired_squadrons<T extends Squadron[] | JetSquadron[]>(
+    squadrons: T,
     enemy_fleet: AbyssalSingleFleet,
     formation: SingleFleetFormationType,
     rand: Rand,
-): JetSquadron[] {
-    const defender_ships = extract_defender_ships(enemy_fleet);
-    // NOTE: 基地航空隊に対して対空CIは発動しない
+): T {
+    const defender_units = extract_defender_ships(enemy_fleet);
+    // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire
     const triggered_aaci = 'Misfire';
 
-    return jet_only_squadrons.map((squadron) => {
+    return squadrons.map((squadron) => {
         if (squadron.slot_count === 0) return squadron;
 
-        const defender_ship =
-            defender_ships[Math.floor(rand.next() * defender_ships.length)];
+        const defender_unit =
+            defender_units[Math.floor(rand.next() * defender_units.length)];
 
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5
-            ? calc_prop_shootdown_count(defender_ship.weighted_anti_air, squadron.unit, squadron.slot_count)
+            ? calc_prop_shootdown_count(defender_unit.ship.weighted_anti_air, squadron.plane, squadron.slot_count)
             : 0;
 
-        // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? calc_abyssal_fixed_shootdown_count(defender_ship, triggered_aaci, enemy_fleet, formation, squadron.unit)
+            ? calc_abyssal_fixed_shootdown_count(defender_unit.ship, triggered_aaci, enemy_fleet, formation, squadron.plane)
             : 0;
 
         /** 最低保証 */
-        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci, squadron.unit);
+        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci, squadron.plane);
 
         const new_slot_count = squadron.slot_count
             - prop_shootdown_count
@@ -158,5 +157,5 @@ export function calc_anti_air_fired_squadrons(
             ...squadron,
             slot_count: new_slot_count,
         }
-    });
+    }) as T;
 }

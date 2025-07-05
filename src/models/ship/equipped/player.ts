@@ -13,7 +13,7 @@ import { derive_player_ship_state } from "../state";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
-import { derive_player_equip_built } from "@/models/equip/EquipBuilt";
+import { derive_player_equip_built } from "@/models/ship/EquipBuilt";
 
 export type EquippedPlayerShipOptions = {
     unique_id?: ShipUniqueId,

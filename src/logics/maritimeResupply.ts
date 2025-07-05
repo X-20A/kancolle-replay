@@ -159,25 +159,25 @@ export function calc_supplied_fleet(
     maritime_resupply_locations: MaritimeResupplyLocation[],
 ): PlayerFleet {
     const main_fleet_ships = calc_supplied_ships(
-        player_fleet.main_fleet_ships,
+        player_fleet.main_fleet_units,
         supply_ratio,
         maritime_resupply_locations,
     )
 
     if (!is_combined_fleet(player_fleet)) return {
         ...player_fleet,
-        main_fleet_ships
+        main_fleet_units: main_fleet_ships
     };
 
     const escort_fleet_ships = calc_supplied_ships(
-        player_fleet.escort_fleet_ships,
+        player_fleet.escort_fleet_units,
         supply_ratio,
         maritime_resupply_locations,
     );
 
     return {
         ...player_fleet,
-        main_fleet_ships,
-        escort_fleet_ships,
+        main_fleet_units: main_fleet_ships,
+        escort_fleet_units: escort_fleet_ships,
     };
 }

@@ -90,7 +90,7 @@ export function calc_player_fleet_weighted_anti_air(
     defender_fleet: PlayerSingleFleet,
     formation: SingleFleetFormationType,
 ): number {
-    const ship_total = defender_fleet.main_fleet_ships.reduce((total, ship) => {
+    const ship_total = defender_fleet.main_fleet_units.reduce((total, ship) => {
         if (
             is_sunk(ship) ||
             ship.state.is_retreated
@@ -120,7 +120,7 @@ export function calc_abyssal_fleet_weighted_anti_air(
     defender_fleet: AbyssalSingleFleet,
     formation: SingleFleetFormationType,
 ): number {
-    const ship_total = defender_fleet.main_fleet_ships.reduce((total, ship) => {
+    const ship_total = defender_fleet.main_fleet_units.reduce((total, ship) => {
         if (
             is_sunk(ship) ||
             ship.flags.is_faraway

@@ -2,29 +2,30 @@ import { JetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy } from "./accuracy";
 import { calc_basic_jet_assault_attack_power } from "./aerialCombat/jetAssault";
 import { Rand } from "@/effects/random";
-import { EnemySingleFleet } from "@/types/brands/fleet";
 import { EquippedShip } from "@/models/ship/equipped";
 import { calc_defence } from "./defense";
+import { AbyssalSingleFleet, Fleet } from "@/models/fleet/Fleet";
+import { produce } from "immer";
 
 const calc_scrach_damage = (
     target_ship: EquippedShip,
     rand: Rand,
 ): number => {
     return Math.floor(
-        target_ship.hp_remain * 0.06
-            + Math.floor(Math.floor(target_ship.hp_remain) * rand.next()) * 0.08
+        target_ship.state.hp_remain * 0.06
+            + Math.floor(Math.floor(target_ship.state.hp_remain) * rand.next()) * 0.08
     )
 }
 
 export function calc_jet_assault_damage(
     squadron: JetSquadron,
-    enemy_fleet: EnemySingleFleet,
+    enemy_fleet: AbyssalSingleFleet,
     target_ship: EquippedShip,
     rand: Rand,
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
-        squadron.unit,
-        squadron.original_lbas_average_proficiency,
+        squadron.plane,
+        squadron.proficiency,
         enemy_fleet,
         target_ship
     );
@@ -39,4 +40,19 @@ export function calc_jet_assault_damage(
     if (damage >= 1) return damage;
 
     return calc_scrach_damage(target_ship, rand);
+}
+
+export function calc_appllied_damage_fleet<T extends Fleet>(
+    current_fleet: T,
+    original_index: number,
+    damage: number
+): T {
+    return produce(current_fleet, (draft) => {
+        const new_hp_remain = Math.max(
+            0,
+            draft.main_fleet_units[original_index].ship.state.hp_remain - damage
+        );
+
+        draft.main_fleet_units[original_index].ship.state.hp_remain = new_hp_remain;
+    });
 }

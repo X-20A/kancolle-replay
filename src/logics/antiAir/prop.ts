@@ -1,7 +1,7 @@
 import { PlaneEquip } from "@/models/equip/basic";
 import { Node } from "@/models/Node";
 import { WeightedAntiAir } from "@/types/brands/other";
-import { ExtractedShipStruct } from "@/types/fleet";
+import { FleetUnit } from "@/types/fleet";
 import { calc_combined_fleet_mod } from ".";
 
 /**
@@ -18,7 +18,7 @@ export function calc_prop_shootdown_rate(
  * 連合艦隊構成艦の割合撃墜率を返す
  */
 export function calc_combined_fleet_prop_shootdown_rate(
-    ship_struct: ExtractedShipStruct,
+    ship_struct: FleetUnit,
     node: Node,
     target_unit: PlaneEquip,
 ): number {
@@ -49,7 +49,7 @@ export function calc_prop_shootdown_count(
  * NOTE: 敵味方共通
  */
 export function calc_combined_fleet_prop_shootdown_count(
-    ship_struct: ExtractedShipStruct,
+    ship_struct: FleetUnit,
     node: Node,
     target_unit: PlaneEquip,
     target_slot_count: number,

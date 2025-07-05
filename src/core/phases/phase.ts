@@ -5,13 +5,14 @@ import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/lo
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
-import { LBAS } from "@/models/LBAS";
-import { calc_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
+import { extract_jet_squadrons, JetSquadron, LBAS, Squadron } from "@/models/LBAS";
+import { calc_jet_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
 import { calc_air_state_shootdowned_enemy_single_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
 import { SingleFleetFormationType } from "@/types";
 import { AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { is_jet_bomber_equip } from "@/models/equip/basic";
 
 /// 各フェイズを制御する
 /// sim_execute と logics を繋ぐ
@@ -119,7 +120,8 @@ export function jet_lbas_phase(
 
     // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが棚上げ
 
-    const jet_only_squadrons = derive_jet_only_lbas(lbases);
+    const jet_only_squadrons: JetSquadron[] =
+        lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
 
     if (jet_only_squadrons.length === 0) return {
         post_jet_lbas_phase_lbases: lbases,
@@ -172,7 +174,7 @@ export function jet_lbas_phase(
 
     // 4.航空機による開幕航空攻撃
 
-    const attacked_enemy_fleet = calc_attacked_enemy_single_fleet(
+    const attacked_enemy_fleet = calc_jet_attacked_enemy_single_fleet(
         anti_air_fired_squadrons,
         air_state_shootdowned_enemy_fleet,
         formation,
@@ -226,8 +228,8 @@ export function calc_smoke_screen_phase(
     rand: Rand,
 ): SmokeScreenPhaseResult {
     if (
-        !settings.smoke_screen_trigger_node_index.includes(node.index)
-        || !player_fleet.unused_smoke
+        !settings.smoke_screen_trigger_node_index.includes(node.index) ||
+        !player_fleet.unused_smoke
     ) return {
         post_smoke_screen_phase_player_fleet: player_fleet,
         post_smoke_screen_phase_node: node,

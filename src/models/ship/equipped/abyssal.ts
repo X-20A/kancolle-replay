@@ -9,7 +9,7 @@ import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip, is_abyssal_equips } from "@/models/equip/basic";
 import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
-import { derive_abyssal_equip_built } from "@/models/equip/EquipBuilt";
+import { derive_abyssal_equip_built } from "@/models/ship/EquipBuilt";
 
 export function derive_equipped_abyssal_ship(
     id: ShipId,

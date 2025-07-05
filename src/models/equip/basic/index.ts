@@ -61,44 +61,86 @@ export type JetBomberEquip = PlayerPlaneEquip & {
     readonly total_jet_assault_cost: number,
 }
 
+/** 艦娘系装備 */
 export type PlayerEquip = OtherEquip | PlayerPlaneEquip | JetBomberEquip
 
+/** 深海通常装備 */
 export type AbyssalOtherEquip = EquipBase & {
     readonly flags: AbyssalEquipFlags,
 }
 /** 深海棲艦の航空機装備 */
 export type AbyssalPlaneEquip = AbyssalOtherEquip & PlaneTrait
 
+/** 艦娘 | 深海 装備のユニオン */
 export type PlaneEquip = PlayerPlaneEquip | AbyssalPlaneEquip
 
+/** 通常 | 航空機系 深海装備のユニオン */
 export type AbyssalEquip = AbyssalOtherEquip | AbyssalPlaneEquip
 
+/** 艦娘 | 深海 装備のユニオン */
 export type Equip = PlayerEquip | AbyssalEquip
 
+/**
+ * 艦娘装備であるか判定して返す(型ガード)
+ * @param equip 
+ * @returns 
+ */
 export function is_player_equip(equip: Equip): equip is PlayerEquip {
     return equip.master_id < 1500;
 }
 
+/**
+ * 艦娘装備群であるか判定して返す(型ガード)
+ * @param equips 
+ * @returns 
+ */
 export function is_player_equips(equips: Equip[]): equips is PlayerEquip[] {
     return equips.every(is_player_equip);
 }
 
+/**
+ * 深海装備であるか判定して返す(型ガード)
+ * @param equip 
+ * @returns 
+ */
 export function is_abyssal_equip(equip: Equip): equip is AbyssalEquip {
     return !is_player_equip(equip);
 }
 
+/**
+ * 深海装備群であるか判定して返す(型ガード)
+ * @param equips 
+ * @returns 
+ */
 export function is_abyssal_equips(equips: Equip[]): equips is AbyssalEquip[] {
     return equips.every(equip => !is_player_equip(equip));
 }
 
+/**
+ * 航空機であるか判定して返す(型ガード)
+ * @param equip 
+ * @returns 
+ */
 export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
     return equip.flags.is_plane;
 }
 
+/**
+ * 噴式爆撃機であるか判定して返す(型ガード)
+ * @param equip 
+ * @returns 
+ */
 export function is_jet_bomber_equip(equip: PlayerEquip): equip is JetBomberEquip {
     return equip.type_id === "JET_BOMBER";
 }
 
+/**
+ * 装備を生成して返す
+ * @param improvement_lv 
+ * @param master_id 
+ * @param proficiency 
+ * @returns 
+ */
 export function derive_equip(
     improvement_lv: number,
     master_id: EquipId,

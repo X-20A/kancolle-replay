@@ -5,9 +5,8 @@ import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { Rand } from "@/effects/random";
 import { match, P } from "ts-pattern";
-import { EnemyCombinedFleet, EnemyFleet, EnemySingleFleet } from "@/types/brands/fleet";
-import { JetSquadron } from "@/models/LBAS";
-import { EquipBuilt } from "@/models/equip/EquipBuilt";
+import { JetSquadron, Squadron } from "@/models/LBAS";
+import { EquipSlot } from "@/models/ship/EquipBuilt";
 
 /// 制空系
 
@@ -38,11 +37,11 @@ export function calc_equip_air_superiority_power(
 }
 
 export function calc_squadrons_air_superriority_power(
-    squadrons: JetSquadron[],
+    squadrons: Squadron[],
 ): number {
     return squadrons.reduce((total, squadron) => {
         return total + calc_equip_air_superiority_power(
-            squadron.unit,
+            squadron.plane,
             squadron.slot_count,
         );
     }, 0);
@@ -55,7 +54,7 @@ export function calc_squadrons_air_superriority_power(
  * @returns 
  */
 export function calc_equips_air_superiority_power(
-    equip_builts: EquipBuilt[],
+    equip_builts: EquipSlot[],
     slots: readonly number[],
 ): number {
     return equip_builts.reduce((total, equip_built, index) => {
@@ -221,20 +220,20 @@ export function calc_enemy_air_state_shootdowned_slots(
 }
 
 /**
- * 制空状態による被撃墜数を反映した新しいジェット航空隊を返す
- * @param jet_only_squadrons 
+ * 制空状態による被撃墜数を反映した新しい航空隊を返す
+ * @param squadrons 
  * @param air_state 
  * @param rand 
  * @returns 
  */
-export function calc_air_state_shootdowned_lbas(
-    jet_only_squadrons: JetSquadron[],
+export function calc_air_state_shootdowned_lbas<T extends Squadron[] | JetSquadron[]>(
+    squadrons: T,
     air_state: AirStateType,
     rand: Rand,
-): JetSquadron[] {
-    return jet_only_squadrons.map(squadron => {
+): T {
+    return squadrons.map(squadron => {
         const new_slot_count = calc_own_air_state_shootdowned_slots(
-            squadron.unit,
+            squadron.plane,
             squadron.slot_count,
             air_state,
             rand,
@@ -244,7 +243,7 @@ export function calc_air_state_shootdowned_lbas(
             ...squadron,
             slot_count: new_slot_count,
         }
-    });
+    }) as T;
 }
 
 /**

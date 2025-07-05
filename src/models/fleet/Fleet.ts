@@ -1,5 +1,6 @@
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types"
-import { AbyssalEquippedShip, EquippedShip, is_abyssal_ships, is_player_ships, is_sunk, PlayerEquippedShip } from "../ship/equipped"
+import { EquippedShip, is_abyssal_ships, is_player_ships, is_sunk } from "../ship/equipped"
+import { AbyssalFleetUnit, derive_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
 
 type FleetBase = {
     readonly is_combined: boolean,
@@ -11,11 +12,11 @@ type SingleFleetBase = FleetBase & {
 }
 
 export type PlayerSingleFleet = SingleFleetBase & {
-    readonly main_fleet_ships: PlayerEquippedShip[],
+    readonly main_fleet_units: PlayerFleetUnit[],
 }
 
 export type AbyssalSingleFleet = SingleFleetBase & {
-    readonly main_fleet_ships: AbyssalEquippedShip[],
+    readonly main_fleet_units: AbyssalFleetUnit[],
 }
 
 export type SingleFleet = PlayerSingleFleet | AbyssalSingleFleet
@@ -25,13 +26,13 @@ type CombinedFleetBase = FleetBase & {
 }
 
 export type PlayerCombinedFleet = CombinedFleetBase & {
-    readonly main_fleet_ships: PlayerEquippedShip[],
-    readonly escort_fleet_ships: PlayerEquippedShip[],
+    readonly main_fleet_units: PlayerFleetUnit[],
+    readonly escort_fleet_units: PlayerFleetUnit[],
 }
 
 export type AbyssalCombinedFleet = CombinedFleetBase & {
-    readonly main_fleet_ships: AbyssalEquippedShip[],
-    readonly escort_fleet_ships: AbyssalEquippedShip[],
+    readonly main_fleet_units: AbyssalFleetUnit[],
+    readonly escort_fleet_units: AbyssalFleetUnit[],
 }
 
 export type CombinedFleet = PlayerCombinedFleet | AbyssalCombinedFleet
@@ -50,10 +51,10 @@ export type Fleet = SingleFleet | CombinedFleet;
  */
 export function concat_fleet_ships(
     fleet: Fleet,
-): EquippedShip[] {
+): FleetUnit[] {
     return is_combined_fleet(fleet)
-        ? fleet.main_fleet_ships.concat(fleet.escort_fleet_ships)
-        : fleet.main_fleet_ships;
+        ? fleet.main_fleet_units.concat(fleet.escort_fleet_units)
+        : fleet.main_fleet_units;
 }
 
 export function is_combined_fleet(fleet: Fleet): fleet is CombinedFleet {
@@ -82,15 +83,15 @@ export function derive_player_fleet(
     if (is_combined) {
         if (!is_player_ships(escort_fleet_ships)) throw new Error('自艦隊に深海棲艦が含まれています');
         return {
-            main_fleet_ships: main_fleet_ships,
-            escort_fleet_ships: escort_fleet_ships,
+            main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
+            escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
             unused_smoke: true,
             is_combined,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
-            main_fleet_ships: main_fleet_ships,
+            main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
             unused_smoke: true,
             is_combined,
             formation: 'LineAhead',
@@ -109,15 +110,15 @@ export function derive_abyssal_fleet(
     if (is_combined) {
         if (!is_abyssal_ships(escort_fleet_ships)) throw new Error('深海艦隊に艦娘が含まれています');
         return {
-            main_fleet_ships: main_fleet_ships,
-            escort_fleet_ships: escort_fleet_ships,
+            main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
+            escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
             unused_smoke: true,
             is_combined,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
-            main_fleet_ships: main_fleet_ships,
+            main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
             unused_smoke: true,
             is_combined,
             formation: 'LineAhead',
