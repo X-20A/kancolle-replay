@@ -1,10 +1,10 @@
-import { PlayerPlaneEquip } from "@/models/equip/basic";
+import { JetBomberEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
-import { EnemyFleet } from "@/types/brands/fleet";
 import { PreAccuracy } from "@/types/brands/other";
 import { calc_morale_evasion_mod } from "./morale";
 import { calc_air_combat_evasion } from "./evasion";
 import { calc_plane_proficiency_accuracy_flat } from "./proficiency";
+import { AbyssalFleet, AbyssalSingleFleet } from "@/models/fleet/Fleet";
 
 /**
  * 陸攻の目標艦種別の命中加算値を返す
@@ -57,6 +57,7 @@ export function calc_air_combat_pre_accuracy(): number {
 
 /**
  * 基地航空隊の命中項を返す
+ * S & C
  * @param unit 
  * @param enemy_fleet 
  * @param target_ship 
@@ -64,7 +65,7 @@ export function calc_air_combat_pre_accuracy(): number {
  */
 export function calc_lbas_pre_accuracy(
     unit: PlayerPlaneEquip,
-    enemy_fleet: EnemyFleet,
+    enemy_fleet: AbyssalFleet,
     target_ship: EquippedShip,
 ): PreAccuracy {
     const ACCURACY_CONSTANT = 0.95;
@@ -81,14 +82,15 @@ export function calc_lbas_pre_accuracy(
 
 /**
  * 噴式強襲の最終命中率を返す
+ * S & C
  * @param air_combat_pre_accuracy 
  * @param air_combat_evasion 
  * @param target_ship 
  */
 export function calc_final_jet_assault_accuracy(
-    unit: PlayerPlaneEquip,
+    unit: JetBomberEquip,
     unit_proficiency: number,
-    enemy_fleet: EnemyFleet,
+    enemy_fleet: AbyssalFleet,
     target_ship: EquippedShip,
 ): number {
     const pre_accuracy = calc_lbas_pre_accuracy(unit, enemy_fleet, target_ship);

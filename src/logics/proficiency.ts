@@ -1,5 +1,7 @@
 import { EquipType } from "@/datas/equip/base/player";
 import { Equip, is_plane_equip, is_player_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
+import { LBAS } from "@/models/LBAS";
+import { AvgLbasProficiency, brandAvgLbasProficiency } from "@/types/brands/other";
 
 /// 航空機熟練度系
 
@@ -165,4 +167,19 @@ export function calc_plane_proficiency_accuracy_flat(
 ): number {
     return Math.sqrt(0.1 * proficiency)
         + calc_accuracy_constant(proficiency);
+}
+
+/**
+ * 平均航空機熟練度を返す
+ * @param lbas 
+ * @returns 
+ */
+export function calc_average_lbas_proficiency(
+    planes: PlayerPlaneEquip[],
+): AvgLbasProficiency {
+    const avg_proficiency = planes.reduce((total, plane) => {
+        return total + plane.plane_proficiency;
+    }, 0) / planes.length;
+
+    return brandAvgLbasProficiency(avg_proficiency);
 }

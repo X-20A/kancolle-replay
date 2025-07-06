@@ -18,6 +18,9 @@ export type AbyssalFleetUnit = FleetUnitBase & {
     ship: AbyssalEquippedShip,
 }
 
+/**
+ * 艦と、艦の艦隊内での諸元
+ */
 export type FleetUnit = PlayerFleetUnit | AbyssalFleetUnit
 
 export function derive_fleet_units<T extends PlayerEquippedShip | AbyssalEquippedShip>(

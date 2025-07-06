@@ -1,21 +1,24 @@
+import { AvgLbasProficiency } from "@/types/brands/other";
 import { is_jet_bomber_equip, JetBomberEquip, PlayerPlaneEquip } from "./equip/basic";
+import { calc_average_lbas_proficiency } from "@/logics/proficiency";
 
-/** 航空隊 */
-export type Squadron = {
-    readonly plane: PlayerPlaneEquip,
+type SquadronBase = {
     readonly slot_count: number,
     readonly proficiency: number,
     readonly lbas_index: number,
     readonly squadron_index: number,
+    readonly avg_lbas_proficiency: AvgLbasProficiency,
 }
 
-/** ジェット爆撃機航空隊 */
-export type JetSquadron = {
+/** 航空隊 */
+export type Squadron = SquadronBase & {
+    readonly plane: PlayerPlaneEquip,
+    
+}
+
+/** ジェット爆撃航空隊 */
+export type JetSquadron = SquadronBase & {
     readonly plane: JetBomberEquip,
-    readonly slot_count: number,
-    readonly proficiency: number,
-    readonly lbas_index: number,
-    readonly squadron_index: number,
 }
 
 /** 基地航空隊 */
@@ -25,19 +28,17 @@ export type LBAS = {
     readonly armor: number,
 }
 
+function is_jet_squadron(squadron: Squadron): squadron is JetSquadron {
+    return is_jet_bomber_equip(squadron.plane);
+}
+
+/**
+ * 航空隊からジェット爆撃航空隊を抽出して返す
+ * @param squadrons 
+ * @returns 
+ */
 export function extract_jet_squadrons(squadrons: Squadron[]): JetSquadron[] {
-    return squadrons.reduce((total: JetSquadron[], squadron) => {
-        if (!is_jet_bomber_equip(squadron.plane)) return total;
-        
-        total.push({
-            plane: squadron.plane,
-            slot_count: squadron.slot_count,
-            proficiency: squadron.proficiency,
-            lbas_index: squadron.lbas_index,
-            squadron_index: squadron.squadron_index
-        });
-        return total;
-    }, []);
+    return squadrons.filter(is_jet_squadron);
 }
 
 export function derive_LBAS(
@@ -55,13 +56,16 @@ export function derive_LBAS(
         ].slice(0, 4)  // 最終的に4要素に制限
         : DEFAULT_LBAS_SLOTS;
 
+    const avg_lbas_proficiency = calc_average_lbas_proficiency(units);
+
     const squadrons: Squadron[] = units.flatMap((unit, index) => {
         return {
             plane: unit,
             slot_count: slot_counts[index],
-            proficiency: 100,
+            proficiency: unit.plane_proficiency,
             lbas_index: lbas_index,
             squadron_index: index,
+            avg_lbas_proficiency: avg_lbas_proficiency,
         }
     })
     return {

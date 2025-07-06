@@ -1,47 +1,10 @@
 import { Rand } from "@/effects/random";
-import { is_jet_bomber_equip } from "@/models/equip/basic";
 import { JetSquadron, LBAS, Squadron } from "@/models/LBAS";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { calc_general_target_fleet, choice_target_in_single_vs_combined, choice_target_in_single_vs_single } from "../target/target";
 import { calc_appllied_damage_fleet, calc_jet_assault_damage } from "../damage";
 import { AbyssalCombinedFleet, AbyssalSingleFleet } from "@/models/fleet/Fleet";
 import { is_submarine_category } from "@/models/ship/equipped";
-
-/**
- * 基地航空隊の平均航空機熟練度を返す
- * @param lbas 
- * @returns 
- */
-const calc_average_lbas_proficiency = (
-    lbas: LBAS,
-): number => {
-    return lbas.squadrons.reduce((total, squdron) => {
-        return total + squdron.proficiency;
-    }, 0);
-}
-
-/**
- * ジェット機スロットだけを抽出した基地航空隊を返す
- */
-export function derive_jet_only_lbas(bases: LBAS[]): JetSquadron[] {
-    const jet_only_squadrons: JetSquadron[] = [];
-
-    bases.forEach((base, base_index) => {
-        base.squadrons.forEach((squadron, slot_index) => {
-            if (is_jet_bomber_equip(squadron.plane)) {
-                jet_only_squadrons.push({
-                    plane: squadron.plane,
-                    slot_count: squadron.slot_count,
-                    proficiency: calc_average_lbas_proficiency(base),
-                    lbas_index: base_index,
-                    squadron_index: slot_index,
-                });
-            }
-        });
-    });
-
-    return jet_only_squadrons;
-}
 
 /**
  * 抽出した基地航空隊を所属元に返還した新しいLBAS[]を返す
@@ -101,7 +64,7 @@ export function calc_jet_attacked_enemy_single_fleet(
 ): AbyssalSingleFleet {
     return squadrons.reduce((current_fleet, squadron) => {
         const target_ship_structs =
-            enemy_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit));;
+            current_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit));;
         const target_fleet_unit = choice_target_in_single_vs_single(
             target_ship_structs,
             formation,
@@ -116,7 +79,7 @@ export function calc_jet_attacked_enemy_single_fleet(
             rand,
         );
 
-        return calc_appllied_damage_fleet(enemy_fleet, target_fleet_unit.original_index, damage);
+        return calc_appllied_damage_fleet(current_fleet, target_fleet_unit, damage);
     }, enemy_fleet);
 }
 
@@ -133,16 +96,16 @@ export function calc_attacked_enemy_combined_fleet(
     formation: CombinedFleetFormationType,
     rand: Rand,
 ): AbyssalCombinedFleet {
-    jet_only_squadrons.forEach(squadron => {
+    return jet_only_squadrons.reduce((current_fleet, squadron) => {
         const is_target_main = calc_general_target_fleet(
-            enemy_fleet,
+            current_fleet,
             rand,
             'lbas',
         ) === 'main'
 
         const target_fleet_units = is_target_main
-            ? enemy_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit))
-            : enemy_fleet.escort_fleet_units.filter(unit => !is_submarine_category(unit))
+            ? current_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit))
+            : current_fleet.escort_fleet_units.filter(unit => !is_submarine_category(unit))
 
         const target_fleet_unit = choice_target_in_single_vs_combined(
             target_fleet_units,
@@ -155,6 +118,13 @@ export function calc_attacked_enemy_combined_fleet(
         // NOTE: 橘花改 → 景雲 にするとおおよそ命中 1 * 7 分、上昇が見られる
         // NOTE: ひとまず基地航空隊式を採用
 
-        const basic_attack_power = calc_basic_jet_assault_attack_power(squadron);
-    })
+        const damage = calc_jet_assault_damage(
+            squadron,
+            current_fleet,
+            target_fleet_unit.ship,
+            rand,
+        );
+
+        return calc_appllied_damage_fleet(current_fleet, target_fleet_unit, damage);
+    }, enemy_fleet);
 }

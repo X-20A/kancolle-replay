@@ -6,7 +6,7 @@ import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { extract_jet_squadrons, JetSquadron, LBAS, Squadron } from "@/models/LBAS";
-import { calc_jet_attacked_enemy_single_fleet, calc_returned_origin_lbas, derive_jet_only_lbas } from "@/logics/aerialCombat/jetAssault";
+import { calc_jet_attacked_enemy_single_fleet, calc_returned_origin_lbas } from "@/logics/aerialCombat/jetAssault";
 import { calc_air_state_shootdowned_enemy_single_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
