@@ -3,7 +3,7 @@ import { JetSquadron, LBAS, Squadron } from "@/models/LBAS";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { calc_general_target_fleet, choice_target_in_single_vs_combined, choice_target_in_single_vs_single } from "../target/target";
 import { calc_appllied_damage_fleet, calc_jet_assault_damage } from "../damage";
-import { AbyssalCombinedFleet, AbyssalSingleFleet } from "@/models/fleet/Fleet";
+import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { is_submarine_category } from "@/models/ship/equipped";
 
 /**
@@ -56,18 +56,17 @@ export function calc_basic_jet_assault_attack_power(
  * @param formation 
  * @param rand 
  */
-export function calc_jet_attacked_enemy_single_fleet(
+function calc_jet_attacked_enemy_single_fleet(
     squadrons: JetSquadron[],
     enemy_fleet: AbyssalSingleFleet,
-    formation: SingleFleetFormationType,
     rand: Rand,
 ): AbyssalSingleFleet {
     return squadrons.reduce((current_fleet, squadron) => {
-        const target_ship_structs =
-            current_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit));;
+        const target_fleet_units =
+            current_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit.ship));;
         const target_fleet_unit = choice_target_in_single_vs_single(
-            target_ship_structs,
-            formation,
+            target_fleet_units,
+            enemy_fleet.formation,
             current_fleet,
             rand,
         );
@@ -90,10 +89,9 @@ export function calc_jet_attacked_enemy_single_fleet(
  * @param formation 
  * @param rand 
  */
-export function calc_attacked_enemy_combined_fleet(
+function calc_jet_attacked_enemy_combined_fleet(
     jet_only_squadrons: JetSquadron[],
     enemy_fleet: AbyssalCombinedFleet,
-    formation: CombinedFleetFormationType,
     rand: Rand,
 ): AbyssalCombinedFleet {
     return jet_only_squadrons.reduce((current_fleet, squadron) => {
@@ -101,15 +99,15 @@ export function calc_attacked_enemy_combined_fleet(
             current_fleet,
             rand,
             'lbas',
-        ) === 'main'
+        ) === 'main';
 
         const target_fleet_units = is_target_main
-            ? current_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit))
-            : current_fleet.escort_fleet_units.filter(unit => !is_submarine_category(unit))
+            ? current_fleet.main_fleet_units.filter(unit => !is_submarine_category(unit.ship))
+            : current_fleet.escort_fleet_units.filter(unit => !is_submarine_category(unit.ship));
 
         const target_fleet_unit = choice_target_in_single_vs_combined(
             target_fleet_units,
-            formation,
+            enemy_fleet.formation,
             rand,
         );
 
@@ -127,4 +125,15 @@ export function calc_attacked_enemy_combined_fleet(
 
         return calc_appllied_damage_fleet(current_fleet, target_fleet_unit, damage);
     }, enemy_fleet);
+}
+
+
+export function calc_jet_attacked_enemy_fleet<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
+    jet_only_squadrons: JetSquadron[],
+    enemy_fleet: T,
+    rand: Rand,
+): T {
+    return is_combined_fleet(enemy_fleet)
+        ? calc_jet_attacked_enemy_combined_fleet(jet_only_squadrons, enemy_fleet, rand) as T
+        : calc_jet_attacked_enemy_single_fleet(jet_only_squadrons, enemy_fleet, rand) as T;
 }

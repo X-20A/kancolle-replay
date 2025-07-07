@@ -1,8 +1,7 @@
 import { Rand } from "@/effects/random"
 import { is_player_equip } from "@/models/equip/basic";
-import { concat_fleet_ships } from "@/models/fleet/Fleet"
+import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet"
 import { is_sunk } from "@/models/ship/equipped";
-import { OwnFleet } from "@/types/brands/fleet";
 
 const ENGAGEMENT_TYPE = {
     Advantage_T: 1,
@@ -22,12 +21,12 @@ export const ENGAGEMENT_DAMAGE_MOD_DATA: { [key in EngagementType]: number } = {
 
 /**
  * 交戦形態を返す
- * @param own_fleet 
+ * @param player_fleet 
  * @param rand 
  * @returns 
  */
 export function calc_engagement(
-    own_fleet: OwnFleet,
+    player_fleet: PlayerFleet,
     rand: Rand,
 ): EngagementType {
     const rand_value = rand.next();
@@ -37,10 +36,10 @@ export function calc_engagement(
                 rand_value > 0.1 ? 'Head_on' :
                     'Disadvantage_T';
 
-    const has_saiun = concat_fleet_ships(own_fleet).some(ship => {
+    const has_saiun = concat_fleet_ships(player_fleet).some(ship => {
         if (is_sunk(ship)) return false;
         
-        ship.equip_builts.some((equip_built, index) => {
+        ship.equip_slots.some((equip_built, index) => {
             const equip = equip_built.equip;
             if (!equip) return false;
 

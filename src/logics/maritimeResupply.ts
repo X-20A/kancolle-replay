@@ -1,5 +1,6 @@
 import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
 import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "@/models/ship/equipped/player";
 import { PlayerShipState } from "@/models/ship/state";
@@ -32,8 +33,8 @@ export function calc_maritime_resupply_locations(
     for (const ship of ships) {
         if (is_sunk(ship)) continue;
 
-        for (let equip_index = 0; equip_index < ship.equip_builts.length; equip_index++) {
-            const equip = ship.equip_builts[equip_index].equip;
+        for (let equip_index = 0; equip_index < ship.equip_slots.length; equip_index++) {
+            const equip = ship.equip_slots[equip_index].equip;
             if (!equip || equip.master_id !== UNDERWAY_REPLENISHMENT_ID) continue;
 
             result.push({
@@ -83,12 +84,13 @@ export function calc_supply_ratio(
  * @returns 
  */
 const calc_supplied_ships = (
-    ships: PlayerEquippedShip[],
+    units: PlayerFleetUnit[],
     supply_ratio: number,
     maritime_resupply_locations: MaritimeResupplyLocation[],
-): PlayerEquippedShip[] => {
-    return ships.map(ship => {
-        if (is_sunk(ship)) return ship;
+): PlayerFleetUnit[] => {
+    return units.map(unit => {
+        const ship = unit.ship;
+        if (is_sunk(ship)) return unit;
 
         // 燃料補給計算
         const new_fuel_ratio = Math.min(
@@ -106,9 +108,9 @@ const calc_supplied_ships = (
         const maritime_resupply_location = maritime_resupply_locations.find(location =>
             location.ship_unique_id === ship.unique_id
         );
-        if (!maritime_resupply_location) return ship;
+        if (!maritime_resupply_location) return unit;
 
-        const new_equips: Equip[] = ship.equip_builts.flatMap((equip_built, index) => {
+        const new_equips: Equip[] = ship.equip_slots.flatMap((equip_built, index) => {
             if (
                 index === maritime_resupply_location.equip_index ||
                 !equip_built.equip
@@ -121,9 +123,9 @@ const calc_supplied_ships = (
         const options: EquippedPlayerShipOptions = {
             unique_id: ship.unique_id,
             hp_remain: ship.state.hp_remain,
-            slots: ship.equip_builts.map(equip_built => equip_built.slot_count),
+            slots: ship.equip_slots.map(equip_built => equip_built.slot_count),
         };
-        const new_ship = derive_equipped_player_ship(
+        const pre_new_ship = derive_equipped_player_ship(
             ship.lv,
             ship.special_item_id,
             ship.master_id,
@@ -139,10 +141,14 @@ const calc_supplied_ships = (
             maritime_resupply_ammo_ratio: new_ammo_ratio - ship.state.ammo_remain_ratio,
         };
 
-        return {
-            ...new_ship,
+        const new_ship = {
+            ...pre_new_ship,
             state: new_state,
         };
+        return {
+            ...unit,
+            ship: new_ship,
+        }
     });
 }
 

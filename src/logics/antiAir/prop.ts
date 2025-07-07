@@ -1,8 +1,8 @@
 import { PlaneEquip } from "@/models/equip/basic";
 import { Node } from "@/models/Node";
 import { WeightedAntiAir } from "@/types/brands/other";
-import { FleetUnit } from "@/types/fleet";
 import { calc_combined_fleet_mod } from ".";
+import { FleetUnit } from "@/models/fleet/FleetUnit";
 
 /**
  * 艦の割合撃墜率を返す

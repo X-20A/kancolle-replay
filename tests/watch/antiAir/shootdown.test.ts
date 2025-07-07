@@ -4,8 +4,8 @@ import { calc_enemy_defence_guaranteed, calc_player_defence_guaranteed } from "@
 import { calc_prop_shootdown_count } from "@/logics/antiAir/prop";
 import { AbyssalPlaneEquip, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
-import { AbyssalSingleFleet, derive_abyssal_fleet, derive_player_fleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
-import { PlayerEquippedShip } from "@/models/ship/equipped";
+import { AbyssalSingleFleet, calc_formation_updated_fleet, derive_abyssal_fleet, derive_player_fleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
+import { derive_node } from "@/models/Node";
 import { brandEquipId } from "@/types/brands/equip";
 import { HIGH_10 } from "tests/setups/assets/equips/gun";
 import { F4U_1D, SUISEI_EGUSA } from "tests/setups/assets/equips/plane";
@@ -16,6 +16,8 @@ import { describe, expect, it } from "vitest";
 const AKIZUKI = make_Akizuki([HIGH_10, SURFACE_22]); // AACI種別: [2]
 
 const JIGOKU_BOMBER = derive_abyssal_equip(brandEquipId(1548)); // 射撃回避なし
+
+const node = derive_node();
 
 // ! スロット数は17以下を使用する
 // ! 制空状態による被撃墜があるのでSortie Sim等と合わなくなる
@@ -44,20 +46,24 @@ describe('対空系テスト', () => {
     });
 
     it('固定撃墜数', () => {
+        const Akizuki_fleet = calc_formation_updated_fleet(derive_player_fleet([AKIZUKI]), 'Diamond');
+        const Wa_fleet = calc_formation_updated_fleet(derive_abyssal_fleet([LANDING_WA]), 'Diamond');
+
         expect(23).toBe(calc_player_fixed_shootdown_count(
-            AKIZUKI as PlayerEquippedShip,
+            Akizuki_fleet.main_fleet_units[0],
             2 as AntiAirCutinType,
-            derive_player_fleet([AKIZUKI]) as PlayerSingleFleet,
+            Akizuki_fleet as PlayerSingleFleet,
             'Diamond',
             JIGOKU_BOMBER as AbyssalPlaneEquip,
+            node,
         ));
 
         expect(37).toBe(calc_abyssal_fixed_shootdown_count(
-            LANDING_WA,
+            Wa_fleet.main_fleet_units[0],
             8 as AntiAirCutinType,
-            derive_abyssal_fleet([LANDING_WA]) as AbyssalSingleFleet,
-            'Diamond',
+            Wa_fleet as AbyssalSingleFleet,
             F4U_1D as PlaneEquip,
+            node,
         ));
     });
 

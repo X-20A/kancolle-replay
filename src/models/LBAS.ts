@@ -1,12 +1,17 @@
 import { AvgLbasProficiency } from "@/types/brands/other";
 import { is_jet_bomber_equip, JetBomberEquip, PlayerPlaneEquip } from "./equip/basic";
-import { calc_average_lbas_proficiency } from "@/logics/proficiency";
+import { calc_average_proficiency } from "@/logics/proficiency";
 
 type SquadronBase = {
+    /** 航空隊機数 */
     readonly slot_count: number,
+    /** 航空隊熟練度 */
     readonly proficiency: number,
+    /** 基地航空隊 index */
     readonly lbas_index: number,
+    /** 航空中隊内でのindex */
     readonly squadron_index: number,
+    /** 基地の平均航空機熟練度 */
     readonly avg_lbas_proficiency: AvgLbasProficiency,
 }
 
@@ -56,7 +61,7 @@ export function derive_LBAS(
         ].slice(0, 4)  // 最終的に4要素に制限
         : DEFAULT_LBAS_SLOTS;
 
-    const avg_lbas_proficiency = calc_average_lbas_proficiency(units);
+    const avg_lbas_proficiency = calc_average_proficiency(units);
 
     const squadrons: Squadron[] = units.flatMap((unit, index) => {
         return {

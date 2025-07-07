@@ -3,8 +3,7 @@ import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { PreAccuracy } from "@/types/brands/other";
 import { calc_morale_evasion_mod } from "./morale";
 import { calc_air_combat_evasion } from "./evasion";
-import { calc_plane_proficiency_accuracy_flat } from "./proficiency";
-import { AbyssalFleet, AbyssalSingleFleet } from "@/models/fleet/Fleet";
+import { AbyssalFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 
 /**
  * 陸攻の目標艦種別の命中加算値を返す
@@ -69,7 +68,7 @@ export function calc_lbas_pre_accuracy(
     target_ship: EquippedShip,
 ): PreAccuracy {
     const ACCURACY_CONSTANT = 0.95;
-    const combined_fleet_mod = enemy_fleet.is_combined ? 1.1 : 0;
+    const combined_fleet_mod = is_combined_fleet(enemy_fleet) ? 1.1 : 0;
 
     // NOTE: 機体の疲労度補正は見送り
     // NOTE: 基地噴式強襲では熟練度補正は無し
@@ -81,7 +80,7 @@ export function calc_lbas_pre_accuracy(
 }
 
 /**
- * 噴式強襲の最終命中率を返す
+ * 基地噴式強襲の最終命中率を返す
  * S & C
  * @param air_combat_pre_accuracy 
  * @param air_combat_evasion 
@@ -89,7 +88,6 @@ export function calc_lbas_pre_accuracy(
  */
 export function calc_final_jet_assault_accuracy(
     unit: JetBomberEquip,
-    unit_proficiency: number,
     enemy_fleet: AbyssalFleet,
     target_ship: EquippedShip,
 ): number {
@@ -100,5 +98,5 @@ export function calc_final_jet_assault_accuracy(
         Math.max(10,
             (pre_accuracy - evasion)
         * (is_player_ship(target_ship) ? calc_morale_evasion_mod(target_ship) : 0)
-        )) + calc_plane_proficiency_accuracy_flat(unit_proficiency);
+        )); // 航空機熟練度ボーナスは無し
 }

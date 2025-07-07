@@ -23,6 +23,30 @@ export type AbyssalFleetUnit = FleetUnitBase & {
  */
 export type FleetUnit = PlayerFleetUnit | AbyssalFleetUnit
 
+/**
+ * 艦が旗艦であるか判定して返す(含 随伴艦隊旗艦)
+ * @param unit 
+ * @returns 
+ */
+export function is_flag_ship(unit: FleetUnit): boolean {
+    return unit.original_index === 0;
+}
+
+/**
+ * 艦が旗艦であるか判定して返す(随伴艦隊旗艦 は含まない)
+ * @param unit 
+ * @returns 
+ */
+export function is_primary_flag_ship(unit: FleetUnit): boolean {
+    return is_flag_ship(unit) && unit.fleet_type !== 'escort';
+}
+
+/**
+ * 艦隊構成艦を生成して返す
+ * @param ships 
+ * @param fleet_type 
+ * @returns 
+ */
 export function derive_fleet_units<T extends PlayerEquippedShip | AbyssalEquippedShip>(
     ships: T[],
     fleet_type: AffiliationFleetType,

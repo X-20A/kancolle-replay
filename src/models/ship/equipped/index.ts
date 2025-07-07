@@ -9,7 +9,7 @@ import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { AbyssalShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
-import { AbyssalEquipSlot, EquipSlot, PlayerEquipSlot } from "@/models/ship/EquipBuilt";
+import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipBuilt";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { WeightedAntiAir } from "@/types/brands/other";
@@ -18,21 +18,36 @@ import { FleetUnit } from "@/models/fleet/FleetUnit";
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
 export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
 /**
- * 艦がPlayer艦であるか判定して返す
+ * 艦が艦娘であるか判定して返す
  * @param ship 
  * @returns 
  */
 export function is_player_ship(ship: EquippedShip | NakedShip): ship is PlayerEquippedShip {
-    return ship.master_id < 1500;
+    return 'ship_class' in ship;
 }
+/**
+ * 艦娘のみの艦群であるか判定して返す
+ * @param ships 
+ * @returns 
+ */
 export function is_player_ships(ships: EquippedShip[]): ships is PlayerEquippedShip[] {
     return ships.every(is_player_ship);
 }
+/**
+ * 艦が深海棲艦であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
 export function is_abyssal_ship(ship: EquippedShip): ship is AbyssalEquippedShip {
     return !is_player_ship(ship);
 }
+/**
+ * 深海棲艦のみの艦群であるか判定して返す
+ * @param ships 
+ * @returns 
+ */
 export function is_abyssal_ships(ships: EquippedShip[]): ships is AbyssalEquippedShip[] {
-    return ships.every(ship => !is_player_ship(ship));
+    return ships.every(is_abyssal_ship);
 }
 
 /**
@@ -40,8 +55,8 @@ export function is_abyssal_ships(ships: EquippedShip[]): ships is AbyssalEquippe
  * @param ship 
  * @returns 
  */
-export function is_sunk(unit: FleetUnit): boolean {
-    return unit.ship.state.hp_remain <= 0;
+export function is_sunk(ship: EquippedShip): boolean {
+    return ship.state.hp_remain <= 0;
 }
 
 /**
@@ -52,7 +67,7 @@ export function is_sunk(unit: FleetUnit): boolean {
 export function is_PT(
     unit: FleetUnit,
 ): boolean {
-    return !is_player_ship(unit.ship) && unit.ship.flags.is_PT;
+    return is_abyssal_ship(unit.ship) && unit.ship.flags.is_PT;
 }
 
 /**
@@ -61,9 +76,9 @@ export function is_PT(
  * @returns 
  */
 export function is_install(
-    unit: FleetUnit,
+    ship: EquippedShip,
 ): boolean {
-    return !is_player_ship(unit.ship) && unit.ship.install_type !== 'No';
+    return is_abyssal_ship(ship) && ship.install_type !== 'No';
 }
 
 /**
@@ -71,8 +86,8 @@ export function is_install(
  * @param ship 
  * @returns 
  */
-export function is_submarine_category(unit: FleetUnit): boolean {
-    return ['SS', 'SSV'].includes(unit.ship.type_id)
+export function is_submarine_category(ship: EquippedShip): boolean {
+    return ['SS', 'SSV'].includes(ship.type_id);
 }
 
 /**
@@ -123,7 +138,7 @@ export type PlayerEquippedShip = EquippedShipBase & {
     readonly country: Country;
 
     /** 所持装備 */
-    readonly equip_builts: PlayerEquipSlot[];
+    readonly equip_slots: PlayerEquipSlot[];
 
     readonly special_item_id: SpecialItemId,
     readonly modernizations: ModernizationType,
@@ -145,7 +160,7 @@ export type AbyssalEquippedShip = EquippedShipBase & {
     /** 艦種ID */
     readonly type_id: ShipType;
     /** 所持装備 */
-    readonly equip_builts: AbyssalEquipSlot[];
+    readonly equip_slots: AbyssalEquipSlot[];
     /**
      * 陸上型種別ID    
      * 同じ系統の艦でもバージョンによって変わったりするので命名は目安

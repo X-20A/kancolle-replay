@@ -5,14 +5,12 @@ import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/lo
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
-import { extract_jet_squadrons, JetSquadron, LBAS, Squadron } from "@/models/LBAS";
-import { calc_jet_attacked_enemy_single_fleet, calc_returned_origin_lbas } from "@/logics/aerialCombat/jetAssault";
-import { calc_air_state_shootdowned_enemy_single_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
+import { extract_jet_squadrons, JetSquadron, LBAS } from "@/models/LBAS";
+import { calc_jet_attacked_enemy_fleet, calc_returned_origin_lbas } from "@/logics/aerialCombat/jetAssault";
+import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
-import { SingleFleetFormationType } from "@/types";
-import { AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
-import { is_jet_bomber_equip } from "@/models/equip/basic";
+import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
 
 /// 各フェイズを制御する
 /// sim_execute と logics を繋ぐ
@@ -100,25 +98,22 @@ export function calc_detection_phase(
     }
 }
 
-type JetLbasPhaseResult = {
-    post_jet_lbas_phase_lbases: LBAS[],
-    post_jet_lbas_phase_enemy_fleet: AbyssalFleet,
-}
-
-export function jet_lbas_phase(
+export function jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
     node: Node,
     lbases: LBAS[],
-    enemy_fleet: AbyssalSingleFleet,
-    formation: SingleFleetFormationType,
+    enemy_fleet: T,
     rand: Rand,
-): JetLbasPhaseResult {
-    // NOTE: 索敵の成否は関係ない
+): {
+    post_jet_lbas_phase_lbases: LBAS[],
+    post_jet_lbas_phase_enemy_fleet: T,
+} {
+    // NOTE: 索敵の成否は問わない
     if (node.type.is_ss_only) return {
         post_jet_lbas_phase_lbases: lbases,
         post_jet_lbas_phase_enemy_fleet: enemy_fleet,
     }
 
-    // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが棚上げ
+    // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが演習でしか起きないので棚上げ
 
     const jet_only_squadrons: JetSquadron[] =
         lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
@@ -133,21 +128,22 @@ export function jet_lbas_phase(
     const jets_air_superiority_power = calc_squadrons_air_superriority_power(
         jet_only_squadrons,
     );
+    // NOTE: 敵連合艦隊 > 随伴艦隊の空母が制空に参加するか分からないがとりあえず含める
     const enemy_air_superiority_power =
-        calc_fleet_air_superiority_power(enemy_fleet);
+        calc_fleet_air_superiority_power(enemy_fleet, 'both_fleet');
 
-    const { own_air_state, enemy_air_state } = evaluate_air_superiority(
+    const { player_air_state, enemy_air_state } = evaluate_air_superiority(
         jets_air_superiority_power,
         enemy_air_superiority_power,
     );
 
     const air_state_shootdowned_squadrons = calc_air_state_shootdowned_lbas(
         jet_only_squadrons,
-        own_air_state,
+        player_air_state,
         rand,
     );
 
-    const air_state_shootdowned_enemy_fleet = calc_air_state_shootdowned_enemy_single_fleet(
+    const air_state_shootdowned_enemy_fleet = calc_air_state_shootdowned_enemy_fleet(
         enemy_fleet,
         enemy_air_state,
         rand,
@@ -168,16 +164,15 @@ export function jet_lbas_phase(
     const anti_air_fired_squadrons = calc_anti_air_fired_squadrons(
         air_state_shootdowned_squadrons,
         air_state_shootdowned_enemy_fleet,
-        formation,
+        node,
         rand,
     );
 
     // 4.航空機による開幕航空攻撃
 
-    const attacked_enemy_fleet = calc_jet_attacked_enemy_single_fleet(
+    const attacked_enemy_fleet = calc_jet_attacked_enemy_fleet(
         anti_air_fired_squadrons,
         air_state_shootdowned_enemy_fleet,
-        formation,
         rand,
     );
 

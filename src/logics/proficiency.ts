@@ -1,6 +1,4 @@
-import { EquipType } from "@/datas/equip/base/player";
-import { Equip, is_plane_equip, is_player_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
-import { LBAS } from "@/models/LBAS";
+import { is_plane_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
 import { AvgLbasProficiency, brandAvgLbasProficiency } from "@/types/brands/other";
 
 /// 航空機熟練度系
@@ -174,7 +172,7 @@ export function calc_plane_proficiency_accuracy_flat(
  * @param lbas 
  * @returns 
  */
-export function calc_average_lbas_proficiency(
+export function calc_average_proficiency(
     planes: PlayerPlaneEquip[],
 ): AvgLbasProficiency {
     const avg_proficiency = planes.reduce((total, plane) => {

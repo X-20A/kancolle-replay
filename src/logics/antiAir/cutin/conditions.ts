@@ -1,7 +1,6 @@
-import { AACI_DATAS } from "@/datas/aaci";
 import { Country } from "@/datas/equip/bonus";
 import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { is_player_ship } from "@/models/ship/equipped";
 import { NakedShip } from "@/models/ship/naked/base";
 import { ShipNameJP } from "@/types/brands/ship";
 import { ShipType } from "@/types/ship/ship";
@@ -375,7 +374,6 @@ export function calc_triggerable_AACIs(
     }
     return ANTI_AIR_CUTIN_TYPES.filter((cutin_type) => {
         const condition = AACI_CONDITIONS(cutin_type);
-        // console.log(condition(param_ship, info));
         return condition(param_ship, info);
     });
 }

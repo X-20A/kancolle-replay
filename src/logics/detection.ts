@@ -1,9 +1,10 @@
 import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
-import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
-import { EquippedShip, is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
+import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
+import { EquippedShip, is_sunk } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { Rand } from "@/effects/random";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 /// 索敵系
 
@@ -79,7 +80,7 @@ export type FleetDetectionStatus = {
 }
 
 /**
- * 艦群の索敵能力評価してを返す
+ * 艦群の索敵能力を評価して返す
  * @param fleet 
  * @returns 
  */
@@ -89,7 +90,7 @@ export const analyze_ships_detection = (
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
         if (is_sunk(ship)) return ship_total;
 
-        const equip_summary: EquipSummary = ship.equip_builts.reduce((equip_total, equip_built) => {
+        const equip_summary: EquipSummary = ship.equip_slots.reduce((equip_total, equip_built) => {
             const equip = equip_built.equip;
             if (
                 !equip
@@ -182,8 +183,8 @@ const sum_fleet_detection_status = (
  */
 export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
     return sum_fleet_detection_status(
-        analyze_ships_detection(fleet.main_fleet_units),
-        analyze_ships_detection(is_combined_fleet(fleet) ? fleet.escort_fleet_units : []),
+        analyze_ships_detection(map_units_to_ships(fleet.main_fleet_units)),
+        analyze_ships_detection(is_combined_fleet(fleet) ? map_units_to_ships(fleet.escort_fleet_units) : []),
     );
 }
 
@@ -213,15 +214,16 @@ const def_fighter = (enemy_fighter_count: number) => {
  */
 const calc_shotdowned_recon_ships = (
     recon_power: ReconPower,
-    ships: PlayerEquippedShip[],
+    units: PlayerFleetUnit[],
     total_enemy_fighter_count: number,
     rand: Rand,
-): PlayerEquippedShip[] => {
-    return ships.map((ship) => {
-        if (is_sunk(ship)) return ship;
+): PlayerFleetUnit[] => {
+    return units.map((unit) => {
+        const ship = unit.ship;
+        if (is_sunk(ship)) return unit;
 
         const updated_slots = ship.slot_counts.map((slot, index) => {
-            const equip = ship.equip_builts[index].equip;
+            const equip = ship.equip_slots[index].equip;
             if (
                 !equip
                 || !equip.flags.can_detect
@@ -240,7 +242,11 @@ const calc_shotdowned_recon_ships = (
             return slot;
         });
 
-        return { ...ship, slot_counts: updated_slots };
+        const new_ship = { ...ship, slot_counts: updated_slots };
+        return {
+            ...unit,
+            ship: new_ship,
+        }
     });
 }
 
@@ -254,7 +260,7 @@ export function calc_enemy_fighter_count(
 ): number {
     return concat_fleet_ships(abyssal_fleet).reduce((total, ship) => {
         // NOTE: 索敵フェイズ前に敵艦が沈むことは無いので撃沈判定省略
-        return total + ship.equip_builts.reduce((count, equip_built) => {
+        return total + ship.equip_slots.reduce((count, equip_built) => {
             const equip = equip_built.equip;
             if (!equip) return count;
 

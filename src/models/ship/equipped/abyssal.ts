@@ -55,7 +55,7 @@ export function derive_equipped_abyssal_ship(
         lv: brandShipLv(1),
         type_id: naked_ship.type_id,
         install_type: naked_ship.install_type,
-        equip_builts: derive_abyssal_equip_built(equips, naked_ship.slots),
+        equip_slots: derive_abyssal_equip_built(equips, naked_ship.slots),
         max_hp,
         slot_counts: options.slots ?? naked_ship.slots,
         naked_status: naked_ship.status,

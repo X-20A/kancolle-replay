@@ -1,7 +1,7 @@
-import { EquippedShip } from "@/models/ship/equipped";
+import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
 import { Equip, is_jet_bomber_equip, is_plane_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
-import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
+import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { Rand } from "@/effects/random";
 import { match, P } from "ts-pattern";
@@ -91,7 +91,7 @@ export function calc_equips_air_superiority_power(
  * @returns 
  */
 export function calc_ship_air_superiority_power(ship: EquippedShip): number {
-    return calc_equips_air_superiority_power(ship.equip_builts, ship.slot_counts);
+    return calc_equips_air_superiority_power(ship.equip_slots, ship.slot_counts);
 }
 
 /**
@@ -109,10 +109,14 @@ export function calc_ships_air_superiority_power(ships: EquippedShip[]): number 
  * 艦隊の制空値を返す
  * @param fleet 
  */
-export function calc_fleet_air_superiority_power(fleet: Fleet): number {
-    return calc_ships_air_superiority_power(
-        concat_fleet_ships(fleet),
-    );
+export function calc_fleet_air_superiority_power(
+    fleet: Fleet,
+    calc_scope: 'main_only' | 'both_fleet'
+): number {
+    return match(calc_scope)
+        .with('main_only', () => calc_ships_air_superiority_power(concat_fleet_ships(fleet)))
+        .with('both_fleet', () => calc_ships_air_superiority_power(map_units_to_ships(fleet.main_fleet_units)))
+        .exhaustive();
 }
 
 const AIR_STATE_CONSTANT: Record<AirStateType, number> = {
@@ -247,36 +251,36 @@ export function calc_air_state_shootdowned_lbas<T extends Squadron[] | JetSquadr
 }
 
 /**
- * 制空による被撃墜を反映した新しい敵艦隊を返す
+ * 制空による被撃墜を反映した新しい敵艦を返す
  * @param ship 
  * @param air_state 
  * @param rand 
  * @returns 
  */
 const calc_air_state_shootdowned_enemy_ships = (
-    ship: EquippedShip,
+    ship: AbyssalEquippedShip,
     air_state: AirStateType,
     rand: Rand,
-): EquippedShip => {
-    const new_equip_builts = ship.equip_builts.map(equip_built => {
-        const equip = equip_built.equip;
-        if (!equip || !is_plane_equip(equip)) return equip_built;
+): AbyssalEquippedShip => {
+    const new_equip_slots = ship.equip_slots.map(equip_slot => {
+        const equip = equip_slot.equip;
+        if (!equip || !is_plane_equip(equip)) return equip_slot;
 
         const new_slot_count = calc_enemy_air_state_shootdowned_slots(
-            equip_built.slot_count,
+            equip_slot.slot_count,
             air_state,
             rand,
         );
 
         return {
-            ...equip_built,
+            ...equip_slot,
             slot_count: new_slot_count,
         }
     });
 
     return {
         ...ship,
-        equip_builts: new_equip_builts,
+        equip_slots: new_equip_slots,
     }
 }
 
@@ -287,44 +291,39 @@ const calc_air_state_shootdowned_enemy_ships = (
  * @param rand 
  * @returns 
  */
-export function calc_air_state_shootdowned_enemy_single_fleet(
-    fleet: EnemySingleFleet,
+export function calc_air_state_shootdowned_enemy_fleet<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
+    fleet: T,
     air_state: AirStateType,
     rand: Rand,
-): EnemySingleFleet {
-    const new_main_fleet_ships = fleet.main_fleet_ships.map(ship => {
-        return calc_air_state_shootdowned_enemy_ships(ship, air_state, rand);
+): T {
+    const new_main_fleet_units = fleet.main_fleet_units.map(unit => {
+        const new_ship =
+            calc_air_state_shootdowned_enemy_ships(unit.ship, air_state, rand);
+
+        return {
+            ...unit,
+            ship: new_ship,
+        }
+    });
+
+    if (!is_combined_fleet(fleet)) return {
+        ...fleet,
+        main_fleet_units: new_main_fleet_units,
+    };
+
+    const new_escort_fleet_units = fleet.escort_fleet_units.map(unit => {
+        const new_ship =
+            calc_air_state_shootdowned_enemy_ships(unit.ship, air_state, rand);
+
+        return {
+            ...unit,
+            ship: new_ship,
+        }
     });
 
     return {
         ...fleet,
-        main_fleet_ships: new_main_fleet_ships,
-    }
-}
-
-/**
- * 制空状態による被撃墜数を反映した新しい敵連合艦隊を返す
- * @param fleet 
- * @param air_state 
- * @param rand 
- * @returns 
- */
-export function calc_air_state_shootdowned_enemy_combined_fleet(
-    fleet: EnemyCombinedFleet,
-    air_state: AirStateType,
-    rand: Rand,
-): EnemyCombinedFleet {
-    const new_main_fleet_ships = fleet.main_fleet_ships.map(ship => {
-        return calc_air_state_shootdowned_enemy_ships(ship, air_state, rand);
-    });
-
-    const new_escort_fleet_ships = fleet.escort_fleet_ships.map(ship => {
-        return calc_air_state_shootdowned_enemy_ships(ship, air_state, rand);
-    });
-
-    return {
-        ...fleet,
-        main_fleet_ships: new_main_fleet_ships,
-        escort_fleet_ships: new_escort_fleet_ships,
-    }
+        main_fleet_units: new_main_fleet_units,
+        escort_fleet_units: new_escort_fleet_units,
+    };
 }

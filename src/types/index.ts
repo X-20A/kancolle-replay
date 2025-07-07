@@ -56,3 +56,15 @@ const COMBINED_FLEET_FORMATION = {
 export type CombinedFleetFormationType = keyof typeof COMBINED_FLEET_FORMATION
 
 export type FormationType = SingleFleetFormationType | CombinedFleetFormationType
+
+export function is_single_fleet_formation(
+    formation: FormationType,
+): formation is SingleFleetFormationType {
+    return formation in SINGLE_FLEET_FORMATION;
+}
+
+export function is_combined_fleet_formation(
+    formation: FormationType,
+): formation is CombinedFleetFormationType {
+    return !is_single_fleet_formation(formation);
+}

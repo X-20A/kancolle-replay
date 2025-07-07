@@ -1,8 +1,8 @@
 import { Rand } from "@/effects/random";
-import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
+import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
-import { SingleFleetFormationType } from "@/types";
+import { FormationType, SingleFleetFormationType } from "@/types";
 import { match, P } from "ts-pattern";
 import { JetSquadron, Squadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
@@ -13,15 +13,15 @@ import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/Fle
 
 /// 対空射撃系
 
-function extract_defender_ships(fleet: PlayerFleet): PlayerFleetUnit[];
-function extract_defender_ships(fleet: AbyssalFleet): AbyssalFleetUnit[];
 /**
  * 艦隊から対空射撃に参加可能な艦を抽出して返す
  * @param fleet 
  * @returns 
  */
+function extract_defender_ships(fleet: PlayerFleet): PlayerFleetUnit[];
+function extract_defender_ships(fleet: AbyssalFleet): AbyssalFleetUnit[];
 function extract_defender_ships(fleet: Fleet): FleetUnit[] {
-    return concat_fleet_ships(fleet).filter(unit =>
+    return concat_fleet_units(fleet).filter(unit =>
         // NOTE: 潜水艦も迎撃艦として選ばれる
         is_player_ship(unit.ship) || !unit.ship.flags.is_faraway
     );
@@ -67,7 +67,7 @@ export const calc_equip_type_mod_for_fleet_anti_air = (
 export function calc_ship_fleet_anti_air(
     ship: EquippedShip,
 ): number {
-    const equips_fleet_anti_air = ship.equip_builts.reduce((total, equip_built) => {
+    const equips_fleet_anti_air = ship.equip_slots.reduce((total, equip_built) => {
         const equip = equip_built.equip;
         if (!equip) return total;
 
@@ -87,13 +87,17 @@ export function calc_ship_fleet_anti_air(
  * @returns 
  */
 export const calc_formation_mod = (
-    formation: SingleFleetFormationType,
+    formation: FormationType,
 ): number => {
     return match(formation)
         .with(P.union('LineAhead', 'Echelon', 'LineAbreast'), () => 1)
         .with('Vanguard', () => 1.1)
         .with('DoubleLine', () => 1.2)
         .with('Diamond', () => 1.6)
+        .with('CruisingFormation_1', () => 1.1)
+        .with('CruisingFormation_2', () => 1)
+        .with('CruisingFormation_3', () => 1.5)
+        .with('CruisingFormation_4', () => 1)
         .exhaustive();
 }
 
@@ -103,26 +107,25 @@ export const calc_formation_mod = (
  */
 export function calc_fleet_anti_air(
     fleet: Fleet,
-    formation: SingleFleetFormationType,
 ): number {
-    const ships_total = concat_fleet_ships(fleet).reduce((total, unit) => {
+    const ships_total = concat_fleet_ships(fleet).reduce((total, ship) => {
         return total
-            + calc_ship_fleet_anti_air(unit.ship);
+            + calc_ship_fleet_anti_air(ship);
     }, 0);
 
-    return Math.floor(calc_formation_mod(formation) * ships_total) * (2 / 1.3);
+    return Math.floor(calc_formation_mod(fleet.formation) * ships_total) * (2 / 1.3);
 }
 
 /**
- * 敵通常艦隊の対空射撃を受けた後のLBASを返す
+ * 敵通常艦隊の対空射撃を受けた後の航空隊群を返す
  * @param squadrons 
  * @param enemy_fleet 
  * @param rand 
  */
 export function calc_anti_air_fired_squadrons<T extends Squadron[] | JetSquadron[]>(
     squadrons: T,
-    enemy_fleet: AbyssalSingleFleet,
-    formation: SingleFleetFormationType,
+    enemy_fleet: AbyssalFleet,
+    node: Node,
     rand: Rand,
 ): T {
     const defender_units = extract_defender_ships(enemy_fleet);
@@ -130,7 +133,7 @@ export function calc_anti_air_fired_squadrons<T extends Squadron[] | JetSquadron
     const triggered_aaci = 'Misfire';
 
     return squadrons.map((squadron) => {
-        if (squadron.slot_count === 0) return squadron;
+        if (squadron.slot_count <= 0) return squadron;
 
         const defender_unit =
             defender_units[Math.floor(rand.next() * defender_units.length)];
@@ -142,7 +145,7 @@ export function calc_anti_air_fired_squadrons<T extends Squadron[] | JetSquadron
 
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? calc_abyssal_fixed_shootdown_count(defender_unit.ship, triggered_aaci, enemy_fleet, formation, squadron.plane)
+            ? calc_abyssal_fixed_shootdown_count(defender_unit, triggered_aaci, enemy_fleet, squadron.plane, node)
             : 0;
 
         /** 最低保証 */

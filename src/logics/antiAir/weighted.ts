@@ -1,10 +1,10 @@
 import { EquipImprovementAddition } from "@/datas/equip/improvement";
 import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "@/models/equip/basic";
-import { SingleFleetFormationType, TStatusComponent } from "@/types";
+import { FormationType, SingleFleetFormationType, TStatusComponent } from "@/types";
 import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
 import { match } from "ts-pattern";
 import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from ".";
-import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
+import { AbyssalFleet, AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { is_sunk } from "@/models/ship/equipped";
 
 /**
@@ -76,9 +76,6 @@ export function calc_abyssal_ship_weighted_anti_air(
 const calc_M = (
     equip: Equip,
 ): number => {
-    console.log(equip.name_jp);
-    console.log('AA: ', equip.natural_addition.anti_air);
-    console.log('mod: ', calc_equip_type_mod_for_fleet_anti_air(equip));
     return equip.natural_addition.anti_air * calc_equip_type_mod_for_fleet_anti_air(equip);
 }
 
@@ -90,15 +87,16 @@ export function calc_player_fleet_weighted_anti_air(
     defender_fleet: PlayerSingleFleet,
     formation: SingleFleetFormationType,
 ): number {
-    const ship_total = defender_fleet.main_fleet_units.reduce((total, ship) => {
+    const ship_total = defender_fleet.main_fleet_units.reduce((total, unit) => {
+        const ship = unit.ship;
         if (
             is_sunk(ship) ||
             ship.state.is_retreated
         ) return total;
 
         return Math.floor(
-            total + ship.equip_builts.reduce((total, equip_built) => {
-                const equip = equip_built.equip;
+            total + ship.equip_slots.reduce((total, equip_slot) => {
+                const equip = equip_slot.equip;
                 if (!equip) return total;
 
                 return total + (
@@ -117,18 +115,20 @@ export function calc_player_fleet_weighted_anti_air(
  * @param defender_fleet 
  */
 export function calc_abyssal_fleet_weighted_anti_air(
-    defender_fleet: AbyssalSingleFleet,
-    formation: SingleFleetFormationType,
+    defender_fleet: AbyssalFleet,
+    formation?: FormationType, // テスト用。コードベースではAbyssalFleetから取るので必要ない
 ): number {
-    const ship_total = defender_fleet.main_fleet_units.reduce((total, ship) => {
+    const actual_formation = formation ?? defender_fleet.formation;
+    const ship_total = defender_fleet.main_fleet_units.reduce((total, unit) => {
+        const ship = unit.ship;
         if (
             is_sunk(ship) ||
             ship.flags.is_faraway
         ) return total;
 
         return Math.floor(
-            total + ship.equip_builts.reduce((total, equip_built) => {
-                const equip = equip_built.equip;
+            total + ship.equip_slots.reduce((total, equip_slot) => {
+                const equip = equip_slot.equip;
                 if (!equip) return total;
 
                 return total + calc_M(equip);
@@ -136,5 +136,5 @@ export function calc_abyssal_fleet_weighted_anti_air(
         );
     }, 0);
 
-    return Math.floor(ship_total * calc_formation_mod(formation));
+    return Math.floor(ship_total * calc_formation_mod(actual_formation));
 }

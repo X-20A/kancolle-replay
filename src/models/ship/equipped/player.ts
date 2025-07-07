@@ -97,7 +97,7 @@ export function derive_equipped_player_ship(
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equip_builts: derive_player_equip_built(all_equips, naked_ship.slots),
+        equip_slots: derive_player_equip_built(all_equips, naked_ship.slots),
         slot_counts: options.slots ?? naked_ship.slots,
         max_hp: naked_status.hp,
         flags,

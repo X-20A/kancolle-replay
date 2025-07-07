@@ -1,5 +1,4 @@
 import { PlayerEquippedShip } from "@/models/ship/equipped";
-import { ShipType } from "@/wasm/kssw";
 
 
 

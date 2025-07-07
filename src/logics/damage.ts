@@ -41,7 +41,6 @@ export function calc_jet_assault_damage(
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
         squadron.plane,
-        squadron.proficiency,
         enemy_fleet,
         target_ship
     );

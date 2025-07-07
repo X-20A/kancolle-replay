@@ -1,9 +1,8 @@
-import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types"
+import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
 import { EquippedShip, is_abyssal_ships, is_player_ships, is_sunk } from "../ship/equipped"
 import { AbyssalFleetUnit, derive_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
 
 type FleetBase = {
-    readonly is_combined: boolean,
     readonly unused_smoke: boolean,
 }
 
@@ -44,12 +43,12 @@ export type AbyssalFleet = AbyssalSingleFleet | AbyssalCombinedFleet
 export type Fleet = SingleFleet | CombinedFleet;
 
 /**
- * 主力艦隊と随伴艦隊の艦を連結した配列を返す    
+ * 主力艦隊と随伴艦隊の艦ユニットを連結した配列を返す    
  * 通常艦隊 | 連合艦隊 は考えずに呼んでよし
  * @param fleet 
  * @returns 
  */
-export function concat_fleet_ships(
+export function concat_fleet_units(
     fleet: Fleet,
 ): FleetUnit[] {
     return is_combined_fleet(fleet)
@@ -57,8 +56,53 @@ export function concat_fleet_ships(
         : fleet.main_fleet_units;
 }
 
+/**
+ * 主力艦隊と随伴艦隊の艦を連結した配列を返す    
+ * 通常艦隊 | 連合艦隊 は考えずに呼んでよし
+ * @param fleet 
+ * @returns 
+ */
+export function concat_fleet_ships(
+    fleet: Fleet,
+): EquippedShip[] {
+    const units = concat_fleet_units(fleet);
+
+    return map_units_to_ships(units);
+}
+
+/**
+ * FleetUnit[]をEquippedShip[]に変換して返す
+ * @param fleet_units 
+ * @returns 
+ */
+export function map_units_to_ships(
+    fleet_units: FleetUnit[],
+): EquippedShip[] {
+    return fleet_units.map(unit => unit.ship);
+}
+
 export function is_combined_fleet(fleet: Fleet): fleet is CombinedFleet {
-    return fleet.is_combined;
+    return 'escort_fleet_units' in fleet;
+}
+
+export function calc_formation_updated_fleet<T extends Fleet>(
+    fleet: T,
+    formation: FormationType,
+): T {
+    if (is_combined_fleet(fleet)) {
+        if (!is_combined_fleet_formation(formation)) throw new Error('連合艦隊に通常艦隊の陣形は設定できません');
+    
+        return {
+            ...fleet,
+            formation: formation,
+        };
+    }
+    if (!is_single_fleet_formation(formation)) throw new Error('通常艦隊に連合艦隊の陣形は設定できません');
+
+    return {
+        ...fleet,
+        formation,
+    };
 }
 
 /**
@@ -72,6 +116,12 @@ export function is_all_sunk(
     return concat_fleet_ships(fleet).every(is_sunk);
 }
 
+/**
+ * プレイヤー艦隊を生成して返す
+ * @param main_fleet_ships 
+ * @param escort_fleet_ships 
+ * @returns 
+ */
 export function derive_player_fleet(
     main_fleet_ships: EquippedShip[],
     escort_fleet_ships?: EquippedShip[],
@@ -86,19 +136,23 @@ export function derive_player_fleet(
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
             escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
             unused_smoke: true,
-            is_combined,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
             unused_smoke: true,
-            is_combined,
             formation: 'LineAhead',
         };
     }
 }
 
+/**
+ * 深海艦隊を生成して返す
+ * @param main_fleet_ships 
+ * @param escort_fleet_ships 
+ * @returns 
+ */
 export function derive_abyssal_fleet(
     main_fleet_ships: EquippedShip[],
     escort_fleet_ships?: EquippedShip[],
@@ -113,14 +167,12 @@ export function derive_abyssal_fleet(
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
             escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
             unused_smoke: true,
-            is_combined,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
             unused_smoke: true,
-            is_combined,
             formation: 'LineAhead',
         };
     }

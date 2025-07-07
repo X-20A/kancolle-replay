@@ -1,8 +1,7 @@
 import { Rand } from "@/effects/random";
 import { is_player_equip } from "@/models/equip/basic";
-import { concat_fleet_ships } from "@/models/fleet/Fleet";
+import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet";
 import { EquippedShip } from "@/models/ship/equipped";
-import { OwnFleet } from "@/types/brands/fleet";
 import { Maf } from "@/utils/Maf";
 
 const SMOKE_SCREEN_TYPE = {
@@ -41,7 +40,7 @@ const calc_premise = (
     const SMOKE_GENERATOR_KAI_ID = 501;
 
     return ships.reduce((total, ship) => {
-        ship.equip_builts.forEach((equip_built) => {
+        ship.equip_slots.forEach((equip_built) => {
             const equip = equip_built.equip;
             if (!equip || !is_player_equip(equip)) return total;
 
@@ -66,17 +65,17 @@ const calc_premise = (
 
 /**
  * 煙幕の各タイプ発動率を返す
- * @param own_fleet 
+ * @param player_fleet 
  * @returns 
  */
-export function calc_smoke_screen_activate_rate(own_fleet: OwnFleet): SmokeScreenValues {
-    const ships = concat_fleet_ships(own_fleet);
+export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): SmokeScreenValues {
+    const fleet_units = concat_fleet_ships(player_fleet);
     const {
         substantial_smoke_count,
         total_base_stars,
         total_kai_stars,
         flagship_luck,
-    } = calc_premise(ships);
+    } = calc_premise(fleet_units);
 
     const rates: SmokeScreenValues = { Misfire: 0, Single: 0, Twofold: 0, Threefold: 0 };
 

@@ -55,3 +55,29 @@ export type Node = {
      */
     each_formation: EachFormation,
 }
+
+export function derive_node_type(): NodeType {
+    return {
+        is_boss: false,
+        is_night_battle_only: false,
+        is_air_raid_only: false,
+        is_aerial_combat: false,
+        is_airstrike_supported: false,
+        is_ambush: false,
+        is_ss_only: false,
+    };
+}
+
+export function derive_node(): Node {
+    return {
+        index: 0,
+        type: derive_node_type(),
+        is_detection_success: null,
+        engagement_type: null,
+        triggered_smoke_screen_type: null,
+        each_formation: {
+            own_formation: 'LineAhead',
+            enemy_formation: 'LineAhead',
+        },
+    };
+}
