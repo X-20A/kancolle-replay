@@ -73,7 +73,7 @@ export type AbyssalShipData = {
 
 export type AbyssalShipDatas = DeepReadonly<Record<number, AbyssalShipData>>;
 
-export type AbyssalShipFlags = {
+export type AbyssalNakedShipFlags = {
     /** 無条件開幕対潜艦はtrue */
     can_OASW: boolean,
     /**

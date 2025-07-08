@@ -281,10 +281,6 @@ export type AswEquipFlags = {
     has_DC: boolean,
 }
 
-export type PlayerShipFlags = PlayerNakedShipFlags & {
-    asw_equip: AswEquipFlags;
-  };
-
 export type SlotType = {
     master: Readonly<number[]>,
     edited: Readonly<number[]>,

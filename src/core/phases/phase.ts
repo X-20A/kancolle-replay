@@ -98,10 +98,11 @@ export function calc_detection_phase(
     }
 }
 
-export function jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
+export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
     node: Node,
     lbases: LBAS[],
     enemy_fleet: T,
+    settings: UserSettings,
     rand: Rand,
 ): {
     post_jet_lbas_phase_lbases: LBAS[],

@@ -3,7 +3,7 @@ import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipNameEN, ShipNameJP } from "@/types/brands/ship";
 import { InstallType, PlayerNakedShipFlags, ShipTypeBase, UnknownStatus } from "@/types/ship/ship";
 import { PlayerShipClass } from "@/types/ship/shipClass";
-import { AbyssalShipFlags, AbyssalShipType } from "@/types/ship/abyssal";
+import { AbyssalNakedShipFlags, AbyssalShipType } from "@/types/ship/abyssal";
 
 type NakedShipBase = {
     readonly master_id: ShipId,
@@ -26,7 +26,7 @@ export type AbyssalNakedShip = NakedShipBase & {
     readonly install_type: InstallType,
     readonly unknown_status: UnknownStatus,
     readonly EQUIPS: Array<number>,
-    readonly flags: AbyssalShipFlags,
+    readonly flags: AbyssalNakedShipFlags,
 }
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */

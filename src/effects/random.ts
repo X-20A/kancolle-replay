@@ -1,3 +1,4 @@
+import { brandRandValue, RandValue } from "@/types/brands/other";
 import seedrandom from "seedrandom";
 
 /**
@@ -14,7 +15,7 @@ export class Rand {
             : Math.random;
     }
 
-    public next(): number {
-        return this.rand();
+    public next(): RandValue {
+        return brandRandValue(this.rand());
     }
 }

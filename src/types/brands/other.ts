@@ -6,7 +6,9 @@ export type WeightedAntiAir = Brand<number, 'WeightedAntiAir'>
 
 export type AvgLbasProficiency = Brand<number, 'AvgLbasProficiency'>
 
-export const brandOwnFleet =
+export type RandValue = Brand<number, 'RandValue'>
+
+export const brandPreAccuracy =
     (value: number) => brand<number, 'PreAccuracy'>(value);
 
 export const brandWeightedAntiAir =
@@ -14,3 +16,6 @@ export const brandWeightedAntiAir =
 
 export const brandAvgLbasProficiency =
     (value: number) => brand<number, 'AvgLbasProficiency'>(value)
+
+export const brandRandValue =
+    (value: number) => brand<number, 'RandValue'>(value);

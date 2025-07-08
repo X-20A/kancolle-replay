@@ -4,7 +4,6 @@ import { Equip, is_player_equip, is_player_equips, PlayerEquip } from "@/models/
 import { ModernizationType, SpecialItemId } from "@/types/ship/ship";
 import { TStatusComponent } from "@/types";
 import { derive_player_naked_ship } from "../naked/player";
-import { derive_asw_flags } from "../aswFlags";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { sumEquipImprovementAdditions } from "@/models/equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
@@ -14,6 +13,7 @@ import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_player_equip_built } from "@/models/ship/EquipBuilt";
+import { derive_player_equipped_ship_flags } from "./flags";
 
 export type EquippedPlayerShipOptions = {
     unique_id?: ShipUniqueId,
@@ -67,11 +67,7 @@ export function derive_equipped_player_ship(
             return total + equip.contribute_asw_attack_power;
         }, 0);
 
-    const asw_flags = derive_asw_flags(player_equips);
-    const flags = {
-        ...naked_ship.flags,
-        asw_equip: asw_flags,
-    };
+    const flags = derive_player_equipped_ship_flags(naked_ship.flags, player_equips)
 
     const state = derive_player_ship_state(options.hp_remain ?? edited_status.hp);
 

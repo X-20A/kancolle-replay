@@ -1,5 +1,5 @@
 import { Rand } from "@/effects/random";
-import { calc_detection_phase, calc_engagement_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
+import { calc_detection_phase, calc_engagement_phase, calc_jet_lbas_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";
 import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
@@ -21,6 +21,8 @@ import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 export type UserSettings = {
     /** 煙幕発動Node 0オリジン */
     smoke_screen_trigger_node_index: number[],
+    /** 阻塞気球展開Node 0オリジン */
+    use_barrage_balloon_node: number,
 }
 
 export function sim_execute(
@@ -38,32 +40,40 @@ export function sim_execute(
         node,
     );
 
-    const detection_phase_result = calc_detection_phase(
+    const {
+        post_detection_phase_node,
+        post_detection_phase_player_fleet,
+    } = calc_detection_phase(
         node,
         post_maritime_resupply_phase_player_fleet,
         enemy_fleet,
         rand,
     );
-    const {
-        post_detection_phase_node,
-        post_detection_phase_player_fleet: post_detection_phase_own_fleet,
-    } = detection_phase_result;
 
     const post_engagement_phase_node = calc_engagement_phase(
         post_detection_phase_node,
-        post_detection_phase_own_fleet,
+        post_detection_phase_player_fleet,
         rand,
     );
 
-    const smoke_screen_phase_result = calc_smoke_screen_phase(
-        settings,
+    const {
+        post_jet_lbas_phase_lbases,
+        post_jet_lbas_phase_enemy_fleet,
+    } = calc_jet_lbas_phase(
         post_engagement_phase_node,
-        post_detection_phase_own_fleet,
+        lbases,
+        enemy_fleet,
+        settings,
         rand,
-    );
+    )
+
     const {
         post_smoke_screen_phase_node,
-        post_smoke_screen_phase_player_fleet: post_smoke_screen_phase_own_fleet,
-    } = smoke_screen_phase_result;
-
+        post_smoke_screen_phase_player_fleet,
+    } = calc_smoke_screen_phase(
+        settings,
+        post_engagement_phase_node,
+        post_detection_phase_player_fleet,
+        rand,
+    );
 }

@@ -1,6 +1,6 @@
 import { brandShipNameEN, brandShipNameJP, ShipId } from "@/types/brands/ship";
 import { AbyssalNakedShip } from "./base";
-import { AbyssalShipFlags } from "@/types/ship/abyssal";
+import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 import { TStatusComponent } from "@/types";
 import { ABYSSAL_SHIP_DATAS } from "@/datas/ship/abyssal";
 
@@ -29,7 +29,7 @@ export function derive_abyssal_naked_ship(
         aerial_torpedo_power: 0,
     }
 
-    const flags: AbyssalShipFlags = {
+    const flags: AbyssalNakedShipFlags = {
         can_OASW: ship_data.can_OASW ?? false,
         has_built_in_night_crew: ship_data.has_built_in_night_crew ?? false,
         can_not_CVCI: ship_data.can_not_CVCI ?? false,

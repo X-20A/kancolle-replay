@@ -281,7 +281,7 @@ export function calc_shotdowned_recon_fleet(
     rand: Rand,
 ): PlayerFleet {
     // 味方艦隊の ship ごとに撃墜処理を実施
-    // ? 随伴艦隊も索敵機を飛ばすとして
+    // ? 随伴艦隊も索敵機を飛ばすか分からない 暫定: 飛ばす
     const updated_main_fleet_ships = calc_shotdowned_recon_ships(
         recon_power,
         player_fleet.main_fleet_units,

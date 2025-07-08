@@ -1,19 +1,20 @@
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
-import { SpecialItemId, PlayerShipFlags, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
+import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
 import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
-import { AbyssalShipFlags } from "@/types/ship/abyssal";
+import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipBuilt";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { WeightedAntiAir } from "@/types/brands/other";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
+import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
 
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
 export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
@@ -59,15 +60,19 @@ export function is_sunk(ship: EquippedShip): boolean {
     return ship.state.hp_remain <= 0;
 }
 
+export function is_retreated(ship: EquippedShip): boolean {
+    return is_player_ship(ship) && ship.state.is_retreated;
+}
+
 /**
  * PT系の艦であるか判定して返す
  * @param ship 
  * @returns 
  */
 export function is_PT(
-    unit: FleetUnit,
+    ship: EquippedShip,
 ): boolean {
-    return is_abyssal_ship(unit.ship) && unit.ship.flags.is_PT;
+    return is_abyssal_ship(ship) && ship.flags.is_PT;
 }
 
 /**
@@ -75,7 +80,7 @@ export function is_PT(
  * @param ship 
  * @returns 
  */
-export function is_install(
+export function is_install_type(
     ship: EquippedShip,
 ): boolean {
     return is_abyssal_ship(ship) && ship.install_type !== 'No';

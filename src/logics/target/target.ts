@@ -1,5 +1,5 @@
 import { Rand } from "@/effects/random";
-import { EquippedShip, is_damage_lightly_or_more, is_install, is_PT, is_submarine_category, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { is_front } from "../formation";
 import { AbyssalSingleFleet, CombinedFleet, SingleFleet } from "@/models/fleet/Fleet";
@@ -60,9 +60,9 @@ const calc_unique_fleet_targeting = (
     }
     if (['第百一号輸送艦', '第百一号輸送艦改'].includes(attacker_ship.name_jp)) {
         const includes_install_in_main_fleet =
-            target_fleet.main_fleet_units.some(unit => is_install(unit.ship));
+            target_fleet.main_fleet_units.some(unit => is_install_type(unit.ship));
         const includes_install_in_escort_fleet =
-            target_fleet.escort_fleet_units.some(unit => is_install(unit.ship));
+            target_fleet.escort_fleet_units.some(unit => is_install_type(unit.ship));
 
         if (includes_install_in_main_fleet && !includes_install_in_escort_fleet) return 'main';
         if (!includes_install_in_main_fleet && includes_install_in_escort_fleet) return 'escort';
@@ -170,7 +170,7 @@ const protect_flagship_in_single_fleet = (
     rand: Rand
 ): FleetUnit => {
     if (pre_target_unit.fleet_type !== 'single') throw new Error('連合艦隊の「かばう」処理に誤って通常艦隊の「かばう」処理が呼び出されています');
-    if (!is_primary_flag_ship(pre_target_unit) || is_install(pre_target_unit.ship)) {
+    if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
         return pre_target_unit;
     }
 
@@ -198,7 +198,7 @@ const protect_flagship_in_combined_fleet = (
     rand: Rand
 ): FleetUnit => {
     if (pre_target_unit.fleet_type === 'single') throw new Error('通常艦隊の「かばう」処理に誤って連合艦隊の「かばう」処理が呼び出されています');
-    if (!is_primary_flag_ship(pre_target_unit) || is_install(pre_target_unit.ship)) {
+    if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
         return pre_target_unit;
     }
 

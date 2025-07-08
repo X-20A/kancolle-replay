@@ -7,6 +7,7 @@ import { calc_defence } from "./defense";
 import { AbyssalFleet, Fleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
+import { calc_jet_lbas_critical_rate, calc_post_critical_mod_jet_LBAS_attack_power } from "./critical";
 
 /**
  * 割合ダメージ(カスダメ)を返す
@@ -50,8 +51,20 @@ export function calc_jet_assault_damage(
     if (!is_hit) return 0; // 特殊攻撃、カットインではないので回避されればカスダメも無し
 
     const basic_attack_power = calc_basic_jet_assault_attack_power(squadron);
+    // ? 基地噴式にキャップ処理があるのか不明 暫定: キャップなし
+    // ? 徹甲弾補正のあるターゲットはこちらが徹甲弾を持っていなくてもfloor処理だけは発生するが、基地噴式でも同様であるかは不明 暫定: floorなし
+    // ? 阻塞気球補正が基地噴式でも有効であるか不明 暫定: 補正あり
+    // TODO: 海域特効付与
+    // TODO: 対地上型補正
+    // TODO: 対PT補正
+    const post_critical_attack_power = calc_post_critical_mod_jet_LBAS_attack_power(
+        basic_attack_power,
+        final_jet_assault_accuracy,
+        rand,
+    );
+
     const defence = calc_defence(target_ship, rand);
-    const damage = Math.floor((basic_attack_power - defence) * 1);
+    const damage = Math.floor((post_critical_attack_power - defence) * 1);
     if (damage >= 1) return damage;
 
     return calc_scrach_damage(target_ship, rand);

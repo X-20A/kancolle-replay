@@ -10,6 +10,7 @@ import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip, is_abyssal_equips } from "@/models/equip/basic";
 import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_abyssal_equip_built } from "@/models/ship/EquipBuilt";
+import { derive_abyssal_equipped_ship_flags } from "./flags";
 
 export function derive_equipped_abyssal_ship(
     id: ShipId,
@@ -64,7 +65,7 @@ export function derive_equipped_abyssal_ship(
         edited_status,
         weighted_anti_air,
         triggerable_AACIs,
-        flags: naked_ship.flags,
+        flags: derive_abyssal_equipped_ship_flags(naked_ship.flags, equips),
         state: {
             hp_remain: max_hp,
         },

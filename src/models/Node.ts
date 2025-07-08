@@ -1,3 +1,4 @@
+import { UserSettings } from "@/core/flows/SimExecuter"
 import { EngagementType } from "@/logics/engagemenet"
 import { SmokeScreenType } from "@/logics/smokeScreen"
 import { FormationType } from "@/types"
@@ -54,6 +55,19 @@ export type Node = {
      * 彼我の指定陣形
      */
     each_formation: EachFormation,
+}
+
+/**
+ * 阻塞気球使用が設定されたNodeであるか判定して返す
+ * @param node 
+ * @param settings 
+ * @returns 
+ */
+export function is_use_barrage_balloon_node(
+    node: Node,
+    settings: UserSettings,
+): boolean {
+    return settings.use_barrage_balloon_node === node.index;
 }
 
 export function derive_node_type(): NodeType {
