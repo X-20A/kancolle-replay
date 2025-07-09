@@ -116,8 +116,10 @@ export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombin
 
     // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが演習でしか起きないので棚上げ
 
+    const targeted_lbases = lbases.filter(lbas => lbas.target_node.includes(node.index));
+
     const jet_only_squadrons: JetSquadron[] =
-        lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
+        targeted_lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
 
     if (jet_only_squadrons.length === 0) return {
         post_jet_lbas_phase_lbases: lbases,

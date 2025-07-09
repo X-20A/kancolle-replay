@@ -1,5 +1,5 @@
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
-import { deriveEquipImprovementAddition } from "../EquipImprovement";
+import { derive_equip_improvement_addition } from "../EquipImprovement";
 import { derive_player_equip_master } from "../master/player";
 import { deriveTransportAddition } from "../TransportPower";
 import { JetBomberEquip, OtherEquip, PlayerPlaneEquip, PlayerEquip } from ".";
@@ -23,7 +23,7 @@ export function derive_player_equip(
         aaci_trigger_type: equip_master.aaci_trigger_type,
         flags: equip_master.flags,
         natural_addition: equip_master.status,
-        improvement_addition: deriveEquipImprovementAddition(
+        improvement_addition: derive_equip_improvement_addition(
             equip_master.improvement_type,
             improvement_lv,
         ),

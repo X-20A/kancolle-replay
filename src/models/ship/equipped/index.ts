@@ -7,13 +7,11 @@ import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
-import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipBuilt";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { WeightedAntiAir } from "@/types/brands/other";
-import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
 
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
@@ -87,12 +85,51 @@ export function is_install_type(
 }
 
 /**
+ * ある艦種が艦種群に含まれるか判定して返す
+ * @param match_ship_types 
+ * @param search_ship_type 
+ * @returns 
+ */
+export function includes_ship_type(
+    match_ship_types: ShipType[],
+    search_ship_type: ShipType,
+): boolean {
+    return match_ship_types.includes(search_ship_type);
+}
+
+/**
+ * 艦が戦艦級であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_battle_ship_category(ship_type: ShipType): boolean {
+    const BATTLE_SHIP_CATEGORY: ShipType[] = ['FBB', 'BB', 'BBV'];
+    
+    return BATTLE_SHIP_CATEGORY.includes(ship_type);
+}
+
+/**
+ * 空母系であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_carrier_vessel_category(
+    ship: EquippedShip,
+): boolean {
+    const CARRIER_VESSEL_CATEGORY: ShipType[] = ['CV', 'CVB', 'CVL'];
+
+    return CARRIER_VESSEL_CATEGORY.includes(ship.type_id);
+}
+
+/**
  * 艦が潜水艦系であるか判定して返す
  * @param ship 
  * @returns 
  */
 export function is_submarine_category(ship: EquippedShip): boolean {
-    return ['SS', 'SSV'].includes(ship.type_id);
+    const SUBMARINE_CATEGORY: ShipType[] = ['SS', 'SSV'];
+
+    return SUBMARINE_CATEGORY.includes(ship.type_id);
 }
 
 /**

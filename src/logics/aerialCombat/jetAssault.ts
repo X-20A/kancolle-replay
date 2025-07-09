@@ -1,10 +1,10 @@
 import { Rand } from "@/effects/random";
 import { JetSquadron, LBAS, Squadron } from "@/models/LBAS";
-import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { calc_general_target_fleet, choice_target_in_single_vs_combined, choice_target_in_single_vs_single } from "../target/target";
 import { calc_appllied_damage_fleet, calc_jet_assault_damage } from "../damage";
-import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
-import { is_submarine_category } from "@/models/ship/equipped";
+import { AbyssalCombinedFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
+import { AbyssalEquippedShip, is_install_type, is_submarine_category } from "@/models/ship/equipped";
+import { is_jet_bomber_equip, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 
 /**
  * 抽出した基地航空隊を所属元に返還した新しいLBAS[]を返す
@@ -40,13 +40,6 @@ export function calc_returned_origin_lbas(
             squadrons: new_squadrons,
         }
     });
-}
-
-export function calc_basic_jet_assault_attack_power(
-    squadron: JetSquadron,
-): number {
-    return 1.0 * (squadron.plane.natural_addition.aerial_bomb_power * Math.sqrt(squadron.slot_count))
-        + 25;
 }
 
 /**

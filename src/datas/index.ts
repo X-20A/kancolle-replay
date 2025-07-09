@@ -42,8 +42,8 @@ export const DEFAULT_IMPROVEMENT_ADDITION: EquipImprovementAddition = {
     los: 0,
     armor: 0,
     anti_pill_box_mod: 0,
-    land_base_bomb: 0,
-    land_base_torpedo: 0,
+    aerial_bomb_power: 0,
+    aerial_torpedo_power: 0,
     smokescreen_rate_flat: 0,
 }
 

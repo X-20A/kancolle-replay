@@ -18,7 +18,6 @@ type SquadronBase = {
 /** 航空隊 */
 export type Squadron = SquadronBase & {
     readonly plane: PlayerPlaneEquip,
-    
 }
 
 /** ジェット爆撃航空隊 */
@@ -29,6 +28,8 @@ export type JetSquadron = SquadronBase & {
 /** 基地航空隊 */
 export type LBAS = {
     readonly squadrons: Squadron[],
+    /** 出撃Node */
+    readonly target_node: [number, number],
     readonly hp: number,
     readonly armor: number,
 }
@@ -44,6 +45,22 @@ function is_jet_squadron(squadron: Squadron): squadron is JetSquadron {
  */
 export function extract_jet_squadrons(squadrons: Squadron[]): JetSquadron[] {
     return squadrons.filter(is_jet_squadron);
+}
+
+/**
+ * 基地航空隊の出撃Nodeを更新して返す
+ * @param lbas 
+ * @param new_nodes 
+ * @returns 
+ */
+export function calc_updated_target_node_LBAS(
+    lbas: LBAS,
+    new_nodes: [number, number],
+): LBAS {
+    return {
+        ...lbas,
+        target_node: new_nodes,
+    };
 }
 
 export function derive_LBAS(
@@ -75,6 +92,7 @@ export function derive_LBAS(
     })
     return {
         squadrons: squadrons,
+        target_node: [0,0],
         hp: 200,
         armor: 0,
     }

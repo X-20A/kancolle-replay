@@ -1,13 +1,15 @@
 import { JetSquadron } from "@/models/LBAS";
-import { calc_final_jet_assault_accuracy } from "./accuracy";
-import { calc_basic_jet_assault_attack_power } from "./aerialCombat/jetAssault";
+import { calc_final_jet_assault_accuracy, calc_hit_type } from "./accuracy";
 import { Rand } from "@/effects/random";
 import { EquippedShip } from "@/models/ship/equipped";
 import { calc_defence } from "./defense";
-import { AbyssalFleet, Fleet, is_combined_fleet } from "@/models/fleet/Fleet";
+import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { calc_jet_lbas_critical_rate, calc_post_critical_mod_jet_LBAS_attack_power } from "./critical";
+import { Node } from "@/models/Node";
+import { UserSettings } from "@/core/flows/SimExecuter";
+import { calc_basic_LBAS_attack_power } from "./LBAS/basicAttackPower";
 
 /**
  * 割合ダメージ(カスダメ)を返す
@@ -36,21 +38,29 @@ const calc_scrach_damage = (
  */
 export function calc_jet_assault_damage(
     squadron: JetSquadron,
+    player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
     target_ship: EquippedShip,
+    node: Node,
+    settings: UserSettings,
     rand: Rand,
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
         squadron.plane,
+        player_fleet,
         enemy_fleet,
-        target_ship
+        target_ship,
+        node,
+        settings,
     );
 
-    const is_hit = rand.next() < final_jet_assault_accuracy;
+    const critical_rate = calc_jet_lbas_critical_rate(final_jet_assault_accuracy);
 
-    if (!is_hit) return 0; // 特殊攻撃、カットインではないので回避されればカスダメも無し
+    const hit_type = calc_hit_type(critical_rate, final_jet_assault_accuracy, rand.next());
 
-    const basic_attack_power = calc_basic_jet_assault_attack_power(squadron);
+    if (hit_type === 'Miss') return 0; // 特殊攻撃、カットインではないので回避されればカスダメも無し
+
+    const basic_attack_power = calc_basic_LBAS_attack_power(squadron);
     // ? 基地噴式にキャップ処理があるのか不明 暫定: キャップなし
     // ? 徹甲弾補正のあるターゲットはこちらが徹甲弾を持っていなくてもfloor処理だけは発生するが、基地噴式でも同様であるかは不明 暫定: floorなし
     // ? 阻塞気球補正が基地噴式でも有効であるか不明 暫定: 補正あり
@@ -59,8 +69,7 @@ export function calc_jet_assault_damage(
     // TODO: 対PT補正
     const post_critical_attack_power = calc_post_critical_mod_jet_LBAS_attack_power(
         basic_attack_power,
-        final_jet_assault_accuracy,
-        rand,
+        hit_type,
     );
 
     const defence = calc_defence(target_ship, rand);

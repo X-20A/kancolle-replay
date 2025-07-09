@@ -106,8 +106,8 @@ export const ADD_STATUS_KEYS = [
     "los",
     "armor",
     "anti_pill_box_mod",
-    "land_base_bomb",
-    "land_base_torpedo",
+    "aerial_bomb_power",
+    "aerial_torpedo_power",
     "smokescreen_rate_flat",
 ] as const;
 
@@ -450,7 +450,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
         },
     },
     [EquipImprovementType.TORPEDO_BOMBER]: {
-        shell_power: {
+        aerial_torpedo_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
@@ -460,7 +460,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
         },
     },
     [EquipImprovementType.DIVE_BOMBER]: {
-        shell_power: {
+        aerial_bomb_power: {
             coeffient: 0.2,
             is_sqrt: false,
         },
@@ -815,11 +815,11 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.LAND_BASED_BOMBER]: {
-        torpedo_power: {
+        aerial_bomb_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        shell_power: {
+        aerial_torpedo_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },
@@ -851,11 +851,11 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
 
     },
     [EquipImprovementType.LAND_BASED_BOMBER_L]: {
-        land_base_torpedo: {
+        aerial_bomb_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        land_base_bomb: {
+        aerial_torpedo_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },

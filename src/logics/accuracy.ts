@@ -1,5 +1,5 @@
 import { JetBomberEquip, PlayerPlaneEquip } from "@/models/equip/basic";
-import { EquippedShip, is_abyssal_ship, is_install_type, is_player_ship, is_PT } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_type, is_abyssal_ship, is_install_type, is_player_ship, is_PT } from "@/models/ship/equipped";
 import { brandPreAccuracy, PreAccuracy, RandValue } from "@/types/brands/other";
 import { calc_morale_evasion_mod } from "./morale";
 import { calc_air_combat_evasion } from "./evasion";
@@ -7,7 +7,6 @@ import { AbyssalFleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fle
 import { is_use_barrage_balloon_node, Node } from "@/models/Node";
 import { UserSettings } from "@/core/flows/SimExecuter";
 import { calc_airstrike_barrage_balloon_accuracy_mod } from "./balloon";
-import { Rand } from "@/effects/random";
 
 /// 命中計算系
 
@@ -70,23 +69,23 @@ const calc_LBAS_bomber_target_specific_accuracy_flat = (
     }
     if (equip_id === 454) { // キ102乙改+イ号一型乙 誘導弾
         if (ship_type === 'DD') return -0.17;
-        if (['CL', 'CLT'].includes(ship_type)) return 0.07;
-        if (['CA', 'CAV', 'CVL', 'FBB', 'BB', 'BBV', 'CV'].includes(ship_type)) return 0.05;
+        if (includes_ship_type(['CL', 'CLT'], ship_type)) return 0.07;
+        if (includes_ship_type(['CA', 'CAV', 'CVL', 'FBB', 'BB', 'BBV', 'CV'], ship_type)) return 0.05;
     }
     if (equip_id === 444) { // 四式重爆 飛龍+イ号一型甲 誘導弾
         if (ship_type === 'DD') return -0.07;
-        if (['CL', 'CLT', 'CVL', 'FBB', 'BB', 'BBV', 'CV'].includes(ship_type)) return 0.07;
+        if (includes_ship_type(['CL', 'CLT', 'CVL', 'FBB', 'BB', 'BBV', 'CV'], ship_type)) return 0.07;
     }
     if (equip_id === 484) { // 四式重爆 飛龍(熟練)+イ号一型甲 誘導弾
         if (ship_type === 'DD') return -0.05;
-        if (['CL', 'CLT', 'CA', 'CAV', 'CVL', 'FBB', 'BB', 'BBV', 'CV'].includes(ship_type)) return 0.05;
+        if (includes_ship_type(['CL', 'CLT', 'CA', 'CAV', 'CVL', 'FBB', 'BB', 'BBV', 'CV'], ship_type)) return 0.05;
     }
     if (unit.flags.is_skip_bomber) { // B-25 & 深海の反跳爆撃系機体
         if (is_install_type(target_ship)) return -0.09
-        if (['FBB', 'BB', 'BBV', 'CVL', 'CV', 'AT'].includes(ship_type)) return 0.31;
-        if (['CA', 'CAV'].includes(ship_type)) return 0.22;
-        if (['CL', 'CLT', 'AV'].includes(ship_type)) return 0.18;
-        if (['DD'].includes(ship_type) && !is_PT(target_ship)) return 0.13;
+        if (includes_ship_type(['FBB', 'BB', 'BBV', 'CVL', 'CV', 'AT'], ship_type)) return 0.31;
+        if (includes_ship_type(['CA', 'CAV'], ship_type)) return 0.22;
+        if (includes_ship_type(['CL', 'CLT', 'AV'], ship_type)) return 0.18;
+        if (ship_type === 'DD' && !is_PT(target_ship)) return 0.13;
     }
 
     return 0;
@@ -98,7 +97,7 @@ const calc_LBAS_bomber_target_specific_accuracy_flat = (
  */
 export function calc_air_combat_pre_accuracy(): number {
     const ACCURACY_CONSTANT = 0.95;
-    return ACCURACY_CONSTANT as PreAccuracy;
+    return brandPreAccuracy(ACCURACY_CONSTANT);
 }
 
 /**
@@ -177,7 +176,7 @@ export function calc_final_jet_assault_accuracy(
         )); // 航空機熟練度ボーナスは無し
 }
 
-type HitType = 
+export type HitType = 
     | 'Critical'
     | 'Hit'
     | 'Miss'

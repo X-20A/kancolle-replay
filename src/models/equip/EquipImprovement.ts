@@ -21,8 +21,8 @@ export type EquipImprovementAddition = {
     los: number,
     armor: number,
     anti_pill_box_mod: number,
-    land_base_bomb: number,
-    land_base_torpedo: number,
+    aerial_bomb_power: number,
+    aerial_torpedo_power: number,
     smokescreen_rate_flat: number,
 }
 
@@ -49,13 +49,13 @@ export function sumEquipImprovementAdditions(additions: EquipImprovementAddition
         los: acc.los + current.los,
         armor: acc.armor + current.armor,
         anti_pill_box_mod: acc.anti_pill_box_mod + current.anti_pill_box_mod,
-        land_base_bomb: acc.land_base_bomb + current.land_base_bomb,
-        land_base_torpedo: acc.land_base_torpedo + current.land_base_torpedo,
+        aerial_bomb_power: acc.aerial_bomb_power + current.aerial_bomb_power,
+        aerial_torpedo_power: acc.aerial_torpedo_power + current.aerial_torpedo_power,
         smokescreen_rate_flat: acc.smokescreen_rate_flat + current.smokescreen_rate_flat,
     }), DEFAULT_IMPROVEMENT_ADDITION);
 }
 
-export function deriveEquipImprovementAddition(
+export function derive_equip_improvement_addition(
     improvement_type: EquipImprovementType,
     improvement_lv: number,
 ): EquipImprovementAddition {

@@ -1,5 +1,6 @@
 import { Rand } from "@/effects/random";
 import { match } from "ts-pattern"
+import { HitType } from "./accuracy";
 
 type CriticalPhaseType = 
     | 'day_shelling'
@@ -52,11 +53,9 @@ const CRITICAL_ATTACK_POWER_MOD = 1.5;
  */
 export function calc_post_critical_mod_jet_LBAS_attack_power(
     pre_attack_power: number,
-    final_jet_assault_accuracy: number,
-    rand: Rand,
+    hit_type: HitType,
 ): number {
-    const critical_rate = calc_jet_lbas_critical_rate(final_jet_assault_accuracy);
-    return rand.next() < critical_rate
+    return hit_type === 'Critical'
         ? pre_attack_power * CRITICAL_ATTACK_POWER_MOD
         : pre_attack_power;
 }

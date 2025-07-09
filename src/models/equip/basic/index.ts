@@ -126,11 +126,23 @@ export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
 }
 
 /**
+ * 陸攻系装備であるか判定して返す
+ * @param plane 
+ * @returns 
+ */
+export function is_land_based_bomber(
+    equip: Equip,
+): boolean {
+    return equip.type_id === 'LAND_BASED_BOMBER' ||
+        equip.type_id === 'LAND_BASED_BOMBER_L';
+}
+
+/**
  * 噴式爆撃機であるか判定して返す(型ガード)
  * @param equip 
  * @returns 
  */
-export function is_jet_bomber_equip(equip: PlayerEquip): equip is JetBomberEquip {
+export function is_jet_bomber_equip(equip: Equip): equip is JetBomberEquip {
     return equip.type_id === "JET_BOMBER";
 }
 

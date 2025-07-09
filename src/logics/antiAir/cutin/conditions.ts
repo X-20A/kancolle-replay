@@ -1,6 +1,6 @@
 import { Country } from "@/datas/equip/bonus";
 import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
-import { is_player_ship } from "@/models/ship/equipped";
+import { is_battle_ship_category, is_player_ship } from "@/models/ship/equipped";
 import { NakedShip } from "@/models/ship/naked/base";
 import { ShipNameJP } from "@/types/brands/ship";
 import { ShipType } from "@/types/ship/ship";
@@ -94,7 +94,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.high_angle_gun_count >= 2
         )
         .with(4, () => (ship, info) =>
-            BB_category.includes(ship.type) &&
+            is_battle_ship_category(ship.type) &&
             info.has_any_L_gun &&
             info.has_type_3_shell &&
             info.has_fire_director &&
@@ -106,7 +106,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_anti_air_radar
         )
         .with(6, () => (ship, info) =>
-            BB_category.includes(ship.type) &&
+            is_battle_ship_category(ship.type) &&
             info.has_any_L_gun &&
             info.has_type_3_shell &&
             info.has_fire_director
@@ -238,7 +238,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
         )
         .with(32, () => (ship, info) => { // 🤧
             if (
-                (ship.country === Country.UK && BB_category.includes(ship.type) ||
+                (ship.country === Country.UK && is_battle_ship_category(ship.type) ||
                 KONGOU_CLASS_KAI_NI.includes(ship.name))
                 && info.has_FCR_284
                 && info.has_ponpon

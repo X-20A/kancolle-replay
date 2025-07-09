@@ -1,25 +1,12 @@
 import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
 import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
-import { EquippedShip, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, is_carrier_vessel_category, is_sunk } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { Rand } from "@/effects/random";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 /// 索敵系
-
-/**
- * 空母系であるか判定して返す
- * @param ship 
- * @returns 
- */
-const is_CVs = (ship: EquippedShip): boolean => {
-    return [
-        'CV',
-        'CVB',
-        'CVB',
-    ].includes(ship.type_id);
-}
 
 /**
  * 艦の配置に応じた補正値を返す
@@ -127,7 +114,7 @@ export const analyze_ships_detection = (
             ship_total.position_value
             + (ship.naked_status.los + equip_summary.total_plane_los) / mod_order;
 
-        const CVs_count = ship_total.CVs_count + (is_CVs(ship) ? 1 : 0);
+        const CVs_count = ship_total.CVs_count + (is_carrier_vessel_category(ship) ? 1 : 0);
 
         return {
             position_value,
