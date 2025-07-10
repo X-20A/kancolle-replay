@@ -1,18 +1,18 @@
-import { EquipId } from "@/types/brands/equip";
-import { ABYSSAL_EQUIP_DATAS } from "@/datas/equip/base/abbysal";
+import { ABYSSAL_EQUIP_DATAS } from "@/datas/equip/base/abyssal";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { AbyssalEquipFlags } from "@/types/equip/abbysal";
 import { AbyssalEquipMaster } from ".";
+import { AbyssalEquipId } from "@/types/equip/abyssalId";
 
 export function derive_abyssal_equip_master(
-    id: EquipId,
+    id: AbyssalEquipId,
 ): AbyssalEquipMaster {
     const equip_data = ABYSSAL_EQUIP_DATAS[id];
     if (!equip_data) throw new Error(`id: ${id}の装備が見つかりませんでした`);
 
     const type_id = equip_data.type;
-    const skill_trigger_type = equip_data.b_type ?? (EQUIP_TYPE_DATAS[type_id].b_type ?? null);
+    const skill_trigger_type = equip_data.b_type ?? EQUIP_TYPE_DATAS[type_id].b_type ?? 'NONE';
 
     const status: TStatusComponent = {
         hp: 0,
@@ -60,7 +60,7 @@ export function derive_abyssal_equip_master(
     return {
         master_id: id,
         name_en: equip_data.name,
-        name_jp: equip_data.nameJP,
+        name_jp: equip_data.name_jp,
         type_id,
         icon_id,
         skill_trigger_type,

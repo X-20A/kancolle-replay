@@ -1,59 +1,11 @@
-import { is_jet_bomber_equip, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
-import { JetSquadron, LBAS } from "@/models/LBAS";
-import { AbyssalEquippedShip, includes_ship_type, is_battle_ship_category, is_install_type, is_submarine_category } from "@/models/ship/equipped";
+import { is_dive_bomber, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { JetSquadron, Squadron } from "@/models/LBAS";
+import { AbyssalEquippedShip, includes_abyssal_ship_id, includes_ship_type, is_battle_ship_category, is_install_type, is_PT, is_submarine_category } from "@/models/ship/equipped";
+import { Brand } from "@/types/brands";
+import { RandValue } from "@/types/brands/other";
 
-/// 基地航空隊 基本攻撃力
-
-/**
- * 陸偵補正(Mod LBR)を返す
- * @param lbas 
- * @returns 
- */
-const calc_land_based_scout_mod = (
-    lbas: LBAS,
-): number => {
-    return lbas.squadrons.reduce((highest_value, squadron) => {
-        const plane_name = squadron.plane.name_jp;
-
-        // 陸偵が複数ある場合は最高値だけを返す
-        if (plane_name === '二式陸上偵察機' || plane_name === 'Mosquito PR Mk.IV') {
-            const MOD = 1.125;
-            return Math.max(highest_value, MOD);
-        }
-        if (plane_name === '二式陸上偵察機(熟練)') {
-            const MOD = 1.15;
-            return Math.max(highest_value, MOD);
-        }
-
-        return highest_value;
-    }, 1);
-}
-
-/**
- * 基地航空隊の基本攻撃力に使用する種別倍率(Mod type)を返す
- * @param plane 
- * @returns 
- */
-const calc_plane_type_coeffinet = (
-    plane: PlaneEquip,
-): number => {
-    if (is_land_based_bomber(plane)) return 0.8;
-    if (is_jet_bomber_equip(plane)) return 0.7071;
-    return 1;
-}
-
-/**
- * 陸攻補正(Mod LBB)を返す
- * @param plane 
- * @returns 
- */
-const calc_land_based_bomber_mod = (
-    plane: PlaneEquip,
-): number => {
-    return is_land_based_bomber(plane)
-        ? 1.8
-        : 1;
-}
+/// 基地航空隊
+/// {(雷装 or 爆装 + 改修強化値(基地) ) × √(搭載数補正 × 搭載数) + 25}
 
 type RawBasePowerResult = {
     natural_status: number,
@@ -64,7 +16,7 @@ const calc_raw_base_power = (
     plane: PlayerPlaneEquip,
     target_ship: AbyssalEquippedShip,
 ): RawBasePowerResult => {
-    const { natural_addition, improvement_addition, flags } = plane;
+    const { natural_addition, improvement_addition } = plane;
     const { asw, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
     const {
         asw_power: improve_asw,
@@ -84,7 +36,7 @@ const calc_raw_base_power = (
             improvement_bonus: is_install_type(target_ship) ? improve_bomb : improve_torpedo,
         };
     }
-    if (flags.is_dive_bomber) {
+    if (is_dive_bomber(plane)) {
         return {
             natural_status: aerial_bomb_power,
             improvement_bonus: improve_bomb,
@@ -98,29 +50,53 @@ const calc_raw_base_power = (
     };
 };
 
-const calc_special_base_power = (
+
+/**
+ * 特定の目標に対する攻撃力加算値(Mod Sp2)を返す    
+ * ? 65戦隊、20戦隊(熟練) 共に素雷装0なので加算なのか上書きなのか判別できない
+ * ? ENwikiは加算、Sortie Simは上書き 暫定: 加算
+ * @param plane 
+ * @param target_ship 
+ * @returns 
+ */
+const calc_mod_sp2_flat = (
+    plane: PlayerPlaneEquip,
+    target_ship: AbyssalEquippedShip,
+): number => {
+    if (
+        plane.name_jp === '爆装一式戦 隼III型改(65戦隊)' &&
+        target_ship.type_id === 'DD'
+    ) return 25;
+    if (
+        plane.name_jp === '一式戦 隼III型改(熟練/20戦隊)' &&
+        target_ship.type_id === 'DD'
+    ) return 30;
+
+    return 0;
+}
+
+/**
+ * 特定の目標に対する攻撃力加算値(Mod Sp1)を返す
+ * @param plane 
+ * @param target_ship 
+ * @param raw_base_power 
+ * @returns 
+ */
+const calc_mod_sp1_flat = (
     plane: PlayerPlaneEquip,
     target_ship: AbyssalEquippedShip,
     raw_base_power: number,
 ): number => {
     const plane_name = plane.name_jp;
     const target_ship_type = target_ship.type_id;
-
-    if (
-        plane_name === '爆装一式戦 隼III型改(65戦隊)' &&
-        target_ship.type_id === 'DD'
-    ) return 25;
-    if (
-        plane_name === '一式戦 隼III型改(熟練/20戦隊)' &&
-        target_ship.type_id === 'DD'
-    ) return 30;
+    
     if (
         plane_name === 'Do 217 E-5+Hs293初期型' &&
         !is_install_type(target_ship) &&
         target_ship.type_id === 'DD'
     ) return raw_base_power * 1.1;
     if (
-        plane_name === 'Do 217 K-2 + Fritz-X' &&
+        plane_name === 'Do 217 K-2+Fritz-X' &&
         !is_install_type(target_ship) &&
         is_battle_ship_category(target_ship.type_id)
     ) return raw_base_power * 1.5;
@@ -157,7 +133,7 @@ const calc_special_base_power = (
 }
 
 /**
- * 基地航空隊の基本攻撃力に使用する基礎能力を返す
+ * 基地航空隊の基本項計算に使用する基礎能力を返す
  * @param plane 
  * @param target_ship 
  * @returns 
@@ -171,27 +147,34 @@ const calc_base_power = (
         improvement_bonus,
     } = calc_raw_base_power(plane, target_ship);
 
-    const special_base_power =
-        calc_special_base_power(plane, target_ship, natural_status);
+    const mod_sp1_flat =
+        calc_mod_sp1_flat(plane, target_ship, natural_status);
 
-    return special_base_power + improvement_bonus;
+    const mod_sp2_flat = calc_mod_sp2_flat(plane, target_ship);
+
+    return mod_sp1_flat * natural_status
+        + improvement_bonus
+        + mod_sp2_flat;
 }
 
+export type LbasBasePower = Brand<number, 'LbasBasePower'>
+
 /**
- * 基地航空隊の基本攻撃力を返す
+ * 基地航空隊の基本項を返す    
+ * ! 基本攻撃力に非ず
  * @param squadron 
  * @param target_ship 
  * @returns 
  */
 export function calc_basic_LBAS_attack_power(
-    squadron: JetSquadron,
+    squadron: Squadron,
     target_ship: AbyssalEquippedShip,
-): number {
-    const plane_type_coeffient = calc_plane_type_coeffinet(squadron.plane);
+): LbasBasePower {
     const base_power = calc_base_power(squadron.plane, target_ship);
     const slot_count = squadron.slot_count;
-    const land_based_bomber_mod = calc_land_based_bomber_mod(squadron.plane);
+    const SLOT_COUNT_COEFFINENT = 1.8;
+    const DEFAULT_BONUS_FLAT = 25;
 
-    return plane_type_coeffient * (base_power * Math.sqrt(slot_count * land_based_bomber_mod))
-        + 25;
+    return (base_power * Math.sqrt(SLOT_COUNT_COEFFINENT * slot_count)
+        + DEFAULT_BONUS_FLAT) as LbasBasePower;
 }

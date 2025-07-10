@@ -1,5 +1,5 @@
 import { Rand } from "@/effects/random";
-import { EquippedShip, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_name, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { is_front } from "../formation";
 import { AbyssalSingleFleet, CombinedFleet, SingleFleet } from "@/models/fleet/Fleet";
@@ -51,14 +51,14 @@ const calc_unique_fleet_targeting = (
     attacker_ship: EquippedShip,
     target_fleet: CombinedFleet,
 ): EachFleet | 'undetermined' => {
-    if (['天霧改二', '天霧改二丁'].includes(attacker_ship.name_jp)) {
-        const includes_pt_in_main_fleet = target_fleet.main_fleet_units.some(is_PT);
-        const includes_pt_in_escort_fleet = target_fleet.escort_fleet_units.some(is_PT);
+    if (includes_ship_name(['天霧改二', '天霧改二丁'], attacker_ship.name_jp)) {
+        const includes_pt_in_main_fleet = target_fleet.main_fleet_units.some(unit => is_PT(unit.ship));
+        const includes_pt_in_escort_fleet = target_fleet.escort_fleet_units.some(unit => is_PT(unit.ship));
 
         if (includes_pt_in_main_fleet && !includes_pt_in_escort_fleet) return 'main';
         if (!includes_pt_in_main_fleet && includes_pt_in_escort_fleet) return 'escort';
     }
-    if (['第百一号輸送艦', '第百一号輸送艦改'].includes(attacker_ship.name_jp)) {
+    if (includes_ship_name(['第百一号輸送艦', '第百一号輸送艦改'], attacker_ship.name_jp)) {
         const includes_install_in_main_fleet =
             target_fleet.main_fleet_units.some(unit => is_install_type(unit.ship));
         const includes_install_in_escort_fleet =

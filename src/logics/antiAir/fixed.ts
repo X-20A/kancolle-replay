@@ -1,6 +1,5 @@
-import { AbyssalEquippedShip, EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
 import { AntiAirCutinType } from "./cutin/conditions";
-import { AbyssalFleet, AbyssalSingleFleet, Fleet, is_combined_fleet, PlayerSingleFleet, SingleFleet } from "@/models/fleet/Fleet";
+import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { SingleFleetFormationType } from "@/types";
 import { PlaneEquip } from "@/models/equip/basic";
 import { AACI_DATAS } from "@/datas/aaci";

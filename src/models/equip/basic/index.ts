@@ -7,14 +7,13 @@ import { AbyssalEquipFlags } from "@/types/equip/abbysal";
 import { EquipId } from "@/types/brands/equip";
 import { derive_player_equip } from "./player";
 import { derive_abyssal_equip } from "./abyssal";
+import { AbyssalEquipNameJP } from "@/types/equip/abyssalNameJP";
+import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
+import { AbyssalEquipId } from "@/types/equip/abyssalId";
 
 type EquipBase = {
-    /** 装備マスターID */
-    readonly master_id: number,
     /** 装備名(EN) */
     readonly name_en: string,
-    /** 装備名(日) */
-    readonly name_jp: string,
     /** 装備種別ID */
     readonly type_id: EquipType,
     /** 特殊攻撃のトリガーになる装備の種別ID */
@@ -25,7 +24,10 @@ type EquipBase = {
     readonly natural_addition: TStatusComponent,
 }
 
-export type OtherEquip = EquipBase & {
+export type PlayerOtherEquip = EquipBase & {
+    /** 装備マスターID */
+    readonly master_id: number,
+    readonly name_jp: PlayerEquipNameJP,
     /** 装備改修値 */
     readonly improvement_lv: number,
     /** フラグ類 */
@@ -50,7 +52,7 @@ type PlaneTrait = {
 }
 
 /** 熟練度付き航空機（プレイヤー用） */
-export type PlayerPlaneEquip = OtherEquip & PlaneTrait & {
+export type PlayerPlaneEquip = PlayerOtherEquip & PlaneTrait & {
     /** 航空機熟練度 */
     readonly plane_proficiency: number,
 }
@@ -62,10 +64,14 @@ export type JetBomberEquip = PlayerPlaneEquip & {
 }
 
 /** 艦娘系装備 */
-export type PlayerEquip = OtherEquip | PlayerPlaneEquip | JetBomberEquip
+export type PlayerEquip = PlayerOtherEquip | PlayerPlaneEquip | JetBomberEquip
 
 /** 深海通常装備 */
 export type AbyssalOtherEquip = EquipBase & {
+    /** 装備マスターID */
+    readonly master_id: AbyssalEquipId,
+    /** 装備名(日) */
+    readonly name_jp: AbyssalEquipNameJP,
     readonly flags: AbyssalEquipFlags,
 }
 /** 深海棲艦の航空機装備 */
@@ -116,6 +122,27 @@ export function is_abyssal_equips(equips: Equip[]): equips is AbyssalEquip[] {
     return equips.every(equip => !is_player_equip(equip));
 }
 
+export function includes_abyssal_equip_id(
+    match_equip_ids: AbyssalEquipId[],
+    search_equip_id: AbyssalEquipId,
+): boolean {
+    return match_equip_ids.includes(search_equip_id);
+}
+
+export function includes_player_equip_name(
+    match_equip_names: PlayerEquipNameJP[],
+    search_equip_name: PlayerEquipNameJP,
+): boolean {
+    return match_equip_names.includes(search_equip_name);
+}
+
+export function includes_equip_type(
+    match_equip_types: EquipType[],
+    search_equip_type: EquipType,
+): boolean {
+    return match_equip_types.includes(search_equip_type);
+}
+
 /**
  * 航空機であるか判定して返す(型ガード)
  * @param equip 
@@ -123,6 +150,10 @@ export function is_abyssal_equips(equips: Equip[]): equips is AbyssalEquip[] {
  */
 export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
     return equip.flags.is_plane;
+}
+
+export function is_dive_bomber(equip: Equip): boolean {
+    return equip.flags.is_dive_bomber || equip.type_id === 'FIGHTER_BOMBER';
 }
 
 /**
@@ -164,5 +195,5 @@ export function derive_equip(
             master_id,
             proficiency,
         )
-        : derive_abyssal_equip(master_id)
+        : derive_abyssal_equip(master_id as AbyssalEquipId)
 }

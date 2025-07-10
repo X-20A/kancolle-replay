@@ -1,10 +1,10 @@
 import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
 import { Equip, is_jet_bomber_equip, is_plane_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
-import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
+import { AbyssalCombinedFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { Rand } from "@/effects/random";
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 import { JetSquadron, Squadron } from "@/models/LBAS";
 import { EquipSlot } from "@/models/ship/EquipBuilt";
 
@@ -147,7 +147,7 @@ const calc_Ks = (
         || unit.type_id === "AUTOGYRO"
     ) {
         return match(air_state)
-            .with(P.union('Supremacy', 'Superiority', 'Parity'), () => ({
+            .with('Supremacy', 'Superiority', 'Parity', () => ({
                 K1: 0.2,
                 K2: 0.35,
             }))

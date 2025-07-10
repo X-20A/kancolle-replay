@@ -1,5 +1,5 @@
 import { AswEquipFlags } from "@/types/ship/ship";
-import { PlayerEquip } from "../equip/basic";
+import { includes_equip_type, includes_player_equip_name, PlayerEquip } from "../equip/basic";
 
 export function derive_asw_flags(
     equips: PlayerEquip[],
@@ -22,13 +22,13 @@ export function derive_asw_flags(
         has_DC,
     } = equips.reduce(
         (acc, equip) => {
-            const has_any_plane_bomber = [
+            const has_any_plane_bomber = includes_equip_type([
                 "DIVE_BOMBER",
                 "FIGHTER_BOMBER",
                 "TORPEDO_BOMBER",
-            ].includes(equip.type_id);
+            ], equip.type_id);
             const has_positive_asw_dive_bomber =
-                ["DIVE_BOMBER", "FIGHTER_BOMBER"].includes(equip.type_id)
+                includes_equip_type(["DIVE_BOMBER", "FIGHTER_BOMBER"], equip.type_id)
                 && equip.natural_addition.asw >= 1;
             const has_positive_asw_torpedo_bomber =
                 equip.type_id === "TORPEDO_BOMBER"
@@ -39,10 +39,10 @@ export function derive_asw_flags(
                 equip.type_id === "TORPEDO_BOMBER"
                 && equip.natural_addition.asw >= 7;
             const has_seaplane_bomber = equip.type_id === "SEAPLANE_BOMBER";
-            const has_any_S51J = [
-                326, // S-51J
-                327, // S-51J改
-            ].includes(equip.master_id);
+            const has_any_S51J = includes_player_equip_name([
+                'S-51J',
+                'S-51J改',
+            ], equip.name_jp);
             const is_low_autogyro = equip.type_id === "AUTOGYRO" && !has_any_S51J;
 
             const has_any_sonar = equip.skill_trigger_type === 'B_SONAR';

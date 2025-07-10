@@ -13740,7 +13740,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
         unknown_status: { EV: UnclearLevel.Caution, LOS: UnclearLevel.Caution, LUK: UnclearLevel.Caution, TP_ACC: UnclearLevel.Caution },
         RNG: 1,
         SLOTS: [0, 0, 1, 3],
-        EQUIPS: [1580, 1580, 1586, 0],
+        EQUIPS: [1580, 1580, 1586],
     },
     2229: {
         name: 'Abyssal I-go Water Princess 2',
@@ -13760,7 +13760,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
         unknown_status: { EV: UnclearLevel.Caution, LOS: UnclearLevel.Caution, LUK: UnclearLevel.Caution, TP_ACC: UnclearLevel.Caution },
         RNG: 1,
         SLOTS: [0, 0, 1, 3],
-        EQUIPS: [1580, 1580, 1586, 0],
+        EQUIPS: [1580, 1580, 1586],
     },
     2230: {
         name: 'Abyssal I-go Water Princess 3',
@@ -13800,7 +13800,7 @@ export const ABYSSAL_SHIP_DATAS: AbyssalShipDatas = {
         unknown_status: { EV: UnclearLevel.Caution, LOS: UnclearLevel.Caution, LUK: UnclearLevel.Caution, TP_ACC: UnclearLevel.Caution },
         RNG: 1,
         SLOTS: [0, 0, 1, 3],
-        EQUIPS: [1580, 1580, 1586, 0],
+        EQUIPS: [1580, 1580, 1586],
     },
     2232: {
         name: 'Abyssal I-go Water Princess - Damaged 2',

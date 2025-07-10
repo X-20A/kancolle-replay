@@ -1,11 +1,12 @@
-import { brandShipNameEN, brandShipNameJP, ShipId } from "@/types/brands/ship";
+import { brandShipNameEN, ShipId } from "@/types/brands/ship";
 import { AbyssalNakedShip } from "./base";
 import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 import { TStatusComponent } from "@/types";
 import { ABYSSAL_SHIP_DATAS } from "@/datas/ship/abyssal";
+import { AbyssalShipId } from "@/types/ship/abyssalId";
 
 export function derive_abyssal_naked_ship(
-    id: ShipId,
+    id: AbyssalShipId,
     is_faraway?: boolean,
 ): AbyssalNakedShip {
     const ship_data = ABYSSAL_SHIP_DATAS[id];
@@ -53,7 +54,7 @@ export function derive_abyssal_naked_ship(
     return {
         master_id: id,
         name_en: brandShipNameEN(ship_data.name),
-        name_jp: brandShipNameJP(ship_data.name_jp),
+        name_jp: ship_data.name_jp,
         type_id: ship_data.type,
         install_type: ship_data.install_type ?? 'No',
         unknown_status: ship_data.unknown_status ?? {},
@@ -61,5 +62,7 @@ export function derive_abyssal_naked_ship(
         slots: ship_data.SLOTS,
         status,
         flags,
+        dive_bomb_weak_mod: ship_data.dive_bomb_weak_mod ?? 1,
+        land_based_weak_mod: ship_data.land_based_weak_mod ?? 1,
     }
 }

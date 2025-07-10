@@ -3,8 +3,7 @@ import { JetSquadron, LBAS, Squadron } from "@/models/LBAS";
 import { calc_general_target_fleet, choice_target_in_single_vs_combined, choice_target_in_single_vs_single } from "../target/target";
 import { calc_appllied_damage_fleet, calc_jet_assault_damage } from "../damage";
 import { AbyssalCombinedFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
-import { AbyssalEquippedShip, is_install_type, is_submarine_category } from "@/models/ship/equipped";
-import { is_jet_bomber_equip, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { is_submarine_category } from "@/models/ship/equipped";
 
 /**
  * 抽出した基地航空隊を所属元に返還した新しいLBAS[]を返す

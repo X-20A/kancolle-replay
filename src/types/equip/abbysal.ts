@@ -1,12 +1,14 @@
 import { AACITriggerEquipType, SkillTriggerEquipType, SpecialIcon } from "./player";
 import { DeepReadonly } from "..";
 import { EquipType } from "@/datas/equip/base/player";
+import { AbyssalEquipNameJP } from "./abyssalNameJP";
+import { AbyssalEquipId } from "./abyssalId";
 
 export type AbyssalEquipData = {
     /** 装備名(EN) */
     name: string,
     /** 装備名(日) */
-    nameJP: string,
+    name_jp: AbyssalEquipNameJP,
     /** 装備種別ID */
     type: EquipType,
     /** 対空CIのトリガーになる装備の種別ID */
@@ -95,5 +97,5 @@ export type AbyssalEquipFlags = {
     can_support_asw: boolean,
 }
 
-export type AbyssalEquipDatas = DeepReadonly<Record<number, AbyssalEquipData>>
+export type AbyssalEquipDatas = DeepReadonly<Record<AbyssalEquipId, AbyssalEquipData>>
 

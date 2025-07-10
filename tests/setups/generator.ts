@@ -10,6 +10,7 @@ import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { derive_player_naked_ship } from "@/models/ship/naked/player";
 import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
 import { NakedShip } from "@/models/ship/naked/base";
+import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 
 /**
  * 装備idから装備オブジェクトを生成して返す
@@ -36,7 +37,7 @@ const make_player_equip_from_id =
  */
 export const make_player_equip_from_name = (name: string): PlayerEquip => {
     const data = Object.entries(PLAYER_EQUIP_DATAS)
-        .find(([, data]) => data.nameJP === name);
+        .find(([, data]) => data.name_jp === name);
     if (!data) throw new Error(`指定された名前の装備は存在しません: ${name}`);
 
     const id = Number(data[0]);
@@ -64,17 +65,17 @@ const pre_make_player_ship_from_id = (id: number) =>
     (equips: Equip[]) => short_make_ship_from_id_equips(id, equips);
 
 export function calc_ship_id_from_name(
-    name: string,
+    name: PlayerShipNameJP,
 ): ShipId {
     const data = Object.entries(PLAYER_SHIP_DATAS)
-        .find(([, data]) => data.nameJP === name);
+        .find(([, data]) => data.name_jp === name);
     if (!data) throw new Error(`指定された名前の装備は存在しません: ${name}`);
 
     return brandShipId(Number(data[0]));
 }
 
 export const pre_make_player_ship_from_name = (
-    name: string,
+    name: PlayerShipNameJP,
 ): (equips: Equip[]) => EquippedShip => {
     const id = calc_ship_id_from_name(name);
 
@@ -91,7 +92,7 @@ export function derive_naked_ship (
 }
 
 export function derive_naked_ship_from_name (
-    name: string,
+    name: PlayerShipNameJP,
 ): NakedShip {
     const id = calc_ship_id_from_name(name);
 

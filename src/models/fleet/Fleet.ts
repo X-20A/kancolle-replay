@@ -81,6 +81,11 @@ export function map_units_to_ships(
     return fleet_units.map(unit => unit.ship);
 }
 
+/**
+ * 艦隊が連合艦隊であるか判定して返す(型ガード)
+ * @param fleet 
+ * @returns 
+ */
 export function is_combined_fleet(fleet: Fleet): fleet is CombinedFleet {
     return 'escort_fleet_units' in fleet;
 }

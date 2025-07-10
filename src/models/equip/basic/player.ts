@@ -2,7 +2,7 @@ import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { derive_equip_improvement_addition } from "../EquipImprovement";
 import { derive_player_equip_master } from "../master/player";
 import { deriveTransportAddition } from "../TransportPower";
-import { JetBomberEquip, OtherEquip, PlayerPlaneEquip, PlayerEquip } from ".";
+import { JetBomberEquip, PlayerOtherEquip, PlayerPlaneEquip, PlayerEquip } from ".";
 import { EquipId } from "@/types/brands/equip";
 
 export function derive_player_equip(
@@ -13,7 +13,7 @@ export function derive_player_equip(
     const equip_master = derive_player_equip_master(master_id);
     const type_id = equip_master.type_id;
 
-    const other_equip: OtherEquip = {
+    const other_equip: PlayerOtherEquip = {
         master_id,
         name_en: equip_master.name_en,
         name_jp: equip_master.name_jp,

@@ -130,6 +130,9 @@ export const PLAYER_SHIP_CLASS = {
     I_41: 127,
     La_Galissonnière: 128,
     Mogador: 129,
+    Ootomari: 130,
+    Киров: 131,
+    Shimanemaru: 132,
 } as const
 
 export type PlayerShipClass = keyof typeof PLAYER_SHIP_CLASS;

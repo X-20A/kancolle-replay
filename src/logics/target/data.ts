@@ -32,8 +32,8 @@ export const SINGLE_FLEET_FORMATION_PROTECT_RATIO_DATA: Record<SingleFleetFormat
  * https://en.kancollewiki.net/Shooting_Order_and_Targeting#Combined_Fleets_FP
  */
 export const COMBINED_FLEET_FORMATION_PROTECT_RATIO_DATA: Record<CombinedFleetFormationType, number> = {
-    CruisingFormation_1: 0.6, // ! 暫定
+    CruisingFormation_1: 0.6, // ? 暫定
     CruisingFormation_2: 0.6,
-    CruisingFormation_3: 0.75, // ! 暫定
+    CruisingFormation_3: 0.75, // ? 暫定
     CruisingFormation_4: 0.6,
 }

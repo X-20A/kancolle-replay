@@ -1,10 +1,10 @@
-import { AbyssalEquip, AbyssalOtherEquip, AbyssalPlaneEquip, is_plane_equip } from ".";
-import { EquipId } from "@/types/brands/equip";
+import { AbyssalEquip, AbyssalOtherEquip, AbyssalPlaneEquip } from ".";
 import { derive_abyssal_equip_master } from "../master/abyssal";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
+import { AbyssalEquipId } from "@/types/equip/abyssalId";
 
 export function derive_abyssal_equip(
-    master_id: EquipId,
+    master_id: AbyssalEquipId,
 ): AbyssalEquip {
     const equip_master = derive_abyssal_equip_master(master_id);
     const type_id = equip_master.type_id;

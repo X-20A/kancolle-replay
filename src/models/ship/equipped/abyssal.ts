@@ -11,9 +11,10 @@ import { Equip, is_abyssal_equips } from "@/models/equip/basic";
 import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_abyssal_equip_built } from "@/models/ship/EquipBuilt";
 import { derive_abyssal_equipped_ship_flags } from "./flags";
+import { AbyssalShipId } from "@/types/ship/abyssalId";
 
 export function derive_equipped_abyssal_ship(
-    id: ShipId,
+    id: AbyssalShipId,
     input_equips?: Equip[],
     options: EquippedPlayerShipOptions = {},
 ): AbyssalEquippedShip {
@@ -24,7 +25,7 @@ export function derive_equipped_abyssal_ship(
 
     const equips = input_equips ?? naked_ship.EQUIPS.map(equip_id => {
         return derive_abyssal_equip(
-            brandEquipId(equip_id),
+            equip_id,
         );
     });
 
@@ -66,6 +67,8 @@ export function derive_equipped_abyssal_ship(
         weighted_anti_air,
         triggerable_AACIs,
         flags: derive_abyssal_equipped_ship_flags(naked_ship.flags, equips),
+        dive_bomb_weak_mod: naked_ship.dive_bomb_weak_mod,
+        land_based_weak_mod: naked_ship.land_based_weak_mod,
         state: {
             hp_remain: max_hp,
         },

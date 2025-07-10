@@ -1,4 +1,4 @@
-import { Equip } from "../equip/basic";
+import { Equip, includes_equip_type } from "../equip/basic";
 
 export type PrepareAaciInfo = {
     /** 機銃の数 */
@@ -147,7 +147,7 @@ export function derive_prepare_AACI_info(
         if (equip.name_jp === '10cm連装高角砲群 集中配備') acc.Yamato_10cm_cluster_count++;
 
         // フラグ系
-        if (!acc.has_any_L_gun && ['MAIN_GUN_L', 'MAIN_GUN_XL'].includes(equip.type_id)) acc.has_any_L_gun = true;
+        if (!acc.has_any_L_gun && includes_equip_type(['MAIN_GUN_L', 'MAIN_GUN_XL'], equip.type_id)) acc.has_any_L_gun = true;
         if (!acc.has_any_radar && equip.skill_trigger_type === 'B_RADAR') acc.has_any_radar = true;
         if (!acc.has_fire_director && (equip.aaci_trigger_type === 'A_AAFD')) acc.has_fire_director = true;
         if (!acc.has_anti_air_radar && equip.aaci_trigger_type === 'A_AIRRADAR') acc.has_anti_air_radar = true;

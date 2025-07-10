@@ -1,8 +1,9 @@
 import { Country } from "@/datas/equip/bonus";
 import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
-import { is_battle_ship_category, is_player_ship } from "@/models/ship/equipped";
+import { equal_ship_name, includes_ship_name, is_battle_ship_category, is_player_ship } from "@/models/ship/equipped";
 import { NakedShip } from "@/models/ship/naked/base";
-import { ShipNameJP } from "@/types/brands/ship";
+import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
+import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { ShipType } from "@/types/ship/ship";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { match } from "ts-pattern";
@@ -32,7 +33,7 @@ export type AntiAirCutIn = {
 
 type AaciCondition = (
     ship: {
-        name: ShipNameJP,
+        name: AbyssalShipNameJP | PlayerShipNameJP,
         type: ShipType,
         class: PlayerShipClass | null,
         country: Country | null,
@@ -41,7 +42,7 @@ type AaciCondition = (
 ) => boolean;
 
 /** 秋月型 改/改二のID */
-const AKIZUKI_CLASS_KAI_OR_MORE = [
+const AKIZUKI_CLASS_KAI_OR_MORE: PlayerShipNameJP[] = [
     '秋月改',
     '照月改',
     '涼月改',
@@ -50,20 +51,20 @@ const AKIZUKI_CLASS_KAI_OR_MORE = [
     '冬月改',
 ];
 /** 伊勢型 改/改二のID */
-const ISE_CLASS_KAI_OR_MORE = [
+const ISE_CLASS_KAI_OR_MORE: PlayerShipNameJP[] = [
     '伊勢改',
     '伊勢改二',
     '日向改',
     '日向改二',
 ];
 /** 大和型改二 */
-const YAMATO_CLASS_KAI_NI = [
+const YAMATO_CLASS_KAI_NI: PlayerShipNameJP[] = [
     '大和改二',
     '大和改二重',
     '武蔵改二',
 ];
 /** 金剛型改二/丙 */
-const KONGOU_CLASS_KAI_NI = [
+const KONGOU_CLASS_KAI_NI: PlayerShipNameJP[] = [
     '金剛改二',
     '金剛改二丙',
     '比叡改二',
@@ -73,9 +74,6 @@ const KONGOU_CLASS_KAI_NI = [
     '霧島改二',
     '霧島改二丙',
 ];
-
-/** 戦艦級 */
-const BB_category: ShipType[] = ['BB', 'FBB', 'BBV'];
 
 const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
     return match<AntiAirCutinType, AaciCondition>(type)
@@ -127,13 +125,13 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_fire_director
         )
         .with(10, () => (ship, info) =>
-            ship.name === '摩耶改二' &&
+            equal_ship_name('摩耶改二', ship.name) &&
             info.special_anti_air_gun_count >= 1 &&
             (info.high_angle_gun_count >= 1 || info.special_high_angle_gun_count >= 1) &&
             info.has_anti_air_radar
         )
         .with(11, () => (ship, info) =>
-            ship.name === '摩耶改二' &&
+            equal_ship_name('摩耶改二', ship.name) &&
             info.special_anti_air_gun_count >= 1 &&
             (info.high_angle_gun_count >= 1 || info.special_high_angle_gun_count >= 1)
         )
@@ -143,61 +141,61 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_anti_air_radar
         )
         .with(13, () => (ship, info) =>
-            ship.name !== '摩耶改二' &&
+            !equal_ship_name('摩耶改二', ship.name) &&
             info.special_high_angle_gun_count >= 1 &&
             info.special_anti_air_gun_count >= 1 &&
             info.has_anti_air_radar
         )
         .with(14, () => (ship, info) =>
-            ship.name === '五十鈴改二' &&
+            equal_ship_name('五十鈴改二', ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.anti_air_gun_count >= 1 &&
             info.has_anti_air_radar
         )
         .with(15, () => (ship, info) =>
-            ship.name === '五十鈴改二' &&
+            equal_ship_name('五十鈴改二', ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.anti_air_gun_count >= 1
         )
         .with(16, () => (ship, info) =>
-            ['霞改二乙', '夕張改二'].includes(ship.name) &&
+            includes_ship_name(['霞改二乙', '夕張改二'], ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.anti_air_gun_count >= 1 &&
             info.has_anti_air_radar
         )
         .with(17, () => (ship, info) =>
-            ['霞改二乙', '稲木改二'].includes(ship.name) &&
+            includes_ship_name(['霞改二乙', '稲木改二'], ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.anti_air_gun_count >= 1
         )
         .with(18, () => (ship, info) =>
-            ['皐月改二', '稲木改二'].includes(ship.name) &&
+            includes_ship_name(['皐月改二', '稲木改二'], ship.name) &&
             info.special_anti_air_gun_count >= 1
         )
         .with(19, () => (ship, info) =>
-            ship.name === '鬼怒改二' &&
+            equal_ship_name('鬼怒改二', ship.name) &&
             info.has_aa7_or_less_high_gun &&
             info.special_anti_air_gun_count >= 1
         )
         .with(20, () => (ship, info) =>
-            ship.name === '鬼怒改二' &&
+            equal_ship_name('鬼怒改二', ship.name) &&
             info.special_anti_air_gun_count >= 1
         )
         .with(21, () => (ship, info) =>
-            ship.name === '由良改二' &&
+            equal_ship_name('由良改二', ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.has_anti_air_radar
         )
         .with(22, () => (ship, info) =>
-            ship.name === '文月改二' &&
+            equal_ship_name('文月改二', ship.name) &&
             info.special_anti_air_gun_count >= 1
         )
         .with(23, () => (ship, info) =>
-            ['UIT-25', '伊504'].includes(ship.name) &&
+            includes_ship_name(['UIT-25', '伊504'], ship.name) &&
             info.has_aa3to8_gun
         )
         .with(24, () => (ship, info) =>
-            ['天龍改二', '龍田改二'].includes(ship.name) &&
+            includes_ship_name(['天龍改二', '龍田改二'], ship.name) &&
             info.has_aa3to8_gun &&
             info.high_angle_gun_count >= 1
         )
@@ -213,27 +211,27 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_anti_air_radar
         )
         .with(27, () => (ship, info) =>
-            ship.name === '大淀改' &&
+            equal_ship_name('大淀改', ship.name) &&
             info.has_ohyodo_gun &&
             info.has_hunshin_kai_ni &&
             info.has_anti_air_radar
         )
         .with(28, () => (ship, info) =>
-            ['伊勢改','伊勢改二','日向改','日向改二','武蔵改','武蔵改二'].includes(ship.name) &&
+            includes_ship_name(['伊勢改','伊勢改二','日向改','日向改二','武蔵改','武蔵改二'], ship.name) &&
             info.has_hunshin_kai_ni &&
             info.has_anti_air_radar
         )
         .with(29, () => (ship, info) =>
-            ['磯風乙改', '浜風乙改'].includes(ship.name) &&
+            includes_ship_name(['磯風乙改', '浜風乙改'], ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.has_anti_air_radar
         )
         .with(30, () => (ship, info) =>
-            ['天龍改二', 'Gotland改', 'Gotland andra'].includes(ship.name) &&
+            includes_ship_name(['天龍改二', 'Gotland改', 'Gotland andra'], ship.name) &&
             info.high_angle_gun_count >= 3
         )
         .with(31, () => (ship, info) =>
-            ['天龍改二', '稲木改二'].includes(ship.name) &&
+            includes_ship_name(['天龍改二', '稲木改二'], ship.name) &&
             info.high_angle_gun_count >= 2
         )
         .with(32, () => (ship, info) => { // 🤧
@@ -251,44 +249,44 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             return false;
         })
         .with(33, () => (ship, info) =>
-            ['Gotland改', 'Gotland andra'].includes(ship.name) &&
+            includes_ship_name(['Gotland改', 'Gotland andra'], ship.name) &&
             info.high_angle_gun_count >= 1 &&
             info.has_aa4_gun
         )
         .with(34, () => (ship, info) =>
-            ship.class === 'Fletcher' &&
+            equal_ship_name('Fletcher', ship.name) &&
             info.Mk30_GFCS_count >= 2
         )
         .with(35, () => (ship, info) =>
-            ship.class === 'Fletcher' &&
+            equal_ship_name('Fletcher', ship.name) &&
             info.Mk30_GFCS_count >= 1 &&
             info.Mk30_kai_count + info.Mk30_count >= 1
         )
         .with(36, () => (ship, info) =>
-            ship.class === 'Fletcher' &&
+            equal_ship_name('Fletcher', ship.name) &&
             info.Mk30_count + info.Mk30_kai_count >= 2 &&
             info.has_GFCS_radar
         )
         .with(37, () => (ship, info) =>
-            ship.class === 'Fletcher' &&
+            equal_ship_name('Fletcher', ship.name) &&
             info.Mk30_kai_count >= 2
         )
         .with(38, () => (ship, info) =>
-            ['Atlanta', 'Atlanta改'].includes(ship.name) &&
+            includes_ship_name(['Atlanta', 'Atlanta改'], ship.name) &&
             info.Atlanta_GFCS_gun_count >= 2
         )
         .with(39, () => (ship, info) =>
-            ['Atlanta', 'Atlanta改'].includes(ship.name) &&
+            includes_ship_name(['Atlanta', 'Atlanta改'], ship.name) &&
             info.Atlanta_gun_count >= 1 &&
             info.Atlanta_GFCS_gun_count >= 1
         )
         .with(40, () => (ship, info) =>
-            ['Atlanta', 'Atlanta改'].includes(ship.name) &&
+            includes_ship_name(['Atlanta', 'Atlanta改'], ship.name) &&
             info.Atlanta_gun_count + info.Atlanta_GFCS_gun_count >= 2 &&
             info.has_GFCS_radar
         )
         .with(41, () => (ship, info) =>
-            ['Atlanta', 'Atlanta改'].includes(ship.name) &&
+            includes_ship_name(['Atlanta', 'Atlanta改'], ship.name) &&
             info.Atlanta_gun_count + info.Atlanta_GFCS_gun_count >= 2
         )
         .with(42, () => (ship, info) =>
@@ -314,13 +312,13 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             (info.has_yamato_radar || info.has_skilled_yamato_radar)
         )
         .with(46, () => (ship, info) =>
-            ship.name === '榛名改二乙' &&
+            equal_ship_name('榛名改二乙', ship.name) &&
             (info.has_kai_3_gun || info.has_kai_4_gun) &&
             info.special_anti_air_gun_count >= 1 &&
             info.has_anti_air_radar
         )
         .with(47, () => (ship, info) =>
-            ['白露改二', '時雨改二', '時雨改三', '村雨改二', '春雨改二'].includes(ship.name) &&
+            includes_ship_name(['白露改二', '時雨改二', '時雨改三', '村雨改二', '春雨改二'], ship.name) &&
             info.C_H_gun_count >= 1 &&
             (info.C_H_gun_count >= 2 || info.Shigure_gun_cluster_count >= 1 || info.has_aa4_radar)
         )
@@ -330,26 +328,26 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_aa4_radar
         )
         .with(49, () => (ship, info) =>
-            ['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) &&
+            includes_ship_name(['藤波改二', '吹雪改二', '白雪改二'], ship.name) &&
             info.special_high_angle_gun_count >= 2 &&
             info.has_aa4_radar
         )
         .with(50, () => (ship, info) => 
-            (['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) || ship.class === 'Akizuki') &&
+            (includes_ship_name(['藤波改二', '吹雪改二', '白雪改二'], ship.name) || ship.class === 'Akizuki') &&
             info.Shirayuki_gun_count + info.hatsuzuki_gun_count >= 2 &&
             info.has_aa4_radar &&
             info.has_94_FD
         )
         .with(51, () => (ship, info) =>
-            ['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) &&
+            includes_ship_name(['藤波改二', '吹雪改二', '白雪改二'], ship.name) &&
             info.Shirayuki_gun_count + info.hatsuzuki_gun_count >= 1 &&
             info.has_aa4_radar &&
             info.aa3_gun_count >= 1
         )
         .with(52, () => (ship, info) =>
-            // 秋月型ok:
+            // 秋月型ok
             // https://x.com/yukicacoon/status/1922247484606210062/photo/1
-            (['藤波改二', '吹雪改二', '白雪改二'].includes(ship.name) || ship.class === 'Akizuki') &&
+            (includes_ship_name(['藤波改二', '吹雪改二', '白雪改二'], ship.name) || ship.class === 'Akizuki') &&
             info.Shirayuki_gun_count >= 2 &&
             info.has_94_FD
         )

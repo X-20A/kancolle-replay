@@ -12,7 +12,7 @@ export function derive_player_equip_master(
     if (!equip_data) throw new Error(`id: ${id}の装備が見つかりませんでした`);
 
     const type_id = equip_data.type;
-    const skill_trigger_type = equip_data.b_type ?? EQUIP_TYPE_DATAS[type_id].b_type ?? null;
+    const skill_trigger_type = equip_data.b_type ?? EQUIP_TYPE_DATAS[type_id].b_type ?? 'NONE';
     
     const status: TStatusComponent = {
         hp: 0,
@@ -68,7 +68,7 @@ export function derive_player_equip_master(
     return {
         master_id: id,
         name_en: equip_data.name,
-        name_jp: equip_data.nameJP,
+        name_jp: equip_data.name_jp,
         type_id,
         icon_id,
         improvement_type: equip_data.improvement_type,

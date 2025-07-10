@@ -1,3 +1,4 @@
+import { EquipType } from "@/datas/equip/base/player";
 import { is_plane_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
 import { AvgLbasProficiency, brandAvgLbasProficiency } from "@/types/brands/other";
 
@@ -45,11 +46,12 @@ const calc_air_superiority_bonus = (equip: PlayerPlaneEquip): number => {
     const plane_proficiency = equip.plane_proficiency;
     const type_id = equip.type_id;
 
-    const is_fighter = [
+    const FIGHTER_CATEGORY: EquipType[] = [
         "FIGHTER",
         "SEAPLANE_FIGHTER",
-        "INTERCEPTOR"
-    ].includes(type_id) || equip.flags.is_20th_family;
+        "INTERCEPTOR",
+    ];
+    const is_fighter = FIGHTER_CATEGORY.includes(type_id) || equip.flags.is_20th_family;
 
     const is_seaplane_bomber = type_id === "SEAPLANE_BOMBER";
 

@@ -1,7 +1,7 @@
 import { JetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy, calc_hit_type } from "./accuracy";
 import { Rand } from "@/effects/random";
-import { EquippedShip } from "@/models/ship/equipped";
+import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
 import { calc_defence } from "./defense";
 import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
@@ -9,7 +9,7 @@ import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { calc_jet_lbas_critical_rate, calc_post_critical_mod_jet_LBAS_attack_power } from "./critical";
 import { Node } from "@/models/Node";
 import { UserSettings } from "@/core/flows/SimExecuter";
-import { calc_basic_LBAS_attack_power } from "./LBAS/basicAttackPower";
+import { calc_basic_LBAS_attack_power } from "./LBAS/basePower";
 
 /**
  * 割合ダメージ(カスダメ)を返す
@@ -40,7 +40,7 @@ export function calc_jet_assault_damage(
     squadron: JetSquadron,
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
-    target_ship: EquippedShip,
+    target_ship: AbyssalEquippedShip,
     node: Node,
     settings: UserSettings,
     rand: Rand,
@@ -60,7 +60,7 @@ export function calc_jet_assault_damage(
 
     if (hit_type === 'Miss') return 0; // 特殊攻撃、カットインではないので回避されればカスダメも無し
 
-    const basic_attack_power = calc_basic_LBAS_attack_power(squadron);
+    const basic_attack_power = calc_basic_LBAS_attack_power(squadron, target_ship);
     // ? 基地噴式にキャップ処理があるのか不明 暫定: キャップなし
     // ? 徹甲弾補正のあるターゲットはこちらが徹甲弾を持っていなくてもfloor処理だけは発生するが、基地噴式でも同様であるかは不明 暫定: floorなし
     // ? 阻塞気球補正が基地噴式でも有効であるか不明 暫定: 補正あり

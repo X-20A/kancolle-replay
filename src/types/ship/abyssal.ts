@@ -1,11 +1,14 @@
 import { DeepReadonly } from "..";
+import { AbyssalEquipId } from "../equip/abyssalId";
+import { AbyssalShipId } from "./abyssalId";
+import { AbyssalShipNameJP } from "./abyssalNameJP";
 import { CVsNightAttackType, InstallType, ShipType, ShipTypeBase, UnknownStatus } from "./ship";
 
 export type AbyssalShipType = ShipTypeBase | 'AT'
 
 export type AbyssalShipData = {
     name: string,
-    name_jp: string,
+    name_jp: AbyssalShipNameJP,
     type: AbyssalShipType,
     HP: number,
     FP: number,
@@ -20,7 +23,7 @@ export type AbyssalShipData = {
     /** 雷撃命中 */
     TP_ACC?: number,
     SLOTS: Array<number>,
-    EQUIPS?: Array<number>,
+    EQUIPS?: AbyssalEquipId[],
     /** 艦爆被弱点キャップ前補正値 */
     dive_bomb_weak_mod?: number,
     /** 陸攻被弱点キャップ前補正値 */
@@ -71,7 +74,7 @@ export type AbyssalShipData = {
     unknown_status?: UnknownStatus,
 }
 
-export type AbyssalShipDatas = DeepReadonly<Record<number, AbyssalShipData>>;
+export type AbyssalShipDatas = DeepReadonly<Record<AbyssalShipId, AbyssalShipData>>;
 
 export type AbyssalNakedShipFlags = {
     /** 無条件開幕対潜艦はtrue */

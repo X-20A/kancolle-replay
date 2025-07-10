@@ -3,7 +3,7 @@ import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, concat_fleet_unit
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
 import { FormationType, SingleFleetFormationType } from "@/types";
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 import { JetSquadron, Squadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
@@ -56,7 +56,7 @@ export const calc_equip_type_mod_for_fleet_anti_air = (
         .with('A_AIRRADAR', () => 0.4)
         .with('A_TYPE3SHELL', () => 0.6)
         .with('A_XLGUN', () => 0.25)
-        .with(P.union('NONE', 'A_AAGUN', 'A_GUN', 'A_MAINGUNL'), () => 0.2)
+        .with('NONE', 'A_AAGUN', 'A_GUN', 'A_MAINGUNL', () => 0.2)
         .exhaustive();
 }
 
@@ -90,7 +90,7 @@ export const calc_formation_mod = (
     formation: FormationType,
 ): number => {
     return match(formation)
-        .with(P.union('LineAhead', 'Echelon', 'LineAbreast'), () => 1)
+        .with('LineAhead', 'Echelon', 'LineAbreast', () => 1)
         .with('Vanguard', () => 1.1)
         .with('DoubleLine', () => 1.2)
         .with('Diamond', () => 1.6)

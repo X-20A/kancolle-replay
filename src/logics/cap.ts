@@ -4,15 +4,16 @@ type CapPhaseType =
     | 'day_shelling'
     | 'torpedo'
     | 'air_combat'
+    | 'lbas'
     | 'asw'
     | 'support'
     | 'night_battle'
 
-export function calc_cap_value(
+const calc_cap_value = (
     phase_type: CapPhaseType,
-): number {
+): number => {
     return match(phase_type)
-        .with('day_shelling', () => 220)
+        .with('day_shelling', 'lbas', () => 220)
         .with('torpedo', () => 180)
         .with('air_combat', 'asw', 'support', () => 170)
         .with('night_battle', () => 360)

@@ -3,7 +3,7 @@ import { CVsNightAttackType, ShipDatas } from "@/types/ship/ship";
 export const PLAYER_SHIP_DATAS: ShipDatas = {
     1: {
         name: 'Mutsuki',
-        nameJP: '睦月',
+        name_jp: '睦月',
         type: "DD", ship_class: "Mutsuki",
         nid: 31,
         HP: 13, HPmax: 24,
@@ -24,7 +24,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     2: {
         name: 'Kisaragi',
-        nameJP: '如月',
+        name_jp: '如月',
         type: "DD", ship_class: "Mutsuki",
         nid: 32,
         HP: 13, HPmax: 24,
@@ -45,7 +45,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     6: {
         name: 'Nagatsuki',
-        nameJP: '長月',
+        name_jp: '長月',
         type: "DD", ship_class: "Mutsuki",
         nid: 35,
         HP: 13, HPmax: 24,
@@ -66,7 +66,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     7: {
         name: 'Mikazuki',
-        nameJP: '三日月',
+        name_jp: '三日月',
         type: "DD", ship_class: "Mutsuki",
         nid: 37,
         HP: 13, HPmax: 24,
@@ -87,7 +87,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     9: {
         name: 'Fubuki',
-        nameJP: '吹雪',
+        name_jp: '吹雪',
         type: "DD", ship_class: "Hubuki",
         nid: 11,
         HP: 15, HPmax: 29,
@@ -108,7 +108,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     10: {
         name: 'Shirayuki',
-        nameJP: '白雪',
+        name_jp: '白雪',
         type: "DD", ship_class: "Hubuki",
         nid: 12,
         HP: 15, HPmax: 29,
@@ -129,7 +129,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     11: {
         name: 'Miyuki',
-        nameJP: '深雪',
+        name_jp: '深雪',
         type: "DD", ship_class: "Hubuki",
         nid: 14,
         HP: 15, HPmax: 29,
@@ -150,7 +150,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     12: {
         name: 'Isonami',
-        nameJP: '磯波',
+        name_jp: '磯波',
         type: "DD", ship_class: "Hubuki",
         nid: 16,
         HP: 15, HPmax: 29,
@@ -171,7 +171,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     13: {
         name: 'Ayanami',
-        nameJP: '綾波',
+        name_jp: '綾波',
         type: "DD", ship_class: "Ayanami",
         nid: 17,
         HP: 15, HPmax: 29,
@@ -192,7 +192,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     14: {
         name: 'Shikinami',
-        nameJP: '敷波',
+        name_jp: '敷波',
         type: "DD", ship_class: "Ayanami",
         nid: 18,
         HP: 15, HPmax: 29,
@@ -213,7 +213,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     15: {
         name: 'Akebono',
-        nameJP: '曙',
+        name_jp: '曙',
         type: "DD", ship_class: "Ayanami",
         nid: 68,
         HP: 15, HPmax: 29,
@@ -234,7 +234,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     16: {
         name: 'Ushio',
-        nameJP: '潮',
+        name_jp: '潮',
         type: "DD", ship_class: "Ayanami",
         nid: 70,
         HP: 15, HPmax: 29,
@@ -255,7 +255,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     17: {
         name: 'Kagerou',
-        nameJP: '陽炎',
+        name_jp: '陽炎',
         type: "DD", ship_class: "Kagerou",
         nid: 91,
         HP: 16, HPmax: 34,
@@ -276,7 +276,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     18: {
         name: 'Shiranui',
-        nameJP: '不知火',
+        name_jp: '不知火',
         type: "DD", ship_class: "Kagerou",
         nid: 92,
         HP: 16, HPmax: 34,
@@ -297,7 +297,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     19: {
         name: 'Kuroshio',
-        nameJP: '黒潮',
+        name_jp: '黒潮',
         type: "DD", ship_class: "Kagerou",
         nid: 93,
         HP: 16, HPmax: 34,
@@ -318,7 +318,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     20: {
         name: 'Yukikaze',
-        nameJP: '雪風',
+        name_jp: '雪風',
         type: "DD", ship_class: "Kagerou",
         nid: 5,
         HP: 16, HPmax: 39,
@@ -339,7 +339,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     21: {
         name: 'Nagara',
-        nameJP: '長良',
+        name_jp: '長良',
         type: "CL", ship_class: "Nagara",
         nid: 42,
         HP: 26, HPmax: 39,
@@ -360,7 +360,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     22: {
         name: 'Isuzu',
-        nameJP: '五十鈴',
+        name_jp: '五十鈴',
         type: "CL", ship_class: "Nagara",
         nid: 43,
         HP: 26, HPmax: 39,
@@ -381,7 +381,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     23: {
         name: 'Yura',
-        nameJP: '由良',
+        name_jp: '由良',
         type: "CL", ship_class: "Nagara",
         nid: 45,
         HP: 26, HPmax: 39,
@@ -402,7 +402,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     24: {
         name: 'Ooi',
-        nameJP: '大井',
+        name_jp: '大井',
         type: "CL", ship_class: "Kuma",
         nid: 19,
         HP: 25, HPmax: 39,
@@ -423,7 +423,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     25: {
         name: 'Kitakami',
-        nameJP: '北上',
+        name_jp: '北上',
         type: "CL", ship_class: "Kuma",
         nid: 20,
         HP: 25, HPmax: 39,
@@ -444,7 +444,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     26: {
         name: 'Fusou',
-        nameJP: '扶桑',
+        name_jp: '扶桑',
         type: "BB", ship_class: "Husou",
         nid: 26,
         fit_class: 8,
@@ -466,7 +466,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     27: {
         name: 'Yamashiro',
-        nameJP: '山城',
+        name_jp: '山城',
         type: "BB", ship_class: "Husou",
         nid: 27,
         fit_class: 8,
@@ -488,7 +488,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     28: {
         name: 'Satsuki',
-        nameJP: '皐月',
+        name_jp: '皐月',
         type: "DD", ship_class: "Mutsuki",
         nid: 33,
         HP: 13, HPmax: 24,
@@ -509,7 +509,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     29: {
         name: 'Fumizuki',
-        nameJP: '文月',
+        name_jp: '文月',
         type: "DD", ship_class: "Mutsuki",
         nid: 34,
         HP: 13, HPmax: 24,
@@ -530,7 +530,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     30: {
         name: 'Kikuzuki',
-        nameJP: '菊月',
+        name_jp: '菊月',
         type: "DD", ship_class: "Mutsuki",
         nid: 36,
         HP: 13, HPmax: 24,
@@ -551,7 +551,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     31: {
         name: 'Mochizuki',
-        nameJP: '望月',
+        name_jp: '望月',
         type: "DD", ship_class: "Mutsuki",
         nid: 38,
         HP: 13, HPmax: 24,
@@ -572,7 +572,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     32: {
         name: 'Hatsuyuki',
-        nameJP: '初雪',
+        name_jp: '初雪',
         type: "DD", ship_class: "Hubuki",
         nid: 13,
         HP: 15, HPmax: 29,
@@ -593,7 +593,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     33: {
         name: 'Murakumo',
-        nameJP: '叢雲',
+        name_jp: '叢雲',
         type: "DD", ship_class: "Hubuki",
         nid: 15,
         HP: 15, HPmax: 29,
@@ -614,7 +614,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     34: {
         name: 'Akatsuki',
-        nameJP: '暁',
+        name_jp: '暁',
         type: "DD", ship_class: "Dairoku",
         nid: 71,
         HP: 15, HPmax: 30,
@@ -635,7 +635,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     35: {
         name: 'Hibiki',
-        nameJP: '響',
+        name_jp: '響',
         type: "DD", ship_class: "Dairoku",
         nid: 72,
         HP: 15, HPmax: 30,
@@ -656,7 +656,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     36: {
         name: 'Ikazuchi',
-        nameJP: '雷',
+        name_jp: '雷',
         type: "DD", ship_class: "Dairoku",
         nid: 73,
         HP: 15, HPmax: 30,
@@ -677,7 +677,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     37: {
         name: 'Inazuma',
-        nameJP: '電',
+        name_jp: '電',
         type: "DD", ship_class: "Dairoku",
         nid: 74,
         HP: 15, HPmax: 30,
@@ -698,7 +698,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     38: {
         name: 'Hatsuharu',
-        nameJP: '初春',
+        name_jp: '初春',
         type: "DD", ship_class: "Hatsuharu",
         nid: 75,
         HP: 16, HPmax: 31,
@@ -719,7 +719,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     39: {
         name: 'Nenohi',
-        nameJP: '子日',
+        name_jp: '子日',
         type: "DD", ship_class: "Hatsuharu",
         nid: 76,
         HP: 16, HPmax: 31,
@@ -740,7 +740,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     40: {
         name: 'Wakaba',
-        nameJP: '若葉',
+        name_jp: '若葉',
         type: "DD", ship_class: "Hatsuharu",
         nid: 77,
         HP: 16, HPmax: 31,
@@ -761,7 +761,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     41: {
         name: 'Hatsushimo',
-        nameJP: '初霜',
+        name_jp: '初霜',
         type: "DD", ship_class: "Hatsuharu",
         nid: 78,
         HP: 16, HPmax: 31,
@@ -782,7 +782,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     42: {
         name: 'Shiratsuyu',
-        nameJP: '白露',
+        name_jp: '白露',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 79,
         HP: 16, HPmax: 32,
@@ -803,7 +803,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     43: {
         name: 'Shigure',
-        nameJP: '時雨',
+        name_jp: '時雨',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 80,
         HP: 16, HPmax: 32,
@@ -824,7 +824,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     44: {
         name: 'Murasame',
-        nameJP: '村雨',
+        name_jp: '村雨',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 81,
         HP: 16, HPmax: 32,
@@ -845,7 +845,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     45: {
         name: 'Yuudachi',
-        nameJP: '夕立',
+        name_jp: '夕立',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 82,
         HP: 16, HPmax: 32,
@@ -866,7 +866,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     46: {
         name: 'Samidare',
-        nameJP: '五月雨',
+        name_jp: '五月雨',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 83,
         HP: 16, HPmax: 32,
@@ -887,7 +887,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     47: {
         name: 'Suzukaze',
-        nameJP: '涼風',
+        name_jp: '涼風',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 84,
         HP: 16, HPmax: 32,
@@ -908,7 +908,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     48: {
         name: 'Arare',
-        nameJP: '霰',
+        name_jp: '霰',
         type: "DD", ship_class: "Asashio",
         nid: 89,
         HP: 16, HPmax: 33,
@@ -929,7 +929,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     49: {
         name: 'Kasumi',
-        nameJP: '霞',
+        name_jp: '霞',
         type: "DD", ship_class: "Asashio",
         nid: 90,
         HP: 16, HPmax: 33,
@@ -950,7 +950,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     50: {
         name: 'Shimakaze',
-        nameJP: '島風',
+        name_jp: '島風',
         type: "DD", ship_class: "Shimakaze",
         nid: 10,
         HP: 19, HPmax: 39,
@@ -971,7 +971,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     51: {
         name: 'Tenryuu',
-        nameJP: '天龍',
+        name_jp: '天龍',
         type: "CL", ship_class: "Tenryuu",
         nid: 28,
         HP: 23, HPmax: 35,
@@ -992,7 +992,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     52: {
         name: 'Tatsuta',
-        nameJP: '龍田',
+        name_jp: '龍田',
         type: "CL", ship_class: "Tenryuu",
         nid: 29,
         HP: 23, HPmax: 35,
@@ -1013,7 +1013,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     53: {
         name: 'Natori',
-        nameJP: '名取',
+        name_jp: '名取',
         type: "CL", ship_class: "Nagara",
         nid: 44,
         HP: 26, HPmax: 39,
@@ -1034,7 +1034,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     54: {
         name: 'Sendai',
-        nameJP: '川内',
+        name_jp: '川内',
         type: "CL", ship_class: "Sendai",
         nid: 46,
         HP: 26, HPmax: 39,
@@ -1055,7 +1055,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     55: {
         name: 'Jintsuu',
-        nameJP: '神通',
+        name_jp: '神通',
         type: "CL", ship_class: "Sendai",
         nid: 47,
         HP: 26, HPmax: 39,
@@ -1076,7 +1076,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     56: {
         name: 'Naka',
-        nameJP: '那珂',
+        name_jp: '那珂',
         type: "CL", ship_class: "Sendai",
         nid: 48,
         HP: 26, HPmax: 39,
@@ -1097,7 +1097,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     57: {
         name: 'Ooi Kai',
-        nameJP: '大井改',
+        name_jp: '大井改',
         type: "CLT", ship_class: "Kuma",
         nid: 97,
         HP: 32, HPmax: 49,
@@ -1118,7 +1118,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     58: {
         name: 'Kitakami Kai',
-        nameJP: '北上改',
+        name_jp: '北上改',
         type: "CLT", ship_class: "Kuma",
         nid: 98,
         HP: 32, HPmax: 49,
@@ -1139,7 +1139,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     59: {
         name: 'Furutaka',
-        nameJP: '古鷹',
+        name_jp: '古鷹',
         type: "CA", ship_class: "Hurutaka",
         nid: 52,
         HP: 36, HPmax: 49,
@@ -1160,7 +1160,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     60: {
         name: 'Kako',
-        nameJP: '加古',
+        name_jp: '加古',
         type: "CA", ship_class: "Hurutaka",
         nid: 53,
         HP: 36, HPmax: 49,
@@ -1181,7 +1181,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     61: {
         name: 'Aoba',
-        nameJP: '青葉',
+        name_jp: '青葉',
         type: "CA", ship_class: "Aoba",
         nid: 54,
         HP: 37, HPmax: 49,
@@ -1202,7 +1202,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     62: {
         name: 'Myoukou',
-        nameJP: '妙高',
+        name_jp: '妙高',
         type: "CA", ship_class: "Myoukou",
         nid: 55,
         HP: 44, HPmax: 60,
@@ -1223,7 +1223,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     63: {
         name: 'Nachi',
-        nameJP: '那智',
+        name_jp: '那智',
         type: "CA", ship_class: "Myoukou",
         nid: 56,
         HP: 44, HPmax: 56,
@@ -1244,7 +1244,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     64: {
         name: 'Ashigara',
-        nameJP: '足柄',
+        name_jp: '足柄',
         type: "CA", ship_class: "Myoukou",
         nid: 57,
         HP: 44, HPmax: 56,
@@ -1265,7 +1265,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     65: {
         name: 'Haguro',
-        nameJP: '羽黒',
+        name_jp: '羽黒',
         type: "CA", ship_class: "Myoukou",
         nid: 58,
         HP: 44, HPmax: 56,
@@ -1286,7 +1286,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     66: {
         name: 'Takao',
-        nameJP: '高雄',
+        name_jp: '高雄',
         type: "CA", ship_class: "Takao",
         nid: 59,
         HP: 45, HPmax: 60,
@@ -1307,7 +1307,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     67: {
         name: 'Atago',
-        nameJP: '愛宕',
+        name_jp: '愛宕',
         type: "CA", ship_class: "Takao",
         nid: 60,
         HP: 45, HPmax: 60,
@@ -1328,7 +1328,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     68: {
         name: 'Maya',
-        nameJP: '摩耶',
+        name_jp: '摩耶',
         type: "CA", ship_class: "Takao",
         nid: 61,
         HP: 45, HPmax: 57,
@@ -1349,7 +1349,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     69: {
         name: 'Choukai',
-        nameJP: '鳥海',
+        name_jp: '鳥海',
         type: "CA", ship_class: "Takao",
         nid: 62,
         HP: 45, HPmax: 57,
@@ -1370,7 +1370,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     70: {
         name: 'Mogami',
-        nameJP: '最上',
+        name_jp: '最上',
         type: "CA", ship_class: "Mogami",
         nid: 51,
         HP: 41, HPmax: 59,
@@ -1391,7 +1391,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     71: {
         name: 'Tone',
-        nameJP: '利根',
+        name_jp: '利根',
         type: "CA", ship_class: "Tone",
         nid: 63,
         HP: 44, HPmax: 62,
@@ -1412,7 +1412,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     72: {
         name: 'Chikuma',
-        nameJP: '筑摩',
+        name_jp: '筑摩',
         type: "CA", ship_class: "Tone",
         nid: 64,
         HP: 44, HPmax: 62,
@@ -1433,7 +1433,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     73: {
         name: 'Mogami Kai',
-        nameJP: '最上改',
+        name_jp: '最上改',
         type: "CAV", ship_class: "Mogami",
         nid: 101,
         HP: 50, HPmax: 67,
@@ -1454,7 +1454,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     74: {
         name: 'Shouhou',
-        nameJP: '祥鳳',
+        name_jp: '祥鳳',
         type: "CVL", ship_class: "Syouhou",
         nid: 94,
         HP: 32, HPmax: 55,
@@ -1475,7 +1475,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     75: {
         name: 'Hiyou',
-        nameJP: '飛鷹',
+        name_jp: '飛鷹',
         type: "CVL", ship_class: "Hiyou",
         nid: 65,
         HP: 40, HPmax: 64,
@@ -1496,7 +1496,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     76: {
         name: 'Ryuujou',
-        nameJP: '龍驤',
+        name_jp: '龍驤',
         type: "CVL", ship_class: "Ryuujou",
         nid: 30,
         HP: 31, HPmax: 54,
@@ -1517,7 +1517,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     77: {
         name: 'Ise',
-        nameJP: '伊勢',
+        name_jp: '伊勢',
         type: "BB", ship_class: "Ise",
         nid: 3,
         fit_class: 8,
@@ -1539,7 +1539,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     78: {
         name: 'Kongou',
-        nameJP: '金剛',
+        name_jp: '金剛',
         type: "FBB", ship_class: "Kongou",
         nid: 21,
         fit_class: 1,
@@ -1561,7 +1561,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     79: {
         name: 'Haruna',
-        nameJP: '榛名',
+        name_jp: '榛名',
         type: "FBB", ship_class: "Kongou",
         nid: 23,
         fit_class: 1,
@@ -1583,7 +1583,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     80: {
         name: 'Nagato',
-        nameJP: '長門',
+        name_jp: '長門',
         type: "BB", ship_class: "Nagato",
         nid: 1,
         fit_class: 8,
@@ -1605,7 +1605,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     81: {
         name: 'Mutsu',
-        nameJP: '陸奥',
+        name_jp: '陸奥',
         type: "BB", ship_class: "Nagato",
         nid: 2,
         fit_class: 8,
@@ -1627,7 +1627,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     82: {
         name: 'Ise Kai',
-        nameJP: '伊勢改',
+        name_jp: '伊勢改',
         type: "BBV", ship_class: "Ise",
         nid: 102,
         fit_class: 6,
@@ -1649,7 +1649,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     83: {
         name: 'Akagi',
-        nameJP: '赤城',
+        name_jp: '赤城',
         type: "CV", ship_class: "Akagi",
         nid: 6,
         HP: 69, HPmax: 79,
@@ -1670,7 +1670,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     84: {
         name: 'Kaga',
-        nameJP: '加賀',
+        name_jp: '加賀',
         type: "CV", ship_class: "Kaga",
         nid: 7,
         HP: 71, HPmax: 89,
@@ -1691,7 +1691,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     85: {
         name: 'Kirishima',
-        nameJP: '霧島',
+        name_jp: '霧島',
         type: "FBB", ship_class: "Kongou",
         nid: 24,
         fit_class: 1,
@@ -1713,7 +1713,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     86: {
         name: 'Hiei',
-        nameJP: '比叡',
+        name_jp: '比叡',
         type: "FBB", ship_class: "Kongou",
         nid: 22,
         fit_class: 1,
@@ -1735,7 +1735,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     87: {
         name: 'Hyuuga',
-        nameJP: '日向',
+        name_jp: '日向',
         type: "BB", ship_class: "Ise",
         nid: 4,
         fit_class: 8,
@@ -1757,7 +1757,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     88: {
         name: 'Hyuuga Kai',
-        nameJP: '日向改',
+        name_jp: '日向改',
         type: "BBV", ship_class: "Ise",
         nid: 103,
         fit_class: 6,
@@ -1779,7 +1779,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     89: {
         name: 'Houshou',
-        nameJP: '鳳翔',
+        name_jp: '鳳翔',
         type: "CVL", ship_class: "Houshou",
         nid: 25,
         HP: 30, HPmax: 49,
@@ -1800,7 +1800,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     90: {
         name: 'Souryuu',
-        nameJP: '蒼龍',
+        name_jp: '蒼龍',
         type: "CV", ship_class: "Souryuu",
         nid: 8,
         HP: 50, HPmax: 79,
@@ -1821,7 +1821,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     91: {
         name: 'Hiryuu',
-        nameJP: '飛龍',
+        name_jp: '飛龍',
         type: "CV", ship_class: "Hiryuu",
         nid: 9,
         HP: 50, HPmax: 79,
@@ -1842,7 +1842,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     92: {
         name: 'Junyou',
-        nameJP: '隼鷹',
+        name_jp: '隼鷹',
         type: "CVL", ship_class: "Hiyou",
         nid: 66,
         HP: 40, HPmax: 64,
@@ -1863,7 +1863,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     93: {
         name: 'Oboro',
-        nameJP: '朧',
+        name_jp: '朧',
         type: "DD", ship_class: "Ayanami",
         nid: 67,
         HP: 15, HPmax: 29,
@@ -1884,7 +1884,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     94: {
         name: 'Sazanami',
-        nameJP: '漣',
+        name_jp: '漣',
         type: "DD", ship_class: "Ayanami",
         nid: 69,
         HP: 15, HPmax: 29,
@@ -1905,7 +1905,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     95: {
         name: 'Asashio',
-        nameJP: '朝潮',
+        name_jp: '朝潮',
         type: "DD", ship_class: "Asashio",
         nid: 85,
         HP: 16, HPmax: 33,
@@ -1926,7 +1926,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     96: {
         name: 'Ooshio',
-        nameJP: '大潮',
+        name_jp: '大潮',
         type: "DD", ship_class: "Asashio",
         nid: 86,
         HP: 16, HPmax: 33,
@@ -1947,7 +1947,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     97: {
         name: 'Michishio',
-        nameJP: '満潮',
+        name_jp: '満潮',
         type: "DD", ship_class: "Asashio",
         nid: 87,
         HP: 16, HPmax: 33,
@@ -1968,7 +1968,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     98: {
         name: 'Arashio',
-        nameJP: '荒潮',
+        name_jp: '荒潮',
         type: "DD", ship_class: "Asashio",
         nid: 88,
         HP: 16, HPmax: 33,
@@ -1989,7 +1989,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     99: {
         name: 'Kuma',
-        nameJP: '球磨',
+        name_jp: '球磨',
         type: "CL", ship_class: "Kuma",
         nid: 39,
         HP: 25, HPmax: 39,
@@ -2010,7 +2010,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     100: {
         name: 'Tama',
-        nameJP: '多摩',
+        name_jp: '多摩',
         type: "CL", ship_class: "Kuma",
         nid: 40,
         HP: 25, HPmax: 39,
@@ -2031,7 +2031,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     101: {
         name: 'Kiso',
-        nameJP: '木曾',
+        name_jp: '木曾',
         type: "CL", ship_class: "Kuma",
         nid: 41,
         HP: 25, HPmax: 39,
@@ -2052,7 +2052,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     102: {
         name: 'Chitose',
-        nameJP: '千歳',
+        name_jp: '千歳',
         type: "AV", ship_class: "Chitose",
         nid: 49,
         HP: 40, HPmax: 59,
@@ -2073,7 +2073,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     103: {
         name: 'Chiyoda',
-        nameJP: '千代田',
+        name_jp: '千代田',
         type: "AV", ship_class: "Chitose",
         nid: 50,
         HP: 40, HPmax: 59,
@@ -2094,7 +2094,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     104: {
         name: 'Chitose Kai',
-        nameJP: '千歳改',
+        name_jp: '千歳改',
         type: "AV", ship_class: "Chitose",
         nid: 95,
         HP: 41, HPmax: 59,
@@ -2115,7 +2115,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     105: {
         name: 'Chiyoda Kai',
-        nameJP: '千代田改',
+        name_jp: '千代田改',
         type: "AV", ship_class: "Chitose",
         nid: 96,
         HP: 41, HPmax: 59,
@@ -2136,7 +2136,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     106: {
         name: 'Chitose A',
-        nameJP: '千歳甲',
+        name_jp: '千歳甲',
         type: "AV", ship_class: "Chitose",
         nid: 99,
         HP: 42, HPmax: 59,
@@ -2157,7 +2157,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     107: {
         name: 'Chiyoda A',
-        nameJP: '千代田甲',
+        name_jp: '千代田甲',
         type: "AV", ship_class: "Chitose",
         nid: 100,
         HP: 42, HPmax: 59,
@@ -2178,7 +2178,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     108: {
         name: 'ChitoseCVL',
-        nameJP: '千歳航',
+        name_jp: '千歳航',
         type: "CVL", ship_class: "Chitose",
         nid: 104,
         HP: 47, HPmax: 59,
@@ -2199,7 +2199,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     109: {
         name: 'ChiyodaCVL',
-        nameJP: '千代田航',
+        name_jp: '千代田航',
         type: "CVL", ship_class: "Chitose",
         nid: 105,
         HP: 47, HPmax: 59,
@@ -2220,7 +2220,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     110: {
         name: 'Shoukaku',
-        nameJP: '翔鶴',
+        name_jp: '翔鶴',
         type: "CV", ship_class: "Shoukaku",
         nid: 106,
         HP: 62, HPmax: 79,
@@ -2241,7 +2241,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     111: {
         name: 'Zuikaku',
-        nameJP: '瑞鶴',
+        name_jp: '瑞鶴',
         type: "CV", ship_class: "Shoukaku",
         nid: 107,
         HP: 62, HPmax: 79,
@@ -2262,7 +2262,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     112: {
         name: 'Zuikaku Kai',
-        nameJP: '瑞鶴改',
+        name_jp: '瑞鶴改',
         type: "CV", ship_class: "Shoukaku",
         nid: 108,
         HP: 75, HPmax: 90,
@@ -2283,7 +2283,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     113: {
         name: 'Kinu',
-        nameJP: '鬼怒',
+        name_jp: '鬼怒',
         type: "CL", ship_class: "Nagara",
         nid: 109,
         HP: 26, HPmax: 39,
@@ -2304,7 +2304,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     114: {
         name: 'Abukuma',
-        nameJP: '阿武隈',
+        name_jp: '阿武隈',
         type: "CL", ship_class: "Nagara",
         nid: 110,
         HP: 27, HPmax: 39,
@@ -2325,7 +2325,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     115: {
         name: 'Yuubari',
-        nameJP: '夕張',
+        name_jp: '夕張',
         type: "CL", ship_class: "Yuubari",
         nid: 111,
         HP: 19, HPmax: 33,
@@ -2346,7 +2346,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     116: {
         name: 'Zuihou',
-        nameJP: '瑞鳳',
+        name_jp: '瑞鳳',
         type: "CVL", ship_class: "Syouhou",
         nid: 112,
         HP: 32, HPmax: 55,
@@ -2367,7 +2367,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     117: {
         name: 'Zuihou Kai',
-        nameJP: '瑞鳳改',
+        name_jp: '瑞鳳改',
         type: "CVL", ship_class: "Syouhou",
         nid: 113,
         HP: 45, HPmax: 69,
@@ -2388,7 +2388,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     118: {
         name: 'Ooi Kai 2',
-        nameJP: '大井改二',
+        name_jp: '大井改二',
         type: "CLT", ship_class: "Kuma",
         nid: 114,
         HP: 43, HPmax: 59,
@@ -2409,7 +2409,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     119: {
         name: 'Kitakami Kai 2',
-        nameJP: '北上改二',
+        name_jp: '北上改二',
         type: "CLT", ship_class: "Kuma",
         nid: 115,
         HP: 43, HPmax: 59,
@@ -2430,7 +2430,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     120: {
         name: 'Mikuma',
-        nameJP: '三隈',
+        name_jp: '三隈',
         type: "CA", ship_class: "Mogami",
         nid: 116,
         HP: 40, HPmax: 59,
@@ -2451,7 +2451,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     121: {
         name: 'Mikuma Kai',
-        nameJP: '三隈改',
+        name_jp: '三隈改',
         type: "CAV", ship_class: "Mogami",
         nid: 117,
         HP: 50, HPmax: 67,
@@ -2472,7 +2472,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     122: {
         name: 'Maikaze',
-        nameJP: '舞風',
+        name_jp: '舞風',
         type: "DD", ship_class: "Kagerou",
         nid: 119,
         HP: 16, HPmax: 34,
@@ -2493,7 +2493,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     123: {
         name: 'Kinugasa',
-        nameJP: '衣笠',
+        name_jp: '衣笠',
         type: "CA", ship_class: "Aoba",
         nid: 120,
         HP: 37, HPmax: 49,
@@ -2514,7 +2514,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     124: {
         name: 'Suzuya',
-        nameJP: '鈴谷',
+        name_jp: '鈴谷',
         type: "CA", ship_class: "Mogami",
         nid: 124,
         HP: 40, HPmax: 59,
@@ -2535,7 +2535,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     125: {
         name: 'Kumano',
-        nameJP: '熊野',
+        name_jp: '熊野',
         type: "CA", ship_class: "Mogami",
         nid: 125,
         HP: 40, HPmax: 59,
@@ -2556,7 +2556,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     126: {
         name: 'I-168',
-        nameJP: '伊168',
+        name_jp: '伊168',
         type: "SS", ship_class: "I_168",
         nid: 126,
         HP: 10, HPmax: 17,
@@ -2577,7 +2577,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     127: {
         name: 'I-58',
-        nameJP: '伊58',
+        name_jp: '伊58',
         type: "SS", ship_class: "I_58",
         nid: 127,
         HP: 14, HPmax: 19,
@@ -2598,7 +2598,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     128: {
         name: 'I-8',
-        nameJP: '伊8',
+        name_jp: '伊8',
         type: "SS", ship_class: "I_8",
         nid: 128,
         HP: 15, HPmax: 19,
@@ -2619,7 +2619,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     129: {
         name: 'Suzuya Kai',
-        nameJP: '鈴谷改',
+        name_jp: '鈴谷改',
         type: "CAV", ship_class: "Mogami",
         nid: 129,
         HP: 50, HPmax: 67,
@@ -2640,7 +2640,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     130: {
         name: 'Kumano Kai',
-        nameJP: '熊野改',
+        name_jp: '熊野改',
         type: "CAV", ship_class: "Mogami",
         nid: 130,
         HP: 50, HPmax: 67,
@@ -2661,7 +2661,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     131: {
         name: 'Yamato',
-        nameJP: '大和',
+        name_jp: '大和',
         type: "BB", ship_class: "Yamato",
         nid: 131,
         fit_class: 9,
@@ -2683,7 +2683,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     132: {
         name: 'Akigumo',
-        nameJP: '秋雲',
+        name_jp: '秋雲',
         type: "DD", ship_class: "Kagerou",
         nid: 132,
         HP: 16, HPmax: 34,
@@ -2704,7 +2704,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     133: {
         name: 'Yuugumo',
-        nameJP: '夕雲',
+        name_jp: '夕雲',
         type: "DD", ship_class: "Yuugumo",
         nid: 133,
         HP: 16, HPmax: 34,
@@ -2725,7 +2725,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     134: {
         name: 'Makigumo',
-        nameJP: '巻雲',
+        name_jp: '巻雲',
         type: "DD", ship_class: "Yuugumo",
         nid: 134,
         HP: 16, HPmax: 34,
@@ -2746,7 +2746,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     135: {
         name: 'Naganami',
-        nameJP: '長波',
+        name_jp: '長波',
         type: "DD", ship_class: "Yuugumo",
         nid: 135,
         HP: 16, HPmax: 34,
@@ -2767,7 +2767,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     136: {
         name: 'Yamato Kai',
-        nameJP: '大和改',
+        name_jp: '大和改',
         type: "BB", ship_class: "Yamato",
         nid: 136,
         fit_class: 9,
@@ -2789,7 +2789,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     137: {
         name: 'Agano',
-        nameJP: '阿賀野',
+        name_jp: '阿賀野',
         type: "CL", ship_class: "Agano",
         nid: 137,
         HP: 30, HPmax: 45,
@@ -2810,7 +2810,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     138: {
         name: 'Noshiro',
-        nameJP: '能代',
+        name_jp: '能代',
         type: "CL", ship_class: "Agano",
         nid: 138,
         HP: 30, HPmax: 45,
@@ -2831,7 +2831,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     139: {
         name: 'Yahagi',
-        nameJP: '矢矧',
+        name_jp: '矢矧',
         type: "CL", ship_class: "Agano",
         nid: 139,
         HP: 31, HPmax: 45,
@@ -2852,7 +2852,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     140: {
         name: 'Sakawa',
-        nameJP: '酒匂',
+        name_jp: '酒匂',
         type: "CL", ship_class: "Agano",
         nid: 140,
         HP: 31, HPmax: 45,
@@ -2873,7 +2873,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     141: {
         name: 'Isuzu Kai 2',
-        nameJP: '五十鈴改二',
+        name_jp: '五十鈴改二',
         type: "CL", ship_class: "Nagara",
         nid: 141,
         HP: 44, HPmax: 59,
@@ -2895,7 +2895,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     142: {
         name: 'Kinugasa Kai 2',
-        nameJP: '衣笠改二',
+        name_jp: '衣笠改二',
         type: "CA", ship_class: "Aoba",
         nid: 142,
         HP: 53, HPmax: 65,
@@ -2916,7 +2916,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     143: {
         name: 'Musashi',
-        nameJP: '武蔵',
+        name_jp: '武蔵',
         type: "BB", ship_class: "Yamato",
         nid: 143,
         fit_class: 9,
@@ -2938,7 +2938,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     144: {
         name: 'Yuudachi Kai 2',
-        nameJP: '夕立改二',
+        name_jp: '夕立改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 144,
         HP: 31, HPmax: 58,
@@ -2959,7 +2959,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     145: {
         name: 'Shigure Kai 2',
-        nameJP: '時雨改二',
+        name_jp: '時雨改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 145,
         HP: 31, HPmax: 49,
@@ -2980,7 +2980,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     146: {
         name: 'Kiso Kai 2',
-        nameJP: '木曾改二',
+        name_jp: '木曾改二',
         type: "CLT", ship_class: "Kuma",
         nid: 146,
         HP: 44, HPmax: 59,
@@ -3001,7 +3001,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     147: {
         name: 'Verniy',
-        nameJP: 'Верный',
+        name_jp: 'Верный',
         type: "DD", ship_class: "Dairoku",
         nid: 147,
         HP: 37, HPmax: 49,
@@ -3022,7 +3022,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     148: {
         name: 'Musashi Kai',
-        nameJP: '武蔵改',
+        name_jp: '武蔵改',
         type: "BB", ship_class: "Yamato",
         nid: 148,
         fit_class: 9,
@@ -3044,7 +3044,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     149: {
         name: 'Kongou Kai 2',
-        nameJP: '金剛改二',
+        name_jp: '金剛改二',
         type: "FBB", ship_class: "Kongou",
         nid: 149,
         fit_class: 1,
@@ -3066,7 +3066,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     150: {
         name: 'Hiei Kai 2',
-        nameJP: '比叡改二',
+        name_jp: '比叡改二',
         type: "FBB", ship_class: "Kongou",
         nid: 150,
         fit_class: 1,
@@ -3088,7 +3088,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     151: {
         name: 'Haruna Kai 2',
-        nameJP: '榛名改二',
+        name_jp: '榛名改二',
         type: "FBB", ship_class: "Kongou",
         nid: 151,
         fit_class: 1,
@@ -3110,7 +3110,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     152: {
         name: 'Kirishima Kai 2',
-        nameJP: '霧島改二',
+        name_jp: '霧島改二',
         type: "FBB", ship_class: "Kongou",
         nid: 152,
         fit_class: 1,
@@ -3132,7 +3132,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     153: {
         name: 'Taihou',
-        nameJP: '大鳳',
+        name_jp: '大鳳',
         type: "CVB", ship_class: "Taihou",
         nid: 153,
         HP: 67, HPmax: 87,
@@ -3153,7 +3153,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     154: {
         name: 'Katori',
-        nameJP: '香取',
+        name_jp: '香取',
         type: "CT", ship_class: "Katori",
         nid: 154,
         HP: 36, HPmax: 48,
@@ -3174,7 +3174,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     155: {
         name: 'I-401',
-        nameJP: '伊401',
+        name_jp: '伊401',
         type: "SSV", ship_class: "I_400",
         nid: 155,
         HP: 20, HPmax: 24,
@@ -3195,7 +3195,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     156: {
         name: 'Taihou Kai',
-        nameJP: '大鳳改',
+        name_jp: '大鳳改',
         type: "CVB", ship_class: "Taihou",
         nid: 156,
         HP: 70, HPmax: 90,
@@ -3216,7 +3216,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     157: {
         name: 'Ryuujou Kai 2',
-        nameJP: '龍驤改二',
+        name_jp: '龍驤改二',
         type: "CVL", ship_class: "Ryuujou",
         nid: 157,
         HP: 50, HPmax: 72,
@@ -3237,7 +3237,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     158: {
         name: 'Sendai Kai 2',
-        nameJP: '川内改二',
+        name_jp: '川内改二',
         type: "CL", ship_class: "Sendai",
         nid: 158,
         HP: 49, HPmax: 64,
@@ -3258,7 +3258,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     159: {
         name: 'Jintsuu Kai 2',
-        nameJP: '神通改二',
+        name_jp: '神通改二',
         type: "CL", ship_class: "Sendai",
         nid: 159,
         HP: 51, HPmax: 63,
@@ -3279,7 +3279,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     160: {
         name: 'Naka Kai 2',
-        nameJP: '那珂改二',
+        name_jp: '那珂改二',
         type: "CL", ship_class: "Sendai",
         nid: 160,
         HP: 48, HPmax: 62,
@@ -3300,7 +3300,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     161: {
         name: 'AkitsuMaru',
-        nameJP: 'あきつ丸',
+        name_jp: 'あきつ丸',
         type: "LHA", ship_class: "Akitsumaru",
         nid: 161,
         HP: 38, HPmax: 49,
@@ -3321,7 +3321,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     162: {
         name: 'Kamoi',
-        nameJP: '神威',
+        name_jp: '神威',
         type: "AO", ship_class: "Kamoi",
         nid: 162,
         HP: 36, HPmax: 48,
@@ -3342,7 +3342,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     163: {
         name: 'Maruyu',
-        nameJP: 'まるゆ',
+        name_jp: 'まるゆ',
         type: "SS", ship_class: "Maruyu",
         nid: 163,
         HP: 6, HPmax: 9,
@@ -3363,7 +3363,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     164: {
         name: 'Yayoi',
-        nameJP: '弥生',
+        name_jp: '弥生',
         type: "DD", ship_class: "Mutsuki",
         nid: 164,
         HP: 13, HPmax: 24,
@@ -3384,7 +3384,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     165: {
         name: 'Uzuki',
-        nameJP: '卯月',
+        name_jp: '卯月',
         type: "DD", ship_class: "Mutsuki",
         nid: 165,
         HP: 13, HPmax: 24,
@@ -3405,7 +3405,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     166: {
         name: 'AkitsuMaru Kai',
-        nameJP: 'あきつ丸改',
+        name_jp: 'あきつ丸改',
         type: "LHA", ship_class: "Akitsumaru",
         nid: 166,
         HP: 40, HPmax: 59,
@@ -3426,7 +3426,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     167: {
         name: 'Isokaze',
-        nameJP: '磯風',
+        name_jp: '磯風',
         type: "DD", ship_class: "Kagerou",
         nid: 167,
         HP: 16, HPmax: 34,
@@ -3447,7 +3447,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     168: {
         name: 'Urakaze',
-        nameJP: '浦風',
+        name_jp: '浦風',
         type: "DD", ship_class: "Kagerou",
         nid: 168,
         HP: 16, HPmax: 34,
@@ -3468,7 +3468,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     169: {
         name: 'Tanikaze',
-        nameJP: '谷風',
+        name_jp: '谷風',
         type: "DD", ship_class: "Kagerou",
         nid: 169,
         HP: 16, HPmax: 34,
@@ -3489,7 +3489,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     170: {
         name: 'Hamakaze',
-        nameJP: '浜風',
+        name_jp: '浜風',
         type: "DD", ship_class: "Kagerou",
         nid: 170,
         HP: 16, HPmax: 34,
@@ -3510,7 +3510,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     171: {
         name: 'Bismarck',
-        nameJP: 'Bismarck',
+        name_jp: 'Bismarck',
         type: "FBB", ship_class: "Bismarck",
         nid: 171,
         fit_class: 2,
@@ -3532,7 +3532,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     172: {
         name: 'Bismarck Kai',
-        nameJP: 'Bismarck改',
+        name_jp: 'Bismarck改',
         type: "FBB", ship_class: "Bismarck",
         nid: 172,
         fit_class: 2,
@@ -3554,7 +3554,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     173: {
         name: 'Bismarck Zwei',
-        nameJP: 'Bismarck zwei',
+        name_jp: 'Bismarck zwei',
         type: "FBB", ship_class: "Bismarck",
         nid: 173,
         fit_class: 2,
@@ -3576,7 +3576,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     174: {
         name: 'Z1',
-        nameJP: 'Z1',
+        name_jp: 'Z1',
         type: "DD", ship_class: "Z1",
         nid: 174,
         HP: 18, HPmax: 29,
@@ -3597,7 +3597,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     175: {
         name: 'Z3',
-        nameJP: 'Z3',
+        name_jp: 'Z3',
         type: "DD", ship_class: "Z1",
         nid: 175,
         HP: 18, HPmax: 29,
@@ -3618,7 +3618,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     176: {
         name: 'PrinzEugen',
-        nameJP: 'Prinz Eugen',
+        name_jp: 'Prinz Eugen',
         type: "CA", ship_class: "Prinz",
         nid: 176,
         HP: 50, HPmax: 72,
@@ -3639,7 +3639,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     177: {
         name: 'PrinzEugen Kai',
-        nameJP: 'Prinz Eugen改',
+        name_jp: 'Prinz Eugen改',
         type: "CA", ship_class: "Prinz",
         nid: 177,
         HP: 63, HPmax: 79,
@@ -3660,7 +3660,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     178: {
         name: 'Bismarck Drei',
-        nameJP: 'Bismarck drei',
+        name_jp: 'Bismarck drei',
         type: "FBB", ship_class: "Bismarck",
         nid: 178,
         fit_class: 2,
@@ -3682,7 +3682,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     179: {
         name: 'Z1 Zwei',
-        nameJP: 'Z1 zwei',
+        name_jp: 'Z1 zwei',
         type: "DD", ship_class: "Z1",
         nid: 179,
         HP: 35, HPmax: 59,
@@ -3703,7 +3703,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     180: {
         name: 'Z3 Zwei',
-        nameJP: 'Z3 zwei',
+        name_jp: 'Z3 zwei',
         type: "DD", ship_class: "Z1",
         nid: 180,
         HP: 35, HPmax: 59,
@@ -3724,7 +3724,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     181: {
         name: 'Amatsukaze',
-        nameJP: '天津風',
+        name_jp: '天津風',
         type: "DD", ship_class: "Kagerou",
         nid: 181,
         HP: 18, HPmax: 37,
@@ -3745,7 +3745,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     182: {
         name: 'Akashi',
-        nameJP: '明石',
+        name_jp: '明石',
         type: "AR", ship_class: "Akashi",
         nid: 182,
         HP: 39, HPmax: 48,
@@ -3766,7 +3766,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     183: {
         name: 'Ooyodo',
-        nameJP: '大淀',
+        name_jp: '大淀',
         type: "CL", ship_class: "Ooyodo",
         nid: 183,
         HP: 34, HPmax: 47,
@@ -3787,7 +3787,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     184: {
         name: 'Taigei',
-        nameJP: '大鯨',
+        name_jp: '大鯨',
         type: "AS", ship_class: "Taigei",
         nid: 184,
         HP: 39, HPmax: 55,
@@ -3808,7 +3808,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     185: {
         name: 'Ryuuhou',
-        nameJP: '龍鳳',
+        name_jp: '龍鳳',
         type: "CVL", ship_class: "Ryuuhou",
         nid: 185,
         HP: 39, HPmax: 57,
@@ -3829,7 +3829,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     186: {
         name: 'Tokitsukaze',
-        nameJP: '時津風',
+        name_jp: '時津風',
         type: "DD", ship_class: "Kagerou",
         nid: 186,
         HP: 16, HPmax: 34,
@@ -3850,7 +3850,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     187: {
         name: 'Akashi Kai',
-        nameJP: '明石改',
+        name_jp: '明石改',
         type: "AR", ship_class: "Akashi",
         nid: 187,
         HP: 45, HPmax: 58,
@@ -3871,7 +3871,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     188: {
         name: 'Tone Kai 2',
-        nameJP: '利根改二',
+        name_jp: '利根改二',
         type: "CAV", ship_class: "Tone",
         nid: 188,
         HP: 59, HPmax: 72,
@@ -3892,7 +3892,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     189: {
         name: 'Chikuma Kai 2',
-        nameJP: '筑摩改二',
+        name_jp: '筑摩改二',
         type: "CAV", ship_class: "Tone",
         nid: 189,
         HP: 58, HPmax: 72,
@@ -3913,7 +3913,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     190: {
         name: 'Hatsukaze',
-        nameJP: '初風',
+        name_jp: '初風',
         type: "DD", ship_class: "Kagerou",
         nid: 118,
         HP: 16, HPmax: 34,
@@ -3934,7 +3934,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     191: {
         name: 'I-19',
-        nameJP: '伊19',
+        name_jp: '伊19',
         type: "SS", ship_class: "I_15",
         nid: 123,
         HP: 14, HPmax: 19,
@@ -3955,7 +3955,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     192: {
         name: 'Nachi Kai 2',
-        nameJP: '那智改二',
+        name_jp: '那智改二',
         type: "CA", ship_class: "Myoukou",
         nid: 192,
         HP: 56, HPmax: 71,
@@ -3976,7 +3976,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     193: {
         name: 'Ashigara Kai 2',
-        nameJP: '足柄改二',
+        name_jp: '足柄改二',
         type: "CA", ship_class: "Myoukou",
         nid: 193,
         HP: 56, HPmax: 71,
@@ -3997,7 +3997,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     194: {
         name: 'Haguro Kai 2',
-        nameJP: '羽黒改二',
+        name_jp: '羽黒改二',
         type: "CA", ship_class: "Myoukou",
         nid: 194,
         HP: 57, HPmax: 71,
@@ -4018,7 +4018,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     195: {
         name: 'Ayanami Kai 2',
-        nameJP: '綾波改二',
+        name_jp: '綾波改二',
         type: "DD", ship_class: "Ayanami",
         nid: 195,
         HP: 32, HPmax: 54,
@@ -4039,7 +4039,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     196: {
         name: 'Hiryuu Kai 2',
-        nameJP: '飛龍改二',
+        name_jp: '飛龍改二',
         type: "CV", ship_class: "Hiryuu",
         nid: 196,
         HP: 67, HPmax: 89,
@@ -4060,7 +4060,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     197: {
         name: 'Souryuu Kai 2',
-        nameJP: '蒼龍改二',
+        name_jp: '蒼龍改二',
         type: "CV", ship_class: "Souryuu",
         nid: 197,
         HP: 67, HPmax: 89,
@@ -4081,7 +4081,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     198: {
         name: 'Arare Kai 2',
-        nameJP: '霰改二',
+        name_jp: '霰改二',
         type: "DD", ship_class: "Asashio",
         nid: 198,
         HP: 31, HPmax: 53,
@@ -4102,7 +4102,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     199: {
         name: 'Ooshio Kai 2',
-        nameJP: '大潮改二',
+        name_jp: '大潮改二',
         type: "DD", ship_class: "Asashio",
         nid: 199,
         HP: 31, HPmax: 53,
@@ -4123,7 +4123,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     200: {
         name: 'Abukuma Kai 2',
-        nameJP: '阿武隈改二',
+        name_jp: '阿武隈改二',
         type: "CL", ship_class: "Nagara",
         nid: 200,
         HP: 45, HPmax: 61,
@@ -4144,7 +4144,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     201: {
         name: 'Fubuki Kai',
-        nameJP: '吹雪改',
+        name_jp: '吹雪改',
         type: "DD", ship_class: "Hubuki",
         nid: 1301,
         HP: 30, HPmax: 49,
@@ -4165,7 +4165,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     202: {
         name: 'Shirayuki Kai',
-        nameJP: '白雪改',
+        name_jp: '白雪改',
         type: "DD", ship_class: "Hubuki",
         nid: 1302,
         HP: 30, HPmax: 49,
@@ -4186,7 +4186,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     203: {
         name: 'Hatsuyuki Kai',
-        nameJP: '初雪改',
+        name_jp: '初雪改',
         type: "DD", ship_class: "Hubuki",
         nid: 1303,
         HP: 30, HPmax: 49,
@@ -4207,7 +4207,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     204: {
         name: 'Miyuki Kai',
-        nameJP: '深雪改',
+        name_jp: '深雪改',
         type: "DD", ship_class: "Hubuki",
         nid: 1304,
         HP: 30, HPmax: 49,
@@ -4228,7 +4228,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     205: {
         name: 'Murakumo Kai',
-        nameJP: '叢雲改',
+        name_jp: '叢雲改',
         type: "DD", ship_class: "Hubuki",
         nid: 1305,
         HP: 30, HPmax: 49,
@@ -4249,7 +4249,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     206: {
         name: 'Isonami Kai',
-        nameJP: '磯波改',
+        name_jp: '磯波改',
         type: "DD", ship_class: "Hubuki",
         nid: 1306,
         HP: 30, HPmax: 49,
@@ -4270,7 +4270,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     207: {
         name: 'Ayanami Kai',
-        nameJP: '綾波改',
+        name_jp: '綾波改',
         type: "DD", ship_class: "Ayanami",
         nid: 1307,
         HP: 30, HPmax: 49,
@@ -4291,7 +4291,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     208: {
         name: 'Shikinami Kai',
-        nameJP: '敷波改',
+        name_jp: '敷波改',
         type: "DD", ship_class: "Ayanami",
         nid: 1308,
         HP: 30, HPmax: 49,
@@ -4312,7 +4312,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     209: {
         name: 'Kongou Kai',
-        nameJP: '金剛改',
+        name_jp: '金剛改',
         type: "FBB", ship_class: "Kongou",
         nid: 1309,
         fit_class: 1,
@@ -4334,7 +4334,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     210: {
         name: 'Hiei Kai',
-        nameJP: '比叡改',
+        name_jp: '比叡改',
         type: "FBB", ship_class: "Kongou",
         nid: 1310,
         fit_class: 1,
@@ -4356,7 +4356,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     211: {
         name: 'Haruna Kai',
-        nameJP: '榛名改',
+        name_jp: '榛名改',
         type: "FBB", ship_class: "Kongou",
         nid: 1311,
         fit_class: 1,
@@ -4378,7 +4378,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     212: {
         name: 'Kirishima Kai',
-        nameJP: '霧島改',
+        name_jp: '霧島改',
         type: "FBB", ship_class: "Kongou",
         nid: 1312,
         fit_class: 1,
@@ -4400,7 +4400,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     213: {
         name: 'Tenryuu Kai',
-        nameJP: '天龍改',
+        name_jp: '天龍改',
         type: "CL", ship_class: "Tenryuu",
         nid: 1313,
         HP: 40, HPmax: 54,
@@ -4421,7 +4421,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     214: {
         name: 'Tatsuta Kai',
-        nameJP: '龍田改',
+        name_jp: '龍田改',
         type: "CL", ship_class: "Tenryuu",
         nid: 1314,
         HP: 40, HPmax: 54,
@@ -4442,7 +4442,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     215: {
         name: 'Kuma Kai',
-        nameJP: '球磨改',
+        name_jp: '球磨改',
         type: "CL", ship_class: "Kuma",
         nid: 1315,
         HP: 42, HPmax: 59,
@@ -4463,7 +4463,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     216: {
         name: 'Tama Kai',
-        nameJP: '多摩改',
+        name_jp: '多摩改',
         type: "CL", ship_class: "Kuma",
         nid: 1316,
         HP: 42, HPmax: 59,
@@ -4484,7 +4484,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     217: {
         name: 'Kiso Kai',
-        nameJP: '木曾改',
+        name_jp: '木曾改',
         type: "CL", ship_class: "Kuma",
         nid: 1317,
         HP: 42, HPmax: 59,
@@ -4505,7 +4505,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     218: {
         name: 'Nagara Kai',
-        nameJP: '長良改',
+        name_jp: '長良改',
         type: "CL", ship_class: "Nagara",
         nid: 1318,
         HP: 43, HPmax: 59,
@@ -4526,7 +4526,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     219: {
         name: 'Isuzu Kai',
-        nameJP: '五十鈴改',
+        name_jp: '五十鈴改',
         type: "CL", ship_class: "Nagara",
         nid: 1319,
         HP: 37, HPmax: 59,
@@ -4547,7 +4547,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     220: {
         name: 'Yura Kai',
-        nameJP: '由良改',
+        name_jp: '由良改',
         type: "CL", ship_class: "Nagara",
         nid: 1320,
         HP: 43, HPmax: 59,
@@ -4568,7 +4568,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     221: {
         name: 'Natori Kai',
-        nameJP: '名取改',
+        name_jp: '名取改',
         type: "CL", ship_class: "Nagara",
         nid: 1321,
         HP: 43, HPmax: 59,
@@ -4589,7 +4589,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     222: {
         name: 'Sendai Kai',
-        nameJP: '川内改',
+        name_jp: '川内改',
         type: "CL", ship_class: "Sendai",
         nid: 1322,
         HP: 44, HPmax: 59,
@@ -4610,7 +4610,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     223: {
         name: 'Jintsuu Kai',
-        nameJP: '神通改',
+        name_jp: '神通改',
         type: "CL", ship_class: "Sendai",
         nid: 1323,
         HP: 44, HPmax: 59,
@@ -4631,7 +4631,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     224: {
         name: 'Naka Kai',
-        nameJP: '那珂改',
+        name_jp: '那珂改',
         type: "CL", ship_class: "Sendai",
         nid: 1324,
         HP: 44, HPmax: 59,
@@ -4652,7 +4652,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     225: {
         name: 'Kagerou Kai',
-        nameJP: '陽炎改',
+        name_jp: '陽炎改',
         type: "DD", ship_class: "Kagerou",
         nid: 1325,
         HP: 32, HPmax: 49,
@@ -4673,7 +4673,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     226: {
         name: 'Shiranui Kai',
-        nameJP: '不知火改',
+        name_jp: '不知火改',
         type: "DD", ship_class: "Kagerou",
         nid: 1326,
         HP: 32, HPmax: 49,
@@ -4694,7 +4694,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     227: {
         name: 'Kuroshio Kai',
-        nameJP: '黒潮改',
+        name_jp: '黒潮改',
         type: "DD", ship_class: "Kagerou",
         nid: 1327,
         HP: 32, HPmax: 49,
@@ -4715,7 +4715,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     228: {
         name: 'Yukikaze Kai',
-        nameJP: '雪風改',
+        name_jp: '雪風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1328,
         HP: 32, HPmax: 49,
@@ -4736,7 +4736,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     229: {
         name: 'Shimakaze Kai',
-        nameJP: '島風改',
+        name_jp: '島風改',
         type: "DD", ship_class: "Shimakaze",
         nid: 1329,
         HP: 36, HPmax: 59,
@@ -4757,7 +4757,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     230: {
         name: 'Oboro Kai',
-        nameJP: '朧改',
+        name_jp: '朧改',
         type: "DD", ship_class: "Ayanami",
         nid: 1330,
         HP: 30, HPmax: 49,
@@ -4778,7 +4778,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     231: {
         name: 'Akebono Kai',
-        nameJP: '曙改',
+        name_jp: '曙改',
         type: "DD", ship_class: "Ayanami",
         nid: 1331,
         HP: 30, HPmax: 49,
@@ -4799,7 +4799,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     232: {
         name: 'Sazanami Kai',
-        nameJP: '漣改',
+        name_jp: '漣改',
         type: "DD", ship_class: "Ayanami",
         nid: 1332,
         HP: 30, HPmax: 49,
@@ -4820,7 +4820,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     233: {
         name: 'Ushio Kai',
-        nameJP: '潮改',
+        name_jp: '潮改',
         type: "DD", ship_class: "Ayanami",
         nid: 1333,
         HP: 30, HPmax: 49,
@@ -4841,7 +4841,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     234: {
         name: 'Akatsuki Kai',
-        nameJP: '暁改',
+        name_jp: '暁改',
         type: "DD", ship_class: "Dairoku",
         nid: 1334,
         HP: 30, HPmax: 49,
@@ -4862,7 +4862,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     235: {
         name: 'Hibiki Kai',
-        nameJP: '響改',
+        name_jp: '響改',
         type: "DD", ship_class: "Dairoku",
         nid: 1335,
         HP: 30, HPmax: 49,
@@ -4883,7 +4883,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     236: {
         name: 'Ikazuchi Kai',
-        nameJP: '雷改',
+        name_jp: '雷改',
         type: "DD", ship_class: "Dairoku",
         nid: 1336,
         HP: 30, HPmax: 49,
@@ -4904,7 +4904,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     237: {
         name: 'Inazuma Kai',
-        nameJP: '電改',
+        name_jp: '電改',
         type: "DD", ship_class: "Dairoku",
         nid: 1337,
         HP: 30, HPmax: 49,
@@ -4925,7 +4925,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     238: {
         name: 'Hatsuharu Kai',
-        nameJP: '初春改',
+        name_jp: '初春改',
         type: "DD", ship_class: "Hatsuharu",
         nid: 1338,
         HP: 30, HPmax: 48,
@@ -4946,7 +4946,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     239: {
         name: 'Nenohi Kai',
-        nameJP: '子日改',
+        name_jp: '子日改',
         type: "DD", ship_class: "Hatsuharu",
         nid: 1339,
         HP: 30, HPmax: 48,
@@ -4967,7 +4967,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     240: {
         name: 'Wakaba Kai',
-        nameJP: '若葉改',
+        name_jp: '若葉改',
         type: "DD", ship_class: "Hatsuharu",
         nid: 1340,
         HP: 30, HPmax: 48,
@@ -4988,7 +4988,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     241: {
         name: 'Hatsushimo Kai',
-        nameJP: '初霜改',
+        name_jp: '初霜改',
         type: "DD", ship_class: "Hatsuharu",
         nid: 1341,
         HP: 30, HPmax: 48,
@@ -5009,7 +5009,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     242: {
         name: 'Shiratsuyu Kai',
-        nameJP: '白露改',
+        name_jp: '白露改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1342,
         HP: 30, HPmax: 48,
@@ -5030,7 +5030,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     243: {
         name: 'Shigure Kai',
-        nameJP: '時雨改',
+        name_jp: '時雨改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1343,
         HP: 30, HPmax: 48,
@@ -5051,7 +5051,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     244: {
         name: 'Murasame Kai',
-        nameJP: '村雨改',
+        name_jp: '村雨改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1344,
         HP: 30, HPmax: 48,
@@ -5072,7 +5072,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     245: {
         name: 'Yuudachi Kai',
-        nameJP: '夕立改',
+        name_jp: '夕立改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1345,
         HP: 30, HPmax: 48,
@@ -5093,7 +5093,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     246: {
         name: 'Samidare Kai',
-        nameJP: '五月雨改',
+        name_jp: '五月雨改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1346,
         HP: 30, HPmax: 48,
@@ -5114,7 +5114,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     247: {
         name: 'Suzukaze Kai',
-        nameJP: '涼風改',
+        name_jp: '涼風改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1347,
         HP: 30, HPmax: 48,
@@ -5135,7 +5135,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     248: {
         name: 'Asashio Kai',
-        nameJP: '朝潮改',
+        name_jp: '朝潮改',
         type: "DD", ship_class: "Asashio",
         nid: 1348,
         HP: 31, HPmax: 49,
@@ -5156,7 +5156,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     249: {
         name: 'Ooshio Kai',
-        nameJP: '大潮改',
+        name_jp: '大潮改',
         type: "DD", ship_class: "Asashio",
         nid: 1349,
         HP: 31, HPmax: 49,
@@ -5177,7 +5177,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     250: {
         name: 'Michishio Kai',
-        nameJP: '満潮改',
+        name_jp: '満潮改',
         type: "DD", ship_class: "Asashio",
         nid: 1350,
         HP: 31, HPmax: 49,
@@ -5198,7 +5198,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     251: {
         name: 'Arashio Kai',
-        nameJP: '荒潮改',
+        name_jp: '荒潮改',
         type: "DD", ship_class: "Asashio",
         nid: 1351,
         HP: 31, HPmax: 49,
@@ -5219,7 +5219,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     252: {
         name: 'Arare Kai',
-        nameJP: '霰改',
+        name_jp: '霰改',
         type: "DD", ship_class: "Asashio",
         nid: 1352,
         HP: 31, HPmax: 49,
@@ -5240,7 +5240,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     253: {
         name: 'Kasumi Kai',
-        nameJP: '霞改',
+        name_jp: '霞改',
         type: "DD", ship_class: "Asashio",
         nid: 1353,
         HP: 31, HPmax: 49,
@@ -5261,7 +5261,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     254: {
         name: 'Mutsuki Kai',
-        nameJP: '睦月改',
+        name_jp: '睦月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1354,
         HP: 24, HPmax: 39,
@@ -5282,7 +5282,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     255: {
         name: 'Kisaragi Kai',
-        nameJP: '如月改',
+        name_jp: '如月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1355,
         HP: 24, HPmax: 39,
@@ -5303,7 +5303,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     256: {
         name: 'Satsuki Kai',
-        nameJP: '皐月改',
+        name_jp: '皐月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1356,
         HP: 24, HPmax: 39,
@@ -5324,7 +5324,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     257: {
         name: 'Fumizuki Kai',
-        nameJP: '文月改',
+        name_jp: '文月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1357,
         HP: 24, HPmax: 39,
@@ -5345,7 +5345,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     258: {
         name: 'Nagatsuki Kai',
-        nameJP: '長月改',
+        name_jp: '長月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1358,
         HP: 24, HPmax: 39,
@@ -5366,7 +5366,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     259: {
         name: 'Kikuzuki Kai',
-        nameJP: '菊月改',
+        name_jp: '菊月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1359,
         HP: 24, HPmax: 39,
@@ -5387,7 +5387,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     260: {
         name: 'Mikazuki Kai',
-        nameJP: '三日月改',
+        name_jp: '三日月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1360,
         HP: 24, HPmax: 39,
@@ -5408,7 +5408,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     261: {
         name: 'Mochizuki Kai',
-        nameJP: '望月改',
+        name_jp: '望月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1361,
         HP: 24, HPmax: 39,
@@ -5429,7 +5429,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     262: {
         name: 'Furutaka Kai',
-        nameJP: '古鷹改',
+        name_jp: '古鷹改',
         type: "CA", ship_class: "Hurutaka",
         nid: 1362,
         HP: 48, HPmax: 65,
@@ -5450,7 +5450,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     263: {
         name: 'Kako Kai',
-        nameJP: '加古改',
+        name_jp: '加古改',
         type: "CA", ship_class: "Hurutaka",
         nid: 1363,
         HP: 48, HPmax: 65,
@@ -5471,7 +5471,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     264: {
         name: 'Aoba Kai',
-        nameJP: '青葉改',
+        name_jp: '青葉改',
         type: "CA", ship_class: "Aoba",
         nid: 1364,
         HP: 49, HPmax: 65,
@@ -5492,7 +5492,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     265: {
         name: 'Myoukou Kai',
-        nameJP: '妙高改',
+        name_jp: '妙高改',
         type: "CA", ship_class: "Myoukou",
         nid: 1365,
         HP: 55, HPmax: 69,
@@ -5513,7 +5513,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     266: {
         name: 'Nachi Kai',
-        nameJP: '那智改',
+        name_jp: '那智改',
         type: "CA", ship_class: "Myoukou",
         nid: 1366,
         HP: 55, HPmax: 69,
@@ -5534,7 +5534,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     267: {
         name: 'Ashigara Kai',
-        nameJP: '足柄改',
+        name_jp: '足柄改',
         type: "CA", ship_class: "Myoukou",
         nid: 1367,
         HP: 55, HPmax: 69,
@@ -5555,7 +5555,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     268: {
         name: 'Haguro Kai',
-        nameJP: '羽黒改',
+        name_jp: '羽黒改',
         type: "CA", ship_class: "Myoukou",
         nid: 1368,
         HP: 55, HPmax: 69,
@@ -5576,7 +5576,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     269: {
         name: 'Takao Kai',
-        nameJP: '高雄改',
+        name_jp: '高雄改',
         type: "CA", ship_class: "Takao",
         nid: 1369,
         HP: 57, HPmax: 69,
@@ -5597,7 +5597,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     270: {
         name: 'Atago Kai',
-        nameJP: '愛宕改',
+        name_jp: '愛宕改',
         type: "CA", ship_class: "Takao",
         nid: 1370,
         HP: 57, HPmax: 69,
@@ -5618,7 +5618,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     271: {
         name: 'Maya Kai',
-        nameJP: '摩耶改',
+        name_jp: '摩耶改',
         type: "CA", ship_class: "Takao",
         nid: 1371,
         HP: 55, HPmax: 69,
@@ -5639,7 +5639,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     272: {
         name: 'Choukai Kai',
-        nameJP: '鳥海改',
+        name_jp: '鳥海改',
         type: "CA", ship_class: "Takao",
         nid: 1372,
         HP: 57, HPmax: 69,
@@ -5660,7 +5660,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     273: {
         name: 'Tone Kai',
-        nameJP: '利根改',
+        name_jp: '利根改',
         type: "CA", ship_class: "Tone",
         nid: 1373,
         HP: 56, HPmax: 69,
@@ -5681,7 +5681,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     274: {
         name: 'Chikuma Kai',
-        nameJP: '筑摩改',
+        name_jp: '筑摩改',
         type: "CA", ship_class: "Tone",
         nid: 1374,
         HP: 56, HPmax: 69,
@@ -5702,7 +5702,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     275: {
         name: 'Nagato Kai',
-        nameJP: '長門改',
+        name_jp: '長門改',
         type: "BB", ship_class: "Nagato",
         nid: 1375,
         fit_class: 8,
@@ -5724,7 +5724,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     276: {
         name: 'Mutsu Kai',
-        nameJP: '陸奥改',
+        name_jp: '陸奥改',
         type: "BB", ship_class: "Nagato",
         nid: 1376,
         fit_class: 8,
@@ -5746,7 +5746,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     277: {
         name: 'Akagi Kai',
-        nameJP: '赤城改',
+        name_jp: '赤城改',
         type: "CV", ship_class: "Akagi",
         nid: 1377,
         HP: 77, HPmax: 92,
@@ -5767,7 +5767,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     278: {
         name: 'Kaga Kai',
-        nameJP: '加賀改',
+        name_jp: '加賀改',
         type: "CV", ship_class: "Kaga",
         nid: 1378,
         HP: 79, HPmax: 92,
@@ -5788,7 +5788,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     279: {
         name: 'Souryuu Kai',
-        nameJP: '蒼龍改',
+        name_jp: '蒼龍改',
         type: "CV", ship_class: "Souryuu",
         nid: 1379,
         HP: 65, HPmax: 89,
@@ -5809,7 +5809,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     280: {
         name: 'Hiryuu Kai',
-        nameJP: '飛龍改',
+        name_jp: '飛龍改',
         type: "CV", ship_class: "Hiryuu",
         nid: 1380,
         HP: 65, HPmax: 89,
@@ -5830,7 +5830,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     281: {
         name: 'Ryuujou Kai',
-        nameJP: '龍驤改',
+        name_jp: '龍驤改',
         type: "CVL", ship_class: "Ryuujou",
         nid: 1381,
         HP: 45, HPmax: 69,
@@ -5851,7 +5851,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     282: {
         name: 'Shouhou Kai',
-        nameJP: '祥鳳改',
+        name_jp: '祥鳳改',
         type: "CVL", ship_class: "Syouhou",
         nid: 1382,
         HP: 45, HPmax: 69,
@@ -5872,7 +5872,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     283: {
         name: 'Hiyou Kai',
-        nameJP: '飛鷹改',
+        name_jp: '飛鷹改',
         type: "CVL", ship_class: "Hiyou",
         nid: 1383,
         HP: 50, HPmax: 79,
@@ -5893,7 +5893,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     284: {
         name: 'Junyou Kai',
-        nameJP: '隼鷹改',
+        name_jp: '隼鷹改',
         type: "CVL", ship_class: "Hiyou",
         nid: 1384,
         HP: 50, HPmax: 79,
@@ -5914,7 +5914,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     285: {
         name: 'Houshou Kai',
-        nameJP: '鳳翔改',
+        name_jp: '鳳翔改',
         type: "CVL", ship_class: "Houshou",
         nid: 1385,
         HP: 40, HPmax: 59,
@@ -5935,7 +5935,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     286: {
         name: 'Fusou Kai',
-        nameJP: '扶桑改',
+        name_jp: '扶桑改',
         type: "BBV", ship_class: "Husou",
         nid: 1386,
         fit_class: 6,
@@ -5957,7 +5957,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     287: {
         name: 'Yamashiro Kai',
-        nameJP: '山城改',
+        name_jp: '山城改',
         type: "BBV", ship_class: "Husou",
         nid: 1387,
         fit_class: 6,
@@ -5979,7 +5979,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     288: {
         name: 'Shoukaku Kai',
-        nameJP: '翔鶴改',
+        name_jp: '翔鶴改',
         type: "CV", ship_class: "Shoukaku",
         nid: 1388,
         HP: 75, HPmax: 90,
@@ -6000,7 +6000,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     289: {
         name: 'Kinu Kai',
-        nameJP: '鬼怒改',
+        name_jp: '鬼怒改',
         type: "CL", ship_class: "Nagara",
         nid: 1389,
         HP: 41, HPmax: 59,
@@ -6021,7 +6021,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     290: {
         name: 'Abukuma Kai',
-        nameJP: '阿武隈改',
+        name_jp: '阿武隈改',
         type: "CL", ship_class: "Nagara",
         nid: 1390,
         HP: 42, HPmax: 59,
@@ -6042,7 +6042,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     291: {
         name: 'ChitoseCVL Kai',
-        nameJP: '千歳航改',
+        name_jp: '千歳航改',
         type: "CVL", ship_class: "Chitose",
         nid: 1391,
         HP: 57, HPmax: 79,
@@ -6063,7 +6063,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     292: {
         name: 'ChiyodaCVL Kai',
-        nameJP: '千代田航改',
+        name_jp: '千代田航改',
         type: "CVL", ship_class: "Chitose",
         nid: 1392,
         HP: 57, HPmax: 79,
@@ -6084,7 +6084,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     293: {
         name: 'Yuubari Kai',
-        nameJP: '夕張改',
+        name_jp: '夕張改',
         type: "CL", ship_class: "Yuubari",
         nid: 1393,
         HP: 36, HPmax: 49,
@@ -6105,7 +6105,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     294: {
         name: 'Maikaze Kai',
-        nameJP: '舞風改',
+        name_jp: '舞風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1394,
         HP: 32, HPmax: 49,
@@ -6126,7 +6126,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     295: {
         name: 'Kinugasa Kai',
-        nameJP: '衣笠改',
+        name_jp: '衣笠改',
         type: "CA", ship_class: "Aoba",
         nid: 1395,
         HP: 49, HPmax: 65,
@@ -6147,7 +6147,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     296: {
         name: 'ChitoseCVL Kai 2',
-        nameJP: '千歳航改二',
+        name_jp: '千歳航改二',
         type: "CVL", ship_class: "Chitose",
         nid: 121,
         HP: 58, HPmax: 79,
@@ -6168,7 +6168,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     297: {
         name: 'ChiyodaCVL Kai 2',
-        nameJP: '千代田航改二',
+        name_jp: '千代田航改二',
         type: "CVL", ship_class: "Chitose",
         nid: 122,
         HP: 58, HPmax: 79,
@@ -6189,7 +6189,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     299: {
         name: 'Scamp',
-        nameJP: 'Scamp',
+        name_jp: 'Scamp',
         type: "SS", ship_class: "Gato",
         nid: 493,
         HP: 13, HPmax: 18,
@@ -6210,7 +6210,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     300: {
         name: 'Hatsukaze Kai',
-        nameJP: '初風改',
+        name_jp: '初風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1396,
         HP: 32, HPmax: 49,
@@ -6231,7 +6231,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     301: {
         name: 'Akigumo Kai',
-        nameJP: '秋雲改',
+        name_jp: '秋雲改',
         type: "DD", ship_class: "Kagerou",
         nid: 1397,
         HP: 32, HPmax: 49,
@@ -6252,7 +6252,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     302: {
         name: 'Yuugumo Kai',
-        nameJP: '夕雲改',
+        name_jp: '夕雲改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1398,
         HP: 32, HPmax: 49,
@@ -6273,7 +6273,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     303: {
         name: 'Makigumo Kai',
-        nameJP: '巻雲改',
+        name_jp: '巻雲改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1399,
         HP: 32, HPmax: 49,
@@ -6294,7 +6294,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     304: {
         name: 'Naganami Kai',
-        nameJP: '長波改',
+        name_jp: '長波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1400,
         HP: 32, HPmax: 49,
@@ -6315,7 +6315,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     305: {
         name: 'Agano Kai',
-        nameJP: '阿賀野改',
+        name_jp: '阿賀野改',
         type: "CL", ship_class: "Agano",
         nid: 1401,
         HP: 45, HPmax: 62,
@@ -6336,7 +6336,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     306: {
         name: 'Noshiro Kai',
-        nameJP: '能代改',
+        name_jp: '能代改',
         type: "CL", ship_class: "Agano",
         nid: 1402,
         HP: 45, HPmax: 62,
@@ -6357,7 +6357,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     307: {
         name: 'Yahagi Kai',
-        nameJP: '矢矧改',
+        name_jp: '矢矧改',
         type: "CL", ship_class: "Agano",
         nid: 1403,
         HP: 47, HPmax: 63,
@@ -6378,7 +6378,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     308: {
         name: 'Yayoi Kai',
-        nameJP: '弥生改',
+        name_jp: '弥生改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1404,
         HP: 24, HPmax: 39,
@@ -6399,7 +6399,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     309: {
         name: 'Uzuki Kai',
-        nameJP: '卯月改',
+        name_jp: '卯月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1405,
         HP: 24, HPmax: 39,
@@ -6420,7 +6420,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     310: {
         name: 'Z1 Kai',
-        nameJP: 'Z1改',
+        name_jp: 'Z1改',
         type: "DD", ship_class: "Z1",
         nid: 1406,
         HP: 33, HPmax: 59,
@@ -6441,7 +6441,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     311: {
         name: 'Z3 Kai',
-        nameJP: 'Z3改',
+        name_jp: 'Z3改',
         type: "DD", ship_class: "Z1",
         nid: 1407,
         HP: 33, HPmax: 59,
@@ -6462,7 +6462,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     312: {
         name: 'Hamakaze Kai',
-        nameJP: '浜風改',
+        name_jp: '浜風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1408,
         HP: 32, HPmax: 49,
@@ -6483,7 +6483,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     313: {
         name: 'Tanikaze Kai',
-        nameJP: '谷風改',
+        name_jp: '谷風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1409,
         HP: 32, HPmax: 49,
@@ -6504,7 +6504,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     314: {
         name: 'Sakawa Kai',
-        nameJP: '酒匂改',
+        name_jp: '酒匂改',
         type: "CL", ship_class: "Agano",
         nid: 1410,
         HP: 46, HPmax: 62,
@@ -6525,7 +6525,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     316: {
         name: 'Amatsukaze Kai',
-        nameJP: '天津風改',
+        name_jp: '天津風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1411,
         HP: 34, HPmax: 54,
@@ -6546,7 +6546,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     317: {
         name: 'Urakaze Kai',
-        nameJP: '浦風改',
+        name_jp: '浦風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1412,
         HP: 32, HPmax: 49,
@@ -6567,7 +6567,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     318: {
         name: 'Ryuuhou Kai',
-        nameJP: '龍鳳改',
+        name_jp: '龍鳳改',
         type: "CVL", ship_class: "Ryuuhou",
         nid: 190,
         HP: 48, HPmax: 70,
@@ -6588,7 +6588,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     319: {
         name: 'Myoukou Kai 2',
-        nameJP: '妙高改二',
+        name_jp: '妙高改二',
         type: "CA", ship_class: "Myoukou",
         nid: 191,
         HP: 56, HPmax: 71,
@@ -6609,7 +6609,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     320: {
         name: 'Isokaze Kai',
-        nameJP: '磯風改',
+        name_jp: '磯風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1413,
         HP: 33, HPmax: 49,
@@ -6630,7 +6630,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     321: {
         name: 'Ooyodo Kai',
-        nameJP: '大淀改',
+        name_jp: '大淀改',
         type: "CL", ship_class: "Ooyodo",
         nid: 1414,
         HP: 47, HPmax: 64,
@@ -6651,7 +6651,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     322: {
         name: 'Tokitsukaze Kai',
-        nameJP: '時津風改',
+        name_jp: '時津風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1415,
         HP: 32, HPmax: 49,
@@ -6672,7 +6672,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     323: {
         name: 'Harusame Kai',
-        nameJP: '春雨改',
+        name_jp: '春雨改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1416,
         HP: 30, HPmax: 49,
@@ -6693,7 +6693,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     324: {
         name: 'Hayashimo Kai',
-        nameJP: '早霜改',
+        name_jp: '早霜改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1417,
         HP: 32, HPmax: 49,
@@ -6714,7 +6714,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     325: {
         name: 'Kiyoshimo Kai',
-        nameJP: '清霜改',
+        name_jp: '清霜改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1418,
         HP: 32, HPmax: 49,
@@ -6735,7 +6735,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     326: {
         name: 'Hatsuharu Kai 2',
-        nameJP: '初春改二',
+        name_jp: '初春改二',
         type: "DD", ship_class: "Hatsuharu",
         nid: 204,
         HP: 31, HPmax: 52,
@@ -6756,7 +6756,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     327: {
         name: 'Asagumo Kai',
-        nameJP: '朝雲改',
+        name_jp: '朝雲改',
         type: "DD", ship_class: "Asashio",
         nid: 1419,
         HP: 31, HPmax: 49,
@@ -6777,7 +6777,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     328: {
         name: 'Yamagumo Kai',
-        nameJP: '山雲改',
+        name_jp: '山雲改',
         type: "DD", ship_class: "Asashio",
         nid: 1420,
         HP: 31, HPmax: 49,
@@ -6798,7 +6798,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     329: {
         name: 'Nowaki Kai',
-        nameJP: '野分改',
+        name_jp: '野分改',
         type: "DD", ship_class: "Kagerou",
         nid: 1421,
         HP: 32, HPmax: 49,
@@ -6819,7 +6819,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     330: {
         name: 'Akizuki Kai',
-        nameJP: '秋月改',
+        name_jp: '秋月改',
         type: "DD", ship_class: "Akizuki",
         nid: 1422,
         HP: 37, HPmax: 57,
@@ -6841,7 +6841,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     331: {
         name: 'Amagi',
-        nameJP: '天城',
+        name_jp: '天城',
         type: "CV", ship_class: "Unryuu",
         nid: 202,
         HP: 48, HPmax: 79,
@@ -6862,7 +6862,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     332: {
         name: 'Katsuragi',
-        nameJP: '葛城',
+        name_jp: '葛城',
         type: "CV", ship_class: "Unryuu",
         nid: 203,
         HP: 48, HPmax: 79,
@@ -6883,7 +6883,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     334: {
         name: 'U-511 Kai',
-        nameJP: 'U-511改',
+        name_jp: 'U-511改',
         type: "SS", ship_class: "IXC",
         nid: 1504,
         HP: 13, HPmax: 18,
@@ -6904,7 +6904,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     343: {
         name: 'Katori Kai',
-        nameJP: '香取改',
+        name_jp: '香取改',
         type: "CT", ship_class: "Katori",
         nid: 1423,
         HP: 40, HPmax: 54,
@@ -6925,7 +6925,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     344: {
         name: 'Asashimo Kai',
-        nameJP: '朝霜改',
+        name_jp: '朝霜改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1424,
         HP: 33, HPmax: 49,
@@ -6946,7 +6946,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     345: {
         name: 'Takanami Kai',
-        nameJP: '高波改',
+        name_jp: '高波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1425,
         HP: 32, HPmax: 49,
@@ -6967,7 +6967,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     346: {
         name: 'Teruzuki Kai',
-        nameJP: '照月改',
+        name_jp: '照月改',
         type: "DD", ship_class: "Akizuki",
         nid: 1426,
         HP: 37, HPmax: 57,
@@ -6989,7 +6989,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     347: {
         name: 'Libeccio Kai',
-        nameJP: 'Libeccio改',
+        name_jp: 'Libeccio改',
         type: "DD", ship_class: "Maestrale",
         nid: 1427,
         HP: 29, HPmax: 46,
@@ -7010,7 +7010,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     348: {
         name: 'Mizuho Kai',
-        nameJP: '瑞穂改',
+        name_jp: '瑞穂改',
         type: "AV", ship_class: "Mizuho",
         nid: 1428,
         HP: 42, HPmax: 62,
@@ -7031,7 +7031,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     349: {
         name: 'Kazagumo Kai',
-        nameJP: '風雲改',
+        name_jp: '風雲改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1429,
         HP: 32, HPmax: 49,
@@ -7052,7 +7052,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     350: {
         name: 'Umikaze Kai',
-        nameJP: '海風改',
+        name_jp: '海風改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1430,
         HP: 30, HPmax: 48,
@@ -7073,7 +7073,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     351: {
         name: 'Kawakaze Kai',
-        nameJP: '江風改',
+        name_jp: '江風改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1431,
         HP: 30, HPmax: 48,
@@ -7094,7 +7094,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     352: {
         name: 'Hayasui Kai',
-        nameJP: '速吸改',
+        name_jp: '速吸改',
         type: "AO", ship_class: "Hayasui",
         nid: 1432,
         has_potential_air_attack: true,
@@ -7116,7 +7116,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     353: {
         name: 'GrafZeppelin Kai',
-        nameJP: 'Graf Zeppelin改',
+        name_jp: 'Graf Zeppelin改',
         type: "CV", ship_class: "Graf",
         CVs_night_attack_type: CVsNightAttackType.GrafModel,
         nid: 1433,
@@ -7138,7 +7138,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     354: {
         name: 'Arashi Kai',
-        nameJP: '嵐改',
+        name_jp: '嵐改',
         type: "DD", ship_class: "Kagerou",
         nid: 1434,
         HP: 32, HPmax: 49,
@@ -7159,7 +7159,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     355: {
         name: 'Hagikaze Kai',
-        nameJP: '萩風改',
+        name_jp: '萩風改',
         type: "DD", ship_class: "Kagerou",
         nid: 1435,
         HP: 32, HPmax: 49,
@@ -7180,7 +7180,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     356: {
         name: 'Kashima Kai',
-        nameJP: '鹿島改',
+        name_jp: '鹿島改',
         type: "CT", ship_class: "Katori",
         nid: 1436,
         HP: 40, HPmax: 54,
@@ -7201,7 +7201,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     357: {
         name: 'Hatsuzuki Kai',
-        nameJP: '初月改',
+        name_jp: '初月改',
         type: "DD", ship_class: "Akizuki",
         nid: 1437,
         HP: 37, HPmax: 57,
@@ -7223,7 +7223,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     358: {
         name: 'Zara Kai',
-        nameJP: 'Zara改',
+        name_jp: 'Zara改',
         type: "CA", ship_class: "Zara",
         nid: 1438,
         HP: 56, HPmax: 68,
@@ -7244,7 +7244,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     359: {
         name: 'Okinami Kai',
-        nameJP: '沖波改',
+        name_jp: '沖波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1439,
         HP: 32, HPmax: 49,
@@ -7265,7 +7265,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     360: {
         name: 'Iowa Kai',
-        nameJP: 'Iowa改',
+        name_jp: 'Iowa改',
         type: "FBB", ship_class: "Iowa",
         nid: 1440,
         fit_class: 4,
@@ -7287,7 +7287,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     361: {
         name: 'Pola Kai',
-        nameJP: 'Pola改',
+        name_jp: 'Pola改',
         type: "CA", ship_class: "Zara",
         nid: 1441,
         HP: 56, HPmax: 68,
@@ -7308,7 +7308,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     362: {
         name: 'Oyashio Kai',
-        nameJP: '親潮改',
+        name_jp: '親潮改',
         type: "DD", ship_class: "Kagerou",
         nid: 1442,
         HP: 32, HPmax: 49,
@@ -7329,7 +7329,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     363: {
         name: 'Harukaze Kai',
-        nameJP: '春風改',
+        name_jp: '春風改',
         type: "DD", ship_class: "Kamikaze",
         nid: 1443,
         HP: 23, HPmax: 38,
@@ -7350,7 +7350,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     364: {
         name: 'Warspite Kai',
-        nameJP: 'Warspite改',
+        name_jp: 'Warspite改',
         type: "BB", ship_class: "Queen_Elizabeth",
         nid: 1444,
         fit_class: 5,
@@ -7372,7 +7372,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     365: {
         name: 'Aquila Kai',
-        nameJP: 'Aquila改',
+        name_jp: 'Aquila改',
         type: "CV", ship_class: "Aquila",
         nid: 1445,
         HP: 48, HPmax: 78,
@@ -7393,7 +7393,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     366: {
         name: 'Minazuki Kai',
-        nameJP: '水無月改',
+        name_jp: '水無月改',
         type: "DD", ship_class: "Mutsuki",
         nid: 1446,
         HP: 24, HPmax: 39,
@@ -7414,7 +7414,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     367: {
         name: 'I-26 Kai',
-        nameJP: '伊26改',
+        name_jp: '伊26改',
         type: "SSV", ship_class: "I_15",
         nid: 1447,
         HP: 18, HPmax: 24,
@@ -7435,7 +7435,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     368: {
         name: 'Uranami Kai',
-        nameJP: '浦波改',
+        name_jp: '浦波改',
         type: "DD", ship_class: "Hubuki",
         nid: 1448,
         HP: 30, HPmax: 49,
@@ -7456,7 +7456,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     369: {
         name: 'Yamakaze Kai',
-        nameJP: '山風改',
+        name_jp: '山風改',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 1449,
         HP: 30, HPmax: 48,
@@ -7477,7 +7477,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     370: {
         name: 'Asakaze Kai',
-        nameJP: '朝風改',
+        name_jp: '朝風改',
         type: "DD", ship_class: "Kamikaze",
         nid: 1450,
         HP: 23, HPmax: 38,
@@ -7498,7 +7498,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     371: {
         name: 'Matsukaze Kai',
-        nameJP: '松風改',
+        name_jp: '松風改',
         type: "DD", ship_class: "Kamikaze",
         nid: 1451,
         HP: 23, HPmax: 38,
@@ -7519,7 +7519,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     372: {
         name: 'Commandant Teste Kai',
-        nameJP: 'Commandant Teste改',
+        name_jp: 'Commandant Teste改',
         type: "AV", ship_class: "Commandant_Teste",
         nid: 1452,
         HP: 43, HPmax: 64,
@@ -7540,7 +7540,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     373: {
         name: 'Fujinami Kai',
-        nameJP: '藤波改',
+        name_jp: '藤波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1453,
         HP: 32, HPmax: 49,
@@ -7561,7 +7561,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     374: {
         name: 'I-13 Kai',
-        nameJP: '伊13改',
+        name_jp: '伊13改',
         type: "SSV", ship_class: "I_13",
         nid: 1454,
         HP: 21, HPmax: 36,
@@ -7582,7 +7582,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     375: {
         name: 'I-14 Kai',
-        nameJP: '伊14改',
+        name_jp: '伊14改',
         type: "SSV", ship_class: "I_13",
         nid: 1455,
         HP: 22, HPmax: 37,
@@ -7603,7 +7603,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     376: {
         name: 'Shimushu Kai',
-        nameJP: '占守改',
+        name_jp: '占守改',
         type: "DE", ship_class: "Shimushu",
         nid: 1456,
         HP: 17, HPmax: 28,
@@ -7624,7 +7624,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     377: {
         name: 'Kunashiri Kai',
-        nameJP: '国後改',
+        name_jp: '国後改',
         type: "DE", ship_class: "Shimushu",
         nid: 1457,
         HP: 17, HPmax: 28,
@@ -7645,7 +7645,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     378: {
         name: 'Hachijou Kai',
-        nameJP: '八丈改',
+        name_jp: '八丈改',
         type: "DE", ship_class: "Shimushu",
         nid: 1458,
         HP: 17, HPmax: 28,
@@ -7666,7 +7666,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     379: {
         name: 'Ishigaki Kai',
-        nameJP: '石垣改',
+        name_jp: '石垣改',
         type: "DE", ship_class: "Shimushu",
         nid: 1459,
         HP: 17, HPmax: 28,
@@ -7687,7 +7687,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     380: {
         name: 'Taiyou Kai',
-        nameJP: '大鷹改',
+        name_jp: '大鷹改',
         type: "CVL", ship_class: "Taiyou",
         nid: 1460,
         has_advantage_OASW_CVs: true,
@@ -7709,7 +7709,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     381: {
         name: 'Shinyou Kai',
-        nameJP: '神鷹改',
+        name_jp: '神鷹改',
         type: "CVL", ship_class: "Taiyou",
         nid: 1461,
         has_advantage_OASW_CVs: true,
@@ -7731,7 +7731,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     382: {
         name: 'Unyou Kai',
-        nameJP: '雲鷹改',
+        name_jp: '雲鷹改',
         type: "CVL", ship_class: "Taiyou",
         nid: 1462,
         has_advantage_OASW_CVs: true,
@@ -7753,7 +7753,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     383: {
         name: 'Etorofu Kai',
-        nameJP: '択捉改',
+        name_jp: '択捉改',
         type: "DE", ship_class: "Etorohu",
         nid: 1463,
         HP: 17, HPmax: 28,
@@ -7774,7 +7774,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     384: {
         name: 'Matsuwa Kai',
-        nameJP: '松輪改',
+        name_jp: '松輪改',
         type: "DE", ship_class: "Etorohu",
         nid: 1464,
         HP: 17, HPmax: 28,
@@ -7795,7 +7795,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     385: {
         name: 'Sado Kai',
-        nameJP: '佐渡改',
+        name_jp: '佐渡改',
         type: "DE", ship_class: "Etorohu",
         nid: 1465,
         HP: 17, HPmax: 28,
@@ -7816,7 +7816,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     386: {
         name: 'Tsushima Kai',
-        nameJP: '対馬改',
+        name_jp: '対馬改',
         type: "DE", ship_class: "Etorohu",
         nid: 1466,
         HP: 17, HPmax: 28,
@@ -7837,7 +7837,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     387: {
         name: 'Hatakaze Kai',
-        nameJP: '旗風改',
+        name_jp: '旗風改',
         type: "DD", ship_class: "Kamikaze",
         nid: 1467,
         HP: 23, HPmax: 38,
@@ -7858,7 +7858,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     390: {
         name: 'Amagiri Kai',
-        nameJP: '天霧改',
+        name_jp: '天霧改',
         type: "DD", ship_class: "Ayanami",
         nid: 1470,
         HP: 30, HPmax: 50,
@@ -7879,7 +7879,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     391: {
         name: 'Sagiri Kai',
-        nameJP: '狭霧改',
+        name_jp: '狭霧改',
         type: "DD", ship_class: "Ayanami",
         nid: 1471,
         HP: 30, HPmax: 49,
@@ -7900,7 +7900,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     392: {
         name: 'Richelieu Kai',
-        nameJP: 'Richelieu改',
+        name_jp: 'Richelieu改',
         type: "FBB", ship_class: "Richelieu",
         nid: 1472,
         fit_class: 12,
@@ -7923,7 +7923,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     393: {
         name: 'Ark Royal Kai',
-        nameJP: 'Ark Royal改',
+        name_jp: 'Ark Royal改',
         type: "CV", ship_class: "Ark_Royal",
         nid: 1473,
         HP: 71, HPmax: 90,
@@ -7944,7 +7944,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     394: {
         name: 'Jervis Kai',
-        nameJP: 'Jervis改',
+        name_jp: 'Jervis改',
         type: "DD", ship_class: "J",
         nid: 1474,
         can_unconditional_OASW: true,
@@ -7966,7 +7966,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     395: {
         name: 'Tashkent Kai',
-        nameJP: 'Ташкент改',
+        name_jp: 'Ташкент改',
         type: "DD", ship_class: "Ташкент",
         nid: 1475,
         HP: 39, HPmax: 59,
@@ -7987,7 +7987,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     396: {
         name: 'Gambier Bay Kai',
-        nameJP: 'Gambier Bay改',
+        name_jp: 'Gambier Bay改',
         type: "CVL", ship_class: "Casablanca",
         nid: 1476,
         HP: 38, HPmax: 48,
@@ -8008,7 +8008,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     397: {
         name: 'Intrepid Kai',
-        nameJP: 'Intrepid改',
+        name_jp: 'Intrepid改',
         type: "CV", ship_class: "Essex",
         nid: 1477,
         HP: 69, HPmax: 90,
@@ -8029,7 +8029,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     398: {
         name: 'I-168 Kai',
-        nameJP: '伊168改',
+        name_jp: '伊168改',
         type: "SS", ship_class: "I_168",
         nid: 1498,
         HP: 15, HPmax: 19,
@@ -8050,7 +8050,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     399: {
         name: 'I-58 Kai',
-        nameJP: '伊58改',
+        name_jp: '伊58改',
         type: "SSV", ship_class: "I_58",
         nid: 1499,
         HP: 18, HPmax: 24,
@@ -8071,7 +8071,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     400: {
         name: 'I-8 Kai',
-        nameJP: '伊8改',
+        name_jp: '伊8改',
         type: "SSV", ship_class: "I_8",
         nid: 1500,
         HP: 19, HPmax: 25,
@@ -8092,7 +8092,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     401: {
         name: 'I-19 Kai',
-        nameJP: '伊19改',
+        name_jp: '伊19改',
         type: "SSV", ship_class: "I_15",
         nid: 1501,
         HP: 18, HPmax: 24,
@@ -8113,7 +8113,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     402: {
         name: 'Maruyu Kai',
-        nameJP: 'まるゆ改',
+        name_jp: 'まるゆ改',
         type: "SS", ship_class: "Maruyu",
         nid: 1502,
         HP: 7, HPmax: 13,
@@ -8134,7 +8134,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     403: {
         name: 'I-401 Kai',
-        nameJP: '伊401改',
+        name_jp: '伊401改',
         type: "SSV", ship_class: "I_400",
         nid: 1503,
         HP: 24, HPmax: 39,
@@ -8155,7 +8155,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     404: {
         name: 'Unryuu',
-        nameJP: '雲龍',
+        name_jp: '雲龍',
         type: "CV", ship_class: "Unryuu",
         nid: 201,
         HP: 48, HPmax: 79,
@@ -8176,7 +8176,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     405: {
         name: 'Harusame',
-        nameJP: '春雨',
+        name_jp: '春雨',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 205,
         HP: 16, HPmax: 32,
@@ -8197,7 +8197,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     406: {
         name: 'Unryuu Kai',
-        nameJP: '雲龍改',
+        name_jp: '雲龍改',
         type: "CV", ship_class: "Unryuu",
         nid: 206,
         HP: 60, HPmax: 84,
@@ -8218,7 +8218,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     407: {
         name: 'Ushio Kai 2',
-        nameJP: '潮改二',
+        name_jp: '潮改二',
         type: "DD", ship_class: "Ayanami",
         nid: 207,
         HP: 33, HPmax: 53,
@@ -8239,7 +8239,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     408: {
         name: 'Junyou Kai 2',
-        nameJP: '隼鷹改二',
+        name_jp: '隼鷹改二',
         type: "CVL", ship_class: "Hiyou",
         nid: 208,
         HP: 55, HPmax: 82,
@@ -8260,7 +8260,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     409: {
         name: 'Hayashimo',
-        nameJP: '早霜',
+        name_jp: '早霜',
         type: "DD", ship_class: "Yuugumo",
         nid: 209,
         HP: 16, HPmax: 34,
@@ -8281,7 +8281,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     410: {
         name: 'Kiyoshimo',
-        nameJP: '清霜',
+        name_jp: '清霜',
         type: "DD", ship_class: "Yuugumo",
         nid: 210,
         HP: 16, HPmax: 34,
@@ -8302,7 +8302,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     411: {
         name: 'Fusou Kai 2',
-        nameJP: '扶桑改二',
+        name_jp: '扶桑改二',
         type: "BBV", ship_class: "Husou",
         nid: 211,
         fit_class: 7,
@@ -8324,7 +8324,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     412: {
         name: 'Yamashiro Kai 2',
-        nameJP: '山城改二',
+        name_jp: '山城改二',
         type: "BBV", ship_class: "Husou",
         nid: 212,
         fit_class: 7,
@@ -8346,7 +8346,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     413: {
         name: 'Asagumo',
-        nameJP: '朝雲',
+        name_jp: '朝雲',
         type: "DD", ship_class: "Asashio",
         nid: 213,
         HP: 16, HPmax: 33,
@@ -8367,7 +8367,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     414: {
         name: 'Yamagumo',
-        nameJP: '山雲',
+        name_jp: '山雲',
         type: "DD", ship_class: "Asashio",
         nid: 214,
         HP: 16, HPmax: 33,
@@ -8388,7 +8388,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     415: {
         name: 'Nowaki',
-        nameJP: '野分',
+        name_jp: '野分',
         type: "DD", ship_class: "Kagerou",
         nid: 215,
         HP: 16, HPmax: 34,
@@ -8409,7 +8409,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     416: {
         name: 'Furutaka Kai 2',
-        nameJP: '古鷹改二',
+        name_jp: '古鷹改二',
         type: "CA", ship_class: "Hurutaka",
         nid: 216,
         HP: 53, HPmax: 65,
@@ -8430,7 +8430,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     417: {
         name: 'Kako Kai 2',
-        nameJP: '加古改二',
+        name_jp: '加古改二',
         type: "CA", ship_class: "Hurutaka",
         nid: 217,
         HP: 52, HPmax: 64,
@@ -8451,7 +8451,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     418: {
         name: 'Satsuki Kai 2',
-        nameJP: '皐月改二',
+        name_jp: '皐月改二',
         type: "DD", ship_class: "Mutsuki",
         nid: 218,
         HP: 28, HPmax: 44,
@@ -8472,7 +8472,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     419: {
         name: 'Hatsushimo Kai 2',
-        nameJP: '初霜改二',
+        name_jp: '初霜改二',
         type: "DD", ship_class: "Hatsuharu",
         nid: 219,
         HP: 32, HPmax: 53,
@@ -8493,7 +8493,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     420: {
         name: 'Murakumo Kai 2',
-        nameJP: '叢雲改二',
+        name_jp: '叢雲改二',
         type: "DD", ship_class: "Hubuki",
         nid: 220,
         HP: 31, HPmax: 49,
@@ -8514,7 +8514,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     421: {
         name: 'Akizuki',
-        nameJP: '秋月',
+        name_jp: '秋月',
         type: "DD", ship_class: "Akizuki",
         nid: 221,
         HP: 20, HPmax: 40,
@@ -8536,7 +8536,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     422: {
         name: 'Teruzuki',
-        nameJP: '照月',
+        name_jp: '照月',
         type: "DD", ship_class: "Akizuki",
         nid: 222,
         HP: 20, HPmax: 40,
@@ -8558,7 +8558,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     423: {
         name: 'Hatsuzuki',
-        nameJP: '初月',
+        name_jp: '初月',
         type: "DD", ship_class: "Akizuki",
         nid: 223,
         HP: 20, HPmax: 40,
@@ -8580,7 +8580,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     424: {
         name: 'Takanami',
-        nameJP: '高波',
+        name_jp: '高波',
         type: "DD", ship_class: "Yuugumo",
         nid: 224,
         HP: 16, HPmax: 34,
@@ -8601,7 +8601,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     425: {
         name: 'Asashimo',
-        nameJP: '朝霜',
+        name_jp: '朝霜',
         type: "DD", ship_class: "Yuugumo",
         nid: 225,
         HP: 16, HPmax: 34,
@@ -8622,7 +8622,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     426: {
         name: 'Fubuki Kai 2',
-        nameJP: '吹雪改二',
+        name_jp: '吹雪改二',
         type: "DD", ship_class: "Hubuki",
         nid: 226,
         HP: 31, HPmax: 49,
@@ -8643,7 +8643,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     427: {
         name: 'Choukai Kai 2',
-        nameJP: '鳥海改二',
+        name_jp: '鳥海改二',
         type: "CA", ship_class: "Takao",
         nid: 227,
         HP: 57, HPmax: 72,
@@ -8664,7 +8664,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     428: {
         name: 'Maya Kai 2',
-        nameJP: '摩耶改二',
+        name_jp: '摩耶改二',
         type: "CA", ship_class: "Takao",
         nid: 228,
         HP: 57, HPmax: 71,
@@ -8685,7 +8685,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     429: {
         name: 'Amagi Kai',
-        nameJP: '天城改',
+        name_jp: '天城改',
         type: "CV", ship_class: "Unryuu",
         nid: 229,
         HP: 60, HPmax: 84,
@@ -8706,7 +8706,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     430: {
         name: 'Katsuragi Kai',
-        nameJP: '葛城改',
+        name_jp: '葛城改',
         type: "CV", ship_class: "Unryuu",
         nid: 230,
         HP: 60, HPmax: 84,
@@ -8727,7 +8727,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     431: {
         name: 'U-511',
-        nameJP: 'U-511',
+        name_jp: 'U-511',
         type: "SS", ship_class: "IXC",
         nid: 231,
         HP: 8, HPmax: 16,
@@ -8748,7 +8748,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     432: {
         name: 'GrafZeppelin',
-        nameJP: 'Graf Zeppelin',
+        name_jp: 'Graf Zeppelin',
         type: "CV", ship_class: "Graf",
         CVs_night_attack_type: CVsNightAttackType.GrafModel,
         nid: 232,
@@ -8770,7 +8770,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     433: {
         name: 'Saratoga',
-        nameJP: 'Saratoga',
+        name_jp: 'Saratoga',
         type: "CV", ship_class: "Lexington",
         CVs_night_attack_type: CVsNightAttackType.GrafModel,
         nid: 233,
@@ -8792,7 +8792,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     434: {
         name: 'Mutsuki Kai 2',
-        nameJP: '睦月改二',
+        name_jp: '睦月改二',
         type: "DD", ship_class: "Mutsuki",
         nid: 234,
         HP: 27, HPmax: 43,
@@ -8813,7 +8813,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     435: {
         name: 'Kisaragi Kai 2',
-        nameJP: '如月改二',
+        name_jp: '如月改二',
         type: "DD", ship_class: "Mutsuki",
         nid: 235,
         HP: 27, HPmax: 43,
@@ -8834,7 +8834,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     436: {
         name: 'Ro-500',
-        nameJP: '呂500',
+        name_jp: '呂500',
         type: "SS", ship_class: "Ro_500",
         nid: 236,
         HP: 13, HPmax: 19,
@@ -8855,7 +8855,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     437: {
         name: 'Akatsuki Kai 2',
-        nameJP: '暁改二',
+        name_jp: '暁改二',
         type: "DD", ship_class: "Dairoku",
         nid: 237,
         HP: 31, HPmax: 50,
@@ -8876,7 +8876,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     438: {
         name: 'Saratoga Kai',
-        nameJP: 'Saratoga改',
+        name_jp: 'Saratoga改',
         type: "CV", ship_class: "Lexington",
         nid: 238,
         HP: 88, HPmax: 98,
@@ -8897,7 +8897,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     439: {
         name: 'Warspite',
-        nameJP: 'Warspite',
+        name_jp: 'Warspite',
         type: "BB", ship_class: "Queen_Elizabeth",
         nid: 239,
         fit_class: 5,
@@ -8919,7 +8919,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     440: {
         name: 'Iowa',
-        nameJP: 'Iowa',
+        name_jp: 'Iowa',
         type: "FBB", ship_class: "Iowa",
         nid: 240,
         fit_class: 4,
@@ -8941,7 +8941,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     441: {
         name: 'Littorio',
-        nameJP: 'Littorio',
+        name_jp: 'Littorio',
         type: "FBB", ship_class: "Vittorio_Veneto",
         nid: 241,
         fit_class: 3,
@@ -8963,7 +8963,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     442: {
         name: 'Roma',
-        nameJP: 'Roma',
+        name_jp: 'Roma',
         type: "FBB", ship_class: "Vittorio_Veneto",
         nid: 242,
         fit_class: 3,
@@ -8985,7 +8985,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     443: {
         name: 'Libeccio',
-        nameJP: 'Libeccio',
+        name_jp: 'Libeccio',
         type: "DD", ship_class: "Maestrale",
         nid: 243,
         HP: 15, HPmax: 30,
@@ -9006,7 +9006,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     444: {
         name: 'Aquila',
-        nameJP: 'Aquila',
+        name_jp: 'Aquila',
         type: "CV", ship_class: "Aquila",
         nid: 244,
         HP: 38, HPmax: 60,
@@ -9027,7 +9027,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     445: {
         name: 'Akitsushima',
-        nameJP: '秋津洲',
+        name_jp: '秋津洲',
         type: "AV", ship_class: "Akitsusima",
         nid: 245,
         HP: 32, HPmax: 44,
@@ -9048,7 +9048,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     446: {
         name: 'Italia',
-        nameJP: 'Italia',
+        name_jp: 'Italia',
         type: "FBB", ship_class: "Vittorio_Veneto",
         nid: 246,
         fit_class: 3,
@@ -9071,7 +9071,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     447: {
         name: 'Roma Kai',
-        nameJP: 'Roma改',
+        name_jp: 'Roma改',
         type: "FBB", ship_class: "Vittorio_Veneto",
         nid: 247,
         fit_class: 3,
@@ -9094,7 +9094,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     448: {
         name: 'Zara',
-        nameJP: 'Zara',
+        name_jp: 'Zara',
         type: "CA", ship_class: "Zara",
         nid: 248,
         HP: 42, HPmax: 55,
@@ -9115,7 +9115,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     449: {
         name: 'Pola',
-        nameJP: 'Pola',
+        name_jp: 'Pola',
         type: "CA", ship_class: "Zara",
         nid: 249,
         HP: 42, HPmax: 55,
@@ -9136,7 +9136,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     450: {
         name: 'Akitsushima Kai',
-        nameJP: '秋津洲改',
+        name_jp: '秋津洲改',
         type: "AV", ship_class: "Akitsusima",
         nid: 250,
         HP: 36, HPmax: 48,
@@ -9157,7 +9157,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     451: {
         name: 'Mizuho',
-        nameJP: '瑞穂',
+        name_jp: '瑞穂',
         type: "AV", ship_class: "Mizuho",
         nid: 251,
         HP: 41, HPmax: 59,
@@ -9178,7 +9178,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     452: {
         name: 'Okinami',
-        nameJP: '沖波',
+        name_jp: '沖波',
         type: "DD", ship_class: "Yuugumo",
         nid: 252,
         HP: 16, HPmax: 34,
@@ -9199,7 +9199,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     453: {
         name: 'Kazagumo',
-        nameJP: '風雲',
+        name_jp: '風雲',
         type: "DD", ship_class: "Yuugumo",
         nid: 253,
         HP: 16, HPmax: 34,
@@ -9220,7 +9220,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     454: {
         name: 'Arashi',
-        nameJP: '嵐',
+        name_jp: '嵐',
         type: "DD", ship_class: "Kagerou",
         nid: 254,
         HP: 16, HPmax: 34,
@@ -9241,7 +9241,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     455: {
         name: 'Hagikaze',
-        nameJP: '萩風',
+        name_jp: '萩風',
         type: "DD", ship_class: "Kagerou",
         nid: 255,
         HP: 16, HPmax: 34,
@@ -9262,7 +9262,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     456: {
         name: 'Oyashio',
-        nameJP: '親潮',
+        name_jp: '親潮',
         type: "DD", ship_class: "Kagerou",
         nid: 256,
         HP: 16, HPmax: 34,
@@ -9283,7 +9283,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     457: {
         name: 'Yamakaze',
-        nameJP: '山風',
+        name_jp: '山風',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 257,
         HP: 16, HPmax: 32,
@@ -9304,7 +9304,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     458: {
         name: 'Umikaze',
-        nameJP: '海風',
+        name_jp: '海風',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 258,
         HP: 16, HPmax: 32,
@@ -9325,7 +9325,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     459: {
         name: 'Kawakaze',
-        nameJP: '江風',
+        name_jp: '江風',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 259,
         HP: 16, HPmax: 32,
@@ -9346,7 +9346,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     460: {
         name: 'Hayasui',
-        nameJP: '速吸',
+        name_jp: '速吸',
         type: "AO", ship_class: "Hayasui",
         nid: 260,
         HP: 43, HPmax: 50,
@@ -9367,7 +9367,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     461: {
         name: 'Shoukaku Kai 2',
-        nameJP: '翔鶴改二',
+        name_jp: '翔鶴改二',
         type: "CV", ship_class: "Shoukaku",
         nid: 261,
         HP: 77, HPmax: 93,
@@ -9388,7 +9388,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     462: {
         name: 'Zuikaku Kai 2',
-        nameJP: '瑞鶴改二',
+        name_jp: '瑞鶴改二',
         type: "CV", ship_class: "Shoukaku",
         nid: 262,
         HP: 78, HPmax: 93,
@@ -9409,7 +9409,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     463: {
         name: 'Asashio Kai 2',
-        nameJP: '朝潮改二',
+        name_jp: '朝潮改二',
         type: "DD", ship_class: "Asashio",
         nid: 263,
         HP: 31, HPmax: 53,
@@ -9430,7 +9430,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     464: {
         name: 'Kasumi Kai 2',
-        nameJP: '霞改二',
+        name_jp: '霞改二',
         type: "DD", ship_class: "Asashio",
         nid: 264,
         HP: 31, HPmax: 53,
@@ -9451,7 +9451,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     465: {
         name: 'Kashima',
-        nameJP: '鹿島',
+        name_jp: '鹿島',
         type: "CT", ship_class: "Katori",
         nid: 265,
         HP: 36, HPmax: 48,
@@ -9472,7 +9472,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     466: {
         name: 'Shoukaku Kai 2A',
-        nameJP: '翔鶴改二甲',
+        name_jp: '翔鶴改二甲',
         type: "CVB", ship_class: "Shoukaku",
         nid: 266,
         HP: 78, HPmax: 94,
@@ -9493,7 +9493,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     467: {
         name: 'Zuikaku Kai 2A',
-        nameJP: '瑞鶴改二甲',
+        name_jp: '瑞鶴改二甲',
         type: "CVB", ship_class: "Shoukaku",
         nid: 267,
         HP: 79, HPmax: 94,
@@ -9514,7 +9514,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     468: {
         name: 'Asashio Kai 2 D',
-        nameJP: '朝潮改二丁',
+        name_jp: '朝潮改二丁',
         type: "DD", ship_class: "Asashio",
         nid: 268,
         HP: 34, HPmax: 59,
@@ -9535,7 +9535,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     469: {
         name: 'Kawakaze Kai 2',
-        nameJP: '江風改二',
+        name_jp: '江風改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 269,
         HP: 31, HPmax: 54,
@@ -9556,7 +9556,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     470: {
         name: 'Kasumi Kai 2 B',
-        nameJP: '霞改二乙',
+        name_jp: '霞改二乙',
         type: "DD", ship_class: "Asashio",
         nid: 270,
         HP: 31, HPmax: 53,
@@ -9577,7 +9577,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     471: {
         name: 'Kamikaze',
-        nameJP: '神風',
+        name_jp: '神風',
         type: "DD", ship_class: "Kamikaze",
         nid: 271,
         HP: 12, HPmax: 23,
@@ -9598,7 +9598,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     472: {
         name: 'Asakaze',
-        nameJP: '朝風',
+        name_jp: '朝風',
         type: "DD", ship_class: "Kamikaze",
         nid: 272,
         HP: 12, HPmax: 23,
@@ -9619,7 +9619,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     473: {
         name: 'Harukaze',
-        nameJP: '春風',
+        name_jp: '春風',
         type: "DD", ship_class: "Kamikaze",
         nid: 273,
         HP: 12, HPmax: 23,
@@ -9640,7 +9640,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     474: {
         name: 'Matsukaze',
-        nameJP: '松風',
+        name_jp: '松風',
         type: "DD", ship_class: "Kamikaze",
         nid: 274,
         HP: 12, HPmax: 23,
@@ -9661,7 +9661,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     475: {
         name: 'Hatakaze',
-        nameJP: '旗風',
+        name_jp: '旗風',
         type: "DD", ship_class: "Kamikaze",
         nid: 275,
         HP: 12, HPmax: 23,
@@ -9682,7 +9682,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     476: {
         name: 'Kamikaze Kai',
-        nameJP: '神風改',
+        name_jp: '神風改',
         type: "DD", ship_class: "Kamikaze",
         nid: 276,
         HP: 23, HPmax: 38,
@@ -9703,7 +9703,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     477: {
         name: 'Tenryuu Kai 2',
-        nameJP: '天龍改二',
+        name_jp: '天龍改二',
         type: "CL", ship_class: "Tenryuu",
         nid: 277,
         HP: 42, HPmax: 56,
@@ -9724,7 +9724,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     478: {
         name: 'Tatsuta Kai 2',
-        nameJP: '龍田改二',
+        name_jp: '龍田改二',
         type: "CL", ship_class: "Tenryuu",
         nid: 278,
         can_unconditional_OASW: true,
@@ -9746,7 +9746,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     479: {
         name: 'Amagiri',
-        nameJP: '天霧',
+        name_jp: '天霧',
         type: "DD", ship_class: "Ayanami",
         nid: 279,
         HP: 15, HPmax: 29,
@@ -9767,7 +9767,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     480: {
         name: 'Sagiri',
-        nameJP: '狭霧',
+        name_jp: '狭霧',
         type: "DD", ship_class: "Ayanami",
         nid: 280,
         HP: 15, HPmax: 29,
@@ -9788,7 +9788,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     481: {
         name: 'Minazuki',
-        nameJP: '水無月',
+        name_jp: '水無月',
         type: "DD", ship_class: "Mutsuki",
         nid: 281,
         HP: 13, HPmax: 24,
@@ -9809,7 +9809,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     483: {
         name: 'I-26',
-        nameJP: '伊26',
+        name_jp: '伊26',
         type: "SS", ship_class: "I_15",
         nid: 283,
         HP: 14, HPmax: 19,
@@ -9830,7 +9830,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     484: {
         name: 'Hamanami',
-        nameJP: '浜波',
+        name_jp: '浜波',
         type: "DD", ship_class: "Yuugumo",
         nid: 284,
         HP: 16, HPmax: 34,
@@ -9851,7 +9851,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     485: {
         name: 'Fujinami',
-        nameJP: '藤波',
+        name_jp: '藤波',
         type: "DD", ship_class: "Yuugumo",
         nid: 285,
         HP: 16, HPmax: 34,
@@ -9872,7 +9872,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     486: {
         name: 'Uranami',
-        nameJP: '浦波',
+        name_jp: '浦波',
         type: "DD", ship_class: "Hubuki",
         nid: 286,
         HP: 15, HPmax: 29,
@@ -9893,7 +9893,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     487: {
         name: 'Kinu Kai 2',
-        nameJP: '鬼怒改二',
+        name_jp: '鬼怒改二',
         type: "CL", ship_class: "Nagara",
         nid: 287,
         HP: 45, HPmax: 61,
@@ -9914,7 +9914,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     488: {
         name: 'Yura Kai 2',
-        nameJP: '由良改二',
+        name_jp: '由良改二',
         type: "CL", ship_class: "Nagara",
         nid: 288,
         HP: 45, HPmax: 61,
@@ -9935,7 +9935,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     489: {
         name: 'Michishio Kai 2',
-        nameJP: '満潮改二',
+        name_jp: '満潮改二',
         type: "DD", ship_class: "Asashio",
         nid: 289,
         HP: 31, HPmax: 54,
@@ -9956,7 +9956,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     490: {
         name: 'Arashio Kai 2',
-        nameJP: '荒潮改二',
+        name_jp: '荒潮改二',
         type: "DD", ship_class: "Asashio",
         nid: 290,
         HP: 31, HPmax: 54,
@@ -9977,7 +9977,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     491: {
         name: 'Commandant Teste',
-        nameJP: 'Commandant Teste',
+        name_jp: 'Commandant Teste',
         type: "AV", ship_class: "Commandant_Teste",
         nid: 291,
         HP: 42, HPmax: 63,
@@ -9998,7 +9998,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     492: {
         name: 'Richelieu',
-        nameJP: 'Richelieu',
+        name_jp: 'Richelieu',
         type: "FBB", ship_class: "Richelieu",
         nid: 292,
         fit_class: 12,
@@ -10020,7 +10020,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     493: {
         name: 'I-400',
-        nameJP: '伊400',
+        name_jp: '伊400',
         type: "SSV", ship_class: "I_400",
         nid: 293,
         HP: 20, HPmax: 24,
@@ -10041,7 +10041,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     494: {
         name: 'I-13',
-        nameJP: '伊13',
+        name_jp: '伊13',
         type: "SSV", ship_class: "I_13",
         nid: 294,
         HP: 18, HPmax: 23,
@@ -10062,7 +10062,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     495: {
         name: 'I-14',
-        nameJP: '伊14',
+        name_jp: '伊14',
         type: "SSV", ship_class: "I_13",
         nid: 295,
         HP: 18, HPmax: 23,
@@ -10083,7 +10083,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     496: {
         name: 'Zara due',
-        nameJP: 'Zara due',
+        name_jp: 'Zara due',
         type: "CA", ship_class: "Zara",
         nid: 296,
         HP: 62, HPmax: 74,
@@ -10104,7 +10104,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     497: {
         name: 'Shiratsuyu Kai 2',
-        nameJP: '白露改二',
+        name_jp: '白露改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 297,
         HP: 31, HPmax: 49,
@@ -10125,7 +10125,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     498: {
         name: 'Murasame Kai 2',
-        nameJP: '村雨改二',
+        name_jp: '村雨改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 298,
         HP: 31, HPmax: 49,
@@ -10146,7 +10146,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     499: {
         name: 'Kamoi Kai',
-        nameJP: '神威改',
+        name_jp: '神威改',
         type: "AV", ship_class: "Kamoi",
         nid: 299,
         HP: 37, HPmax: 48,
@@ -10167,7 +10167,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     500: {
         name: 'Kamoi Kai Bo',
-        nameJP: '神威改母',
+        name_jp: '神威改母',
         type: "AO", ship_class: "Kamoi",
         nid: 300,
         HP: 39, HPmax: 51,
@@ -10188,7 +10188,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     501: {
         name: 'Mogami Kai 2',
-        nameJP: '最上改二',
+        name_jp: '最上改二',
         type: "CAV", ship_class: "Mogami",
         nid: 301,
         HP: 60, HPmax: 73,
@@ -10209,7 +10209,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     502: {
         name: 'Mikuma Kai 2',
-        nameJP: '三隈改二',
+        name_jp: '三隈改二',
         type: "CAV", ship_class: "Mogami",
         nid: 302,
         HP: 59, HPmax: 73,
@@ -10230,7 +10230,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     503: {
         name: 'Suzuya Kai 2',
-        nameJP: '鈴谷改二',
+        name_jp: '鈴谷改二',
         type: "CAV", ship_class: "Mogami",
         nid: 303,
         HP: 61, HPmax: 73,
@@ -10251,7 +10251,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     504: {
         name: 'Kumano Kai 2',
-        nameJP: '熊野改二',
+        name_jp: '熊野改二',
         type: "CAV", ship_class: "Mogami",
         nid: 304,
         HP: 62, HPmax: 74,
@@ -10272,7 +10272,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     506: {
         name: 'Mogami Kai 2 Toku',
-        nameJP: '最上改二特',
+        name_jp: '最上改二特',
         type: "CAV", ship_class: "Mogami",
         nid: 306,
         HP: 61, HPmax: 74,
@@ -10293,7 +10293,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     507: {
         name: 'Mikuma Kai 2 Toku',
-        nameJP: '三隈改二特',
+        name_jp: '三隈改二特',
         type: "AV", ship_class: "Mogami",
         nid: 307,
         HP: 59, HPmax: 73,
@@ -10314,7 +10314,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     508: {
         name: 'Suzuya CVL Kai 2',
-        nameJP: '鈴谷航改二',
+        name_jp: '鈴谷航改二',
         type: "CVL", ship_class: "Mogami",
         nid: 308,
         is_ASW_subordinated_CVL: true,
@@ -10336,7 +10336,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     509: {
         name: 'Kumano CVL Kai 2',
-        nameJP: '熊野航改二',
+        name_jp: '熊野航改二',
         type: "CVL", ship_class: "Mogami",
         nid: 309,
         is_ASW_subordinated_CVL: true,
@@ -10358,7 +10358,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     511: {
         name: 'Gangut',
-        nameJP: 'Гангут',
+        name_jp: 'Гангут',
         type: "FBB", ship_class: "Гангут",
         nid: 311,
         fit_class: 10,
@@ -10380,7 +10380,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     512: {
         name: 'Oktyabrskaya Revolyutsiya',
-        nameJP: 'Октябрьская революция',
+        name_jp: 'Октябрьская революция',
         type: "FBB", ship_class: "Гангут",
         nid: 312,
         fit_class: 10,
@@ -10402,7 +10402,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     513: {
         name: 'Gangut Dva',
-        nameJP: 'Гангут два',
+        name_jp: 'Гангут два',
         type: "FBB", ship_class: "Гангут",
         nid: 316,
         fit_class: 10,
@@ -10424,7 +10424,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     514: {
         name: 'Sheffield',
-        nameJP: 'Sheffield',
+        name_jp: 'Sheffield',
         type: "CL", ship_class: "Town",
         nid: 314,
         HP: 38, HPmax: 55,
@@ -10445,7 +10445,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     515: {
         name: 'Ark Royal',
-        nameJP: 'Ark Royal',
+        name_jp: 'Ark Royal',
         type: "CV", ship_class: "Ark_Royal",
         nid: 315,
         HP: 55, HPmax: 82,
@@ -10466,7 +10466,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     516: {
         name: 'Tashkent',
-        nameJP: 'Ташкент',
+        name_jp: 'Ташкент',
         type: "DD", ship_class: "Ташкент",
         nid: 313,
         HP: 22, HPmax: 42,
@@ -10487,7 +10487,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     517: {
         name: 'Shimushu',
-        nameJP: '占守',
+        name_jp: '占守',
         type: "DE", ship_class: "Shimushu",
         nid: 317,
         HP: 9, HPmax: 18,
@@ -10508,7 +10508,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     518: {
         name: 'Kunashiri',
-        nameJP: '国後',
+        name_jp: '国後',
         type: "DE", ship_class: "Shimushu",
         nid: 318,
         HP: 9, HPmax: 18,
@@ -10529,7 +10529,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     519: {
         name: 'Jervis',
-        nameJP: 'Jervis',
+        name_jp: 'Jervis',
         type: "DD", ship_class: "J",
         nid: 319,
         HP: 15, HPmax: 33,
@@ -10550,7 +10550,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     520: {
         name: 'Janus',
-        nameJP: 'Janus',
+        name_jp: 'Janus',
         type: "DD", ship_class: "J",
         nid: 320,
         HP: 15, HPmax: 33,
@@ -10571,7 +10571,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     521: {
         name: 'Kasuga Maru',
-        nameJP: '春日丸',
+        name_jp: '春日丸',
         type: "CVL", ship_class: "Yawatamaru",
         nid: 321,
         HP: 36, HPmax: 58,
@@ -10592,7 +10592,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     522: {
         name: 'Yawata Maru',
-        nameJP: '八幡丸',
+        name_jp: '八幡丸',
         type: "CVL", ship_class: "Yawatamaru",
         nid: 322,
         HP: 36, HPmax: 58,
@@ -10613,7 +10613,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     524: {
         name: 'Etorofu',
-        nameJP: '択捉',
+        name_jp: '択捉',
         type: "DE", ship_class: "Etorohu",
         nid: 334,
         HP: 9, HPmax: 18,
@@ -10634,7 +10634,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     525: {
         name: 'Matsuwa',
-        nameJP: '松輪',
+        name_jp: '松輪',
         type: "DE", ship_class: "Etorohu",
         nid: 335,
         HP: 9, HPmax: 18,
@@ -10655,7 +10655,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     526: {
         name: 'Taiyou',
-        nameJP: '大鷹',
+        name_jp: '大鷹',
         type: "CVL", ship_class: "Taiyou",
         nid: 326,
         HP: 37, HPmax: 59,
@@ -10676,7 +10676,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     527: {
         name: 'Kishinami',
-        nameJP: '岸波',
+        name_jp: '岸波',
         type: "DD", ship_class: "Yuugumo",
         nid: 327,
         HP: 16, HPmax: 34,
@@ -10697,7 +10697,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     528: {
         name: 'Hayanami',
-        nameJP: '早波',
+        name_jp: '早波',
         type: "DD", ship_class: "Yuugumo",
         nid: 328,
         HP: 16, HPmax: 34,
@@ -10718,7 +10718,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     529: {
         name: 'Taiyou Kai 2',
-        nameJP: '大鷹改二',
+        name_jp: '大鷹改二',
         type: "CVL", ship_class: "Taiyou",
         nid: 331,
         CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
@@ -10741,7 +10741,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     530: {
         name: 'I-504',
-        nameJP: '伊504',
+        name_jp: '伊504',
         type: "SS", ship_class: "Guglielmo_Marconi",
         nid: 330,
         HP: 14, HPmax: 24,
@@ -10762,7 +10762,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     531: {
         name: 'Sado',
-        nameJP: '佐渡',
+        name_jp: '佐渡',
         type: "DE", ship_class: "Etorohu",
         nid: 339,
         HP: 9, HPmax: 18,
@@ -10783,7 +10783,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     532: {
         name: 'Suzutsuki',
-        nameJP: '涼月',
+        name_jp: '涼月',
         type: "DD", ship_class: "Akizuki",
         nid: 332,
         HP: 21, HPmax: 41,
@@ -10805,7 +10805,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     533: {
         name: 'Fuyutsuki',
-        nameJP: '冬月',
+        name_jp: '冬月',
         type: "DD", ship_class: "Akizuki",
         nid: 333,
         has_built_in_fire_director: true,
@@ -10827,7 +10827,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     534: {
         name: 'Shinyou',
-        nameJP: '神鷹',
+        name_jp: '神鷹',
         type: "CVL", ship_class: "Taiyou",
         nid: 324,
         HP: 38, HPmax: 59,
@@ -10848,7 +10848,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     535: {
         name: 'Luigi Torelli',
-        nameJP: 'Luigi Torelli',
+        name_jp: 'Luigi Torelli',
         type: "SS", ship_class: "Guglielmo_Marconi",
         nid: 325,
         HP: 11, HPmax: 21,
@@ -10869,7 +10869,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     536: {
         name: 'Shinyou Kai 2',
-        nameJP: '神鷹改二',
+        name_jp: '神鷹改二',
         type: "CVL", ship_class: "Taiyou",
         nid: 336,
         CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
@@ -10892,7 +10892,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     537: {
         name: 'Suzutsuki Kai',
-        nameJP: '涼月改',
+        name_jp: '涼月改',
         type: "DD", ship_class: "Akizuki",
         nid: 337,
         HP: 38, HPmax: 58,
@@ -10914,7 +10914,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     538: {
         name: 'Fuyutsuki Kai',
-        nameJP: '冬月改',
+        name_jp: '冬月改',
         type: "DD", ship_class: "Akizuki",
         nid: 338,
         has_built_in_fire_director: true,
@@ -10936,7 +10936,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     539: {
         name: 'UIT-25',
-        nameJP: 'UIT-25',
+        name_jp: 'UIT-25',
         type: "SS", ship_class: "Guglielmo_Marconi",
         nid: 329,
         HP: 13, HPmax: 23,
@@ -10957,7 +10957,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     540: {
         name: 'Tsushima',
-        nameJP: '対馬',
+        name_jp: '対馬',
         type: "DE", ship_class: "Etorohu",
         nid: 340,
         HP: 9, HPmax: 18,
@@ -10978,7 +10978,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     541: {
         name: 'Nagato Kai 2',
-        nameJP: '長門改二',
+        name_jp: '長門改二',
         type: "BB", ship_class: "Nagato",
         nid: 341,
         fit_class: 11,
@@ -11001,7 +11001,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     542: {
         name: 'Yuugumo Kai 2',
-        nameJP: '夕雲改二',
+        name_jp: '夕雲改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 342,
         HP: 33, HPmax: 56,
@@ -11022,7 +11022,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     543: {
         name: 'Naganami Kai 2',
-        nameJP: '長波改二',
+        name_jp: '長波改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 343,
         HP: 33, HPmax: 56,
@@ -11043,7 +11043,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     544: {
         name: 'Gambier Bay',
-        nameJP: 'Gambier Bay',
+        name_jp: 'Gambier Bay',
         type: "CVL", ship_class: "Casablanca",
         nid: 344,
         HP: 28, HPmax: 36,
@@ -11064,7 +11064,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     545: {
         name: 'Saratoga Mk.II',
-        nameJP: 'Saratoga Mk.II',
+        name_jp: 'Saratoga Mk.II',
         type: "CV", ship_class: "Lexington",
         nid: 345,
         has_built_in_night_crew: true,
@@ -11086,7 +11086,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     546: {
         name: 'Musashi Kai 2',
-        nameJP: '武蔵改二',
+        name_jp: '武蔵改二',
         type: "BB", ship_class: "Yamato",
         nid: 346,
         fit_class: 9,
@@ -11109,7 +11109,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     547: {
         name: 'Tama Kai 2',
-        nameJP: '多摩改二',
+        name_jp: '多摩改二',
         type: "CL", ship_class: "Kuma",
         nid: 347,
         HP: 46, HPmax: 59,
@@ -11130,7 +11130,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     548: {
         name: 'Fumizuki Kai 2',
-        nameJP: '文月改二',
+        name_jp: '文月改二',
         type: "DD", ship_class: "Mutsuki",
         nid: 348,
         HP: 27, HPmax: 44,
@@ -11151,7 +11151,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     549: {
         name: 'Intrepid',
-        nameJP: 'Intrepid',
+        name_jp: 'Intrepid',
         type: "CV", ship_class: "Essex",
         nid: 349,
         HP: 65, HPmax: 90,
@@ -11172,7 +11172,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     550: {
         name: 'Saratoga Mk.II Mod.2',
-        nameJP: 'Saratoga Mk.II Mod.2',
+        name_jp: 'Saratoga Mk.II Mod.2',
         type: "CVB", ship_class: "Lexington",
         nid: 350,
         HP: 89, HPmax: 99,
@@ -11193,7 +11193,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     551: {
         name: 'Hiburi',
-        nameJP: '日振',
+        name_jp: '日振',
         type: "DE", ship_class: "Hiburi",
         nid: 351,
         HP: 9, HPmax: 18,
@@ -11214,7 +11214,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     552: {
         name: 'Daitou',
-        nameJP: '大東',
+        name_jp: '大東',
         type: "DE", ship_class: "Hiburi",
         nid: 352,
         HP: 9, HPmax: 18,
@@ -11235,7 +11235,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     553: {
         name: 'Ise Kai 2',
-        nameJP: '伊勢改二',
+        name_jp: '伊勢改二',
         type: "BBV", ship_class: "Ise",
         nid: 353,
         fit_class: 6,
@@ -11258,7 +11258,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     554: {
         name: 'Hyuuga Kai 2',
-        nameJP: '日向改二',
+        name_jp: '日向改二',
         type: "BBV", ship_class: "Ise",
         nid: 354,
         fit_class: 6,
@@ -11281,7 +11281,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     555: {
         name: 'Zuihou Kai 2',
-        nameJP: '瑞鳳改二',
+        name_jp: '瑞鳳改二',
         type: "CVL", ship_class: "Syouhou",
         nid: 355,
         HP: 59, HPmax: 77,
@@ -11302,7 +11302,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     556: {
         name: 'Urakaze D Kai',
-        nameJP: '浦風丁改',
+        name_jp: '浦風丁改',
         type: "DD", ship_class: "Kagerou",
         nid: 356,
         HP: 33, HPmax: 54,
@@ -11323,7 +11323,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     557: {
         name: 'Isokaze B Kai',
-        nameJP: '磯風乙改',
+        name_jp: '磯風乙改',
         type: "DD", ship_class: "Kagerou",
         nid: 357,
         HP: 34, HPmax: 55,
@@ -11344,7 +11344,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     558: {
         name: 'Hamakaze B Kai',
-        nameJP: '浜風乙改',
+        name_jp: '浜風乙改',
         type: "DD", ship_class: "Kagerou",
         nid: 358,
         HP: 33, HPmax: 54,
@@ -11365,7 +11365,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     559: {
         name: 'Tanikaze D Kai',
-        nameJP: '谷風丁改',
+        name_jp: '谷風丁改',
         type: "DD", ship_class: "Kagerou",
         nid: 359,
         HP: 33, HPmax: 54,
@@ -11386,7 +11386,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     560: {
         name: 'Zuihou Kai 2B',
-        nameJP: '瑞鳳改二乙',
+        name_jp: '瑞鳳改二乙',
         type: "CVL", ship_class: "Syouhou",
         nid: 360,
         HP: 59, HPmax: 77,
@@ -11407,7 +11407,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     561: {
         name: 'Samuel B. Roberts',
-        nameJP: 'Samuel B.Roberts',
+        name_jp: 'Samuel B.Roberts',
         type: "DD", ship_class: "John_C_Butler",
         nid: 361,
         HP: 14, HPmax: 27,
@@ -11428,7 +11428,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     562: {
         name: 'Johnston',
-        nameJP: 'Johnston',
+        name_jp: 'Johnston',
         type: "DD", ship_class: "Fletcher",
         nid: 362,
         can_unconditional_OASW: true,
@@ -11450,7 +11450,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     563: {
         name: 'Makigumo Kai 2',
-        nameJP: '巻雲改二',
+        name_jp: '巻雲改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 363,
         HP: 33, HPmax: 56,
@@ -11471,7 +11471,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     564: {
         name: 'Kazagumo Kai 2',
-        nameJP: '風雲改二',
+        name_jp: '風雲改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 364,
         HP: 33, HPmax: 57,
@@ -11492,7 +11492,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     565: {
         name: 'Fukae',
-        nameJP: '福江',
+        name_jp: '福江',
         type: "DE", ship_class: "Etorohu",
         nid: 365,
         HP: 9, HPmax: 18,
@@ -11513,7 +11513,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     566: {
         name: 'Kagerou Kai 2',
-        nameJP: '陽炎改二',
+        name_jp: '陽炎改二',
         type: "DD", ship_class: "Kagerou",
         nid: 366,
         HP: 33, HPmax: 55,
@@ -11534,7 +11534,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     567: {
         name: 'Shiranui Kai 2',
-        nameJP: '不知火改二',
+        name_jp: '不知火改二',
         type: "DD", ship_class: "Kagerou",
         nid: 367,
         HP: 33, HPmax: 55,
@@ -11555,7 +11555,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     568: {
         name: 'Kuroshio Kai 2',
-        nameJP: '黒潮改二',
+        name_jp: '黒潮改二',
         type: "DD", ship_class: "Kagerou",
         nid: 368,
         HP: 33, HPmax: 55,
@@ -11576,7 +11576,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     569: {
         name: 'Okinami Kai 2',
-        nameJP: '沖波改二',
+        name_jp: '沖波改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 369,
         HP: 33, HPmax: 57,
@@ -11597,7 +11597,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     570: {
         name: 'Hirato',
-        nameJP: '平戸',
+        name_jp: '平戸',
         type: "DE", ship_class: "Etorohu",
         nid: 370,
         HP: 9, HPmax: 18,
@@ -11618,7 +11618,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     571: {
         name: 'Nelson',
-        nameJP: 'Nelson',
+        name_jp: 'Nelson',
         type: "BB", ship_class: "Nelson",
         nid: 371,
         fit_class: 13,
@@ -11641,7 +11641,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     572: {
         name: 'Rodney',
-        nameJP: 'Rodney',
+        name_jp: 'Rodney',
         type: "BB", ship_class: "Nelson",
         nid: 372,
         attack_special_ids: [100],
@@ -11663,7 +11663,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     573: {
         name: 'Mutsu Kai 2',
-        nameJP: '陸奥改二',
+        name_jp: '陸奥改二',
         type: "BB", ship_class: "Nagato",
         nid: 373,
         fit_class: 11,
@@ -11686,7 +11686,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     574: {
         name: 'Gotland',
-        nameJP: 'Gotland',
+        name_jp: 'Gotland',
         type: "CL", ship_class: "Gotland",
         nid: 374,
         HP: 32, HPmax: 43,
@@ -11707,7 +11707,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     575: {
         name: 'Maestrale',
-        nameJP: 'Maestrale',
+        name_jp: 'Maestrale',
         type: "DD", ship_class: "Maestrale",
         nid: 375,
         HP: 15, HPmax: 30,
@@ -11728,7 +11728,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     576: {
         name: 'Nelson Kai',
-        nameJP: 'Nelson改',
+        name_jp: 'Nelson改',
         type: "BB", ship_class: "Nelson",
         nid: 376,
         fit_class: 13,
@@ -11751,7 +11751,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     577: {
         name: 'Rodney Kai',
-        nameJP: 'Rodney改',
+        name_jp: 'Rodney改',
         type: "BB", ship_class: "Nelson",
         nid: 377,
         attack_special_ids: [100],
@@ -11773,7 +11773,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     578: {
         name: 'Asashimo Kai 2',
-        nameJP: '朝霜改二',
+        name_jp: '朝霜改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 378,
         HP: 33, HPmax: 57,
@@ -11794,7 +11794,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     579: {
         name: 'Gotland Kai',
-        nameJP: 'Gotland改',
+        name_jp: 'Gotland改',
         type: "CL", ship_class: "Gotland",
         nid: 379,
         HP: 43, HPmax: 62,
@@ -11815,7 +11815,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     580: {
         name: 'Maestrale Kai',
-        nameJP: 'Maestrale改',
+        name_jp: 'Maestrale改',
         type: "DD", ship_class: "Maestrale",
         nid: 380,
         HP: 29, HPmax: 46,
@@ -11836,7 +11836,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     581: {
         name: 'Nisshin',
-        nameJP: '日進',
+        name_jp: '日進',
         type: "AV", ship_class: "Nisshin",
         nid: 381,
         HP: 45, HPmax: 65,
@@ -11857,7 +11857,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     582: {
         name: 'Natsugumo',
-        nameJP: '夏雲',
+        name_jp: '夏雲',
         type: "DD", ship_class: "Asashio",
         nid: 382,
         HP: 16, HPmax: 33,
@@ -11878,7 +11878,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     583: {
         name: 'Minegumo',
-        nameJP: '峯雲',
+        name_jp: '峯雲',
         type: "DD", ship_class: "Asashio",
         nid: 383,
         HP: 16, HPmax: 33,
@@ -11899,7 +11899,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     584: {
         name: 'Hachijou',
-        nameJP: '八丈',
+        name_jp: '八丈',
         type: "DE", ship_class: "Shimushu",
         nid: 384,
         HP: 9, HPmax: 18,
@@ -11920,7 +11920,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     585: {
         name: 'Ishigaki',
-        nameJP: '石垣',
+        name_jp: '石垣',
         type: "DE", ship_class: "Shimushu",
         nid: 385,
         HP: 9, HPmax: 18,
@@ -11941,7 +11941,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     586: {
         name: 'Nisshin A',
-        nameJP: '日進甲',
+        name_jp: '日進甲',
         type: "AV", ship_class: "Nisshin",
         nid: 386,
         HP: 49, HPmax: 69,
@@ -11962,7 +11962,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     587: {
         name: 'Umikaze Kai 2',
-        nameJP: '海風改二',
+        name_jp: '海風改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 387,
         HP: 31, HPmax: 54,
@@ -11983,7 +11983,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     588: {
         name: 'Yamakaze Kai Ni',
-        nameJP: '山風改二',
+        name_jp: '山風改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 388,
         HP: 30, HPmax: 52,
@@ -12004,7 +12004,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     589: {
         name: 'L.d.S.D.d.Abruzzi',
-        nameJP: 'L.d.S.D.d.Abruzzi',
+        name_jp: 'L.d.S.D.d.Abruzzi',
         type: "CL", ship_class: "Abruzzi",
         nid: 389,
         HP: 37, HPmax: 55,
@@ -12025,7 +12025,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     590: {
         name: 'G.Garibaldi',
-        nameJP: 'G.Garibaldi',
+        name_jp: 'G.Garibaldi',
         type: "CL", ship_class: "Abruzzi",
         nid: 390,
         HP: 37, HPmax: 55,
@@ -12046,7 +12046,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     591: {
         name: 'Kongou Kai Ni C',
-        nameJP: '金剛改二丙',
+        name_jp: '金剛改二丙',
         type: "FBB", ship_class: "Kongou",
         nid: 391,
         fit_class: 1,
@@ -12069,7 +12069,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     592: {
         name: 'Hiei Kai 2 C',
-        nameJP: '比叡改二丙',
+        name_jp: '比叡改二丙',
         type: "FBB", ship_class: "Kongou",
         nid: 392,
         fit_class: 1,
@@ -12092,7 +12092,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     593: {
         name: 'Haruna Kai 2 B',
-        nameJP: '榛名改二乙',
+        name_jp: '榛名改二乙',
         type: "FBB", ship_class: "Kongou",
         nid: 393,
         attack_special_ids: [104],
@@ -12114,7 +12114,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     594: {
         name: 'Akagi Kai 2',
-        nameJP: '赤城改二',
+        name_jp: '赤城改二',
         type: "CV", ship_class: "Akagi",
         nid: 404,
         HP: 81, HPmax: 97,
@@ -12135,7 +12135,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     595: {
         name: 'Houston',
-        nameJP: 'Houston',
+        name_jp: 'Houston',
         type: "CA", ship_class: "Northampton",
         nid: 395,
         HP: 43, HPmax: 56,
@@ -12156,7 +12156,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     596: {
         name: 'Fletcher',
-        nameJP: 'Fletcher',
+        name_jp: 'Fletcher',
         type: "DD", ship_class: "Fletcher",
         nid: 396,
         can_unconditional_OASW: true,
@@ -12178,7 +12178,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     597: {
         name: 'Atlanta',
-        nameJP: 'Atlanta',
+        name_jp: 'Atlanta',
         type: "CL", ship_class: "Atlanta",
         nid: 397,
         HP: 27, HPmax: 41,
@@ -12199,7 +12199,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     598: {
         name: 'Honolulu',
-        nameJP: 'Honolulu',
+        name_jp: 'Honolulu',
         type: "CL", ship_class: "Brooklyn",
         nid: 398,
         HP: 38, HPmax: 56,
@@ -12220,7 +12220,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     599: {
         name: 'Akagi Kai 2 E',
-        nameJP: '赤城改二戊',
+        name_jp: '赤城改二戊',
         type: "CV", ship_class: "Akagi",
         nid: 409,
         has_built_in_night_crew: true,
@@ -12242,7 +12242,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     600: {
         name: 'Houston Kai',
-        nameJP: 'Houston改',
+        name_jp: 'Houston改',
         type: "CA", ship_class: "Northampton",
         nid: 400,
         HP: 54, HPmax: 67,
@@ -12263,7 +12263,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     601: {
         name: 'Colorado',
-        nameJP: 'Colorado',
+        name_jp: 'Colorado',
         type: "BB", ship_class: "Colorado",
         nid: 401,
         attack_special_ids: [103],
@@ -12285,7 +12285,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     602: {
         name: 'South Dakota',
-        nameJP: 'South Dakota',
+        name_jp: 'South Dakota',
         type: "FBB", ship_class: "South_Dakota",
         nid: 402,
         HP: 79, HPmax: 92,
@@ -12306,7 +12306,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     603: {
         name: 'Hornet',
-        nameJP: 'Hornet',
+        name_jp: 'Hornet',
         type: "CV", ship_class: "Yorktown",
         nid: 403,
         HP: 67, HPmax: 84,
@@ -12327,7 +12327,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     604: {
         name: 'De Ruyter',
-        nameJP: 'De Ruyter',
+        name_jp: 'De Ruyter',
         type: "CL", ship_class: "De_Ruyter",
         nid: 399,
         HP: 28, HPmax: 43,
@@ -12348,7 +12348,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     605: {
         name: 'Luigi Torelli Kai',
-        nameJP: 'Luigi Torelli改',
+        name_jp: 'Luigi Torelli改',
         type: "SS", ship_class: "Guglielmo_Marconi",
         nid: 1505,
         HP: 13, HPmax: 23,
@@ -12369,7 +12369,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     606: {
         name: 'I-400 Kai',
-        nameJP: '伊400改',
+        name_jp: '伊400改',
         type: "SSV", ship_class: "I_400",
         nid: 1506,
         HP: 24, HPmax: 39,
@@ -12390,7 +12390,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     607: {
         name: 'I-47 Kai',
-        nameJP: '伊47改',
+        name_jp: '伊47改',
         type: "SS", ship_class: "I_47",
         nid: 1507,
         HP: 18, HPmax: 24,
@@ -12411,7 +12411,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     609: {
         name: 'De Ruyter Kai',
-        nameJP: 'De Ruyter改',
+        name_jp: 'De Ruyter改',
         type: "CL", ship_class: "De_Ruyter",
         nid: 1494,
         HP: 43, HPmax: 60,
@@ -12432,7 +12432,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     610: {
         name: 'Kaga Kai 2 E',
-        nameJP: '加賀改二戊',
+        name_jp: '加賀改二戊',
         type: "CV", ship_class: "Kaga",
         nid: 410,
         has_built_in_night_crew: true,
@@ -12454,7 +12454,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     611: {
         name: 'Mikura',
-        nameJP: '御蔵',
+        name_jp: '御蔵',
         type: "DE", ship_class: "Mikura",
         nid: 411,
         HP: 9, HPmax: 18,
@@ -12475,7 +12475,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     612: {
         name: 'Yashiro',
-        nameJP: '屋代',
+        name_jp: '屋代',
         type: "DE", ship_class: "Mikura",
         nid: 412,
         HP: 9, HPmax: 18,
@@ -12496,7 +12496,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     613: {
         name: 'Perth',
-        nameJP: 'Perth',
+        name_jp: 'Perth',
         type: "CL", ship_class: "Perth",
         nid: 413,
         HP: 29, HPmax: 44,
@@ -12517,7 +12517,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     614: {
         name: 'Grecale',
-        nameJP: 'Grecale',
+        name_jp: 'Grecale',
         type: "DD", ship_class: "Maestrale",
         nid: 414,
         HP: 15, HPmax: 30,
@@ -12538,7 +12538,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     615: {
         name: 'Helena',
-        nameJP: 'Helena',
+        name_jp: 'Helena',
         type: "CL", ship_class: "St_Louis",
         nid: 415,
         HP: 39, HPmax: 56,
@@ -12559,7 +12559,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     616: {
         name: 'Mikura Kai',
-        nameJP: '御蔵改',
+        name_jp: '御蔵改',
         type: "DE", ship_class: "Mikura",
         nid: 416,
         HP: 17, HPmax: 28,
@@ -12580,7 +12580,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     617: {
         name: 'Yashiro Kai',
-        nameJP: '屋代改',
+        name_jp: '屋代改',
         type: "DE", ship_class: "Mikura",
         nid: 417,
         HP: 17, HPmax: 28,
@@ -12601,7 +12601,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     618: {
         name: 'Perth Kai',
-        nameJP: 'Perth改',
+        name_jp: 'Perth改',
         type: "CL", ship_class: "Perth",
         nid: 418,
         HP: 45, HPmax: 62,
@@ -12622,7 +12622,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     619: {
         name: 'Grecale Kai',
-        nameJP: 'Grecale改',
+        name_jp: 'Grecale改',
         type: "DD", ship_class: "Maestrale",
         nid: 419,
         HP: 29, HPmax: 46,
@@ -12643,7 +12643,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     620: {
         name: 'Helena Kai',
-        nameJP: 'Helena改',
+        name_jp: 'Helena改',
         type: "CL", ship_class: "St_Louis",
         nid: 420,
         HP: 53, HPmax: 67,
@@ -12664,7 +12664,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     621: {
         name: 'Shinshuumaru',
-        nameJP: '神州丸',
+        name_jp: '神州丸',
         type: "LHA", ship_class: "Shinsyuumaru",
         nid: 421,
         HP: 37, HPmax: 49,
@@ -12685,7 +12685,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     622: {
         name: 'Yuubari Kai 2',
-        nameJP: '夕張改二',
+        name_jp: '夕張改二',
         type: "CL", ship_class: "Yuubari",
         nid: 422,
         HP: 41, HPmax: 55,
@@ -12706,7 +12706,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     623: {
         name: 'Yuubari Kai 2 Toku',
-        nameJP: '夕張改二特',
+        name_jp: '夕張改二特',
         type: "CL", ship_class: "Yuubari",
         nid: 423,
         HP: 41, HPmax: 55,
@@ -12727,7 +12727,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     624: {
         name: 'Yuubari Kai 2 D',
-        nameJP: '夕張改二丁',
+        name_jp: '夕張改二丁',
         type: "CL", ship_class: "Yuubari",
         nid: 424,
         can_unconditional_OASW: true,
@@ -12749,7 +12749,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     625: {
         name: 'Akishimo',
-        nameJP: '秋霜',
+        name_jp: '秋霜',
         type: "DD", ship_class: "Yuugumo",
         nid: 425,
         HP: 16, HPmax: 34,
@@ -12770,7 +12770,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     626: {
         name: 'Shinshuumaru Kai',
-        nameJP: '神州丸改',
+        name_jp: '神州丸改',
         type: "LHA", ship_class: "Shinsyuumaru",
         nid: 426,
         HP: 39, HPmax: 58,
@@ -12791,7 +12791,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     627: {
         name: 'Shikinami Kai 2',
-        nameJP: '敷波改二',
+        name_jp: '敷波改二',
         type: "DD", ship_class: "Ayanami",
         nid: 427,
         HP: 31, HPmax: 53,
@@ -12812,7 +12812,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     628: {
         name: 'Fletcher Kai Mod.2',
-        nameJP: 'Fletcher改 Mod.2',
+        name_jp: 'Fletcher改 Mod.2',
         type: "DD", ship_class: "Fletcher",
         nid: 428,
         can_unconditional_OASW: true,
@@ -12834,7 +12834,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     629: {
         name: 'Fletcher Mk.II',
-        nameJP: 'Fletcher Mk.II',
+        name_jp: 'Fletcher Mk.II',
         type: "DD", ship_class: "Fletcher",
         nid: 429,
         can_unconditional_OASW: true,
@@ -12856,7 +12856,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     630: {
         name: 'Gotland andra',
-        nameJP: 'Gotland andra',
+        name_jp: 'Gotland andra',
         type: "CL", ship_class: "Gotland",
         nid: 430,
         HP: 47, HPmax: 67,
@@ -12877,7 +12877,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     631: {
         name: 'Usugumo',
-        nameJP: '薄雲',
+        name_jp: '薄雲',
         type: "DD", ship_class: "Hubuki",
         nid: 431,
         HP: 15, HPmax: 29,
@@ -12898,7 +12898,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     632: {
         name: 'Ariake',
-        nameJP: '有明',
+        name_jp: '有明',
         type: "DD", ship_class: "Hatsuharu",
         nid: 432,
         HP: 16, HPmax: 31,
@@ -12919,7 +12919,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     633: {
         name: 'Yuugure',
-        nameJP: '夕暮',
+        name_jp: '夕暮',
         type: "DD", ship_class: "Hatsuharu",
         nid: 433,
         HP: 16, HPmax: 31,
@@ -12940,7 +12940,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     634: {
         name: 'Jingei',
-        nameJP: '迅鯨',
+        name_jp: '迅鯨',
         type: "AS", ship_class: "Jingei",
         nid: 434,
         HP: 32, HPmax: 48,
@@ -12961,7 +12961,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     635: {
         name: 'Chougei',
-        nameJP: '長鯨',
+        name_jp: '長鯨',
         type: "AS", ship_class: "Jingei",
         nid: 435,
         HP: 31, HPmax: 49,
@@ -12982,7 +12982,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     636: {
         name: 'I-47',
-        nameJP: '伊47',
+        name_jp: '伊47',
         type: "SS", ship_class: "I_47",
         nid: 436,
         HP: 14, HPmax: 19,
@@ -13003,7 +13003,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     637: {
         name: 'Kaiboukan No.4',
-        nameJP: '第四号海防艦',
+        name_jp: '第四号海防艦',
         type: "DE", ship_class: "Tei",
         nid: 437,
         HP: 8, HPmax: 15,
@@ -13024,7 +13024,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     638: {
         name: 'Kaiboukan No.30',
-        nameJP: '第三〇号海防艦',
+        name_jp: '第三〇号海防艦',
         type: "DE", ship_class: "Tei",
         nid: 438,
         HP: 9, HPmax: 16,
@@ -13045,7 +13045,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     639: {
         name: 'Jingei Kai',
-        nameJP: '迅鯨改',
+        name_jp: '迅鯨改',
         type: "AS", ship_class: "Jingei",
         nid: 439,
         HP: 38, HPmax: 58,
@@ -13066,7 +13066,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     640: {
         name: 'Chougei Kai',
-        nameJP: '長鯨改',
+        name_jp: '長鯨改',
         type: "AS", ship_class: "Jingei",
         nid: 440,
         HP: 37, HPmax: 59,
@@ -13087,7 +13087,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     641: {
         name: 'Matsu',
-        nameJP: '松',
+        name_jp: '松',
         type: "DD", ship_class: "Matsu",
         nid: 441,
         HP: 14, HPmax: 27,
@@ -13108,7 +13108,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     642: {
         name: 'Take',
-        nameJP: '竹',
+        name_jp: '竹',
         type: "DD", ship_class: "Matsu",
         nid: 442,
         HP: 14, HPmax: 27,
@@ -13129,7 +13129,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     643: {
         name: 'Ume',
-        nameJP: '梅',
+        name_jp: '梅',
         type: "DD", ship_class: "Matsu",
         nid: 443,
         HP: 14, HPmax: 27,
@@ -13150,7 +13150,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     644: {
         name: 'Momo',
-        nameJP: '桃',
+        name_jp: '桃',
         type: "DD", ship_class: "Matsu",
         nid: 444,
         HP: 14, HPmax: 27,
@@ -13171,7 +13171,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     645: {
         name: 'Souya (AGL)',
-        nameJP: '宗谷',
+        name_jp: '宗谷',
         type: "AO", ship_class: "Souya",
         nid: 445,
         HP: 23, HPmax: 36,
@@ -13192,7 +13192,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     646: {
         name: 'Kaga Kai 2 Go',
-        nameJP: '加賀改二護',
+        name_jp: '加賀改二護',
         type: "CV", ship_class: "Kaga",
         nid: 446,
         CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
@@ -13217,7 +13217,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     647: {
         name: 'Uranami Kai 2',
-        nameJP: '浦波改二',
+        name_jp: '浦波改二',
         type: "DD", ship_class: "Hubuki",
         nid: 447,
         HP: 31, HPmax: 49,
@@ -13238,7 +13238,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     648: {
         name: 'Akigumo Kai 2',
-        nameJP: '秋雲改二',
+        name_jp: '秋雲改二',
         type: "DD", ship_class: "Kagerou",
         nid: 448,
         HP: 33, HPmax: 56,
@@ -13259,7 +13259,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     649: {
         name: 'Takanami Kai 2',
-        nameJP: '高波改二',
+        name_jp: '高波改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 449,
         HP: 33, HPmax: 56,
@@ -13280,7 +13280,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     650: {
         name: 'Souya (AGB)',
-        nameJP: '宗谷',
+        name_jp: '宗谷',
         type: "AO", ship_class: "Souya",
         nid: 450,
         HP: 26, HPmax: 38,
@@ -13301,7 +13301,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     651: {
         name: 'Dan Yang',
-        nameJP: '丹陽',
+        name_jp: '丹陽',
         type: "DD", ship_class: "Kagerou",
         nid: 451,
         HP: 35, HPmax: 55,
@@ -13322,7 +13322,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     652: {
         name: 'Kuma Kai 2',
-        nameJP: '球磨改二',
+        name_jp: '球磨改二',
         type: "CL", ship_class: "Kuma",
         nid: 452,
         HP: 46, HPmax: 59,
@@ -13343,7 +13343,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     653: {
         name: 'Scirocco',
-        nameJP: 'Scirocco',
+        name_jp: 'Scirocco',
         type: "DD", ship_class: "Maestrale",
         nid: 453,
         HP: 15, HPmax: 30,
@@ -13364,7 +13364,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     654: {
         name: 'Washington',
-        nameJP: 'Washington',
+        name_jp: 'Washington',
         type: "FBB", ship_class: "North_Carolina",
         nid: 454,
         HP: 81, HPmax: 93,
@@ -13385,7 +13385,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     655: {
         name: 'Northampton',
-        nameJP: 'Northampton',
+        name_jp: 'Northampton',
         type: "CA", ship_class: "Northampton",
         nid: 455,
         HP: 44, HPmax: 56,
@@ -13406,7 +13406,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     656: {
         name: 'Yukikaze Kai 2',
-        nameJP: '雪風改二',
+        name_jp: '雪風改二',
         type: "DD", ship_class: "Kagerou",
         nid: 456,
         HP: 35, HPmax: 55,
@@ -13427,7 +13427,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     657: {
         name: 'Kuma Kai 2 D',
-        nameJP: '球磨改二丁',
+        name_jp: '球磨改二丁',
         type: "CL", ship_class: "Kuma",
         nid: 457,
         HP: 46, HPmax: 59,
@@ -13448,7 +13448,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     658: {
         name: 'Scirocco Kai',
-        nameJP: 'Scirocco改',
+        name_jp: 'Scirocco改',
         type: "DD", ship_class: "Maestrale",
         nid: 1707,
         HP: 28, HPmax: 45,
@@ -13469,7 +13469,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     659: {
         name: 'Washington Kai',
-        nameJP: 'Washington改',
+        name_jp: 'Washington改',
         type: "FBB", ship_class: "North_Carolina",
         nid: 459,
         HP: 93, HPmax: 100,
@@ -13490,7 +13490,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     660: {
         name: 'Northampton Kai',
-        nameJP: 'Northampton改',
+        name_jp: 'Northampton改',
         type: "CA", ship_class: "Northampton",
         nid: 460,
         HP: 55, HPmax: 67,
@@ -13511,7 +13511,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     662: {
         name: 'Noshiro Kai 2',
-        nameJP: '能代改二',
+        name_jp: '能代改二',
         type: "CL", ship_class: "Agano",
         nid: 462,
         HP: 53, HPmax: 67,
@@ -13532,7 +13532,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     663: {
         name: 'Yahagi Kai 2',
-        nameJP: '矢矧改二',
+        name_jp: '矢矧改二',
         type: "CL", ship_class: "Agano",
         nid: 463,
         HP: 54, HPmax: 69,
@@ -13553,7 +13553,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     665: {
         name: 'Akebono Kai 2',
-        nameJP: '曙改二',
+        name_jp: '曙改二',
         type: "DD", ship_class: "Ayanami",
         nid: 465,
         HP: 31, HPmax: 51,
@@ -13574,7 +13574,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     666: {
         name: 'Isonami Kai 2',
-        nameJP: '磯波改二',
+        name_jp: '磯波改二',
         type: "DD", ship_class: "Hubuki",
         nid: 466,
         HP: 30, HPmax: 49,
@@ -13595,7 +13595,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     667: {
         name: 'Yamakaze Kai Ni D',
-        nameJP: '山風改二丁',
+        name_jp: '山風改二丁',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 467,
         HP: 30, HPmax: 52,
@@ -13616,7 +13616,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     668: {
         name: 'Yahagi Kai 2 B',
-        nameJP: '矢矧改二乙',
+        name_jp: '矢矧改二乙',
         type: "CL", ship_class: "Agano",
         nid: 468,
         HP: 53, HPmax: 68,
@@ -13637,7 +13637,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     670: {
         name: 'Oyashio Kai 2',
-        nameJP: '親潮改二',
+        name_jp: '親潮改二',
         type: "DD", ship_class: "Kagerou",
         nid: 470,
         HP: 33, HPmax: 55,
@@ -13658,7 +13658,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     671: {
         name: 'Makinami',
-        nameJP: '巻波',
+        name_jp: '巻波',
         type: "DD", ship_class: "Yuugumo",
         nid: 471,
         HP: 16, HPmax: 34,
@@ -13679,7 +13679,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     674: {
         name: 'Tamanami',
-        nameJP: '玉波',
+        name_jp: '玉波',
         type: "DD", ship_class: "Yuugumo",
         nid: 474,
         HP: 16, HPmax: 34,
@@ -13700,7 +13700,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     675: {
         name: 'Suzunami',
-        nameJP: '涼波',
+        name_jp: '涼波',
         type: "DD", ship_class: "Yuugumo",
         nid: 475,
         HP: 16, HPmax: 34,
@@ -13721,7 +13721,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     678: {
         name: 'Hiburi Kai',
-        nameJP: '日振改',
+        name_jp: '日振改',
         type: "DE", ship_class: "Hiburi",
         nid: 1478,
         HP: 18, HPmax: 29,
@@ -13742,7 +13742,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     679: {
         name: 'Daitou Kai',
-        nameJP: '大東改',
+        name_jp: '大東改',
         type: "DE", ship_class: "Hiburi",
         nid: 1479,
         HP: 18, HPmax: 29,
@@ -13763,7 +13763,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     680: {
         name: 'Hamanami Kai',
-        nameJP: '浜波改',
+        name_jp: '浜波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1480,
         HP: 32, HPmax: 49,
@@ -13784,7 +13784,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     681: {
         name: 'Samuel B. Roberts Kai',
-        nameJP: 'Samuel B.Roberts改',
+        name_jp: 'Samuel B.Roberts改',
         type: "DD", ship_class: "John_C_Butler",
         nid: 1481,
         can_unconditional_OASW: true,
@@ -13806,7 +13806,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     684: {
         name: 'Hirato Kai',
-        nameJP: '平戸改',
+        name_jp: '平戸改',
         type: "DE", ship_class: "Etorohu",
         nid: 1484,
         HP: 17, HPmax: 28,
@@ -13827,7 +13827,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     685: {
         name: 'Fukae Kai',
-        nameJP: '福江改',
+        name_jp: '福江改',
         type: "DE", ship_class: "Etorohu",
         nid: 1485,
         HP: 17, HPmax: 28,
@@ -13848,7 +13848,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     686: {
         name: 'Kishinami Kai',
-        nameJP: '岸波改',
+        name_jp: '岸波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1486,
         HP: 32, HPmax: 49,
@@ -13869,7 +13869,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     687: {
         name: 'Minegumo Kai',
-        nameJP: '峯雲改',
+        name_jp: '峯雲改',
         type: "DD", ship_class: "Asashio",
         nid: 1487,
         HP: 31, HPmax: 49,
@@ -13890,7 +13890,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     688: {
         name: 'Hayanami Kai',
-        nameJP: '早波改',
+        name_jp: '早波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1488,
         HP: 32, HPmax: 49,
@@ -13911,7 +13911,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     689: {
         name: 'Johnston Kai',
-        nameJP: 'Johnston改',
+        name_jp: 'Johnston改',
         type: "DD", ship_class: "Fletcher",
         nid: 1489,
         can_unconditional_OASW: true,
@@ -13933,7 +13933,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     690: {
         name: 'Nisshin Kai',
-        nameJP: '日進改',
+        name_jp: '日進改',
         type: "AV", ship_class: "Nisshin",
         nid: 1490,
         HP: 47, HPmax: 67,
@@ -13954,7 +13954,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     691: {
         name: 'G.Garibaldi Kai',
-        nameJP: 'G.Garibaldi改',
+        name_jp: 'G.Garibaldi改',
         type: "CL", ship_class: "Abruzzi",
         nid: 1491,
         HP: 52, HPmax: 63,
@@ -13975,7 +13975,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     692: {
         name: 'Fletcher Kai',
-        nameJP: 'Fletcher改',
+        name_jp: 'Fletcher改',
         type: "DD", ship_class: "Fletcher",
         nid: 1492,
         can_unconditional_OASW: true,
@@ -13997,7 +13997,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     693: {
         name: 'L.d.S.D.d.Abruzzi Kai',
-        nameJP: 'L.d.S.D.d.Abruzzi改',
+        name_jp: 'L.d.S.D.d.Abruzzi改',
         type: "CL", ship_class: "Abruzzi",
         nid: 1483,
         HP: 52, HPmax: 63,
@@ -14018,7 +14018,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     694: {
         name: 'Kirishima Kai 2 C',
-        nameJP: '霧島改二丙',
+        name_jp: '霧島改二丙',
         type: "FBB", ship_class: "Kongou",
         nid: 394,
         fit_class: 1,
@@ -14041,7 +14041,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     695: {
         name: 'Akishimo Kai',
-        nameJP: '秋霜改',
+        name_jp: '秋霜改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1495,
         HP: 32, HPmax: 49,
@@ -14062,7 +14062,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     696: {
         name: 'Atlanta Kai',
-        nameJP: 'Atlanta改',
+        name_jp: 'Atlanta改',
         type: "CL", ship_class: "Atlanta",
         nid: 1496,
         HP: 41, HPmax: 59,
@@ -14083,7 +14083,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     697: {
         name: 'South Dakota Kai',
-        nameJP: 'South Dakota改',
+        name_jp: 'South Dakota改',
         type: "FBB", ship_class: "South_Dakota",
         nid: 407,
         HP: 91, HPmax: 100,
@@ -14104,7 +14104,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     698: {
         name: 'Kaga Kai 2',
-        nameJP: '加賀改二',
+        name_jp: '加賀改二',
         type: "CV", ship_class: "Kaga",
         nid: 405,
         HP: 84, HPmax: 98,
@@ -14125,7 +14125,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     699: {
         name: 'Souya (AGS)',
-        nameJP: '宗谷',
+        name_jp: '宗谷',
         type: "AO", ship_class: "Souya",
         nid: 408,
         HP: 22, HPmax: 35,
@@ -14146,7 +14146,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     700: {
         name: 'Usugumo Kai',
-        nameJP: '薄雲改',
+        name_jp: '薄雲改',
         type: "DD", ship_class: "Hubuki",
         nid: 1700,
         HP: 30, HPmax: 49,
@@ -14167,7 +14167,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     701: {
         name: 'Kaiboukan No.4 Kai',
-        nameJP: '第四号海防艦改',
+        name_jp: '第四号海防艦改',
         type: "DE", ship_class: "Tei",
         nid: 1701,
         HP: 15, HPmax: 23,
@@ -14188,7 +14188,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     702: {
         name: 'Matsu Kai',
-        nameJP: '松改',
+        name_jp: '松改',
         type: "DD", ship_class: "Matsu",
         nid: 1702,
         HP: 27, HPmax: 45,
@@ -14209,7 +14209,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     703: {
         name: 'Ariake Kai',
-        nameJP: '有明改',
+        name_jp: '有明改',
         type: "DD", ship_class: "Hatsuharu",
         nid: 1703,
         HP: 30, HPmax: 48,
@@ -14230,7 +14230,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     704: {
         name: 'Hornet Kai',
-        nameJP: 'Hornet改',
+        name_jp: 'Hornet改',
         type: "CV", ship_class: "Yorktown",
         nid: 1704,
         HP: 81, HPmax: 92,
@@ -14251,7 +14251,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     705: {
         name: 'Sheffield Kai',
-        nameJP: 'Sheffield改',
+        name_jp: 'Sheffield改',
         type: "CL", ship_class: "Town",
         nid: 1705,
         HP: 52, HPmax: 67,
@@ -14272,7 +14272,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     706: {
         name: 'Take Kai',
-        nameJP: '竹改',
+        name_jp: '竹改',
         type: "DD", ship_class: "Matsu",
         nid: 1706,
         HP: 26, HPmax: 45,
@@ -14293,7 +14293,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     707: {
         name: 'Gambier Bay Mk.II',
-        nameJP: 'Gambier Bay Mk.II',
+        name_jp: 'Gambier Bay Mk.II',
         type: "CVL", ship_class: "Casablanca",
         nid: 458,
         HP: 53, HPmax: 73,
@@ -14314,7 +14314,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     708: {
         name: 'Momo Kai',
-        nameJP: '桃改',
+        name_jp: '桃改',
         type: "DD", ship_class: "Matsu",
         nid: 1708,
         HP: 26, HPmax: 45,
@@ -14335,7 +14335,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     709: {
         name: 'Makinami Kai',
-        nameJP: '巻波改',
+        name_jp: '巻波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1709,
         HP: 32, HPmax: 49,
@@ -14356,7 +14356,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     710: {
         name: 'Suzunami Kai',
-        nameJP: '涼波改',
+        name_jp: '涼波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1710,
         HP: 32, HPmax: 49,
@@ -14377,7 +14377,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     711: {
         name: 'Honolulu Kai',
-        nameJP: 'Honolulu改',
+        name_jp: 'Honolulu改',
         type: "CL", ship_class: "Brooklyn",
         nid: 1711,
         HP: 53, HPmax: 67,
@@ -14398,7 +14398,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     712: {
         name: 'Kaiboukan No.30 Kai',
-        nameJP: '第三〇号海防艦改',
+        name_jp: '第三〇号海防艦改',
         type: "DE", ship_class: "Tei",
         nid: 1712,
         HP: 15, HPmax: 23,
@@ -14419,7 +14419,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     713: {
         name: 'Victorious Kai',
-        nameJP: 'Victorious改',
+        name_jp: 'Victorious改',
         type: "CVB", ship_class: "Illustrious",
         nid: 1713,
         HP: 74, HPmax: 91,
@@ -14440,7 +14440,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     714: {
         name: 'Shounan Kai',
-        nameJP: '昭南改',
+        name_jp: '昭南改',
         type: "DE", ship_class: "Hiburi",
         nid: 1714,
         HP: 18, HPmax: 29,
@@ -14461,7 +14461,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     715: {
         name: 'Scamp Kai',
-        nameJP: 'Scamp改',
+        name_jp: 'Scamp改',
         type: "SS", ship_class: "Gato",
         nid: 1715,
         HP: 17, HPmax: 23,
@@ -14482,7 +14482,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     716: {
         name: 'Ume Kai',
-        nameJP: '梅改',
+        name_jp: '梅改',
         type: "DD", ship_class: "Matsu",
         nid: 1716,
         HP: 27, HPmax: 45,
@@ -14503,7 +14503,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     717: {
         name: 'Yamashio Maru Kai',
-        nameJP: '山汐丸改',
+        name_jp: '山汐丸改',
         type: "AO", ship_class: "Yamashiomaru",
         nid: 1717,
         has_potential_air_attack: true,
@@ -14525,7 +14525,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     718: {
         name: 'Tamanami Kai',
-        nameJP: '玉波改',
+        name_jp: '玉波改',
         type: "DD", ship_class: "Yuugumo",
         nid: 1718,
         HP: 32, HPmax: 49,
@@ -14546,7 +14546,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     719: {
         name: 'I-201 Kai',
-        nameJP: '伊201改',
+        name_jp: '伊201改',
         type: "SS", ship_class: "Sentaka",
         nid: 1719,
         HP: 13, HPmax: 23,
@@ -14567,7 +14567,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     720: {
         name: 'Hayashio Kai',
-        nameJP: '早潮改',
+        name_jp: '早潮改',
         type: "DD", ship_class: "Kagerou",
         nid: 1720,
         HP: 32, HPmax: 49,
@@ -14588,7 +14588,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     721: {
         name: 'Natsugumo Kai',
-        nameJP: '夏雲改',
+        name_jp: '夏雲改',
         type: "DD", ship_class: "Asashio",
         nid: 1721,
         HP: 31, HPmax: 49,
@@ -14609,7 +14609,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     722: {
         name: 'Brooklyn Kai',
-        nameJP: 'Brooklyn改',
+        name_jp: 'Brooklyn改',
         type: "CL", ship_class: "Brooklyn",
         nid: 1722,
         HP: 53, HPmax: 67,
@@ -14630,7 +14630,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     723: {
         name: 'Ranger Kai',
-        nameJP: 'Ranger改',
+        name_jp: 'Ranger改',
         type: "CV", ship_class: "Ranger",
         nid: 1723,
         HP: 64, HPmax: 84,
@@ -14651,7 +14651,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     724: {
         name: 'Jean Bart Kai',
-        nameJP: 'Jean Bart改',
+        name_jp: 'Jean Bart改',
         type: "FBB", ship_class: "Richelieu",
         nid: 1724,
         attack_special_ids: [105],
@@ -14673,7 +14673,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     725: {
         name: 'Yuugure Kai',
-        nameJP: '夕暮改',
+        name_jp: '夕暮改',
         type: "DD", ship_class: "Hatsuharu",
         nid: 1725,
         HP: 30, HPmax: 48,
@@ -14694,7 +14694,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     726: {
         name: 'Heywood L.E. Kai',
-        nameJP: 'Heywood L.E.改',
+        name_jp: 'Heywood L.E.改',
         type: "DD", ship_class: "Fletcher",
         nid: 1726,
         can_unconditional_OASW: true,
@@ -14716,7 +14716,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     727: {
         name: 'No.101 Transport Ship Kai',
-        nameJP: '第百一号輸送艦改',
+        name_jp: '第百一号輸送艦改',
         type: "LHA", ship_class: "Momochi",
         nid: 1727,
         is_anti_install_ship: true,
@@ -14738,7 +14738,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     728: {
         name: 'Kaiboukan No.22 Kai',
-        nameJP: '第二十二号海防艦改',
+        name_jp: '第二十二号海防艦改',
         type: "DE", ship_class: "Tei",
         nid: 1728,
         HP: 17, HPmax: 25,
@@ -14759,7 +14759,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     729: {
         name: 'Shirakumo Kai',
-        nameJP: '白雲改',
+        name_jp: '白雲改',
         type: "DD", ship_class: "Hubuki",
         nid: 1729,
         HP: 30, HPmax: 50,
@@ -14780,7 +14780,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     730: {
         name: 'Inagi Kai',
-        nameJP: '稲木改',
+        name_jp: '稲木改',
         type: "DE", ship_class: "Ukuru",
         nid: 1730,
         HP: 17, HPmax: 29,
@@ -14801,7 +14801,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     731: {
         name: 'C.Cappellini Kai',
-        nameJP: 'C.Cappellini改',
+        name_jp: 'C.Cappellini改',
         type: "SS", ship_class: "Marcello",
         nid: 1731,
         HP: 11, HPmax: 21,
@@ -14822,7 +14822,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     732: {
         name: 'Drum Kai',
-        nameJP: 'Drum改',
+        name_jp: 'Drum改',
         type: "SS", ship_class: "Gato",
         nid: 1732,
         HP: 17, HPmax: 23,
@@ -14843,7 +14843,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     733: {
         name: 'Valiant Kai',
-        nameJP: 'Valiant改',
+        name_jp: 'Valiant改',
         type: "BB", ship_class: "Queen_Elizabeth",
         nid: 1733,
         HP: 83, HPmax: 92,
@@ -14864,7 +14864,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     734: {
         name: 'Phoenix Kai',
-        nameJP: 'Phoenix改',
+        name_jp: 'Phoenix改',
         type: "CL", ship_class: "Brooklyn",
         nid: 1734,
         HP: 53, HPmax: 67,
@@ -14885,7 +14885,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     735: {
         name: 'Lexington Kai',
-        nameJP: 'Lexington改',
+        name_jp: 'Lexington改',
         type: "CV", ship_class: "Lexington",
         nid: 1735,
         CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
@@ -14907,7 +14907,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     877: {
         name: 'Conte di Cavour',
-        nameJP: 'Conte di Cavour',
+        name_jp: 'Conte di Cavour',
         type: "BB", ship_class: "Conte_di_Cavour",
         nid: 477,
         HP: 57, HPmax: 76,
@@ -14928,7 +14928,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     878: {
         name: 'Conte di Cavour Kai',
-        nameJP: 'Conte di Cavour改',
+        name_jp: 'Conte di Cavour改',
         type: "FBB", ship_class: "Conte_di_Cavour",
         nid: 478,
         HP: 73, HPmax: 85,
@@ -14949,7 +14949,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     879: {
         name: 'Conte di Cavour nuovo',
-        nameJP: 'Conte di Cavour nuovo',
+        name_jp: 'Conte di Cavour nuovo',
         type: "FBB", ship_class: "Conte_di_Cavour",
         nid: 479,
         HP: 78, HPmax: 91,
@@ -14970,7 +14970,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     881: {
         name: 'I-201',
-        nameJP: '伊201',
+        name_jp: '伊201',
         type: "SS", ship_class: "Sentaka",
         nid: 481,
         HP: 12, HPmax: 22,
@@ -14991,7 +14991,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     882: {
         name: 'I-203',
-        nameJP: '伊203',
+        name_jp: '伊203',
         type: "SS", ship_class: "Sentaka",
         nid: 482,
         HP: 12, HPmax: 22,
@@ -15012,7 +15012,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     883: {
         name: 'Ryuuhou Kai 2 E',
-        nameJP: '龍鳳改二戊',
+        name_jp: '龍鳳改二戊',
         type: "CVL", ship_class: "Ryuuhou",
         nid: 483,
         has_built_in_night_crew: true,
@@ -15034,7 +15034,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     884: {
         name: 'Unyou',
-        nameJP: '雲鷹',
+        name_jp: '雲鷹',
         type: "CVL", ship_class: "Taiyou",
         nid: 484,
         HP: 39, HPmax: 59,
@@ -15055,7 +15055,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     885: {
         name: 'Victorious',
-        nameJP: 'Victorious',
+        name_jp: 'Victorious',
         type: "CVB", ship_class: "Illustrious",
         nid: 485,
         HP: 59, HPmax: 85,
@@ -15076,7 +15076,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     886: {
         name: 'Hayashio',
-        nameJP: '早潮',
+        name_jp: '早潮',
         type: "DD", ship_class: "Kagerou",
         nid: 486,
         HP: 16, HPmax: 34,
@@ -15097,7 +15097,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     887: {
         name: 'I-203 Kai',
-        nameJP: '伊203改',
+        name_jp: '伊203改',
         type: "SS", ship_class: "Sentaka",
         nid: 487,
         HP: 13, HPmax: 23,
@@ -15118,7 +15118,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     888: {
         name: 'Ryuuhou Kai 2',
-        nameJP: '龍鳳改二',
+        name_jp: '龍鳳改二',
         type: "CVL", ship_class: "Ryuuhou",
         nid: 488,
         HP: 63, HPmax: 81,
@@ -15139,7 +15139,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     889: {
         name: 'Unyou Kai 2',
-        nameJP: '雲鷹改二',
+        name_jp: '雲鷹改二',
         type: "CVL", ship_class: "Taiyou",
         nid: 489,
         CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
@@ -15162,7 +15162,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     891: {
         name: 'Salmon',
-        nameJP: 'Salmon',
+        name_jp: 'Salmon',
         type: "SS", ship_class: "Salmon",
         nid: 491,
         HP: 12, HPmax: 17,
@@ -15183,7 +15183,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     892: {
         name: 'Drum',
-        nameJP: 'Drum',
+        name_jp: 'Drum',
         type: "SS", ship_class: "Gato",
         nid: 492,
         HP: 13, HPmax: 18,
@@ -15204,7 +15204,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     893: {
         name: 'Janus Kai',
-        nameJP: 'Janus改',
+        name_jp: 'Janus改',
         type: "DD", ship_class: "J",
         nid: 1493,
         can_unconditional_OASW: true,
@@ -15226,7 +15226,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     894: {
         name: 'Houshou Kai 2',
-        nameJP: '鳳翔改二',
+        name_jp: '鳳翔改二',
         type: "CVL", ship_class: "Houshou",
         nid: 494,
         HP: 57, HPmax: 73,
@@ -15247,7 +15247,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     895: {
         name: 'Shounan',
-        nameJP: '昭南',
+        name_jp: '昭南',
         type: "DE", ship_class: "Hiburi",
         nid: 495,
         HP: 9, HPmax: 18,
@@ -15268,7 +15268,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     896: {
         name: 'Brooklyn',
-        nameJP: 'Brooklyn',
+        name_jp: 'Brooklyn',
         type: "CL", ship_class: "Brooklyn",
         nid: 497,
         HP: 38, HPmax: 56,
@@ -15289,7 +15289,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     897: {
         name: 'Salmon Kai',
-        nameJP: 'Salmon改',
+        name_jp: 'Salmon改',
         type: "SS", ship_class: "Salmon",
         nid: 496,
         HP: 15, HPmax: 21,
@@ -15310,7 +15310,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     898: {
         name: 'Kaiboukan No.22',
-        nameJP: '第二十二号海防艦',
+        name_jp: '第二十二号海防艦',
         type: "DE", ship_class: "Tei",
         nid: 498,
         HP: 8, HPmax: 16,
@@ -15331,7 +15331,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     899: {
         name: 'Houshou Kai 2 Sen',
-        nameJP: '鳳翔改二戦',
+        name_jp: '鳳翔改二戦',
         type: "CVL", ship_class: "Houshou",
         nid: 499,
         HP: 57, HPmax: 73,
@@ -15352,7 +15352,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     900: {
         name: 'Yamashio Maru',
-        nameJP: '山汐丸',
+        name_jp: '山汐丸',
         type: "AO", ship_class: "Yamashiomaru",
         nid: 500,
         HP: 36, HPmax: 48,
@@ -15373,7 +15373,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     901: {
         name: 'Javelin',
-        nameJP: 'Javelin',
+        name_jp: 'Javelin',
         type: "DD", ship_class: "J",
         nid: 501,
         HP: 15, HPmax: 33,
@@ -15394,7 +15394,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     903: {
         name: 'Amagiri Kai 2',
-        nameJP: '天霧改二',
+        name_jp: '天霧改二',
         type: "DD", ship_class: "Ayanami",
         nid: 503,
         is_anti_PT_ship: true,
@@ -15416,7 +15416,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     904: {
         name: 'Noumi',
-        nameJP: '能美',
+        name_jp: '能美',
         type: "DE", ship_class: "Mikura",
         nid: 504,
         HP: 9, HPmax: 18,
@@ -15437,7 +15437,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     905: {
         name: 'Kurahashi',
-        nameJP: '倉橋',
+        name_jp: '倉橋',
         type: "DE", ship_class: "Mikura",
         nid: 505,
         HP: 9, HPmax: 18,
@@ -15458,7 +15458,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     906: {
         name: 'Javelin Kai',
-        nameJP: 'Javelin改',
+        name_jp: 'Javelin改',
         type: "DD", ship_class: "J",
         nid: 506,
         can_unconditional_OASW: true,
@@ -15480,7 +15480,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     908: {
         name: 'Amagiri Kai 2 D',
-        nameJP: '天霧改二丁',
+        name_jp: '天霧改二丁',
         type: "DD", ship_class: "Ayanami",
         nid: 508,
         is_anti_PT_ship: true,
@@ -15502,7 +15502,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     909: {
         name: 'Noumi Kai',
-        nameJP: '能美改',
+        name_jp: '能美改',
         type: "DE", ship_class: "Mikura",
         nid: 509,
         HP: 17, HPmax: 28,
@@ -15523,7 +15523,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     910: {
         name: 'Kurahashi Kai',
-        nameJP: '倉橋改',
+        name_jp: '倉橋改',
         type: "DE", ship_class: "Mikura",
         nid: 510,
         HP: 17, HPmax: 28,
@@ -15544,7 +15544,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     911: {
         name: 'Yamato Kai 2',
-        nameJP: '大和改二',
+        name_jp: '大和改二',
         type: "FBB", ship_class: "Yamato",
         nid: 511,
         fit_class: 9,
@@ -15567,7 +15567,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     913: {
         name: 'Maryland',
-        nameJP: 'Maryland',
+        name_jp: 'Maryland',
         type: "BB", ship_class: "Colorado",
         nid: 513,
         attack_special_ids: [103],
@@ -15589,7 +15589,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     915: {
         name: 'Hayashio Kai 2',
-        nameJP: '早潮改二',
+        name_jp: '早潮改二',
         type: "DD", ship_class: "Kagerou",
         nid: 515,
         HP: 33, HPmax: 55,
@@ -15610,7 +15610,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     916: {
         name: 'Yamato Kai 2 Juu',
-        nameJP: '大和改二重',
+        name_jp: '大和改二重',
         type: "BBV", ship_class: "Yamato",
         nid: 516,
         fit_class: 9,
@@ -15633,7 +15633,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     918: {
         name: 'Maryland Kai',
-        nameJP: 'Maryland改',
+        name_jp: 'Maryland改',
         type: "BB", ship_class: "Colorado",
         nid: 518,
         attack_special_ids: [103],
@@ -15655,7 +15655,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     920: {
         name: 'Samuel B. Roberts Mk.II',
-        nameJP: 'Samuel B.Roberts Mk.II',
+        name_jp: 'Samuel B.Roberts Mk.II',
         type: "DD", ship_class: "John_C_Butler",
         nid: 520,
         can_unconditional_OASW: true,
@@ -15677,7 +15677,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     921: {
         name: 'Ukuru',
-        nameJP: '鵜来',
+        name_jp: '鵜来',
         type: "DE", ship_class: "Ukuru",
         nid: 521,
         HP: 9, HPmax: 17,
@@ -15698,7 +15698,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     922: {
         name: 'Inagi',
-        nameJP: '稲木',
+        name_jp: '稲木',
         type: "DE", ship_class: "Ukuru",
         nid: 522,
         HP: 9, HPmax: 17,
@@ -15719,7 +15719,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     923: {
         name: 'Tuscaloosa',
-        nameJP: 'Tuscaloosa',
+        name_jp: 'Tuscaloosa',
         type: "CA", ship_class: "New_Orleans",
         nid: 523,
         HP: 43, HPmax: 55,
@@ -15740,7 +15740,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     924: {
         name: 'Nevada',
-        nameJP: 'Nevada',
+        name_jp: 'Nevada',
         type: "BB", ship_class: "Nevada",
         nid: 524,
         HP: 74, HPmax: 87,
@@ -15761,7 +15761,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     925: {
         name: 'Langley',
-        nameJP: 'Langley',
+        name_jp: 'Langley',
         type: "CVL", ship_class: "Independence",
         nid: 525,
         HP: 31, HPmax: 41,
@@ -15782,7 +15782,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     926: {
         name: 'Ukuru Kai',
-        nameJP: '鵜来改',
+        name_jp: '鵜来改',
         type: "DE", ship_class: "Ukuru",
         nid: 526,
         HP: 17, HPmax: 28,
@@ -15803,7 +15803,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     927: {
         name: 'Valiant',
-        nameJP: 'Valiant',
+        name_jp: 'Valiant',
         type: "BB", ship_class: "Queen_Elizabeth",
         nid: 527,
         HP: 73, HPmax: 87,
@@ -15824,7 +15824,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     928: {
         name: 'Tuscaloosa Kai',
-        nameJP: 'Tuscaloosa改',
+        name_jp: 'Tuscaloosa改',
         type: "CA", ship_class: "New_Orleans",
         nid: 528,
         HP: 53, HPmax: 65,
@@ -15845,7 +15845,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     929: {
         name: 'Nevada Kai',
-        nameJP: 'Nevada改',
+        name_jp: 'Nevada改',
         type: "BB", ship_class: "Nevada",
         nid: 529,
         HP: 89, HPmax: 95,
@@ -15866,7 +15866,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     930: {
         name: 'Langley Kai',
-        nameJP: 'Langley改',
+        name_jp: 'Langley改',
         type: "CVL", ship_class: "Independence",
         nid: 530,
         HP: 44, HPmax: 70,
@@ -15887,7 +15887,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     931: {
         name: 'Ranger',
-        nameJP: 'Ranger',
+        name_jp: 'Ranger',
         type: "CV", ship_class: "Ranger",
         nid: 531,
         HP: 48, HPmax: 78,
@@ -15908,7 +15908,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     933: {
         name: 'Massachusetts',
-        nameJP: 'Massachusetts',
+        name_jp: 'Massachusetts',
         type: "FBB", ship_class: "South_Dakota",
         nid: 533,
         HP: 79, HPmax: 92,
@@ -15929,7 +15929,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     934: {
         name: 'C.Cappellini',
-        nameJP: 'C.Cappellini',
+        name_jp: 'C.Cappellini',
         type: "SS", ship_class: "Marcello",
         nid: 534,
         HP: 10, HPmax: 20,
@@ -15950,7 +15950,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     935: {
         name: 'Jean Bart',
-        nameJP: 'Jean Bart',
+        name_jp: 'Jean Bart',
         type: "FBB", ship_class: "Richelieu",
         nid: 535,
         HP: 84, HPmax: 93,
@@ -15971,7 +15971,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     936: {
         name: 'Nevada Kai Mod.2',
-        nameJP: 'Nevada改 Mod.2',
+        name_jp: 'Nevada改 Mod.2',
         type: "BB", ship_class: "Nevada",
         nid: 536,
         HP: 90, HPmax: 96,
@@ -15992,7 +15992,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     938: {
         name: 'Massachusetts Kai',
-        nameJP: 'Massachusetts改',
+        name_jp: 'Massachusetts改',
         type: "FBB", ship_class: "South_Dakota",
         nid: 538,
         HP: 91, HPmax: 101,
@@ -16013,7 +16013,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     939: {
         name: 'UIT-24',
-        nameJP: 'UIT-24',
+        name_jp: 'UIT-24',
         type: "SS", ship_class: "Marcello",
         nid: 539,
         HP: 12, HPmax: 22,
@@ -16034,7 +16034,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     940: {
         name: 'I-503',
-        nameJP: '伊503',
+        name_jp: '伊503',
         type: "SS", ship_class: "Marcello",
         nid: 540,
         HP: 13, HPmax: 23,
@@ -16055,7 +16055,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     941: {
         name: 'Heywood L.E.',
-        nameJP: 'Heywood L.E.',
+        name_jp: 'Heywood L.E.',
         type: "DD", ship_class: "Fletcher",
         nid: 541,
         HP: 17, HPmax: 35,
@@ -16076,7 +16076,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     943: {
         name: 'Kumano Maru',
-        nameJP: '熊野丸',
+        name_jp: '熊野丸',
         type: "LHA", ship_class: "Kumanomaru",
         nid: 543,
         HP: 38, HPmax: 49,
@@ -16097,7 +16097,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     944: {
         name: 'Heian Maru',
-        nameJP: '平安丸',
+        name_jp: '平安丸',
         type: "AS", ship_class: "Heianmaru",
         nid: 544,
         HP: 36, HPmax: 51,
@@ -16118,7 +16118,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     945: {
         name: 'No.101 Transport Ship',
-        nameJP: '第百一号輸送艦',
+        name_jp: '第百一号輸送艦',
         type: "LHA", ship_class: "Momochi",
         nid: 545,
         is_anti_install_ship: true,
@@ -16140,7 +16140,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     948: {
         name: 'Kumano Maru Kai',
-        nameJP: '熊野丸改',
+        name_jp: '熊野丸改',
         type: "LHA", ship_class: "Kumanomaru",
         nid: 548,
         HP: 40, HPmax: 59,
@@ -16161,7 +16161,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     949: {
         name: 'Heian Maru Kai',
-        nameJP: '平安丸改',
+        name_jp: '平安丸改',
         type: "AS", ship_class: "Heianmaru",
         nid: 549,
         HP: 39, HPmax: 57,
@@ -16182,7 +16182,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     951: {
         name: 'Amatsukaze Kai 2',
-        nameJP: '天津風改二',
+        name_jp: '天津風改二',
         type: "DD", ship_class: "Kagerou",
         nid: 551,
         HP: 35, HPmax: 55,
@@ -16203,7 +16203,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     952: {
         name: 'Phoenix',
-        nameJP: 'Phoenix',
+        name_jp: 'Phoenix',
         type: "CL", ship_class: "Brooklyn",
         nid: 552,
         HP: 38, HPmax: 56,
@@ -16224,7 +16224,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     953: {
         name: 'Asahi',
-        nameJP: '朝日',
+        name_jp: '朝日',
         type: "CT", ship_class: "Asahi",
         nid: 553,
         HP: 36, HPmax: 44,
@@ -16245,7 +16245,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     954: {
         name: 'Haruna Kai 2 C',
-        nameJP: '榛名改二丙',
+        name_jp: '榛名改二丙',
         type: "FBB", ship_class: "Kongou",
         nid: 554,
         attack_special_ids: [104],
@@ -16267,7 +16267,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     955: {
         name: 'Kiyoshimo Kai 2',
-        nameJP: '清霜改二',
+        name_jp: '清霜改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 555,
         HP: 33, HPmax: 56,
@@ -16288,7 +16288,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     956: {
         name: 'Hayashimo Kai 2',
-        nameJP: '早霜改二',
+        name_jp: '早霜改二',
         type: "DD", ship_class: "Yuugumo",
         nid: 556,
         HP: 33, HPmax: 56,
@@ -16309,7 +16309,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     957: {
         name: 'General Belgrano',
-        nameJP: 'General Belgrano',
+        name_jp: 'General Belgrano',
         type: "CL", ship_class: "Brooklyn",
         nid: 557,
         HP: 55, HPmax: 70,
@@ -16330,7 +16330,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     958: {
         name: 'Asahi Kai',
-        nameJP: '朝日改',
+        name_jp: '朝日改',
         type: "AR", ship_class: "Asahi",
         nid: 558,
         HP: 37, HPmax: 45,
@@ -16351,7 +16351,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     959: {
         name: 'Miyuki Kai 2',
-        nameJP: '深雪改二',
+        name_jp: '深雪改二',
         type: "DD", ship_class: "Hubuki",
         nid: 559,
         HP: 31, HPmax: 48,
@@ -16372,7 +16372,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     960: {
         name: 'Kiyoshimo Kai 2 D',
-        nameJP: '清霜改二丁',
+        name_jp: '清霜改二丁',
         type: "DD", ship_class: "Yuugumo",
         nid: 560,
         HP: 33, HPmax: 56,
@@ -16393,7 +16393,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     961: {
         name: 'Shigure Kai 3',
-        nameJP: '時雨改三',
+        name_jp: '時雨改三',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 561,
         HP: 34, HPmax: 54,
@@ -16414,7 +16414,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     962: {
         name: 'Mogador',
-        nameJP: 'Mogador',
+        name_jp: 'Mogador',
         type: "DD", ship_class: "Mogador",
         nid: 562,
         HP: 21, HPmax: 41,
@@ -16435,7 +16435,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     964: {
         name: 'Shirakumo',
-        nameJP: '白雲',
+        name_jp: '白雲',
         type: "DD", ship_class: "Hubuki",
         nid: 564,
         HP: 15, HPmax: 29,
@@ -16456,7 +16456,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     965: {
         name: 'Gloire',
-        nameJP: 'Gloire',
+        name_jp: 'Gloire',
         type: "CL", ship_class: "La_Galissonnière",
         nid: 565,
         HP: 33, HPmax: 46,
@@ -16477,7 +16477,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     966: {
         name: 'Lexington',
-        nameJP: 'Lexington',
+        name_jp: 'Lexington',
         type: "CV", ship_class: "Lexington",
         nid: 566,
         CVs_night_attack_type: CVsNightAttackType.TaiyoModel,
@@ -16499,7 +16499,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     967: {
         name: 'Mogador Kai',
-        nameJP: 'Mogador改',
+        name_jp: 'Mogador改',
         type: "DD", ship_class: "Mogador",
         nid: 567,
         HP: 38, HPmax: 57,
@@ -16520,7 +16520,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     968: {
         name: 'Hatsuzuki Kai 2',
-        nameJP: '初月改二',
+        name_jp: '初月改二',
         type: "DD", ship_class: "Akizuki",
         nid: 568,
         HP: 39, HPmax: 58,
@@ -16541,7 +16541,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     969: {
         name: 'Richelieu Deux',
-        nameJP: 'Richelieu Deux',
+        name_jp: 'Richelieu Deux',
         type: "FBB", ship_class: "Richelieu",
         nid: 569,
         attack_special_ids: [105],
@@ -16563,7 +16563,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     970: {
         name: 'Gloire Kai',
-        nameJP: 'Gloire改',
+        name_jp: 'Gloire改',
         type: "CL", ship_class: "La_Galissonnière",
         nid: 570,
         HP: 46, HPmax: 62,
@@ -16584,7 +16584,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     971: {
         name: 'I-36',
-        nameJP: '伊36',
+        name_jp: '伊36',
         type: "SSV", ship_class: "I_15",
         nid: 571,
         HP: 14, HPmax: 18,
@@ -16605,7 +16605,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     972: {
         name: 'I-41',
-        nameJP: '伊41',
+        name_jp: '伊41',
         type: "SSV", ship_class: "I_41",
         nid: 572,
         HP: 14, HPmax: 19,
@@ -16626,7 +16626,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     975: {
         name: 'Harusame Kai 2',
-        nameJP: '春雨改二',
+        name_jp: '春雨改二',
         type: "DD", ship_class: "Shiratsuyu",
         nid: 575,
         HP: 31, HPmax: 49,
@@ -16647,7 +16647,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     976: {
         name: 'I-36 Kai',
-        nameJP: '伊36改',
+        name_jp: '伊36改',
         type: "SSV", ship_class: "I_15",
         nid: 576,
         HP: 18, HPmax: 24,
@@ -16668,7 +16668,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     977: {
         name: 'I-41 Kai',
-        nameJP: '伊41改',
+        name_jp: '伊41改',
         type: "SSV", ship_class: "I_41",
         nid: 577,
         HP: 18, HPmax: 25,
@@ -16689,7 +16689,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
     },
     979: {
         name: 'Inagi Kai 2',
-        nameJP: '稲木改二',
+        name_jp: '稲木改二',
         type: "DE", ship_class: "Ukuru",
         nid: 579,
         HP: 27, HPmax: 37,
@@ -16708,30 +16708,9 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         next_id: 0,
         prev_id: 730,
     },
-    981: {
-        name: 'Fujinami Kai 2',
-        nameJP: '藤波改二',
-        type: "DD", ship_class: "Yuugumo",
-        nid: 581,
-        HP: 33, HPmax: 56,
-        FP: 64, FPbase: 18,
-        TP: 88, TPbase: 30,
-        AA: 79, AAbase: 28,
-        AR: 54, ARbase: 15,
-        EV: 90, EVbase: 47,
-        ASW: 78, ASWbase: 29,
-        LOS: 56, LOSbase: 12,
-        LUK: 21, LUKmax: 88,
-        RNG: 1,
-        SLOTS: [0, 0, 0],
-        fuel: 15,
-        ammo: 20,
-        next_id: 0,
-        prev_id: 373,
-    },
     1496: {
         name: 'Colorado Kai',
-        nameJP: 'Colorado改',
+        name_jp: 'Colorado改',
         type: "BB", ship_class: "Colorado",
         nid: 406,
         attack_special_ids: [103],
@@ -16750,5 +16729,430 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         ammo: 165,
         next_id: 0,
         prev_id: 601,
+    },
+    981: {
+        name: 'Fujinami Kai 2',
+        name_jp: '藤波改二',
+        type: "DD", ship_class: "Yuugumo",
+        nid: 581,
+        HP: 33, HPmax: 56,
+        FP: 64, FPbase: 18,
+        TP: 88, TPbase: 30,
+        AA: 79, AAbase: 28,
+        AR: 54, ARbase: 15,
+        EV: 90, EVbase: 47,
+        ASW: 78, ASWbase: 29,
+        LOS: 56, LOSbase: 12,
+        LUK: 21, LUKmax: 88,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 15,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 373,
+    },
+    986: {
+        name: 'Shirayuki Kai 2',
+        name_jp: '白雪改二',
+        type: 'DD', ship_class: 'Hubuki',
+        nid: 586,
+        HP: 31, HPmax: 49,
+        FP: 58, FPbase: 15,
+        TP: 87, TPbase: 30,
+        AA: 83, AAbase: 36,
+        AR: 51, ARbase: 14,
+        EV: 91, EVbase: 49,
+        ASW: 65, ASWbase: 26,
+        LOS: 54, LOSbase: 13,
+        LUK: 17, LUKmax: 77,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 15,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 202,
+    },
+    987: {
+        name: 'Hatsuyuki Kai 2',
+        name_jp: '初雪改二',
+        type: 'DD', ship_class: 'Hubuki',
+        nid: 587,
+        HP: 31, HPmax: 49,
+        FP: 59, FPbase: 17,
+        TP: 86, TPbase: 30,
+        AA: 85, AAbase: 37,
+        AR: 50, ARbase: 15,
+        EV: 91, EVbase: 48,
+        ASW: 64, ASWbase: 27,
+        LOS: 52, LOSbase: 15,
+        LUK: 18, LUKmax: 78,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 15,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 203,
+    },
+
+    992: {
+        name: 'Sugi',
+        name_jp: '杉',
+        type: 'DD', ship_class: 'Matsu',
+        nid: 592,
+        HP: 14, HPmax: 27,
+        FP: 24, FPbase: 5,
+        TP: 66, TPbase: 16,
+        AA: 63, AAbase: 22,
+        AR: 22, ARbase: 5,
+        EV: 70, EVbase: 29,
+        ASW: 74, ASWbase: 28,
+        LOS: 26, LOSbase: 8,
+        LUK: 16, LUKmax: 73,
+        RNG: 1,
+        SLOTS: [0, 0],
+        fuel: 15,
+        ammo: 15,
+        next_id: 997,
+        prev_id: 0,
+    },
+    997: {
+        name: 'Sugi Kai',
+        name_jp: '杉改',
+        type: 'DD', ship_class: 'Matsu',
+        nid: 597,
+        HP: 27, HPmax: 45,
+        FP: 42, FPbase: 7,
+        TP: 73, TPbase: 16,
+        AA: 79, AAbase: 28,
+        AR: 56, ARbase: 12,
+        EV: 81, EVbase: 34,
+        ASW: 77, ASWbase: 32,
+        LOS: 47, LOSbase: 16,
+        LUK: 20, LUKmax: 81,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 15,
+        ammo: 15,
+        next_id: 0,
+        prev_id: 992,
+    },
+    994: {
+        name: 'Kaya',
+        name_jp: '榧',
+        type: 'DD', ship_class: 'Matsu',
+        nid: 594,
+        HP: 14, HPmax: 27,
+        FP: 23, FPbase: 5,
+        TP: 67, TPbase: 16,
+        AA: 62, AAbase: 22,
+        AR: 22, ARbase: 5,
+        EV: 70, EVbase: 30,
+        ASW: 74, ASWbase: 27,
+        LOS: 25, LOSbase: 8,
+        LUK: 16, LUKmax: 72,
+        RNG: 1,
+        SLOTS: [0, 0],
+        fuel: 15,
+        ammo: 15,
+        next_id: 736,
+        prev_id: 0,
+    },
+    736: {
+        name: 'Kaya Kai',
+        name_jp: '榧改',
+        type: 'DD', ship_class: 'Matsu',
+        nid: 1736,
+        HP: 27, HPmax: 45,
+        FP: 41, FPbase: 7,
+        TP: 74, TPbase: 16,
+        AA: 78, AAbase: 28,
+        AR: 55, ARbase: 12,
+        EV: 82, EVbase: 36,
+        ASW: 78, ASWbase: 32,
+        LOS: 46, LOSbase: 16,
+        LUK: 20, LUKmax: 80,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 15,
+        ammo: 15,
+        next_id: 0,
+        prev_id: 994,
+    },
+    995: {
+        name: 'Ootomari',
+        name_jp: '大泊',
+        type: 'AO', ship_class: 'Ootomari',
+        nid: 595,
+        HP: 20, HPmax: 30,
+        FP: 8, FPbase: 2,
+        TP: 0, TPbase: 0,
+        AA: 18, AAbase: 6,
+        AR: 31, ARbase: 11,
+        EV: 48, EVbase: 14,
+        ASW: 18, ASWbase: 12,
+        LOS: 14, LOSbase: 7,
+        LUK: 40, LUKmax: 80,
+        RNG: 1,
+        SLOTS: [0, 0],
+        fuel: 15,
+        ammo: 5,
+        next_id: 1000,
+        prev_id: 0,
+    },
+    1000: {
+        name: 'Ootomari Kai',
+        name_jp: '大泊改',
+        type: 'AO', ship_class: 'Ootomari',
+        nid: 600,
+        HP: 22, HPmax: 33,
+        FP: 17, FPbase: 3,
+        TP: 0, TPbase: 0,
+        AA: 22, AAbase: 9,
+        AR: 36, ARbase: 12,
+        EV: 68, EVbase: 18,
+        ASW: 35, ASWbase: 14,
+        LOS: 16, LOSbase: 8,
+        LUK: 50, LUKmax: 96,
+        RNG: 1,
+        SLOTS: [0, 0],
+        fuel: 15,
+        ammo: 10,
+        next_id: 0,
+        prev_id: 995,
+    },
+    1001: {
+        name: 'Kirov',
+        name_jp: 'Киров',
+        type: 'CL', ship_class: 'Киров',
+        nid: 601,
+        HP: 31, HPmax: 45,
+        FP: 56, FPbase: 30,
+        TP: 53, TPbase: 14,
+        AA: 72, AAbase: 34,
+        AR: 37, ARbase: 23,
+        EV: 68, EVbase: 32,
+        ASW: 26, ASWbase: 15,
+        LOS: 42, LOSbase: 13,
+        LUK: 26, LUKmax: 86,
+        RNG: 2,
+        SLOTS: [1, 1, 2],
+        fuel: 30,
+        ammo: 45,
+        next_id: 1006,
+        prev_id: 0,
+    },
+    1006: {
+        name: 'Kirov Kai',
+        name_jp: 'Киров改',
+        type: 'CL', ship_class: 'Киров',
+        nid: 606,
+        HP: 46, HPmax: 61,
+        FP: 76, FPbase: 40,
+        TP: 73, TPbase: 22,
+        AA: 82, AAbase: 40,
+        AR: 71, ARbase: 43,
+        EV: 78, EVbase: 39,
+        ASW: 50, ASWbase: 26,
+        LOS: 45, LOSbase: 14,
+        LUK: 32, LUKmax: 96,
+        RNG: 2,
+        SLOTS: [1, 1, 2, 1],
+        fuel: 30,
+        ammo: 60,
+        next_id: 0,
+        prev_id: 1001,
+    },
+    1003: {
+        name: 'Shimane Maru',
+        name_jp: 'しまね丸',
+        type: 'AO', ship_class: 'Shimanemaru',
+        nid: 603,
+        HP: 39, HPmax: 51,
+        FP: 26, FPbase: 6,
+        TP: 0, TPbase: 0,
+        AA: 30, AAbase: 16,
+        AR: 23, ARbase: 9,
+        EV: 29, EVbase: 14,
+        ASW: 62, ASWbase: 24,
+        LOS: 57, LOSbase: 13,
+        LUK: 11, LUKmax: 61,
+        RNG: 1,
+        SLOTS: [10, 4],
+        fuel: 40,
+        ammo: 20,
+        next_id: 1008,
+        prev_id: 0,
+    },
+    1008: {
+        name: 'Shimane Maru Kai',
+        name_jp: 'しまね丸改',
+        type: 'AO', ship_class: 'Shimanemaru',
+        nid: 608,
+        has_potential_air_attack: true,
+        has_potential_air_attack_in_NB: true,
+        has_built_in_night_crew: true,
+        HP: 41, HPmax: 62,
+        FP: 40, FPbase: 14,
+        TP: 0, TPbase: 0,
+        AA: 52, AAbase: 26,
+        AR: 32, ARbase: 9,
+        EV: 45, EVbase: 15,
+        ASW: 68, ASWbase: 28,
+        LOS: 66, LOSbase: 22,
+        LUK: 18, LUKmax: 70,
+        RNG: 1,
+        SLOTS: [12, 6, 4],
+        fuel: 40,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 1003,
+    },
+    1005: {
+        name: 'Minneapolis',
+        name_jp: 'Minneapolis',
+        type: 'CA', ship_class: 'New_Orleans',
+        nid: 605,
+        HP: 44, HPmax: 56,
+        FP: 53, FPbase: 36,
+        TP: 46, TPbase: 0,
+        AA: 60, AAbase: 18,
+        AR: 48, ARbase: 35,
+        EV: 62, EVbase: 33,
+        ASW: 0, ASWbase: 0,
+        LOS: 56, LOSbase: 15,
+        LUK: 15, LUKmax: 77,
+        RNG: 2,
+        SLOTS: [2, 2, 3],
+        fuel: 40,
+        ammo: 60,
+        next_id: 1010,
+        prev_id: 0,
+    },
+    1010: {
+        name: 'Minneapolis Kai',
+        name_jp: 'Minneapolis改',
+        type: 'CA', ship_class: 'New_Orleans',
+        nid: 610,
+        HP: 54, HPmax: 65,
+        FP: 78, FPbase: 45,
+        TP: 63, TPbase: 0,
+        AA: 79, AAbase: 32,
+        AR: 76, ARbase: 42,
+        EV: 76, EVbase: 34,
+        ASW: 0, ASWbase: 0,
+        LOS: 58, LOSbase: 16,
+        LUK: 18, LUKmax: 92,
+        RNG: 2,
+        SLOTS: [1, 1, 4, 2],
+        fuel: 40,
+        ammo: 65,
+        next_id: 0,
+        prev_id: 1005,
+    },
+    942: {
+        name: 'Richard P. Leary',
+        name_jp: 'Richard P.Leary',
+        type: 'DD', ship_class: 'Fletcher',
+        nid: 542,
+        HP: 17, HPmax: 35,
+        FP: 30, FPbase: 12,
+        TP: 62, TPbase: 20,
+        AA: 63, AAbase: 32,
+        AR: 20, ARbase: 7,
+        EV: 80, EVbase: 43,
+        ASW: 82, ASWbase: 49,
+        LOS: 32, LOSbase: 20,
+        LUK: 19, LUKmax: 79,
+        RNG: 1,
+        SLOTS: [0, 0],
+        fuel: 20,
+        ammo: 20,
+        next_id: 737,
+        prev_id: 0,
+    },
+    737: {
+        name: 'Richard P. Leary Kai',
+        name_jp: 'Richard P.Leary改',
+        type: 'DD', ship_class: 'Fletcher',
+        nid: 1737,
+        can_unconditional_OASW: true,
+        HP: 34, HPmax: 50,
+        FP: 53, FPbase: 15,
+        TP: 75, TPbase: 26,
+        AA: 91, AAbase: 42,
+        AR: 52, ARbase: 16,
+        EV: 89, EVbase: 45,
+        ASW: 90, ASWbase: 53,
+        LOS: 61, LOSbase: 21,
+        LUK: 39, LUKmax: 107,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 20,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 942,
+    },
+    983: {
+        name: 'Hamanami Kai 2',
+        name_jp: '浜波改二',
+        type: 'DD', ship_class: 'Yuugumo',
+        nid: 583,
+        HP: 33, HPmax: 56,
+        FP: 63, FPbase: 18,
+        TP: 89, TPbase: 30,
+        AA: 80, AAbase: 28,
+        AR: 53, ARbase: 15,
+        EV: 90, EVbase: 46,
+        ASW: 80, ASWbase: 30,
+        LOS: 55, LOSbase: 10,
+        LUK: 22, LUKmax: 89,
+        RNG: 1,
+        SLOTS: [0, 0, 0],
+        fuel: 15,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 680,
+    },
+    984: {
+        name: 'Wahoo',
+        name_jp: 'Wahoo',
+        type: 'SS', ship_class: 'Gato',
+        nid: 584,
+        HP: 13, HPmax: 18,
+        FP: 12, FPbase: 2,
+        TP: 75, TPbase: 36,
+        AA: 0, AAbase: 0,
+        AR: 20, ARbase: 4,
+        EV: 45, EVbase: 17,
+        ASW: 0, ASWbase: 0,
+        LOS: 44, LOSbase: 12,
+        LUK: 13, LUKmax: 60,
+        RNG: 1,
+        SLOTS: [0],
+        fuel: 10,
+        ammo: 20,
+        next_id: 989,
+        prev_id: 0,
+    },
+    989: {
+        name: 'Wahoo Kai',
+        name_jp: 'Wahoo改',
+        type: 'SS', ship_class: 'Gato',
+        nid: 589,
+        HP: 17, HPmax: 23,
+        FP: 14, FPbase: 4,
+        TP: 85, TPbase: 38,
+        AA: 0, AAbase: 0,
+        AR: 24, ARbase: 6,
+        EV: 57, EVbase: 18,
+        ASW: 0, ASWbase: 0,
+        LOS: 46, LOSbase: 14,
+        LUK: 18, LUKmax: 78,
+        RNG: 1,
+        SLOTS: [0, 0],
+        fuel: 10,
+        ammo: 20,
+        next_id: 0,
+        prev_id: 984,
     },
 }

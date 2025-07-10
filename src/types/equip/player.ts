@@ -1,6 +1,7 @@
 import { EquipType } from "@/datas/equip/base/player"
 import { DeepReadonly } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
+import { PlayerEquipNameJP } from "./playerNameJP";
 
 /** 特殊攻撃のトリガーになる装備の種別ID */
 export const SKILL_TRIGGER_TYPE = {
@@ -22,7 +23,8 @@ export const SKILL_TRIGGER_TYPE = {
     B_NIGHTBOMBER: 15,
     B_NIGHTBOMBER2: 16,
     B_NIGHTCREW: 17,
-    B_OTHER: 18,
+    B_NIGHTBOMBER_DB: 18,
+    B_OTHER: 99,
 } as const;
 export type SkillTriggerEquipType = keyof typeof SKILL_TRIGGER_TYPE
 
@@ -90,13 +92,15 @@ export const enum SpecialIcon {
     PropulsionLandBasedFighters = 57,
     /** 夜間爆撃機 */
     NightDiveBombers = 58,
+    /** 全翼型戦闘爆撃機 */
+    FullWingJetBomber = 59,
 }
 
 export type PlayerEquipData = {
     /** 装備名(EN) */
     name: string,
     /** 装備名(日) */
-    nameJP: string,
+    name_jp: PlayerEquipNameJP,
     /** 装備種別ID */
     type: EquipType,
     /** 改修種別ID */

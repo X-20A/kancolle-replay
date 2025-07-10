@@ -1,4 +1,5 @@
 import { AbyssalShipType } from "./abyssal";
+import { PlayerShipNameJP } from "./playerNameJP";
 import { PlayerShipClass } from "./shipClass";
 
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
@@ -17,7 +18,7 @@ export type UnknownStatus = {
     TP_ACC?: UnclearLevel,
 }
 
-const SHIP_TYPE = {
+export const SHIP_TYPE = {
     DE: 1,
     DD: 2,
     CL: 3,
@@ -136,7 +137,7 @@ export const enum PlaneCarrierAswBefavior {
 // TODO: DOP的にはデータの型定義からもオプショナルを一掃したい
 export type PlayerShipData = {
     name: string,
-    nameJP: string,
+    name_jp: PlayerShipNameJP,
     type: ShipTypeBase,
     ship_class: PlayerShipClass,
     fit_class?: ShipFitClass,
@@ -189,6 +190,11 @@ export type PlayerShipData = {
      *  実際の攻撃には航空機が必要
      */
     has_potential_air_attack?: true,
+    /**
+     *  夜戦航空攻撃可能な補給艦であるか    
+     *  実際の攻撃には航空機が必要
+     */
+    has_potential_air_attack_in_NB?: true,
     /** 水上機が搭載可能な戦艦であるか */
     is_air_craft_carrier_BB?: true,
     /** 対潜劣後な軽空(鈴熊のみ 25/06/04)であるか */

@@ -1,4 +1,4 @@
-import { brandShipBaseId, brandShipId, brandShipNameEN, brandShipNameJP, ShipBaseId, ShipId, ShipLv } from "@/types/brands/ship";
+import { brandShipBaseId, brandShipId, brandShipNameEN, ShipBaseId, ShipId, ShipLv } from "@/types/brands/ship";
 import { PlayerNakedShip } from "./base";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { COUNTRY_DATAS } from "@/datas/ship/country";
@@ -83,7 +83,7 @@ export function derive_player_naked_ship(
         master_id: id,
         base_id: calc_base_id(id),
         name_en: brandShipNameEN(ship_data.name),
-        name_jp: brandShipNameJP(ship_data.nameJP),
+        name_jp: ship_data.name_jp,
         type_id: ship_data.type,
         ship_class,
         country,

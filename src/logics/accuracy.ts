@@ -1,5 +1,5 @@
 import { JetBomberEquip, PlayerPlaneEquip } from "@/models/equip/basic";
-import { EquippedShip, includes_ship_type, is_abyssal_ship, is_install_type, is_player_ship, is_PT } from "@/models/ship/equipped";
+import { AbyssalEquippedShip, EquippedShip, includes_abyssal_ship_id, includes_ship_type, is_abyssal_ship, is_install_type, is_player_ship, is_PT } from "@/models/ship/equipped";
 import { brandPreAccuracy, PreAccuracy, RandValue } from "@/types/brands/other";
 import { calc_morale_evasion_mod } from "./morale";
 import { calc_air_combat_evasion } from "./evasion";
@@ -20,23 +20,23 @@ import { calc_airstrike_barrage_balloon_accuracy_mod } from "./balloon";
  */
 const calc_LBAS_bomber_target_specific_accuracy_mod = (
     unit: PlayerPlaneEquip,
-    target_ship: EquippedShip,
+    target_ship: AbyssalEquippedShip,
 ): number => {
     const target_ship_id = target_ship.master_id;
 
-    if ([1557, 1586].includes(target_ship_id)) { // 戦艦棲姫 | 空母棲姫
+    if (includes_abyssal_ship_id([1557, 1586], target_ship_id)) { // 戦艦棲姫 | 空母棲姫
         return 1.1;
     }
     if (is_abyssal_ship(target_ship) && target_ship.flags.is_Summer_BB) {
         return 1.1;
     }
-    if ([1665, 1666, 1667].includes(target_ship_id)) { // 砲台小鬼系
+    if (includes_abyssal_ship_id([1665, 1666, 1667], target_ship_id)) { // 砲台小鬼系
         return 1.06;
     }
-    if ([2178, 2179, 2196, 2197].includes(target_ship_id)) { // トーチカ系
+    if (includes_abyssal_ship_id([2178, 2179, 2196, 2197], target_ship_id)) { // トーチカ系
         return 1.06;
     }
-    if ([2180, 2181].includes(target_ship_id)) { // 対空小鬼系
+    if (includes_abyssal_ship_id([2180, 2181], target_ship_id)) { // 対空小鬼系
         return 1.15;
     }
     if (is_PT(target_ship)) {
@@ -53,34 +53,34 @@ const calc_LBAS_bomber_target_specific_accuracy_mod = (
 
 /**
  * 陸攻の目標艦種別の命中加算値を返す
- * @param unit 
+ * @param plane 
  * @param target_ship 
  * @returns 
  */
 const calc_LBAS_bomber_target_specific_accuracy_flat = (
-    unit: PlayerPlaneEquip,
+    plane: PlayerPlaneEquip,
     target_ship: EquippedShip,
 ): number => {
-    const equip_id = unit.master_id;
+    const plane_name = plane.name_jp;
     const ship_type = target_ship.type_id;
 
-    if (equip_id === 453) { // キ102乙
+    if (plane_name === 'キ102乙') {
         if (ship_type === 'DD') return 0.07;
     }
-    if (equip_id === 454) { // キ102乙改+イ号一型乙 誘導弾
+    if (plane_name === 'キ102乙改+イ号一型乙 誘導弾') {
         if (ship_type === 'DD') return -0.17;
         if (includes_ship_type(['CL', 'CLT'], ship_type)) return 0.07;
         if (includes_ship_type(['CA', 'CAV', 'CVL', 'FBB', 'BB', 'BBV', 'CV'], ship_type)) return 0.05;
     }
-    if (equip_id === 444) { // 四式重爆 飛龍+イ号一型甲 誘導弾
+    if (plane_name === '四式重爆 飛龍+イ号一型甲 誘導弾') {
         if (ship_type === 'DD') return -0.07;
         if (includes_ship_type(['CL', 'CLT', 'CVL', 'FBB', 'BB', 'BBV', 'CV'], ship_type)) return 0.07;
     }
-    if (equip_id === 484) { // 四式重爆 飛龍(熟練)+イ号一型甲 誘導弾
+    if (plane_name === '四式重爆 飛龍(熟練)+イ号一型甲 誘導弾') {
         if (ship_type === 'DD') return -0.05;
         if (includes_ship_type(['CL', 'CLT', 'CA', 'CAV', 'CVL', 'FBB', 'BB', 'BBV', 'CV'], ship_type)) return 0.05;
     }
-    if (unit.flags.is_skip_bomber) { // B-25 & 深海の反跳爆撃系機体
+    if (plane.flags.is_skip_bomber) { // B-25 & 深海の反跳爆撃系機体
         if (is_install_type(target_ship)) return -0.09
         if (includes_ship_type(['FBB', 'BB', 'BBV', 'CVL', 'CV', 'AT'], ship_type)) return 0.31;
         if (includes_ship_type(['CA', 'CAV'], ship_type)) return 0.22;
@@ -111,7 +111,7 @@ export function calc_lbas_pre_accuracy(
     unit: PlayerPlaneEquip,
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
-    target_ship: EquippedShip,
+    target_ship: AbyssalEquippedShip,
     node: Node,
     settings: UserSettings,
 ): PreAccuracy {
@@ -154,7 +154,7 @@ export function calc_final_jet_assault_accuracy(
     unit: JetBomberEquip,
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
-    target_ship: EquippedShip,
+    target_ship: AbyssalEquippedShip,
     node: Node,
     settings: UserSettings,
 ): number {
@@ -176,7 +176,7 @@ export function calc_final_jet_assault_accuracy(
         )); // 航空機熟練度ボーナスは無し
 }
 
-export type HitType = 
+export type HitType =
     | 'Critical'
     | 'Hit'
     | 'Miss'

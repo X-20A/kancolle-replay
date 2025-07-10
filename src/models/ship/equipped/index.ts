@@ -1,5 +1,5 @@
 import { TStatusComponent } from "@/types";
-import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipNameJP, ShipUniqueId } from "@/types/brands/ship";
+import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipUniqueId } from "@/types/brands/ship";
 import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
 import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
@@ -13,6 +13,11 @@ import { NakedShip, PlayerNakedShip } from "../naked/base";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { WeightedAntiAir } from "@/types/brands/other";
 import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
+import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
+import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
+import { AbyssalShipId } from "@/types/ship/abyssalId";
+import { AbyssalEquipId } from "@/types/equip/abyssalId";
+import seedrandom from "seedrandom";
 
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
 export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
@@ -85,6 +90,45 @@ export function is_install_type(
 }
 
 /**
+ * 艦名が艦娘名と等しいか判定して返す
+ * @param player_ship_name 
+ * @param ship_name 
+ * @returns 
+ */
+export function equal_ship_name(
+    player_ship_name: PlayerShipNameJP,
+    ship_name: AbyssalShipNameJP | PlayerShipNameJP,
+): boolean {
+    return player_ship_name === ship_name;
+}
+
+/**
+ * 艦名が艦娘名と等しいか判定して返す
+ * @param match_ship_names 
+ * @param search_ship_name 
+ * @returns 
+ */
+export function includes_ship_name(
+    match_ship_names: PlayerShipNameJP[],
+    search_ship_name: PlayerShipNameJP | AbyssalShipNameJP,
+): boolean {
+    return match_ship_names.includes(search_ship_name);
+}
+
+/**
+ * ある深海艦IDが艦ID群に含まれるか判定して返す
+ * @param match_ship_ids 
+ * @param search_ship_id 
+ * @returns 
+ */
+export function includes_abyssal_ship_id(
+    match_ship_ids: AbyssalShipId[],
+    search_ship_id: AbyssalShipId,
+): boolean {
+    return match_ship_ids.includes(search_ship_id);
+}
+
+/**
  * ある艦種が艦種群に含まれるか判定して返す
  * @param match_ship_types 
  * @param search_ship_type 
@@ -142,14 +186,11 @@ export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
 }
 
 type EquippedShipBase = {
-    /** 艦ID(データ由来) */
-    readonly master_id: ShipId;
     /** 艦隊内における一意の識別ID */
     readonly unique_id: ShipUniqueId;
     /** 艦名(EN) */
     readonly name_en: ShipNameEN;
-    /** 艦名(日) */
-    readonly name_jp: ShipNameJP;
+    
     /** レベル */
     readonly lv: ShipLv;
     /** 装備スロット、および搭載数 */
@@ -170,6 +211,10 @@ type EquippedShipBase = {
 }
 
 export type PlayerEquippedShip = EquippedShipBase & {
+    /** 艦ID(データ由来) */
+    readonly master_id: ShipId;
+    /** 艦名(日) */
+    readonly name_jp: PlayerShipNameJP;
     /** 艦種ID */
     readonly type_id: ShipTypeBase;
     /** 未改造時 艦ID */
@@ -199,8 +244,12 @@ export type PlayerEquippedShip = EquippedShipBase & {
 };
 
 export type AbyssalEquippedShip = EquippedShipBase & {
+    /** 艦ID(データ由来) */
+    readonly master_id: AbyssalShipId;
     /** 艦種ID */
     readonly type_id: ShipType;
+    /** 艦名(日) */
+    readonly name_jp: AbyssalShipNameJP;
     /** 所持装備 */
     readonly equip_slots: AbyssalEquipSlot[];
     /**
@@ -210,6 +259,8 @@ export type AbyssalEquippedShip = EquippedShipBase & {
     readonly install_type: InstallType,
     /** フラグ類 */
     readonly flags: AbyssalShipFlags,
+    readonly dive_bomb_weak_mod: number,
+    readonly land_based_weak_mod: number,
     readonly state: ShipStateBase,
 }
 
@@ -276,6 +327,6 @@ export function derive_equipped_ship(
             options,
         )
         : derive_equipped_abyssal_ship(
-            ship_id,
+            ship_id as AbyssalShipId,
         );
 }
