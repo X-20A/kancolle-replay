@@ -11,6 +11,8 @@ import { derive_player_naked_ship } from "@/models/ship/naked/player";
 import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
 import { NakedShip } from "@/models/ship/naked/base";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
+import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
+import { AbyssalShipId } from "@/types/ship/abyssalId";
 
 /**
  * 装備idから装備オブジェクトを生成して返す
@@ -32,10 +34,9 @@ const make_player_equip_from_id =
 
 /**
  * 装備名から装備オブジェクトを生成して返す    
- * ! 存在しない名前を渡しても必ずしも直ちにエラーが出ないことがある    
- * ! おそらくvitestの仕様で、テストコード内で生成するのでなければキャッシュ扱いになる為
+
  */
-export const make_player_equip_from_name = (name: string): PlayerEquip => {
+export const make_player_equip_from_name = (name: PlayerEquipNameJP): PlayerEquip => {
     const data = Object.entries(PLAYER_EQUIP_DATAS)
         .find(([, data]) => data.name_jp === name);
     if (!data) throw new Error(`指定された名前の装備は存在しません: ${name}`);
@@ -88,7 +89,7 @@ export function derive_naked_ship (
     const ship_id = brandShipId(id);
     return id < 1500
         ? derive_player_naked_ship(brandShipLv(99), ship_id)
-        : derive_abyssal_naked_ship(ship_id)
+        : derive_abyssal_naked_ship(ship_id as AbyssalShipId)
 }
 
 export function derive_naked_ship_from_name (

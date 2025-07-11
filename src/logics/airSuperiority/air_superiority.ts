@@ -41,7 +41,7 @@ export function calc_squadrons_air_superriority_power(
 ): number {
     return squadrons.reduce((total, squadron) => {
         return total + calc_equip_air_superiority_power(
-            squadron.plane,
+            squadron.equip,
             squadron.slot_count,
         );
     }, 0);
@@ -237,7 +237,7 @@ export function calc_air_state_shootdowned_lbas<T extends Squadron[] | JetSquadr
 ): T {
     return squadrons.map(squadron => {
         const new_slot_count = calc_own_air_state_shootdowned_slots(
-            squadron.plane,
+            squadron.equip,
             squadron.slot_count,
             air_state,
             rand,

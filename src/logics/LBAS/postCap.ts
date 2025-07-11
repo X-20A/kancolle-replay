@@ -183,7 +183,7 @@ export function calc_final_LBAS_attack_power(
     rand: Rand,
 ): number {
     // TODO: 対潜攻撃の場合を分離したい 対地はなんとも、わからん
-    const plane = squadron.plane;
+    const plane = squadron.equip;
     const {
         pre_cap: mod_boss_pre_cap,
         post_cap: mod_boss_post_cap,
@@ -207,6 +207,7 @@ export function calc_final_LBAS_attack_power(
     const land_based_bomber_mod = calc_land_based_bomber_mod(plane);
     const combined_fleet_mod = calc_combined_fleet_mod(target_fleet);
     // Sortie Simではここで水偵だった場合にここまでのpostModを0にしている
+    // ACSimがソースであるらしい
 
     const {
         new_attack_power,

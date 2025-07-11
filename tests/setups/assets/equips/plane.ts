@@ -17,3 +17,6 @@ export const RYUUSEI_IKKOUSEN_SKILLED = make_player_equip_from_name('流星改(�
 export const NISHIKI_SCOUT_PLANE = make_player_equip_from_name('二式艦上偵察機');
 /** 彩雲 */
 export const SAIUN = make_player_equip_from_name('彩雲');
+
+/** B-25 */
+export const B_25 = make_player_equip_from_name('B-25');

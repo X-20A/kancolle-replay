@@ -140,16 +140,16 @@ export function calc_anti_air_fired_squadrons<T extends Squadron[] | JetSquadron
 
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5
-            ? calc_prop_shootdown_count(defender_unit.ship.weighted_anti_air, squadron.plane, squadron.slot_count)
+            ? calc_prop_shootdown_count(defender_unit.ship.weighted_anti_air, squadron.equip, squadron.slot_count)
             : 0;
 
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? calc_abyssal_fixed_shootdown_count(defender_unit, triggered_aaci, enemy_fleet, squadron.plane, node)
+            ? calc_abyssal_fixed_shootdown_count(defender_unit, triggered_aaci, enemy_fleet, squadron.equip, node)
             : 0;
 
         /** 最低保証 */
-        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci, squadron.plane);
+        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci, squadron.equip);
 
         const new_slot_count = squadron.slot_count
             - prop_shootdown_count

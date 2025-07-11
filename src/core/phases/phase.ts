@@ -16,6 +16,10 @@ import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, PlayerFleet } f
 /// sim_execute と logics を繋ぐ
 /// 新しい構造体へのマージはここでやって、logics とは必要な値だけやりとりする
 
+export type PhaseType =
+    | 'Jet_LBAS'
+    | 'JET_strike'
+
 /**
  * 洋上補給フェイズ    
  * NOTE: おにぎり系はひとまず無視
@@ -76,7 +80,7 @@ export function calc_detection_phase(
     const main_fleet_detect_status = analyze_fleet_detection(player_fleet);
     const success_rate = calc_detection_success_rate(main_fleet_detect_status.detection_power);
 
-    const is_detection_success = rand.next() >= success_rate;
+    const is_detection_success = rand.next() < success_rate;
 
     const post_detection_phase_node = {
         ...node,

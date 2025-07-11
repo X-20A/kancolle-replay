@@ -46,7 +46,7 @@ export function calc_jet_assault_damage(
     rand: Rand,
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
-        squadron.plane,
+        squadron.equip,
         player_fleet,
         enemy_fleet,
         target_ship,

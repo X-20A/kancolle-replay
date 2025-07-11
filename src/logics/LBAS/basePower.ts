@@ -12,6 +12,12 @@ type RawBasePowerResult = {
     improvement_bonus: number,
 }
 
+/**
+ * 攻撃力の基礎となるステータス値と回収上昇値のセットを返す
+ * @param plane 
+ * @param target_ship 
+ * @returns 
+ */
 const calc_raw_base_power = (
     plane: PlayerPlaneEquip,
     target_ship: AbyssalEquippedShip,
@@ -119,6 +125,8 @@ const calc_mod_sp1_flat = (
             includes_ship_type(['CVL', 'FBB', 'BB', 'BBV', 'CV'], target_ship_type)
         ) return raw_base_power * 1.14;
     }
+    // NOTE: これだけ加算なのは検証値に寄せるためで深い意味はないらしい
+    // https://docs.google.com/spreadsheets/d/1mA8rBhMIn9DRxVIvVH5SiZOXLTumHuZtkNcAjmFsgCY/edit?pli=1&gid=717728780#gid=717728780
     if (plane_name === '四式重爆 飛龍(熟練)+イ号一型甲 誘導弾') {
         if (is_install_type(target_ship)) return raw_base_power + 2.1;
         if (
@@ -170,7 +178,7 @@ export function calc_basic_LBAS_attack_power(
     squadron: Squadron,
     target_ship: AbyssalEquippedShip,
 ): LbasBasePower {
-    const base_power = calc_base_power(squadron.plane, target_ship);
+    const base_power = calc_base_power(squadron.equip, target_ship);
     const slot_count = squadron.slot_count;
     const SLOT_COUNT_COEFFINENT = 1.8;
     const DEFAULT_BONUS_FLAT = 25;

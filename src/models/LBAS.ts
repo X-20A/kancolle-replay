@@ -17,12 +17,16 @@ type SquadronBase = {
 
 /** 航空隊 */
 export type Squadron = SquadronBase & {
-    readonly plane: PlayerPlaneEquip,
+    /**
+     * 機体    
+     * planeとしたいがEquipSlotと互換が効いたほうが便利
+     */
+    readonly equip: PlayerPlaneEquip,
 }
 
 /** ジェット爆撃航空隊 */
 export type JetSquadron = SquadronBase & {
-    readonly plane: JetBomberEquip,
+    readonly equip: JetBomberEquip,
 }
 
 /** 基地航空隊 */
@@ -35,7 +39,7 @@ export type LBAS = {
 }
 
 function is_jet_squadron(squadron: Squadron): squadron is JetSquadron {
-    return is_jet_bomber_equip(squadron.plane);
+    return is_jet_bomber_equip(squadron.equip);
 }
 
 /**
@@ -82,7 +86,7 @@ export function derive_LBAS(
 
     const squadrons: Squadron[] = units.flatMap((unit, index) => {
         return {
-            plane: unit,
+            equip: unit,
             slot_count: slot_counts[index],
             proficiency: unit.plane_proficiency,
             lbas_index: lbas_index,
