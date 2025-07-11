@@ -1,4 +1,4 @@
-import { is_dive_bomber, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { is_dive_bomber, is_jet_bomber_equip, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { JetSquadron, Squadron } from "@/models/LBAS";
 import { AbyssalEquippedShip, includes_abyssal_ship_id, includes_ship_type, is_battle_ship_category, is_install_type, is_PT, is_submarine_category } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
@@ -165,6 +165,17 @@ const calc_base_power = (
         + mod_sp2_flat;
 }
 
+const calc_slot_count_mod = (
+    plane: PlaneEquip,
+): number => {
+    if (
+        // ジェット機の処理はそもそも分けるべきかもわからない
+        is_jet_bomber_equip(plane) ||
+        plane.type_id === 'LAND_BASED_BOMBER_L'
+    ) return 1;
+    return 1.8;
+}
+
 export type LbasBasePower = Brand<number, 'LbasBasePower'>
 
 /**
@@ -180,9 +191,9 @@ export function calc_basic_LBAS_attack_power(
 ): LbasBasePower {
     const base_power = calc_base_power(squadron.equip, target_ship);
     const slot_count = squadron.slot_count;
-    const SLOT_COUNT_COEFFINENT = 1.8;
+    const slot_count_mod = calc_slot_count_mod(squadron.equip);
     const DEFAULT_BONUS_FLAT = 25;
 
-    return (base_power * Math.sqrt(SLOT_COUNT_COEFFINENT * slot_count)
+    return (base_power * Math.sqrt(slot_count_mod * slot_count)
         + DEFAULT_BONUS_FLAT) as LbasBasePower;
 }
