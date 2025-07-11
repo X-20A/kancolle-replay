@@ -3,13 +3,13 @@ import { is_jet_bomber_equip, is_land_based_bomber, PlaneEquip } from "@/models/
 import { LBAS, Squadron } from "@/models/LBAS";
 import { AbyssalEquippedShip, includes_ship_type, is_install_type, is_submarine_category } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
-import { calc_basic_LBAS_attack_power, LbasBasePower } from "./basePower";
-import { ModBoss } from "./postCap";
+import { calc_basic_LBAS_attack_power } from "./basePower";
 
 /// 基地航空隊のキャップ前攻撃力
 
 /**
- * 特定の目標に対する攻撃力加算値(Mod Sp3)を返す
+ * 特定の目標に対する攻撃力加算値(Mod Sp3)を返す    
+ * 現状 B-25 専用
  * @param plane 
  * @param target_ship 
  * @returns 
@@ -134,6 +134,7 @@ export function calc_pre_cap_LBAS_attack_power(
     const anti_submarine_mod =
         calc_anti_submarine_mod(plane, target_ship, rand.next());
 
+    // ? Mod Jetの評価タイミングは確定していない(どちらでも有意な差が出ない)
     return (base_LBAS_attack_power * mod_type + mod_jet_flat)
         * anti_submarine_mod
         * land_based_scout_mod

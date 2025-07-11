@@ -1,0 +1,55 @@
+{
+	"better-comments.multilineComments": true,
+	"better-comments.highlightPlainText": false,
+	"better-comments.tags": [
+		{
+			"tag": "/",
+			"color": "#fff5c4", /// 
+			"strikethrough": false,
+			"backgroundColor": "transparent",
+			"bold": true,
+			"italic": false
+		},
+		{
+			"tag": "!",
+			"color": "#FF0000", // !
+			"strikethrough": false,
+			"underline": true,
+			"backgroundColor": "transparent",
+			"bold": true,
+			"italic": false
+		},
+		{
+			"tag": "?",
+			"color": "#FFFFFF", // ?
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+		},
+		{
+			"tag": "TODO",
+			"color": "#FF8C00", // TODO
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": true,
+			"italic": false
+		},
+		{
+			"tag": "NOTE",
+			"color": "#00CFFF", // NOTE
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+		},
+		{
+			"tag": "http",
+			"color": "#7CFC00", // http
+			"strikethrough": false,
+			"underline": true,
+			"backgroundColor": "transparent",
+		}
+	]
+}

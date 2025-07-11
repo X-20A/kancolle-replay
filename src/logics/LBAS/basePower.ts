@@ -165,7 +165,12 @@ const calc_base_power = (
         + mod_sp2_flat;
 }
 
-const calc_slot_count_mod = (
+/**
+ * 搭載数係数を返す
+ * @param plane 
+ * @returns 
+ */
+const calc_slot_count_coeffient = (
     plane: PlaneEquip,
 ): number => {
     if (
@@ -191,9 +196,9 @@ export function calc_basic_LBAS_attack_power(
 ): LbasBasePower {
     const base_power = calc_base_power(squadron.equip, target_ship);
     const slot_count = squadron.slot_count;
-    const slot_count_mod = calc_slot_count_mod(squadron.equip);
+    const slot_count_coeffient = calc_slot_count_coeffient(squadron.equip);
     const DEFAULT_BONUS_FLAT = 25;
 
-    return (base_power * Math.sqrt(slot_count_mod * slot_count)
+    return (base_power * Math.sqrt(slot_count_coeffient * slot_count)
         + DEFAULT_BONUS_FLAT) as LbasBasePower;
 }
