@@ -67,7 +67,11 @@ const calc_mod_type = (
     plane: PlaneEquip,
 ): number => {
     if (is_land_based_bomber(plane)) return 0.8;
-    if (is_jet_bomber_equip(plane)) return 0.7071;
+    // ? 日wiki: 0.7071(1 / √2), ENwiki: 0.7
+    // ? 暫定: 0.7 以下の検証より
+    // https://x.com/CC_jabberwock/status/1939699963778457773/photo/1
+    // https://x.com/kancolle_aki/status/1940740730487804068/photo/1
+    if (is_jet_bomber_equip(plane)) return 0.7;
     return 1;
 }
 
