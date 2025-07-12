@@ -1,5 +1,5 @@
 import { brandShipId } from "@/types/brands/ship";
-import { pre_make_player_ship_from_name } from "../generator";
+import { pre_make_player_ship_from_name } from "../../generator";
 import { derive_equipped_abyssal_ship } from "@/models/ship/equipped/abyssal";
 
 /** 鵜来改 */
@@ -31,5 +31,3 @@ export const make_Ranger = pre_make_player_ship_from_name('Ranger');
 /** 伊勢改二 */
 export const make_Ise_kai_2 = pre_make_player_ship_from_name('伊勢改二');
 
-/** 輸送ワ級II(揚陸中) */
-export const LANDING_WA = derive_equipped_abyssal_ship(brandShipId(2269));

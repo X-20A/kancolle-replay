@@ -2,7 +2,7 @@ import { EquippedShip } from "@/models/ship/equipped";
 import { SKILLED_SPANNER } from "tests/setups/assets/equips/other";
 import { NISHIKI_SCOUT_PLANE } from "tests/setups/assets/equips/plane";
 import { GFCS_RADAR, SG_INITIAL_RADAR } from "tests/setups/assets/equips/radar";
-import { make_Fletcher, make_Ise_kai_2 } from "tests/setups/assets/ship";
+import { make_Fletcher, make_Ise_kai_2 } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 describe('射程系テスト', () => {

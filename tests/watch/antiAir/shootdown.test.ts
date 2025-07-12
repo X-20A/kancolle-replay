@@ -6,16 +6,16 @@ import { AbyssalPlaneEquip, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { AbyssalSingleFleet, calc_formation_updated_fleet, derive_abyssal_fleet, derive_player_fleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { derive_node } from "@/models/Node";
-import { brandEquipId } from "@/types/brands/equip";
 import { HIGH_10 } from "tests/setups/assets/equips/gun";
 import { F4U_1D, SUISEI_EGUSA } from "tests/setups/assets/equips/plane";
 import { SURFACE_22 } from "tests/setups/assets/equips/radar";
-import { LANDING_WA, make_Akizuki } from "tests/setups/assets/ship";
+import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
+import { make_Akizuki } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 const AKIZUKI = make_Akizuki([HIGH_10, SURFACE_22]); // AACI種別: [2]
 
-const JIGOKU_BOMBER = derive_abyssal_equip(brandEquipId(1548)); // 射撃回避なし
+const JIGOKU_BOMBER = derive_abyssal_equip(1548); // 射撃回避なし
 
 const node = derive_node();
 

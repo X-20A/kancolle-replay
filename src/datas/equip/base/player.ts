@@ -1826,7 +1826,7 @@ export const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         aaci_type: 'NONE',
         improvement_type: EquipImprovementType.LAND_BASED_BOMBER,
         AERIAL_BOMB: 10,
-        TP: 8,
+        AERIAL_TP: 8,
         AA: 1,
         ASW: 2,
         LOS: 2
@@ -1838,7 +1838,7 @@ export const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         aaci_type: 'NONE',
         improvement_type: EquipImprovementType.LAND_BASED_BOMBER,
         AERIAL_BOMB: 12,
-        TP: 10,
+        AERIAL_TP: 10,
         AA: 2,
         ASW: 2,
         LOS: 3
@@ -1851,7 +1851,7 @@ export const PLAYER_EQUIP_DATAS: PlayerEquipDatas = {
         improvement_type: EquipImprovementType.LAND_BASED_BOMBER,
         AA_resist_ship: 0.6,
         AERIAL_BOMB: 13,
-        TP: 12,
+        AERIAL_TP: 12,
         AA: 3,
         ASW: 2,
         ACC: 1,

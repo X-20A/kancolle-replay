@@ -1,8 +1,7 @@
 import { is_dive_bomber, is_jet_bomber_equip, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
-import { JetSquadron, Squadron } from "@/models/LBAS";
-import { AbyssalEquippedShip, includes_abyssal_ship_id, includes_ship_type, is_battle_ship_category, is_install_type, is_PT, is_submarine_category } from "@/models/ship/equipped";
+import { Squadron } from "@/models/LBAS";
+import { AbyssalEquippedShip, includes_ship_type, is_battle_ship_category, is_install_type, is_PT, is_submarine_category } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
-import { RandValue } from "@/types/brands/other";
 
 /// 基地航空隊
 /// {(雷装 or 爆装 + 改修強化値(基地) ) × √(搭載数補正 × 搭載数) + 25}
@@ -13,12 +12,13 @@ type RawBasePowerResult = {
 }
 
 /**
- * 攻撃力の基礎となるステータス値と回収上昇値のセットを返す
+ * 攻撃力の基礎となるステータス値と改修上昇値のセットを返す    
+ * ! 陸攻 vs 潜水艦のような攻撃不可な組み合わせは考慮しないので予めフィルタすること
  * @param plane 
  * @param target_ship 
  * @returns 
  */
-const calc_raw_base_power = (
+const calc_core_base_power_set = (
     plane: PlayerPlaneEquip,
     target_ship: AbyssalEquippedShip,
 ): RawBasePowerResult => {
@@ -56,7 +56,6 @@ const calc_raw_base_power = (
     };
 };
 
-
 /**
  * 特定の目標に対する攻撃力加算値(Mod Sp2)を返す    
  * ? 65戦隊、20戦隊(熟練) 共に素雷装0なので加算なのか上書きなのか判別できない
@@ -88,7 +87,7 @@ const calc_mod_sp2_flat = (
  * @param raw_base_power 
  * @returns 
  */
-const calc_mod_sp1_flat = (
+const calc_mod_sp1_multiplier = (
     plane: PlayerPlaneEquip,
     target_ship: AbyssalEquippedShip,
     raw_base_power: number,
@@ -153,14 +152,14 @@ const calc_base_power = (
     const {
         natural_status,
         improvement_bonus,
-    } = calc_raw_base_power(plane, target_ship);
+    } = calc_core_base_power_set(plane, target_ship);
 
-    const mod_sp1_flat =
-        calc_mod_sp1_flat(plane, target_ship, natural_status);
+    const mod_sp1_multiplier =
+        calc_mod_sp1_multiplier(plane, target_ship, natural_status);
 
     const mod_sp2_flat = calc_mod_sp2_flat(plane, target_ship);
 
-    return mod_sp1_flat * natural_status
+    return mod_sp1_multiplier * natural_status
         + improvement_bonus
         + mod_sp2_flat;
 }
@@ -184,7 +183,7 @@ const calc_slot_count_coeffient = (
 export type LbasBasePower = Brand<number, 'LbasBasePower'>
 
 /**
- * 基地航空隊の基本項を返す    
+ * 基地航空隊の基礎項を返す    
  * ! 基本攻撃力に非ず
  * @param squadron 
  * @param target_ship 
@@ -202,3 +201,8 @@ export function calc_basic_LBAS_attack_power(
     return (base_power * Math.sqrt(slot_count_coeffient * slot_count)
         + DEFAULT_BONUS_FLAT) as LbasBasePower;
 }
+
+export const __test__ = {
+    calc_core_base_power_set,
+    calc_mod_sp2_flat,
+};

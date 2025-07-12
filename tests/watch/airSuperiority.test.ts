@@ -4,7 +4,7 @@ import { EquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
 import { pipe } from "fp-ts/lib/function";
 import { REPPUU, XF5U } from "tests/setups/assets/equips/plane";
-import { make_Ranger } from "tests/setups/assets/ship";
+import { make_Ranger } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 describe('制空系テスト', () => {
@@ -13,7 +13,6 @@ describe('制空系テスト', () => {
         const HAGE_REPPUU = derive_equip(0, brandEquipId(22), 0);
         const IMPROVED_SHIDEN = derive_equip(10, brandEquipId(55), 100);
         
-
         const SUPPIN_RANGER = make_Ranger([]);
         const GUN_RANGER = make_Ranger([IMPROVED_77mm]);
         const REPPUU_RANGER = make_Ranger([REPPUU]);

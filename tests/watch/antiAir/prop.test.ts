@@ -3,7 +3,7 @@ import { Equip, is_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";
 import { SAIUN } from "tests/setups/assets/equips/plane";
-import { make_Fletcher } from "tests/setups/assets/ship";
+import { make_Fletcher } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 describe('対空系テスト', () => {

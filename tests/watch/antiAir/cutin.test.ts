@@ -6,7 +6,7 @@ import { FD_91, FD_94, GUN_127, GUN_77, HUNSHIN_KAI_NI, PONPON, SINGLE_25, TRIPL
 import { AKIZUKI_GUN, ATLANTA_GUN, HATSUZUKI_GUN, HIGH_10, HIGH_127, large_356, MIKUMA_GUN, FCR_284, OOYODO_GUN, TANYAN_GUN, MK30_GFCS, MK30, MK30_KAI, ATLANTA_GFCS_GUN, YAMATO_10CM_CLUSTER, HARUNA_GUN_3, HARUNA_GUN_4, HARUSAME_GUN, SHIRAYUKI_GUN } from "tests/setups/assets/equips/gun";
 import { TYPE_3_SHELL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR, RADAR_13, RADAR_13_KAI, SURFACE_22, YAMATO_RADAR } from "tests/setups/assets/equips/radar";
-import { LANDING_WA } from "tests/setups/assets/ship";
+import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
 import { derive_naked_ship_from_name } from "tests/setups/generator";
 import { describe, expect, it } from "vitest";
 

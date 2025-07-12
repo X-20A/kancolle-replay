@@ -18,5 +18,28 @@ export const NISHIKI_SCOUT_PLANE = make_player_equip_from_name('二式艦上偵�
 /** 彩雲 */
 export const SAIUN = make_player_equip_from_name('彩雲');
 
-/** B-25 */
-export const B_25 = make_player_equip_from_name('B-25');
+/** 一式陸攻 */
+export const LB_TYPE_1 = make_player_equip_from_name('一式陸攻');
+/** 爆装一式戦 隼III型改(65戦隊) */
+export const HAYABUSA_65 = make_player_equip_from_name('爆装一式戦 隼III型改(65戦隊)');
+/** キ102乙 */
+export const KI_102_B = make_player_equip_from_name('キ102乙');
+/** 試製東海 */
+export const TOUKAI = make_player_equip_from_name('試製東海');
+/** 深山 */
+export const SHINZAN = make_player_equip_from_name('深山');
+
+/** 噴式景雲改 */
+export const JET_KEIUN = make_player_equip_from_name('噴式景雲改');
+/** Ho229 */
+export const HO_229 = make_player_equip_from_name('Ho229');
+
+/** 瑞雲 */
+export const ZUIUN = make_player_equip_from_name('瑞雲');
+
+/** 三式指揮連絡機(対潜) */
+export const TYPE_3_COMMAND = make_player_equip_from_name('三式指揮連絡機(対潜)');
+/** 一式戦 隼II型改(20戦隊) */
+export const NOMAL_HAYABUSA_20 = make_player_equip_from_name('一式戦 隼II型改(20戦隊)');
+/** 一式戦 隼III型改(熟練/20戦隊) */
+export const SKILLED_HAYABUSA_20 = make_player_equip_from_name('一式戦 隼III型改(熟練/20戦隊)');

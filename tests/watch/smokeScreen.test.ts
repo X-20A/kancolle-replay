@@ -2,7 +2,7 @@ import { Rand } from "@/effects/random";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type, SmokeScreenType, SmokeScreenValues } from "@/logics/smokeScreen";
 import { derive_player_fleet } from "@/models/fleet/Fleet";
 import { ENMAKU, ENMAKU_KAI } from "tests/setups/assets/equips/other";
-import { make_Fletcher } from "tests/setups/assets/ship";
+import { make_Fletcher } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 describe('煙幕系テスト', () => {

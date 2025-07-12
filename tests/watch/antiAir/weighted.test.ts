@@ -7,7 +7,8 @@ import { brandEquipId } from "@/types/brands/equip";
 import { ZOUBI_25 } from "tests/setups/assets/equips/antiAir";
 import { XF5U } from "tests/setups/assets/equips/plane";
 import { GFCS_RADAR } from "tests/setups/assets/equips/radar";
-import { LANDING_WA, make_Maya_kai_ni, make_Ranger } from "tests/setups/assets/ship";
+import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
+import { make_Maya_kai_ni, make_Ranger } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 describe('対空系テスト', () => {
