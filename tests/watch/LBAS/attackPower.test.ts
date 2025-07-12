@@ -1,7 +1,8 @@
 import { __test__ } from "@/logics/LBAS/basePower";
-import { Equip, is_plane_equip } from "@/models/equip/basic";
+import { derive_equip, Equip, is_plane_equip } from "@/models/equip/basic";
 import { derive_LBAS, LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
+import { brandEquipId } from "@/types/brands/equip";
 import { DO_217_INITIAL, F4U_1D, FLITZ_X, HAYABUSA_65, HO_229, JET_KEIUN, KI_102_B, KI_102_B_MISSILE, LB_TYPE_1, NOMAL_HAYABUSA_20, NORMAL_HIRYUU_MISSILE, RYUUSEI_IKKOUSEN_SKILLED, SHINZAN, SKILLED_HAYABUSA_20, SKILLED_HIRYUU_MISSILE, SUISEI_EGUSA, TOUKAI, TYPE_3_COMMAND, ZUIUN } from "tests/setups/assets/equips/plane";
 import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA, SO_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
 import { describe, expect, it } from "vitest";
@@ -105,5 +106,27 @@ describe('基地航空隊 攻撃力系', () => {
         const ADDITIVE_IDENTITY = 0;
         test(2.6, SKILLED_HIRYUU_MISSILE, CA_NE, ADDITIVE_IDENTITY);
         test(2.25, SKILLED_HIRYUU_MISSILE, BB_RE, ADDITIVE_IDENTITY);
+    });
+    it('基本項', () => {
+        const test = (
+            expected: number,
+            equip: Equip,
+            target_ship: AbyssalEquippedShip,
+        ): void => {
+            const result = calc_basic_LBAS_attack_power(
+                short_derive_LBAS(equip).squadrons[0],
+                target_ship
+            );
+
+            expect(expected).toBe(result);
+        };
+
+        // さらっと
+        test(81.92099788303082, LB_TYPE_1, LANDING_WA); // 補正系なし
+        test(81.92099788303082, TOUKAI, SO_FLAGSHIP);
+        test(134.57292092483436, SKILLED_HIRYUU_MISSILE, BB_RE);
+
+        const LEVEL_9_LB_TYPE_1 = derive_equip(9, brandEquipId(169));
+        test(93.8744074384673, LEVEL_9_LB_TYPE_1, LANDING_WA); // 改修値9
     });
 });

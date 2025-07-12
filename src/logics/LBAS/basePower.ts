@@ -154,12 +154,12 @@ const calc_base_power = (
         improvement_bonus,
     } = calc_core_base_power_set(plane, target_ship);
 
-    const mod_sp1_multiplier =
+    const applied_mod_sp1_raw_base_power =
         calc_applied_mod_sp1_raw_base_power(plane, target_ship, natural_status);
 
     const mod_sp2_flat = calc_mod_sp2_flat(plane, target_ship);
 
-    return mod_sp1_multiplier * natural_status
+    return applied_mod_sp1_raw_base_power
         + improvement_bonus
         + mod_sp2_flat;
 }
@@ -176,14 +176,14 @@ const calc_slot_count_coeffient = (
     // ジェット機の処理はそもそも分けるべきかも
     return is_jet_bomber_equip(plane) 
         ? 1
-        :1.8;
+        : 1.8;
 }
 
 export type LbasBasePower = Brand<number, 'LbasBasePower'>
 
 /**
  * 基地航空隊の基本項を返す    
- * 基本項: (Mod_Sp1 * TP|DB + ★ + Mod_Sp2) * √(1.8 * plane_count) + 25
+ * 基本項: (Mod_Sp1 * TP|DB + ★ + Mod_Sp2) * √(搭載数係数 * plane_count) + 25
  * ! 基本攻撃力に非ず
  * @param squadron 
  * @param target_ship 
