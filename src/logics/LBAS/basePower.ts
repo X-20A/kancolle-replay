@@ -172,12 +172,11 @@ const calc_base_power = (
 const calc_slot_count_coeffient = (
     plane: PlaneEquip,
 ): number => {
-    if (
-        // ジェット機の処理はそもそも分けるべきかもわからない
-        is_jet_bomber_equip(plane) ||
-        plane.type_id === 'LAND_BASED_BOMBER_L'
-    ) return 1;
-    return 1.8;
+    // ? 日wikiでは深山などの大型陸攻は 1 となっているがfourinoneさん曰く、古い情報らしい 暫定: 1.8
+    // ジェット機の処理はそもそも分けるべきかも
+    return is_jet_bomber_equip(plane) 
+        ? 1
+        :1.8;
 }
 
 export type LbasBasePower = Brand<number, 'LbasBasePower'>
