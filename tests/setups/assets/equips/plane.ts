@@ -26,6 +26,8 @@ export const HAYABUSA_65 = make_player_equip_from_name('爆装一式戦 隼III�
 export const KI_102_B = make_player_equip_from_name('キ102乙');
 /** キ102乙改+イ号一型乙 誘導弾 */
 export const KI_102_B_MISSILE = make_player_equip_from_name('キ102乙改+イ号一型乙 誘導弾');
+/** B-25 */
+export const B_25 = make_player_equip_from_name('B-25');
 /** Do 217 E-5+Hs293初期型 */
 export const DO_217_INITIAL = make_player_equip_from_name('Do 217 E-5+Hs293初期型');
 /** Do 217 K-2+Fritz-X */
@@ -35,13 +37,20 @@ export const NORMAL_HIRYUU_MISSILE = make_player_equip_from_name('四式重爆 �
 /** 四式重爆 飛龍(熟練)+イ号一型甲 誘導弾 */
 export const SKILLED_HIRYUU_MISSILE = make_player_equip_from_name('四式重爆 飛龍(熟練)+イ号一型甲 誘導弾');
 
-/** 試製東海 */
+/** 試製東海 asw: 10 */
 export const TOUKAI = make_player_equip_from_name('試製東海');
 
 /** 噴式景雲改 */
 export const JET_KEIUN = make_player_equip_from_name('噴式景雲改');
 /** Ho229 */
 export const HO_229 = make_player_equip_from_name('Ho229');
+
+/** 二式陸上偵察機 */
+export const NORMAL_NISHIKI_LBR = make_player_equip_from_name('二式陸上偵察機');
+/** 二式陸上偵察機(熟練) */
+export const SKILLED_NISHIKI_LBR = make_player_equip_from_name('二式陸上偵察機(熟練)');
+/** Mosquito PR Mk.IV */
+export const MOSQUITE_LBR = make_player_equip_from_name('Mosquito PR Mk.IV');
 
 /** 深山 */
 export const SHINZAN = make_player_equip_from_name('深山');

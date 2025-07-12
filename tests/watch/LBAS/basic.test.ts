@@ -22,7 +22,7 @@ const short_derive_LBAS = (
     return derive_LBAS([equip], 0)
 }
 // ENwikiに倣ってチェックしていく
-describe('基地航空隊 攻撃力系', () => {
+describe('基地航空隊 攻撃力系 基本項系', () => {
     it('核ステータス', () => {
         const test = (
             expected: number,

@@ -8,13 +8,13 @@ import { calc_basic_LBAS_attack_power } from "./basePower";
 /// 基地航空隊のキャップ前攻撃力
 
 /**
- * 特定の目標に対する攻撃力加算値(Mod Sp3)を返す    
+ * 特定の目標に対する攻撃力乗算値(Mod Sp3)を返す    
  * 現状 B-25 専用
  * @param plane 
  * @param target_ship 
  * @returns 
  */
-const calc_mod_sp3 = (
+const calc_mod_sp3_multiplier = (
     plane: PlaneEquip,
     target_ship: AbyssalEquippedShip,
 ): number => {
@@ -30,11 +30,12 @@ const calc_mod_sp3 = (
         includes_ship_type(['CVL', 'FBB', 'BB', 'BBV', 'CV', 'AT'], target_ship_type)
     ) return 1.3;
 
-    return 1;
+    return 1; // 到達しないかも
 }
 
 /**
- * 陸偵補正値(Mod LBR)を返す
+ * 陸偵補正値(Mod LBR)を返す    
+ * 陸偵が複数ある場合は最高値を返す
  * @param lbas 
  * @returns 
  */
@@ -44,9 +45,10 @@ const calc_land_based_scout_mod = (
     return lbas.squadrons.reduce((highest_value, squadron) => {
         const plane_name = squadron.equip.name_jp;
 
-        // 陸偵が複数ある場合は最高値だけを返す
+        // ? 日wikiにはMosquiteの記載がない
         if (plane_name === '二式陸上偵察機' || plane_name === 'Mosquito PR Mk.IV') {
-            const MOD = 1.125;
+            // ? 日wiki: 1.125, ENwiki: 1.12
+            const MOD = 1.12;
             return Math.max(highest_value, MOD);
         }
         if (plane_name === '二式陸上偵察機(熟練)') {
@@ -88,8 +90,8 @@ const calc_anti_submarine_mod = (
     if (!is_submarine_category(target_ship)) return 1;
 
     return plane.natural_addition.asw >= 10
-        ? 0.7 + rand_value * 0.3
-        : 0.35 + rand_value * 0.45;
+        ? 0.7 + rand_value * 0.3 // 0.7 - 1.0
+        : 0.35 + rand_value * 0.45; // 0.35 - 0.8
 }
 
 /**
@@ -105,7 +107,39 @@ const calc_mod_jet_flat = (
 }
 
 /**
- * キャップ前攻撃力を返す
+ * キャップ前補正値を返す
+ * @param squadron 
+ * @param target_ship 
+ * @param lbas 
+ * @param mod_boss_pre_cap 
+ * @param rand_value 
+ * @returns 
+ */
+const calc_pre_cap_mod = (
+    squadron: Squadron,
+    target_ship: AbyssalEquippedShip,
+    lbas: LBAS,
+    mod_boss_pre_cap: number,
+    rand_value: RandValue
+): number => {
+    const plane = squadron.equip;
+
+    const mod_type = calc_mod_type(plane);
+    const mod_sp3 = calc_mod_sp3_multiplier(plane, target_ship);
+    const land_based_scout_mod = calc_land_based_scout_mod(lbas);
+    const anti_submarine_mod =
+        calc_anti_submarine_mod(plane, target_ship, rand_value);
+
+    return mod_type
+        * mod_sp3
+        * land_based_scout_mod
+        * anti_submarine_mod
+        * mod_boss_pre_cap;
+}
+
+/**
+ * キャップ前攻撃力を返す    
+ * 乱数が絡むのは対潜時のみ 分けたい
  * @param squadron 
  * @param target_ship 
  * @param lbas 
@@ -124,21 +158,25 @@ export function calc_pre_cap_LBAS_attack_power(
         squadron,
         target_ship,
     );
-    const plane = squadron.equip;
-
-    const mod_type = calc_mod_type(plane);
-    const mod_jet_flat = calc_mod_jet_flat(plane);
-    const mod_sp3 = calc_mod_sp3(plane, target_ship);
-
-    const land_based_scout_mod = calc_land_based_scout_mod(lbas);
-    const anti_submarine_mod =
-        calc_anti_submarine_mod(plane, target_ship, rand.next());
+    
+    const total_pre_cap_mod = calc_pre_cap_mod(
+        squadron,
+        target_ship,
+        lbas,
+        mod_boss_pre_cap,
+        rand.next(),
+    );
+    const mod_jet_flat = calc_mod_jet_flat(squadron.equip);
 
     // ? Mod Jetの評価タイミングは確定していない(どちらでも有意な差が出ない)
-    return (base_LBAS_attack_power * mod_type + mod_jet_flat)
-        * anti_submarine_mod
-        * land_based_scout_mod
-        * mod_sp3
-        * mod_boss_pre_cap
+    return base_LBAS_attack_power
+        * total_pre_cap_mod
         + mod_jet_flat;
 }
+
+export const __test__ = {
+    calc_mod_sp3_multiplier,
+    calc_land_based_scout_mod,
+    calc_anti_submarine_mod,
+    calc_pre_cap_LBAS_attack_power,
+};

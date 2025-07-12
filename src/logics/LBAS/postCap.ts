@@ -9,6 +9,9 @@ import { calc_capped_attack_power } from "../cap";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 
 export type ModBoss = { // ほんまにこんな仕様なんかと
+    /**
+     * こっちには乱数は絡まない
+     */
     pre_cap: number,
     post_cap: number,
 }
@@ -223,4 +226,8 @@ export function calc_final_LBAS_attack_power(
         * new_post_mod
         * contact_mod
         * anti_PT_mod;
+}
+
+export const __test__  = {
+    calc_mod_boss,
 }

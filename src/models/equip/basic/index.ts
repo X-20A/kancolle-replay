@@ -121,6 +121,16 @@ export function is_abyssal_equip(equip: Equip): equip is AbyssalEquip {
 export function is_abyssal_equips(equips: Equip[]): equips is AbyssalEquip[] {
     return equips.every(equip => !is_player_equip(equip));
 }
+/**
+ * 艦娘航空機系装備群であるか判定して返す
+ * @param equips 
+ * @returns 
+ */
+export function is_player_plane_equips(
+    equips: Equip[],
+): equips is PlayerPlaneEquip[] {
+    return equips.every(equip => is_player_equip(equip) && is_plane_equip(equip));
+}
 
 export function includes_abyssal_equip_id(
     match_equip_ids: AbyssalEquipId[],
@@ -129,6 +139,12 @@ export function includes_abyssal_equip_id(
     return match_equip_ids.includes(search_equip_id);
 }
 
+/**
+ * 指定された艦娘装備名が対象の艦娘装備名配列に含まれているか判定して返す
+ * @param match_equip_names 
+ * @param search_equip_name 
+ * @returns 
+ */
 export function includes_player_equip_name(
     match_equip_names: PlayerEquipNameJP[],
     search_equip_name: PlayerEquipNameJP,
@@ -136,6 +152,12 @@ export function includes_player_equip_name(
     return match_equip_names.includes(search_equip_name);
 }
 
+/**
+ * 指定された装備タイプが対象の装備タイプ配列に含まれているか判定して返す
+ * @param match_equip_types 
+ * @param search_equip_type 
+ * @returns 
+ */
 export function includes_equip_type(
     match_equip_types: EquipType[],
     search_equip_type: EquipType,
@@ -152,6 +174,11 @@ export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
     return equip.flags.is_plane;
 }
 
+/**
+ * 艦爆系であるか判定して返す(含爆戦)
+ * @param equip 
+ * @returns 
+ */
 export function is_dive_bomber(equip: Equip): boolean {
     return equip.flags.is_dive_bomber || equip.type_id === 'FIGHTER_BOMBER';
 }

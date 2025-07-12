@@ -18,3 +18,6 @@ export const LANDING_WA = derive_equipped_abyssal_ship(2269);
 
 /** 潜水ソ級flagship */
 export const SO_FLAGSHIP = derive_equipped_abyssal_ship(1572);
+
+/** 集積地棲姫 */
+export const SYUUSEKI = derive_equipped_abyssal_ship(1653);
