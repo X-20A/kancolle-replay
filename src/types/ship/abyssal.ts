@@ -4,6 +4,7 @@ import { AbyssalShipId } from "./abyssalId";
 import { AbyssalShipNameJP } from "./abyssalNameJP";
 import { CVsNightAttackType, InstallType, ShipType, ShipTypeBase, UnknownStatus } from "./ship";
 
+// TODO: CVBは含まないがまあそのうち
 export type AbyssalShipType = ShipTypeBase | 'AT'
 
 export type AbyssalShipData = {

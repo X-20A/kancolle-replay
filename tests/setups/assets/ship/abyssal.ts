@@ -7,6 +7,12 @@ export const DD_I = derive_equipped_abyssal_ship(1501);
 /** 軽巡ホ級 */
 export const CL_HO = derive_equipped_abyssal_ship(1505);
 
+/** 重巡ネ改 */
+export const CA_NE = derive_equipped_abyssal_ship(1594);
+
+/** 戦艦レ級 */
+export const BB_RE = derive_equipped_abyssal_ship(1561);
+
 /** 輸送ワ級II(揚陸中) */
 export const LANDING_WA = derive_equipped_abyssal_ship(2269);
 

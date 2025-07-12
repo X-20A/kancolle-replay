@@ -24,15 +24,27 @@ export const LB_TYPE_1 = make_player_equip_from_name('一式陸攻');
 export const HAYABUSA_65 = make_player_equip_from_name('爆装一式戦 隼III型改(65戦隊)');
 /** キ102乙 */
 export const KI_102_B = make_player_equip_from_name('キ102乙');
+/** キ102乙改+イ号一型乙 誘導弾 */
+export const KI_102_B_MISSILE = make_player_equip_from_name('キ102乙改+イ号一型乙 誘導弾');
+/** Do 217 E-5+Hs293初期型 */
+export const DO_217_INITIAL = make_player_equip_from_name('Do 217 E-5+Hs293初期型');
+/** Do 217 K-2+Fritz-X */
+export const FLITZ_X = make_player_equip_from_name('Do 217 K-2+Fritz-X');
+/** 四式重爆 飛龍+イ号一型甲 誘導弾 */
+export const NORMAL_HIRYUU_MISSILE = make_player_equip_from_name('四式重爆 飛龍+イ号一型甲 誘導弾');
+/** 四式重爆 飛龍(熟練)+イ号一型甲 誘導弾 */
+export const SKILLED_HIRYUU_MISSILE = make_player_equip_from_name('四式重爆 飛龍(熟練)+イ号一型甲 誘導弾');
+
 /** 試製東海 */
 export const TOUKAI = make_player_equip_from_name('試製東海');
-/** 深山 */
-export const SHINZAN = make_player_equip_from_name('深山');
 
 /** 噴式景雲改 */
 export const JET_KEIUN = make_player_equip_from_name('噴式景雲改');
 /** Ho229 */
 export const HO_229 = make_player_equip_from_name('Ho229');
+
+/** 深山 */
+export const SHINZAN = make_player_equip_from_name('深山');
 
 /** 瑞雲 */
 export const ZUIUN = make_player_equip_from_name('瑞雲');
