@@ -4,8 +4,11 @@ import { AbyssalShipId } from "./abyssalId";
 import { AbyssalShipNameJP } from "./abyssalNameJP";
 import { CVsNightAttackType, InstallType, ShipType, ShipTypeBase, UnknownStatus } from "./ship";
 
-// TODO: CVBは含まないがまあそのうち
+// TODO: CVB, LHAは含まないがまあそのうち
 export type AbyssalShipType = ShipTypeBase | 'AT'
+
+export type WarningType =
+    | 'LBAS_Mod_Boss_unknown'
 
 export type AbyssalShipData = {
     name: string,
@@ -25,10 +28,7 @@ export type AbyssalShipData = {
     TP_ACC?: number,
     SLOTS: Array<number>,
     EQUIPS?: AbyssalEquipId[],
-    /** 艦爆被弱点キャップ前補正値 */
-    dive_bomb_weak_mod?: number,
-    /** 陸攻被弱点キャップ前補正値 */
-    land_based_weak_mod?: number,
+    warning?: WarningType,
     /** 無条件開幕対潜艦はtrue */
     can_OASW?: true,
     /**

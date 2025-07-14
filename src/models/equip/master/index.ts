@@ -2,10 +2,10 @@ import { EquipType } from "@/datas/equip/base/player"
 import { EquipImprovementType } from "@/datas/equip/improvement"
 import { TStatusComponent } from "@/types"
 import { EquipId } from "@/types/brands/equip"
-import { AbyssalEquipFlags } from "@/types/equip/abbysal"
 import { AbyssalEquipId } from "@/types/equip/abyssalId"
 import { AbyssalEquipNameJP } from "@/types/equip/abyssalNameJP"
-import { AACITriggerEquipType, PlayerEquipFlags, SkillTriggerEquipType } from "@/types/equip/player"
+import { AbyssalEquipFlags, PlayerEquipFlags } from "@/types/equip/flags"
+import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player"
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP"
 
 /** マスターデータから直接取得するデータ */

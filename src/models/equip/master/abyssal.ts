@@ -1,9 +1,9 @@
 import { ABYSSAL_EQUIP_DATAS } from "@/datas/equip/base/abyssal";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
-import { AbyssalEquipFlags } from "@/types/equip/abbysal";
 import { AbyssalEquipMaster } from ".";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
+import { AbyssalEquipFlags } from "@/types/equip/flags";
 
 export function derive_abyssal_equip_master(
     id: AbyssalEquipId,
@@ -48,7 +48,7 @@ export function derive_abyssal_equip_master(
         is_torpedo_bomber: type_data.is_torpedo_bomber ?? false,
         can_contact: type_data.can_contact ?? false,
         can_detect: type_data.can_detect ?? false,
-        is_dive_bomber: type_data.is_dive_bomber ?? false,
+        can_bombing: type_data.can_bombing ?? false,
         is_asw_plane: type_data.is_asw_plane ?? false,
         is_land_base_plane: type_data.is_land_base_plane ?? false,
         is_jet: type_data.is_jet ?? false,

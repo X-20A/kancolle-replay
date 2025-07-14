@@ -16,8 +16,6 @@ import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
-import { AbyssalEquipId } from "@/types/equip/abyssalId";
-import seedrandom from "seedrandom";
 
 export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
 export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
@@ -103,20 +101,20 @@ export function equal_ship_name(
 }
 
 /**
- * 艦名が艦娘名と等しいか判定して返す
+ * 指定艦娘名が艦娘名群に含まれるか判定して返す
  * @param match_ship_names 
  * @param search_ship_name 
  * @returns 
  */
 export function includes_ship_name(
     match_ship_names: PlayerShipNameJP[],
-    search_ship_name: PlayerShipNameJP | AbyssalShipNameJP,
+    search_ship_name: PlayerShipNameJP,
 ): boolean {
     return match_ship_names.includes(search_ship_name);
 }
 
 /**
- * ある深海艦IDが艦ID群に含まれるか判定して返す
+ * 指定深海艦IDが艦ID群に含まれるか判定して返す
  * @param match_ship_ids 
  * @param search_ship_id 
  * @returns 
@@ -129,7 +127,7 @@ export function includes_abyssal_ship_id(
 }
 
 /**
- * ある艦種が艦種群に含まれるか判定して返す
+ * 指定艦種が艦種群に含まれるか判定して返す
  * @param match_ship_types 
  * @param search_ship_type 
  * @returns 

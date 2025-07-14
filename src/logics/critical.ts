@@ -47,15 +47,14 @@ export function calc_jet_lbas_critical_rate(
 const CRITICAL_ATTACK_POWER_MOD = 1.5;
 
 /**
- * 基地噴式強襲のクリティカル処理後の攻撃力を返す(クリティカル発動判定含む)
+ * クリティカル処理後の攻撃力を返す
  * @param pre_attack_power 
  * @param critical_rate 
  */
-export function calc_post_critical_mod_jet_LBAS_attack_power(
-    pre_attack_power: number,
+export function calc_critical_mod(
     hit_type: HitType,
 ): number {
     return hit_type === 'Critical'
-        ? pre_attack_power * CRITICAL_ATTACK_POWER_MOD
-        : pre_attack_power;
+        ? CRITICAL_ATTACK_POWER_MOD
+        : 1;
 }

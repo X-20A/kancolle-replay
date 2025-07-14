@@ -1,5 +1,5 @@
 import { AvgLbasProficiency } from "@/types/brands/other";
-import { is_jet_bomber_equip, JetBomberEquip, PlayerPlaneEquip } from "./equip/basic";
+import { is_jet_bomber, JetBomberEquip, PlayerPlaneEquip } from "./equip/basic";
 import { calc_average_proficiency } from "@/logics/proficiency";
 
 type SquadronBase = {
@@ -39,7 +39,7 @@ export type LBAS = {
 }
 
 function is_jet_squadron(squadron: Squadron): squadron is JetSquadron {
-    return is_jet_bomber_equip(squadron.equip);
+    return is_jet_bomber(squadron.equip);
 }
 
 /**

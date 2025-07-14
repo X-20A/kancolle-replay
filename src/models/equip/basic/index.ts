@@ -1,15 +1,15 @@
 import { TStatusComponent } from "@/types";
-import { AACITriggerEquipType, PlayerEquipFlags, SkillTriggerEquipType } from "@/types/equip/player";
+import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipImprovementAddition } from "../EquipImprovement";
 import { TransportAddition } from "../TransportPower";
-import { AbyssalEquipFlags } from "@/types/equip/abbysal";
 import { EquipId } from "@/types/brands/equip";
 import { derive_player_equip } from "./player";
 import { derive_abyssal_equip } from "./abyssal";
 import { AbyssalEquipNameJP } from "@/types/equip/abyssalNameJP";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
+import { AbyssalEquipFlags, PlayerEquipFlags } from "@/types/equip/flags";
 
 type EquipBase = {
     /** 装備名(EN) */
@@ -92,7 +92,7 @@ export type Equip = PlayerEquip | AbyssalEquip
  * @returns 
  */
 export function is_player_equip(equip: Equip): equip is PlayerEquip {
-    return equip.master_id < 1500;
+    return 'improvement_lv' in equip;
 }
 
 /**
@@ -171,16 +171,25 @@ export function includes_equip_type(
  * @returns 
  */
 export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
-    return equip.flags.is_plane;
+    return 'anti_air_resist_ship' in equip;
 }
 
 /**
- * 艦爆系であるか判定して返す(含爆戦)
+ * 装備が艦爆系であるか判定して返す(含爆戦)
  * @param equip 
  * @returns 
  */
 export function is_dive_bomber(equip: Equip): boolean {
-    return equip.flags.is_dive_bomber || equip.type_id === 'FIGHTER_BOMBER';
+    return equip.type_id === 'DIVE_BOMBER' || equip.type_id === 'FIGHTER_BOMBER';
+}
+
+/**
+ * 装備が艦攻であるか判定して返す
+ * @param equip 
+ * @returns 
+ */
+export function is_torpedo_bomber(equip: Equip): boolean {
+    return equip.type_id === 'TORPEDO_BOMBER';
 }
 
 /**
@@ -200,7 +209,7 @@ export function is_land_based_bomber(
  * @param equip 
  * @returns 
  */
-export function is_jet_bomber_equip(equip: Equip): equip is JetBomberEquip {
+export function is_jet_bomber(equip: Equip): equip is JetBomberEquip {
     return equip.type_id === "JET_BOMBER";
 }
 

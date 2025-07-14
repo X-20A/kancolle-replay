@@ -1,5 +1,5 @@
 import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
-import { Equip, is_jet_bomber_equip, is_plane_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { Equip, is_jet_bomber, is_plane_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
 import { AbyssalCombinedFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
@@ -162,7 +162,7 @@ const calc_Ks = (
             .exhaustive();
     }
 
-    if (is_jet_bomber_equip(unit)) return {
+    if (is_jet_bomber(unit)) return {
         K1: 0.6,
         K2: 0.6,
     }

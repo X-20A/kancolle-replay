@@ -2,8 +2,8 @@ import { PLAYER_EQUIP_DATAS } from "@/datas/equip/base/player";
 import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { TStatusComponent } from "@/types";
 import { EquipId } from "@/types/brands/equip";
-import { PlayerEquipFlags } from "@/types/equip/player";
 import { PlayerEquipMaster } from ".";
+import { PlayerEquipFlags } from "@/types/equip/flags";
 
 export function derive_player_equip_master(
     id: EquipId,
@@ -57,7 +57,7 @@ export function derive_player_equip_master(
         is_torpedo_bomber: type_data.is_torpedo_bomber ?? false,
         can_contact: type_data.can_contact ?? false,
         can_detect: type_data.can_detect ?? false,
-        is_dive_bomber: type_data.is_dive_bomber ?? false,
+        can_bombing: type_data.can_bombing ?? false,
         is_asw_plane: type_data.is_asw_plane ?? false,
         is_land_base_plane: type_data.is_land_base_plane ?? false,
         is_jet: type_data.is_jet ?? false,

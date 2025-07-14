@@ -1,9 +1,10 @@
 import { Rand } from "@/effects/random";
-import { is_jet_bomber_equip, is_land_based_bomber, PlaneEquip } from "@/models/equip/basic";
+import { is_jet_bomber, is_land_based_bomber, PlaneEquip } from "@/models/equip/basic";
 import { LBAS, Squadron } from "@/models/LBAS";
 import { AbyssalEquippedShip, includes_ship_type, is_install_type, is_submarine_category } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
 import { calc_basic_LBAS_attack_power } from "./basePower";
+import { ValidLbasCombination } from "../target/LBAS";
 
 /// 基地航空隊のキャップ前攻撃力
 
@@ -73,7 +74,7 @@ const calc_mod_type = (
     // ? 暫定: 0.7 以下の検証より
     // https://x.com/CC_jabberwock/status/1939699963778457773/photo/1
     // https://x.com/kancolle_aki/status/1940740730487804068/photo/1
-    if (is_jet_bomber_equip(plane)) return 0.7;
+    if (is_jet_bomber(plane)) return 0.7;
     return 1;
 }
 
@@ -101,7 +102,7 @@ const calc_anti_submarine_mod = (
 const calc_mod_jet_flat = (
     plane: PlaneEquip,
 ): number => {
-    return is_jet_bomber_equip(plane)
+    return is_jet_bomber(plane)
         ? 0.5
         : 0;
 }
@@ -119,7 +120,6 @@ const calc_pre_cap_mod = (
     squadron: Squadron,
     target_ship: AbyssalEquippedShip,
     lbas: LBAS,
-    mod_boss_pre_cap: number,
     rand_value: RandValue
 ): number => {
     const plane = squadron.equip;
@@ -133,40 +133,35 @@ const calc_pre_cap_mod = (
     return mod_type
         * mod_sp3
         * land_based_scout_mod
-        * anti_submarine_mod
-        * mod_boss_pre_cap;
+        * anti_submarine_mod;
 }
 
 /**
  * キャップ前攻撃力を返す    
  * 乱数が絡むのは対潜時のみ 分けたい
- * @param squadron 
- * @param target_ship 
+ * @param combination 
  * @param lbas 
- * @param mod_boss_pre_cap 
  * @param rand 
  * @returns 
  */
 export function calc_pre_cap_LBAS_attack_power(
-    squadron: Squadron,
-    target_ship: AbyssalEquippedShip,
+    combination: ValidLbasCombination,
     lbas: LBAS,
-    mod_boss_pre_cap: number,
     rand: Rand,
 ): number {
-    const base_LBAS_attack_power = calc_basic_LBAS_attack_power(
-        squadron,
-        target_ship,
-    );
+    const { attacker_squadron, target_unit } = combination;
+    const { ship: target_ship } = target_unit;
+
+    const base_LBAS_attack_power =
+        calc_basic_LBAS_attack_power(combination);
     
     const total_pre_cap_mod = calc_pre_cap_mod(
-        squadron,
+        attacker_squadron,
         target_ship,
         lbas,
-        mod_boss_pre_cap,
         rand.next(),
     );
-    const mod_jet_flat = calc_mod_jet_flat(squadron.equip);
+    const mod_jet_flat = calc_mod_jet_flat(attacker_squadron.equip);
 
     // ? Mod Jetの評価タイミングは確定していない(どちらでも有意な差が出ない)
     return base_LBAS_attack_power
@@ -174,9 +169,9 @@ export function calc_pre_cap_LBAS_attack_power(
         + mod_jet_flat;
 }
 
-export const __test__ = {
+export const __LBAS_pre_cap_test__ = {
     calc_mod_sp3_multiplier,
     calc_land_based_scout_mod,
     calc_anti_submarine_mod,
     calc_pre_cap_LBAS_attack_power,
-};
+} as const;

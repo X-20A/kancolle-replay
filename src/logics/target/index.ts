@@ -1,11 +1,12 @@
 import { Rand } from "@/effects/random";
-import { EquippedShip, includes_ship_name, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_name, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { is_front } from "../formation";
-import { AbyssalSingleFleet, CombinedFleet, SingleFleet } from "@/models/fleet/Fleet";
+import { CombinedFleet, SingleFleet } from "@/models/fleet/Fleet";
 import { COMBINED_FLEET_FORMATION_PROTECT_RATIO_DATA, MAIN_FLEET_RATE_MAP, SINGLE_FLEET_FORMATION_PROTECT_RATIO_DATA } from "./data";
-import { FleetUnit, is_flag_ship, is_primary_flag_ship } from "@/models/fleet/FleetUnit";
+import { AbyssalFleetUnit, FleetUnit, is_primary_flag_ship, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { EscortFleetUnits } from "@/types/brands/fleet";
+import { RandValue } from "@/types/brands/other";
 
 const CHOICE_TARGET_FROM_COMBINED_FLEET = {
     LBAS: 'lbas',
@@ -16,14 +17,13 @@ const CHOICE_TARGET_FROM_COMBINED_FLEET = {
     Torpedo: 'torpedo',
     FriendFleet: 'friend_fleet',
 } as const;
-
-/**
- * 連合艦隊で第一艦隊と第二艦隊の両方が対象選択可能な場合にどちらを狙うか の種別
- * https://wikiwiki.jp/kancolle/攻撃対象の選択#ddf0a2b0
- */
 export type TargetFromCombinedFleet =
     typeof CHOICE_TARGET_FROM_COMBINED_FLEET[keyof typeof CHOICE_TARGET_FROM_COMBINED_FLEET];
 
+/**
+* 連合艦隊で主力艦隊と随伴艦隊の両方が対象選択可能な場合にどちらを狙うか の種別
+* https://wikiwiki.jp/kancolle/攻撃対象の選択#ddf0a2b0
+*/
 type EachFleet = 'main' | 'escort'
 
 /**
@@ -48,7 +48,7 @@ const calc_prefer_alive_fleet = (
  * @returns 
  */
 const calc_unique_fleet_targeting = (
-    attacker_ship: EquippedShip,
+    attacker_ship: PlayerEquippedShip,
     target_fleet: CombinedFleet,
 ): EachFleet | 'undetermined' => {
     if (includes_ship_name(['天霧改二', '天霧改二丁'], attacker_ship.name_jp)) {
@@ -80,7 +80,7 @@ const calc_unique_fleet_targeting = (
  * @returns 
  */
 export function calc_shelling_target_fleet(
-    attacker_ship: EquippedShip,
+    attacker_ship: PlayerEquippedShip,
     target_fleet: CombinedFleet,
     rand: Rand,
 ): EachFleet {
@@ -126,14 +126,14 @@ export function calc_general_target_fleet(
  * @param rand 
  * @returns 
  */
-const calc_vanguard_target = (
-    first_target_ship_struct: FleetUnit,
-    target_ship_structs: FleetUnit[],
+export function calc_vanguard_target<T extends PlayerFleetUnit | AbyssalFleetUnit>(
+    first_target_ship_struct: T,
+    target_ship_structs: T[],
     formation: SingleFleetFormationType,
     ship_length: number,
     ship_index: number,
     rand: Rand,
-): FleetUnit => {
+): T {
     if (
         formation !== 'Vanguard'
         || !is_front(ship_length, ship_index)
@@ -143,16 +143,16 @@ const calc_vanguard_target = (
 }
 
 /**
- * 艦群から完全にランダムに艦を返す
- * @param target_ship_structs 
+ * 艦群から完全にランダムに艦を選択して返す
+ * @param target_fleet_units 
  * @param rand 
  * @returns 
  */
-const select_random_target = (
-    target_ship_structs: FleetUnit[],
-    rand: Rand
-): FleetUnit => {
-    return target_ship_structs[Math.floor(rand.next() * target_ship_structs.length)];
+export function select_random_target<T extends PlayerFleetUnit | AbyssalFleetUnit>(
+    target_fleet_units: T[],
+    rand_value: RandValue,
+): T {
+    return target_fleet_units[Math.floor(rand_value * target_fleet_units.length)];
 }
 
 /**
@@ -163,12 +163,12 @@ const select_random_target = (
  * @param rand 
  * @returns 
  */
-const protect_flagship_in_single_fleet = (
-    pre_target_unit: FleetUnit,
-    target_units: FleetUnit[],
+export function protect_flagship_in_single_fleet<T extends PlayerFleetUnit | AbyssalFleetUnit>(
+    pre_target_unit: T,
+    target_units: T[],
     protect_ratio: number,
     rand: Rand
-): FleetUnit => {
+): T {
     if (pre_target_unit.fleet_type !== 'single') throw new Error('連合艦隊の「かばう」処理に誤って通常艦隊の「かばう」処理が呼び出されています');
     if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
         return pre_target_unit;
@@ -236,7 +236,7 @@ export function choice_target_in_single_vs_single(
     target_fleet: SingleFleet,
     rand: Rand,
 ): FleetUnit {
-    const first_target_unit = select_random_target(target_units, rand);
+    const first_target_unit = select_random_target(target_units, rand.next());
 
     const post_vanguard_target_unit = calc_vanguard_target(
         first_target_unit,
@@ -245,7 +245,7 @@ export function choice_target_in_single_vs_single(
         target_fleet.main_fleet_units.length,
         first_target_unit.original_index,
         rand,
-    )
+    );
 
     return protect_flagship_in_single_fleet(
         post_vanguard_target_unit,
@@ -267,7 +267,7 @@ export function choice_target_in_single_vs_combined(
     formation: CombinedFleetFormationType,
     rand: Rand,
 ): FleetUnit {
-    const first_target_unit = select_random_target(target_units, rand);
+    const first_target_unit = select_random_target(target_units, rand.next());
 
     return protect_flagship_in_single_fleet(
         first_target_unit,

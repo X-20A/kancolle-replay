@@ -1,7 +1,9 @@
-import { is_dive_bomber, is_jet_bomber_equip, is_land_based_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { is_dive_bomber, is_jet_bomber, is_land_based_bomber, is_torpedo_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { Squadron } from "@/models/LBAS";
 import { AbyssalEquippedShip, includes_ship_type, is_battle_ship_category, is_install_type, is_PT, is_submarine_category } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
+import { ValidLbasCombination } from "../target/LBAS";
+import { match } from "ts-pattern";
 
 /// 基地航空隊 基本項
 
@@ -18,10 +20,14 @@ type RawBasePowerResult = {
  * @returns 
  */
 const calc_core_base_power_set = (
-    plane: PlayerPlaneEquip,
-    target_ship: AbyssalEquippedShip,
+    combination: ValidLbasCombination,
 ): RawBasePowerResult => {
-    const { natural_addition, improvement_addition } = plane;
+    const {
+        attacker_squadron,
+        target_unit,
+        attack_type,
+    } = combination;
+    const { natural_addition, improvement_addition } = attacker_squadron.equip;
     const { asw, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
     const {
         asw_power: improve_asw,
@@ -29,30 +35,20 @@ const calc_core_base_power_set = (
         aerial_torpedo_power: improve_torpedo,
     } = improvement_addition;
 
-    if (is_submarine_category(target_ship)) {
-        return {
-            natural_status: asw,
-            improvement_bonus: improve_asw,
-        };
-    }
-    if (is_land_based_bomber(plane)) {
-        return {
-            natural_status: is_install_type(target_ship) ? aerial_bomb_power : aerial_torpedo_power,
-            improvement_bonus: is_install_type(target_ship) ? improve_bomb : improve_torpedo,
-        };
-    }
-    if (is_dive_bomber(plane)) {
-        return {
-            natural_status: aerial_bomb_power,
-            improvement_bonus: improve_bomb,
-        };
-    }
-    return {
-        natural_status: is_install_type(target_ship)
-            ? Math.floor(aerial_torpedo_power / 2)
-            : aerial_torpedo_power,
-        improvement_bonus: improve_torpedo,
-    };
+    return match(attack_type)
+        .with('asw', () => ({ natural_status: asw, improvement_bonus: improve_asw }))
+        .with('bomb', () => ({ natural_status: aerial_bomb_power, improvement_bonus: improve_bomb }))
+        .with('torpedo', () => {
+            return {
+                natural_status: is_install_type(target_unit.ship)
+                    // NOTE: 艦攻 かつ 対地目標である場合は 雷装 / 2(切り捨て)
+                    // https://docs.google.com/spreadsheets/d/1mA8rBhMIn9DRxVIvVH5SiZOXLTumHuZtkNcAjmFsgCY/edit?gid=611010520#gid=611010520&range=A52
+                    ? Math.floor(aerial_torpedo_power / 2)
+                    : aerial_torpedo_power,
+                improvement_bonus: improve_torpedo,
+            }
+        })
+        .exhaustive();
 };
 
 /**
@@ -146,13 +142,19 @@ const calc_applied_mod_sp1_raw_base_power = (
  * @returns 
  */
 const calc_base_power = (
-    plane: PlayerPlaneEquip,
-    target_ship: AbyssalEquippedShip,
+    combination: ValidLbasCombination,
 ): number => {
+    const {
+        attacker_squadron,
+        target_unit,
+    } = combination;
+    const { equip: plane } = attacker_squadron;
+    const { ship: target_ship } = target_unit;
+
     const {
         natural_status,
         improvement_bonus,
-    } = calc_core_base_power_set(plane, target_ship);
+    } = calc_core_base_power_set(combination);
 
     const applied_mod_sp1_raw_base_power =
         calc_applied_mod_sp1_raw_base_power(plane, target_ship, natural_status);
@@ -173,8 +175,7 @@ const calc_slot_count_coeffient = (
     plane: PlaneEquip,
 ): number => {
     // ? 日wikiでは深山などの大型陸攻は 1 となっているがfourinoneさん曰く、古い情報らしい 暫定: 1.8
-    // ジェット機の処理はそもそも分けるべきかも
-    return is_jet_bomber_equip(plane) 
+    return is_jet_bomber(plane) 
         ? 1
         : 1.8;
 }
@@ -190,21 +191,25 @@ export type LbasBasePower = Brand<number, 'LbasBasePower'>
  * @returns 
  */
 export function calc_basic_LBAS_attack_power(
-    squadron: Squadron,
-    target_ship: AbyssalEquippedShip,
+    combination: ValidLbasCombination,
 ): LbasBasePower {
-    const base_power = calc_base_power(squadron.equip, target_ship);
-    const slot_count = squadron.slot_count;
-    const slot_count_coeffient = calc_slot_count_coeffient(squadron.equip);
+    const { attacker_squadron } = combination;
+    const {
+        equip: plane,
+        slot_count,
+    } = attacker_squadron;
+
+    const base_power = calc_base_power(combination);
+    const slot_count_coeffient = calc_slot_count_coeffient(plane);
     const DEFAULT_BONUS_FLAT = 25;
 
     return base_power * Math.sqrt(slot_count_coeffient * slot_count)
         + DEFAULT_BONUS_FLAT as LbasBasePower;
 }
 
-export const __test__ = {
+export const __LBAS_base_power_test__ = {
     calc_core_base_power_set,
     calc_mod_sp2_flat,
     calc_applied_mod_sp1_raw_base_power,
     calc_basic_LBAS_attack_power,
-};
+} as const;

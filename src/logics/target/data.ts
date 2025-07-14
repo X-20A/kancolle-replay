@@ -1,5 +1,5 @@
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
-import { TargetFromCombinedFleet } from "./target";
+import { TargetFromCombinedFleet } from ".";
 
 /**
  * 連合艦隊ターゲット時における、phase_typeごとの主力艦隊選出率

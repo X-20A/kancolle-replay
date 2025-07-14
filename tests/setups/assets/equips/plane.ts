@@ -60,6 +60,8 @@ export const ZUIUN = make_player_equip_from_name('瑞雲');
 
 /** 三式指揮連絡機(対潜) */
 export const TYPE_3_COMMAND = make_player_equip_from_name('三式指揮連絡機(対潜)');
+/** 三式指揮連絡機改二 */
+export const TYPE_3_COMMAND_KAI_NI = make_player_equip_from_name('三式指揮連絡機改二');
 /** 一式戦 隼II型改(20戦隊) */
 export const NOMAL_HAYABUSA_20 = make_player_equip_from_name('一式戦 隼II型改(20戦隊)');
 /** 一式戦 隼III型改(熟練/20戦隊) */

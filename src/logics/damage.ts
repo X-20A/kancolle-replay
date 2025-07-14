@@ -1,15 +1,15 @@
 import { JetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy, calc_hit_type } from "./accuracy";
 import { Rand } from "@/effects/random";
-import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
+import { EquippedShip } from "@/models/ship/equipped";
 import { calc_defence } from "./defense";
 import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
-import { FleetUnit } from "@/models/fleet/FleetUnit";
-import { calc_jet_lbas_critical_rate, calc_post_critical_mod_jet_LBAS_attack_power } from "./critical";
+import { AbyssalFleetUnit, FleetUnit } from "@/models/fleet/FleetUnit";
+import { calc_jet_lbas_critical_rate, calc_critical_mod } from "./critical";
 import { Node } from "@/models/Node";
 import { UserSettings } from "@/core/flows/SimExecuter";
-import { calc_basic_LBAS_attack_power } from "./LBAS/basePower";
+import { calc_jet_LBAS_attack_power } from "./LBAS/jet";
 
 /**
  * 割合ダメージ(カスダメ)を返す
@@ -28,28 +28,28 @@ const calc_scrach_damage = (
 }
 
 /**
- * 噴式強襲後の艦隊を返す    
+ * 基地噴式強襲後の艦隊を返す    
  * S & C
- * @param squadron 
+ * @param attacker_squadron 
  * @param enemy_fleet 
- * @param target_ship 
+ * @param target_unit 
  * @param rand 
  * @returns 
  */
-export function calc_jet_assault_damage(
-    squadron: JetSquadron,
+export function calc_jet_LBAS_assault_damage(
+    attacker_squadron: JetSquadron,
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
-    target_ship: AbyssalEquippedShip,
+    target_unit: AbyssalFleetUnit,
     node: Node,
     settings: UserSettings,
     rand: Rand,
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
-        squadron.equip,
+        attacker_squadron.equip,
         player_fleet,
         enemy_fleet,
-        target_ship,
+        target_unit.ship,
         node,
         settings,
     );
@@ -60,23 +60,25 @@ export function calc_jet_assault_damage(
 
     if (hit_type === 'Miss') return 0; // 特殊攻撃、カットインではないので回避されればカスダメも無し
 
-    const basic_attack_power = calc_basic_LBAS_attack_power(squadron, target_ship);
+    const basic_attack_power = calc_jet_LBAS_attack_power(
+        attacker_squadron,
+        hit_type
+    );
     // ? 基地噴式にキャップ処理があるのか不明 暫定: キャップなし
     // ? 徹甲弾補正のあるターゲットはこちらが徹甲弾を持っていなくてもfloor処理だけは発生するが、基地噴式でも同様であるかは不明 暫定: floorなし
     // ? 阻塞気球補正が基地噴式でも有効であるか不明 暫定: 補正あり
     // TODO: 海域特効付与
     // TODO: 対地上型補正
     // TODO: 対PT補正
-    const post_critical_attack_power = calc_post_critical_mod_jet_LBAS_attack_power(
-        basic_attack_power,
+    const critical_mod = calc_critical_mod(
         hit_type,
     );
 
-    const defence = calc_defence(target_ship, rand);
-    const damage = Math.floor((post_critical_attack_power - defence) * 1);
+    const defence = calc_defence(target_unit.ship, rand);
+    const damage = Math.floor((basic_attack_power * critical_mod - defence) * 1);
     if (damage >= 1) return damage;
 
-    return calc_scrach_damage(target_ship, rand);
+    return calc_scrach_damage(target_unit.ship, rand);
 }
 
 /**

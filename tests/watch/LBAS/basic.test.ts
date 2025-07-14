@@ -1,9 +1,11 @@
-import { __test__ } from "@/logics/LBAS/basePower";
+import { __LBAS_base_power_test__ } from "@/logics/LBAS/basePower";
+import { __target_LBAS_test__, ValidLbasCombination } from "@/logics/target/LBAS";
 import { derive_equip, Equip, is_plane_equip } from "@/models/equip/basic";
+import { derive_abyssal_fleet } from "@/models/fleet/Fleet";
 import { derive_LBAS, LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
-import { DO_217_INITIAL, F4U_1D, FLITZ_X, HAYABUSA_65, HO_229, JET_KEIUN, KI_102_B, KI_102_B_MISSILE, LB_TYPE_1, NOMAL_HAYABUSA_20, NORMAL_HIRYUU_MISSILE, RYUUSEI_IKKOUSEN_SKILLED, SHINZAN, SKILLED_HAYABUSA_20, SKILLED_HIRYUU_MISSILE, SUISEI_EGUSA, TOUKAI, TYPE_3_COMMAND, ZUIUN } from "tests/setups/assets/equips/plane";
+import { DO_217_INITIAL, F4U_1D, FLITZ_X, HAYABUSA_65, HO_229, JET_KEIUN, KI_102_B, KI_102_B_MISSILE, LB_TYPE_1, NOMAL_HAYABUSA_20, NORMAL_HIRYUU_MISSILE, RYUUSEI_IKKOUSEN_SKILLED, SHINZAN, SKILLED_HAYABUSA_20, SKILLED_HIRYUU_MISSILE, SUISEI_EGUSA, TOUKAI, TYPE_3_COMMAND, TYPE_3_COMMAND_KAI_NI, ZUIUN } from "tests/setups/assets/equips/plane";
 import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA, SO_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
 import { describe, expect, it } from "vitest";
 
@@ -12,7 +14,9 @@ const {
     calc_mod_sp2_flat,
     calc_applied_mod_sp1_raw_base_power,
     calc_basic_LBAS_attack_power,
-} = __test__;
+} = __LBAS_base_power_test__;
+
+const { calc_LBAS_attack_type } = __target_LBAS_test__;
 
 const short_derive_LBAS = (
     equip: Equip,
@@ -29,10 +33,21 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
             equip: Equip,
             target_ship: AbyssalEquippedShip,
         ): void => {
-            const LBAS = short_derive_LBAS(equip);
+            const lbas = short_derive_LBAS(equip);
+            const attacker_squadron = lbas.squadrons[0];
+
+            const fleet = derive_abyssal_fleet([target_ship]);
+            const target_unit = fleet.main_fleet_units[0];
+
+            const attack_type = calc_LBAS_attack_type(attacker_squadron, target_unit);
+            
+            const combination: ValidLbasCombination = {
+                attacker_squadron,
+                target_unit,
+                attack_type,
+            };
             const { natural_status } = calc_core_base_power_set(
-                LBAS.squadrons[0].equip,
-                target_ship,
+                combination,
             );
 
             expect(expected).toBe(natural_status);
@@ -50,10 +65,12 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
         test(15, JET_KEIUN, LANDING_WA);
         test(16, HO_229, LANDING_WA);
         test(4, ZUIUN, LANDING_WA);
+        test(2, TYPE_3_COMMAND_KAI_NI, LANDING_WA);
         test(4, NOMAL_HAYABUSA_20, LANDING_WA);
         // 対潜値
         test(10, TOUKAI, SO_FLAGSHIP);
         test(7, TYPE_3_COMMAND, SO_FLAGSHIP);
+        test(10, TYPE_3_COMMAND_KAI_NI, SO_FLAGSHIP);
         test(8, NOMAL_HAYABUSA_20, SO_FLAGSHIP);
     });
     it('Mod Sp2', () => {
@@ -113,10 +130,18 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
             equip: Equip,
             target_ship: AbyssalEquippedShip,
         ): void => {
-            const result = calc_basic_LBAS_attack_power(
-                short_derive_LBAS(equip).squadrons[0],
-                target_ship
-            );
+            const lbas = short_derive_LBAS(equip);
+            const attacker_squadron = lbas.squadrons[0];
+
+            const fleet = derive_abyssal_fleet([target_ship]);
+            const target_unit = fleet.main_fleet_units[0];
+
+            const combination: ValidLbasCombination = {
+                attacker_squadron,
+                target_unit,
+                attack_type: calc_LBAS_attack_type(attacker_squadron, target_unit)
+            };
+            const result = calc_basic_LBAS_attack_power(combination);
 
             expect(expected).toBe(result);
         };
