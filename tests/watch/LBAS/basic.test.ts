@@ -1,4 +1,4 @@
-import { __LBAS_base_power_test__ } from "@/logics/LBAS/basePower";
+import { __LBAS_base_power_test__ } from "@/logics/attackPower/LBAS/basePower";
 import { __target_LBAS_test__, ValidLbasCombination } from "@/logics/target/LBAS";
 import { derive_equip, Equip, is_plane_equip } from "@/models/equip/basic";
 import { derive_abyssal_fleet } from "@/models/fleet/Fleet";

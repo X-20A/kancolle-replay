@@ -6,10 +6,18 @@ import { calc_defence } from "./defense";
 import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
 import { AbyssalFleetUnit, FleetUnit } from "@/models/fleet/FleetUnit";
-import { calc_jet_lbas_critical_rate, calc_critical_mod } from "./critical";
+import { calc_jet_lbas_critical_rate } from "./critical";
 import { Node } from "@/models/Node";
 import { UserSettings } from "@/core/flows/SimExecuter";
-import { calc_jet_LBAS_attack_power } from "./LBAS/jet";
+import { calc_jet_LBAS_assault_attack_power } from "./attackPower/LBAS/postCap";
+import { RandValue } from "@/types/brands/other";
+
+const calc_damage = (
+    basic_attack_power: number,
+    defence: number,
+): number => {
+    return Math.floor(basic_attack_power - defence);
+}
 
 /**
  * 割合ダメージ(カスダメ)を返す
@@ -19,11 +27,12 @@ import { calc_jet_LBAS_attack_power } from "./LBAS/jet";
  */
 const calc_scrach_damage = (
     target_ship: EquippedShip,
-    rand: Rand,
+    rand_value: RandValue,
 ): number => {
+    const hp_remain = target_ship.state.hp_remain;
     return Math.floor(
-        target_ship.state.hp_remain * 0.06
-            + Math.floor(Math.floor(target_ship.state.hp_remain) * rand.next()) * 0.08
+        hp_remain * 0.06
+            + Math.floor(Math.floor(hp_remain) * rand_value) * 0.08
     )
 }
 
@@ -60,25 +69,23 @@ export function calc_jet_LBAS_assault_damage(
 
     if (hit_type === 'Miss') return 0; // 特殊攻撃、カットインではないので回避されればカスダメも無し
 
-    const basic_attack_power = calc_jet_LBAS_attack_power(
+    const attack_power = calc_jet_LBAS_assault_attack_power(
         attacker_squadron,
-        hit_type
+        target_unit.ship,
+        hit_type,
+        rand.next(),
     );
     // ? 基地噴式にキャップ処理があるのか不明 暫定: キャップなし
     // ? 徹甲弾補正のあるターゲットはこちらが徹甲弾を持っていなくてもfloor処理だけは発生するが、基地噴式でも同様であるかは不明 暫定: floorなし
     // ? 阻塞気球補正が基地噴式でも有効であるか不明 暫定: 補正あり
     // TODO: 海域特効付与
-    // TODO: 対地上型補正
-    // TODO: 対PT補正
-    const critical_mod = calc_critical_mod(
-        hit_type,
-    );
 
     const defence = calc_defence(target_unit.ship, rand);
-    const damage = Math.floor((basic_attack_power * critical_mod - defence) * 1);
-    if (damage >= 1) return damage;
+    const damage = calc_damage(attack_power, defence);
 
-    return calc_scrach_damage(target_unit.ship, rand);
+    return damage >= 1
+        ? damage
+        : calc_scrach_damage(target_unit.ship, rand.next());
 }
 
 /**

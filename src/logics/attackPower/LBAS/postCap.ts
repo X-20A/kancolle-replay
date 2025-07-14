@@ -4,14 +4,14 @@ import { AbyssalEquippedShip, includes_abyssal_ship_id, is_PT } from "@/models/s
 import { RandValue } from "@/types/brands/other";
 import { calc_pre_cap_LBAS_attack_power } from "./preCap";
 import { Rand } from "@/effects/random";
-import { LBAS } from "@/models/LBAS";
-import { calc_capped_attack_power } from "../cap";
-import { ValidLbasCombination } from "../target/LBAS";
-import { HitType } from "../accuracy";
-import { calc_critical_mod } from "../critical";
+import { LBAS, Squadron } from "@/models/LBAS";
+import { calc_capped_attack_power } from "../../cap";
+import { ValidLbasCombination } from "../../target/LBAS";
+import { HitType } from "../../accuracy";
+import { calc_critical_mod } from "../../critical";
 
 /**
- * 特定の目標に対する攻撃力加算値(Mod Boss)を返す    
+ * 特定の目標に対する攻撃力乗算値(Mod Boss)を返す    
  * ? 確率や値はSortie Simの独自調査か暫定値?
  * @param target_ship 
  * @param rand_value 
@@ -144,7 +144,7 @@ const calc_seaplane_mod = (
 }
 
 /**
- * 航空中隊のキャップ後攻撃力を返す
+ * 航空中隊の最終攻撃力を返す
  * @param squadron 
  * @param lbas 
  * @param target_ship 
@@ -153,7 +153,7 @@ const calc_seaplane_mod = (
  * @param rand 
  * @returns 
  */
-export function calc_final_LBAS_attack_power(
+export function calc_LBAS_attack_power(
     combination: ValidLbasCombination,
     lbas: LBAS,
     target_fleet: AbyssalFleet,
@@ -194,6 +194,38 @@ export function calc_final_LBAS_attack_power(
         * seaplane_mod
         * contact_mod
         * critical_mod;
+}
+
+/**
+ * 基地噴式強襲の最終攻撃力を返す
+ * @param squadron 
+ * @param target_ship 
+ * @param hit_type 
+ * @param rand_value 
+ * @returns 
+ */
+export function calc_jet_LBAS_assault_attack_power(
+    squadron: Squadron,
+    target_ship: AbyssalEquippedShip,
+    hit_type: HitType,
+    rand_value: RandValue,
+): number {
+    const { equip: plane } = squadron;
+    const basic_attack_power =
+        plane.natural_addition.aerial_bomb_power * Math.sqrt(squadron.slot_count)
+        + 25;
+
+    // ? 基地噴式強襲において目標別補正が有効か分からない
+    const mod_boss = calc_mod_boss(target_ship, rand_value);
+
+    const critical_mod = calc_critical_mod(hit_type);
+
+    // 基地航空隊キャップ値(220)に届きようが無いので処理スキップ
+    return Math.floor(
+        Math.floor(basic_attack_power)
+            * mod_boss
+            * critical_mod
+    );
 }
 
 export const __LBAS_post_cap_test__  = {

@@ -4,7 +4,7 @@ import { LBAS, Squadron } from "@/models/LBAS";
 import { AbyssalEquippedShip, includes_ship_type, is_install_type, is_submarine_category } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
 import { calc_basic_LBAS_attack_power } from "./basePower";
-import { ValidLbasCombination } from "../target/LBAS";
+import { ValidLbasCombination } from "../../target/LBAS";
 
 /// 基地航空隊のキャップ前攻撃力
 

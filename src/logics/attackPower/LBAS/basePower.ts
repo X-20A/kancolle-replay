@@ -1,8 +1,7 @@
-import { is_dive_bomber, is_jet_bomber, is_land_based_bomber, is_torpedo_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
-import { Squadron } from "@/models/LBAS";
-import { AbyssalEquippedShip, includes_ship_type, is_battle_ship_category, is_install_type, is_PT, is_submarine_category } from "@/models/ship/equipped";
+import { is_jet_bomber, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { AbyssalEquippedShip, includes_ship_type, is_battle_ship_category, is_install_type } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
-import { ValidLbasCombination } from "../target/LBAS";
+import { ValidLbasCombination } from "../../target/LBAS";
 import { match } from "ts-pattern";
 
 /// 基地航空隊 基本項

@@ -1,4 +1,4 @@
-import { __LBAS_pre_cap_test__ } from "@/logics/LBAS/preCap";
+import { __LBAS_pre_cap_test__ } from "@/logics/attackPower/LBAS/preCap";
 import { Equip, is_plane_equip, is_player_plane_equips } from "@/models/equip/basic";
 import { derive_LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
