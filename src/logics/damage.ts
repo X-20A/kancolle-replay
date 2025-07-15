@@ -1,7 +1,7 @@
-import { JetSquadron } from "@/models/LBAS";
+import { LbasJetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy, calc_hit_type } from "./accuracy";
-import { Rand } from "@/effects/random";
-import { EquippedShip } from "@/models/ship/equipped";
+import { RandGenerator } from "@/effects/random";
+import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
 import { calc_defence } from "./defense";
 import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
@@ -12,11 +12,58 @@ import { UserSettings } from "@/core/flows/SimExecuter";
 import { calc_jet_LBAS_assault_attack_power } from "./attackPower/LBAS/postCap";
 import { RandValue } from "@/types/brands/other";
 
-const calc_damage = (
-    basic_attack_power: number,
+const calc_base_damage = (
+    attack_power: number,
     defence: number,
 ): number => {
-    return Math.floor(basic_attack_power - defence);
+    return attack_power - defence;
+}
+
+/**
+ * 航空機によるダメージを返す
+ * @param attack_power 
+ * @param defence 
+ * @returns 
+ */
+const calc_LBAS_attack_damage = (
+    attack_power: number,
+    defence: number,
+): number => {
+    return Math.floor(calc_base_damage(attack_power, defence));
+}
+
+/**
+ * 残弾薬補正を返す
+ * @param ammo_remain 
+ * @returns 
+ */
+const calc_ammo_damage_mod = (
+    ammo_remain: number,
+): number => {
+    if (ammo_remain >= 0.5) return 1;
+    if (ammo_remain >= 0.4) return 0.8;
+    if (ammo_remain >= 0.3) return 0.6;
+    if (ammo_remain >= 0.2) return 0.4;
+    if (ammo_remain >= 0.1) return 0.2;
+    return 0;
+}
+
+/**
+ * 艦攻撃によるダメージを返す
+ * @param attack_power 
+ * @param defence 
+ * @param attacker_ship 
+ * @returns 
+ */
+const calc_ship_attack_damage = (
+    attack_power: number,
+    defence: number,
+    attacker_ship: PlayerEquippedShip,
+): number => {
+    const base_damage = calc_base_damage(attack_power, defence);
+    return is_player_ship(attacker_ship)
+        ? Math.floor(base_damage * calc_ammo_damage_mod(attacker_ship.state.ammo_remain_ratio))
+        : Math.floor(base_damage);
 }
 
 /**
@@ -46,13 +93,13 @@ const calc_scrach_damage = (
  * @returns 
  */
 export function calc_jet_LBAS_assault_damage(
-    attacker_squadron: JetSquadron,
+    attacker_squadron: LbasJetSquadron,
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
     target_unit: AbyssalFleetUnit,
     node: Node,
     settings: UserSettings,
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
         attacker_squadron.equip,
@@ -80,8 +127,8 @@ export function calc_jet_LBAS_assault_damage(
     // ? 阻塞気球補正が基地噴式でも有効であるか不明 暫定: 補正あり
     // TODO: 海域特効付与
 
-    const defence = calc_defence(target_unit.ship, rand);
-    const damage = calc_damage(attack_power, defence);
+    const defence = calc_defence(target_unit.ship, rand.next());
+    const damage = calc_LBAS_attack_damage(attack_power, defence);
 
     return damage >= 1
         ? damage

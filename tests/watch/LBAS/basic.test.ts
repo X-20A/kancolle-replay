@@ -1,6 +1,6 @@
 import { __LBAS_base_power_test__ } from "@/logics/attackPower/LBAS/basePower";
 import { __target_LBAS_test__, ValidLbasCombination } from "@/logics/target/LBAS";
-import { derive_equip, Equip, is_plane_equip } from "@/models/equip/basic";
+import { derive_equip, Equip, is_player_plane_equip } from "@/models/equip/basic";
 import { derive_abyssal_fleet } from "@/models/fleet/Fleet";
 import { derive_LBAS, LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
@@ -21,7 +21,7 @@ const { calc_LBAS_attack_type } = __target_LBAS_test__;
 const short_derive_LBAS = (
     equip: Equip,
 ): LBAS => {
-    if (!is_plane_equip(equip)) throw new Error('PlaneEquip を渡してください');
+    if (!is_player_plane_equip(equip)) throw new Error('PlaneEquip を渡してください');
     
     return derive_LBAS([equip], 0)
 }
@@ -79,7 +79,7 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
             equip: Equip,
             target_ship: AbyssalEquippedShip,
         ): void => {
-            if (!is_plane_equip(equip)) throw new Error('PlaneEquip を渡してください');
+            if (!is_player_plane_equip(equip)) throw new Error('PlaneEquip を渡してください');
 
             const mod_sp2 = calc_mod_sp2_flat(equip, target_ship);
 
@@ -102,7 +102,7 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
             target_ship: AbyssalEquippedShip,
             base_power: number,
         ): void => {
-            if (!is_plane_equip(equip)) throw new Error('PlaneEquip を渡してください');
+            if (!is_player_plane_equip(equip)) throw new Error('PlaneEquip を渡してください');
             
             const applied_mod_sp1_raw_base_power = calc_applied_mod_sp1_raw_base_power(
                 equip,

@@ -1,4 +1,4 @@
-import { Rand } from "@/effects/random"
+import { RandGenerator } from "@/effects/random"
 import { is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet"
 import { is_sunk } from "@/models/ship/equipped";
@@ -27,7 +27,7 @@ export const ENGAGEMENT_DAMAGE_MOD_DATA: { [key in EngagementType]: number } = {
  */
 export function calc_engagement(
     player_fleet: PlayerFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): EngagementType {
     const rand_value = rand.next();
     const natural_engagement: EngagementType =

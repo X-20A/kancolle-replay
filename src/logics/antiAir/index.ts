@@ -1,10 +1,10 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
 import { FormationType, SingleFleetFormationType } from "@/types";
 import { match } from "ts-pattern";
-import { JetSquadron, Squadron } from "@/models/LBAS";
+import { LbasJetSquadron, LbasSquadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
 import { calc_abyssal_fixed_shootdown_count } from "./fixed";
@@ -122,11 +122,11 @@ export function calc_fleet_anti_air(
  * @param enemy_fleet 
  * @param rand 
  */
-export function calc_anti_air_fired_squadrons<T extends Squadron[] | JetSquadron[]>(
+export function calc_anti_air_fired_squadrons<T extends LbasSquadron[] | LbasJetSquadron[]>(
     squadrons: T,
     enemy_fleet: AbyssalFleet,
     node: Node,
-    rand: Rand,
+    rand: RandGenerator,
 ): T {
     const defender_units = extract_defender_ships(enemy_fleet);
     // NOTE: 基地航空隊に対して対空CIは発動しない https://wikiwiki.jp/kancolle/対空砲火#enemy_AAfire

@@ -1,6 +1,6 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { is_jet_bomber, is_land_based_bomber, PlaneEquip } from "@/models/equip/basic";
-import { LBAS, Squadron } from "@/models/LBAS";
+import { LBAS, LbasSquadron } from "@/models/LBAS";
 import { AbyssalEquippedShip, includes_ship_type, is_install_type, is_submarine_category } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
 import { calc_basic_LBAS_attack_power } from "./basePower";
@@ -117,7 +117,7 @@ const calc_mod_jet_flat = (
  * @returns 
  */
 const calc_pre_cap_mod = (
-    squadron: Squadron,
+    squadron: LbasSquadron,
     target_ship: AbyssalEquippedShip,
     lbas: LBAS,
     rand_value: RandValue
@@ -147,7 +147,7 @@ const calc_pre_cap_mod = (
 export function calc_pre_cap_LBAS_attack_power(
     combination: ValidLbasCombination,
     lbas: LBAS,
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     const { attacker_squadron, target_unit } = combination;
     const { ship: target_ship } = target_unit;

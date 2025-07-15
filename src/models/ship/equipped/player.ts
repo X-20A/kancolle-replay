@@ -12,7 +12,7 @@ import { derive_player_ship_state } from "../state";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
-import { derive_player_equip_built } from "@/models/ship/EquipBuilt";
+import { derive_player_equip_slot } from "@/models/ship/EquipSlot";
 import { derive_player_equipped_ship_flags } from "./flags";
 
 export type EquippedPlayerShipOptions = {
@@ -93,7 +93,7 @@ export function derive_equipped_player_ship(
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equip_slots: derive_player_equip_built(all_equips, naked_ship.slots),
+        equip_slots: derive_player_equip_slot(all_equips, naked_ship.slots),
         slot_counts: options.slots ?? naked_ship.slots,
         max_hp: naked_status.hp,
         flags,

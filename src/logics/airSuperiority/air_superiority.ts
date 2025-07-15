@@ -1,12 +1,12 @@
 import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
-import { Equip, is_jet_bomber, is_plane_equip, is_player_equip, PlayerPlaneEquip } from "@/models/equip/basic";
+import { Equip, is_jet_bomber, is_player_plane_equip, is_player_equip, PlayerPlaneEquip, PlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
 import { AbyssalCombinedFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { match } from "ts-pattern";
-import { JetSquadron, Squadron } from "@/models/LBAS";
-import { EquipSlot } from "@/models/ship/EquipBuilt";
+import { JetSquadron, LbasJetSquadron, NormalLbasSquadron, NormalSquadron, Squadron } from "@/models/LBAS";
+import { EquipSlot } from "@/models/ship/EquipSlot";
 
 /// 制空系
 
@@ -134,17 +134,17 @@ type Ks = {
 
 /**
  * 制空状態による被撃墜のカット率を返す
- * @param unit 
+ * @param plane 
  * @param air_state 
  * @returns 
  */
 const calc_Ks = (
-    unit: PlayerPlaneEquip,
+    plane: PlaneEquip,
     air_state: AirStateType,
 ): Ks => {
     if (
-        (unit.type_id === "ASW_PLANE" && !unit.flags.is_20th_family)
-        || unit.type_id === "AUTOGYRO"
+        (plane.type_id === "ASW_PLANE" && is_player_equip(plane) && !plane.flags.is_20th_family)
+        || plane.type_id === "AUTOGYRO"
     ) {
         return match(air_state)
             .with('Supremacy', 'Superiority', 'Parity', () => ({
@@ -162,7 +162,7 @@ const calc_Ks = (
             .exhaustive();
     }
 
-    if (is_jet_bomber(unit)) return {
+    if (is_jet_bomber(plane)) return {
         K1: 0.6,
         K2: 0.6,
     }
@@ -181,10 +181,10 @@ const calc_Ks = (
  * @param air_state 
  */
 export function calc_own_air_state_shootdowned_slots(
-    unit: PlayerPlaneEquip,
+    unit: PlaneEquip,
     slot_count: number,
     air_state: AirStateType,
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     const { K1, K2 } = calc_Ks(unit, air_state);
     const A1 = K1 * rand.next() * (AIR_STATE_CONSTANT[air_state] / 3);
@@ -197,7 +197,7 @@ export function calc_own_air_state_shootdowned_slots(
 
 const calc_B = (
     air_state: AirStateType,
-    rand: Rand,
+    rand: RandGenerator,
 ): number => {
     // 12: 0~11の乱数の生成に必要
     return Math.floor(rand.next() * (12 - AIR_STATE_CONSTANT[air_state]));
@@ -213,7 +213,7 @@ const calc_B = (
 export function calc_enemy_air_state_shootdowned_slots(
     slot_count: number,
     air_state: AirStateType,
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     const B1 = calc_B(air_state, rand);
     const B2 = calc_B(air_state, rand);
@@ -230,10 +230,10 @@ export function calc_enemy_air_state_shootdowned_slots(
  * @param rand 
  * @returns 
  */
-export function calc_air_state_shootdowned_lbas<T extends Squadron[] | JetSquadron[]>(
+export function calc_air_state_shootdowned_lbas<T extends NormalSquadron[] | JetSquadron[]>(
     squadrons: T,
     air_state: AirStateType,
-    rand: Rand,
+    rand: RandGenerator,
 ): T {
     return squadrons.map(squadron => {
         const new_slot_count = calc_own_air_state_shootdowned_slots(
@@ -260,11 +260,11 @@ export function calc_air_state_shootdowned_lbas<T extends Squadron[] | JetSquadr
 const calc_air_state_shootdowned_enemy_ships = (
     ship: AbyssalEquippedShip,
     air_state: AirStateType,
-    rand: Rand,
+    rand: RandGenerator,
 ): AbyssalEquippedShip => {
     const new_equip_slots = ship.equip_slots.map(equip_slot => {
         const equip = equip_slot.equip;
-        if (!equip || !is_plane_equip(equip)) return equip_slot;
+        if (!equip || !is_player_plane_equip(equip)) return equip_slot;
 
         const new_slot_count = calc_enemy_air_state_shootdowned_slots(
             equip_slot.slot_count,
@@ -294,7 +294,7 @@ const calc_air_state_shootdowned_enemy_ships = (
 export function calc_air_state_shootdowned_enemy_fleet<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
     fleet: T,
     air_state: AirStateType,
-    rand: Rand,
+    rand: RandGenerator,
 ): T {
     const new_main_fleet_units = fleet.main_fleet_units.map(unit => {
         const new_ship =

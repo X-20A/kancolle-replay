@@ -1,8 +1,9 @@
-import { Rand } from "@/effects/random";
-import { calc_detection_phase, calc_engagement_phase, calc_jet_lbas_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
+import { RandGenerator } from "@/effects/random";
+import { calc_CVs_jet_assault_phase, calc_detection_phase, calc_engagement_phase, calc_lbas_jet_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";
 import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
+import { NavalBase } from "@/models/NavalBase";
 
 /**
  * 戦闘の流れの種類
@@ -31,7 +32,8 @@ export function sim_execute(
     player_fleet: PlayerSingleFleet,
     enemy_fleet: AbyssalSingleFleet,
     lbases: LBAS[],
-    rand: Rand,
+    naval_base: NavalBase,
+    rand: RandGenerator,
 ) { // NOTE: 更新していくデータをcontextにまとめてpipeすると見やすくなるかもだけど、コピーコスト嵩みそう
     // ひとまずそれぞれの艦隊に陣形は設定されているという前提で
     
@@ -59,13 +61,23 @@ export function sim_execute(
     const {
         post_jet_lbas_phase_lbases,
         post_jet_lbas_phase_enemy_fleet,
-    } = calc_jet_lbas_phase(
+    } = calc_lbas_jet_phase(
         post_engagement_phase_node,
         lbases,
         enemy_fleet,
         settings,
         rand,
-    )
+    );
+
+    const {
+        post_CVs_jet_assault_phase_player_fleet,
+        post_CVs_jet_assault_phase_enemy_fleet,
+    } = calc_CVs_jet_assault_phase(
+        post_detection_phase_player_fleet,
+        post_jet_lbas_phase_enemy_fleet,
+        post_engagement_phase_node,
+        rand,
+    );
 
     const {
         post_smoke_screen_phase_node,
@@ -74,6 +86,6 @@ export function sim_execute(
         settings,
         post_engagement_phase_node,
         post_detection_phase_player_fleet,
-        rand,
+        rand.next(),
     );
 }

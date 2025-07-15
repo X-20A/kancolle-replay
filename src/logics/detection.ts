@@ -1,9 +1,9 @@
-import { is_plane_equip, is_player_equip } from "@/models/equip/basic";
+import { is_player_plane_equip, is_player_equip } from "@/models/equip/basic";
 import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
 import { EquippedShip, is_carrier_vessel_category, is_sunk } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 /// 索敵系
@@ -82,7 +82,7 @@ export const analyze_ships_detection = (
             if (
                 !equip
                 || !is_player_equip(equip)
-                || !is_plane_equip(equip)
+                || !is_player_plane_equip(equip)
                 || !equip.flags.can_detect
             ) return equip_total;
 
@@ -203,7 +203,7 @@ const calc_shotdowned_recon_ships = (
     recon_power: ReconPower,
     units: PlayerFleetUnit[],
     total_enemy_fighter_count: number,
-    rand: Rand,
+    rand: RandGenerator,
 ): PlayerFleetUnit[] => {
     return units.map((unit) => {
         const ship = unit.ship;
@@ -265,7 +265,7 @@ export function calc_shotdowned_recon_fleet(
     player_fleet: PlayerFleet,
     recon_power: ReconPower,
     total_enemy_fighter_count: number,
-    rand: Rand,
+    rand: RandGenerator,
 ): PlayerFleet {
     // 味方艦隊の ship ごとに撃墜処理を実施
     // ? 随伴艦隊も索敵機を飛ばすか分からない 暫定: 飛ばす

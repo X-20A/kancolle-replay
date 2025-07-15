@@ -1,8 +1,8 @@
-import { is_plane_equip, PlaneEquip } from "@/models/equip/basic";
+import { is_player_plane_equip, PlaneEquip } from "@/models/equip/basic";
 import { ValidContactAirState } from ".";
-import { Rand } from "@/effects/random";
-import { EquipSlot } from "@/models/ship/EquipBuilt";
-import { Squadron } from "@/models/LBAS";
+import { RandGenerator } from "@/effects/random";
+import { EquipSlot } from "@/models/ship/EquipSlot";
+import { LbasSquadron } from "@/models/LBAS";
 
 /**
  * 制空状態による補正値を返す
@@ -26,15 +26,15 @@ const calc_air_state_mod = (
  * @returns 
  */
 export function calc_select_contact_plane(
-    slots: EquipSlot[] | Squadron[],
+    slots: EquipSlot[] | LbasSquadron[],
     air_state: ValidContactAirState,
-    rand: Rand,
+    rand: RandGenerator,
 ): PlaneEquip | 'None' {
     const air_state_mod = calc_air_state_mod(air_state);
 
     const selected_plane = slots
         .flatMap(slot => {
-            return slot.equip && is_plane_equip(slot.equip)
+            return slot.equip && is_player_plane_equip(slot.equip)
                 ? slot.equip
                 : []
         })

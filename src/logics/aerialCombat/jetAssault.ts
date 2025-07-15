@@ -1,45 +1,9 @@
-import { Rand } from "@/effects/random";
-import { JetSquadron, LBAS, Squadron } from "@/models/LBAS";
+import { RandGenerator } from "@/effects/random";
+import { LbasJetSquadron, LBAS } from "@/models/LBAS";
 import { calc_general_target_fleet, choice_target_in_single_vs_combined, choice_target_in_single_vs_single } from "../target";
 import { calc_appllied_damage_fleet, calc_jet_LBAS_assault_damage } from "../damage";
 import { AbyssalCombinedFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { is_submarine_category } from "@/models/ship/equipped";
-
-/**
- * 抽出した基地航空隊を所属元に返還した新しいLBAS[]を返す
- * @param squadrons 
- * @param original_lbases 
- * @returns 
- */
-export function calc_returned_origin_lbas(
-    squadrons: readonly Squadron[],
-    original_lbases: readonly LBAS[],
-): LBAS[] {
-    return original_lbases.map((lbas, lbas_index) => {
-        const match_jet_squadrons = squadrons.filter(
-            jet_squadron => jet_squadron.lbas_index === lbas_index
-        );
-        if (match_jet_squadrons.length === 0) return lbas;
-
-        const new_squadrons = lbas.squadrons.map((squadron, squadron_index) => {
-            const jet_squadron = match_jet_squadrons.find(jet_squadron =>
-                jet_squadron.squadron_index === squadron_index
-            );
-
-            if (!jet_squadron) return squadron;
-
-            return {
-                ...squadron,
-                slot_count: jet_squadron.slot_count,
-            };
-        });
-
-        return {
-            ...lbas,
-            squadrons: new_squadrons,
-        }
-    });
-}
 
 /**
  * 攻撃後の敵通常艦隊を返す
@@ -49,9 +13,9 @@ export function calc_returned_origin_lbas(
  * @param rand 
  */
 function calc_jet_attacked_enemy_single_fleet(
-    squadrons: JetSquadron[],
+    squadrons: LbasJetSquadron[],
     enemy_fleet: AbyssalSingleFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): AbyssalSingleFleet {
     return squadrons.reduce((current_fleet, squadron) => {
         const target_fleet_units =
@@ -82,9 +46,9 @@ function calc_jet_attacked_enemy_single_fleet(
  * @param rand 
  */
 function calc_jet_attacked_enemy_combined_fleet(
-    jet_only_squadrons: JetSquadron[],
+    jet_only_squadrons: LbasJetSquadron[],
     enemy_fleet: AbyssalCombinedFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): AbyssalCombinedFleet {
     return jet_only_squadrons.reduce((current_fleet, squadron) => {
         const is_target_main = calc_general_target_fleet(
@@ -121,9 +85,9 @@ function calc_jet_attacked_enemy_combined_fleet(
 
 
 export function calc_jet_attacked_enemy_fleet<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
-    jet_only_squadrons: JetSquadron[],
+    jet_only_squadrons: LbasJetSquadron[],
     enemy_fleet: T,
-    rand: Rand,
+    rand: RandGenerator,
 ): T {
     return is_combined_fleet(enemy_fleet)
         ? calc_jet_attacked_enemy_combined_fleet(jet_only_squadrons, enemy_fleet, rand) as T

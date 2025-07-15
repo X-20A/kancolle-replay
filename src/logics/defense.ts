@@ -1,5 +1,6 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { RandValue } from "@/types/brands/other";
 
 const calc_base_armor = (
     ship: EquippedShip,
@@ -10,12 +11,12 @@ const calc_base_armor = (
 
 export function calc_defence(
     ship: EquippedShip,
-    rand: Rand,
+    rand_value: RandValue,
 ): number {
     const base_armor = calc_base_armor(ship);
 
     return Math.max(0,
         0.7 * base_armor
-        + 0.6 * Math.floor(Math.floor(base_armor) * rand.next())
+        + 0.6 * Math.floor(Math.floor(base_armor) * rand_value)
     );
 }

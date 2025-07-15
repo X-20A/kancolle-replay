@@ -4,7 +4,7 @@ export type PreAccuracy = Brand<number, 'PreAccuracy'>
 
 export type WeightedAntiAir = Brand<number, 'WeightedAntiAir'>
 
-export type AvgLbasProficiency = Brand<number, 'AvgLbasProficiency'>
+export type AvgProficiency = Brand<number, 'AvgProficiency'>
 
 export type RandValue = Brand<number, 'RandValue'>
 
@@ -14,8 +14,8 @@ export const brandPreAccuracy =
 export const brandWeightedAntiAir =
     (value: number) => brand<number, 'WeightedAntiAir'>(value);
 
-export const brandAvgLbasProficiency =
-    (value: number) => brand<number, 'AvgLbasProficiency'>(value)
+export const brandAvgProficiency =
+    (value: number) => brand<number, 'AvgProficiency'>(value)
 
 export const brandRandValue =
     (value: number) => brand<number, 'RandValue'>(value);

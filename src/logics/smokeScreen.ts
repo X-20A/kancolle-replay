@@ -1,7 +1,8 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet";
 import { EquippedShip } from "@/models/ship/equipped";
+import { RandValue } from "@/types/brands/other";
 import { Maf } from "@/utils/Maf";
 
 const SMOKE_SCREEN_TYPE = {
@@ -13,7 +14,7 @@ const SMOKE_SCREEN_TYPE = {
 
 export type SmokeScreenType = keyof typeof SMOKE_SCREEN_TYPE
 
-export type SmokeScreenValues = {
+export type SmokeScreenRates = {
     [key in SmokeScreenType]: number
 }
 
@@ -68,7 +69,7 @@ const calc_premise = (
  * @param player_fleet 
  * @returns 
  */
-export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): SmokeScreenValues {
+export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): SmokeScreenRates {
     const fleet_units = concat_fleet_ships(player_fleet);
     const {
         substantial_smoke_count,
@@ -77,8 +78,9 @@ export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): Smok
         flagship_luck,
     } = calc_premise(fleet_units);
 
-    const rates: SmokeScreenValues = { Misfire: 0, Single: 0, Twofold: 0, Threefold: 0 };
+    const rates: SmokeScreenRates = { Misfire: 0, Single: 0, Twofold: 0, Threefold: 0 };
 
+    // TODO: 0 - 1 でいいのでは？
     if (substantial_smoke_count <= 0) {
         rates.Misfire = 100;
         return rates;
@@ -141,20 +143,19 @@ export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): Smok
  * @returns 
  */
 export function calc_triggered_smoke_type(
-    rates: SmokeScreenValues,
-    rand: Rand,
+    rates: SmokeScreenRates,
+    rand_value: RandValue,
 ): SmokeScreenType {
-    const rand_value = rand.next() * 100; // 0～100
-
     // 確率の累積値を計算
     const misfire = rates.Misfire;
     const single = misfire + rates.Single;
     const twofold = single + rates.Twofold;
 
+    const percentage_rand_value = rand_value * 100;
 
     // 低い効果から順に判定
-    if (rand_value < misfire) return 'Misfire';
-    if (rand_value < single)  return 'Single';
-    if (rand_value < twofold) return 'Twofold';
+    if (percentage_rand_value < misfire) return 'Misfire';
+    if (percentage_rand_value < single)  return 'Single';
+    if (percentage_rand_value < twofold) return 'Twofold';
     return 'Threefold';
 }

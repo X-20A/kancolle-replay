@@ -3,8 +3,8 @@ import { AbyssalFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { AbyssalEquippedShip, includes_abyssal_ship_id, is_PT } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
 import { calc_pre_cap_LBAS_attack_power } from "./preCap";
-import { Rand } from "@/effects/random";
-import { LBAS, Squadron } from "@/models/LBAS";
+import { RandGenerator } from "@/effects/random";
+import { LBAS, LbasJetSquadron } from "@/models/LBAS";
 import { calc_capped_attack_power } from "../../cap";
 import { ValidLbasCombination } from "../../target/LBAS";
 import { HitType } from "../../accuracy";
@@ -12,6 +12,7 @@ import { calc_critical_mod } from "../../critical";
 
 /**
  * 特定の目標に対する攻撃力乗算値(Mod Boss)を返す    
+ * Mod Boss
  * ? 確率や値はSortie Simの独自調査か暫定値?
  * @param target_ship 
  * @param rand_value 
@@ -159,7 +160,7 @@ export function calc_LBAS_attack_power(
     target_fleet: AbyssalFleet,
     contact_mod: number,
     hit_type: HitType,
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     // TODO: 対潜攻撃の場合を分離したい 対地はなんとも、わからん
     const { attacker_squadron, target_unit } = combination;
@@ -205,7 +206,7 @@ export function calc_LBAS_attack_power(
  * @returns 
  */
 export function calc_jet_LBAS_assault_attack_power(
-    squadron: Squadron,
+    squadron: LbasJetSquadron,
     target_ship: AbyssalEquippedShip,
     hit_type: HitType,
     rand_value: RandValue,

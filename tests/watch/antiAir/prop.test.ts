@@ -1,5 +1,5 @@
 import { calc_prop_shootdown_rate } from "@/logics/antiAir/prop";
-import { Equip, is_plane_equip } from "@/models/equip/basic";
+import { Equip, is_player_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";
 import { SAIUN } from "tests/setups/assets/equips/plane";
@@ -15,7 +15,7 @@ describe('対空系テスト', () => {
             attacker_ship: EquippedShip,
             attacked_unit: Equip,
         ) => {
-            if (!is_plane_equip(attacked_unit)) throw new Error(`${attacked_unit.name_jp} は航空機ではありません`);
+            if (!is_player_plane_equip(attacked_unit)) throw new Error(`${attacked_unit.name_jp} は航空機ではありません`);
             const result = pipe(
                 calc_prop_shootdown_rate(attacker_ship.weighted_anti_air, attacked_unit),
             );

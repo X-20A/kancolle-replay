@@ -1,10 +1,10 @@
 import { Equip, is_dive_bomber, is_jet_bomber, is_land_based_bomber, is_torpedo_bomber, PlayerPlaneEquip } from "@/models/equip/basic"
 import { AbyssalSingleFleet } from "@/models/fleet/Fleet"
-import { Squadron } from "@/models/LBAS"
+import { LbasSquadron } from "@/models/LBAS"
 import { AbyssalEquippedShip, is_install_type, is_submarine_category, is_sunk } from "@/models/ship/equipped"
 import { calc_vanguard_target, protect_flagship_in_single_fleet, select_random_target } from "."
 import { AbyssalFleetUnit, FleetUnit } from "@/models/fleet/FleetUnit"
-import { Rand } from "@/effects/random"
+import { RandGenerator } from "@/effects/random"
 import { COMBINED_FLEET_FORMATION_PROTECT_RATIO_DATA, SINGLE_FLEET_FORMATION_PROTECT_RATIO_DATA } from "./data"
 import { SingleFleetFormationType } from "@/types"
 
@@ -27,7 +27,7 @@ const can_LBAS_bombing = (
  * @returns 
  */
 const calc_LBAS_attack_type = (
-    attacker_squadron: Squadron,
+    attacker_squadron: LbasSquadron,
     target_unit: AbyssalFleetUnit,
 ): LbasAttackType => {
     const { ship } = target_unit;
@@ -58,7 +58,7 @@ const can_LBAS_ASW_attack_plane = (
  * @returns 
  */
 const calc_valid_squadron_targets = (
-    attacker_squadron: Squadron,
+    attacker_squadron: LbasSquadron,
     target_fleet: AbyssalSingleFleet,
 ): AbyssalFleetUnit[] => {
     const { equip: plane } = attacker_squadron;
@@ -87,7 +87,7 @@ const calc_valid_squadron_targets = (
  * 基地航空隊攻撃における、中隊とターゲットの攻撃可能な組み合わせ
  */
 export type ValidLbasCombination = {
-    attacker_squadron: Squadron,
+    attacker_squadron: LbasSquadron,
     target_unit: AbyssalFleetUnit,
     attack_type: LbasAttackType,
 }
@@ -98,10 +98,10 @@ export type ValidLbasCombination = {
  * @param attacker_squadron 
  */
 export function derive_valid_LBAS_combination(
-    attacker_squadron: Squadron,
+    attacker_squadron: LbasSquadron,
     target_fleet: AbyssalSingleFleet,
     formation: SingleFleetFormationType,
-    rand: Rand,
+    rand: RandGenerator,
 ): ValidLbasCombination | 'not_applicable' {
     const valid_target_units = calc_valid_squadron_targets(attacker_squadron, target_fleet);
     if (valid_target_units.length === 0) return 'not_applicable';

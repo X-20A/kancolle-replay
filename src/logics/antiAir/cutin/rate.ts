@@ -1,7 +1,7 @@
 import { AACI_DATAS } from "@/datas/aaci";
 import { AntiAirCutinType } from "./conditions";
 import Big from "big.js";
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 
 /**
  * AACIを優先度で比較して返す(より値の小さい順)
@@ -25,7 +25,7 @@ const priority_comparator = (
  */
 export function calc_triggered_AACI(
     aaci_types: AntiAirCutinType[],
-    rand: Rand,
+    rand: RandGenerator,
 ): AntiAirCutinType | 'Misfire' {
     const triggered =
         aaci_types

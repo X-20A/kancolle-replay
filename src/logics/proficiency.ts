@@ -1,6 +1,7 @@
 import { EquipType } from "@/datas/equip/base/player";
-import { is_plane_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
-import { AvgLbasProficiency, brandAvgLbasProficiency } from "@/types/brands/other";
+import { is_player_plane_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
+import { EquipSlot } from "@/models/ship/EquipSlot";
+import { AvgProficiency, brandAvgProficiency } from "@/types/brands/other";
 
 /// 航空機熟練度系
 
@@ -82,7 +83,7 @@ const calc_internal_bonus =
 export function calc_plane_proficiency_flat(
     equip: PlayerEquip,
 ): number {
-    if (!is_plane_equip(equip)) return 0;
+    if (!is_player_plane_equip(equip)) return 0;
     if (equip.type_id === "ASW_PLANE" && !equip.flags.is_20th_family) return 0;
 
     return calc_air_superiority_bonus(equip) + calc_internal_bonus(equip.plane_proficiency);
@@ -115,7 +116,7 @@ const calc_critical_constant = (equip: PlayerPlaneEquip): number => {
  */
 export function calc_plane_proficiency_critical_mod(equips: PlayerEquip[]): number {
     return equips.reduce((total, equip, index) => {
-        if (!is_plane_equip(equip)) return total;
+        if (!is_player_plane_equip(equip)) return total;
 
         total += Math.floor(Math.sqrt(equip.plane_proficiency) + calc_critical_constant(equip))
             / (index === 0 ? 100 : 200);
@@ -170,16 +171,28 @@ export function calc_plane_proficiency_accuracy_flat(
 }
 
 /**
- * 平均航空機熟練度を返す
- * @param lbas 
+ * 装備群から平均航空機熟練度を返す
+ * @param planes 
  * @returns 
  */
-export function calc_average_proficiency(
+export function calc_average_proficiencyfrom_equips(
     planes: PlayerPlaneEquip[],
-): AvgLbasProficiency {
+): AvgProficiency {
     const avg_proficiency = planes.reduce((total, plane) => {
         return total + plane.plane_proficiency;
     }, 0) / planes.length;
 
-    return brandAvgLbasProficiency(avg_proficiency);
+    return brandAvgProficiency(avg_proficiency);
+}
+
+export function calc_average_proficiencyfrom_equip_slots(
+    slots: EquipSlot[],
+): AvgProficiency {
+    const avg_proficiency = slots.reduce((total, slot) => {
+        const equip = slot.equip;
+        if (!equip || !is_player_plane_equip(equip)) return total;
+        return total + equip.plane_proficiency;
+    }, 0) / slots.length;
+
+    return brandAvgProficiency(avg_proficiency);
 }

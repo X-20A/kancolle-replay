@@ -1,6 +1,6 @@
 import { AbyssalEquippedShip, PlayerEquippedShip } from "../ship/equipped"
 
-type AffiliationFleetType =
+export type AffiliationFleetType =
     | 'single'
     | 'main'
     | 'escort'

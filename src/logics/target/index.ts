@@ -1,4 +1,4 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { EquippedShip, includes_ship_name, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { is_front } from "../formation";
@@ -24,7 +24,7 @@ export type TargetFromCombinedFleet =
 * 連合艦隊で主力艦隊と随伴艦隊の両方が対象選択可能な場合にどちらを狙うか の種別
 * https://wikiwiki.jp/kancolle/攻撃対象の選択#ddf0a2b0
 */
-type EachFleet = 'main' | 'escort'
+export type EachFleet = 'main' | 'escort'
 
 /**
  * 主力 | 随伴 どちらかが全滅していれば、残存艦のある方を返す    
@@ -82,7 +82,7 @@ const calc_unique_fleet_targeting = (
 export function calc_shelling_target_fleet(
     attacker_ship: PlayerEquippedShip,
     target_fleet: CombinedFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): EachFleet {
     const prefer_alive_fleet = calc_prefer_alive_fleet(target_fleet);
     if (prefer_alive_fleet !== 'undetermined') return prefer_alive_fleet;
@@ -106,7 +106,7 @@ export function calc_shelling_target_fleet(
  */
 export function calc_general_target_fleet(
     target_fleet: CombinedFleet,
-    rand: Rand,
+    rand: RandGenerator,
     phase_type: Exclude<TargetFromCombinedFleet, 'shelling'>,
 ): EachFleet {
     const prefer_alive_fleet = calc_prefer_alive_fleet(target_fleet);
@@ -132,7 +132,7 @@ export function calc_vanguard_target<T extends PlayerFleetUnit | AbyssalFleetUni
     formation: SingleFleetFormationType,
     ship_length: number,
     ship_index: number,
-    rand: Rand,
+    rand: RandGenerator,
 ): T {
     if (
         formation !== 'Vanguard'
@@ -167,7 +167,7 @@ export function protect_flagship_in_single_fleet<T extends PlayerFleetUnit | Aby
     pre_target_unit: T,
     target_units: T[],
     protect_ratio: number,
-    rand: Rand
+    rand: RandGenerator
 ): T {
     if (pre_target_unit.fleet_type !== 'single') throw new Error('連合艦隊の「かばう」処理に誤って通常艦隊の「かばう」処理が呼び出されています');
     if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
@@ -195,7 +195,7 @@ const protect_flagship_in_combined_fleet = (
     target_units: FleetUnit[],
     escort_fleet_units: EscortFleetUnits[],
     protect_ratio: number,
-    rand: Rand
+    rand: RandGenerator
 ): FleetUnit => {
     if (pre_target_unit.fleet_type === 'single') throw new Error('通常艦隊の「かばう」処理に誤って連合艦隊の「かばう」処理が呼び出されています');
     if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
@@ -234,7 +234,7 @@ export function choice_target_in_single_vs_single(
     target_units: FleetUnit[],
     formation: SingleFleetFormationType,
     target_fleet: SingleFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): FleetUnit {
     const first_target_unit = select_random_target(target_units, rand.next());
 
@@ -265,7 +265,7 @@ export function choice_target_in_single_vs_single(
 export function choice_target_in_single_vs_combined(
     target_units: FleetUnit[],
     formation: CombinedFleetFormationType,
-    rand: Rand,
+    rand: RandGenerator,
 ): FleetUnit {
     const first_target_unit = select_random_target(target_units, rand.next());
 

@@ -1,3 +1,4 @@
+import { PlaneEquip } from "@/models/equip/basic";
 import { brand, Brand } from ".";
 
 /**

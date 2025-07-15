@@ -1,16 +1,19 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { analyze_fleet_detection, calc_detection_success_rate, calc_enemy_fighter_count, calc_shotdowned_recon_fleet } from "@/logics/detection";
 import { UserSettings } from "../flows/SimExecuter";
 import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/logics/smokeScreen";
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
-import { extract_jet_squadrons, JetSquadron, LBAS } from "@/models/LBAS";
+import { extract_jet_squadrons, LbasJetSquadron, LBAS, ShipJetSquadron, derive_jet_bomber_squadron, is_squadron_destruction } from "@/models/LBAS";
 import { calc_jet_attacked_enemy_fleet, calc_returned_origin_lbas } from "@/logics/aerialCombat/jetAssault";
 import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
 import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { RandValue } from "@/types/brands/other";
+import { is_jet_bomber, JetBomberEquip } from "@/models/equip/basic";
+import { PlayerEquipSlot } from "@/models/ship/EquipSlot";
 
 /// 各フェイズを制御する
 /// sim_execute と logics を繋ぐ
@@ -66,7 +69,7 @@ export function calc_detection_phase(
     node: Node,
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): DetectionPhaseResult {
     const node_type = node.type;
     if ( // NOTE: 発生条件の資料が見つからなかったので推測
@@ -102,12 +105,21 @@ export function calc_detection_phase(
     }
 }
 
-export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
+/**
+ * 基地噴式強襲後の基地、敵艦隊を返す
+ * @param node 
+ * @param lbases 
+ * @param enemy_fleet 
+ * @param settings 
+ * @param rand 
+ * @returns 
+ */
+export function calc_lbas_jet_phase<T extends AbyssalSingleFleet | AbyssalCombinedFleet>(
     node: Node,
     lbases: LBAS[],
     enemy_fleet: T,
     settings: UserSettings,
-    rand: Rand,
+    rand: RandGenerator,
 ): {
     post_jet_lbas_phase_lbases: LBAS[],
     post_jet_lbas_phase_enemy_fleet: T,
@@ -120,10 +132,10 @@ export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombin
 
     // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが演習でしか起きないので棚上げ
 
-    const targeted_lbases = lbases.filter(lbas => lbas.target_node.includes(node.index));
+    const sent_lbases = lbases.filter(lbas => lbas.target_node.includes(node.index));
 
-    const jet_only_squadrons: JetSquadron[] =
-        targeted_lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
+    const jet_only_squadrons: LbasJetSquadron[] =
+        sent_lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
 
     if (jet_only_squadrons.length === 0) return {
         post_jet_lbas_phase_lbases: lbases,
@@ -156,7 +168,7 @@ export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombin
         rand,
     );
 
-    if (air_state_shootdowned_squadrons.every(squadron => squadron.slot_count <= 0)) return { // 枯れたらreturn
+    if (air_state_shootdowned_squadrons.every(is_squadron_destruction)) return { // 枯れたらreturn
         post_jet_lbas_phase_lbases: calc_returned_origin_lbas(
             air_state_shootdowned_squadrons,
             lbases,
@@ -192,6 +204,64 @@ export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombin
     }
 }
 
+type CVsJetAssaultPhaseResult = {
+    post_CVs_jet_assault_phase_player_fleet: PlayerFleet,
+    post_CVs_jet_assault_phase_enemy_fleet: AbyssalFleet,
+}
+
+/**
+ * 空母による噴式強襲後の基地、敵艦隊を返す
+ * @param player_fleet 
+ * @param enemy_fleet 
+ * @param node 
+ */
+export function calc_CVs_jet_assault_phase(
+    player_fleet: PlayerFleet,
+    enemy_fleet: AbyssalFleet,
+    node: Node,
+    rand: RandGenerator,
+): CVsJetAssaultPhaseResult {
+    // NOTE: 索敵の成否は問わない
+    if (node.type.is_ss_only) return {
+        post_CVs_jet_assault_phase_player_fleet: player_fleet,
+        post_CVs_jet_assault_phase_enemy_fleet: enemy_fleet,
+    }
+
+    // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが演習でしか起きないので棚上げ
+
+    // NOTE: 随伴艦隊に噴式機搭載可能な空母は配属できない、よって主力艦隊の噴式機のみ収集
+    const jet_only_squadrons = derive_jet_bomber_squadron(player_fleet.main_fleet_units);
+
+    // 1.制空状態の決定
+
+    const jets_air_superiority_power = calc_squadrons_air_superriority_power(
+        jet_only_squadrons,
+    );
+
+    // NOTE: 敵連合艦隊 > 随伴艦隊の空母が制空に参加するか分からないがとりあえず含める
+    const enemy_air_superiority_power =
+        calc_fleet_air_superiority_power(enemy_fleet, 'both_fleet');
+
+    const { player_air_state, enemy_air_state } = evaluate_air_superiority(
+        jets_air_superiority_power,
+        enemy_air_superiority_power,
+    );
+
+    const air_state_shootdowned_squadrons = calc_air_state_shootdowned_lbas(
+        jet_only_squadrons,
+        player_air_state,
+        rand,
+    );
+
+    const air_state_shootdowned_enemy_fleet = calc_air_state_shootdowned_enemy_fleet(
+        enemy_fleet,
+        enemy_air_state,
+        rand,
+    );
+
+    // NOTE: 2.触接判定 ジェット基地による強襲では触接は発生しない
+}
+
 /**
  * 交戦形態を付与したNodeを返す
  * @param node 
@@ -202,7 +272,7 @@ export function calc_jet_lbas_phase<T extends AbyssalSingleFleet | AbyssalCombin
 export function calc_engagement_phase(
     node: Node,
     player_fleet: PlayerFleet,
-    rand: Rand,
+    rand: RandGenerator,
 ): Node {
     return {
         ...node,
@@ -227,7 +297,7 @@ export function calc_smoke_screen_phase(
     settings: UserSettings,
     node: Node,
     player_fleet: PlayerFleet,
-    rand: Rand,
+    rand_value: RandValue,
 ): SmokeScreenPhaseResult {
     if (
         !settings.smoke_screen_trigger_node_index.includes(node.index) ||
@@ -239,7 +309,7 @@ export function calc_smoke_screen_phase(
 
     const smoke_rates = calc_smoke_screen_activate_rate(player_fleet);
 
-    const triggered_smoke_type = calc_triggered_smoke_type(smoke_rates, rand);
+    const triggered_smoke_type = calc_triggered_smoke_type(smoke_rates, rand_value);
 
     if (triggered_smoke_type === 'Misfire') return {
         post_smoke_screen_phase_player_fleet: player_fleet,
@@ -260,4 +330,16 @@ export function calc_smoke_screen_phase(
         post_smoke_screen_phase_node,
         post_smoke_screen_phase_player_fleet: post_smoke_screen_phase_player_fleet,
     }
+}
+
+type LbasPhaseResult = {
+    post_LBAS_phase_LBASes: LBAS[],
+    post_LBAS_phase_enemy_fleet: AbyssalFleet,
+}
+
+export function calc_LBAS_phase(
+    lbases: [],
+    enemy_fleet: AbyssalFleet,
+): LbasPhaseResult {
+
 }

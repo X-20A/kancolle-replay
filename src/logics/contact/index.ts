@@ -1,12 +1,12 @@
 import { EquippedShip } from "@/models/ship/equipped";
 import { AirStateType } from "../airSuperiority/compare";
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { Node } from "@/models/Node";
 import { calc_phase1_success_rate } from "./trigger";
-import { EquipSlot } from "@/models/ship/EquipBuilt";
-import { is_plane_equip, PlaneEquip } from "@/models/equip/basic";
+import { EquipSlot } from "@/models/ship/EquipSlot";
+import { is_player_plane_equip, PlaneEquip } from "@/models/equip/basic";
 import { calc_select_contact_plane } from "./selection";
-import { LBAS, Squadron } from "@/models/LBAS";
+import { LBAS, LbasSquadron } from "@/models/LBAS";
 import { PhaseType } from "@/core/phases/phase";
 
 /// 触接
@@ -24,7 +24,7 @@ const calc_candidate_slots_from_ships = (
             const equip = slot.equip;
             if (
                 !equip ||
-                !is_plane_equip(equip)
+                !is_player_plane_equip(equip)
             ) return [];
 
             return equip.flags.can_contact
@@ -41,7 +41,7 @@ const calc_candidate_slots_from_ships = (
  */
 const calc_candidate_slots_from_LBAS = (
     lbas: LBAS,
-): Squadron[] => {
+): LbasSquadron[] => {
     return lbas.squadrons.flatMap(squadron => {
         const plane = squadron.equip;
         return plane.flags.can_contact
@@ -82,7 +82,7 @@ export function calc_fleet_airstrike_contact_mod(
     // どの艦を対象にするかも関数内で判定したほうがいいかも
     // これとば別の関数にしたほうがテストはしやすいか？
     ships: EquippedShip[],
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     if (
         !node.is_detection_success ||
@@ -116,7 +116,7 @@ export function calc_LBAS_contact_mod(
     node: Node,
     air_state: AirStateType,
     lbas: LBAS,
-    rand: Rand,
+    rand: RandGenerator,
 ): number {
     if (
         phase_type === 'Jet_LBAS' ||

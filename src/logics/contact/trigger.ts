@@ -1,6 +1,6 @@
-import { EquipSlot } from "@/models/ship/EquipBuilt";
+import { EquipSlot } from "@/models/ship/EquipSlot";
 import { ValidContactAirState } from ".";
-import { Squadron } from "@/models/LBAS";
+import { LbasSquadron } from "@/models/LBAS";
 
 /**
  * 制空状態による補正値を返す
@@ -22,7 +22,7 @@ const calc_air_state_mod = (
  * @returns 
  */
 export function calc_phase1_success_rate(
-    candidate_slots: EquipSlot[] | Squadron[],
+    candidate_slots: EquipSlot[] | LbasSquadron[],
     air_state: ValidContactAirState,
 ): number {
     if (!candidate_slots.length) return 1;

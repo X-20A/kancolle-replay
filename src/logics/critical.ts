@@ -1,4 +1,4 @@
-import { Rand } from "@/effects/random";
+import { RandGenerator } from "@/effects/random";
 import { match } from "ts-pattern"
 import { HitType } from "./accuracy";
 

@@ -8,7 +8,7 @@ import { PlayerShipClass } from "@/types/ship/shipClass";
 import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
-import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipBuilt";
+import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { WeightedAntiAir } from "@/types/brands/other";

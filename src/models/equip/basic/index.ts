@@ -10,6 +10,7 @@ import { AbyssalEquipNameJP } from "@/types/equip/abyssalNameJP";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
 import { AbyssalEquipFlags, PlayerEquipFlags } from "@/types/equip/flags";
+import { Brand } from "@/types/brands";
 
 type EquipBase = {
     /** 装備名(EN) */
@@ -57,14 +58,10 @@ export type PlayerPlaneEquip = PlayerOtherEquip & PlaneTrait & {
     readonly plane_proficiency: number,
 }
 
-/** 噴式強襲可能なジェット機系 */
-export type JetBomberEquip = PlayerPlaneEquip & {
-    /** 噴式強襲コスト */
-    readonly total_jet_assault_cost: number,
-}
+export type JetBomberEquip = Brand<PlayerPlaneEquip, 'JetBomberEquip'>
 
 /** 艦娘系装備 */
-export type PlayerEquip = PlayerOtherEquip | PlayerPlaneEquip | JetBomberEquip
+export type PlayerEquip = PlayerOtherEquip | PlayerPlaneEquip
 
 /** 深海通常装備 */
 export type AbyssalOtherEquip = EquipBase & {
@@ -129,7 +126,7 @@ export function is_abyssal_equips(equips: Equip[]): equips is AbyssalEquip[] {
 export function is_player_plane_equips(
     equips: Equip[],
 ): equips is PlayerPlaneEquip[] {
-    return equips.every(equip => is_player_equip(equip) && is_plane_equip(equip));
+    return equips.every(equip => is_player_equip(equip) && is_player_plane_equip(equip));
 }
 
 export function includes_abyssal_equip_id(
@@ -170,8 +167,23 @@ export function includes_equip_type(
  * @param equip 
  * @returns 
  */
-export function is_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
+export function is_plane_equip(
+    equip: Equip,
+): equip is PlaneEquip {
     return 'anti_air_resist_ship' in equip;
+}
+
+/**
+ * プレイター側の航空機であるか判定して返す(型ガード)
+ * @param equip 
+ * @returns 
+ */
+export function is_player_plane_equip(equip: Equip): equip is PlayerPlaneEquip {
+    return is_plane_equip(equip) && is_player_equip(equip);
+}
+
+export function is_fighter(equip: Equip): boolean {
+    return equip.type_id === 'FIGHTER';
 }
 
 /**
@@ -190,6 +202,19 @@ export function is_dive_bomber(equip: Equip): boolean {
  */
 export function is_torpedo_bomber(equip: Equip): boolean {
     return equip.type_id === 'TORPEDO_BOMBER';
+}
+
+/**
+ * 水爆装備であるか判定して返す
+ * @param equip 
+ * @returns 
+ */
+export function is_seaplane_bomber(equip: Equip): boolean {
+    return equip.type_id === 'SEAPLANE_BOMBER';
+}
+
+export function is_seaplane_fighter(equip: Equip): boolean {
+    return equip.type_id === 'SEAPLANE_FIGHTER';
 }
 
 /**

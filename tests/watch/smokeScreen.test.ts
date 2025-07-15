@@ -1,6 +1,6 @@
-import { Rand } from "@/effects/random";
-import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type, SmokeScreenType, SmokeScreenValues } from "@/logics/smokeScreen";
+import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type, SmokeScreenType, SmokeScreenRates } from "@/logics/smokeScreen";
 import { derive_player_fleet } from "@/models/fleet/Fleet";
+import { RandValue } from "@/types/brands/other";
 import { ENMAKU, ENMAKU_KAI } from "tests/setups/assets/equips/other";
 import { make_Fletcher } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
@@ -25,7 +25,7 @@ describe('煙幕系テスト', () => {
         const rates_4 = calc_smoke_screen_activate_rate(fleet_4);
         const rates_5 = calc_smoke_screen_activate_rate(fleet_5);
 
-        const test = (expected: number[], rates: SmokeScreenValues) => {
+        const test = (expected: number[], rates: SmokeScreenRates) => {
             expect(expected[0]).toBe(rates.Misfire);
             expect(expected[1]).toBe(rates.Single);
             expect(expected[2]).toBe(rates.Twofold);
@@ -43,7 +43,7 @@ describe('煙幕系テスト', () => {
     it('渡した発動率で実際に作動することを確認', () => {
         const derive_rates = (
             rates: number[],
-        ): SmokeScreenValues => {
+        ): SmokeScreenRates => {
             return {
                 Misfire: rates[0],
                 Single: rates[1],
@@ -58,15 +58,15 @@ describe('煙幕系テスト', () => {
 
         const test = (
             expected: SmokeScreenType,
-            rates: SmokeScreenValues,
-            rand: Rand,
+            rates: SmokeScreenRates,
+            rand_value: number,
         ): void => {
-            expect(expected).toBe(calc_triggered_smoke_type(rates, rand));
+            expect(expected).toBe(calc_triggered_smoke_type(rates, rand_value as RandValue));
         }
 
-        test('Misfire', rates_1, new Rand()); // 不発100%
-        test('Single', rates_2, new Rand('49')); // 0.56
-        test('Twofold', rates_2, new Rand('19')); // 0.577
-        test('Threefold', rates_3, new Rand('19'))
+        test('Misfire', rates_1, 0);
+        test('Single', rates_2, 0.56);
+        test('Twofold', rates_2, 0.571);
+        test('Threefold', rates_3, 1);
     });
 });

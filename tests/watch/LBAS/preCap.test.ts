@@ -1,11 +1,11 @@
 import { __LBAS_pre_cap_test__ } from "@/logics/attackPower/LBAS/preCap";
-import { Equip, is_plane_equip, is_player_plane_equips } from "@/models/equip/basic";
+import { Equip, is_player_plane_equip, is_player_plane_equips } from "@/models/equip/basic";
 import { derive_LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
 import { B_25, LB_TYPE_1, MOSQUITE_LBR, NORMAL_NISHIKI_LBR, SKILLED_NISHIKI_LBR } from "tests/setups/assets/equips/plane";
 import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA, SYUUSEKI } from "tests/setups/assets/ship/abyssal";
 import { describe, expect, it } from "vitest"
-import { Rand } from "@/effects/random";
+import { Rand, RandGenerator } from "@/effects/random";
 import { __target_LBAS_test__, ValidLbasCombination } from "@/logics/target/LBAS";
 import { derive_abyssal_fleet } from "@/models/fleet/Fleet";
 
@@ -24,7 +24,7 @@ describe('基地航空隊 攻撃力系', () => {
             equip: Equip,
             target_ship: AbyssalEquippedShip,
         ): void => {
-            if (!is_plane_equip(equip)) throw new Error('PlaneEquipを渡してください');
+            if (!is_player_plane_equip(equip)) throw new Error('PlaneEquipを渡してください');
 
             const result = calc_mod_sp3_multiplier(
                 equip,
