@@ -235,6 +235,8 @@ export type PlayerEquippedShip = EquippedShipBase & {
     readonly special_item_addition: TStatusComponent,
     /** 対潜攻撃力計算に有効な対潜値の総計 */
     readonly total_contribute_asw_attack_power: number,
+    readonly base_fuel: number,
+    readonly base_ammo: number,
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
     /** simで更新されるあれこれ */

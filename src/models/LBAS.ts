@@ -1,8 +1,10 @@
 import { AvgProficiency } from "@/types/brands/other";
-import { is_plane_equip, is_player_plane_equip, JetBomberEquip, PlaneEquip, PlayerPlaneEquip } from "./equip/basic";
+import { is_jet_bomber, is_plane_equip, is_player_plane_equip, JetBomberEquip, PlaneEquip, PlayerPlaneEquip } from "./equip/basic";
 import { calc_average_proficiencyfrom_equip_slots, calc_average_proficiencyfrom_equips } from "@/logics/proficiency";
 import { AffiliationFleetType, PlayerFleetUnit } from "./fleet/FleetUnit";
 import { EquipType } from "@/datas/equip/base/player";
+import { Fleet, is_combined_fleet } from "./fleet/Fleet";
+import { produce } from "immer";
 
 type SquadronBase = {
     /** 航空隊機数 */
@@ -65,7 +67,7 @@ export type ShipJetSquadron = ShipSquadronBase & {
 }
 
 export type LbasSquadron = NormalLbasSquadron | LbasJetSquadron
-export type ShipSSquadron = NormalShipSquadron | ShipJetSquadron
+export type ShipSquadron = NormalShipSquadron | ShipJetSquadron
 /** ジェット航空隊 */
 export type JetSquadron = LbasJetSquadron | ShipJetSquadron
 
@@ -80,6 +82,23 @@ export function is_squadron_destruction(
     squadron: Squadron,
 ): boolean {
     return squadron.slot_count <= 0;
+}
+
+/**
+ * 基地航空隊からジェット航空中隊を抽出して返す
+ * @param lbases 
+ * @returns 
+ */
+export function extract_jet_squadrons(
+    lbases: LBAS[],
+): LbasJetSquadron[] {
+    return lbases.flatMap(lbas => {
+        return lbas.squadrons.flatMap(squadron => {
+            if (!is_jet_bomber(squadron.equip)) return [];
+
+            return [squadron] as LbasJetSquadron[];
+        });
+    });
 }
 
 export function derive_specific_type_squadron(
@@ -148,6 +167,60 @@ export function derive_jet_bomber_squadron(
     ) as ShipJetSquadron[];
 }
 
+export function calc_returned_origin_fleet<T extends Fleet>(
+    squadrons: ShipSquadron[],
+    fleet: T,
+): T {
+    return produce(fleet, draft_fleet => {
+        // 主力艦隊の処理
+        draft_fleet.main_fleet_units = draft_fleet.main_fleet_units.map(unit => {
+            const match_squadron = squadrons.find(squadron =>
+                squadron.each_fleet !== 'escort' &&
+                squadron.ship_index === unit.original_index
+            );
+
+            if (!match_squadron) return unit;
+
+            const equip_slot_index = unit.ship.equip_slots.findIndex(
+                slot => slot.equip && slot.slot_index === match_squadron.equip_index
+            );
+
+            if (equip_slot_index === -1) {
+                throw new Error('抽出元の装備スロットが見つかりませんでした');
+            }
+
+            return produce(unit, draftUnit => {
+                draftUnit.ship.equip_slots[equip_slot_index].slot_count =
+                    match_squadron.slot_count;
+            });
+        }) as typeof draft_fleet.main_fleet_units;
+
+        if (!is_combined_fleet(draft_fleet)) return;
+
+        draft_fleet.escort_fleet_units = draft_fleet.escort_fleet_units.map(unit => {
+            const match_squadron = squadrons.find(squadron =>
+                squadron.each_fleet === 'escort' &&
+                squadron.ship_index === unit.original_index
+            );
+
+            if (!match_squadron) return unit;
+
+            const equipSlotIndex = unit.ship.equip_slots.findIndex(
+                slot => slot.equip && slot.slot_index === match_squadron.equip_index
+            );
+
+            if (equipSlotIndex === -1) {
+                throw new Error('抽出元の装備スロットが見つかりませんでした');
+            }
+
+            return produce(unit, draftUnit => {
+                draftUnit.ship.equip_slots[equipSlotIndex].slot_count =
+                    match_squadron.slot_count;
+            });
+        }) as typeof draft_fleet.escort_fleet_units;
+    });
+}
+
 /**
  * 抽出した基地航空隊を所属元に返還した新しいLBAS[]を返す
  * @param squadrons 
@@ -159,13 +232,13 @@ export function calc_returned_origin_lbas(
     original_lbases: readonly LBAS[],
 ): LBAS[] {
     return original_lbases.map((lbas, lbas_index) => {
-        const match_jet_squadrons = squadrons.filter(
-            jet_squadron => jet_squadron.lbas_index === lbas_index
+        const match_squadrons = squadrons.filter(
+            squadron => squadron.lbas_index === lbas_index
         );
-        if (match_jet_squadrons.length === 0) return lbas;
+        if (match_squadrons.length === 0) return lbas;
 
         const new_squadrons = lbas.squadrons.map((squadron, squadron_index) => {
-            const jet_squadron = match_jet_squadrons.find(jet_squadron =>
+            const jet_squadron = match_squadrons.find(jet_squadron =>
                 jet_squadron.squadron_index === squadron_index
             );
 

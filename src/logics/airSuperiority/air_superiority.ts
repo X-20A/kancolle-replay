@@ -1,11 +1,11 @@
 import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
-import { Equip, is_jet_bomber, is_player_plane_equip, is_player_equip, PlayerPlaneEquip, PlaneEquip } from "@/models/equip/basic";
+import { Equip, is_jet_bomber, is_player_plane_equip, is_player_equip, PlaneEquip } from "@/models/equip/basic";
 import { calc_plane_proficiency_flat } from "../proficiency";
 import { AbyssalCombinedFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { RandGenerator } from "@/effects/random";
 import { match } from "ts-pattern";
-import { JetSquadron, LbasJetSquadron, NormalLbasSquadron, NormalSquadron, Squadron } from "@/models/LBAS";
+import { JetSquadron, NormalSquadron, Squadron } from "@/models/LBAS";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 
 /// 制空系

@@ -95,9 +95,7 @@ export function calc_ASW_barrage_balloon_damage_mod(
  * @param setting 
  */
 export function calc_airstrike_barrage_balloon_accuracy_mod(
-    attacker_fleet: Fleet,
-    defender_fleet: Fleet,
-    setting: UserSettings,
+    settings: UserSettings,
 ): number {
     // TODO: 命中に関してはwikiは不明になっている。Sortie Simのようにユーザー設定するか？
 }

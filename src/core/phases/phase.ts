@@ -5,15 +5,15 @@ import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/lo
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
-import { extract_jet_squadrons, LbasJetSquadron, LBAS, ShipJetSquadron, derive_jet_bomber_squadron, is_squadron_destruction } from "@/models/LBAS";
-import { calc_jet_attacked_enemy_fleet, calc_returned_origin_lbas } from "@/logics/aerialCombat/jetAssault";
+import { LbasJetSquadron, LBAS, derive_jet_bomber_squadron, is_squadron_destruction, calc_returned_origin_fleet, extract_jet_squadrons, calc_returned_origin_lbas } from "@/models/LBAS";
+import { calc_jet_attacked_enemy_fleet } from "@/logics/aerialCombat/jetAssault";
 import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
-import { calc_anti_air_fired_squadrons } from "@/logics/antiAir";
+import { calc_anti_air_fired_jet_squadrons } from "@/logics/antiAir";
 import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { RandValue } from "@/types/brands/other";
-import { is_jet_bomber, JetBomberEquip } from "@/models/equip/basic";
-import { PlayerEquipSlot } from "@/models/ship/EquipSlot";
+import { NavalBase } from "@/models/NavalBase";
+import { calc_jet_assault_cost } from "@/logics/cost";
 
 /// 各フェイズを制御する
 /// sim_execute と logics を繋ぐ
@@ -33,23 +33,42 @@ export type PhaseType =
  */
 export function calc_maritime_resupply_phase(
     player_fleet: PlayerFleet,
+    naval_base: NavalBase,
     node: Node,
-): PlayerFleet {
-    if (!node.type.is_boss) return player_fleet;
+): {
+    post_maritime_resupply_phase_player_fleet: PlayerFleet,
+    post_maritime_resupply_phase_naval_base: NavalBase,
+} {
+    if (!node.type.is_boss) return {
+        post_maritime_resupply_phase_player_fleet: player_fleet,
+        post_maritime_resupply_phase_naval_base: naval_base,
+    };
 
     const maritime_resupply_locations = calc_maritime_resupply_locations(player_fleet);
-    if (!maritime_resupply_locations.length) return player_fleet;
+    if (!maritime_resupply_locations.length) return {
+        post_maritime_resupply_phase_player_fleet: player_fleet,
+        post_maritime_resupply_phase_naval_base: naval_base,
+    };
 
     const supply_ratio = calc_supply_ratio(
         player_fleet,
         maritime_resupply_locations.length,
     );
 
-    return calc_supplied_fleet(
+    const {
+        supplied_fleet: post_maritime_resupply_phase_player_fleet,
+        billed_naval_base: post_maritime_resupply_phase_naval_base,
+    } = calc_supplied_fleet(
         player_fleet,
         supply_ratio,
         maritime_resupply_locations,
+        naval_base,
     );
+
+    return {
+        post_maritime_resupply_phase_player_fleet,
+        post_maritime_resupply_phase_naval_base
+    }
 }
 
 type DetectionPhaseResult = {
@@ -118,16 +137,19 @@ export function calc_lbas_jet_phase<T extends AbyssalSingleFleet | AbyssalCombin
     node: Node,
     lbases: LBAS[],
     enemy_fleet: T,
+    naval_base: NavalBase,
     settings: UserSettings,
     rand: RandGenerator,
 ): {
     post_jet_lbas_phase_lbases: LBAS[],
     post_jet_lbas_phase_enemy_fleet: T,
+    post_jet_lbas_phase_naval_base: NavalBase,
 } {
     // NOTE: 索敵の成否は問わない
     if (node.type.is_ss_only) return {
         post_jet_lbas_phase_lbases: lbases,
         post_jet_lbas_phase_enemy_fleet: enemy_fleet,
+        post_jet_lbas_phase_naval_base: naval_base,
     }
 
     // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが演習でしか起きないので棚上げ
@@ -135,12 +157,19 @@ export function calc_lbas_jet_phase<T extends AbyssalSingleFleet | AbyssalCombin
     const sent_lbases = lbases.filter(lbas => lbas.target_node.includes(node.index));
 
     const jet_only_squadrons: LbasJetSquadron[] =
-        sent_lbases.flatMap(lbas => extract_jet_squadrons(lbas.squadrons));
+        extract_jet_squadrons(sent_lbases);
 
     if (jet_only_squadrons.length === 0) return {
         post_jet_lbas_phase_lbases: lbases,
         post_jet_lbas_phase_enemy_fleet: enemy_fleet,
+        post_jet_lbas_phase_naval_base: naval_base,
     }
+
+    // 噴式強襲代徴収
+    const post_jet_lbas_phase_naval_base = {
+        ...naval_base,
+        steel: calc_jet_assault_cost(jet_only_squadrons),
+    };
 
     // 1.制空状態の決定
 
@@ -174,16 +203,18 @@ export function calc_lbas_jet_phase<T extends AbyssalSingleFleet | AbyssalCombin
             lbases,
         ),
         post_jet_lbas_phase_enemy_fleet: air_state_shootdowned_enemy_fleet,
+        post_jet_lbas_phase_naval_base,
     }
 
     // NOTE: 2.触接判定 ジェット基地による強襲では触接は発生しない
 
     // 3.水上艦の対空砲火による航空機の撃墜
 
-    const anti_air_fired_squadrons = calc_anti_air_fired_squadrons(
+    const anti_air_fired_squadrons = calc_anti_air_fired_jet_squadrons(
         air_state_shootdowned_squadrons,
         air_state_shootdowned_enemy_fleet,
         node,
+        'Misfire', // 噴式強襲に対してはAACIは発動しない
         rand,
     );
 
@@ -192,6 +223,8 @@ export function calc_lbas_jet_phase<T extends AbyssalSingleFleet | AbyssalCombin
     const attacked_enemy_fleet = calc_jet_attacked_enemy_fleet(
         anti_air_fired_squadrons,
         air_state_shootdowned_enemy_fleet,
+        node,
+        settings,
         rand,
     );
 
@@ -201,12 +234,8 @@ export function calc_lbas_jet_phase<T extends AbyssalSingleFleet | AbyssalCombin
             lbases,
         ),
         post_jet_lbas_phase_enemy_fleet: attacked_enemy_fleet,
+        post_jet_lbas_phase_naval_base,
     }
-}
-
-type CVsJetAssaultPhaseResult = {
-    post_CVs_jet_assault_phase_player_fleet: PlayerFleet,
-    post_CVs_jet_assault_phase_enemy_fleet: AbyssalFleet,
 }
 
 /**
@@ -215,22 +244,41 @@ type CVsJetAssaultPhaseResult = {
  * @param enemy_fleet 
  * @param node 
  */
-export function calc_CVs_jet_assault_phase(
+export function calc_ship_jet_assault_phase(
     player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
+    naval_base: NavalBase,
     node: Node,
+    settings: UserSettings,
     rand: RandGenerator,
-): CVsJetAssaultPhaseResult {
+): {
+    post_CVs_jet_assault_phase_player_fleet: PlayerFleet,
+    post_CVs_jet_assault_phase_enemy_fleet: AbyssalFleet,
+    post_CVs_jet_assault_phase_naval_base: NavalBase,
+} {
     // NOTE: 索敵の成否は問わない
     if (node.type.is_ss_only) return {
         post_CVs_jet_assault_phase_player_fleet: player_fleet,
         post_CVs_jet_assault_phase_enemy_fleet: enemy_fleet,
+        post_CVs_jet_assault_phase_naval_base: naval_base,
     }
 
     // NOTE: 相手にも噴式機がいれば迎撃が発生するらしいが演習でしか起きないので棚上げ
 
     // NOTE: 随伴艦隊に噴式機搭載可能な空母は配属できない、よって主力艦隊の噴式機のみ収集
     const jet_only_squadrons = derive_jet_bomber_squadron(player_fleet.main_fleet_units);
+
+    if (jet_only_squadrons.length === 0) return {
+        post_CVs_jet_assault_phase_player_fleet: player_fleet,
+        post_CVs_jet_assault_phase_enemy_fleet: enemy_fleet,
+        post_CVs_jet_assault_phase_naval_base: naval_base,
+    }
+
+    // 噴式強襲代徴収
+    const post_CVs_jet_assault_phase_naval_base = {
+        ...naval_base,
+        steel: calc_jet_assault_cost(jet_only_squadrons),
+    };
 
     // 1.制空状態の決定
 
@@ -259,7 +307,45 @@ export function calc_CVs_jet_assault_phase(
         rand,
     );
 
+    if (air_state_shootdowned_squadrons.every(is_squadron_destruction)) return { // 枯れたらreturn
+        post_CVs_jet_assault_phase_player_fleet: calc_returned_origin_fleet(
+            air_state_shootdowned_squadrons,
+            player_fleet,
+        ),
+        post_CVs_jet_assault_phase_enemy_fleet: air_state_shootdowned_enemy_fleet,
+        post_CVs_jet_assault_phase_naval_base,
+    }
+
     // NOTE: 2.触接判定 ジェット基地による強襲では触接は発生しない
+
+    // 3.水上艦の対空砲火による航空機の撃墜
+
+    const anti_air_fired_squadrons = calc_anti_air_fired_jet_squadrons(
+        air_state_shootdowned_squadrons,
+        air_state_shootdowned_enemy_fleet,
+        node,
+        'Misfire', // 噴式強襲に対してはAACIは発動しない
+        rand,
+    );
+
+    // 4.航空機による開幕航空攻撃
+
+    const attacked_enemy_fleet = calc_jet_attacked_enemy_fleet(
+        anti_air_fired_squadrons,
+        air_state_shootdowned_enemy_fleet,
+        node,
+        settings,
+        rand,
+    );
+
+    return {
+        post_CVs_jet_assault_phase_player_fleet: calc_returned_origin_fleet(
+            anti_air_fired_squadrons,
+            player_fleet,
+        ),
+        post_CVs_jet_assault_phase_enemy_fleet: attacked_enemy_fleet,
+        post_CVs_jet_assault_phase_naval_base,
+    }
 }
 
 /**
@@ -330,16 +416,4 @@ export function calc_smoke_screen_phase(
         post_smoke_screen_phase_node,
         post_smoke_screen_phase_player_fleet: post_smoke_screen_phase_player_fleet,
     }
-}
-
-type LbasPhaseResult = {
-    post_LBAS_phase_LBASes: LBAS[],
-    post_LBAS_phase_enemy_fleet: AbyssalFleet,
-}
-
-export function calc_LBAS_phase(
-    lbases: [],
-    enemy_fleet: AbyssalFleet,
-): LbasPhaseResult {
-
 }

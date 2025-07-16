@@ -1,5 +1,5 @@
 import { RandGenerator } from "@/effects/random";
-import { calc_CVs_jet_assault_phase, calc_detection_phase, calc_engagement_phase, calc_lbas_jet_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
+import { calc_ship_jet_assault_phase, calc_detection_phase, calc_engagement_phase, calc_lbas_jet_phase, calc_maritime_resupply_phase, calc_smoke_screen_phase } from "../phases/phase";
 import { Node } from "@/models/Node";
 import { LBAS } from "@/models/LBAS";
 import { AbyssalSingleFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
@@ -37,8 +37,12 @@ export function sim_execute(
 ) { // NOTE: 更新していくデータをcontextにまとめてpipeすると見やすくなるかもだけど、コピーコスト嵩みそう
     // ひとまずそれぞれの艦隊に陣形は設定されているという前提で
     
-    const post_maritime_resupply_phase_player_fleet = calc_maritime_resupply_phase(
+    const {
+        post_maritime_resupply_phase_player_fleet,
+        post_maritime_resupply_phase_naval_base,
+    } = calc_maritime_resupply_phase(
         player_fleet,
+        naval_base,
         node,
     );
 
@@ -61,10 +65,12 @@ export function sim_execute(
     const {
         post_jet_lbas_phase_lbases,
         post_jet_lbas_phase_enemy_fleet,
+        post_jet_lbas_phase_naval_base,
     } = calc_lbas_jet_phase(
         post_engagement_phase_node,
         lbases,
         enemy_fleet,
+        post_maritime_resupply_phase_naval_base,
         settings,
         rand,
     );
@@ -72,10 +78,13 @@ export function sim_execute(
     const {
         post_CVs_jet_assault_phase_player_fleet,
         post_CVs_jet_assault_phase_enemy_fleet,
-    } = calc_CVs_jet_assault_phase(
+        post_CVs_jet_assault_phase_naval_base,
+    } = calc_ship_jet_assault_phase(
         post_detection_phase_player_fleet,
         post_jet_lbas_phase_enemy_fleet,
+        post_jet_lbas_phase_naval_base,
         post_engagement_phase_node,
+        settings,
         rand,
     );
 
@@ -85,7 +94,7 @@ export function sim_execute(
     } = calc_smoke_screen_phase(
         settings,
         post_engagement_phase_node,
-        post_detection_phase_player_fleet,
+        post_CVs_jet_assault_phase_player_fleet,
         rand.next(),
     );
 }

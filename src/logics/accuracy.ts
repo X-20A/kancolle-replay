@@ -1,9 +1,9 @@
 import { JetBomberEquip, PlayerPlaneEquip } from "@/models/equip/basic";
-import { AbyssalEquippedShip, EquippedShip, includes_abyssal_ship_id, includes_ship_type, is_abyssal_ship, is_install_type, is_player_ship, is_PT } from "@/models/ship/equipped";
+import { AbyssalEquippedShip, EquippedShip, includes_abyssal_ship_id, includes_ship_type, is_abyssal_ship, is_install_type, is_player_ship, is_PT, PlayerEquippedShip } from "@/models/ship/equipped";
 import { brandPreAccuracy, PreAccuracy, RandValue } from "@/types/brands/other";
-import { calc_morale_evasion_mod } from "./morale";
+import { MORALE_THRESHOLD } from "./morale";
 import { calc_air_combat_evasion } from "./evasion";
-import { AbyssalFleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { AbyssalFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { is_use_barrage_balloon_node, Node } from "@/models/Node";
 import { UserSettings } from "@/core/flows/SimExecuter";
 import { calc_airstrike_barrage_balloon_accuracy_mod } from "./balloon";
@@ -91,11 +91,33 @@ const calc_LBAS_bomber_target_specific_accuracy_flat = (
     return 0;
 }
 
+const calc_final_accuracy = (
+    accuracy: number,
+): number => {
+    const POST_CAP_FLAT = 1;
+    return accuracy + POST_CAP_FLAT;
+}
+
+/**
+ * "回避側"の疲労度による"攻撃側"の命中率への補正値
+ * @param ship 
+ * @returns 
+ */
+const calc_morale_evasion_mod = (
+    ship: PlayerEquippedShip,
+): number => {
+    const morale = ship.state.morale;
+    if (morale >= MORALE_THRESHOLD.Kira) return 0.7;
+    if (morale >= MORALE_THRESHOLD.Normal) return 1;
+    if (morale >= MORALE_THRESHOLD.Orange) return 1.2;
+    return 1.4; // morale >= MORALE_THRESHOLD.Red
+}
+
 /**
  * 航空戦の命中項を返す
  * @returns 
  */
-export function calc_air_combat_pre_accuracy(): number {
+export function calc_air_combat_pre_accuracy(): PreAccuracy {
     const ACCURACY_CONSTANT = 0.95;
     return brandPreAccuracy(ACCURACY_CONSTANT);
 }
@@ -109,7 +131,6 @@ export function calc_air_combat_pre_accuracy(): number {
  */
 export function calc_lbas_pre_accuracy(
     unit: PlayerPlaneEquip,
-    player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
     target_ship: AbyssalEquippedShip,
     node: Node,
@@ -128,7 +149,7 @@ export function calc_lbas_pre_accuracy(
         calc_LBAS_bomber_target_specific_accuracy_flat(unit, target_ship);
 
     const barrage_balloon_mod = is_use_barrage_balloon_node(node, settings)
-        ? calc_airstrike_barrage_balloon_accuracy_mod(player_fleet, enemy_fleet, settings)
+        ? calc_airstrike_barrage_balloon_accuracy_mod(settings)
         : 1;
     
     const combined_fleet_mod = is_combined_fleet(enemy_fleet) ? 1.1 : 0;
@@ -152,7 +173,6 @@ export function calc_lbas_pre_accuracy(
  */
 export function calc_final_jet_assault_accuracy(
     unit: JetBomberEquip,
-    player_fleet: PlayerFleet,
     enemy_fleet: AbyssalFleet,
     target_ship: AbyssalEquippedShip,
     node: Node,
@@ -161,7 +181,6 @@ export function calc_final_jet_assault_accuracy(
     // ? どのタイプの命中項を使用するか不明 暫定: 基地命中項
     const pre_accuracy = calc_lbas_pre_accuracy(
         unit,
-        player_fleet,
         enemy_fleet,
         target_ship,
         node,
@@ -172,7 +191,7 @@ export function calc_final_jet_assault_accuracy(
     return Math.min(96,
         Math.max(10,
             (pre_accuracy - evasion)
-        * (is_player_ship(target_ship) ? calc_morale_evasion_mod(target_ship) : 0)
+            * (is_player_ship(target_ship) ? calc_morale_evasion_mod(target_ship) : 0)
         )); // 航空機熟練度ボーナスは無し
 }
 

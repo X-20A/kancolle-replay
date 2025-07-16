@@ -4,7 +4,7 @@ import { AbyssalEquippedShip, includes_abyssal_ship_id, is_PT } from "@/models/s
 import { RandValue } from "@/types/brands/other";
 import { calc_pre_cap_LBAS_attack_power } from "./preCap";
 import { RandGenerator } from "@/effects/random";
-import { LBAS, LbasJetSquadron } from "@/models/LBAS";
+import { JetSquadron, LBAS, LbasJetSquadron } from "@/models/LBAS";
 import { calc_capped_attack_power } from "../../cap";
 import { ValidLbasCombination } from "../../target/LBAS";
 import { HitType } from "../../accuracy";
@@ -206,7 +206,7 @@ export function calc_LBAS_attack_power(
  * @returns 
  */
 export function calc_jet_LBAS_assault_attack_power(
-    squadron: LbasJetSquadron,
+    squadron: JetSquadron,
     target_ship: AbyssalEquippedShip,
     hit_type: HitType,
     rand_value: RandValue,

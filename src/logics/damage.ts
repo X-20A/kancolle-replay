@@ -1,4 +1,4 @@
-import { LbasJetSquadron } from "@/models/LBAS";
+import { JetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy, calc_hit_type } from "./accuracy";
 import { RandGenerator } from "@/effects/random";
 import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
@@ -20,7 +20,7 @@ const calc_base_damage = (
 }
 
 /**
- * 航空機によるダメージを返す
+ * 基地航空隊によるダメージを返す
  * @param attack_power 
  * @param defence 
  * @returns 
@@ -93,8 +93,7 @@ const calc_scrach_damage = (
  * @returns 
  */
 export function calc_jet_LBAS_assault_damage(
-    attacker_squadron: LbasJetSquadron,
-    player_fleet: PlayerFleet,
+    attacker_squadron: JetSquadron,
     enemy_fleet: AbyssalFleet,
     target_unit: AbyssalFleetUnit,
     node: Node,
@@ -103,7 +102,6 @@ export function calc_jet_LBAS_assault_damage(
 ): number {
     const final_jet_assault_accuracy = calc_final_jet_assault_accuracy(
         attacker_squadron.equip,
-        player_fleet,
         enemy_fleet,
         target_unit.ship,
         node,

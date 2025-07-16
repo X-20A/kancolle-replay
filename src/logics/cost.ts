@@ -1,6 +1,12 @@
 import { is_jet_bomber, JetBomberEquip } from "@/models/equip/basic";
+import { JetSquadron } from "@/models/LBAS";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 
+/**
+ * 噴式機の基地配置コストを返す
+ * @param jet 
+ * @returns 
+ */
 const calc_placement_cost = (
     jet: JetBomberEquip,
 ): number => {
@@ -11,12 +17,16 @@ const calc_placement_cost = (
     throw new Error(`${name} の配置コストが未設定です`);
 }
 
+/**
+ * ジェット航空隊の噴式強襲コストを返す
+ * @param squadrons 
+ * @returns 
+ */
 export function calc_jet_assault_cost(
-    slot: EquipSlot,
+    squadrons: JetSquadron[],
 ): number {
-    const equip = slot.equip;
-    if (!equip || !is_jet_bomber(equip)) return 0;
-
-    const placement_cost = calc_placement_cost(equip);
-    return slot.slot_count * placement_cost * 0.2;
+    return squadrons.reduce((total, squadron) => {
+        const placement_cost = calc_placement_cost(squadron.equip);
+        return total + squadron.slot_count * placement_cost * 0.2;
+    }, 0);
 }

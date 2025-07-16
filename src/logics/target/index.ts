@@ -230,12 +230,12 @@ const protect_flagship_in_combined_fleet = (
  * @param rand 
  * @returns 
  */
-export function choice_target_in_single_vs_single(
-    target_units: FleetUnit[],
+export function choice_target_in_single_vs_single<T extends PlayerFleetUnit | AbyssalFleetUnit>(
+    target_units: T[],
     formation: SingleFleetFormationType,
     target_fleet: SingleFleet,
     rand: RandGenerator,
-): FleetUnit {
+): T {
     const first_target_unit = select_random_target(target_units, rand.next());
 
     const post_vanguard_target_unit = calc_vanguard_target(
@@ -262,11 +262,11 @@ export function choice_target_in_single_vs_single(
  * @param rand 
  * @returns 
  */
-export function choice_target_in_single_vs_combined(
-    target_units: FleetUnit[],
+export function choice_target_in_single_vs_combined<T extends PlayerFleetUnit | AbyssalFleetUnit>(
+    target_units: T[],
     formation: CombinedFleetFormationType,
     rand: RandGenerator,
-): FleetUnit {
+): T {
     const first_target_unit = select_random_target(target_units, rand.next());
 
     return protect_flagship_in_single_fleet(
