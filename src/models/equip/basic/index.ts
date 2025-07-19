@@ -218,6 +218,15 @@ export function is_seaplane_fighter(equip: Equip): boolean {
 }
 
 /**
+ * ソナー系装備であるか判定して返す
+ * @param equip 
+ * @returns 
+ */
+export function is_sonar(equip: Equip): boolean {
+    return equip.skill_trigger_type === 'B_SONAR';
+}
+
+/**
  * 陸攻系装備であるか判定して返す
  * @param plane 
  * @returns 

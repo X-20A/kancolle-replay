@@ -1,7 +1,5 @@
 import { brand, Brand } from ".";
 
-export type PreAccuracy = Brand<number, 'PreAccuracy'>
-
 export type WeightedAntiAir = Brand<number, 'WeightedAntiAir'>
 
 export type AvgProficiency = Brand<number, 'AvgProficiency'>

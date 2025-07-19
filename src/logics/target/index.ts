@@ -1,5 +1,5 @@
 import { RandGenerator } from "@/effects/random";
-import { EquippedShip, includes_ship_name, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, includes_anti_PT_Amagiri, includes_ship_name, is_damage_lightly_or_more, is_install_type, is_PT, is_submarine_category, is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
 import { is_front } from "../formation";
 import { CombinedFleet, SingleFleet } from "@/models/fleet/Fleet";
@@ -51,7 +51,7 @@ const calc_unique_fleet_targeting = (
     attacker_ship: PlayerEquippedShip,
     target_fleet: CombinedFleet,
 ): EachFleet | 'undetermined' => {
-    if (includes_ship_name(['天霧改二', '天霧改二丁'], attacker_ship.name_jp)) {
+    if (includes_anti_PT_Amagiri(attacker_ship)) {
         const includes_pt_in_main_fleet = target_fleet.main_fleet_units.some(unit => is_PT(unit.ship));
         const includes_pt_in_escort_fleet = target_fleet.escort_fleet_units.some(unit => is_PT(unit.ship));
 

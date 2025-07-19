@@ -1,9 +1,23 @@
 import { UserSettings } from "@/core/flows/SimExecuter";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
+import { Node } from "@/models/Node";
 import { is_retreated, is_sunk } from "@/models/ship/equipped";
 
 /// 阻塞気球に関する処理
 // https://en.kancollewiki.net/Barrage_Balloon 及び表のソース
+
+/**
+ * 阻塞気球使用が設定されたNodeであるか判定して返す
+ * @param node 
+ * @param settings 
+ * @returns 
+ */
+const is_use_barrage_balloon_node = (
+    node: Node,
+    settings: UserSettings,
+): boolean => {
+    return settings.use_barrage_balloon_node === node.index;
+}
 
 /**
  * 艦隊内の阻塞気球装備艦の数を返す

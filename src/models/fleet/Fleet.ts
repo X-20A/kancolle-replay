@@ -1,6 +1,18 @@
 import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
-import { EquippedShip, is_abyssal_ships, is_player_ships, is_sunk } from "../ship/equipped"
+import { EquippedShip, is_abyssal_ships, is_player_ship, is_player_ships, is_sunk } from "../ship/equipped"
 import { AbyssalFleetUnit, derive_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
+
+export type SingleFleetType =
+    | 'Normal'
+    | 'Striking_Force_Fleet'
+    
+
+export type CombinedFleetType =
+    | 'Carrier_Task_Force'
+    | 'Surface_Task_Force'
+    | 'Transport_Escort_Force'
+
+export type FleetType = SingleFleetType | CombinedFleetType
 
 type FleetBase = {
     readonly unused_smoke: boolean,
@@ -8,6 +20,7 @@ type FleetBase = {
 
 type SingleFleetBase = FleetBase & {
     readonly formation: SingleFleetFormationType,
+    readonly fleet_type: SingleFleetType,
 }
 
 export type PlayerSingleFleet = SingleFleetBase & {
@@ -22,6 +35,7 @@ export type SingleFleet = PlayerSingleFleet | AbyssalSingleFleet
 
 type CombinedFleetBase = FleetBase & {
     readonly formation: CombinedFleetFormationType,
+    readonly fleet_type: CombinedFleetType,
 }
 
 export type PlayerCombinedFleet = CombinedFleetBase & {
@@ -41,6 +55,12 @@ export type PlayerFleet = PlayerSingleFleet | PlayerCombinedFleet
 export type AbyssalFleet = AbyssalSingleFleet | AbyssalCombinedFleet
 
 export type Fleet = SingleFleet | CombinedFleet;
+
+export function is_player_fleet(
+    fleet: Fleet,
+): fleet is PlayerFleet {
+    return is_player_ship(fleet.main_fleet_units[0].ship);
+}
 
 /**
  * 主力艦隊と随伴艦隊の艦ユニットを連結した配列を返す    
@@ -140,12 +160,14 @@ export function derive_player_fleet(
         return {
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
             escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
+            fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
+            fleet_type: 'Normal',
             unused_smoke: true,
             formation: 'LineAhead',
         };
@@ -171,6 +193,7 @@ export function derive_abyssal_fleet(
         return {
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
             escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
+            fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
             formation: 'CruisingFormation_4',
         };
@@ -178,6 +201,7 @@ export function derive_abyssal_fleet(
         return {
             main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
             unused_smoke: true,
+            fleet_type: 'Normal',
             formation: 'LineAhead',
         };
     }

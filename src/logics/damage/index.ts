@@ -1,15 +1,15 @@
 import { JetSquadron } from "@/models/LBAS";
-import { calc_final_jet_assault_accuracy, calc_hit_type } from "./accuracy";
+import { calc_final_jet_assault_accuracy, calc_hit_type } from "../accuracy/aerialCombat";
 import { RandGenerator } from "@/effects/random";
 import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
-import { calc_defence } from "./defense";
+import { calc_defence } from "../defense";
 import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
 import { AbyssalFleetUnit, FleetUnit } from "@/models/fleet/FleetUnit";
-import { calc_jet_lbas_critical_rate } from "./critical";
+import { calc_jet_lbas_critical_rate } from "../critical";
 import { Node } from "@/models/Node";
 import { UserSettings } from "@/core/flows/SimExecuter";
-import { calc_jet_LBAS_assault_attack_power } from "./attackPower/LBAS/postCap";
+import { calc_jet_LBAS_assault_attack_power } from "../attackPower/LBAS/postCap";
 import { RandValue } from "@/types/brands/other";
 
 const calc_base_damage = (

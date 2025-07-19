@@ -1,6 +1,6 @@
 import { RandGenerator } from "@/effects/random";
 import { match } from "ts-pattern"
-import { HitType } from "./accuracy";
+import { HitType } from "./accuracy/aerialCombat";
 
 type CriticalPhaseType = 
     | 'day_shelling'

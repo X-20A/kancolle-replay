@@ -1,5 +1,5 @@
-import { PlayerEquippedShip } from "@/models/ship/equipped";
-import { match } from "ts-pattern";
+import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
+import { Brand } from "@/types/brands";
 
 const MORALE_STATE = {
     Kira: 1,
@@ -14,6 +14,25 @@ export const MORALE_THRESHOLD: Record<MoraleType, number> = {
     Normal: 30,
     Orange: 20,
     Red: 0,
+}
+
+export type HitMoraleMod = Brand<number, 'HitMoraleMod'>
+
+/**
+ * "回避側"の疲労度による"攻撃側"の命中率への補正値
+ * @param ship 
+ * @returns 
+ */
+const calc_hit_morale_mod = (
+    ship: EquippedShip,
+): HitMoraleMod => {
+    if (!is_player_ship(ship)) return 1 as HitMoraleMod;
+
+    const morale = ship.state.morale;
+    if (morale >= MORALE_THRESHOLD.Kira) return 0.7 as HitMoraleMod;
+    if (morale >= MORALE_THRESHOLD.Normal) return 1 as HitMoraleMod;
+    if (morale >= MORALE_THRESHOLD.Orange) return 1.2 as HitMoraleMod;
+    return 1.4 as HitMoraleMod; // morale >= MORALE_THRESHOLD.Red
 }
 
 /**

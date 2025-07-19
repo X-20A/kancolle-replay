@@ -114,6 +114,18 @@ export function includes_ship_name(
 }
 
 /**
+ * 対PT特効を持った天霧系であるか判定して返す
+ * @param ship_name 
+ * @returns 
+ */
+export function includes_anti_PT_Amagiri(
+    ship: EquippedShip,
+): boolean {
+    return is_player_ship(ship) &&
+        includes_ship_name(['天霧改二', '天霧改二丁'], ship.name_jp);
+}
+
+/**
  * 指定深海艦IDが艦ID群に含まれるか判定して返す
  * @param match_ship_ids 
  * @param search_ship_id 

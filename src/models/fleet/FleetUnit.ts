@@ -41,6 +41,10 @@ export function is_primary_flag_ship(unit: FleetUnit): boolean {
     return is_flag_ship(unit) && unit.fleet_type !== 'escort';
 }
 
+export function is_combined_fleet(fleet_unit: FleetUnit): boolean {
+    return fleet_unit.fleet_type !== 'single';
+}
+
 /**
  * 艦隊構成艦を生成して返す
  * @param ships 

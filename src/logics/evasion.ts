@@ -1,5 +1,4 @@
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
-import { calc_morale_type } from "./morale";
 
 const calc_capped_evasion = (
     evasion: number,
@@ -21,6 +20,21 @@ const calc_fuel_flat = (
     return fuel_remain_ratio >= 0.75
         ? 0
         : 75 - fuel_remain_ratio * 100;
+}
+
+type AttackType =
+    | 'shell'
+    | 'torpedo'
+
+const calc_improvement_evasion_addition = (
+    ship: EquippedShip,
+    attack_type: AttackType,
+): number => {
+    if (!is_player_ship(ship)) return 0;
+
+    const total_improvement_addition = ship.total_equip_improvement_addition;
+    if (attack_type === 'shell') return total_improvement_addition.shell_evasion;
+    return total_improvement_addition.torpedo_evasion;
 }
 
 /**
