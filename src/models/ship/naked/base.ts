@@ -1,13 +1,14 @@
 import { Country } from "@/datas/equip/bonus";
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipNameEN } from "@/types/brands/ship";
-import { InstallType, PlayerNakedShipFlags, ShipTypeBase, UnknownStatus } from "@/types/ship/ship";
+import { InstallType, PlayerNakedShipFlags, ShipFitClass, ShipTypeBase, UnknownStatus } from "@/types/ship/ship";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { AbyssalNakedShipFlags, AbyssalShipType } from "@/types/ship/abyssal";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
+import { is_player_ship } from "../equipped";
 
 type NakedShipBase = {
     readonly name_en: ShipNameEN,
@@ -17,10 +18,12 @@ type NakedShipBase = {
 
 export type PlayerNakedShip = NakedShipBase & {
     readonly master_id: ShipId,
+    readonly lv: number,
     readonly base_id: ShipBaseId,
     readonly name_jp: PlayerShipNameJP,
     readonly type_id: ShipTypeBase,
     readonly ship_class: PlayerShipClass,
+    readonly fit_class: ShipFitClass | 'None',
     readonly country: Country,
     readonly flags: PlayerNakedShipFlags,
 }
@@ -39,3 +42,12 @@ export type AbyssalNakedShip = NakedShipBase & {
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */
 export type NakedShip = PlayerNakedShip | AbyssalNakedShip
+
+/**
+ * 艦がケッカリ済みか判定して返す
+ * @param ship
+ * @returns 
+ */
+export function is_married(ship: NakedShip): boolean {
+    return is_player_ship(ship) && ship.lv >= 100;
+}

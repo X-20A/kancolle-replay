@@ -1,5 +1,5 @@
 import { TStatusComponent } from "@/types";
-import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
+import { AACITriggerEquipType, EquipFitClass, SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "@/datas/equip/base/player";
 import { EquipImprovementAddition } from "../EquipImprovement";
 import { TransportAddition } from "../TransportPower";
@@ -29,6 +29,7 @@ export type PlayerOtherEquip = EquipBase & {
     /** 装備マスターID */
     readonly master_id: number,
     readonly name_jp: PlayerEquipNameJP,
+    readonly fit_class: EquipFitClass | 'None',
     /** 装備改修値 */
     readonly improvement_lv: number,
     /** フラグ類 */

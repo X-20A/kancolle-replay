@@ -74,6 +74,7 @@ export function derive_player_equip_master(
         improvement_type: equip_data.improvement_type,
         skill_trigger_type,
         aaci_trigger_type: equip_data.aaci_type,
+        fit_class: equip_data.fit_class ?? 'None',
         AA_resist_ship: equip_data.AA_resist_ship ?? 1,
         AA_resist_fleet: equip_data.AA_resist_fleet ?? 1,
         status,

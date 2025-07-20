@@ -5,7 +5,7 @@ import { EquipId } from "@/types/brands/equip"
 import { AbyssalEquipId } from "@/types/equip/abyssalId"
 import { AbyssalEquipNameJP } from "@/types/equip/abyssalNameJP"
 import { AbyssalEquipFlags, PlayerEquipFlags } from "@/types/equip/flags"
-import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player"
+import { AACITriggerEquipType, EquipFitClass, SkillTriggerEquipType } from "@/types/equip/player"
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP"
 
 /** マスターデータから直接取得するデータ */
@@ -25,6 +25,7 @@ export type EquipMasterBase = {
 export type PlayerEquipMaster = EquipMasterBase & {
     readonly master_id: EquipId,
     readonly name_jp: PlayerEquipNameJP,
+    readonly fit_class: EquipFitClass | 'None',
     readonly improvement_type: EquipImprovementType,
     readonly flags: PlayerEquipFlags,
 }

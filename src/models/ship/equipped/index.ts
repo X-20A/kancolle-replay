@@ -195,6 +195,28 @@ export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
     return ship.state.hp_remain / ship.edited_status.hp <= 0.75;
 }
 
+/**
+ * 艦がケッカリ済みか判定して返す
+ * @param ship
+ * @returns 
+ */
+export function is_married(ship: EquippedShip): boolean {
+    return is_player_ship(ship) && ship.lv >= 100;
+}
+
+/**
+ * 指定艦級が艦級群に含まれるか判定して返す
+ * @param match_classes 
+ * @param search_class 
+ * @returns 
+ */
+export function includes_ship_class(
+    match_classes: PlayerShipClass[],
+    search_class: PlayerShipClass,
+): boolean {
+    return match_classes.includes(search_class);
+}
+
 type EquippedShipBase = {
     /** 艦隊内における一意の識別ID */
     readonly unique_id: ShipUniqueId;

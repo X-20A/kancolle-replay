@@ -93,5 +93,5 @@ export function calc_air_combat_accuracy(
 }
 
 const __accuracy_aerial_combat_test__ = {
-    calc_ACC_base: calc_acc_base,
+    calc_acc_base,
 }

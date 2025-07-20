@@ -81,11 +81,13 @@ export function derive_player_naked_ship(
 
     return {
         master_id: id,
+        lv: ship_lv,
         base_id: calc_base_id(id),
         name_en: brandShipNameEN(ship_data.name),
         name_jp: ship_data.name_jp,
         type_id: ship_data.type,
         ship_class,
+        fit_class: ship_data.fit_class ?? 'None',
         country,
         slots: ship_data.SLOTS,
         status,

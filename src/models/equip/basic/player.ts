@@ -17,6 +17,7 @@ export function derive_player_equip(
         master_id,
         name_en: equip_master.name_en,
         name_jp: equip_master.name_jp,
+        fit_class: equip_master.fit_class,
         improvement_lv,
         type_id,
         skill_trigger_type: equip_master.skill_trigger_type ?? EQUIP_TYPE_DATAS[type_id] ?? 'NONE',
@@ -42,12 +43,5 @@ export function derive_player_equip(
         anti_air_resist_fleet: equip_master.AA_resist_fleet,
     };
 
-    if (equip_master.type_id !== "JET_BOMBER") return plane_equip;
-
-    const jet_bomber_equip: JetBomberEquip = {
-        ...plane_equip,
-        total_jet_assault_cost: 0,
-    }
-
-    return jet_bomber_equip;
+    return plane_equip;
 }
