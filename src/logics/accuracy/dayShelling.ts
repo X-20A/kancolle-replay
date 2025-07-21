@@ -3,6 +3,9 @@ import { Accuracy } from ".";
 import { Fleet, is_combined_fleet, is_player_fleet } from "@/models/fleet/Fleet";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { match } from "ts-pattern";
+import { FitAccuracyMod } from "../fit/fit";
+import { ArmorPiercingAccuracyMod } from "../armorPiercing";
+import { ArtillerySpottingAccuracyMod } from "../artillerySpotting/artillerySpotting";
 
 /**
  * 彼我の艦隊種別組み合わせごとの命中基礎値(ACC_base)を返す
@@ -131,6 +134,13 @@ export function calc_day_shelling_accuracy(
     attacker_unit: FleetUnit,
     defender_unit: FleetUnit,
     attacker_units: FleetUnit[],
+    vanguard_mod: number,
+    formation_mod: number,
+    morale_mod: number,
+    fit_mod: FitAccuracyMod,
+    spotting_mod: ArtillerySpottingAccuracyMod,
+    AP_mod: ArmorPiercingAccuracyMod,
+    smoke_mod: number,
 ): Accuracy {
     const acc_base = calc_acc_base(
         attacker_fleet,
@@ -151,4 +161,9 @@ export function calc_day_shelling_accuracy(
         + 1.5 * Math.sqrt(attacker_ship.edited_status.luck)
         + acc_equip
         + amagiri_mod;
+
+    const fit_mod_applied = core * vanguard_mod * formation_mod * morale_mod
+        + fit_mod;
+
+    
 }

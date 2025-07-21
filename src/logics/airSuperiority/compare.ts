@@ -14,6 +14,22 @@ export type AirStateResult = {
 }
 
 /**
+ * 制空状態が優勢以上であるか判定して返す
+ * @param air_state 
+ * @returns 
+ */
+export function is_air_state_superiotity_or_more(
+    air_state: AirStateType,
+): boolean {
+    const VALID_AIR_STTATE: AirStateType[] = [
+        'Superiority',
+        'Supremacy',
+    ];
+
+    return VALID_AIR_STTATE.includes(air_state);
+}
+
+/**
  * 彼我の制空値から制空状態種別を返す
  * @param player 
  * @param enemy 
