@@ -4,6 +4,8 @@ import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 import { is_sonar } from "@/models/equip/basic";
 import { AccuracyMoraleMod } from "../morale";
+import { ASWAccuracySmokeMod } from "../smokeScreen";
+import { ASWAccuracyFormationMod } from "../formation";
 
 /**
  * ソナー系装備の対潜値総計(ASW_sonar)を返す
@@ -37,7 +39,8 @@ const calc_total_improvement_asw_accuracy = (
 }
 
 /**
- * 対潜戦の命中項を返す
+ * 対潜戦の命中項を返す    
+ * // ? 対潜命中に警戒陣補正が掛かるか? 日wiki: 記述無, ENwiki: ?付きで記載(詳細無), Sortie Sim: 処理無 暫定: 補正無
  * @param attacker_unit 
  * @param vanguard_mod 
  * @param formation_mod 
@@ -47,10 +50,9 @@ const calc_total_improvement_asw_accuracy = (
  */
 export function calc_asw_accuracy(
     attacker_unit: FleetUnit,
-    vanguard_mod: number,
-    formation_mod: number,
+    formation_mod: ASWAccuracyFormationMod,
     morale_mod: AccuracyMoraleMod,
-    smoke_mod: number,
+    smoke_mod: ASWAccuracySmokeMod,
 ): Accuracy {
     const attacker_ship = attacker_unit.ship;
     const total_improvement_asw_accuracy =
@@ -65,7 +67,6 @@ export function calc_asw_accuracy(
 
     const accuracy = Math.floor(
         base
-        * vanguard_mod
         * formation_mod
         * morale_mod
         * smoke_mod

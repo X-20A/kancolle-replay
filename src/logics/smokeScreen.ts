@@ -160,6 +160,8 @@ export function calc_triggered_smoke_type(
     return 'Threefold';
 }
 
+type SmokeData = Record<SmokeScreenType, number>
+
 export type ShellAccuracySmokeMod = Brand<number, 'ShellAccuracySmokeMod'>
 
 /**
@@ -174,7 +176,6 @@ export function calc_shell_accuracy_smoke_mod(
 ): ShellAccuracySmokeMod {
     if (smoke_type === 'Misfire') return 1 as ShellAccuracySmokeMod;
 
-    type SmokeData = Record<SmokeScreenType, number>
     /** 攻撃: プレイヤー, 電探: 有 */
     const PLAYER_WITH_RADAR_ACCURACY_MOD: SmokeData =
         { Single: 0.35, Twofold: 0.25, Threefold: 0.25 } as const;
@@ -203,4 +204,76 @@ export function calc_shell_accuracy_smoke_mod(
             ? ABYSSAL_WITH_RADAR_ACCURACY_MOD[smoke_type] as ShellAccuracySmokeMod
             : ABYSSAL_WITHOUT_RADAR_ACCURACY_MOD[smoke_type] as ShellAccuracySmokeMod;
     }
+}
+
+export type ASWAccuracySmokeMod = Brand<number, 'ASWAccuracySmokeMod'>
+
+/**
+ * 攻撃側対潜命中に係る煙幕補正を返す
+ * @param attacker_ship 
+ * @param smoke_type 
+ * @returns 
+ */
+export function calc_ASW_accuracy_smoke_mod(
+    attacker_ship: EquippedShip,
+    smoke_type: SmokeScreenType | 'Misfire',
+): ASWAccuracySmokeMod {
+    if (smoke_type === 'Misfire') return 1 as ASWAccuracySmokeMod;
+
+    const PLAYER_ACCURACY: SmokeData =
+        { Single: 0.25, Twofold: 0.25, Threefold: 0.25 } as const;
+    const ABYSSAL_ACCURACY: SmokeData =
+        { Single: 1, Twofold: 1, Threefold: 1 } as const;
+
+    return is_player_ship(attacker_ship)
+        ? PLAYER_ACCURACY[smoke_type] as ASWAccuracySmokeMod
+        : ABYSSAL_ACCURACY[smoke_type] as ASWAccuracySmokeMod;
+}
+
+export type TorpedoAccuracySmokeMod = Brand<number, 'TorpedoAccuracySmokeMod'>
+
+/**
+ * 攻撃側雷撃命中に係る煙幕補正を返す
+ * @param attacker_ship 
+ * @param smoke_type 
+ * @returns 
+ */
+export function calc_torpedo_accuracy_smoke_mod(
+    attacker_ship: EquippedShip,
+    smoke_type: SmokeScreenType | 'Misfire',
+): TorpedoAccuracySmokeMod {
+    if (smoke_type === 'Misfire') return 1 as TorpedoAccuracySmokeMod;
+
+    const PLAYER_ACCURACY: SmokeData =
+        { Single: 0.45, Twofold: 0.45, Threefold: 0.42 } as const;
+    const ABYSSAL_ACCURACY: SmokeData =
+        { Single: 0.7, Twofold: 0.6, Threefold: 0.5 } as const;
+
+    return is_player_ship(attacker_ship)
+        ? PLAYER_ACCURACY[smoke_type] as TorpedoAccuracySmokeMod
+        : ABYSSAL_ACCURACY[smoke_type] as TorpedoAccuracySmokeMod;
+}
+
+export type AirStrikeAccuracySmokeMod = Brand<number, 'AirStrikeAccuracySmokeMod'>
+
+/**
+ * 攻撃側航空戦命中に係る煙幕補正を返す
+ * @param attacker_ship 
+ * @param smoke_type 
+ * @returns 
+ */
+export function calc_airstrike_accuracy_smoke_mod(
+    attacker_ship: EquippedShip,
+    smoke_type: SmokeScreenType | 'Misfire',
+): AirStrikeAccuracySmokeMod {
+    if (smoke_type === 'Misfire') return 1 as AirStrikeAccuracySmokeMod;
+
+    const PLAYER_ACCURACY: SmokeData =
+        { Single: 1, Twofold: 1, Threefold: 1 } as const;
+    const ABYSSAL_ACCURACY: SmokeData =
+        { Single: 1, Twofold: 1, Threefold: 1 } as const;
+
+    return is_player_ship(attacker_ship)
+        ? PLAYER_ACCURACY[smoke_type] as AirStrikeAccuracySmokeMod
+        : ABYSSAL_ACCURACY[smoke_type] as AirStrikeAccuracySmokeMod;
 }

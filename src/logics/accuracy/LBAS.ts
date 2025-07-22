@@ -6,6 +6,7 @@ import { PlayerPlaneEquip } from "@/models/equip/basic";
 import { AbyssalFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { AbyssalEquippedShip, includes_abyssal_ship_id, includes_ship_type, is_abyssal_ship, is_install_type, is_PT } from "@/models/ship/equipped";
 import { Accuracy } from ".";
+import { LBASAccuracyBalloonMod } from "../balloon";
 
 /**
  * 陸攻の目標艦種別の命中補正値(Mod_Boss)を返す
@@ -110,7 +111,7 @@ export function calc_lbas_accuracy(
     unit: PlayerPlaneEquip,
     target_fleet: AbyssalFleet,
     target_ship: AbyssalEquippedShip,
-    barrage_balloon_mod: number,
+    barrage_balloon_mod: LBASAccuracyBalloonMod,
 ): Accuracy {
     /**
      * 命中定数    

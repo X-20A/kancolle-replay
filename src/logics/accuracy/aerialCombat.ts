@@ -4,6 +4,7 @@ import { FleetUnit, is_combined_fleet } from "@/models/fleet/FleetUnit";
 import { EquippedShip, includes_ship_type, is_player_ship } from "@/models/ship/equipped";
 import { match } from "ts-pattern";
 import { PlaneEquip } from "@/models/equip/basic";
+import { AirstrikeAccuracyBalloonMod } from "../balloon";
 
 /// 命中計算系
 
@@ -77,6 +78,7 @@ export function calc_air_combat_accuracy(
     attacker_plane: PlaneEquip,
     defender_unit: FleetUnit,
     node: Node,
+    balloon_mod: AirstrikeAccuracyBalloonMod,
 ): Accuracy {
     const acc_base = calc_acc_base(
         attacker_unit,
@@ -89,7 +91,8 @@ export function calc_air_combat_accuracy(
         defender_unit.ship,
     );
 
-    return acc_base + mod_skip_bombing as Accuracy;
+    return acc_base * balloon_mod
+        + mod_skip_bombing as Accuracy;
 }
 
 const __accuracy_aerial_combat_test__ = {

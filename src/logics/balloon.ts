@@ -1,7 +1,8 @@
 import { UserSettings } from "@/core/flows/SimExecuter";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { Node } from "@/models/Node";
-import { is_retreated, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, is_player_ship, is_retreated, is_sunk } from "@/models/ship/equipped";
+import { Brand } from "@/types/brands";
 
 /// 阻塞気球に関する処理
 // https://en.kancollewiki.net/Barrage_Balloon 及び表のソース
@@ -12,7 +13,7 @@ import { is_retreated, is_sunk } from "@/models/ship/equipped";
  * @param settings 
  * @returns 
  */
-const is_use_barrage_balloon_node = (
+const is_use_balloon_node = (
     node: Node,
     settings: UserSettings,
 ): boolean => {
@@ -55,7 +56,7 @@ const calc_valid_equip_balloon_ship_count = (
  * @param attacker_fleet 
  * @returns 
  */
-export function calc_airstrike_barrage_balloon_damage_mod(
+export function calc_airstrike_balloon_damage_mod(
     attacker_fleet: Fleet,
     defender_fleet: Fleet,
 ): number {
@@ -73,34 +74,34 @@ export function calc_airstrike_barrage_balloon_damage_mod(
 
 /**
  * 昼砲撃戦における阻塞気球のダメージ補正値を返す
- * @param attacker_fleet 
+ * @param attacker_fleet_balloon_count 
  * @returns 
  */
-export function calc_day_shelling_barrage_balloon_damage_mod(
-    attacker_fleet: Fleet,
+export function calc_day_shelling_balloon_damage_mod(
+    attacker_fleet_balloon_count: number,
 ): number {
     const ATTACKER_COEFFIENT = 0.02;
 
-    const valid_attacker_equip_balloon_ship_count = calc_valid_equip_balloon_ship_count(attacker_fleet);
-
-    return 1 + valid_attacker_equip_balloon_ship_count * ATTACKER_COEFFIENT;
+    return 1
+        + attacker_fleet_balloon_count * ATTACKER_COEFFIENT;
 }
 
 /**
  * 対潜戦における阻塞気球のダメージ補正値を返す    
  * NOTE: Sortie Simでは対潜にも付与されているが日ENwikiには記載がない
- * @param attacker_fleet 
+ * @param attacker_fleet_balloon_count 
  * @returns 
  */
-export function calc_ASW_barrage_balloon_damage_mod(
-    attacker_fleet: Fleet,
+export function calc_ASW_balloon_damage_mod(
+    attacker_fleet_balloon_count: number,
 ): number {
     const ATTACKER_COEFFIENT = 0.02;
 
-    const valid_attacker_equip_balloon_ship_count = calc_valid_equip_balloon_ship_count(attacker_fleet);
-
-    return 1 + valid_attacker_equip_balloon_ship_count * ATTACKER_COEFFIENT;
+    return 1
+        + attacker_fleet_balloon_count * ATTACKER_COEFFIENT;
 }
+
+export type AirstrikeAccuracyBalloonMod = Brand<number, 'AirstrikeAccuracyBalloonMod'>
 
 /**
  * 航空戦における阻塞気球の命中補正値を返す
@@ -108,8 +109,43 @@ export function calc_ASW_barrage_balloon_damage_mod(
  * @param defender_fleet 
  * @param setting 
  */
-export function calc_airstrike_barrage_balloon_accuracy_mod(
+export function calc_airstrike_balloon_accuracy_mod(
     settings: UserSettings,
-): number {
+    atttacker_ship: EquippedShip,
+    attacker_fleet_balloon_count: number,
+): AirstrikeAccuracyBalloonMod {
     // TODO: 命中に関してはwikiは不明になっている。Sortie Simのようにユーザー設定するか？
+    // ? Sortie Simでは * x + y みたいな処理にしてる 暫定: 乗算のみ
+    if (attacker_fleet_balloon_count === 0) return 1 as AirstrikeAccuracyBalloonMod;
+
+    const PLAYER_ACCURACY: number[] = [1, 1, 1];
+    const ABYSSAL_ACCURACY: number[] = [1, 1, 1];
+
+    return is_player_ship(atttacker_ship)
+        ? PLAYER_ACCURACY[attacker_fleet_balloon_count] as AirstrikeAccuracyBalloonMod
+        : ABYSSAL_ACCURACY[attacker_fleet_balloon_count] as AirstrikeAccuracyBalloonMod;
+}
+
+export type LBASAccuracyBalloonMod = Brand<number, 'LBASAccuracyBalloonMod'>
+
+/**
+ * 基地航空隊攻撃における阻塞気球の命中補正値を返す
+ * @param settings 
+ * @param atttacker_ship 
+ * @param attacker_fleet_balloon_count 
+ * @returns 
+ */
+export function calc_LBAS_balloon_accuracy_mod(
+    settings: UserSettings,
+    atttacker_ship: EquippedShip,
+    attacker_fleet_balloon_count: number,
+): LBASAccuracyBalloonMod {
+    if (attacker_fleet_balloon_count === 0) return 1 as LBASAccuracyBalloonMod;
+
+    const PLAYER_ACCURACY: number[] = [1, 1, 1];
+    const ABYSSAL_ACCURACY: number[] = [1, 1, 1];
+
+    return is_player_ship(atttacker_ship)
+        ? PLAYER_ACCURACY[attacker_fleet_balloon_count] as LBASAccuracyBalloonMod
+        : ABYSSAL_ACCURACY[attacker_fleet_balloon_count] as LBASAccuracyBalloonMod;
 }
