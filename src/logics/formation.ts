@@ -1,4 +1,5 @@
 import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
+import { Brand } from "@/types/brands";
 
 export type IntegratedFormationType = Exclude<SingleFleetFormationType, 'Vanguard'>
     | 'VanguardFront'
@@ -198,6 +199,56 @@ export function is_front(
     )
 }
 
+export type ShellPowerFormationMod = Brand<number, 'ShellPowerMod'>;
+export type TorpedoPowerFormationMod = Brand<number, 'TorpedoPowerMod'>;
+export type ASWFormationMod = Brand<number, 'ASWMod'>;
+export type AntiAirFormationMod = Brand<number, 'AntiAirMod'>;
+export type ShellAccuracyFormationMod = Brand<number, 'ShellAccuracyMod'>;
+export type TorpedoAccuracyFormationMod = Brand<number, 'TorpedoAccuracyMod'>;
+export type NightBattleAccuracyFormationMod = Brand<number, 'NightBattleAccuracyMod'>;
+export type ASWAccuracyFormationMod = Brand<number, 'ASWAccuracyMod'>;
+export type ShellEvasionFormationMod = Brand<number, 'ShellEvasionMod'>;
+export type TorpedoEvasionFormationMod = Brand<number, 'TorpedoEvasionMod'>;
+export type NightBattleEvasionFormationMod = Brand<number, 'NightBattleEvasionMod'>;
+export type ASWEvasionFormationMod = Brand<number, 'ASWEvasionMod'>;
+
+type BrandedFormationData = {
+    shell_power_mod: ShellPowerFormationMod;
+    torpedo_power_mod: TorpedoPowerFormationMod;
+    ASW_mod: ASWFormationMod;
+    anti_air_mod: AntiAirFormationMod;
+    shell_accuracy_mod: ShellAccuracyFormationMod;
+    torpedo_accuracy_mod: TorpedoAccuracyFormationMod;
+    night_battle_accuracy_mod: NightBattleAccuracyFormationMod;
+    ASW_accuracy_mod: ASWAccuracyFormationMod;
+    shell_evasion_mod: ShellEvasionFormationMod;
+    torpedo_evasion_mod: TorpedoEvasionFormationMod;
+    night_battle_evasion_mod: NightBattleEvasionFormationMod;
+    ASW_evasion_mod: ASWEvasionFormationMod;
+}
+
+/**
+ * 陣形補正データの各項にブランド型を付与して返す
+ * @param data 
+ * @returns 
+ */
+function brand_formation_data(data: FormationData): BrandedFormationData {
+    return {
+        shell_power_mod: data.shell_power_mod as ShellPowerFormationMod,
+        torpedo_power_mod: data.torpedo_power_mod as TorpedoPowerFormationMod,
+        ASW_mod: data.ASW_mod as ASWFormationMod,
+        anti_air_mod: data.anti_air_mod as AntiAirFormationMod,
+        shell_accuracy_mod: data.shell_accuracy_mod as ShellAccuracyFormationMod,
+        torpedo_accuracy_mod: data.torpedo_accuracy_mod as TorpedoAccuracyFormationMod,
+        night_battle_accuracy_mod: data.night_battle_accuracy_mod as NightBattleAccuracyFormationMod,
+        ASW_accuracy_mod: data.ASW_accuracy_mod as ASWAccuracyFormationMod,
+        shell_evasion_mod: data.shell_evasion_mod as ShellEvasionFormationMod,
+        torpedo_evasion_mod: data.torpedo_evasion_mod as TorpedoEvasionFormationMod,
+        night_battle_evasion_mod: data.night_battle_evasion_mod as NightBattleEvasionFormationMod,
+        ASW_evasion_mod: data.ASW_evasion_mod as ASWEvasionFormationMod,
+    };
+}
+
 /**
  * 通常艦隊(含遊撃)の陣形補正値を返す
  * @param formation 
@@ -209,15 +260,15 @@ export function get_single_fleet_formation_mods(
     formation: SingleFleetFormationType,
     ships_length: number,
     ship_index: number,
-): FormationData {
-    if (formation !== 'Vanguard') return FORMATION_MOD_DATAS[formation];
+): BrandedFormationData {
+    if (formation !== 'Vanguard') return brand_formation_data(FORMATION_MOD_DATAS[formation]);
 
     const integrated_fleet_type: IntegratedFormationType =
         is_front(ships_length, ship_index)
             ? 'VanguardFront'
             : 'VanguardRear';
 
-    return FORMATION_MOD_DATAS[integrated_fleet_type];
+    return brand_formation_data(FORMATION_MOD_DATAS[integrated_fleet_type]);
 }
 
 /**
@@ -227,6 +278,31 @@ export function get_single_fleet_formation_mods(
  */
 export function get_combined_fleet_formation_mods(
     formation: CombinedFleetFormationType,
-): FormationData {
-    return FORMATION_MOD_DATAS[formation];
+): BrandedFormationData {
+    return brand_formation_data(FORMATION_MOD_DATAS[formation]);
+}
+
+/**
+ * 陣形効果が無効化される組み合わせであるか判定して返す    
+ * https://wikiwiki.jp/kancolle/命中と回避について#hitterm1 > 陣形
+ * @param attacker_formation 
+ * @param defender_formation 
+ */
+export function is_invlidated_formation_combination(
+    attacker_formation: SingleFleetFormationType,
+    defender_formation: SingleFleetFormationType,
+): boolean {
+    if (
+        attacker_formation === 'DoubleLine' &&
+        defender_formation === 'LineAbreast'
+    ) return true;
+    if (
+        attacker_formation === 'Echelon' &&
+        defender_formation === 'LineAhead'
+    ) return true;
+    if (
+        attacker_formation === 'LineAbreast' &&
+        defender_formation === 'Echelon'
+    ) return true;
+    return false;
 }

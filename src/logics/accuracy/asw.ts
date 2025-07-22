@@ -3,6 +3,7 @@ import { Accuracy } from ".";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 import { is_sonar } from "@/models/equip/basic";
+import { AccuracyMoraleMod } from "../morale";
 
 /**
  * ソナー系装備の対潜値総計(ASW_sonar)を返す
@@ -48,7 +49,7 @@ export function calc_asw_accuracy(
     attacker_unit: FleetUnit,
     vanguard_mod: number,
     formation_mod: number,
-    morale_mod: number,
+    morale_mod: AccuracyMoraleMod,
     smoke_mod: number,
 ): Accuracy {
     const attacker_ship = attacker_unit.ship;

@@ -1,7 +1,9 @@
 import { is_dive_bomber, is_fighter, is_torpedo_bomber } from "@/models/equip/basic";
 import { EquippedShip, is_abyssal_ship, is_carrier_vessel_category, is_player_ship } from "@/models/ship/equipped";
 import { EquipSlot } from "@/models/ship/EquipSlot";
-import { ArtillerySpottingType } from "./artillerySpotting";
+import { AirSuperiorityStrikeType } from ".";
+
+/// CVCI(空母カットイン)
 
 type PreInfo = {
     has_fighter: boolean,
@@ -9,6 +11,11 @@ type PreInfo = {
     has_torpedo_bomber: boolean,
 }
 
+/**
+ * CVCIの判定に必要な情報を返す
+ * @param equip_slots 
+ * @returns 
+ */
 const calc_pre_info = (
     equip_slots: EquipSlot[],
 ): PreInfo => {
@@ -27,10 +34,15 @@ const calc_pre_info = (
     } as PreInfo);
 }
 
-export function calc_CVs_artillery_spotting_types(
+/**
+ * 
+ * @param attacker_ship 
+ * @returns 
+ */
+export function calc_CVCI_types(
     attacker_ship: EquippedShip,
-): ArtillerySpottingType[] {
-    const triggerables: ArtillerySpottingType[] = [];
+): AirSuperiorityStrikeType[] {
+    const triggerables: AirSuperiorityStrikeType[] = [];
     if (
         !is_carrier_vessel_category(attacker_ship) ||
         (is_abyssal_ship(attacker_ship) && attacker_ship.flags.can_not_CVCI)

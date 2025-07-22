@@ -18,7 +18,7 @@ export type AirStateResult = {
  * @param air_state 
  * @returns 
  */
-export function is_air_state_superiotity_or_more(
+export function is_air_state_superiority_or_more(
     air_state: AirStateType,
 ): boolean {
     const VALID_AIR_STTATE: AirStateType[] = [

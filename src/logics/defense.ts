@@ -1,4 +1,3 @@
-import { RandGenerator } from "@/effects/random";
 import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
 

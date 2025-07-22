@@ -24,6 +24,8 @@ export type UserSettings = {
     smoke_screen_trigger_node_index: number[],
     /** 阻塞気球展開Node 0オリジン */
     use_barrage_balloon_node: number,
+
+    is_event_area: boolean,
 }
 
 export function sim_execute(

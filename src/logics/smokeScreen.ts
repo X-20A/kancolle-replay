@@ -1,24 +1,23 @@
-import { RandGenerator } from "@/effects/random";
 import { is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet";
-import { EquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { Brand } from "@/types/brands";
 import { RandValue } from "@/types/brands/other";
 import { Maf } from "@/utils/Maf";
 
 const SMOKE_SCREEN_TYPE = {
-    Misfire: 1,
-    Single: 2,
-    Twofold: 3,
-    Threefold: 4,
+    Single: 1,
+    Twofold: 2,
+    Threefold: 3,
 } as const
 
 export type SmokeScreenType = keyof typeof SMOKE_SCREEN_TYPE
 
 export type SmokeScreenRates = {
-    [key in SmokeScreenType]: number
+    [key in (SmokeScreenType | 'Misfire')]: number
 }
 
-type SmokeCalcPremise = {
+type PreInfo = {
     /** 処理上の煙幕装置数 */
     substantial_smoke_count: number;
     /** 煙幕装置の改修値合計 */
@@ -34,9 +33,9 @@ type SmokeCalcPremise = {
  * @param ships 
  * @returns 
  */
-const calc_premise = (
+const calc_pre_info = (
     ships: EquippedShip[],
-): SmokeCalcPremise => {
+): PreInfo => {
     const SMOKE_GENERATOR_ID = 500;
     const SMOKE_GENERATOR_KAI_ID = 501;
 
@@ -69,14 +68,16 @@ const calc_premise = (
  * @param player_fleet 
  * @returns 
  */
-export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): SmokeScreenRates {
+export function calc_smoke_screen_activate_rate(
+    player_fleet: PlayerFleet,
+): SmokeScreenRates {
     const fleet_units = concat_fleet_ships(player_fleet);
     const {
         substantial_smoke_count,
         total_base_stars,
         total_kai_stars,
         flagship_luck,
-    } = calc_premise(fleet_units);
+    } = calc_pre_info(fleet_units);
 
     const rates: SmokeScreenRates = { Misfire: 0, Single: 0, Twofold: 0, Threefold: 0 };
 
@@ -145,7 +146,7 @@ export function calc_smoke_screen_activate_rate(player_fleet: PlayerFleet): Smok
 export function calc_triggered_smoke_type(
     rates: SmokeScreenRates,
     rand_value: RandValue,
-): SmokeScreenType {
+): SmokeScreenType | 'Misfire' {
     // 確率の累積値を計算
     const misfire = rates.Misfire;
     const single = misfire + rates.Single;
@@ -153,9 +154,53 @@ export function calc_triggered_smoke_type(
 
     const percentage_rand_value = rand_value * 100;
 
-    // 低い効果から順に判定
     if (percentage_rand_value < misfire) return 'Misfire';
     if (percentage_rand_value < single)  return 'Single';
     if (percentage_rand_value < twofold) return 'Twofold';
     return 'Threefold';
+}
+
+export type ShellAccuracySmokeMod = Brand<number, 'ShellAccuracySmokeMod'>
+
+/**
+ * 攻撃側昼砲撃命中に係る煙幕補正を返す
+ * @param attacker_ship 
+ * @param smoke_type 
+ * @returns 
+ */
+export function calc_shell_accuracy_smoke_mod(
+    attacker_ship: EquippedShip,
+    smoke_type: SmokeScreenType | 'Misfire',
+): ShellAccuracySmokeMod {
+    if (smoke_type === 'Misfire') return 1 as ShellAccuracySmokeMod;
+
+    type SmokeData = Record<SmokeScreenType, number>
+    /** 攻撃: プレイヤー, 電探: 有 */
+    const PLAYER_WITH_RADAR_ACCURACY_MOD: SmokeData =
+        { Single: 0.35, Twofold: 0.25, Threefold: 0.25 } as const;
+    /** 攻撃: プレイヤー, 電探: 無 */
+    const PLAYER_WITHOUT_RADAR_ACCURACY_MOD: SmokeData =
+        { Single: 0.01, Twofold: 0.01, Threefold: 0.01 } as const;
+    /** 攻撃: 深海, 電探: 有 */
+    const ABYSSAL_WITH_RADAR_ACCURACY_MOD: SmokeData =
+        { Single: 0.9, Twofold: 0.83, Threefold: 0.75 } as const;
+    /** 攻撃: 深海, 電: 無 */
+    const ABYSSAL_WITHOUT_RADAR_ACCURACY_MOD: SmokeData =
+        { Single: 0.5, Twofold: 0.5, Threefold: 0.5 } as const;
+    
+
+    const has_radar = attacker_ship.equip_slots.some(
+        slot => slot.equip?.skill_trigger_type === 'B_RADAR'
+    );
+    const is_attacker_player = is_player_ship(attacker_ship);
+
+    if (is_attacker_player) {
+        return has_radar
+            ? PLAYER_WITH_RADAR_ACCURACY_MOD[smoke_type] as ShellAccuracySmokeMod
+            : PLAYER_WITHOUT_RADAR_ACCURACY_MOD[smoke_type] as ShellAccuracySmokeMod;
+    } else {
+        return has_radar
+            ? ABYSSAL_WITH_RADAR_ACCURACY_MOD[smoke_type] as ShellAccuracySmokeMod
+            : ABYSSAL_WITHOUT_RADAR_ACCURACY_MOD[smoke_type] as ShellAccuracySmokeMod;
+    }
 }

@@ -41,3 +41,14 @@ export function derive_abyssal_equip_slot(
     if (!equips.every(is_abyssal_equip)) throw new Error('深海棲艦に艦娘の装備が含まれています');
     return derive_equip_slots(equips, slots);
 }
+
+/**
+ * 装備スロットが空であるか判定して返す
+ * @param slot 
+ * @returns 
+ */
+export function is_slot_empty(
+    slot: EquipSlot,
+): boolean {
+    return slot.equip === null;
+}
