@@ -20,9 +20,9 @@ const calc_pre_info = (
 ): PreInfo => {
     return equips.reduce((acc, equip) => {
         const skill_type = equip.skill_trigger_type;
-        if (skill_type === 'B_APSHELL') acc.has_APShell = true;
-        if (skill_type === 'B_MAINGUN') acc.has_main_gun_L = true;
-        if (skill_type === 'B_SECGUN') acc.has_sec_gun = true;
+        if (skill_type === 'B_AP_SHELL') acc.has_APShell = true;
+        if (skill_type === 'B_MAIN_GUN') acc.has_main_gun_L = true;
+        if (skill_type === 'B_SEC_GUN') acc.has_sec_gun = true;
         if (skill_type === 'B_RADAR') acc.has_radar = true;
         return acc;
     }, {

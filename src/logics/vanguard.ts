@@ -6,7 +6,7 @@ import { Brand } from "@/types/brands";
 export type ShellAccuracyVanguardMod = Brand<number, 'ShellAccuracyVanguardMod'>
 
 /**
- * ターゲット艦隊が警戒陣であった場合の攻撃側昼砲撃命中への警戒陣補正を返す
+ * ターゲット艦隊が警戒陣であった場合の攻撃側砲撃命中への警戒陣補正を返す
  * @param target_unit 
  */
 export function calc_shell_accuracy_vanguard_mod(

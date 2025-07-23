@@ -111,7 +111,7 @@ export function calc_lbas_accuracy(
     unit: PlayerPlaneEquip,
     target_fleet: AbyssalFleet,
     target_ship: AbyssalEquippedShip,
-    barrage_balloon_mod: LBASAccuracyBalloonMod,
+    balloon_mod: LBASAccuracyBalloonMod,
 ): Accuracy {
     /**
      * 命中定数    
@@ -130,7 +130,7 @@ export function calc_lbas_accuracy(
         ACCURACY_CONSTANT
         + 7 * unit.natural_addition.shell_accuracy * mod_boss
         + acc_sp
-    ) * barrage_balloon_mod * combined_fleet_mod;
+    ) * balloon_mod * combined_fleet_mod;
 
     return accuracy as Accuracy;
 }

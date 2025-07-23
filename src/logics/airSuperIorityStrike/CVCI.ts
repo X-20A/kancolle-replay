@@ -44,7 +44,6 @@ export function calc_CVCI_types(
 ): AirSuperiorityStrikeType[] {
     const triggerables: AirSuperiorityStrikeType[] = [];
     if (
-        !is_carrier_vessel_category(attacker_ship) ||
         (is_abyssal_ship(attacker_ship) && attacker_ship.flags.can_not_CVCI)
     ) return triggerables;
 

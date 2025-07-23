@@ -61,6 +61,11 @@ export function is_sunk(ship: EquippedShip): boolean {
     return ship.state.hp_remain <= 0;
 }
 
+/**
+ * 艦が退避しているか判定して返す
+ * @param ship 
+ * @returns 
+ */
 export function is_retreated(ship: EquippedShip): boolean {
     return is_player_ship(ship) && ship.state.is_retreated;
 }

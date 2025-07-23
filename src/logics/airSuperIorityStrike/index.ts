@@ -1,4 +1,4 @@
-import { EquippedShip, is_heavily_damaged } from "@/models/ship/equipped";
+import { EquippedShip, is_carrier_vessel_category, is_heavily_damaged } from "@/models/ship/equipped";
 import { AirStateType, is_air_state_superiority_or_more } from "../airSuperiority/compare";
 import { calc_artillery_spotting_types } from "./artillerySpotting";
 import { calc_CVCI_types } from "./CVCI";
@@ -66,10 +66,10 @@ const calc_gun_ship_pre_info = (
         if (!equip) return acc;
 
         const skill_type = equip.skill_trigger_type;
-        if (skill_type === 'B_MAINGUN') acc.main_gun_count++; // 小中大いずれでも可
-        if (skill_type === 'B_SECGUN') acc.has_sec_gun = true;
+        if (skill_type === 'B_MAIN_GUN') acc.main_gun_count++; // 小中大いずれでも可
+        if (skill_type === 'B_SEC_GUN') acc.has_sec_gun = true;
         if (skill_type === 'B_RADAR') acc.has_radar = true;
-        if (skill_type === 'B_APSHELL') acc.has_AP_shell = true;
+        if (skill_type === 'B_AP_SHELL') acc.has_AP_shell = true;
         return acc;
     }, {
         main_gun_count: 0,
@@ -94,9 +94,9 @@ export function calc_air_superiority_strike_types(
         !is_air_state_superiority_or_more(air_state)
     ) return [];
 
-    const CVCI_types =
-        calc_CVCI_types(attacker_ship);
-    if (CVCI_types.length >= 1) return CVCI_types;
+    if (is_carrier_vessel_category(attacker_ship)) {
+        return calc_CVCI_types(attacker_ship);;
+    }
 
     const info = calc_gun_ship_pre_info(attacker_ship.equip_slots);
     const artillery_spotting_types =
@@ -104,7 +104,10 @@ export function calc_air_superiority_strike_types(
     const Ise_class_CI_types =
         calc_Ise_class_CI_types(attacker_ship, info.main_gun_count);
 
-    return artillery_spotting_types.concat(Ise_class_CI_types);
+    return [
+        ...artillery_spotting_types,
+        ...Ise_class_CI_types,
+    ];
 }
 
 export type AirSuperiorityStrikeChanceMod =

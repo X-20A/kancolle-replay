@@ -50,7 +50,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_S: {
         label: 'Main Gun (S)',
         icon: 1,
-        b_type: 'B_MAINGUN',
+        b_type: 'B_MAIN_GUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "AS", "AV", "AO", "AR", "LHA", "DE"],
         equippable_ship_ids: [541],
@@ -59,7 +59,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_S_AA: {
         label: 'Main Gun (S)',
         icon: 16,
-        b_type: 'B_MAINGUN',
+        b_type: 'B_MAIN_GUN',
         a_type: 'A_HAGUN',
         equippable_ship_types: ["DD", "CL", "CT", "CLT", "AS", "AV", "AO", "AR", "LHA", "DE"],
         equippable_ship_ids: [541],
@@ -68,7 +68,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_M: {
         label: 'Main Gun (M)',
         icon: 2,
-        b_type: 'B_MAINGUN',
+        b_type: 'B_MAIN_GUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "BB", "BBV"],
         equippable_ship_ids: [372, 491, 500, 507, 581, 586, 634, 635, 639, 640, 690, 911],
@@ -77,14 +77,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_L: {
         label: 'Main Gun (L)',
         icon: 3,
-        b_type: 'B_MAINGUN',
+        b_type: 'B_MAIN_GUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["FBB", "BB", "BBV"],
     },
     MAIN_GUN_XL: {
         label: 'Main Gun (L)',
         icon: 3,
-        b_type: 'B_MAINGUN',
+        b_type: 'B_MAIN_GUN',
         a_type: 'A_GUN',
         equippable_ship_types: [],
         equippable_ship_ids: [131, 136, 143, 148, 275, 276, 541, 546, 573, 911, 916],
@@ -92,7 +92,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SECONDARY_GUN: { // (分類A)
         label: 'Secondary Gun',
         icon: 4,
-        b_type: 'B_SECGUN',
+        b_type: 'B_SEC_GUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AS", "AV", "AR", "LHA"],
         equippable_ship_ids: [352, 460, 500, 699, 717],
@@ -101,7 +101,7 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SECONDARY_GUN_AA: { // (分類B)
         label: 'Secondary Gun',
         icon: 16,
-        b_type: 'B_SECGUN',
+        b_type: 'B_SEC_GUN',
         a_type: 'A_HAGUN',
         equippable_ship_types: ["CL", "CT", "CLT", "CA", "CAV", "FBB", "BB", "BBV", "CVL", "CV", "CVB", "AS", "AV", "AR", "LHA"],
         equippable_ship_ids: [352, 460, 500, 699, 717],
@@ -110,14 +110,14 @@ export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     SECONDARY_GUN_L: { // (分類C)
         label: 'Secondary Gun',
         icon: 4,
-        b_type: 'B_SECGUN',
+        b_type: 'B_SEC_GUN',
         a_type: 'A_GUN',
         equippable_ship_types: ["CA", "FBB", "BB", "BBV", "CV", "CVB"],
     },
     AP_SHELL: {
         label: 'AP Shell',
         icon: 13,
-        b_type: 'B_APSHELL',
+        b_type: 'B_AP_SHELL',
         equippable_ship_types: ["FBB", "BB", "BBV"],
         unequippable_ship_ids: [877],
     },

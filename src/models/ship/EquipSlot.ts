@@ -47,7 +47,7 @@ export function derive_abyssal_equip_slot(
  * @param slot 
  * @returns 
  */
-export function is_slot_empty(
+export function is_empty_slot(
     slot: EquipSlot,
 ): boolean {
     return slot.equip === null;
