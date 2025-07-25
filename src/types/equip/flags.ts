@@ -36,7 +36,7 @@ export type PlayerEquipFlags = EquipFlagsBase & {
     is_rocket_fighter: boolean,
     
     /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */
-    is_special_submarine_CI_torigger: boolean,
+    is_submarine_CI_trigger: boolean,
     /** 【爆雷】カテゴリであるか(￢含投射機) */
     is_DC_only: boolean,
     /** 【爆雷投射機】カテゴリであるか(￢含爆雷) */

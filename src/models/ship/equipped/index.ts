@@ -201,6 +201,17 @@ export function is_damage_lightly_or_more(ship: EquippedShip): boolean {
 }
 
 /**
+ * 艦のダメージが中破以上であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_damage_moderatery_or_more(
+    ship: EquippedShip,
+): boolean {
+    return ship.state.hp_remain / ship.edited_status.hp <= 0.5;
+}
+
+/**
  * 艦が大破状態であるか判定して返す
  * @param ship 
  * @returns 

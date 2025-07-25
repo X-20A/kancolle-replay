@@ -41,7 +41,7 @@ export function derive_player_equip_master(
         is_concentrated: equip_data.is_concentrated ?? false,
         is_rocket_fighter: equip_data.is_rocket_fighter ?? false,
         is_skip_bomber: equip_data.is_skip_bomber ?? false,
-        is_special_submarine_CI_torigger: equip_data.is_special_submarine_CI_torigger ?? false,
+        is_submarine_CI_trigger: equip_data.is_submarine_CI_torigger ?? false,
         is_DC_only: equip_data.is_DC_only ?? false,
         is_DCP: equip_data.is_DCP ?? false,
         can_ASW_penetrate: equip_data.can_ASW_penetrate ?? false,

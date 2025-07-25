@@ -51,6 +51,8 @@ export function calc_accuracy_of_triggered_night_scout(
             const night_scout_accuracy =
                 night_scout.natural_addition.shell_accuracy;
             if (
+                // NOTE: 命中値の高いものを優先
+                // https://x.com/CC_jabberwock/status/1542501537036939265
                 night_scout_accuracy > best_night_scout_accuracy &&
                 rand.next() < calc_trigger_rate(ship, night_scout)
             ) best_night_scout = night_scout;

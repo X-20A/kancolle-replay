@@ -162,7 +162,7 @@ export type PlayerEquipData = {
     /** 集中配備系の機銃であるか */
     is_concentrated?: true,
     /** 後期型潜水艦魚雷 専用夜戦カットインのトリガー装備であるか */
-    is_special_submarine_CI_torigger?: true,
+    is_submarine_CI_torigger?: true,
     /** 【爆雷】カテゴリであるか(￢含投射機) */
     is_DC_only?: true,
     /** 【爆雷投射機】カテゴリであるか(￢含爆雷) */

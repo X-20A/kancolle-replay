@@ -199,8 +199,6 @@ export type PlayerShipData = {
     is_air_craft_carrier_BB?: true,
     /** 対潜劣後な軽空(鈴熊のみ 25/06/04)であるか */
     is_ASW_subordinated_CVL?: true,
-    /** 海空立体攻撃 | 瑞雲立体攻撃 発動可能な艦であるか */
-    has_potential_zuiun_CI?: true,
     /** 夜間作戦航空要員 内蔵艦であるか */
     has_built_in_night_crew?: true,
     /** 対PT特効 かつ 対PT優先ターゲティング 艦であるか */
@@ -244,8 +242,6 @@ export type PlayerNakedShipFlags = {
     is_air_craft_carrier_BB: boolean,
     /** 対潜劣後な軽空(鈴熊のみ 25/06/04)であるか */
     is_ASW_subordinated_CVL: boolean,
-    /** 海空立体攻撃 | 瑞雲立体攻撃 発動可能な艦であるか */
-    has_potential_zuiun_CI: boolean,
     /** 夜間作戦航空要員 内蔵艦であるか */
     has_built_in_night_crew: boolean,
     /** 対PT特効 かつ 対PT優先ターゲティング 艦であるか */

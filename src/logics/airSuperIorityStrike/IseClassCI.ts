@@ -1,24 +1,24 @@
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_name, is_player_ship } from "@/models/ship/equipped";
 import { AirSuperiorityStrikeType } from ".";
+import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
+import { EquipSlot } from "@/models/ship/EquipSlot";
 
 /// 海空立体攻撃 | 瑞雲立体攻撃
 
-export function calc_Ise_class_CI_types (
-    attacker_ship: EquippedShip,
-    main_gun_count: number,
-): AirSuperiorityStrikeType[] {
-    const triggerables: AirSuperiorityStrikeType[] = [];
-    if (
-        !is_player_ship(attacker_ship) ||
-        !attacker_ship.flags.has_potential_zuiun_CI ||
-        main_gun_count === 0
-    ) return triggerables;
+const SUBJECT_SHIP: PlayerShipNameJP[] = [
+    '伊勢改二',
+    '日向改二',
+];
 
-    const { equip_slots } = attacker_ship;
-    const {
-        zuiun_count,
-        suisei_count,
-    } = equip_slots.reduce((total, slot) => {
+type PreInfo = {
+    zuiun_count: number,
+    suisei_count: number,
+}
+
+const calc_pre_info = (
+    equip_slots: EquipSlot[],
+): PreInfo => {
+    return equip_slots.reduce((total, slot) => {
         const { equip } = slot;
         if (!equip || slot.slot_count === 0) return total;
 
@@ -31,11 +31,29 @@ export function calc_Ise_class_CI_types (
             equip.type_id === 'DIVE_BOMBER' &&
             equip.name_jp.includes('六三四空')
         ) total.suisei_count++;
+        
         return total;
     }, {
         zuiun_count: 0,
         suisei_count: 0,
     });
+}
+
+export function calc_Ise_class_CI_types (
+    attacker_ship: EquippedShip,
+    main_gun_count: number,
+): AirSuperiorityStrikeType[] {
+    const triggerables: AirSuperiorityStrikeType[] = [];
+    if (
+        !is_player_ship(attacker_ship) ||
+        !includes_ship_name(SUBJECT_SHIP, attacker_ship.name_jp) ||
+        main_gun_count === 0
+    ) return triggerables;
+
+    const {
+        zuiun_count,
+        suisei_count,
+    } = calc_pre_info(attacker_ship.equip_slots);
 
     if (zuiun_count >= 2) triggerables.push('Zuiun_CI');
     if (suisei_count >= 2) triggerables.push('Suisei_CI');

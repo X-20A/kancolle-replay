@@ -72,7 +72,6 @@ export function derive_player_naked_ship(
         has_potential_air_attack: ship_data.has_potential_air_attack ?? false,
         is_air_craft_carrier_BB: ship_data.is_air_craft_carrier_BB ?? false,
         is_ASW_subordinated_CVL: ship_data.is_ASW_subordinated_CVL ?? false,
-        has_potential_zuiun_CI: ship_data.has_potential_zuiun_CI ?? false,
         has_built_in_night_crew: ship_data.has_built_in_night_crew ?? false,
         is_anti_PT_ship: ship_data.is_anti_PT_ship ?? false,
         is_anti_install_ship: ship_data.is_anti_install_ship ?? false,
