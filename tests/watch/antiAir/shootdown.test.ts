@@ -10,10 +10,11 @@ import { HIGH_10 } from "tests/setups/assets/equips/gun";
 import { F4U_1D, SUISEI_EGUSA } from "tests/setups/assets/equips/plane";
 import { SURFACE_22 } from "tests/setups/assets/equips/radar";
 import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
-import { make_Akizuki } from "tests/setups/assets/ship/player";
+import { Akizuki } from "tests/setups/assets/ship/player";
+import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
-const AKIZUKI = make_Akizuki([HIGH_10, SURFACE_22]); // AACI種別: [2]
+const AKIZUKI = derive_PES(Akizuki, [HIGH_10, SURFACE_22]); // AACI種別: [2]
 
 const JIGOKU_BOMBER = derive_abyssal_equip(1548); // 射撃回避なし
 

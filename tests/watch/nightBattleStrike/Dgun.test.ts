@@ -1,23 +1,24 @@
 import { NightBattleStrikeType } from "@/logics/nightBattleStrike";
 import { calc_D_gun_mod } from "@/logics/nightBattleStrike/Dgun";
-import { Equip } from "@/models/equip/basic";
+import { Equip, PlayerEquip } from "@/models/equip/basic";
 import { derive_player_equip_slots, EquipSlot } from "@/models/ship/EquipSlot";
 import { D_2_GUN, D_3_GUN } from "tests/setups/assets/equips/gun";
 import { describe, expect, it } from "vitest";
 
 const SLOT_COUNTS = [0, 0, 0, 0];
 const derive_slot = (
-    equips: Equip[],
+    equips: PlayerEquip[],
 ): EquipSlot[] => {
     return derive_player_equip_slots(
         equips,
         SLOT_COUNTS,
+        'None',
     );
 }
 
 describe('夜戦CI系', () => {
     it('D型砲組み合わせによる火力補正', () => {
-        const test = (expected: number, equips: Equip[]) => {
+        const test = (expected: number, equips: PlayerEquip[]) => {
             const CI_TYPE: NightBattleStrikeType = 'DDCI_GTR';
             const result = calc_D_gun_mod(
                 CI_TYPE,
@@ -38,7 +39,7 @@ describe('夜戦CI系', () => {
     });
     it('主魚電、魚電見 にしか乗らない', () => {
         const test = (expected: number, CI_type: NightBattleStrikeType) => {
-            const EQUIPS: Equip[] = [D_2_GUN];
+            const EQUIPS: PlayerEquip[] = [D_2_GUN];
             const result = calc_D_gun_mod(
                 CI_type,
                 derive_slot(EQUIPS),

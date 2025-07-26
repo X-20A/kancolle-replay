@@ -121,7 +121,7 @@ export function calc_abyssal_fleet_weighted_anti_air(
 ): number {
     const actual_formation = formation ?? defender_fleet.formation;
     const ship_total = defender_fleet.main_fleet_units.reduce((total, unit) => {
-        const ship = unit.ship;
+        const { ship } = unit;
         if (
             is_sunk(ship) ||
             ship.flags.is_faraway

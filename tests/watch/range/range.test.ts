@@ -2,26 +2,27 @@ import { EquippedShip } from "@/models/ship/equipped";
 import { SKILLED_SPANNER } from "tests/setups/assets/equips/other";
 import { NISHIKI_SCOUT_PLANE } from "tests/setups/assets/equips/plane";
 import { GFCS_RADAR, SG_INITIAL_RADAR } from "tests/setups/assets/equips/radar";
-import { make_Fletcher, make_Ise_kai_2 } from "tests/setups/assets/ship/player";
+import { FLETCHER, Ise_kai_ni } from "tests/setups/assets/ship/player";
+import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('射程系テスト', () => {
     it('装備による射程変化チェック', () => {    
-        const FLETCHER = make_Fletcher([]);
-        const GFCS_FLETCHER = make_Fletcher([GFCS_RADAR]);
-        const SG_FLETCHER = make_Fletcher([SG_INITIAL_RADAR]);
-        const SG_GFCS_FLETCHER = make_Fletcher([GFCS_RADAR, SG_INITIAL_RADAR]);
+        const SUPPIN_FLETCHER = derive_PES(FLETCHER, []);
+        const GFCS_FLETCHER = derive_PES(FLETCHER, [GFCS_RADAR]);
+        const SG_FLETCHER = derive_PES(FLETCHER, [SG_INITIAL_RADAR]);
+        const SG_GFCS_FLETCHER = derive_PES(FLETCHER, [GFCS_RADAR, SG_INITIAL_RADAR]);
 
-        const ISE = make_Ise_kai_2([]);
-        const NISHIKI_ISE = make_Ise_kai_2([NISHIKI_SCOUT_PLANE]);
-        const SPANNER_ISE = make_Ise_kai_2([SKILLED_SPANNER]);
-        const FULL_ISE = make_Ise_kai_2([NISHIKI_SCOUT_PLANE, SKILLED_SPANNER]);
+        const ISE = derive_PES(Ise_kai_ni, []);
+        const NISHIKI_ISE = derive_PES(Ise_kai_ni, [NISHIKI_SCOUT_PLANE]);
+        const SPANNER_ISE = derive_PES(Ise_kai_ni, [SKILLED_SPANNER]);
+        const FULL_ISE = derive_PES(Ise_kai_ni, [NISHIKI_SCOUT_PLANE, SKILLED_SPANNER]);
 
         const test = (expected: number, ship: EquippedShip) => {
             expect(expected).toBe(ship.view_status.range);
         };
 
-        test(1, FLETCHER);
+        test(1, SUPPIN_FLETCHER);
         test(2, GFCS_FLETCHER);
         test(3, SG_FLETCHER);
         test(3, SG_GFCS_FLETCHER);

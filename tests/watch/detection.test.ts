@@ -1,18 +1,19 @@
 import { analyze_ships_detection, FleetDetectionStatus } from "@/logics/detection";
 import { SAIUN } from "tests/setups/assets/equips/plane";
-import { make_Fletcher, make_Ranger } from "tests/setups/assets/ship/player";
+import { FLETCHER, Ranger } from "tests/setups/assets/ship/player";
+import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('索敵系テスト', () => {
     it('detection_power と recon_power チェック', () => {
-        const FLETCHER = make_Fletcher([]);
-        const RANGER = make_Ranger([]);
-        const SAIUN_RANGER = make_Ranger([SAIUN])
+        const EQUIPPED_FLETCHER = derive_PES(FLETCHER, []);
+        const RANGER = derive_PES(Ranger, []);
+        const SAIUN_RANGER = derive_PES(Ranger, [SAIUN])
 
-        const result_1 = analyze_ships_detection([FLETCHER]);
+        const result_1 = analyze_ships_detection([EQUIPPED_FLETCHER]);
         const result_2 = analyze_ships_detection([RANGER]);
-        const result_3 = analyze_ships_detection([FLETCHER, RANGER]);
-        const result_4 = analyze_ships_detection([FLETCHER, SAIUN_RANGER]);
+        const result_3 = analyze_ships_detection([EQUIPPED_FLETCHER, RANGER]);
+        const result_4 = analyze_ships_detection([EQUIPPED_FLETCHER, SAIUN_RANGER]);
 
         const test = (expected: number[], result: FleetDetectionStatus) => {
             expect(expected[0]).toBe(result.recon_power);

@@ -5,14 +5,14 @@ import { DRUM, TSSL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR } from "tests/setups/assets/equips/radar";
 import { FIVE_BARREL_TORPEDO } from "tests/setups/assets/equips/torpedo";
 import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
-import { make_Akizuki, make_Fletcher, Tash_kai } from "tests/setups/assets/ship/player";
+import { FLETCHER, Akizuki, Tash_kai } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('夜戦CI系', () => {
     it('D型砲組み合わせによる火力補正', () => {
-        // const SUPPIN_FLETCHER = make_Fletcher([]);
-        // const GTR_AKIZUKI = make_Akizuki([D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR]);
+        const SUPPIN_FLETCHER = derive_PES(FLETCHER, []);
+        const GTR_AKIZUKI = derive_PES(Akizuki, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR]);
         const ALL_DDCI_TASH = derive_PES(Tash_kai, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR, DRUM], TSSL);
         // console.log('TSSL: ', TSSL);
         
@@ -33,8 +33,8 @@ describe('夜戦CI系', () => {
         };
 
         // 正例
-        // test([], SUPPIN_FLETCHER);
-        // test(['DDCI_GTR', 'Mixed_CI'], GTR_AKIZUKI);
+        test([], SUPPIN_FLETCHER);
+        test(['DDCI_GTR', 'Mixed_CI'], GTR_AKIZUKI);
         test(['DDCI_GTR', 'DDCI_LTR', 'DDCI_TTL', 'DDCI_RDL', 'Mixed_CI'], ALL_DDCI_TASH);
 
 

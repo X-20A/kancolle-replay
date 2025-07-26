@@ -3,12 +3,13 @@ import { Equip, is_player_plane_equip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";
 import { SAIUN } from "tests/setups/assets/equips/plane";
-import { make_Fletcher } from "tests/setups/assets/ship/player";
+import { FLETCHER } from "tests/setups/assets/ship/player";
+import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('対空系テスト', () => {
     it('割合撃墜率', () => {
-        const FLETCHER = make_Fletcher([]);
+        const SUPPIN_FLETCHER = derive_PES(FLETCHER, []);
 
         const test = (
             expected: number,
@@ -22,6 +23,6 @@ describe('対空系テスト', () => {
             expect(expected).toBe(result);
         };
 
-        test(0.155, FLETCHER, SAIUN);
+        test(0.155, SUPPIN_FLETCHER, SAIUN);
     });
 });
