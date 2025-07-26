@@ -3,7 +3,7 @@ import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fle
 import { FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
 import { is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
-import { derive_equipped_player_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
+import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
 import { PlayerShipState } from "@/models/ship/state";
 import { ShipUniqueId } from "@/types/brands/ship";
 
@@ -161,7 +161,7 @@ const calc_supplied_ships = (
             hp_remain: ship.state.hp_remain,
             slots: ship.equip_slots.map(slot => slot.slot_count),
         };
-        const pre_new_ship = derive_equipped_player_ship(
+        const pre_new_ship = derive_player_equipped_ship(
             ship.lv,
             ship.special_item_id,
             ship.master_id,

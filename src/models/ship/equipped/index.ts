@@ -5,7 +5,7 @@ import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
-import { derive_equipped_player_ship, PlayerEquippedShipOptions } from "./player";
+import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
@@ -375,27 +375,4 @@ export function merge_status_components_with_max_range(
         ...summed,
         range: Math.max(a.range, b.range),
     };
-}
-
-export function derive_equipped_ship(
-    lv: ShipLv,
-    special_item_id: SpecialItemId,
-    ship_id: ShipId,
-    equips: Equip[],
-    ex_equip: Equip | null,
-    options: PlayerEquippedShipOptions = {},
-): EquippedShip {
-    console.log('ex_equip: ', ex_equip);
-    return ship_id < 1500
-        ? derive_equipped_player_ship(
-            lv,
-            special_item_id,
-            ship_id,
-            equips,
-            ex_equip,
-            options,
-        )
-        : derive_equipped_abyssal_ship(
-            ship_id as AbyssalShipId,
-        );
 }

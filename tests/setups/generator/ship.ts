@@ -1,53 +1,14 @@
 import { Equip } from "@/models/equip/basic";
 import { brandShipId, brandShipLv, ShipId } from "@/types/brands/ship";
 import { SpecialItemId } from "@/types/ship/ship";
-import { curry_derive_ship } from "../curry";
-import { EquippedShip } from "@/models/ship/equipped";
+import { curry_derive_player_equipped_ship } from "../curry";
+import { EquippedShip, PlayerEquippedShip } from "@/models/ship/equipped";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { derive_player_naked_ship } from "@/models/ship/naked/player";
 import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
 import { NakedShip } from "@/models/ship/naked/base";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
-
-/**
- * 艦IDと装備配列、ex_equipから艦オブジェクトを生成して返す    
- * ユニークid: 1, 艦Lv: 99 固定
- * @param id 艦ID
- * @param equips 装備配列
- * @param ex_equip ex装備（任意）
- */
-const make_ship_from_id_equips = (
-    id: number,
-    equips: Equip[],
-    ex_equip: Equip | undefined = undefined,
-): EquippedShip => curry_derive_ship(
-    brandShipLv(99),
-    SpecialItemId.None,
-    brandShipId(id),
-    equips,
-    ex_equip,
-    undefined,
-);
-
-/**
- * 艦IDと装備配列、ex_equipから艦オブジェクトを生成して返す（IDをブランド型に変換）
- * @param id 艦ID
- * @param equips 装備配列
- * @param ex_equip ex装備（任意）
- */
-const short_make_ship_from_id_equips = (
-    id: number, equips: Equip[], ex_equip: Equip | undefined = undefined,
-) =>
-    make_ship_from_id_equips(id, equips, ex_equip);
-
-/**
- * 艦IDから装備配列・ex_equipを受け取る関数を返す
- * @param id 艦ID
- */
-const pre_make_player_ship_from_id = (id: number) => (
-    equips: Equip[], ex_equip: Equip | undefined = undefined,
-) => short_make_ship_from_id_equips(id, equips, ex_equip);
 
 const calc_ship_id_from_name = (
     name: PlayerShipNameJP,
@@ -60,12 +21,43 @@ const calc_ship_id_from_name = (
 }
 
 /**
+ * 艦IDと装備配列、ex_equipから艦オブジェクトを生成して返す    
+ * ユニークid: 1, 艦Lv: 99 固定
+ * @param id 艦ID
+ * @param equips 装備配列
+ * @param ex_equip ex装備（任意）
+ */
+const make_ship_from_id_equips = (
+    id: number,
+    equips: Equip[],
+    _ex_equip?: Equip,
+): PlayerEquippedShip => {
+    const ex_equip = _ex_equip ?? 'None';
+    return curry_derive_player_equipped_ship(
+        brandShipLv(99),
+        SpecialItemId.None,
+        brandShipId(id),
+        {},
+        equips,
+        ex_equip,
+    );
+}
+
+/**
+ * 艦IDから装備配列・ex_equipを受け取る関数を返す
+ * @param id 艦ID
+ */
+const pre_make_player_ship_from_id = (id: number) => (
+    equips: Equip[], ex_equip?: Equip,
+) => make_ship_from_id_equips(id, equips, ex_equip);
+
+/**
  * 艦名から装備配列・ex_equipを受け取る関数を返す
  * @param name 艦名
  */
 export const pre_make_player_ship_from_name = (
     name: PlayerShipNameJP,
-): (equips: Equip[], ex_equip?: Equip | undefined) => EquippedShip => {
+): (equips: Equip[], ex_equip?: Equip) => PlayerEquippedShip => {
     const id = calc_ship_id_from_name(name);
     return pre_make_player_ship_from_id(id);
 }

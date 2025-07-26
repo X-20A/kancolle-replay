@@ -33,12 +33,12 @@ export type PlayerEquippedShipOptions = {
  * @param options 
  * @returns 
  */
-export function derive_player_equipped_ship_core(
+const derive_player_equipped_ship_core = (
     naked_ship: PlayerNakedShip,
     equips: PlayerEquip[],
     special_item_id: SpecialItemId,
     options: PlayerEquippedShipOptions,
-): PlayerEquippedShip {
+): PlayerEquippedShip => {
 
     const naked_status = naked_ship.status;
     const total_natural_equip_addition = equips
@@ -115,16 +115,16 @@ export function derive_player_equipped_ship_core(
     }
 }
 
-export function derive_equipped_player_ship(
+export function derive_player_equipped_ship(
     lv: ShipLv,
     special_item_id: SpecialItemId,
     ship_id: ShipId,
-    normal_slot_equips: Equip[],
-    ex_slot_equip: Equip | null,
     options: PlayerEquippedShipOptions,
+    normal_slot_equips: Equip[],
+    ex_slot_equip: Equip | 'None',
 ): PlayerEquippedShip {
     console.log('ex_slot_equip: ', ex_slot_equip);
-    const equips = ex_slot_equip
+    const equips = ex_slot_equip !== 'None'
         ? [...normal_slot_equips, ex_slot_equip]
         : normal_slot_equips;
     if (
