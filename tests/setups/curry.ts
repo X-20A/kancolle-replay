@@ -1,6 +1,8 @@
-import { derive_equip } from "@/models/equip/basic";
-import { derive_player_equipped_ship } from "@/models/ship/equipped/player";
-import { curryN } from "ramda";
+import { derive_equip, Equip } from "@/models/equip/basic";
+import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
+import { ShipId, ShipLv } from "@/types/brands/ship";
+import { SpecialItemId } from "@/types/ship/ship";
+import { curry, curryN } from "ramda";
 
 // ! curryはオプショナル系のパラメータも渡さないと関数呼び出しが成立しない
 // ! 基本的にcurryNを使うこと
@@ -16,4 +18,21 @@ export const curry_derive_equip = curryN(2, derive_equip);
  * ex_equipは任意で渡すことができる
  * @see derive_equipped_ship
  */
-export const curry_derive_player_equipped_ship = curryN(6, derive_player_equipped_ship);
+export const curry_derive_player_equipped_ship = curry(
+    (
+        lv: ShipLv,
+        special_item_id: SpecialItemId,
+        ship_id: ShipId,
+        options: PlayerEquippedShipOptions,
+        normal_slot_equips: Equip[],
+        ex_slot_equip: Equip | "None"
+    ) =>
+        derive_player_equipped_ship(
+            lv,
+            special_item_id,
+            ship_id,
+            options,
+            normal_slot_equips,
+            ex_slot_equip
+        )
+);

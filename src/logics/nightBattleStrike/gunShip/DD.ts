@@ -17,8 +17,7 @@ const calc_pre_info = (
 ): PreInfo => {
     const DD_pre_info = equip_slots.reduce((total, slot) => {
         const { equip } = slot;
-        if (!equip) return total;
-        console.log('equip: ', equip.name_jp);
+        if (equip === 'None') return total;
 
         const { name_jp: name } = equip;
         if (name === 'ドラム缶(輸送用)') total.has_Drum = true;
@@ -73,7 +72,6 @@ export function calc_DD_night_battle_strike_types(
         is_install_type(defender_ship) &&
         main_gun_count === 0
     ) return types;
-    console.log('has_PICKET_category: ', has_PICKET_category);
     if (
         has_PICKET_category &&
         torpedo_count >= 1 &&
@@ -88,7 +86,6 @@ export function calc_DD_night_battle_strike_types(
         torpedo_count >= 1 &&
         has_Drum
     ) types.push('DDCI_RDL');
-    console.log('types: ', types);
 
     return types;
 }

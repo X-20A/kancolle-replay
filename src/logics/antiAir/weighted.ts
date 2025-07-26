@@ -6,6 +6,7 @@ import { match } from "ts-pattern";
 import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from ".";
 import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { is_sunk } from "@/models/ship/equipped";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /**
  * 装備倍率を返す    
@@ -88,16 +89,16 @@ export function calc_player_fleet_weighted_anti_air(
     formation: SingleFleetFormationType,
 ): number {
     const ship_total = defender_fleet.main_fleet_units.reduce((total, unit) => {
-        const ship = unit.ship;
+        const { ship } = unit;
         if (
             is_sunk(ship) ||
             ship.state.is_retreated
         ) return total;
 
         return Math.floor(
-            total + ship.equip_slots.reduce((total, equip_slot) => {
-                const equip = equip_slot.equip;
-                if (!equip) return total;
+            total + ship.equip_slots.reduce((total, slot) => {
+                const { equip } = slot;
+                if (!is_equip_exsist(equip)) return total;
 
                 return total + (
                     calc_M(equip)

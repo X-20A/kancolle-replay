@@ -1,14 +1,32 @@
-import { Equip } from "@/models/equip/basic";
+import { Equip, PlayerEquip } from "@/models/equip/basic";
 import { brandShipId, brandShipLv, ShipId } from "@/types/brands/ship";
 import { SpecialItemId } from "@/types/ship/ship";
-import { curry_derive_player_equipped_ship } from "../curry";
-import { EquippedShip, PlayerEquippedShip } from "@/models/ship/equipped";
+import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { derive_player_naked_ship } from "@/models/ship/naked/player";
 import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
-import { NakedShip } from "@/models/ship/naked/base";
+import { NakedShip, PlayerNakedShip } from "@/models/ship/naked/base";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
+import { __player_equipped_ship__, derive_player_equipped_ship } from "@/models/ship/equipped/player";
+
+const {
+    derive_player_equipped_ship_core,
+} =__player_equipped_ship__;
+
+export function derive_PES(
+    naked_ship: PlayerNakedShip,
+    normal_slot_equips: PlayerEquip[],
+    ex_slot_equip?: PlayerEquip,
+): PlayerEquippedShip {
+    return derive_player_equipped_ship_core(
+        naked_ship,
+        normal_slot_equips,
+        ex_slot_equip ?? 'None',
+        SpecialItemId.None,
+        {},
+    );
+}
 
 const calc_ship_id_from_name = (
     name: PlayerShipNameJP,
@@ -30,10 +48,9 @@ const calc_ship_id_from_name = (
 const make_ship_from_id_equips = (
     id: number,
     equips: Equip[],
-    _ex_equip?: Equip,
+    ex_equip: Equip | 'None',
 ): PlayerEquippedShip => {
-    const ex_equip = _ex_equip ?? 'None';
-    return curry_derive_player_equipped_ship(
+    return derive_player_equipped_ship(
         brandShipLv(99),
         SpecialItemId.None,
         brandShipId(id),
@@ -44,23 +61,17 @@ const make_ship_from_id_equips = (
 }
 
 /**
- * 艦IDから装備配列・ex_equipを受け取る関数を返す
- * @param id 艦ID
- */
-const pre_make_player_ship_from_id = (id: number) => (
-    equips: Equip[], ex_equip?: Equip,
-) => make_ship_from_id_equips(id, equips, ex_equip);
-
-/**
  * 艦名から装備配列・ex_equipを受け取る関数を返す
  * @param name 艦名
  */
 export const pre_make_player_ship_from_name = (
     name: PlayerShipNameJP,
-): (equips: Equip[], ex_equip?: Equip) => PlayerEquippedShip => {
+): (equips: Equip[], ex_equip?: Equip | null) => PlayerEquippedShip => {
     const id = calc_ship_id_from_name(name);
-    return pre_make_player_ship_from_id(id);
-}
+    return (equips: Equip[], ex_equip: Equip | null = null) => {
+        return make_ship_from_id_equips(id, equips, ex_equip ?? 'None');
+    };
+};
 
 const derive_naked_ship = (
     id: number,
@@ -73,8 +84,7 @@ const derive_naked_ship = (
 
 export function derive_naked_ship_from_name(
     name: PlayerShipNameJP,
-): NakedShip {
+): PlayerNakedShip {
     const id = calc_ship_id_from_name(name);
-
-    return derive_naked_ship(id);
+    return derive_player_naked_ship(brandShipLv(99), id);
 }

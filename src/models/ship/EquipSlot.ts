@@ -1,23 +1,52 @@
-import { AbyssalEquip, Equip, is_abyssal_equip, is_player_equip, PlayerEquip } from "../equip/basic"
+import { AbyssalEquip, Equip, PlayerEquip } from "../equip/basic"
 
 // TODO: 増設とかの調停
-type EquipSlotBase<T extends PlayerEquip | AbyssalEquip> = {
+
+type EquipSlotBase = {
     readonly slot_count: number, // スライドがあるので航空機でなくても持たせる
     readonly original_slot_count: number,
-    readonly equip: T | null,
-    readonly slot_index: number,
 }
 
-// ? 装備スロットまで 艦娘 | 深海 を分ける必要あるか？ここで吸収してもいいかも
-export type PlayerEquipSlot = EquipSlotBase<PlayerEquip>;
-export type AbyssalEquipSlot = EquipSlotBase<AbyssalEquip>;
+export type PlayerEquipSlot = EquipSlotBase & {
+    readonly equip: PlayerEquip | 'None',
+    readonly slot_index: number | 'ex',
+}
+
+export type AbyssalEquipSlot = EquipSlotBase & {
+    readonly equip: AbyssalEquip,
+    readonly slot_index: number,
+};
 export type EquipSlot = PlayerEquipSlot | AbyssalEquipSlot;
 
-function derive_equip_slots<T extends PlayerEquip | AbyssalEquip>(
-    /** 実機とは違って中空を許容する */
-    equips: (T | null)[],
-    slots: readonly number[]
-): EquipSlotBase<T>[] {
+export function derive_player_equip_slots(
+    normal_equips: (PlayerEquip | 'None')[],
+    slots: readonly number[],
+    ex_equip: PlayerEquip | 'None',
+): PlayerEquipSlot[] {
+    const normal_slots = slots.map((slot_count, index) => ({
+        equip: normal_equips[index] ?? 'None',
+        slot_count,
+        original_slot_count: slot_count,
+        slot_index: index,
+    }));
+
+    const ex_slot: PlayerEquipSlot = {
+        equip: ex_equip,
+        slot_count: 0,
+        original_slot_count: 0,
+        slot_index: 'ex',
+    }
+
+    return [
+        ...normal_slots,
+        ex_slot,
+    ];
+}
+
+export function derive_abyssal_equip_slots(
+    equips: AbyssalEquip[],
+    slots: readonly number[],
+): AbyssalEquipSlot[] {
     return slots.map((slot_count, index) => ({
         equip: equips[index],
         slot_count,
@@ -26,29 +55,13 @@ function derive_equip_slots<T extends PlayerEquip | AbyssalEquip>(
     }));
 }
 
-export function derive_player_equip_slot(
-    equips: Equip[],
-    slots: readonly number[]
-): PlayerEquipSlot[] {
-    if (!equips.every(is_player_equip)) throw new Error('艦娘の装備に深海の装備が含まれています');
-    return derive_equip_slots(equips, slots);
-}
-
-export function derive_abyssal_equip_slot(
-    equips: Equip[],
-    slots: readonly number[]
-): AbyssalEquipSlot[] {
-    if (!equips.every(is_abyssal_equip)) throw new Error('深海棲艦に艦娘の装備が含まれています');
-    return derive_equip_slots(equips, slots);
-}
-
 /**
  * 装備スロットが空であるか判定して返す
  * @param slot 
  * @returns 
  */
-export function is_empty_slot(
-    slot: EquipSlot,
-): boolean {
-    return slot.equip === null;
+export function is_equip_exsist(
+    equip: Equip | 'None',
+): equip is Equip {
+    return equip !== 'None';
 }

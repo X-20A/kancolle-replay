@@ -1,6 +1,7 @@
 import { is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet";
 import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 import { Brand } from "@/types/brands";
 import { RandValue } from "@/types/brands/other";
 import { Maf } from "@/utils/Maf";
@@ -40,9 +41,9 @@ const calc_pre_info = (
     const SMOKE_GENERATOR_KAI_ID = 501;
 
     return ships.reduce((total, ship) => {
-        ship.equip_slots.forEach((equip_built) => {
-            const equip = equip_built.equip;
-            if (!equip || !is_player_equip(equip)) return total;
+        ship.equip_slots.forEach((slot) => {
+            const { equip } = slot;
+            if (!is_equip_exsist(equip) || !is_player_equip(equip)) return total;
 
             if (equip.master_id === SMOKE_GENERATOR_ID) {
                 total.substantial_smoke_count += 1;
@@ -191,7 +192,7 @@ export function calc_shell_accuracy_smoke_mod(
     
 
     const has_radar = attacker_ship.equip_slots.some(
-        slot => slot.equip?.skill_trigger_type === 'B_RADAR'
+        slot => is_equip_exsist(slot.equip) && slot.equip.skill_trigger_type === 'B_RADAR'
     );
     const is_attacker_player = is_player_equipped_ship(attacker_ship);
 

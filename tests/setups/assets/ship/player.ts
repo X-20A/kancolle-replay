@@ -1,4 +1,4 @@
-import { pre_make_player_ship_from_name } from "../../generator/ship";
+import { derive_naked_ship_from_name, pre_make_player_ship_from_name } from "../../generator/ship";
 
 /** 鵜来改 */
 export const make_Ukuru_kai = pre_make_player_ship_from_name('鵜来改');
@@ -16,7 +16,7 @@ export const make_Shiratsuyu_kai_2 = pre_make_player_ship_from_name('白露改�
 /** 秋月 */
 export const make_Akizuki = pre_make_player_ship_from_name('秋月');
 /** タシュケント改 */
-export const make_Tash = pre_make_player_ship_from_name('Ташкент改');
+export const Tash_kai = derive_naked_ship_from_name('Ташкент改');
 
 
 /** 加古改二 */

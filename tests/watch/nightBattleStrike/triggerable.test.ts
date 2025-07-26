@@ -5,14 +5,16 @@ import { DRUM, TSSL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR } from "tests/setups/assets/equips/radar";
 import { FIVE_BARREL_TORPEDO } from "tests/setups/assets/equips/torpedo";
 import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
-import { make_Akizuki, make_Fletcher, make_Tash } from "tests/setups/assets/ship/player";
+import { make_Akizuki, make_Fletcher, Tash_kai } from "tests/setups/assets/ship/player";
+import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('夜戦CI系', () => {
     it('D型砲組み合わせによる火力補正', () => {
-        const SUPPIN_FLETCHER = make_Fletcher([]);
-        const GTR_AKIZUKI = make_Akizuki([D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR]);
-        const ALL_DDCI_TASH = make_Tash([D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR, DRUM], TSSL);
+        // const SUPPIN_FLETCHER = make_Fletcher([]);
+        // const GTR_AKIZUKI = make_Akizuki([D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR]);
+        const ALL_DDCI_TASH = derive_PES(Tash_kai, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR, DRUM], TSSL);
+        // console.log('TSSL: ', TSSL);
         
         const test = (
             expected: NightBattleStrikeType[],

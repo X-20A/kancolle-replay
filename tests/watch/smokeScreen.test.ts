@@ -57,7 +57,7 @@ describe('煙幕系テスト', () => {
         const rates_3 = derive_rates([0, 27, 30, 43]);
 
         const test = (
-            expected: SmokeScreenType,
+            expected: SmokeScreenType | 'Misfire',
             rates: SmokeScreenRates,
             rand_value: number,
         ): void => {

@@ -5,6 +5,7 @@ import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { RandGenerator } from "@/effects/random";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /// 索敵系
 
@@ -77,10 +78,10 @@ export const analyze_ships_detection = (
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
         if (is_sunk(ship)) return ship_total;
 
-        const equip_summary: EquipSummary = ship.equip_slots.reduce((equip_total, equip_built) => {
-            const equip = equip_built.equip;
+        const equip_summary: EquipSummary = ship.equip_slots.reduce((equip_total, slot) => {
+            const { equip } = slot;
             if (
-                !equip
+                !is_equip_exsist(equip)
                 || !is_player_equip(equip)
                 || !is_player_plane_equip(equip)
                 || !equip.flags.can_detect
@@ -212,7 +213,7 @@ const calc_shotdowned_recon_ships = (
         const updated_slots = ship.slot_counts.map((slot, index) => {
             const equip = ship.equip_slots[index].equip;
             if (
-                !equip
+                !is_equip_exsist(equip)
                 || !equip.flags.can_detect
                 || slot > 0
             ) return slot;
@@ -247,9 +248,9 @@ export function calc_enemy_fighter_count(
 ): number {
     return concat_fleet_ships(abyssal_fleet).reduce((total, ship) => {
         // NOTE: 索敵フェイズ前に敵艦が沈むことは無いので撃沈判定省略
-        return total + ship.equip_slots.reduce((count, equip_built) => {
-            const equip = equip_built.equip;
-            if (!equip) return count;
+        return total + ship.equip_slots.reduce((count, slot) => {
+            const { equip } = slot;
+            if (!is_equip_exsist(equip)) return count;
 
             return count + (equip.flags.is_involve_air_superiority ? 1 : 0);
         }, 0);

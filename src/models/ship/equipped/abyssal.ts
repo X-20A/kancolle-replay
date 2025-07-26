@@ -9,7 +9,7 @@ import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip, is_abyssal_equips } from "@/models/equip/basic";
 import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
-import { derive_abyssal_equip_slot } from "@/models/ship/EquipSlot";
+import { derive_abyssal_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_abyssal_equipped_ship_flags } from "./flags";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 
@@ -57,7 +57,7 @@ export function derive_equipped_abyssal_ship(
         lv: brandShipLv(1),
         type_id: naked_ship.type_id,
         install_type: naked_ship.install_type,
-        equip_slots: derive_abyssal_equip_slot(equips, naked_ship.slots),
+        equip_slots: derive_abyssal_equip_slots(equips, naked_ship.slots),
         max_hp,
         slot_counts: options.slots ?? naked_ship.slots,
         naked_status: naked_ship.status,

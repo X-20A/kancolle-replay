@@ -12,7 +12,7 @@ import { derive_player_ship_state } from "../state";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
-import { derive_player_equip_slot } from "@/models/ship/EquipSlot";
+import { derive_player_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_player_equipped_ship_flags } from "./flags";
 import { PlayerNakedShip } from "../naked/base";
 
@@ -36,10 +36,10 @@ export type PlayerEquippedShipOptions = {
 const derive_player_equipped_ship_core = (
     naked_ship: PlayerNakedShip,
     equips: PlayerEquip[],
+    ex_equip: PlayerEquip | 'None',
     special_item_id: SpecialItemId,
     options: PlayerEquippedShipOptions,
 ): PlayerEquippedShip => {
-
     const naked_status = naked_ship.status;
     const total_natural_equip_addition = equips
         .map(equip => equip.natural_addition)
@@ -95,7 +95,7 @@ const derive_player_equipped_ship_core = (
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equip_slots: derive_player_equip_slot(equips, naked_ship.slots),
+        equip_slots: derive_player_equip_slots(equips, naked_ship.slots, ex_equip),
         slot_counts: options.slots ?? naked_ship.slots,
         max_hp: naked_status.hp,
         base_fuel: naked_ship.base_fuel,
@@ -123,13 +123,10 @@ export function derive_player_equipped_ship(
     normal_slot_equips: Equip[],
     ex_slot_equip: Equip | 'None',
 ): PlayerEquippedShip {
-    console.log('ex_slot_equip: ', ex_slot_equip);
-    const equips = ex_slot_equip !== 'None'
-        ? [...normal_slot_equips, ex_slot_equip]
-        : normal_slot_equips;
+    // console.log('ex_slot_equip: ', ex_slot_equip);
     if (
-        !equips ||
-        !is_player_equips(equips)
+        !is_player_equips(normal_slot_equips) ||
+        (ex_slot_equip !== 'None' && !is_player_equip(ex_slot_equip))
     ) throw new Error('艦娘に深海装備は持たせられません');
     const naked_ship = derive_player_naked_ship(
         lv,
@@ -138,8 +135,13 @@ export function derive_player_equipped_ship(
 
     return derive_player_equipped_ship_core(
         naked_ship,
-        equips,
+        normal_slot_equips,
+        ex_slot_equip,
         special_item_id,
         options,
     );
+}
+
+export const __player_equipped_ship__ = {
+    derive_player_equipped_ship_core,
 }

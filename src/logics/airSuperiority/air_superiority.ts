@@ -6,7 +6,7 @@ import { AirStateType } from "./compare";
 import { RandGenerator } from "@/effects/random";
 import { match } from "ts-pattern";
 import { JetSquadron, NormalSquadron, Squadron } from "@/models/LBAS";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /// 制空系
 
@@ -54,13 +54,13 @@ export function calc_squadrons_air_superriority_power(
  * @returns 
  */
 export function calc_equips_air_superiority_power(
-    equip_builts: EquipSlot[],
+    equip_slots: EquipSlot[],
     slots: readonly number[],
 ): number {
-    return equip_builts.reduce((total, equip_built, index) => {
-        const equip = equip_built.equip;
+    return equip_slots.reduce((total, slot, index) => {
+        const { equip } = slot;
         if (
-            !equip ||
+            !is_equip_exsist(equip) ||
             !equip.flags.is_involve_air_superiority ||
             slots[index] === 0
         ) return total;
