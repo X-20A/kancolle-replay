@@ -1,7 +1,7 @@
 import { Accuracy } from ".";
 import { Node } from "@/models/Node";
 import { FleetUnit, is_combined_fleet } from "@/models/fleet/FleetUnit";
-import { EquippedShip, includes_ship_type, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_type, is_player_equipped_ship } from "@/models/ship/equipped";
 import { match } from "ts-pattern";
 import { PlaneEquip } from "@/models/equip/basic";
 import { AirstrikeAccuracyBalloonMod } from "../balloon";
@@ -20,7 +20,7 @@ const calc_acc_base = (
     defender_unit: FleetUnit,
     node: Node,
 ): number => {
-    if (!is_player_ship(attacker_unit.ship)) {
+    if (!is_player_equipped_ship(attacker_unit.ship)) {
         if (node.type.is_air_raid_only) {
             return defender_unit.fleet_type === 'main'
                 ? 105

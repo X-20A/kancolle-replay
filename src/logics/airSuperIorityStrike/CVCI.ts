@@ -1,5 +1,5 @@
 import { is_dive_bomber, is_fighter, is_torpedo_bomber } from "@/models/equip/basic";
-import { EquippedShip, is_abyssal_ship, is_carrier_vessel_category, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, is_abyssal_ship, is_carrier_vessel_category, is_player_equipped_ship } from "@/models/ship/equipped";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 import { AirSuperiorityStrikeType } from ".";
 

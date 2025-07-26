@@ -1,7 +1,7 @@
 import { UserSettings } from "@/core/flows/SimExecuter";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { Node } from "@/models/Node";
-import { EquippedShip, is_player_ship, is_retreated, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, is_player_equipped_ship, is_retreated, is_sunk } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
 
 /// 阻塞気球に関する処理
@@ -121,7 +121,7 @@ export function calc_airstrike_balloon_accuracy_mod(
     const PLAYER_ACCURACY: number[] = [1, 1, 1];
     const ABYSSAL_ACCURACY: number[] = [1, 1, 1];
 
-    return is_player_ship(atttacker_ship)
+    return is_player_equipped_ship(atttacker_ship)
         ? PLAYER_ACCURACY[attacker_fleet_balloon_count] as AirstrikeAccuracyBalloonMod
         : ABYSSAL_ACCURACY[attacker_fleet_balloon_count] as AirstrikeAccuracyBalloonMod;
 }
@@ -145,7 +145,7 @@ export function calc_LBAS_balloon_accuracy_mod(
     const PLAYER_ACCURACY: number[] = [1, 1, 1];
     const ABYSSAL_ACCURACY: number[] = [1, 1, 1];
 
-    return is_player_ship(atttacker_ship)
+    return is_player_equipped_ship(atttacker_ship)
         ? PLAYER_ACCURACY[attacker_fleet_balloon_count] as LBASAccuracyBalloonMod
         : ABYSSAL_ACCURACY[attacker_fleet_balloon_count] as LBASAccuracyBalloonMod;
 }

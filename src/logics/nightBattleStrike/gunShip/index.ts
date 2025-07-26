@@ -41,13 +41,14 @@ const calc_pre_info = (
 
 export function calc_gun_ship_night_battle_strike_types(
     attacker_ship: EquippedShip,
+    defender_ship: EquippedShip | 'Not_specified'
 ): NightBattleStrikeType[] {
     if (is_heavily_damaged(attacker_ship)) return [];
 
     const pre_info = calc_pre_info(attacker_ship.equip_slots);
     return [
-        ...calc_general_night_battle_strike_types(pre_info),
+        ...calc_DD_night_battle_strike_types(attacker_ship, defender_ship, pre_info),
         ...calc_night_Zuiun_types(attacker_ship, pre_info),
-        ...calc_DD_night_battle_strike_types(attacker_ship, pre_info),
+        ...calc_general_night_battle_strike_types(pre_info, defender_ship),
     ];
 }

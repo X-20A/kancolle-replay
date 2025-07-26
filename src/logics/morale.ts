@@ -1,4 +1,4 @@
-import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, is_player_equipped_ship, PlayerEquippedShip } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
 
 const MORALE_STATE = {
@@ -42,7 +42,7 @@ export type HitMoraleMod = Brand<number, 'HitMoraleMod'>
 export function calc_hit_morale_mod(
     defender_ship: EquippedShip,
 ): HitMoraleMod {
-    if (!is_player_ship(defender_ship)) return 1 as HitMoraleMod;
+    if (!is_player_equipped_ship(defender_ship)) return 1 as HitMoraleMod;
 
     const { morale } = defender_ship.state;
     if (morale >= MORALE_THRESHOLD.Kira) return 0.7 as HitMoraleMod;
@@ -61,7 +61,7 @@ export type AccuracyMoraleMod = Brand<number, 'AccuracyMoraleMod'>
 export function calc_accuracy_morale_mod(
     attacker_ship: EquippedShip,
 ): AccuracyMoraleMod {
-    if (!is_player_ship(attacker_ship)) return 1 as AccuracyMoraleMod;
+    if (!is_player_equipped_ship(attacker_ship)) return 1 as AccuracyMoraleMod;
 
     const { morale } = attacker_ship.state;
     if (morale >= MORALE_THRESHOLD.Kira) return 1.2 as AccuracyMoraleMod;

@@ -90,6 +90,8 @@ export function derive_player_naked_ship(
         country,
         slots: ship_data.SLOTS,
         status,
+        base_fuel: ship_data.fuel,
+        base_ammo: ship_data.ammo,
         flags,
     }
 }

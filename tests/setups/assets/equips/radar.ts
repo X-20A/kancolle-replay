@@ -1,4 +1,4 @@
-import { make_player_equip_from_name } from "tests/setups/generator";
+import { make_player_equip_from_name } from "tests/setups/generator/equip";
 
 /** 22号水上電探 */
 export const SURFACE_22 = make_player_equip_from_name('22号対水上電探');

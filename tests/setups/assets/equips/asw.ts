@@ -1,4 +1,4 @@
-import { make_player_equip_from_name } from "tests/setups/generator";
+import { make_player_equip_from_name } from "tests/setups/generator/equip";
 
 /** 三式水中探信儀 */
 export const SANSHIKI_SONAR = make_player_equip_from_name('三式水中探信儀');

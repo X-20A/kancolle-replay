@@ -1,6 +1,6 @@
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { Accuracy } from ".";
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 import { is_sonar } from "@/models/equip/basic";
 import { AccuracyMoraleMod } from "../morale";
@@ -33,7 +33,7 @@ const calc_asw_sonar = (
 const calc_total_improvement_asw_accuracy = (
     attacker_ship: EquippedShip,
 ): number => {
-    if (!is_player_ship(attacker_ship)) return 0;
+    if (!is_player_equipped_ship(attacker_ship)) return 0;
 
     return attacker_ship.total_equip_improvement_addition.asw_accuracy;
 }

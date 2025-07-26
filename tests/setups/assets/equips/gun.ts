@@ -1,4 +1,4 @@
-import { make_player_equip_from_name } from "tests/setups/generator";
+import { make_player_equip_from_name } from "tests/setups/generator/equip";
 
 /** 10cm連装高角砲 */
 export const HIGH_10 = make_player_equip_from_name('10cm連装高角砲');
@@ -18,6 +18,11 @@ export const MK30_GFCS = make_player_equip_from_name('5inch単装砲 Mk.30改+GF
 export const HARUSAME_GUN = make_player_equip_from_name('12.7cm連装砲C型改三H');
 /** 10cm連装高角砲改 */
 export const SHIRAYUKI_GUN = make_player_equip_from_name('10cm連装高角砲改');
+/** 12.7cm連装砲D型改二 */
+export const D_2_GUN = make_player_equip_from_name('12.7cm連装砲D型改二');
+/** 12.7cm連装砲D型改三 */
+export const D_3_GUN = make_player_equip_from_name('12.7cm連装砲D型改三');
+
 
 /** 20.3cm(3号)連装砲 */
 export const MIKUMA_GUN = make_player_equip_from_name('20.3cm(3号)連装砲');

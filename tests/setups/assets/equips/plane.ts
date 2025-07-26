@@ -1,4 +1,4 @@
-import { make_player_equip_from_name } from "tests/setups/generator";
+import { make_player_equip_from_name } from "tests/setups/generator/equip";
 
 /** 試製烈風 後期型 */
 export const REPPUU = make_player_equip_from_name('試製烈風 後期型');

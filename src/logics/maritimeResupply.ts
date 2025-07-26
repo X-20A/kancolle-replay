@@ -3,7 +3,7 @@ import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fle
 import { FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
 import { is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
-import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "@/models/ship/equipped/player";
+import { derive_equipped_player_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
 import { PlayerShipState } from "@/models/ship/state";
 import { ShipUniqueId } from "@/types/brands/ship";
 
@@ -156,7 +156,7 @@ const calc_supplied_ships = (
         });
 
         // 要は洋上補給の装甲-2が無くなるだけ 一応再生成の筋は通しとく
-        const options: EquippedPlayerShipOptions = {
+        const options: PlayerEquippedShipOptions = {
             unique_id: ship.unique_id,
             hp_remain: ship.state.hp_remain,
             slots: ship.equip_slots.map(slot => slot.slot_count),

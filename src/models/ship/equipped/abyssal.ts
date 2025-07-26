@@ -4,7 +4,7 @@ import { derive_abyssal_naked_ship } from "../naked/abyssal";
 import { brandEquipId } from "@/types/brands/equip";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
-import { EquippedPlayerShipOptions } from "./player";
+import { PlayerEquippedShipOptions } from "./player";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip, is_abyssal_equips } from "@/models/equip/basic";
@@ -16,7 +16,7 @@ import { AbyssalShipId } from "@/types/ship/abyssalId";
 export function derive_equipped_abyssal_ship(
     id: AbyssalShipId,
     input_equips?: Equip[],
-    options: EquippedPlayerShipOptions = {},
+    options: PlayerEquippedShipOptions = {},
 ): AbyssalEquippedShip {
     if (input_equips && !is_abyssal_equips(input_equips)) throw new Error('深海棲艦に艦娘装備は持たせられません');
     const naked_ship = derive_abyssal_naked_ship(

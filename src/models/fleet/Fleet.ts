@@ -1,5 +1,5 @@
 import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
-import { EquippedShip, is_abyssal_ships, is_player_ship, is_player_ships, is_sunk } from "../ship/equipped"
+import { EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk } from "../ship/equipped"
 import { AbyssalFleetUnit, derive_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
 
 export type SingleFleetType =
@@ -59,7 +59,7 @@ export type Fleet = SingleFleet | CombinedFleet;
 export function is_player_fleet(
     fleet: Fleet,
 ): fleet is PlayerFleet {
-    return is_player_ship(fleet.main_fleet_units[0].ship);
+    return is_player_equipped_ship(fleet.main_fleet_units[0].ship);
 }
 
 /**

@@ -19,6 +19,12 @@ type NightBattleStrikeData =
 
 type NightBattleStrikeDatas = Record<NightBattleStrikeType, NightBattleStrikeData>
 
+export function is_DDCI(
+    strike_data: NightBattleStrikeData,
+): strike_data is DDStrikeData {
+    return 'replace_rate' in strike_data;
+}
+
 /**
  * 夜戦特殊攻撃データ
  */
@@ -26,20 +32,21 @@ export const NIGHT_BATTLE_STRIKE_DATAS: NightBattleStrikeDatas = {
     // ! 潜水CIの命中補正、発動率に根拠はない
     SSCI_TR: {
         dmgMod: 1.75,
-        accMod: 1.5,
-        chanceMod: 1.15,
+        accMod: 1.65,
+        chanceMod: 1.05,
         numHits: 2,
     },
     SSCI_TT: {
         dmgMod: 1.6,
-        accMod: 1.5,
-        chanceMod: 1.15,
+        accMod: 1.65,
+        chanceMod: 1.1,
         numHits: 2,
     },
 
     double_attack: {
         dmgMod: 1.2,
         accMod: 1.1,
+        // ! 連撃は計算でなく、ロジック側で99%で固定
         chanceMod: 0,
         numHits: 2,
     },

@@ -73,14 +73,34 @@ export function calc_searchlight_info(
     };
 }
 
-/**
- * 探照灯による命中補正を返す
- */
+export type CIRateSearchlightMod = Brand<number, 'CIRateSearchlightMod'>
+
+export function calc_CI_rate_searchlight_mod(
+    attacker_searchlight_info: SearchlightInfo,
+    defender_searchlight_info: SearchlightInfo,
+): CIRateSearchlightMod {
+    const ATTACKER_CONSTANT = 7;
+    const DEFENDER_CONSTANT = 5;
+
+    const attacker_mod = attacker_searchlight_info.trigger_type !== 'Inactivate'
+        ? ATTACKER_CONSTANT
+        : 0;
+    const defender_mod = defender_searchlight_info.trigger_type !== 'Inactivate'
+        ? DEFENDER_CONSTANT
+        : 0;
+
+    return attacker_mod - defender_mod as CIRateSearchlightMod;
+}
+
+
 export type AccuracySearchlightMod =
     Brand<number, 'AccuracySearchlightMod'>
 
+/**
+* 探照灯による命中補正を返す
+*/
 export function calc_accuracy_searchlight_mod(
-    searchlight_info: SearchlightInfo
+    searchlight_info: SearchlightInfo,
 ): AccuracySearchlightMod {
     return searchlight_info.trigger_type === 'Inactivate'
         ? 0 as AccuracySearchlightMod

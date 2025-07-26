@@ -1,6 +1,6 @@
 import { RandGenerator } from "@/effects/random";
 import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped"
+import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
 import { FormationType, SingleFleetFormationType } from "@/types";
 import { match } from "ts-pattern";
@@ -24,7 +24,7 @@ function extract_defender_ships(fleet: AbyssalFleet): AbyssalFleetUnit[];
 function extract_defender_ships(fleet: Fleet): FleetUnit[] {
     return concat_fleet_units(fleet).filter(unit =>
         // NOTE: 潜水艦も迎撃艦として選ばれる
-        is_player_ship(unit.ship) || !unit.ship.flags.is_faraway
+        is_player_equipped_ship(unit.ship) || !unit.ship.flags.is_faraway
     );
 }
 
@@ -75,7 +75,7 @@ export function calc_ship_fleet_anti_air(
         return total + calc_equip_type_mod_for_fleet_anti_air(equip);
     }, 0);
 
-    if (!is_player_ship(ship)) return equips_fleet_anti_air;
+    if (!is_player_equipped_ship(ship)) return equips_fleet_anti_air;
 
     return equips_fleet_anti_air
         + ship.total_equip_improvement_addition.fleet_anti_air

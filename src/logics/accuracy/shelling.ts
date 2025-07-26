@@ -1,4 +1,4 @@
-import { EquippedShip, includes_anti_PT_Amagiri, is_abyssal_ship, is_player_ship, is_PT } from "@/models/ship/equipped";
+import { EquippedShip, includes_anti_PT_Amagiri, is_abyssal_ship, is_player_equipped_ship, is_PT } from "@/models/ship/equipped";
 import { Accuracy } from ".";
 import { Fleet, is_combined_fleet, is_player_fleet } from "@/models/fleet/Fleet";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
@@ -98,7 +98,7 @@ const calc_acc_equip = (
 ): number => {
     const total_natural_equip_accuracy =
         attacker_ship.total_natural_equip_addition.shell_accuracy;
-    if (!is_player_ship(attacker_ship)) return total_natural_equip_accuracy;
+    if (!is_player_equipped_ship(attacker_ship)) return total_natural_equip_accuracy;
 
     return total_natural_equip_accuracy
         + attacker_ship.total_equip_improvement_addition.shell_accuracy;

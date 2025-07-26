@@ -14,8 +14,9 @@ import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_player_equip_slot } from "@/models/ship/EquipSlot";
 import { derive_player_equipped_ship_flags } from "./flags";
+import { PlayerNakedShip } from "../naked/base";
 
-export type EquippedPlayerShipOptions = {
+export type PlayerEquippedShipOptions = {
     unique_id?: ShipUniqueId,
     hp_remain?: number,
     modernizations?: ModernizationType,
@@ -23,30 +24,31 @@ export type EquippedPlayerShipOptions = {
     slots?: readonly number[],
 }
 
-export function derive_equipped_player_ship(
-    lv: ShipLv,
+/**
+ * 装備済み艦娘を生成して返す
+ * @param naked_ship 
+ * @param normal_slot_equips 
+ * @param ex_slot_equip 
+ * @param special_item_id 
+ * @param options 
+ * @returns 
+ */
+export function derive_player_equipped_ship_core(
+    naked_ship: PlayerNakedShip,
+    equips: PlayerEquip[],
     special_item_id: SpecialItemId,
-    ship_id: ShipId,
-    all_equips: Equip[],
-    options: EquippedPlayerShipOptions = {},
+    options: PlayerEquippedShipOptions,
 ): PlayerEquippedShip {
-    if (all_equips && !is_player_equips(all_equips)) throw new Error('艦娘に深海装備は持たせられません');
-    const naked_ship = derive_player_naked_ship(
-        lv,
-        ship_id,
-    );
-
-    const player_equips = all_equips.filter(is_player_equip);
 
     const naked_status = naked_ship.status;
-    const total_natural_equip_addition = all_equips
+    const total_natural_equip_addition = equips
         .map(equip => equip.natural_addition)
         .reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
     
     const total_equip_bonus_addition =
-        deriveEquipBonusAddition(naked_ship, player_equips);
+        deriveEquipBonusAddition(naked_ship, equips);
     const total_equip_improvement_addition =
-        sumEquipImprovementAdditions(player_equips.map(equip => equip.improvement_addition));
+        sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
     const special_item_addition = deriveSpecialItemAddition(special_item_id);
    
     // 射程は素ステータスと装備素射程の最大値に装備ボーナスを加算
@@ -62,23 +64,23 @@ export function derive_equipped_player_ship(
 
     const edited_status = options.edit_input ?? view_status;
 
-    const total_valid_asw = player_equips
+    const total_valid_asw = equips
         .reduce((total, equip) => {
             return total + equip.contribute_asw_attack_power;
         }, 0);
 
-    const flags = derive_player_equipped_ship_flags(naked_ship.flags, player_equips)
+    const flags = derive_player_equipped_ship_flags(naked_ship.flags, equips)
 
     const state = derive_player_ship_state(options.hp_remain ?? edited_status.hp);
 
     const weighted_anti_air = calc_player_weighted_anti_air(
-        all_equips,
+        equips,
         naked_status,
         total_equip_bonus_addition,
         total_equip_improvement_addition,
     );
 
-    const prepare_AACI_info = derive_prepare_AACI_info(all_equips);
+    const prepare_AACI_info = derive_prepare_AACI_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
     return {
@@ -87,15 +89,17 @@ export function derive_equipped_player_ship(
         unique_id: brandUniqueId(crypto.randomUUID()),
         name_en: naked_ship.name_en,
         name_jp: naked_ship.name_jp,
-        lv,
+        lv: naked_ship.lv,
         type_id: naked_ship.type_id,
         ship_class: naked_ship.ship_class,
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equip_slots: derive_player_equip_slot(all_equips, naked_ship.slots),
+        equip_slots: derive_player_equip_slot(equips, naked_ship.slots),
         slot_counts: options.slots ?? naked_ship.slots,
         max_hp: naked_status.hp,
+        base_fuel: naked_ship.base_fuel,
+        base_ammo: naked_ship.base_ammo,
         flags,
         state,
         naked_status,
@@ -109,4 +113,33 @@ export function derive_equipped_player_ship(
         triggerable_AACIs,
         total_contribute_asw_attack_power: total_valid_asw,
     }
+}
+
+export function derive_equipped_player_ship(
+    lv: ShipLv,
+    special_item_id: SpecialItemId,
+    ship_id: ShipId,
+    normal_slot_equips: Equip[],
+    ex_slot_equip: Equip | null,
+    options: PlayerEquippedShipOptions,
+): PlayerEquippedShip {
+    console.log('ex_slot_equip: ', ex_slot_equip);
+    const equips = ex_slot_equip
+        ? [...normal_slot_equips, ex_slot_equip]
+        : normal_slot_equips;
+    if (
+        !equips ||
+        !is_player_equips(equips)
+    ) throw new Error('艦娘に深海装備は持たせられません');
+    const naked_ship = derive_player_naked_ship(
+        lv,
+        ship_id,
+    );
+
+    return derive_player_equipped_ship_core(
+        naked_ship,
+        equips,
+        special_item_id,
+        options,
+    );
 }

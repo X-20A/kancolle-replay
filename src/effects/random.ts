@@ -43,3 +43,16 @@ export class MockRand implements RandGenerator {
         return brandRandValue(this.values[this.index++]);
     }
 }
+
+/**
+ * 乱数抽選をパスするか判定して返す
+ * @param success_rate 
+ * @param rand_value 
+ * @returns 
+ */
+export function is_random_succeed(
+    success_rate: number,
+    rand_value: RandValue,
+): boolean {
+    return rand_value < success_rate;
+}

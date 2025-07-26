@@ -1,6 +1,4 @@
-import { brandShipId } from "@/types/brands/ship";
-import { pre_make_player_ship_from_name } from "../../generator";
-import { derive_equipped_abyssal_ship } from "@/models/ship/equipped/abyssal";
+import { pre_make_player_ship_from_name } from "../../generator/ship";
 
 /** 鵜来改 */
 export const make_Ukuru_kai = pre_make_player_ship_from_name('鵜来改');
@@ -17,6 +15,9 @@ export const make_Kiyoshimo_kai = pre_make_player_ship_from_name('清霜改');
 export const make_Shiratsuyu_kai_2 = pre_make_player_ship_from_name('白露改二');
 /** 秋月 */
 export const make_Akizuki = pre_make_player_ship_from_name('秋月');
+/** タシュケント改 */
+export const make_Tash = pre_make_player_ship_from_name('Ташкент改');
+
 
 /** 加古改二 */
 export const make_Kako_kai_ni = pre_make_player_ship_from_name('加古改二');

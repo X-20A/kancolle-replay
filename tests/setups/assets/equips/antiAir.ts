@@ -1,4 +1,4 @@
-import { make_player_equip_from_name } from "tests/setups/generator";
+import { make_player_equip_from_name } from "tests/setups/generator/equip";
 
 /** 91式高射装置 */
 export const FD_91 = make_player_equip_from_name('91式高射装置');

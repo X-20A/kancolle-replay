@@ -5,7 +5,7 @@ import { derive_prepare_AACI_info } from "@/models/ship/aaciPreparate";
 import { NakedShip } from "@/models/ship/naked/base";
 import { ATLANTA_GUN, HIGH_10 } from "tests/setups/assets/equips/gun";
 import { GFCS_RADAR, SURFACE_22 } from "tests/setups/assets/equips/radar";
-import { derive_naked_ship_from_name } from "tests/setups/generator";
+import { derive_naked_ship_from_name } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('制空系テスト', () => {

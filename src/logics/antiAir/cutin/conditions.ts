@@ -1,6 +1,6 @@
 import { Country } from "@/datas/equip/bonus";
 import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
-import { equal_ship_name, includes_ship_name, is_battle_ship_category, is_player_ship } from "@/models/ship/equipped";
+import { equal_ship_name, includes_ship_name, is_battle_ship_category, is_player_equipped_ship } from "@/models/ship/equipped";
 import { NakedShip } from "@/models/ship/naked/base";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
@@ -367,8 +367,8 @@ export function calc_triggerable_AACIs(
     const param_ship = {
         name: ship.name_jp,
         type: ship.type_id,
-        class: is_player_ship(ship) ? ship.ship_class : null,
-        country: is_player_ship(ship) ? ship.country : null,
+        class: is_player_equipped_ship(ship) ? ship.ship_class : null,
+        country: is_player_equipped_ship(ship) ? ship.country : null,
     }
     return ANTI_AIR_CUTIN_TYPES.filter((cutin_type) => {
         const condition = AACI_CONDITIONS(cutin_type);

@@ -1,6 +1,6 @@
 import { is_player_equip } from "@/models/equip/basic";
 import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet";
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
 import { Brand } from "@/types/brands";
 import { RandValue } from "@/types/brands/other";
 import { Maf } from "@/utils/Maf";
@@ -193,7 +193,7 @@ export function calc_shell_accuracy_smoke_mod(
     const has_radar = attacker_ship.equip_slots.some(
         slot => slot.equip?.skill_trigger_type === 'B_RADAR'
     );
-    const is_attacker_player = is_player_ship(attacker_ship);
+    const is_attacker_player = is_player_equipped_ship(attacker_ship);
 
     if (is_attacker_player) {
         return has_radar
@@ -225,7 +225,7 @@ export function calc_ASW_accuracy_smoke_mod(
     const ABYSSAL_ACCURACY: SmokeData =
         { Single: 1, Twofold: 1, Threefold: 1 } as const;
 
-    return is_player_ship(attacker_ship)
+    return is_player_equipped_ship(attacker_ship)
         ? PLAYER_ACCURACY[smoke_type] as ASWAccuracySmokeMod
         : ABYSSAL_ACCURACY[smoke_type] as ASWAccuracySmokeMod;
 }
@@ -249,7 +249,7 @@ export function calc_torpedo_accuracy_smoke_mod(
     const ABYSSAL_ACCURACY: SmokeData =
         { Single: 0.7, Twofold: 0.6, Threefold: 0.5 } as const;
 
-    return is_player_ship(attacker_ship)
+    return is_player_equipped_ship(attacker_ship)
         ? PLAYER_ACCURACY[smoke_type] as TorpedoAccuracySmokeMod
         : ABYSSAL_ACCURACY[smoke_type] as TorpedoAccuracySmokeMod;
 }
@@ -273,7 +273,7 @@ export function calc_airstrike_accuracy_smoke_mod(
     const ABYSSAL_ACCURACY: SmokeData =
         { Single: 1, Twofold: 1, Threefold: 1 } as const;
 
-    return is_player_ship(attacker_ship)
+    return is_player_equipped_ship(attacker_ship)
         ? PLAYER_ACCURACY[smoke_type] as AirStrikeAccuracySmokeMod
         : ABYSSAL_ACCURACY[smoke_type] as AirStrikeAccuracySmokeMod;
 }

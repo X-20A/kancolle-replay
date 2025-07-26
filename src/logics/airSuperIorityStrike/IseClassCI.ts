@@ -1,4 +1,4 @@
-import { EquippedShip, includes_ship_name, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_name, is_player_equipped_ship } from "@/models/ship/equipped";
 import { AirSuperiorityStrikeType } from ".";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { EquipSlot } from "@/models/ship/EquipSlot";
@@ -45,7 +45,7 @@ export function calc_Ise_class_CI_types (
 ): AirSuperiorityStrikeType[] {
     const triggerables: AirSuperiorityStrikeType[] = [];
     if (
-        !is_player_ship(attacker_ship) ||
+        !is_player_equipped_ship(attacker_ship) ||
         !includes_ship_name(SUBJECT_SHIP, attacker_ship.name_jp) ||
         main_gun_count === 0
     ) return triggerables;

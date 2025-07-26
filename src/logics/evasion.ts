@@ -1,4 +1,4 @@
-import { EquippedShip, is_player_ship } from "@/models/ship/equipped";
+import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
 
 const calc_capped_evasion = (
     evasion: number,
@@ -13,7 +13,7 @@ const calc_capped_evasion = (
 const calc_fuel_flat = (
     ship: EquippedShip,
 ): number => {
-    const fuel_remain_ratio = is_player_ship(ship)
+    const fuel_remain_ratio = is_player_equipped_ship(ship)
         ? ship.state.fuel_remain_ratio
         : 1;
 
@@ -30,7 +30,7 @@ const calc_improvement_evasion_addition = (
     ship: EquippedShip,
     attack_type: AttackType,
 ): number => {
-    if (!is_player_ship(ship)) return 0;
+    if (!is_player_equipped_ship(ship)) return 0;
 
     const total_improvement_addition = ship.total_equip_improvement_addition;
     if (attack_type === 'shell') return total_improvement_addition.shell_evasion;
@@ -46,7 +46,7 @@ const calc_basic_evasion = (
     ship: EquippedShip,
 ): number => {
     return ship.edited_status.evasion
-        + (is_player_ship(ship) ? ship.total_equip_improvement_addition.shell_evasion: 0)
+        + (is_player_equipped_ship(ship) ? ship.total_equip_improvement_addition.shell_evasion: 0)
         + Math.sqrt(2 * ship.edited_status.luck);
 }
 

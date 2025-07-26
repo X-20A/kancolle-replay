@@ -1,7 +1,7 @@
 import { JetSquadron } from "@/models/LBAS";
 import { calc_final_jet_assault_accuracy, calc_hit_type } from "../accuracy/aerialCombat";
 import { RandGenerator } from "@/effects/random";
-import { EquippedShip, is_player_ship, PlayerEquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, is_player_equipped_ship, PlayerEquippedShip } from "@/models/ship/equipped";
 import { calc_defence } from "../defense";
 import { AbyssalFleet, Fleet, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { produce } from "immer";
@@ -61,7 +61,7 @@ const calc_ship_attack_damage = (
     attacker_ship: PlayerEquippedShip,
 ): number => {
     const base_damage = calc_base_damage(attack_power, defence);
-    return is_player_ship(attacker_ship)
+    return is_player_equipped_ship(attacker_ship)
         ? Math.floor(base_damage * calc_ammo_damage_mod(attacker_ship.state.ammo_remain_ratio))
         : Math.floor(base_damage);
 }

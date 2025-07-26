@@ -5,7 +5,7 @@ import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
-import { derive_equipped_player_ship, EquippedPlayerShipOptions } from "./player";
+import { derive_equipped_player_ship, PlayerEquippedShipOptions } from "./player";
 import { derive_equipped_abyssal_ship } from "./abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
@@ -17,23 +17,30 @@ import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 
-export function is_player_ship(ship: EquippedShip): ship is PlayerEquippedShip;
-export function is_player_ship(ship: NakedShip): ship is PlayerNakedShip;
 /**
  * 艦が艦娘であるか判定して返す
  * @param ship 
  * @returns 
  */
-export function is_player_ship(ship: EquippedShip | NakedShip): ship is PlayerEquippedShip {
+export function is_player_equipped_ship(ship: EquippedShip): ship is PlayerEquippedShip {
     return 'ship_class' in ship;
 }
+/**
+ * 艦が艦娘であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_player_naked_ship(ship: NakedShip): ship is PlayerNakedShip {
+    return 'ship_class' in ship;
+}
+
 /**
  * 艦娘のみの艦群であるか判定して返す
  * @param ships 
  * @returns 
  */
 export function is_player_ships(ships: EquippedShip[]): ships is PlayerEquippedShip[] {
-    return ships.every(is_player_ship);
+    return ships.every(is_player_equipped_ship);
 }
 /**
  * 艦が深海棲艦であるか判定して返す
@@ -41,7 +48,7 @@ export function is_player_ships(ships: EquippedShip[]): ships is PlayerEquippedS
  * @returns 
  */
 export function is_abyssal_ship(ship: EquippedShip): ship is AbyssalEquippedShip {
-    return !is_player_ship(ship);
+    return !is_player_equipped_ship(ship);
 }
 /**
  * 深海棲艦のみの艦群であるか判定して返す
@@ -67,7 +74,7 @@ export function is_sunk(ship: EquippedShip): boolean {
  * @returns 
  */
 export function is_retreated(ship: EquippedShip): boolean {
-    return is_player_ship(ship) && ship.state.is_retreated;
+    return is_player_equipped_ship(ship) && ship.state.is_retreated;
 }
 
 /**
@@ -126,7 +133,7 @@ export function includes_ship_name(
 export function includes_anti_PT_Amagiri(
     ship: EquippedShip,
 ): boolean {
-    return is_player_ship(ship) &&
+    return is_player_equipped_ship(ship) &&
         includes_ship_name(['天霧改二', '天霧改二丁'], ship.name_jp);
 }
 
@@ -226,7 +233,7 @@ export function is_heavily_damaged(ship: EquippedShip): boolean {
  * @returns 
  */
 export function is_married(ship: EquippedShip): boolean {
-    return is_player_ship(ship) && ship.lv >= 100;
+    return is_player_equipped_ship(ship) && ship.lv >= 100;
 }
 
 /**
@@ -375,14 +382,17 @@ export function derive_equipped_ship(
     special_item_id: SpecialItemId,
     ship_id: ShipId,
     equips: Equip[],
-    options: EquippedPlayerShipOptions,
+    ex_equip: Equip | null,
+    options: PlayerEquippedShipOptions = {},
 ): EquippedShip {
+    console.log('ex_equip: ', ex_equip);
     return ship_id < 1500
         ? derive_equipped_player_ship(
             lv,
             special_item_id,
             ship_id,
             equips,
+            ex_equip,
             options,
         )
         : derive_equipped_abyssal_ship(

@@ -68,10 +68,7 @@ export function calc_accuracy_star_shell_mod(
         : 0 as AccuracyStarShellMod; 
 }
 
-export type PlayerCIChanceStarShellMod =
-    Brand<number, 'PlayerNightBattleCIChanceStarShellMod'>
-export type AbyssalCIChanceStarShellMod =
-    Brand<number, 'AbyssalNightBattleCIChanceStarShellMod'>
+export type CIRateStarShellMod = Brand<number, 'CIRateStarShellMod'>
 
 /**
  * 夜戦CI発動率における照明弾加算補正を返す
@@ -79,20 +76,18 @@ export type AbyssalCIChanceStarShellMod =
  * @returns 
  */
 export function calc_CI_change_star_shell_mod(
-    star_shell_type: StarShellType,
-): {
-    player_CI_chance_mod: PlayerCIChanceStarShellMod,
-    abyssal_CI_chance_mod: AbyssalCIChanceStarShellMod,
-} {
-    if (star_shell_type === 'Fire') {
-        return {
-            player_CI_chance_mod: 0 as PlayerCIChanceStarShellMod,
-            abyssal_CI_chance_mod: 0 as AbyssalCIChanceStarShellMod,
-        };
-    } else {
-        return {
-            player_CI_chance_mod: 4 as PlayerCIChanceStarShellMod,
-            abyssal_CI_chance_mod: -10 as AbyssalCIChanceStarShellMod,
-        };
-    }
+    attacker_star_shell_type: StarShellType,
+    defender_star_shell_type: StarShellType,
+): CIRateStarShellMod {
+    const ATTACKER_CONSTANT = 4;
+    const DEFENDER_CONSTANT = 10;
+
+    const attacker_mod = attacker_star_shell_type !== 'Misfire'
+        ? ATTACKER_CONSTANT
+        : 0;
+    const defender_mod = defender_star_shell_type !== 'Misfire'
+        ? DEFENDER_CONSTANT
+        : 0;
+
+    return attacker_mod - defender_mod as CIRateStarShellMod;
 }
