@@ -1,6 +1,6 @@
 import { EquippedShip } from "@/models/ship/equipped";
 import { NightBattleStrikeType } from ".";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { is_player_equip } from "@/models/equip/basic";
 
 type PreInfo = {
@@ -14,7 +14,7 @@ const calc_pre_info = (
     return equip_slots.reduce((total, slot) => {
         const { equip } = slot;
         if (
-            !equip ||
+            !is_equip_exsist(equip) ||
             !is_player_equip(equip)
         ) return total;
 

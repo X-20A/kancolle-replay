@@ -7,13 +7,6 @@ const calc_mod = (
     count: number,
     married_mod: number = 1,
 ): number => {
-    // ケッカリ補正はフィット補正がマイナス値である場合のみ有効である、という法則がある
-    // これに反する値が渡されたらスロー 本番では消すかも
-    if (
-        (coeffinent_constant >= 0 && married_mod !== 1) ||
-        (coeffinent_constant < 0 && married_mod === 1)
-    ) throw new Error('フィット砲ボーナス係数に不審な値が渡されました');
-
     return coeffinent_constant * Math.sqrt(count) * married_mod;
 }
 
@@ -72,7 +65,9 @@ export function calc_fit(
         total += calc_mod(14, count_320_gun);
 
         if (ship_class === 'Bismarck') {
-            total += calc_mod(3, count_356_gun_series);
+            // こいつだけ例外でプラス補正 かつ ケッカリ補正がかかる
+            // 艦これ改でそうなってるらしい
+            total += calc_mod(3, count_356_gun_series, married_mod);
             return total;
         }
         if (ship_class === 'Iowa') {

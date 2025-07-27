@@ -23,19 +23,22 @@ export function calc_general_night_battle_strike_types(
         main_gun_count >= 2 &&
         sec_gun_count >= 1
     ) return ['Sec_Gun_CI'];
-    if (main_gun_count + sec_gun_count >= 2) return ['double_attack'];
 
-    if (
+    const disable_torpedo =
         defender_ship !== 'Not_specified' &&
-        is_install_type(defender_ship)
-    ) return [];
+        is_install_type(defender_ship);
 
     // ? 潜水CIが汎用魚雷CIを兼ねられるか不明 暫定: 不可
-    if (torpedo_count >= 2) return ['Torpedo_CI'];
     if (
+        !disable_torpedo &&
+        torpedo_count >= 2
+    ) return ['Torpedo_CI'];
+    if (
+        !disable_torpedo &&
         torpedo_count >= 1 &&
         main_gun_count >= 1
     ) return ['Mixed_CI'];
+    if (main_gun_count + sec_gun_count >= 2) return ['double_attack'];
     
     return [];
 }

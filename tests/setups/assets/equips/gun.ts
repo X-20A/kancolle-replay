@@ -38,7 +38,7 @@ export const OOYODO_GUN = make_player_equip_from_name('10cm連装高角砲改+�
 export const YAMATO_10CM_CLUSTER = make_player_equip_from_name('10cm連装高角砲群 集中配備');
 
 /** 35.6cm連装砲 */
-export const large_356 = make_player_equip_from_name('35.6cm連装砲');
+export const LARGE_356 = make_player_equip_from_name('35.6cm連装砲');
 /** 16inch Mk.I三連装砲改+FCR type284 */
 export const FCR_284 = make_player_equip_from_name('16inch Mk.I三連装砲改+FCR type284');
 /** 35.6cm連装砲改三(ダズル迷彩仕様) */

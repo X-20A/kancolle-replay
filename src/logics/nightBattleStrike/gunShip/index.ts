@@ -3,7 +3,7 @@ import { NightBattleStrikeType } from "..";
 import { calc_general_night_battle_strike_types } from "./general";
 import { calc_night_Zuiun_types } from "./nightZuiun";
 import { calc_DD_night_battle_strike_types } from "./DD";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /// 空母以外の夜戦 連撃|CI
 
@@ -19,7 +19,7 @@ const calc_pre_info = (
 ): NightBattleGunShipPreInfo => {
     return equip_slots.reduce((total, slot) => {
         const { equip } = slot;
-        if (!equip) return total;
+        if (!is_equip_exsist(equip)) return total;
 
         const { skill_trigger_type: skill_type } = equip;
         if (skill_type === 'B_MAIN_GUN') total.main_gun_count++;

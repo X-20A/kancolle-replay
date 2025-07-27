@@ -1,7 +1,7 @@
 import { EquippedShip, includes_ship_type, is_abyssal_ship, is_damage_moderatery_or_more } from "@/models/ship/equipped";
 import { NightBattleStrikeType } from "..";
 import { NightBattleGunShipPreInfo } from ".";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { is_player_equip } from "@/models/equip/basic";
 
 /// 夜間瑞雲
@@ -15,7 +15,7 @@ const calc_pre_info = (
     gun_ship_pre_info: NightBattleGunShipPreInfo,
 ): PreInfo => {
     const night_Zuiun_count = equip_slots.filter(slot =>
-        slot.equip !== null &&
+        is_equip_exsist(slot.equip) &&
         slot.slot_count >= 1 &&
         is_player_equip(slot.equip) &&
         slot.equip.name_jp === '試製 夜間瑞雲(攻撃装備)'

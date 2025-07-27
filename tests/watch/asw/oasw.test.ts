@@ -3,7 +3,7 @@ import { EquippedShip } from "@/models/ship/equipped";
 import { pipe } from "fp-ts/lib/function";
 import { MK_32_DCP, TAN_GYORAI_DC, TYPE_144_SONAR } from "tests/setups/assets/equips/asw";
 import { F4U_1D } from "tests/setups/assets/equips/plane";
-import { Kiyoshimo_kai, Shiratsuyu_kai_2, Kako_kai_ni, Mutsuki, Oyashio, Kaga_kai_ni_go, Ukuru_kai, FLETCHER } from "tests/setups/assets/ship/player";
+import { Kiyoshimo_kai, Shiratsuyu_kai_2, Kako_kai_ni, Mutsuki, Oyashio, Kaga_kai_ni_go, Ukuru_kai, Fletcher } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest"
 
@@ -11,7 +11,7 @@ import { describe, expect, it } from "vitest"
 describe('対潜系テスト', () => {
     it('先制対潜判定チェック', () => {
         const MUTSUKI = derive_PES(Mutsuki, []);
-        const SUPPIN_FLETCHER = derive_PES(FLETCHER, []);
+        const SUPPIN_FLETCHER = derive_PES(Fletcher, []);
         const OYASHIO = derive_PES(Oyashio, [TYPE_144_SONAR, TAN_GYORAI_DC, MK_32_DCP]); // 実際は2スロ
         const KIYOSHIMO = derive_PES(Kiyoshimo_kai, [TYPE_144_SONAR, TAN_GYORAI_DC]);
         const SHIRATSUYU = derive_PES(Shiratsuyu_kai_2, [TAN_GYORAI_DC, MK_32_DCP]);

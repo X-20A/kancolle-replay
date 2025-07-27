@@ -5,13 +5,24 @@ export const REPPUU = make_player_equip_from_name('試製烈風 後期型');
 /** XF5U */
 export const XF5U = make_player_equip_from_name('XF5U');
 
+/** F4U-2 Night Corsair */
+export const NIGHT_CORSAIR = make_player_equip_from_name('F4U-2 Night Corsair');
+
 /** 彗星(江草隊) */
 export const SUISEI_EGUSA = make_player_equip_from_name('彗星(江草隊)');
 /** F4U-1D asw: 1 */
 export const F4U_1D = make_player_equip_from_name('F4U-1D');
+/** 零戦62型(爆戦/岩井隊) */
+export const IWAI_BAKUSEN = make_player_equip_from_name('零戦62型(爆戦/岩井隊)');
+
+/** 彗星一二型(三一号光電管爆弾搭載機) */
+export const FUZE_SUISEI = make_player_equip_from_name('彗星一二型(三一号光電管爆弾搭載機)');
 
 /** 流星改(一航戦/熟練) */
 export const RYUUSEI_IKKOUSEN_SKILLED = make_player_equip_from_name('流星改(一航戦/熟練)');
+
+/** 'TBM-3W+3S' */
+export const TBM_3W_3S = make_player_equip_from_name('TBM-3W+3S');
 
 /** 二式艦上偵察機 */
 export const NISHIKI_SCOUT_PLANE = make_player_equip_from_name('二式艦上偵察機');
@@ -57,6 +68,8 @@ export const SHINZAN = make_player_equip_from_name('深山');
 
 /** 瑞雲 */
 export const ZUIUN = make_player_equip_from_name('瑞雲');
+/** 試製 夜間瑞雲(攻撃装備) */
+export const NIGHT_ZUIUN = make_player_equip_from_name('試製 夜間瑞雲(攻撃装備)');
 
 /** 三式指揮連絡機(対潜) */
 export const TYPE_3_COMMAND = make_player_equip_from_name('三式指揮連絡機(対潜)');

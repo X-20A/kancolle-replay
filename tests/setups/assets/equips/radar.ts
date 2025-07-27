@@ -12,3 +12,6 @@ export const SG_INITIAL_RADAR = make_player_equip_from_name('SG レーダー(初
 export const GFCS_RADAR = make_player_equip_from_name('GFCS Mk.37');
 /** 15m二重測距儀+21号電探改二 */
 export const YAMATO_RADAR = make_player_equip_from_name('15m二重測距儀+21号電探改二');
+
+/** 潜水艦搭載電探&水防式望遠鏡 */
+export const SS_RADAR_TELESCOPE = make_player_equip_from_name('潜水艦搭載電探&水防式望遠鏡');
