@@ -1,11 +1,12 @@
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { Accuracy } from ".";
 import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { is_sonar } from "@/models/equip/basic";
 import { AccuracyMoraleMod } from "../morale";
 import { ASWAccuracySmokeMod } from "../smokeScreen";
 import { ASWAccuracyFormationMod } from "../formation";
+import { ShellAccuracyVanguardMod } from "../vanguard";
 
 /**
  * ソナー系装備の対潜値総計(ASW_sonar)を返す
@@ -17,12 +18,12 @@ const calc_asw_sonar = (
 ): number => {
     return equip_slots.reduce((total, slot) => {
         const equip = slot.equip;
-        if (!equip) return total;
+        if (!is_equip_exsist(equip)) return total;
 
         return is_sonar(equip)
             ? total + equip.natural_addition.asw // 対潜火力でいいみたい
             : total;
-    }, 0)
+    }, 0);
 }
 
 /**
@@ -50,6 +51,9 @@ const calc_total_improvement_asw_accuracy = (
  */
 export function calc_asw_accuracy(
     attacker_unit: FleetUnit,
+    // ? wikiに記載なし
+    // ? Sortie Simはshellのものを使用している
+    vanguard_mod: ShellAccuracyVanguardMod,
     formation_mod: ASWAccuracyFormationMod,
     morale_mod: AccuracyMoraleMod,
     smoke_mod: ASWAccuracySmokeMod,
@@ -67,6 +71,7 @@ export function calc_asw_accuracy(
 
     const accuracy = Math.floor(
         base
+        * vanguard_mod
         * formation_mod
         * morale_mod
         * smoke_mod

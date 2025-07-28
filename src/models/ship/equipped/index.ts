@@ -1,12 +1,9 @@
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipUniqueId } from "@/types/brands/ship";
 import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
-import { Equip } from "../../equip/basic";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
-import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "./player";
-import { derive_equipped_abyssal_ship } from "./abyssal";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { NakedShip, PlayerNakedShip } from "../naked/base";
@@ -196,6 +193,10 @@ export function is_submarine_category(ship: EquippedShip): boolean {
     const SUBMARINE_CATEGORY: ShipType[] = ['SS', 'SSV'];
 
     return SUBMARINE_CATEGORY.includes(ship.type_id);
+}
+
+export function is_DD(ship: EquippedShip): boolean {
+    return ship.type_id === 'DD';
 }
 
 /**

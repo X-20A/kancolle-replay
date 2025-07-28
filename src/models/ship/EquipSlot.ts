@@ -1,6 +1,6 @@
 import { AbyssalEquip, Equip, PlayerEquip } from "../equip/basic"
 
-// TODO: 増設とかの調停
+/// 装備スロット
 
 type EquipSlotBase = {
     readonly slot_count: number, // スライドがあるので航空機でなくても持たせる
@@ -23,6 +23,8 @@ export function derive_player_equip_slots(
     slots: readonly number[],
     ex_equip: PlayerEquip | 'None',
 ): PlayerEquipSlot[] {
+    if (normal_equips.length > slots.length) throw new Error('スロット数を超える数の装備が渡されました');
+
     const normal_slots = slots.map((slot_count, index) => ({
         equip: normal_equips[index] ?? 'None',
         slot_count,
@@ -47,6 +49,8 @@ export function derive_abyssal_equip_slots(
     equips: AbyssalEquip[],
     slots: readonly number[],
 ): AbyssalEquipSlot[] {
+    if (equips.length > slots.length) throw new Error('スロット数を超える数の装備が渡されました');
+
     return slots.map((slot_count, index) => ({
         equip: equips[index],
         slot_count,

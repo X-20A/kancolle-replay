@@ -2,6 +2,7 @@ import { RandGenerator } from "@/effects/random";
 import { PlayerEquip } from "@/models/equip/basic";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 import { Brand } from "@/types/brands";
 
 /// 夜偵
@@ -42,7 +43,7 @@ export function calc_accuracy_of_triggered_night_scout(
             const { equip: night_scout } = slot;
             if (
                 slot.slot_count === 0 ||
-                !night_scout ||
+                !is_equip_exsist(night_scout) ||
                 !night_scout.flags.is_night_scout
             ) continue;
 

@@ -7,6 +7,7 @@ import { AccuracyMoraleMod } from "../morale";
 import { AccuracySearchlightMod } from "../nightBattleEquips/searchLight";
 import { FitAccuracyMod } from "../fit/fit";
 import { AccuracyNightScoutMod } from "../nightBattleEquips/nightScout";
+import { CIAccuracyMod } from "../nightBattleStrike";
 
 const calc_total_equips_accuracy = (
     attacker_ship: EquippedShip,
@@ -19,23 +20,24 @@ const calc_total_equips_accuracy = (
         + attacker_ship.total_equip_improvement_addition.night_battle_accuracy;
 }
 
-export function calc_night_battle(
+const calc_night_battle_accuracy_core = (
     attacker_ship: EquippedShip,
     star_shell_mod: AccuracyStarShellMod,
-    night_contact_mod: AccuracyNightScoutMod,
-    vanguard_mod: ShellAccuracyVanguardMod,
+    night_scout_mod: AccuracyNightScoutMod,
+    vanguard_mod: ShellAccuracyVanguardMod,// Sortie Simは shell のものを使用している
     formation_mod: ShellAccuracyFormationMod,
     morale_mod: AccuracyMoraleMod,
-    cutin_mod: number,
+    cutin_mod: CIAccuracyMod,
     searchlight_mod: AccuracySearchlightMod,
     fit_mod: FitAccuracyMod,
-): Accuracy {
+): Accuracy => {
     const ACCURACY_CONSTANT = 69;
 
+    // ? 夜偵補正の適用方法・タイミングはwikiに記載なし Sortie Simより
     const base = ACCURACY_CONSTANT + star_shell_mod;
 
     const total_equips_accuracy = calc_total_equips_accuracy(attacker_ship);
-    const core = base * night_contact_mod
+    const core = base * night_scout_mod
         + 2 * Math.sqrt(attacker_ship.lv)
         + 1.5 * Math.sqrt(attacker_ship.edited_status.luck)
         + total_equips_accuracy;

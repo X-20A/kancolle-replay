@@ -1,5 +1,6 @@
 import { UserSettings } from "@/core/flows/SimExecuter";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
+import { is_DD } from "@/models/ship/equipped";
 import { SingleFleetFormationType } from "@/types";
 import { Brand } from "@/types/brands";
 
@@ -24,13 +25,13 @@ export function calc_shell_accuracy_vanguard_mod(
     const EVENT_DD_TYPE_MOD: number[] = [0.95, 0.95, 0.66, 0.66, 0.52, 0.48, 0.4] as const;
 
     const { original_index } = target_unit;
-    const is_target_DD = target_unit.ship.type_id === 'DD';
-    if (
-        settings.is_event_area &&
-        is_target_DD
-    ) return EVENT_DD_TYPE_MOD[original_index] as ShellAccuracyVanguardMod;
-    if (is_target_DD) return DD_TYPE_MOD[original_index] as ShellAccuracyVanguardMod;
-    return OTHER_TYPE_MOD[original_index] as ShellAccuracyVanguardMod;
+    if (!is_DD(target_unit.ship)) return OTHER_TYPE_MOD[original_index] as ShellAccuracyVanguardMod;
+
+    // 砲戦における、ターゲットが駆逐であった場合の補正値
+    // https://docs.google.com/spreadsheets/d/183MFdMfBS7Oc3doCZYyI-R1jxDaCZ-Y9wMt_HW8PFEg/edit?gid=0#gid=0&range=A28
+    const ANTI_DD_MOD = 1.1;
+    if (settings.is_event_area) return EVENT_DD_TYPE_MOD[original_index] * ANTI_DD_MOD as ShellAccuracyVanguardMod;
+    return DD_TYPE_MOD[original_index] * ANTI_DD_MOD as ShellAccuracyVanguardMod;
 }
 
 export type TorpedoAccuracyVanguardMod = Brand<number, 'TorpedoAccuracyVanguardMod'>
@@ -54,11 +55,10 @@ export function calc_torpedo_accuracy_vanguard_mod(
     const EVENT_DD_TYPE_MOD: number[] = [0.9, 0.9, 0.54, 0.48, 0.38, 0.33, 0.25] as const;
 
     const { original_index } = target_unit;
-    const is_target_DD = target_unit.ship.type_id === 'DD';
-    if (
-        settings.is_event_area &&
-        is_target_DD
-    ) return EVENT_DD_TYPE_MOD[original_index] as TorpedoAccuracyVanguardMod;
-    if (is_target_DD) return DD_TYPE_MOD[original_index] as TorpedoAccuracyVanguardMod;
-    return OTHER_TYPE_MOD[original_index] as TorpedoAccuracyVanguardMod;;
+    if (!is_DD(target_unit.ship)) return OTHER_TYPE_MOD[original_index] as TorpedoAccuracyVanguardMod;
+
+    // 雷撃戦における、ターゲットが駆逐であった場合の補正値
+    const ANTI_DD_MOD = 1.2;
+    if (settings.is_event_area) return EVENT_DD_TYPE_MOD[original_index] * ANTI_DD_MOD as TorpedoAccuracyVanguardMod;
+    return DD_TYPE_MOD[original_index] * ANTI_DD_MOD as TorpedoAccuracyVanguardMod;
 }

@@ -112,6 +112,7 @@ export function calc_lbas_accuracy(
     target_fleet: AbyssalFleet,
     target_ship: AbyssalEquippedShip,
     balloon_mod: LBASAccuracyBalloonMod,
+    // formation_mod, vanguard_modは不要
 ): Accuracy {
     /**
      * 命中定数    

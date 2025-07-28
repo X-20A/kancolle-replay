@@ -5,8 +5,12 @@ import { EquippedShip, includes_ship_type, is_player_equipped_ship } from "@/mod
 import { match } from "ts-pattern";
 import { PlaneEquip } from "@/models/equip/basic";
 import { AirstrikeAccuracyBalloonMod } from "../balloon";
+import { Brand } from "@/types/brands";
+import { AirStrikeAccuracySmokeMod } from "../smokeScreen";
 
 /// 命中計算系
+
+type AccBase = Brand<number, 'AccBase'>
 
 /**
  * 彼我の艦隊種別組み合わせごとの命中基礎値(ACC_base)を返す
@@ -19,16 +23,16 @@ const calc_acc_base = (
     attacker_unit: FleetUnit,
     defender_unit: FleetUnit,
     node: Node,
-): number => {
+): AccBase => {
     if (!is_player_equipped_ship(attacker_unit.ship)) {
         if (node.type.is_air_raid_only) {
             return defender_unit.fleet_type === 'main'
-                ? 105
-                : 70;
+                ? 105 as AccBase
+                : 70 as AccBase;
         } else {
             return defender_unit.fleet_type === 'main'
-                ? 110
-                : 75;
+                ? 110 as AccBase
+                : 75 as AccBase;
         }
     }
 
@@ -37,15 +41,17 @@ const calc_acc_base = (
             .with('single', () => 95)
             .with('main', () => 115)
             .with('escort', () => 80)
-            .exhaustive();
+            .exhaustive() as AccBase;
     }
 
     return match(defender_unit.fleet_type)
         .with('single', () => 95)
         .with('main', () => 110)
         .with('escort', () => 80)
-        .exhaustive();
+        .exhaustive() as AccBase;
 }
+
+type SkipBombingMod = Brand<number, 'SkipBombingMod'>
 
 /**
  * 跳躍爆撃系機体の目標艦種別加算値(Mod_skip_bombing)を返す
@@ -53,24 +59,38 @@ const calc_acc_base = (
  * @param defender_ship 
  * @returns 
  */
-const calc_mod_skip_bombing = (
+const calc_skip_bombing_mod = (
     attacker_plane: PlaneEquip,
     defender_ship: EquippedShip,
-): number => {
-    if (!attacker_plane.flags.is_skip_bomber) return 0;
+): SkipBombingMod => {
+    if (!attacker_plane.flags.is_skip_bomber) return 0 as SkipBombingMod;
 
     const ship_type = defender_ship.type_id;
-    if (ship_type === 'DD') return 13;
+    if (ship_type === 'DD') return 13 as SkipBombingMod;
     // ? CTが怪しいが不明
-    if (includes_ship_type(['CL', 'CL', 'CLT'], ship_type)) return 17;
-    if (includes_ship_type(['CA', 'CAV'], ship_type)) return 22;
-    if (includes_ship_type(['FBB', 'BB', 'BBV', 'CVL', 'CV', 'CVB'], ship_type)) return 30;
+    if (includes_ship_type(['CL', 'CL', 'CLT'], ship_type)) return 17 as SkipBombingMod;
+    if (includes_ship_type(['CA', 'CAV'], ship_type)) return 22 as SkipBombingMod;
+    if (includes_ship_type(['FBB', 'BB', 'BBV', 'CVL', 'CV', 'CVB'], ship_type)) return 30 as SkipBombingMod;
 
-    return 0;
+    return 0 as SkipBombingMod;
 }
 
 /**
- * 航空戦の命中項を返す
+ * 航空戦の命中項を返す(コア)
+ * @returns 
+ */
+const calc_air_combat_accuracy_core = (
+    acc_base: AccBase,
+    skip_bombing_mod: SkipBombingMod,
+    smoke_mod: AirStrikeAccuracySmokeMod,
+    balloon_mod: AirstrikeAccuracyBalloonMod,
+): Accuracy => {
+    return acc_base * smoke_mod * balloon_mod
+        + skip_bombing_mod as Accuracy;
+}
+
+/**
+ * 航空戦の命中項を返す(ファサード)
  * @returns 
  */
 export function calc_air_combat_accuracy(
@@ -78,6 +98,7 @@ export function calc_air_combat_accuracy(
     attacker_plane: PlaneEquip,
     defender_unit: FleetUnit,
     node: Node,
+    smoke_mod: AirStrikeAccuracySmokeMod,
     balloon_mod: AirstrikeAccuracyBalloonMod,
 ): Accuracy {
     const acc_base = calc_acc_base(
@@ -86,15 +107,19 @@ export function calc_air_combat_accuracy(
         node,
     );
 
-    const mod_skip_bombing = calc_mod_skip_bombing(
+    const skip_bombing_mod = calc_skip_bombing_mod(
         attacker_plane,
         defender_unit.ship,
     );
 
-    return acc_base * balloon_mod
-        + mod_skip_bombing as Accuracy;
+    return calc_air_combat_accuracy_core(
+        acc_base,
+        skip_bombing_mod,
+        smoke_mod,
+        balloon_mod,
+    );
 }
 
-const __accuracy_aerial_combat_test__ = {
+export const __accuracy_aerial_combat_test__ = {
     calc_acc_base,
 }
