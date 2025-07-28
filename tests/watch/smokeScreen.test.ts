@@ -2,17 +2,17 @@ import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type, SmokeScreen
 import { derive_player_fleet } from "@/models/fleet/Fleet";
 import { RandValue } from "@/types/brands/other";
 import { ENMAKU, ENMAKU_KAI } from "tests/setups/assets/equips/other";
-import { Fletcher } from "tests/setups/assets/ship/player";
+import { FLETCHER } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
 describe('煙幕系テスト', () => {
     it('艦・装備の組み合わせによって正しい煙幕発動率を返すことを確認', () => {
-        const SUPPIN_FLETCHER = derive_PES(Fletcher, []); // 運30
-        const ENMAKU_FLETCHER = derive_PES(Fletcher, [ENMAKU]);
-        const DOUBLE_ENMAKU_FLETCHER = derive_PES(Fletcher, [ENMAKU, ENMAKU]);
-        const ENMAKU_KAI_FLETCHER = derive_PES(Fletcher, [ENMAKU_KAI]);
-        const OOMORI_FLETCHER = derive_PES(Fletcher, [ENMAKU_KAI, ENMAKU_KAI]);
+        const SUPPIN_FLETCHER = derive_PES(FLETCHER, []); // 運30
+        const ENMAKU_FLETCHER = derive_PES(FLETCHER, [ENMAKU]);
+        const DOUBLE_ENMAKU_FLETCHER = derive_PES(FLETCHER, [ENMAKU, ENMAKU]);
+        const ENMAKU_KAI_FLETCHER = derive_PES(FLETCHER, [ENMAKU_KAI]);
+        const OOMORI_FLETCHER = derive_PES(FLETCHER, [ENMAKU_KAI, ENMAKU_KAI]);
 
         const fleet_1 = derive_player_fleet([SUPPIN_FLETCHER], []);
         const fleet_2 = derive_player_fleet([ENMAKU_FLETCHER], []);

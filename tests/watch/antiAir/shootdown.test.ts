@@ -10,11 +10,11 @@ import { HIGH_10 } from "tests/setups/assets/equips/gun";
 import { F4U_1D, SUISEI_EGUSA } from "tests/setups/assets/equips/plane";
 import { SURFACE_22 } from "tests/setups/assets/equips/radar";
 import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
-import { Akizuki } from "tests/setups/assets/ship/player";
+import { AKIZUKI } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
-const AKIZUKI = derive_PES(Akizuki, [HIGH_10, SURFACE_22]); // AACI種別: [2]
+const AACI_AKIZUKI = derive_PES(AKIZUKI, [HIGH_10, SURFACE_22]); // AACI種別: [2]
 
 const JIGOKU_BOMBER = derive_abyssal_equip(1548); // 射撃回避なし
 
@@ -27,7 +27,7 @@ const HIRYUU_SLOT_COUNT = 12;
 describe('対空系テスト', () => {
     it('割合撃墜数', () => {
         expect(4).toBe(calc_prop_shootdown_count(
-            AKIZUKI.weighted_anti_air,
+            AACI_AKIZUKI.weighted_anti_air,
             JIGOKU_BOMBER as AbyssalPlaneEquip,
             HIRYUU_SLOT_COUNT,
         ));
@@ -47,7 +47,7 @@ describe('対空系テスト', () => {
     });
 
     it('固定撃墜数', () => {
-        const Akizuki_fleet = calc_formation_updated_fleet(derive_player_fleet([AKIZUKI]), 'Diamond');
+        const Akizuki_fleet = calc_formation_updated_fleet(derive_player_fleet([AACI_AKIZUKI]), 'Diamond');
         const Wa_fleet = calc_formation_updated_fleet(derive_abyssal_fleet([LANDING_WA]), 'Diamond');
 
         expect(23).toBe(calc_player_fixed_shootdown_count(

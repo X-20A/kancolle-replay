@@ -6,7 +6,7 @@ import { FUZE_SUISEI, IWAI_BAKUSEN, NIGHT_CORSAIR, NIGHT_ZUIUN, TBM_3W_3S } from
 import { GFCS_RADAR, SS_RADAR_TELESCOPE } from "tests/setups/assets/equips/radar";
 import { FIVE_BARREL_TORPEDO, LATE_MODEL_TORPEDO_SIX } from "tests/setups/assets/equips/torpedo";
 import { LANDING_WA, SYUUSEKI } from "tests/setups/assets/ship/abyssal";
-import { Fletcher, Akizuki, Tash_kai, Hitomi_kai, Akagi_kai_ni, Ise_kai_ni } from "tests/setups/assets/ship/player";
+import { FLETCHER, AKIZUKI, TASH_KAI, HITOMI_KAI, AKAGI_KAI_NI, ISE_KAI_NI } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
@@ -28,21 +28,21 @@ const test = (
 
 describe('夜戦CI系', () => {
     it('ターゲットを考慮しない発動可能な夜戦攻撃', () => {
-        const SUPPIN_FLETCHER = derive_PES(Fletcher, []);
-        const GTR_AKIZUKI = derive_PES(Akizuki, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR]);
-        const ALL_DDCI_TASH = derive_PES(Tash_kai, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR, DRUM], TSSL);
-        const SUPPIN_HITOMI = derive_PES(Hitomi_kai, []);
-        const TR_HITOMI = derive_PES(Hitomi_kai, [LATE_MODEL_TORPEDO_SIX, SS_RADAR_TELESCOPE]);
-        const TT_HITOMI = derive_PES(Hitomi_kai, [LATE_MODEL_TORPEDO_SIX, LATE_MODEL_TORPEDO_SIX]);
-        const SUPPIN_AKAGI = derive_PES(Akagi_kai_ni, []);
-        const FA_AKAGI = derive_PES(Akagi_kai_ni, [NIGHT_CORSAIR, TBM_3W_3S]);
-        const ALL_CVCI_AKAGI = derive_PES(Akagi_kai_ni, [NIGHT_CORSAIR, NIGHT_CORSAIR, TBM_3W_3S, FUZE_SUISEI, IWAI_BAKUSEN]);
-        const SUPPIN_ISE_KAI_NI = derive_PES(Ise_kai_ni, []);
-        const Z_ISE_KAI_NI = derive_PES(Ise_kai_ni, [FCR_284, FCR_284, NIGHT_ZUIUN]);
-        const ALL_Z_ISE_KAI_NI = derive_PES(Ise_kai_ni, [FCR_284, FCR_284, NIGHT_ZUIUN, NIGHT_ZUIUN, GFCS_RADAR]);
-        const THREE_MAI_GUN_AKIZUKI = derive_PES(Akizuki, [D_2_GUN, D_2_GUN, D_2_GUN]);
+        const SUPPIN_FLETCHER = derive_PES(FLETCHER, []);
+        const GTR_AKIZUKI = derive_PES(AKIZUKI, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR]);
+        const ALL_DDCI_TASH = derive_PES(TASH_KAI, [D_2_GUN, FIVE_BARREL_TORPEDO, GFCS_RADAR, DRUM], TSSL);
+        const SUPPIN_HITOMI = derive_PES(HITOMI_KAI, []);
+        const TR_HITOMI = derive_PES(HITOMI_KAI, [LATE_MODEL_TORPEDO_SIX, SS_RADAR_TELESCOPE]);
+        const TT_HITOMI = derive_PES(HITOMI_KAI, [LATE_MODEL_TORPEDO_SIX, LATE_MODEL_TORPEDO_SIX]);
+        const SUPPIN_AKAGI = derive_PES(AKAGI_KAI_NI, []);
+        const FA_AKAGI = derive_PES(AKAGI_KAI_NI, [NIGHT_CORSAIR, TBM_3W_3S]);
+        const ALL_CVCI_AKAGI = derive_PES(AKAGI_KAI_NI, [NIGHT_CORSAIR, NIGHT_CORSAIR, TBM_3W_3S, FUZE_SUISEI, IWAI_BAKUSEN]);
+        const SUPPIN_ISE_KAI_NI = derive_PES(ISE_KAI_NI, []);
+        const Z_ISE_KAI_NI = derive_PES(ISE_KAI_NI, [FCR_284, FCR_284, NIGHT_ZUIUN]);
+        const ALL_Z_ISE_KAI_NI = derive_PES(ISE_KAI_NI, [FCR_284, FCR_284, NIGHT_ZUIUN, NIGHT_ZUIUN, GFCS_RADAR]);
+        const THREE_MAI_GUN_AKIZUKI = derive_PES(AKIZUKI, [D_2_GUN, D_2_GUN, D_2_GUN]);
 
-        const ALL_SSCI_HITOMI = derive_PES(Hitomi_kai, [LATE_MODEL_TORPEDO_SIX, LATE_MODEL_TORPEDO_SIX, SS_RADAR_TELESCOPE]);
+        const ALL_SSCI_HITOMI = derive_PES(HITOMI_KAI, [LATE_MODEL_TORPEDO_SIX, LATE_MODEL_TORPEDO_SIX, SS_RADAR_TELESCOPE]);
 
         // 正例
         test([], SUPPIN_FLETCHER);
@@ -65,7 +65,7 @@ describe('夜戦CI系', () => {
         test(['SSCI_TR'], ALL_SSCI_HITOMI);
     });
     it('ターゲットを考慮した発動可能な夜戦攻撃', () => {
-        const MIX_AKIZUKI = derive_PES(Akizuki, [AKIZUKI_GUN, AKIZUKI_GUN, FIVE_BARREL_TORPEDO]);
+        const MIX_AKIZUKI = derive_PES(AKIZUKI, [AKIZUKI_GUN, AKIZUKI_GUN, FIVE_BARREL_TORPEDO]);
 
         // 本来ならMix_CIが出るが魚雷無効で連撃に化ける
         test(['Mixed_CI'], MIX_AKIZUKI);
