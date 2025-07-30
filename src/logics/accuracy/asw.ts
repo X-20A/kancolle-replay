@@ -1,6 +1,6 @@
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { Accuracy } from ".";
-import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
+import { calc_total_improvement_value } from "@/models/ship/equipped";
 import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { is_sonar } from "@/models/equip/basic";
 import { AccuracyMoraleMod } from "../morale";
@@ -27,19 +27,6 @@ const calc_asw_sonar = (
 }
 
 /**
- * 改修による対潜命中上昇値の総計を返す
- * @param attacker_ship 
- * @returns 
- */
-const calc_total_improvement_asw_accuracy = (
-    attacker_ship: EquippedShip,
-): number => {
-    if (!is_player_equipped_ship(attacker_ship)) return 0;
-
-    return attacker_ship.total_equip_improvement_addition.asw_accuracy;
-}
-
-/**
  * 対潜戦の命中項を返す    
  * // ? 対潜命中に警戒陣補正が掛かるか? 日wiki: 記述無, ENwiki: ?付きで記載(詳細無), Sortie Sim: 処理無 暫定: 補正無
  * @param attacker_unit 
@@ -60,7 +47,7 @@ export function calc_asw_accuracy(
 ): Accuracy {
     const attacker_ship = attacker_unit.ship;
     const total_improvement_asw_accuracy =
-        calc_total_improvement_asw_accuracy(attacker_ship);
+        calc_total_improvement_value(attacker_ship, 'asw_accuracy');
     const asw_sonar = calc_asw_sonar(attacker_ship.equip_slots);
 
     const base = 80

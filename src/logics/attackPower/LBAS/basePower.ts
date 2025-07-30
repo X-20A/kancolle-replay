@@ -6,7 +6,7 @@ import { match } from "ts-pattern";
 
 /// 基地航空隊 基本項
 
-type RawBasePowerResult = {
+export type RawBasePowerResult = {
     natural_status: number,
     improvement_bonus: number,
 }

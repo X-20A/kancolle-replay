@@ -1,5 +1,5 @@
 import { EquippedShip } from "@/models/ship/equipped";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { NightBattleStrikeType } from ".";
 
 /// 空母夜襲CI
@@ -17,7 +17,7 @@ const calc_pre_info = (
 ): PreInfo => {
     return equip_slots.reduce((total, slot) => {
         const { equip } = slot;
-        if (!equip) return total;
+        if (!is_equip_exsist(equip)) return total;
 
         const { skill_trigger_type: skill_type } = equip;
         if (equip.name_jp === '彗星一二型(三一号光電管爆弾搭載機)') total.fuze_Suisei_count++;

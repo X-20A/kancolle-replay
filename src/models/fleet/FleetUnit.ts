@@ -6,7 +6,7 @@ export type AffiliationFleetType =
     | 'escort'
 
 type FleetUnitBase = {
-    fleet_type: AffiliationFleetType,
+    affiliation_type: AffiliationFleetType,
     original_index: number,
 }
 
@@ -38,30 +38,30 @@ export function is_flag_ship(unit: FleetUnit): boolean {
  * @returns 
  */
 export function is_primary_flag_ship(unit: FleetUnit): boolean {
-    return is_flag_ship(unit) && unit.fleet_type !== 'escort';
+    return is_flag_ship(unit) && unit.affiliation_type !== 'escort';
 }
 
 export function is_combined_fleet(fleet_unit: FleetUnit): boolean {
-    return fleet_unit.fleet_type !== 'single';
+    return fleet_unit.affiliation_type !== 'single';
 }
 
 /**
  * 艦隊構成艦を生成して返す
  * @param ships 
- * @param fleet_type 
+ * @param affiliation_type 
  * @returns 
  */
 export function derive_fleet_units<T extends PlayerEquippedShip | AbyssalEquippedShip>(
     ships: T[],
-    fleet_type: AffiliationFleetType,
+    affiliation_type: AffiliationFleetType,
 ): Array<{
-    fleet_type: AffiliationFleetType,
+    affiliation_type: AffiliationFleetType,
     original_index: number,
     ship: T
 }> {
     return ships.map((ship, index) => {
         return {
-            fleet_type: fleet_type,
+            affiliation_type,
             original_index: index,
             ship: ship,
         };

@@ -1,4 +1,4 @@
-import { AACI_DATAS } from "@/datas/aaci";
+import { AACI_DATAS } from "@/datas/battle/aaci";
 import { AntiAirCutinType } from "./cutin/conditions";
 import { PlaneEquip } from "@/models/equip/basic";
 

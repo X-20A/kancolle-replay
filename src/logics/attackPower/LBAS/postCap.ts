@@ -7,8 +7,8 @@ import { RandGenerator } from "@/effects/random";
 import { JetSquadron, LBAS, LbasJetSquadron } from "@/models/LBAS";
 import { calc_capped_attack_power } from "../../cap";
 import { ValidLbasCombination } from "../../target/LBAS";
-import { HitType } from "../../accuracy/aerialCombat";
 import { calc_critical_mod } from "../../critical";
+import { HitType } from "@/logics/hit";
 
 /**
  * 特定の目標に対する攻撃力乗算値(Mod Boss)を返す    

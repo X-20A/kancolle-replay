@@ -1,11 +1,11 @@
-import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
+import { calc_total_improvement_value, EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
 import { RandValue } from "@/types/brands/other";
 
 const calc_base_armor = (
     ship: EquippedShip,
 ): number => {
     return ship.edited_status.armor
-        + (is_player_equipped_ship(ship) ? ship.total_equip_improvement_addition.armor : 0);
+        + calc_total_improvement_value(ship, 'armor');
 }
 
 export function calc_defence(

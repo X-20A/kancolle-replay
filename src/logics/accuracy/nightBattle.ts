@@ -1,23 +1,19 @@
-import { EquippedShip, is_abyssal_ship } from "@/models/ship/equipped";
+import { calc_total_improvement_value, EquippedShip } from "@/models/ship/equipped";
 import { Accuracy } from ".";
 import { AccuracyStarShellMod } from "../nightBattleEquips/starShell";
 import { ShellAccuracyVanguardMod } from "../vanguard";
 import { ShellAccuracyFormationMod } from "../formation";
 import { AccuracyMoraleMod } from "../morale";
 import { AccuracySearchlightMod } from "../nightBattleEquips/searchLight";
-import { FitAccuracyMod } from "../fit/fit";
+import { FitAccuracyMod } from "../fit";
 import { AccuracyNightScoutMod } from "../nightBattleEquips/nightScout";
 import { CIAccuracyMod } from "../nightBattleStrike";
 
 const calc_total_equips_accuracy = (
     attacker_ship: EquippedShip,
 ): number => {
-    const total_natural_accuracy =
-        attacker_ship.edited_status.night_battle_accuracy;
-    if (is_abyssal_ship(attacker_ship)) return total_natural_accuracy;
-
-    return total_natural_accuracy
-        + attacker_ship.total_equip_improvement_addition.night_battle_accuracy;
+    return attacker_ship.edited_status.night_battle_accuracy
+        + calc_total_improvement_value(attacker_ship, 'night_battle_accuracy');
 }
 
 const calc_night_battle_accuracy_core = (

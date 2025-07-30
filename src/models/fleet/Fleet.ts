@@ -2,15 +2,18 @@ import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation,
 import { EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk } from "../ship/equipped"
 import { AbyssalFleetUnit, derive_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
 
-export type SingleFleetType =
-    | 'Normal'
-    | 'Striking_Force_Fleet'
-    
+const SINGLE_FLEET_TYPE = {
+    Normal: 1,
+    Striking_Force_Fleet: 2,
+};
+export type SingleFleetType = keyof typeof SINGLE_FLEET_TYPE
 
-export type CombinedFleetType =
-    | 'Carrier_Task_Force'
-    | 'Surface_Task_Force'
-    | 'Transport_Escort_Force'
+export const COMBINED_FLEET_TYPES = {
+    Carrier_Task_Force: 11,
+    Surface_Task_Force: 12,
+    Transport_Escort_Force: 13,
+}
+export type CombinedFleetType = keyof typeof COMBINED_FLEET_TYPES
 
 export type FleetType = SingleFleetType | CombinedFleetType
 
@@ -108,6 +111,31 @@ export function map_units_to_ships(
  */
 export function is_combined_fleet(fleet: Fleet): fleet is CombinedFleet {
     return 'escort_fleet_units' in fleet;
+}
+
+/**
+ * 艦隊が空母機動部隊であるか判定して返す
+ * @param fleet 
+ * @returns 
+ */
+export function is_fleet_CTF(fleet: Fleet): boolean {
+    return fleet.fleet_type === 'Carrier_Task_Force';
+}
+/**
+ * 艦隊が水上打撃部隊であるか判定して返す
+ * @param fleet 
+ * @returns 
+ */
+export function is_fleet_STF(fleet: Fleet): boolean {
+    return fleet.fleet_type === 'Surface_Task_Force';
+}
+/**
+ * 艦隊が輸送護衛部隊であるか判定して返す
+ * @param fleet 
+ * @returns 
+ */
+export function is_fleet_TEF(fleet: Fleet): boolean {
+    return fleet.fleet_type === 'Transport_Escort_Force';
 }
 
 export function calc_formation_updated_fleet<T extends Fleet>(

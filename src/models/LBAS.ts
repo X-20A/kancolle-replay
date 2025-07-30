@@ -127,7 +127,7 @@ export function derive_specific_type_squadron(
             if (!equip || !is_player_plane_equip(equip)) return [];
             return {
                 equip: equip,
-                each_fleet: unit.fleet_type,
+                each_fleet: unit.affiliation_type,
                 ship_index: unit.original_index,
                 equip_index: slot.slot_index,
                 slot_count: slot.slot_count,

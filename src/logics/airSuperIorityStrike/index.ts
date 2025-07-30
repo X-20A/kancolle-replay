@@ -1,4 +1,4 @@
-import { EquippedShip, is_carrier_vessel_category, is_heavily_damaged } from "@/models/ship/equipped";
+import { EquippedShip, is_CVs, is_heavily_damaged } from "@/models/ship/equipped";
 import { AirStateType, is_air_state_superiority_or_more } from "../airSuperiority/compare";
 import { calc_artillery_spotting_types } from "./artillerySpotting";
 import { calc_CVCI_types } from "./CVCI";
@@ -94,7 +94,7 @@ export function calc_air_superiority_strike_types(
         !is_air_state_superiority_or_more(air_state)
     ) return [];
 
-    if (is_carrier_vessel_category(attacker_ship)) {
+    if (is_CVs(attacker_ship)) {
         return calc_CVCI_types(attacker_ship);;
     }
 

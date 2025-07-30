@@ -1,11 +1,11 @@
 import { EquipImprovementAddition } from "@/datas/equip/improvement";
-import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "@/models/equip/basic";
+import { AbyssalEquip, Equip, PlayerEquip } from "@/models/equip/basic";
 import { FormationType, SingleFleetFormationType, TStatusComponent } from "@/types";
 import { brandWeightedAntiAir, WeightedAntiAir } from "@/types/brands/other";
 import { match } from "ts-pattern";
 import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from ".";
 import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
-import { is_sunk } from "@/models/ship/equipped";
+import { calc_total_improvement_value, is_sunk } from "@/models/ship/equipped";
 import { is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /**
@@ -102,7 +102,7 @@ export function calc_player_fleet_weighted_anti_air(
 
                 return total + (
                     calc_M(equip)
-                    + (is_player_equip(equip) ? equip.improvement_addition.fleet_anti_air : 0)
+                    + calc_total_improvement_value(ship, 'fleet_anti_air')
                 );
             }, 0)
         );

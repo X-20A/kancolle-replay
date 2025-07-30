@@ -1,4 +1,4 @@
-import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
+import { calc_total_improvement_value, EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
 
 const calc_capped_evasion = (
     evasion: number,
@@ -46,7 +46,7 @@ const calc_basic_evasion = (
     ship: EquippedShip,
 ): number => {
     return ship.edited_status.evasion
-        + (is_player_equipped_ship(ship) ? ship.total_equip_improvement_addition.shell_evasion: 0)
+        + calc_total_improvement_value(ship, 'shell_evasion')
         + Math.sqrt(2 * ship.edited_status.luck);
 }
 

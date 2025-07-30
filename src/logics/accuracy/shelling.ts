@@ -1,9 +1,9 @@
-import { EquippedShip, includes_anti_PT_Amagiri, is_abyssal_ship, is_player_equipped_ship, is_PT } from "@/models/ship/equipped";
+import { calc_total_improvement_value, EquippedShip, includes_anti_PT_Amagiri, is_abyssal_ship, is_player_equipped_ship, is_PT } from "@/models/ship/equipped";
 import { Accuracy } from ".";
 import { Fleet, is_combined_fleet, is_player_fleet } from "@/models/fleet/Fleet";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { match } from "ts-pattern";
-import { FitAccuracyMod } from "../fit/fit";
+import { FitAccuracyMod } from "../fit";
 import { ArmorPiercingAccuracyMod } from "../armorPiercing";
 import { AirSuperiorityStrikeAccuracyMod } from "../airSuperIorityStrike";
 import { AccuracyMoraleMod } from "../morale";
@@ -34,14 +34,14 @@ const calc_acc_base = (
 
         match(attacker_fleet.fleet_type)
             .with('Carrier_Task_Force', () => {
-                if (attacker_unit.fleet_type !== 'escort') return 78; // 通常|連合 同じ
+                if (attacker_unit.affiliation_type !== 'escort') return 78; // 通常|連合 同じ
 
                 return !is_combined_fleet(defender_fleet)
                     ? 45
                     : 67;
             })
             .with('Surface_Task_Force', () => {
-                if (attacker_unit.fleet_type !== 'escort') {
+                if (attacker_unit.affiliation_type !== 'escort') {
                     return !is_combined_fleet(defender_fleet)
                         ? 45
                         : 78;
@@ -50,7 +50,7 @@ const calc_acc_base = (
                 return 67; // 通常|連合 同じ
             })
             .with('Transport_Escort_Force', () => {
-                if (attacker_unit.fleet_type !== 'escort') return 54; // 通常|連合 同じ
+                if (attacker_unit.affiliation_type !== 'escort') return 54; // 通常|連合 同じ
 
                 return is_combined_fleet(defender_fleet)
                     ? 45
@@ -63,24 +63,24 @@ const calc_acc_base = (
 
         match(defender_fleet.fleet_type)
             .with('Carrier_Task_Force', () => {
-                return defender_unit.fleet_type !== 'escort'
+                return defender_unit.affiliation_type !== 'escort'
                     ? 88
                     : 65;
             })
             .with('Surface_Task_Force', () => {
-                return defender_unit.fleet_type !== 'escort'
+                return defender_unit.affiliation_type !== 'escort'
                     ? 65
                     : 75;
             })
             .with('Transport_Escort_Force', () => {
-                return defender_unit.fleet_type !== 'escort'
+                return defender_unit.affiliation_type !== 'escort'
                     ? 88
                     : 65;
             })
             .exhaustive();
     }
 
-    if (attacker_unit.fleet_type !== 'escort') {
+    if (attacker_unit.affiliation_type !== 'escort') {
         return is_combined_fleet(defender_fleet)
             ? 90
             : 88;
@@ -96,12 +96,8 @@ const calc_acc_base = (
 const calc_acc_equip = (
     attacker_ship: EquippedShip,
 ): number => {
-    const total_natural_equip_accuracy =
-        attacker_ship.total_natural_equip_addition.shell_accuracy;
-    if (!is_player_equipped_ship(attacker_ship)) return total_natural_equip_accuracy;
-
-    return total_natural_equip_accuracy
-        + attacker_ship.total_equip_improvement_addition.shell_accuracy;
+    return attacker_ship.total_natural_equip_addition.shell_accuracy
+        + calc_total_improvement_value(attacker_ship, 'shell_accuracy');
 }
 
 /**

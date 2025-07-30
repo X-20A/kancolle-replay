@@ -1,6 +1,6 @@
 import { is_player_plane_equip, is_player_equip } from "@/models/equip/basic";
 import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
-import { EquippedShip, is_carrier_vessel_category, is_sunk } from "@/models/ship/equipped";
+import { EquippedShip, is_CVs, is_sunk } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { RandGenerator } from "@/effects/random";
@@ -115,7 +115,7 @@ export const analyze_ships_detection = (
             ship_total.position_value
             + (ship.naked_status.los + equip_summary.total_plane_los) / mod_order;
 
-        const CVs_count = ship_total.CVs_count + (is_carrier_vessel_category(ship) ? 1 : 0);
+        const CVs_count = ship_total.CVs_count + (is_CVs(ship) ? 1 : 0);
 
         return {
             position_value,

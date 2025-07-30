@@ -169,7 +169,7 @@ export function protect_flagship_in_single_fleet<T extends PlayerFleetUnit | Aby
     protect_ratio: number,
     rand: RandGenerator
 ): T {
-    if (pre_target_unit.fleet_type !== 'single') throw new Error('連合艦隊の「かばう」処理に誤って通常艦隊の「かばう」処理が呼び出されています');
+    if (pre_target_unit.affiliation_type !== 'single') throw new Error('連合艦隊の「かばう」処理に誤って通常艦隊の「かばう」処理が呼び出されています');
     if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
         return pre_target_unit;
     }
@@ -197,7 +197,7 @@ const protect_flagship_in_combined_fleet = (
     protect_ratio: number,
     rand: RandGenerator
 ): FleetUnit => {
-    if (pre_target_unit.fleet_type === 'single') throw new Error('通常艦隊の「かばう」処理に誤って連合艦隊の「かばう」処理が呼び出されています');
+    if (pre_target_unit.affiliation_type === 'single') throw new Error('通常艦隊の「かばう」処理に誤って連合艦隊の「かばう」処理が呼び出されています');
     if (!is_primary_flag_ship(pre_target_unit) || is_install_type(pre_target_unit.ship)) {
         return pre_target_unit;
     }

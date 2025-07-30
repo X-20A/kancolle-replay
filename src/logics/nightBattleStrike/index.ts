@@ -1,8 +1,8 @@
-import { EquippedShip, includes_ship_type, is_carrier_vessel_category } from "@/models/ship/equipped";
+import { EquippedShip, includes_ship_type, is_CVs } from "@/models/ship/equipped";
 import { calc_CVs_night_battle_CI_types } from "./CVs";
 import { calc_gun_ship_night_battle_strike_types } from "./gunShip";
 import { calc_submarine_CIs } from "./Submarine";
-import { is_DDCI, NIGHT_BATTLE_STRIKE_DATAS } from "@/datas/nightBattle";
+import { is_DDCI, NIGHT_BATTLE_STRIKE_DATAS } from "@/datas/battle/nightBattle";
 import { is_random_succeed, RandGenerator } from "@/effects/random";
 import { Brand } from "@/types/brands";
 import { calc_night_battle_CI_pre_rate } from "./preRate";
@@ -56,7 +56,7 @@ export function calc_night_battle_CI_types(
     }
     
     if (
-        is_carrier_vessel_category(attacker_ship) ||
+        is_CVs(attacker_ship) ||
         attacker_ship.type_id === 'AO'
     ) return calc_CVs_night_battle_CI_types(attacker_ship);
 

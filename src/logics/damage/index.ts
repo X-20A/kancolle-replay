@@ -147,7 +147,7 @@ export function calc_appllied_damage_fleet<T extends Fleet>(
     damage: number
 ): T {
     return produce(fleet, (draft) => {
-        if (!is_combined_fleet(draft) || fleet_unit.fleet_type !== 'escort') {
+        if (!is_combined_fleet(draft) || fleet_unit.affiliation_type !== 'escort') {
             const unit = draft.main_fleet_units[fleet_unit.original_index];
             unit.ship.state.hp_remain = Math.max(0, unit.ship.state.hp_remain - damage);
             return;

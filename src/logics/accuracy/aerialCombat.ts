@@ -26,25 +26,25 @@ const calc_acc_base = (
 ): AccBase => {
     if (!is_player_equipped_ship(attacker_unit.ship)) {
         if (node.type.is_air_raid_only) {
-            return defender_unit.fleet_type === 'main'
+            return defender_unit.affiliation_type === 'main'
                 ? 105 as AccBase
                 : 70 as AccBase;
         } else {
-            return defender_unit.fleet_type === 'main'
+            return defender_unit.affiliation_type === 'main'
                 ? 110 as AccBase
                 : 75 as AccBase;
         }
     }
 
     if (!is_combined_fleet(attacker_unit)) {
-        return match(defender_unit.fleet_type)
+        return match(defender_unit.affiliation_type)
             .with('single', () => 95)
             .with('main', () => 115)
             .with('escort', () => 80)
             .exhaustive() as AccBase;
     }
 
-    return match(defender_unit.fleet_type)
+    return match(defender_unit.affiliation_type)
         .with('single', () => 95)
         .with('main', () => 110)
         .with('escort', () => 80)

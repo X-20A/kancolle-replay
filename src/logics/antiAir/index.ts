@@ -1,16 +1,17 @@
 import { RandGenerator } from "@/effects/random";
-import { AbyssalFleet, AbyssalSingleFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
+import { AbyssalFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
 import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped"
 import { Equip } from "@/models/equip/basic";
-import { FormationType, SingleFleetFormationType } from "@/types";
+import { FormationType } from "@/types";
 import { match } from "ts-pattern";
-import { LbasJetSquadron, LbasSquadron, ShipJetSquadron } from "@/models/LBAS";
+import { LbasJetSquadron, ShipJetSquadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
 import { calc_abyssal_fixed_shootdown_count } from "./fixed";
 import { Node } from "@/models/Node";
 import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { AntiAirCutinType } from "./cutin/conditions";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /// 対空射撃系
 
@@ -38,8 +39,8 @@ export function calc_combined_fleet_mod(
     fleet_unit: FleetUnit,
     node: Node,
 ): number {
-    if (fleet_unit.fleet_type === 'single') return 1
-    if (fleet_unit.fleet_type === 'escort') return 0.48; 
+    if (fleet_unit.affiliation_type === 'single') return 1
+    if (fleet_unit.affiliation_type === 'escort') return 0.48; 
     if (node.type.is_air_raid_only) return 0.72;
     return 0.8;
 }
@@ -70,7 +71,7 @@ export function calc_ship_fleet_anti_air(
 ): number {
     const equips_fleet_anti_air = ship.equip_slots.reduce((total, equip_built) => {
         const equip = equip_built.equip;
-        if (!equip) return total;
+        if (!is_equip_exsist(equip)) return total;
 
         return total + calc_equip_type_mod_for_fleet_anti_air(equip);
     }, 0);

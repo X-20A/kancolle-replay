@@ -1,4 +1,4 @@
-import { AACI_DATAS } from "@/datas/aaci";
+import { AACI_DATAS } from "@/datas/battle/aaci";
 import { AntiAirCutinType } from "./conditions";
 import Big from "big.js";
 import { RandGenerator } from "@/effects/random";

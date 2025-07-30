@@ -2,7 +2,7 @@ import { AntiAirCutinType } from "./cutin/conditions";
 import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { SingleFleetFormationType } from "@/types";
 import { PlaneEquip } from "@/models/equip/basic";
-import { AACI_DATAS } from "@/datas/aaci";
+import { AACI_DATAS } from "@/datas/battle/aaci";
 import { calc_abyssal_fleet_weighted_anti_air, calc_player_fleet_weighted_anti_air } from "./weighted";
 import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { Node } from "@/models/Node";
@@ -11,8 +11,8 @@ const calc_combined_fleet_mod = (
     defender_unit: FleetUnit,
     node: Node,
 ): number => {
-    if (defender_unit.fleet_type === 'single') return 1;
-    if (defender_unit.fleet_type === 'escort') return 0.48;
+    if (defender_unit.affiliation_type === 'single') return 1;
+    if (defender_unit.affiliation_type === 'escort') return 0.48;
     if (node.type.is_air_raid_only) return 0.72;
     return 0.8;
 }

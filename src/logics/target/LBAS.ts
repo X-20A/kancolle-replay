@@ -8,7 +8,7 @@ import { RandGenerator } from "@/effects/random"
 import { COMBINED_FLEET_FORMATION_PROTECT_RATIO_DATA, SINGLE_FLEET_FORMATION_PROTECT_RATIO_DATA } from "./data"
 import { SingleFleetFormationType } from "@/types"
 
-export type LbasAttackType =
+export type AirstrikeType =
     | 'torpedo'
     | 'bomb'
     | 'asw'
@@ -29,7 +29,7 @@ const can_LBAS_bombing = (
 const calc_LBAS_attack_type = (
     attacker_squadron: LbasSquadron,
     target_unit: AbyssalFleetUnit,
-): LbasAttackType => {
+): AirstrikeType => {
     const { ship } = target_unit;
     const { equip: plane } = attacker_squadron;
     if (is_submarine_category(ship)) return 'asw';
@@ -89,7 +89,7 @@ const calc_valid_squadron_targets = (
 export type ValidLbasCombination = {
     attacker_squadron: LbasSquadron,
     target_unit: AbyssalFleetUnit,
-    attack_type: LbasAttackType,
+    attack_type: AirstrikeType,
 }
 
 /**
