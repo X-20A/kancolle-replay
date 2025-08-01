@@ -30,6 +30,10 @@ export const AKAGI_KAI_NI = derive_naked_ship_from_name('赤城改二');
 export const KAGA_KAI_NI_GO= derive_naked_ship_from_name('加賀改二護');
 /** Ranger */
 export const RANGER = derive_naked_ship_from_name('Ranger');
+/** Saratoga */
+export const SARATOGA = derive_naked_ship_from_name('Saratoga');
+/** Aquila */
+export const AQUILA = derive_naked_ship_from_name('Aquila');
 
 /** 伊勢改二 */
 export const ISE_KAI_NI = derive_naked_ship_from_name('伊勢改二');

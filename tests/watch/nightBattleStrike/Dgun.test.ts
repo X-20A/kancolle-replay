@@ -3,6 +3,7 @@ import { calc_D_gun_mod } from "@/logics/nightBattleStrike/Dgun";
 import { Equip, PlayerEquip } from "@/models/equip/basic";
 import { derive_player_equip_slots, EquipSlot } from "@/models/ship/EquipSlot";
 import { D_2_GUN, D_3_GUN } from "tests/setups/assets/equips/gun";
+import { AKIZUKI } from "tests/setups/assets/ship/player";
 import { describe, expect, it } from "vitest";
 
 const SLOT_COUNTS = [0, 0, 0, 0];
@@ -10,6 +11,7 @@ const derive_slot = (
     equips: PlayerEquip[],
 ): EquipSlot[] => {
     return derive_player_equip_slots(
+        AKIZUKI,
         equips,
         SLOT_COUNTS,
         'None',

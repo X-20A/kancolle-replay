@@ -5,6 +5,7 @@ import { AffiliationFleetType, PlayerFleetUnit } from "./fleet/FleetUnit";
 import { EquipType } from "@/datas/equip/base/player";
 import { Fleet, is_combined_fleet } from "./fleet/Fleet";
 import { produce } from "immer";
+import { is_equip_exsist } from "./ship/EquipSlot";
 
 type SquadronBase = {
     /** 航空隊機数 */
@@ -22,7 +23,7 @@ type ShipSquadronBase = SquadronBase & {
     /** 艦 index */
     readonly ship_index: number,
     /** 装備 index */
-    readonly equip_index: number,
+    readonly slot_index: number,
 }
 
 /** 航空隊 */
@@ -109,7 +110,7 @@ export function derive_specific_type_squadron(
         const valid_plane_slots = unit.ship.equip_slots.flatMap(slot => {
             const equip = slot.equip;
             if (
-                !equip ||
+                !is_equip_exsist(equip) ||
                 !is_plane_equip(equip)
             ) return [];
 
@@ -124,12 +125,13 @@ export function derive_specific_type_squadron(
 
         return valid_plane_slots.flatMap(slot => {
             const equip = slot.equip;
-            if (!equip || !is_player_plane_equip(equip)) return [];
+            if (!is_equip_exsist(equip) || !is_player_plane_equip(equip)) return [];
+            
             return {
                 equip: equip,
                 each_fleet: unit.affiliation_type,
                 ship_index: unit.original_index,
-                equip_index: slot.slot_index,
+                slot_index: slot.slot_index,
                 slot_count: slot.slot_count,
                 proficiency: is_player_plane_equip(equip) ? equip.plane_proficiency : 0,
                 avg_proficiency,
@@ -182,7 +184,7 @@ export function calc_returned_origin_fleet<T extends Fleet>(
             if (!match_squadron) return unit;
 
             const equip_slot_index = unit.ship.equip_slots.findIndex(
-                slot => slot.equip && slot.slot_index === match_squadron.equip_index
+                slot => slot.equip && slot.slot_index === match_squadron.slot_index
             );
 
             if (equip_slot_index === -1) {
@@ -206,7 +208,7 @@ export function calc_returned_origin_fleet<T extends Fleet>(
             if (!match_squadron) return unit;
 
             const equipSlotIndex = unit.ship.equip_slots.findIndex(
-                slot => slot.equip && slot.slot_index === match_squadron.equip_index
+                slot => slot.equip && slot.slot_index === match_squadron.slot_index
             );
 
             if (equipSlotIndex === -1) {

@@ -18,10 +18,10 @@ export const IWAI_BAKUSEN = make_player_equip_from_name('零戦62型(爆戦/岩�
 /** 彗星一二型(三一号光電管爆弾搭載機) */
 export const FUZE_SUISEI = make_player_equip_from_name('彗星一二型(三一号光電管爆弾搭載機)');
 
-/** 流星改(一航戦/熟練) */
+/** 流星改(一航戦/熟練) 雷装: 15 */
 export const RYUUSEI_IKKOUSEN_SKILLED = make_player_equip_from_name('流星改(一航戦/熟練)');
 
-/** 'TBM-3W+3S' */
+/** TBM-3W+3S 雷装: 10 */
 export const TBM_3W_3S = make_player_equip_from_name('TBM-3W+3S');
 
 /** 二式艦上偵察機 */

@@ -7,7 +7,7 @@ import { derive_player_naked_ship } from "../naked/player";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { sumEquipImprovementAdditions } from "@/models/equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
-import { deriveEquipBonusAddition } from "@/models/equip/EquipBonus";
+import { derive_equip_bonus_addition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
 import { derive_prepare_AACI_info } from "../aaciPreparate";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
@@ -46,7 +46,7 @@ const derive_player_equipped_ship_core = (
         .reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
     
     const total_equip_bonus_addition =
-        deriveEquipBonusAddition(naked_ship, equips);
+        derive_equip_bonus_addition(naked_ship, equips);
     const total_equip_improvement_addition =
         sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
     const special_item_addition = deriveSpecialItemAddition(special_item_id);
@@ -95,7 +95,7 @@ const derive_player_equipped_ship_core = (
         country: naked_ship.country,
         special_item_id,
         modernizations: options.modernizations ?? {},
-        equip_slots: derive_player_equip_slots(equips, naked_ship.slots, ex_equip),
+        equip_slots: derive_player_equip_slots(naked_ship, equips, naked_ship.slots, ex_equip),
         slot_counts: options.slots ?? naked_ship.slots,
         max_hp: naked_status.hp,
         base_fuel: naked_ship.base_fuel,

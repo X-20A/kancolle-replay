@@ -1,5 +1,4 @@
 import { PlayerEquip } from "./basic";
-import { SkillTriggerEquipType } from "@/types/equip/player";
 import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { PlayerNakedShip } from "../ship/naked/base";
 import { TStatusComponent } from "@/types";
@@ -49,11 +48,11 @@ function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBon
 /**
  * 装備ボーナスデータからトータルのEquipBonusを計算する。
  * stack_limitやシナジー条件も考慮する。
- * @param ship 対象の艦船
- * @param equips 装備一覧
- * @returns 合計されたEquipBonus
+ * @param ship 
+ * @param equips 
+ * @returns 
  */
-export function deriveEquipBonusAddition(
+export function derive_equip_bonus_addition(
     ship: PlayerNakedShip,
     equips: PlayerEquip[],
 ): TStatusComponent {
@@ -125,10 +124,6 @@ export function deriveEquipBonusAddition(
         }
         return total_bonus_acc;
     }, DEFAULT_EQUIP_BONUS_COMPONENT);
-
-    if (summary.aerial_torpedo_power) { // TODO: ここで艦攻艦爆の変な適用処理のやつできるとうれしい
-
-    }
 
     return {
         ...summary,

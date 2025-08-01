@@ -12,7 +12,7 @@ import { __player_equipped_ship__, derive_player_equipped_ship } from "@/models/
 
 const {
     derive_player_equipped_ship_core,
-} =__player_equipped_ship__;
+} = __player_equipped_ship__;
 
 export function derive_PES(
     naked_ship: PlayerNakedShip,

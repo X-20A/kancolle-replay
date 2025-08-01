@@ -166,3 +166,7 @@ export function is_land_based_bomber(
 export function is_jet_bomber(equip: Equip): equip is JetBomberEquip {
     return equip.type_id === "JET_BOMBER";
 }
+
+export function can_bombing(equip: Equip): boolean {
+    return equip.flags.can_bombing;
+}
