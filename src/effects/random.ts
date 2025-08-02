@@ -50,7 +50,7 @@ export class MockRand implements RandGenerator {
  * @param rand_value 
  * @returns 
  */
-export function is_random_succeed(
+export function is_random_successful(
     success_rate: number,
     rand_value: RandValue,
 ): boolean {

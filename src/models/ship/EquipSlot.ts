@@ -3,11 +3,14 @@ import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "../equip/basi
 import { PlayerNakedShip } from "./naked/base";
 import { derive_equip_bonus_addition } from "../equip/EquipBonus";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
+import { Brand } from "@/types/brands";
 
 /// 装備スロット
 
+export type SlotCount = Brand<number, 'SlotCount'>
+
 type EquipSlotBase = {
-    readonly slot_count: number, // スライドがあるので航空機でなくても持たせる
+    readonly slot_count: SlotCount, // スライドがあるので航空機でなくても持たせる
     readonly original_slot_count: number,
 }
 
@@ -51,7 +54,7 @@ export function derive_player_equip_slots(
         const equip = normal_equips[index] ?? 'None';
         return {
             equip: is_equip_exsist(equip) ? normal_equips[index] : 'None',
-            slot_count,
+            slot_count: slot_count as SlotCount,
             original_slot_count: slot_count,
             slot_index: index,
             equip_bonus: is_equip_exsist(equip)
@@ -62,7 +65,7 @@ export function derive_player_equip_slots(
 
     const ex_slot: PlayerEquipSlot = {
         equip: ex_equip,
-        slot_count: 0,
+        slot_count: 0 as SlotCount,
         original_slot_count: 0,
         slot_index: 'ex',
         equip_bonus: is_equip_exsist(ex_equip)
@@ -84,7 +87,7 @@ export function derive_abyssal_equip_slots(
 
     return slots.map((slot_count, index) => ({
         equip: equips[index],
-        slot_count,
+        slot_count: slot_count as SlotCount,
         original_slot_count: slot_count,
         slot_index: index,
     }));

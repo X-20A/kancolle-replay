@@ -6,9 +6,12 @@ import { match } from "ts-pattern";
 
 /// 基地航空隊 基本項
 
+export type BasePowerStatus = Brand<number, 'BasePowerStatus'>
+export type BasePowerImprovement = Brand<number, 'BasePowerImprovement'>
+
 export type RawBasePowerResult = {
-    natural_status: number,
-    improvement_bonus: number,
+    natural_status: BasePowerStatus,
+    improvement_bonus: BasePowerImprovement,
 }
 
 /**
@@ -35,8 +38,12 @@ const calc_core_base_power_set = (
     } = improvement_addition;
 
     return match(attack_type)
-        .with('asw', () => ({ natural_status: asw, improvement_bonus: improve_asw }))
-        .with('bomb', () => ({ natural_status: aerial_bomb_power, improvement_bonus: improve_bomb }))
+        .with('asw', () => (
+            { natural_status: asw, improvement_bonus: improve_asw } as RawBasePowerResult)
+        )
+        .with('bomb', () => (
+            { natural_status: aerial_bomb_power, improvement_bonus: improve_bomb } as RawBasePowerResult)
+        )
         .with('torpedo', () => {
             return {
                 natural_status: is_install_type(target_unit.ship)
@@ -45,7 +52,7 @@ const calc_core_base_power_set = (
                     ? Math.floor(aerial_torpedo_power / 2)
                     : aerial_torpedo_power,
                 improvement_bonus: improve_torpedo,
-            }
+            } as RawBasePowerResult
         })
         .exhaustive();
 };

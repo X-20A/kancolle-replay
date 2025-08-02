@@ -1,4 +1,5 @@
-import { AbyssalEquippedShip, PlayerEquippedShip } from "../ship/equipped"
+import { AbyssalEquippedShip, is_player_equipped_ship, PlayerEquippedShip } from "../ship/equipped"
+import { Fleet } from "./Fleet"
 
 export type AffiliationFleetType =
     | 'single'
@@ -66,4 +67,16 @@ export function derive_fleet_units<T extends PlayerEquippedShip | AbyssalEquippe
             ship: ship,
         };
     });
+}
+
+export function is_player_fleet_unit(
+    fleet_unit: FleetUnit,
+): fleet_unit is PlayerFleetUnit {
+    return is_player_equipped_ship(fleet_unit.ship);
+}
+
+export function is_affiliation_fleet_main(
+    fleet_unit: FleetUnit,
+): boolean {
+    return fleet_unit.affiliation_type !== 'escort';
 }

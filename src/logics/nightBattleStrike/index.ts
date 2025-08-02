@@ -3,7 +3,7 @@ import { calc_CVs_night_battle_CI_types } from "./CVs";
 import { calc_gun_ship_night_battle_strike_types } from "./gunShip";
 import { calc_submarine_CIs } from "./Submarine";
 import { is_DDCI, NIGHT_BATTLE_STRIKE_DATAS } from "@/datas/battle/nightBattle";
-import { is_random_succeed, RandGenerator } from "@/effects/random";
+import { is_random_successful, RandGenerator } from "@/effects/random";
 import { Brand } from "@/types/brands";
 import { calc_night_battle_CI_pre_rate } from "./preRate";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
@@ -97,7 +97,7 @@ export function calc_triggered_night_battle_strike_info(
         const is_two_hit_DDCI =
             is_DDCI(strike_data) &&
             ship.lv >= 80 &&
-            is_random_succeed(strike_data.replace_rate, rand.next());
+            is_random_successful(strike_data.replace_rate, rand.next());
         const chance_mod = is_two_hit_DDCI
             ? strike_data.replace_rate
             : strike_data.chanceMod;
@@ -108,7 +108,7 @@ export function calc_triggered_night_battle_strike_info(
             ? 0.99 // 連撃は計算でなく固定
             : pre_rate / chance_mod;
 
-        if (!is_random_succeed(rate, rand.next())) continue;
+        if (!is_random_successful(rate, rand.next())) continue;
 
         const D_gun_mod = calc_D_gun_mod(strike_type, ship.equip_slots);
 

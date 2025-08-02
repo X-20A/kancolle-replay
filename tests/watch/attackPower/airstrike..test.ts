@@ -1,4 +1,4 @@
-import { __attack_power_airstrike__ } from "@/logics/attackPower/airstrike";
+import { __attack_power_airstrike__ } from "@/logics/attackPower/airstrike/basePower";
 import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { convert_non_empty_player_equip_slots, NonEmptyPlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
