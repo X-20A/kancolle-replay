@@ -1,6 +1,34 @@
 import { Brand } from "@/types/brands";
 import { AntiInstallPreInfo } from "./preInfo";
 
+export type Type1InstallBonus = Brand<number, 'Type1InstallBonus'>
+
+const calc_type_1_bonus = (
+    info: AntiInstallPreInfo,
+): Type1InstallBonus => {
+    const {
+        type_1_LC_count,
+        type_2_LC_count,
+        total_type_1_LC_improvement,
+        Toku_4_tanks_count,
+        total_Toku_4_tanks_improvement,
+    } = info;
+
+    let total = 1;
+    if (
+        type_1_LC_count ||
+        type_2_LC_count
+    ) total += (
+        total_type_1_LC_improvement / (type_1_LC_count + type_2_LC_count)
+    ) / 50;
+
+    if (Toku_4_tanks_count) {
+        total += (total_Toku_4_tanks_improvement / Toku_4_tanks_count) / 50;
+    }
+
+    return total as Type1InstallBonus;
+}
+
 export type Type3InstallBonus = Brand<number, 'Type3InstallBonus'>
 
 const calc_type_3_bonus = (
