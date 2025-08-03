@@ -171,6 +171,10 @@ export function is_scamp(equip: Equip): boolean {
     return equip.type_id === 'SCAMP';
 }
 
+export function is_skip_bomber(equip: Equip): boolean {
+    return equip.flags.is_skip_bomber;
+}
+
 export function can_bombing(equip: Equip): boolean {
     return equip.flags.can_bombing;
 }

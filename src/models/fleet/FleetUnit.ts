@@ -75,6 +75,11 @@ export function is_player_fleet_unit(
     return is_player_equipped_ship(fleet_unit.ship);
 }
 
+/**
+ * 所属艦隊が主力艦隊(含通常艦隊)であるは判定して返す
+ * @param fleet_unit 
+ * @returns 
+ */
 export function is_affiliation_fleet_main(
     fleet_unit: FleetUnit,
 ): boolean {

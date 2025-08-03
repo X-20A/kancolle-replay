@@ -83,6 +83,18 @@ export function is_PT(
 }
 
 /**
+ * 集積地系の艦であるか判定して返す    
+ * 陸上型・水上型 両方を含む
+ * @param ship 
+ */
+export function is_Supply_depot(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        (ship.install_type === 'SupplyDepotModel' || ship.flags.is_float_Supply_Depot);
+}
+
+/**
  * 陸上型の艦であるか判定して返す
  * @param ship 
  * @returns 

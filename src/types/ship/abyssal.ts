@@ -53,8 +53,8 @@ export type AbyssalShipData = {
     is_Summer_CV?: true,
     /** 船渠棲姫系であるか */
     is_Dock?: true,
-    /** 集積地棲姫III バカンスmode系であるか */
-    is_Supply_Depot?: true,
+    /** 水上型の集積地であるか */
+    is_float_Supply_Depot?: true,
     /** 連合艦隊主力艦隊からでも開幕雷撃可能な艦であるか */
     can_op_torpedo_from_main_fleet?: true,
     /** 夜戦行動不可な艦であるか */
@@ -102,8 +102,8 @@ export type AbyssalNakedShipFlags = {
     is_Summer_CV: boolean,
     /** 船渠棲姫系であるか */
     is_Dock: boolean,
-    /** 集積地棲姫III バカンスmode系であるか */
-    is_Supply_Depot: boolean,
+    /** 水上型の集積地であるか */
+    is_float_Supply_Depot: boolean,
     /** 連合艦隊主力艦隊からでも開幕雷撃可能な艦であるか */
     can_op_torpedo_from_main_fleet: boolean,
     /** 夜戦行動不可な艦であるか */

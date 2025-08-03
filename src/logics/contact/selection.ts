@@ -1,7 +1,7 @@
 import { is_player_plane_equip, PlaneEquip } from "@/models/equip/basic";
 import { ValidContactAirState } from ".";
 import { RandGenerator } from "@/effects/random";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { LbasSquadron } from "@/models/LBAS";
 
 /**
@@ -34,7 +34,7 @@ export function calc_select_contact_plane(
 
     const selected_plane = slots
         .flatMap(slot => {
-            return slot.equip && is_player_plane_equip(slot.equip)
+            return is_equip_exsist(slot.equip) && is_player_plane_equip(slot.equip)
                 ? slot.equip
                 : []
         })

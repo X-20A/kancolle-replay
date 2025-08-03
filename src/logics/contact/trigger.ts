@@ -1,4 +1,4 @@
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { ValidContactAirState } from ".";
 import { LbasSquadron } from "@/models/LBAS";
 
@@ -29,13 +29,13 @@ export function calc_phase1_success_rate(
 
     const total_LOS_power = candidate_slots.reduce((total, slot) => {
         const plane = slot.equip;
-        if (!plane) return total;
+        if (!is_equip_exsist(plane)) return total;
 
         // ? Sortie Simでは艦攻の索敵値を無視する
-        // ? 日&EN wikiでは艦攻の触接率が著しく低いとある
-        // ? 検証があるのか暫定処置か不明
-        // ? ACSimとSortie Simの触接処理は結構違うかも
-        // ? Sortie Simは処理の都合で最終触接率が静的に出ない
+        // 日&EN wikiでは艦攻の触接率が著しく低いとある
+        // 検証があるのか暫定処置か不明
+        // ACSimとSortie Simの触接処理は結構違うかも
+        // Sortie Simは処理の都合で最終触接率が静的に出ない
         if (plane.type_id === 'TORPEDO_BOMBER') return total;
 
         return total

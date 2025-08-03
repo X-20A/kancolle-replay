@@ -3,6 +3,7 @@ import { DeepReadonly } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 import { PlayerEquipNameJP } from "./playerNameJP";
 
+// TODO: 非オーバーライドにしたい
 /** 特殊攻撃のトリガーになる装備の種別ID */
 export const SKILL_TRIGGER_TYPE = {
     NONE: 0,
@@ -14,17 +15,17 @@ export const SKILL_TRIGGER_TYPE = {
     B_SONAR: 6,
     B_DEPTHCHARGE: 7,
     B_TORPEDO: 8,
-    B_TYPE_3_SHELL: 9,
+    B_TYPE_3_SHELL: 9, // 未使用
     B_LC1: 10,
     B_LC2: 11,
     B_LC3: 12,
-    B_DEPTHCHARGE2: 13,
+    B_DEPTHCHARGE2: 13, // 未使用
     B_NIGHT_FIGHTER: 14,
     B_NIGHT_TORPEDO_BOMBER: 15,
     B_NIGHT_BOMBER_DUALROLE: 16,
     B_NIGHT_CREW: 17,
     B_NIGHT_BOMBER: 18,
-    B_OTHER: 99,
+    B_OTHER: 99, // 未使用
 } as const;
 export type SkillTriggerEquipType = keyof typeof SKILL_TRIGGER_TYPE
 

@@ -41,7 +41,7 @@ export function derive_abyssal_naked_ship(
         is_Anchorage: ship_data.is_Anchorage ?? false,
         is_Summer_CV: ship_data.is_Summer_CV ?? false,
         is_Dock: ship_data.is_Dock ?? false,
-        is_Supply_Depot: ship_data.is_Supply_Depot ?? false,
+        is_float_Supply_Depot: ship_data.is_float_Supply_Depot ?? false,
         can_op_torpedo_from_main_fleet: ship_data.can_op_torpedo_from_main_fleet ?? false,
         can_not_NB: ship_data.can_not_NB ?? false,
         can_not_shell: ship_data.can_not_shell ?? false,

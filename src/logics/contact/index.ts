@@ -3,11 +3,12 @@ import { AirStateType } from "../airSuperiority/compare";
 import { RandGenerator } from "@/effects/random";
 import { Node } from "@/models/Node";
 import { calc_phase1_success_rate } from "./trigger";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { is_player_plane_equip, PlaneEquip } from "@/models/equip/basic";
 import { calc_select_contact_plane } from "./selection";
 import { LBAS, LbasSquadron } from "@/models/LBAS";
 import { PhaseType } from "@/core/phases/phase";
+import { Brand } from "@/types/brands";
 
 /// 触接
 
@@ -23,7 +24,7 @@ const calc_candidate_slots_from_ships = (
         ship.equip_slots.flatMap(slot => {
             const equip = slot.equip;
             if (
-                !equip ||
+                !is_equip_exsist(equip) ||
                 !is_player_plane_equip(equip)
             ) return [];
 
@@ -108,6 +109,8 @@ export function calc_fleet_airstrike_contact_mod(
     return calc_plane_contact_mod(selected_plane);
 }
 
+export type ContactMod = Brand<number, 'ContactMod'>
+
 /**
  * 基地航空隊の触接補正値を返す
  */
@@ -117,26 +120,27 @@ export function calc_LBAS_contact_mod(
     air_state: AirStateType,
     lbas: LBAS,
     rand: RandGenerator,
-): number {
+): ContactMod {
     if (
         phase_type === 'Jet_LBAS' ||
         phase_type === 'JET_strike'
     ) throw new Error(
         '基地墳式強襲 | 墳式強襲フェイズでは触接処理を呼び出してはいけません'
     );
+    const NON_ACTIVATE_VALUE = 1 as ContactMod;
 
     if (
         !node.is_detection_success ||
         air_state === 'Parity' ||
         air_state === 'Incapability'
-    ) return 1;
+    ) return NON_ACTIVATE_VALUE;
 
     const candidate_slots = calc_candidate_slots_from_LBAS(lbas);
 
     const phase1_success_rate =
         calc_phase1_success_rate(candidate_slots, air_state);
 
-    if (rand.next() >= phase1_success_rate) return 1;
+    if (rand.next() >= phase1_success_rate) return NON_ACTIVATE_VALUE;
 
     const selected_plane = calc_select_contact_plane(
         candidate_slots,
@@ -144,7 +148,7 @@ export function calc_LBAS_contact_mod(
         rand,
     );
 
-    if (selected_plane === 'None') return 1;
+    if (selected_plane === 'None') return NON_ACTIVATE_VALUE;
 
-    return calc_plane_contact_mod(selected_plane);
+    return calc_plane_contact_mod(selected_plane) as ContactMod;
 }

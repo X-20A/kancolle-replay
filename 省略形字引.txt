@@ -1,0 +1,7 @@
+※基本的に省略形は用いるべきではない。ここに書いたからokというものでもないが
+やむを得ず用いる場合ここに残すこと
+
+例外: 艦種(CV, BB etc...)
+
+LC: Landing_Craft
+PES: PlayerEquippedShip(テストコードでのみ許容)

@@ -9,8 +9,6 @@ import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AirstrikeType } from "../../target/LBAS";
 import { Brand } from "@/types/brands";
 import { FleetUnit, is_affiliation_fleet_main, is_combined_fleet, is_player_fleet_unit } from "@/models/fleet/FleetUnit";
-import { RandValue } from "@/types/brands/other";
-import { is_random_successful } from "@/effects/random";
 
 const calc_core = (
     combination: VaidAirstrikeCombination,
@@ -179,28 +177,6 @@ const calc_combined_fleet_mod = (
     }
 }
 
-type PlaneTypeMod = 0.7 | 0.8 | 1 | 1.5
-
-const calc_plane_type_mod = (
-    equip: Equip,
-    phase_type: 'normal_strike' | 'jet_assault',
-    rand_value: RandValue,
-): PlaneTypeMod => {
-    if (is_torpedo_bomber(equip)) {
-        return is_random_successful(0.5, rand_value)
-            ? 1.5
-            : 0.8;
-    }
-    if (is_jet_bomber(equip)) {
-        return phase_type === 'normal_strike'
-            ? 1
-            : 0.7;
-    }
-    if (can_bombing(equip)) return 1;
-
-    return 1;
-}
-
 type JetMod = 0 | 0.5
 
 const calc_jet_mod = (
@@ -211,7 +187,8 @@ const calc_jet_mod = (
         : 0;
 }
 
-export type AirstrikeAttackPowerBase = Brand<number, 'AirstrikeAttackPowerBase'>
+export type AirstrikeAttackPowerBase =
+    Brand<number, 'AirstrikeAttackPowerBase'>
 
 export function calc_airstrike_base_core(
     base_status: BasePowerStatus,
@@ -220,7 +197,6 @@ export function calc_airstrike_base_core(
     fit_plane: FitPlane,
     slot_count: SlotCount,
     combined_fleet_mod: CombinedFleetMod,
-    plane_type_mod: PlaneTypeMod,
     jet_mod: JetMod,
     // 交戦形態、陣形、艦損傷状態 による影響なし
 ): AirstrikeAttackPowerBase {
@@ -237,9 +213,7 @@ export function calc_airstrike_base_core(
         + AIRSTRIKE_CONSTANT
         + combined_fleet_mod;
 
-    const attack_power = plane_type_mod
-        * core
-        * jet_mod;
+    const attack_power = core * jet_mod;
 
     return attack_power as AirstrikeAttackPowerBase;
 }
