@@ -15,6 +15,10 @@ export type AntiInstallPreInfo = {
     WG_count: number,
     /** 三式弾系 の数 */
     Type_3_shell_count: number,
+    /** 特四式内火艇改 の数 */
+    Toku_4_tank_count: number,
+    /** j陸軍部隊系　を所持しているか */
+    has_army_unit: boolean,
 }
 
 const calc_pre_info = (
@@ -31,6 +35,9 @@ const calc_pre_info = (
         seaplane_bomber_count: 0,
         WG_count: 0,
         Type_3_shell_count: 0,
+        Toku_4_tank_count: 0,
+
+        has_army_unit: false,
     }
 
     return equips.reduce((total, equip) => {
@@ -58,6 +65,8 @@ const calc_pre_info = (
         ) total.carrier_bomber_count++;
         if (name_jp === 'WG42 (Wurfgerät 42)') total.WG_count++;
         if (type_id === 'TYPE_3_SHELL') total.Type_3_shell_count++;
+        if (name_jp === '特四式内火艇改') total.Toku_4_tank_count++;
+        if (type_id === 'ARMY_UNIT') total.has_army_unit = true;
         return total;
     }, initial);
 }

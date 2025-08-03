@@ -3,10 +3,6 @@ import { Brand } from "@/types/brands"
 import { AntiInstallPreInfo } from "./preInfo";
 import { Type3InstallBonus } from "./generalBonus";
 
-
-
-
-
 export type AntiDockMultiplier = Brand<number, 'AntiDockMultiplier'>
 
 export function calc_anti_Dock_multiplier(
@@ -14,12 +10,20 @@ export function calc_anti_Dock_multiplier(
     type_3_install_bonus: Type3InstallBonus,
 ): AntiDockMultiplier {
     const {
+        type_1_LC_count,
+        type_2_LC_count,
         type_3_LC_count,
         carrier_bomber_count,
         seaplane_bomber_count,
         WG_count,
         Type_3_shell_count,
+        Toku_4_tank_count,
+        has_army_unit,
     } = info;
+    const has_special_LC = type_1_LC_count ||
+        type_2_LC_count ||
+        Toku_4_tank_count ||
+        has_army_unit;
 
     let total = 1;
 
@@ -30,5 +34,12 @@ export function calc_anti_Dock_multiplier(
     if (WG_count >= 2) total *= 1.1;
     if (Type_3_shell_count) total *= 1.3;
     if (type_3_LC_count >= 1) total *= 1.2 * type_3_install_bonus;
+    if (
+        type_3_LC_count >= 2 ||
+        Toku_4_tank_count >= 1
+    ) total *= 1.2;
+    if (has_special_LC) total *= 1.1;
     
+
+    return total as AntiDockMultiplier;
 }
