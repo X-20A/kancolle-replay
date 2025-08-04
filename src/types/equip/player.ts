@@ -17,6 +17,10 @@ export const SKILL_TRIGGER_TYPE = {
     B_TORPEDO: 8,
     B_TYPE_3_SHELL: 9, // 未使用
     B_LC1: 10,
+    /**
+     * 特二/特四式内火艇    
+     * ENwikiの Amphibious Vehicles に相当
+     */
     B_LC2: 11,
     B_LC3: 12,
     B_DEPTHCHARGE2: 13, // 未使用

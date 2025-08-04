@@ -1,11 +1,17 @@
 import { includes_equip_type, includes_player_equip_name, PlayerEquip } from "@/models/equip/basic";
 
 export type AntiInstallPreInfo = {
-    type_1_LC_count: number,
-    total_type_1_LC_improvement: number,
-    type_2_LC_count: number,
-    type_3_LC_count: number,
-    total_type_3_LC_improvement: number,
+    /** 大発系 の数(例外有り) */
+    normal_LC_count: number,
+    /** 大発系 の改修値総計(例外有り) */
+    total_normal_LC_improvement: number,
+    /** 陸戦隊系 の数(例外有り) */
+    Landing_force_count: number,
+    /** 内火艇系 の数(例外有り) */
+    Amphibious_tank_count: number,
+    /** 内火艇系 の改修値総計(例外有り) */
+    total_Amphibious_tank_improvement: number,
+    /** 特大発動艇 | 特大発動艇+Ⅲ号戦車J型 | 特大発動艇+Ⅲ号戦車(北アフリカ仕様) の数 */
     special_LC1_count: number,
     /** 特大発動艇+戦車第11連隊 の数 */
     Toku_11_tank_count: number,
@@ -15,7 +21,7 @@ export type AntiInstallPreInfo = {
     Panzer_3_count: number,
     /** 艦爆・噴式爆撃機 の数 */
     carrier_bomber_count: number,
-    /** 水爆の数 */
+    /** 水爆 の数 */
     seaplane_bomber_count: number,
     /** WG42 (Wurfgerat 42) の数 */
     WG_count: number,
@@ -24,14 +30,14 @@ export type AntiInstallPreInfo = {
     /** 三式弾系 の数 */
     Type_3_shell_count: number,
     /** 特四式内火艇改 の数 */
-    Toku_4_tank_kai_count: number,
+    Katsu_tank_kai_count: number,
     /** 特四式内火艇 | 特四式内火艇改 の数 */
-    Toku_4_tanks_count: number,
+    Katsu_tanks_count: number,
     /** 特四式内火艇 | 特四式内火艇改 の改修値総計 */
-    total_Toku_4_tanks_improvement: number,
-    /** 特大発動艇+チハ */
+    total_Katsu_tanks_improvement: number,
+    /** 特大発動艇+チハ の数 */
     chiha_count: number,
-    /** 特大発動艇+チハ改 */
+    /** 特大発動艇+チハ改 の数 */
     chiha_kai_count: number,
     /** M4A1 DD の数 */
     m4a1_count: number,
@@ -43,20 +49,37 @@ export type AntiInstallPreInfo = {
     AB_count: number,
     /** 武装大発 の数 */
     armed_LC_count: number,
+    /** 二式12cm迫撃砲改 の数 */
+    mortar_count: number,
+    /** 二式12cm迫撃砲改 集中配備 の数 */
+    mortar_concentrated_count: number,
+    /** 艦載型 四式20cm対地噴進砲 の数 */
+    Type_4_rocket_count: number,
+    /** 四式20cm対地噴進砲 集中配備 の数 */
+    Type_4_rocket_concentrated_count: number,
+    /** 陸軍歩兵部隊 の数 */
+    Army_infantry_count: number,
+    /** 九七式中戦車(チハ) の数 */
+    Army_chiha_count: number,
+    /** 九七式中戦車 新砲塔(チハ改) の数 */
+    Army_chiha_kai_count: number,
+    /** 陸軍歩兵部隊+チハ改 の数 */
+    Army_infantry_chiha_count: number,
 
-    /** 陸軍部隊系　を所持しているか */
+
+    /** 陸軍部隊系 を所持しているか */
     has_army_unit: boolean,
 }
 
-const calc_pre_info = (
+export function calc_anti_install_pre_info(
     equips: PlayerEquip[],
-): AntiInstallPreInfo => {
+): AntiInstallPreInfo {
     const initial: AntiInstallPreInfo = {
-        type_1_LC_count: 0,
-        total_type_1_LC_improvement: 0,
-        type_2_LC_count: 0,
-        type_3_LC_count: 0,
-        total_type_3_LC_improvement: 0,
+        normal_LC_count: 0,
+        total_normal_LC_improvement: 0,
+        Landing_force_count: 0,
+        Amphibious_tank_count: 0,
+        total_Amphibious_tank_improvement: 0,
         special_LC1_count: 0,
         Toku_11_tank_count: 0,
         Isshiki_tank_count: 0,
@@ -66,9 +89,9 @@ const calc_pre_info = (
         WG_count: 0,
         AP_shell_count: 0,
         Type_3_shell_count: 0,
-        Toku_4_tank_kai_count: 0,
-        Toku_4_tanks_count: 0,
-        total_Toku_4_tanks_improvement: 0,
+        Katsu_tank_kai_count: 0,
+        Katsu_tanks_count: 0,
+        total_Katsu_tanks_improvement: 0,
         chiha_count: 0,
         chiha_kai_count: 0,
         m4a1_count: 0,
@@ -76,6 +99,14 @@ const calc_pre_info = (
         African_tank_count: 0,
         AB_count: 0,
         armed_LC_count: 0,
+        mortar_count: 0,
+        mortar_concentrated_count: 0,
+        Type_4_rocket_count: 0,
+        Type_4_rocket_concentrated_count: 0,
+        Army_infantry_count: 0,
+        Army_chiha_count: 0,
+        Army_chiha_kai_count: 0,
+        Army_infantry_chiha_count: 0,
 
         has_army_unit: false,
     }
@@ -88,17 +119,30 @@ const calc_pre_info = (
             skill_trigger_type,
         } = equip;
 
-        if (skill_trigger_type === 'B_LC1') {
-            total.type_1_LC_count++;
-            total.total_type_1_LC_improvement += improvement_lv;
-        }
-        if (skill_trigger_type === 'B_LC2') total.type_2_LC_count++;
-        if (skill_trigger_type === 'B_LC3') {
-            total.type_3_LC_count++;
-            total.total_type_3_LC_improvement += improvement_lv;
+        if (
+            skill_trigger_type === 'B_LC1' &&
+            name_jp !== '特大発動艇+Ⅲ号戦車(北アフリカ仕様)'
+        ) {
+            total.normal_LC_count++;
+            total.total_normal_LC_improvement += improvement_lv;
         }
         if (
-            includes_player_equip_name(['特大発動艇', '特大発動艇+Ⅲ号戦車J型'], name_jp)
+            skill_trigger_type === 'B_LC2' ||
+            name_jp === '特大発動艇+Ⅲ号戦車(北アフリカ仕様)'
+        )  {
+            total.Landing_force_count++;
+            total.total_normal_LC_improvement += improvement_lv;
+        }
+        if (skill_trigger_type === 'B_LC3') {
+            total.Amphibious_tank_count++;
+            total.total_Amphibious_tank_improvement += improvement_lv;
+        }
+        if (
+            includes_player_equip_name([
+                '特大発動艇',
+                '特大発動艇+Ⅲ号戦車J型',
+                '特大発動艇+Ⅲ号戦車(北アフリカ仕様)'
+            ], name_jp)
         ) total.special_LC1_count++;
         if (name_jp === '特大発動艇+戦車第11連隊') total.Toku_11_tank_count++;
         if (name_jp === '特大発動艇+一式砲戦車') total.Isshiki_tank_count++;
@@ -111,12 +155,12 @@ const calc_pre_info = (
         if (name_jp === 'WG42 (Wurfgerät 42)') total.WG_count++;
         if (type_id === 'AP_SHELL') total.AP_shell_count++;
         if (type_id === 'TYPE_3_SHELL') total.Type_3_shell_count++;
-        if (name_jp === '特四式内火艇改') total.Toku_4_tank_kai_count++;
+        if (name_jp === '特四式内火艇改') total.Katsu_tank_kai_count++;
         if (
             includes_player_equip_name(['特四式内火艇', '特四式内火艇改'], name_jp)
         ) {
-            total.Toku_4_tanks_count++;
-            total.total_Toku_4_tanks_improvement += improvement_lv;
+            total.Katsu_tanks_count++;
+            total.total_Katsu_tanks_improvement += improvement_lv;
         }
         if (name_jp === '特大発動艇+チハ') total.chiha_count++;
         if (name_jp === '特大発動艇+チハ改') total.chiha_kai_count++;
@@ -125,6 +169,15 @@ const calc_pre_info = (
         if (name_jp === '大発動艇(II号戦車/北アフリカ仕様)') total.African_tank_count++;
         if (name_jp === '装甲艇(AB艇)') total.AB_count++;
         if (name_jp === '武装大発') total.armed_LC_count++;
+        if (name_jp === '二式12cm迫撃砲改') total.mortar_count++;
+        if (name_jp === '二式12cm迫撃砲改 集中配備') total.mortar_concentrated_count++;
+        if (name_jp === '艦載型 四式20cm対地噴進砲') total.Type_4_rocket_count++;
+        if (name_jp === '四式20cm対地噴進砲 集中配備') total.Type_4_rocket_concentrated_count++;
+        if (name_jp === '陸軍歩兵部隊') total.Army_infantry_count++;
+        if (name_jp === '九七式中戦車(チハ)') total.Army_chiha_count++;
+        if (name_jp === '九七式中戦車 新砲塔(チハ改)') total.Army_chiha_kai_count++;
+        if (name_jp === '陸軍歩兵部隊+チハ改') total.Army_infantry_chiha_count++;
+
 
         if (type_id === 'ARMY_UNIT') total.has_army_unit = true;
         return total;
