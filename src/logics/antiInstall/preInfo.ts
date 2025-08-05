@@ -1,4 +1,5 @@
 import { includes_equip_type, includes_player_equip_name, PlayerEquip } from "@/models/equip/basic";
+import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 
 export type AntiInstallPreInfo = {
     /** 大発系 の数(例外有り) */
@@ -65,11 +66,46 @@ export type AntiInstallPreInfo = {
     Army_chiha_kai_count: number,
     /** 陸軍歩兵部隊+チハ改 の数 */
     Army_infantry_chiha_count: number,
-
-
-    /** 陸軍部隊系 を所持しているか */
-    has_army_unit: boolean,
+    /** 陸軍部隊系 の数 */
+    Armys_count: number,
+    landing_tank_count: number,
+    /** 上陸用舟艇シナジー対象装備数 A群 */
+    armed_boats_synergy_type_A_count: number,
+    /** 上陸用舟艇シナジー対象装備数 B群 */
+    armed_boats_synergy_type_B_count: number,
+    /** Swordfish(艦攻) の数 */
+    torpedo_bomber_swordfish_count: number,
+    /** 水戦 の数 */
+    seaplane_fighter_count: number,
+    /** Laté 298B */
+    Late_298_count: number,
+    /** 噴式爆撃機 の数 */
+    jet_bomber_count: number,
 }
+
+const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
+    A: PlayerEquipNameJP[],
+    B: PlayerEquipNameJP[],
+} = {
+    A: [
+        '大発動艇',
+        '大発動艇(八九式中戦車&陸戦隊)',
+        '特大発動艇',
+        '大発動艇(II号戦車/北アフリカ仕様)',
+        '特大発動艇+一式砲戦車',
+        '特大発動艇+Ⅲ号戦車J型',
+        '特四式内火艇',
+        '特四式内火艇改',
+    ],
+    B: [
+        '特二式内火艇',
+        '特大発動艇+戦車第11連隊',
+        '特大発動艇+Ⅲ号戦車(北アフリカ仕様)',
+        '特大発動艇+チハ',
+        '特大発動艇+チハ改',
+        '特大発動艇+Ⅲ号戦車J型',
+    ],
+};
 
 export function calc_anti_install_pre_info(
     equips: PlayerEquip[],
@@ -107,8 +143,14 @@ export function calc_anti_install_pre_info(
         Army_chiha_count: 0,
         Army_chiha_kai_count: 0,
         Army_infantry_chiha_count: 0,
-
-        has_army_unit: false,
+        Armys_count: 0,
+        landing_tank_count: 0,
+        armed_boats_synergy_type_A_count: 0,
+        armed_boats_synergy_type_B_count: 0,
+        torpedo_bomber_swordfish_count: 0,
+        seaplane_fighter_count: 0,
+        Late_298_count: 0,
+        jet_bomber_count: 0,
     }
 
     return equips.reduce((total, equip) => {
@@ -117,6 +159,7 @@ export function calc_anti_install_pre_info(
             improvement_lv,
             type_id,
             skill_trigger_type,
+            flags,
         } = equip;
 
         if (
@@ -177,9 +220,22 @@ export function calc_anti_install_pre_info(
         if (name_jp === '九七式中戦車(チハ)') total.Army_chiha_count++;
         if (name_jp === '九七式中戦車 新砲塔(チハ改)') total.Army_chiha_kai_count++;
         if (name_jp === '陸軍歩兵部隊+チハ改') total.Army_infantry_chiha_count++;
+        if (type_id === 'ARMY_UNIT') total.Armys_count++;
+        if (type_id === 'LANDING_TANK') total.landing_tank_count++;
+        if (
+            includes_player_equip_name(ARMED_BOATS_SYNERGY_TARGET_NAMES.A, name_jp)
+        ) total.armed_boats_synergy_type_A_count++;
+        if (
+            includes_player_equip_name(ARMED_BOATS_SYNERGY_TARGET_NAMES.B, name_jp)
+        ) total.armed_boats_synergy_type_B_count++;
+        if (
+            flags.is_Swordfish_family &&
+            type_id === 'TORPEDO_BOMBER'
+        ) total.torpedo_bomber_swordfish_count++;
+        if (type_id === 'SEAPLANE_FIGHTER') total.seaplane_fighter_count++;
+        if (name_jp === 'Laté 298B') total.Late_298_count++;
+        if (type_id === 'JET_BOMBER') total.jet_bomber_count++;
 
-
-        if (type_id === 'ARMY_UNIT') total.has_army_unit = true;
         return total;
     }, initial);
 }

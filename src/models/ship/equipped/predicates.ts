@@ -82,6 +82,62 @@ export function is_PT(
     return is_abyssal_ship(ship) && ship.flags.is_PT;
 }
 
+export function is_Pillbox(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.install_type === 'PillboxModel';
+}
+
+export function is_Dock(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.flags.is_Dock;
+}
+
+export function is_Harbour_vacation(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.install_type === 'HarbourModel';
+}
+
+export function is_Summer_BB(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.flags.is_Summer_BB;
+}
+
+export function is_Summer_CV(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.flags.is_Summer_CV;
+}
+
+export function is_Summer_CA(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.flags.is_Summer_CA;
+}
+
+export function is_French_BB(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.flags.is_French_BB;
+}
+
+export function is_Anchorage(
+    ship: EquippedShip,
+): boolean {
+    return is_abyssal_ship(ship) &&
+        ship.flags.is_Anchorage;
+}
+
 /**
  * 集積地系の艦であるか判定して返す    
  * 陸上型・水上型 両方を含む

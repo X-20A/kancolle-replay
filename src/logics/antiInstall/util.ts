@@ -1,8 +1,10 @@
 import { AntiInstallPreInfo } from "./preInfo";
 
 export type AntiInstallUtils = {
+    /** 上陸用舟艇 | カツ車 | 陸軍部隊 */
     has_special_LC: boolean,
-    AB_or_armed_count: number,
+    /** 武装大発 | 装甲艇(AB艇) の数 */
+    armed_boats_count: number,
     total_mortars_count: number,
     total_Type4_rocket_count: number,
 }
@@ -13,22 +15,23 @@ export function calc_anti_install_utils(
     const {
         normal_LC_count,
         Landing_force_count,
-        Katsu_tank_kai_count: Toku_4_tank_kai_count,
-        has_army_unit,
+        Katsu_tank_kai_count,
         AB_count,
         armed_LC_count,
         mortar_count,
         mortar_concentrated_count,
         Type_4_rocket_count,
         Type_4_rocket_concentrated_count,
+        Armys_count,
+        
     } = info;
 
     const has_special_LC = normal_LC_count >= 1 ||
         Landing_force_count >= 1 ||
-        Toku_4_tank_kai_count >= 1 ||
-        has_army_unit;
+        Katsu_tank_kai_count >= 1 ||
+        Armys_count >= 1;
 
-    const AB_or_armed_count = AB_count + armed_LC_count;
+    const armed_boats_count = AB_count + armed_LC_count;
 
     const total_mortars_count = mortar_count
             + mortar_concentrated_count;
@@ -37,7 +40,7 @@ export function calc_anti_install_utils(
 
     const util: AntiInstallUtils = {
         has_special_LC,
-        AB_or_armed_count,
+        armed_boats_count,
         total_mortars_count,
         total_Type4_rocket_count,
     }
