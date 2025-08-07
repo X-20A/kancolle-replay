@@ -100,6 +100,7 @@ const derive_player_equipped_ship_core = (
         max_hp: naked_status.hp,
         base_fuel: naked_ship.base_fuel,
         base_ammo: naked_ship.base_ammo,
+        special_attack_type: naked_ship.special_attack_type,
         flags,
         state,
         naked_status,

@@ -12,6 +12,7 @@ import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
+import { SpecialAttackType } from "@/logics/SpecialAttack";
 
 export * from "./predicates";
 export * from "./improvement";
@@ -72,6 +73,7 @@ export type PlayerEquippedShip = EquippedShipBase & {
     readonly total_contribute_asw_attack_power: number,
     readonly base_fuel: number,
     readonly base_ammo: number,
+    readonly special_attack_type: SpecialAttackType | 'None',
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
     /** simで更新されるあれこれ */

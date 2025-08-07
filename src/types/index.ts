@@ -68,3 +68,23 @@ export function is_combined_fleet_formation(
 ): formation is CombinedFleetFormationType {
     return !is_single_fleet_formation(formation);
 }
+
+type AtLeast<T, N extends number> =
+    N extends 1 ? [T, ...T[]] :
+    N extends 2 ? [T, T, ...T[]] :
+    N extends 3 ? [T, T, T, ...T[]] :
+    N extends 4 ? [T, T, T, T, ...T[]] :
+    N extends 5 ? [T, T, T, T, T, ...T[]] :
+    N extends 6 ? [T, T, T, T, T, T, ...T[]] :
+    N extends 7 ? [T, T, T, T, T, T, T, ...T[]] :
+    never;
+
+/**
+ * 配列が指定数以上の要素を持つか判定して返す(型ガード)
+ */
+export function has_at_least<T, N extends number>(
+    arr: readonly T[],
+    count: N,
+): arr is AtLeast<T, N> {
+    return arr.length >= count;
+}

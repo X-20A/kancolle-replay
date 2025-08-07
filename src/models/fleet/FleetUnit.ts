@@ -1,5 +1,5 @@
-import { AbyssalEquippedShip, is_player_equipped_ship, PlayerEquippedShip } from "../ship/equipped"
-import { Fleet } from "./Fleet"
+import { SpecialAttackType } from "@/logics/SpecialAttack"
+import { AbyssalEquippedShip, PlayerEquippedShip } from "../ship/equipped"
 
 export type AffiliationFleetType =
     | 'single'
@@ -13,6 +13,7 @@ type FleetUnitBase = {
 
 export type PlayerFleetUnit = FleetUnitBase & {
     ship: PlayerEquippedShip,
+    triggered_special_attack: SpecialAttackType | 'None',
 }
 
 export type AbyssalFleetUnit = FleetUnitBase & {
@@ -47,32 +48,56 @@ export function is_combined_fleet(fleet_unit: FleetUnit): boolean {
 }
 
 /**
- * 艦隊構成艦を生成して返す
+ * プレイヤー艦隊構成艦を生成して返す
  * @param ships 
  * @param affiliation_type 
  * @returns 
  */
-export function derive_fleet_units<T extends PlayerEquippedShip | AbyssalEquippedShip>(
-    ships: T[],
+export function derive_player_fleet_units(
+    ships: PlayerEquippedShip[],
     affiliation_type: AffiliationFleetType,
-): Array<{
+): PlayerFleetUnit[] {
+    const units: PlayerFleetUnit[] = ships.flatMap((ship, index) => {
+        const unit: PlayerFleetUnit = {
+            affiliation_type,
+            original_index: index,
+            ship: ship,
+            triggered_special_attack: 'None',
+        };
+
+        return unit;
+    });
+
+    return units;
+}
+
+/**
+ * 深海艦隊構成艦を生成して返す
+ * @param ships 
+ * @param affiliation_type 
+ * @returns 
+ */
+export function derive_abyssal_fleet_units(
+    ships: AbyssalEquippedShip[],
     affiliation_type: AffiliationFleetType,
-    original_index: number,
-    ship: T
-}> {
-    return ships.map((ship, index) => {
-        return {
+): AbyssalFleetUnit[] {
+    const units: AbyssalFleetUnit[] = ships.flatMap((ship, index) => {
+        const unit: AbyssalFleetUnit = {
             affiliation_type,
             original_index: index,
             ship: ship,
         };
+
+        return unit;
     });
+
+    return units;
 }
 
 export function is_player_fleet_unit(
     fleet_unit: FleetUnit,
 ): fleet_unit is PlayerFleetUnit {
-    return is_player_equipped_ship(fleet_unit.ship);
+    return 'triggered_special_attack' in fleet_unit;
 }
 
 /**

@@ -1,5 +1,5 @@
 import { FleetUnit, is_combined_fleet } from "@/models/fleet/FleetUnit";
-import { CombinedFleetFormationType, SingleFleetFormationType } from "@/types";
+import { CombinedFleetFormationType, FormationType, SingleFleetFormationType } from "@/types";
 import { Brand } from "@/types/brands";
 
 export type IntegratedFormationType = Exclude<SingleFleetFormationType, 'Vanguard'>
@@ -306,4 +306,11 @@ export function is_invlidated_formation_combination(
         defender_formation === 'Echelon'
     ) return true;
     return false;
+}
+
+export function includes_formation_type(
+    match_formation_type: FormationType[],
+    search_formation_type: FormationType,
+): boolean {
+    return match_formation_type.includes(search_formation_type);
 }

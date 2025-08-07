@@ -14,6 +14,7 @@
 		"outDir": "./build",
 		"strictFunctionTypes": true,
 		"strictNullChecks": true,
+		"noUncheckedIndexedAccess": true,
 		"baseUrl": ".",
 		"paths": {
 			"@/*": [

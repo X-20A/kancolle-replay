@@ -71,6 +71,11 @@ export function is_retreated(ship: EquippedShip): boolean {
     return is_player_equipped_ship(ship) && ship.state.is_retreated;
 }
 
+export function is_operational(ship: EquippedShip): boolean {
+    return !is_sunk(ship) &&
+        !is_retreated(ship);
+}
+
 /**
  * PT系の艦であるか判定して返す
  * @param ship 

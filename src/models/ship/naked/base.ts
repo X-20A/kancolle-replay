@@ -8,7 +8,8 @@ import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
-import { is_player_equipped_ship, is_player_naked_ship } from "../equipped";
+import { is_player_naked_ship } from "../equipped";
+import { SpecialAttackType } from "@/logics/SpecialAttack";
 
 type NakedShipBase = {
     readonly name_en: ShipNameEN,
@@ -27,6 +28,7 @@ export type PlayerNakedShip = NakedShipBase & {
     readonly country: Country,
     readonly base_fuel: number,
     readonly base_ammo: number,
+    readonly special_attack_type: SpecialAttackType | 'None',
     readonly flags: PlayerNakedShipFlags,
 }
 

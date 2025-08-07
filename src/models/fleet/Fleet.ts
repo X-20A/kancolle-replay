@@ -1,6 +1,7 @@
 import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
 import { EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk } from "../ship/equipped"
-import { AbyssalFleetUnit, derive_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
+import { AbyssalFleetUnit, derive_player_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
+import { DayOrNight } from "@/types/battle";
 
 const SINGLE_FLEET_TYPE = {
     Normal: 1,
@@ -19,6 +20,7 @@ export type FleetType = SingleFleetType | CombinedFleetType
 
 type FleetBase = {
     readonly unused_smoke: boolean,
+    readonly is_activated_special_attack: boolean,
 }
 
 type SingleFleetBase = FleetBase & {
@@ -27,11 +29,11 @@ type SingleFleetBase = FleetBase & {
 }
 
 export type PlayerSingleFleet = SingleFleetBase & {
-    readonly main_fleet_units: PlayerFleetUnit[],
+    readonly main_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
 }
 
 export type AbyssalSingleFleet = SingleFleetBase & {
-    readonly main_fleet_units: AbyssalFleetUnit[],
+    readonly main_fleet_units: [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
 }
 
 export type SingleFleet = PlayerSingleFleet | AbyssalSingleFleet
@@ -42,13 +44,13 @@ type CombinedFleetBase = FleetBase & {
 }
 
 export type PlayerCombinedFleet = CombinedFleetBase & {
-    readonly main_fleet_units: PlayerFleetUnit[],
-    readonly escort_fleet_units: PlayerFleetUnit[],
+    readonly main_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
+    readonly escort_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
 }
 
 export type AbyssalCombinedFleet = CombinedFleetBase & {
-    readonly main_fleet_units: AbyssalFleetUnit[],
-    readonly escort_fleet_units: AbyssalFleetUnit[],
+    readonly main_fleet_units: [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+    readonly escort_fleet_units: [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
 }
 
 export type CombinedFleet = PlayerCombinedFleet | AbyssalCombinedFleet
@@ -138,6 +140,12 @@ export function is_fleet_TEF(fleet: Fleet): boolean {
     return fleet.fleet_type === 'Transport_Escort_Force';
 }
 
+export function is_already_special_attack_activated(
+    fleet: PlayerFleet,
+): boolean {
+    return fleet.is_activated_special_attack;
+}
+
 export function calc_formation_updated_fleet<T extends Fleet>(
     fleet: T,
     formation: FormationType,
@@ -186,17 +194,19 @@ export function derive_player_fleet(
     if (is_combined) {
         if (!is_player_ships(escort_fleet_ships)) throw new Error('自艦隊に深海棲艦が含まれています');
         return {
-            main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
-            escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
+            main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'main') as [PlayerFleetUnit, ...PlayerFleetUnit[]],
+            escort_fleet_units: derive_player_fleet_units(main_fleet_ships, 'escort') as [PlayerFleetUnit, ...PlayerFleetUnit[]],
             fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
+            is_activated_special_attack: false,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
-            main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
+            main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'single') as [PlayerFleetUnit, ...PlayerFleetUnit[]],
             fleet_type: 'Normal',
             unused_smoke: true,
+            is_activated_special_attack: false,
             formation: 'LineAhead',
         };
     }
@@ -219,18 +229,32 @@ export function derive_abyssal_fleet(
     if (is_combined) {
         if (!is_abyssal_ships(escort_fleet_ships)) throw new Error('深海艦隊に艦娘が含まれています');
         return {
-            main_fleet_units: derive_fleet_units(main_fleet_ships, 'main'),
-            escort_fleet_units: derive_fleet_units(main_fleet_ships, 'escort'),
+            main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'main') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+            escort_fleet_units: derive_player_fleet_units(main_fleet_ships, 'escort') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
             fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
+            is_activated_special_attack: false,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
-            main_fleet_units: derive_fleet_units(main_fleet_ships, 'single'),
+            main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'single') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
             unused_smoke: true,
+            is_activated_special_attack: false,
             fleet_type: 'Normal',
             formation: 'LineAhead',
         };
     }
+}
+
+export function extract_flagship(
+    fleet: PlayerFleet,
+    phase_type: DayOrNight,
+): PlayerFleetUnit {
+    if (
+        is_combined_fleet(fleet) &&
+        phase_type === 'Night'
+    ) return fleet.escort_fleet_units[0];
+
+    return fleet.main_fleet_units[0];
 }

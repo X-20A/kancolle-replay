@@ -54,11 +54,12 @@ const calc_skip_bomber_mod = (
     return 1;
 }
 
-export type AirstrikeAttackPowerPreMod = Brand<number, 'AirstrikeAttackPowerPreMod'>
+export type AirstrikeAttackPowerPreMod =
+    Brand<number, 'AirstrikeAttackPowerPreMod'>
 
-const calc_airstrike_attack_power_pre_mod = (
+export function calc_airstrike_attack_power_pre_mod(
     base_mod: PreCapModBase,
     skip_bomber_mod: SkipBomberMod,
-): AirstrikeAttackPowerPreMod => {
+): AirstrikeAttackPowerPreMod {
     return base_mod * skip_bomber_mod as AirstrikeAttackPowerPreMod;
 }

@@ -130,7 +130,7 @@ export type ShellAttackPowerBase = Brand<number, 'ShellAttackPowerBase'>
 /**
  * 昼砲撃戦の火力定数を取得する関数。
  */
-export function get_shell_base(
+export function get_shell_power_base(
     attacker_fleet_type: FleetType,
     defender_fleet_type: FleetType,
     attacker_ship: EquippedShip,
