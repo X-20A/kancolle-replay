@@ -13,19 +13,25 @@ const SPECIAL_ATTACKS = {
     Submarine_Fleet_Special_2_3: 300,
     Submarine_Fleet_Special_3_4: 301,
     Submarine_Fleet_Special_2_4: 302,
-    Yamato_Ships_Special: 400,
+    Yamato_3_Ships_Special: 400,
+    Yamato_2_Ships_Special: 400,
 } as const;
 export type SpecialAttackType = keyof typeof SPECIAL_ATTACKS
+
+export type ValidSpecialAttack<K extends SpecialAttackType> = K;
+
+export type SpecialAttacckIneligible = 'Ineligible'
 
 export function calc_triggerable_special_attack_type(
     fleet: PlayerFleet,
     phase_type: DayOrNight,
-): SpecialAttackType | 'Impossible' {
+): SpecialAttackType | 'Ineligible' {
     const submarine_fleet_attack_type = evaluate_submarine_fleet_attack(
         fleet,
         phase_type,
     );
-    if (submarine_fleet_attack_type !== 'impossible') return submarine_fleet_attack_type;
+    if (submarine_fleet_attack_type !== 'Ineligible') return submarine_fleet_attack_type;
 
-    
+
+    return 'Ineligible';
 }

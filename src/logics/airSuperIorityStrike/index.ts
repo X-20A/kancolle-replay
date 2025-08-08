@@ -1,4 +1,4 @@
-import { EquippedShip, is_CVs, is_heavily_damaged } from "@/models/ship/equipped";
+import { EquippedShip, is_CVs, is_damage_heavily } from "@/models/ship/equipped";
 import { AirStateType, is_air_state_superiority_or_more } from "../airSuperiority/compare";
 import { calc_artillery_spotting_types } from "./artillerySpotting";
 import { calc_CVCI_types } from "./CVCI";
@@ -90,7 +90,7 @@ export function calc_air_superiority_strike_types(
     air_state: AirStateType,
 ): AirSuperiorityStrikeType[] {
     if (
-        is_heavily_damaged(attacker_ship) ||
+        is_damage_heavily(attacker_ship) ||
         !is_air_state_superiority_or_more(air_state)
     ) return [];
 

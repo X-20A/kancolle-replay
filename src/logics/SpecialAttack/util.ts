@@ -1,0 +1,36 @@
+import { is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
+import { is_operational, is_submarine_category } from "@/models/ship/equipped";
+import { DayOrNight } from "@/types/battle";
+import { Brand } from "@/types/brands";
+
+export type SpecialAttackUnits =
+    Brand<[PlayerFleetUnit, ...PlayerFleetUnit[]], 'SpecialAttackUnits'>
+
+export function extract_attacker_units(
+    fleet: PlayerFleet,
+    phase_type: DayOrNight,
+): SpecialAttackUnits {
+    // ? 水上打撃部隊随伴艦隊 かつ 夜戦 なら発動できる? 暫定: 可能
+    return is_combined_fleet(fleet) && phase_type === 'Night'
+        ? fleet.escort_fleet_units as SpecialAttackUnits
+        : fleet.main_fleet_units as SpecialAttackUnits;
+}
+
+const is_valid = (
+    unit: PlayerFleetUnit,
+): boolean => {
+    return !is_submarine_category(unit.ship) &&
+        !is_operational(unit.ship)
+}
+
+export type SpecialAttackComponentLength =
+    Brand<number, 'SpecialAttackComponentLength'>
+
+export function calc_valid_component_ship_length(
+    attacker_units: PlayerFleetUnit[]
+): SpecialAttackComponentLength {
+    return attacker_units
+        .filter(is_valid)
+        .length as SpecialAttackComponentLength;
+}

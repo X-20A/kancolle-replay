@@ -80,7 +80,8 @@ type AtLeast<T, N extends number> =
     never;
 
 /**
- * 配列が指定数以上の要素を持つか判定して返す(型ガード)
+ * 配列が指定数以上の要素を持つか判定して返す(型ガード)    
+ * インデックスアクセスを型安全にするための儀式
  */
 export function has_at_least<T, N extends number>(
     arr: readonly T[],

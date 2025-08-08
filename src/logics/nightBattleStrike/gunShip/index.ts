@@ -1,4 +1,4 @@
-import { EquippedShip, is_heavily_damaged } from "@/models/ship/equipped";
+import { EquippedShip, is_damage_heavily } from "@/models/ship/equipped";
 import { NightBattleStrikeType } from "..";
 import { calc_general_night_battle_strike_types } from "./general";
 import { calc_night_Zuiun_types } from "./nightZuiun";
@@ -43,7 +43,7 @@ export function calc_gun_ship_night_battle_strike_types(
     attacker_ship: EquippedShip,
     defender_ship: EquippedShip | 'Not_specified'
 ): NightBattleStrikeType[] {
-    if (is_heavily_damaged(attacker_ship)) return [];
+    if (is_damage_heavily(attacker_ship)) return [];
 
     const pre_info = calc_pre_info(attacker_ship.equip_slots);
     return [

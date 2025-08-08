@@ -193,6 +193,20 @@ export function includes_ship_name(
 }
 
 /**
+ * 指定艦娘名が艦娘名群に含まれるか判定して返す(Set&has版)    
+ * ! Setを用いる場合は必ず一度だけSetが生成されるようにすること(都度生成だとhas使っても赤字)
+ * @param match_ship_names 
+ * @param search_ship_name 
+ * @returns 
+ */
+export function has_ship_name(
+    match_ship_names: Set<PlayerShipNameJP>,
+    search_ship_name: PlayerShipNameJP,
+): boolean {
+    return match_ship_names.has(search_ship_name);
+}
+
+/**
  * 対PT特効を持った天霧系であるか判定して返す
  * @param ship_name 
  * @returns 
@@ -302,7 +316,7 @@ export function is_damage_moderatery_or_more(
  * @param ship 
  * @returns 
  */
-export function is_heavily_damaged(ship: EquippedShip): boolean {
+export function is_damage_heavily(ship: EquippedShip): boolean {
     return ship.state.hp_remain / ship.edited_status.hp <= 0.25;
 }
 
