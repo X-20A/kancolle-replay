@@ -1,8 +1,9 @@
 /// 探照灯
 
+import { is_searchlight_L, is_searchlight_S } from "@/models/equip/basic";
 import { FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_retreated } from "@/models/ship/equipped";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { Brand } from "@/types/brands";
 
 type SearchlightInfo = {
@@ -20,7 +21,9 @@ type SearchlightInfo = {
 const has_searchlight_L = (
     equip_slot: EquipSlot,
 ): boolean => {
-    return equip_slot.equip?.type_id === 'SEARCHLIGHT_L';
+    const { equip } = equip_slot;
+    return is_equip_exsist(equip) &&
+        is_searchlight_L(equip);
 }
 
 /**
@@ -31,7 +34,9 @@ const has_searchlight_L = (
 const has_searchlight_S = (
     equip_slot: EquipSlot,
 ): boolean => {
-    return equip_slot.equip?.type_id === 'SEARCHLIGHT_S';
+    const { equip } = equip_slot;
+    return is_equip_exsist(equip) &&
+        is_searchlight_S(equip);
 }
 
 /**

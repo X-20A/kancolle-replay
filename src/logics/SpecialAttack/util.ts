@@ -1,6 +1,8 @@
+import { is_radar } from "@/models/equip/basic";
 import { is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
-import { is_operational, is_submarine_category } from "@/models/ship/equipped";
+import { is_operational, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 import { DayOrNight } from "@/types/battle";
 import { Brand } from "@/types/brands";
 
@@ -33,4 +35,16 @@ export function calc_valid_component_ship_length(
     return attacker_units
         .filter(is_valid)
         .length as SpecialAttackComponentLength;
+}
+
+export function has_high_accuracy_radar(
+    ship: PlayerEquippedShip,
+): boolean {
+    return ship.equip_slots.some(slot => {
+        const { equip } = slot;
+
+        return is_equip_exsist(equip) &&
+            is_radar(equip) &&
+            equip.natural_addition.los >= 8
+    });
 }

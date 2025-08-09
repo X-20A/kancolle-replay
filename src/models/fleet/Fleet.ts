@@ -1,6 +1,6 @@
 import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
 import { EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk } from "../ship/equipped"
-import { AbyssalFleetUnit, derive_player_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
+import { AbyssalFleetUnit, derive_abyssal_fleet_units, derive_player_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
 import { DayOrNight } from "@/types/battle";
 
 const SINGLE_FLEET_TYPE = {
@@ -20,7 +20,6 @@ export type FleetType = SingleFleetType | CombinedFleetType
 
 type FleetBase = {
     readonly unused_smoke: boolean,
-    readonly is_activated_special_attack: boolean,
 }
 
 type SingleFleetBase = FleetBase & {
@@ -30,6 +29,8 @@ type SingleFleetBase = FleetBase & {
 
 export type PlayerSingleFleet = SingleFleetBase & {
     readonly main_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
+    readonly is_activated_special_attack: boolean,
+    readonly Kongou_special_activated_count: number,
 }
 
 export type AbyssalSingleFleet = SingleFleetBase & {
@@ -46,6 +47,8 @@ type CombinedFleetBase = FleetBase & {
 export type PlayerCombinedFleet = CombinedFleetBase & {
     readonly main_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
     readonly escort_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
+    readonly is_activated_special_attack: boolean,
+    readonly Kongou_special_activated_count: number,
 }
 
 export type AbyssalCombinedFleet = CombinedFleetBase & {
@@ -199,6 +202,7 @@ export function derive_player_fleet(
             fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
             is_activated_special_attack: false,
+            Kongou_special_activated_count: 0,
             formation: 'CruisingFormation_4',
         };
     } else {
@@ -207,6 +211,7 @@ export function derive_player_fleet(
             fleet_type: 'Normal',
             unused_smoke: true,
             is_activated_special_attack: false,
+            Kongou_special_activated_count: 0,
             formation: 'LineAhead',
         };
     }
@@ -229,18 +234,16 @@ export function derive_abyssal_fleet(
     if (is_combined) {
         if (!is_abyssal_ships(escort_fleet_ships)) throw new Error('深海艦隊に艦娘が含まれています');
         return {
-            main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'main') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
-            escort_fleet_units: derive_player_fleet_units(main_fleet_ships, 'escort') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+            main_fleet_units: derive_abyssal_fleet_units(main_fleet_ships, 'main') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+            escort_fleet_units: derive_abyssal_fleet_units(main_fleet_ships, 'escort') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
             fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
-            is_activated_special_attack: false,
             formation: 'CruisingFormation_4',
         };
     } else {
         return {
-            main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'single') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+            main_fleet_units: derive_abyssal_fleet_units(main_fleet_ships, 'single') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
             unused_smoke: true,
-            is_activated_special_attack: false,
             fleet_type: 'Normal',
             formation: 'LineAhead',
         };

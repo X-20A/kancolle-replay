@@ -1,6 +1,7 @@
 import { PlayerFleet } from "@/models/fleet/Fleet";
 import { evaluate_submarine_fleet_attack } from "./Submarine";
 import { DayOrNight } from "@/types/battle";
+import { RandGenerator } from "@/effects/random";
 
 const SPECIAL_ATTACKS = {
     Nelson_Special: 100,
@@ -20,17 +21,22 @@ export type SpecialAttackType = keyof typeof SPECIAL_ATTACKS
 
 export type ValidSpecialAttack<K extends SpecialAttackType> = K;
 
-export type SpecialAttacckIneligible = 'Ineligible'
+export type SpecialAttackIneligible = 'Ineligible'
+
+export type SpecialAttackMisfire = 'Misfire'
 
 export function calc_triggerable_special_attack_type(
     fleet: PlayerFleet,
     phase_type: DayOrNight,
+    rand: RandGenerator,
 ): SpecialAttackType | 'Ineligible' {
     const submarine_fleet_attack_type = evaluate_submarine_fleet_attack(
         fleet,
         phase_type,
+        rand.next(),
     );
-    if (submarine_fleet_attack_type !== 'Ineligible') return submarine_fleet_attack_type;
+
+    if (submarine_fleet_attack_type !== 'Misfire') return submarine_fleet_attack_type;
 
 
     return 'Ineligible';

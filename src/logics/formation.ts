@@ -1,4 +1,3 @@
-import { FleetUnit, is_combined_fleet } from "@/models/fleet/FleetUnit";
 import { CombinedFleetFormationType, FormationType, SingleFleetFormationType } from "@/types";
 import { Brand } from "@/types/brands";
 
@@ -313,4 +312,11 @@ export function includes_formation_type(
     search_formation_type: FormationType,
 ): boolean {
     return match_formation_type.includes(search_formation_type);
+}
+
+export function has_formation_type(
+    match_formation_type: Set<FormationType>,
+    search_formation_type: FormationType,
+): boolean {
+    return match_formation_type.has(search_formation_type);
 }

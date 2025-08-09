@@ -2,6 +2,7 @@ import { EquipType } from "@/datas/equip/base/player";
 import { AbyssalEquip, Equip, JetBomberEquip, PlaneEquip, PlayerEquip, PlayerPlaneEquip } from ".";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
+import { EquipSlot } from "@/models/ship/EquipSlot";
 
 /**
  * 艦娘装備であるか判定して返す(型ガード)
@@ -82,6 +83,13 @@ export function includes_equip_type(
     return match_equip_types.includes(search_equip_type);
 }
 
+export function has_equip_type(
+    match_equip_types: Set<EquipType>,
+    search_equip_type: EquipType,
+): boolean {
+    return match_equip_types.has(search_equip_type);
+}
+
 /**
  * 航空機であるか判定して返す(型ガード)
  * @param equip 
@@ -106,13 +114,18 @@ export function is_fighter(equip: Equip): boolean {
     return equip.type_id === 'FIGHTER';
 }
 
+const CARRIER_BOMBER_TYPES: Set<EquipType> = new Set([
+    'DIVE_BOMBER',
+    'FIGHTER_BOMBER',
+]);
+
 /**
  * 装備が艦爆系であるか判定して返す(含爆戦)
  * @param equip 
  * @returns 
  */
 export function is_dive_bomber(equip: Equip): boolean {
-    return equip.type_id === 'DIVE_BOMBER' || equip.type_id === 'FIGHTER_BOMBER';
+    return has_equip_type(CARRIER_BOMBER_TYPES, equip.type_id);
 }
 
 /**
@@ -146,6 +159,11 @@ export function is_sonar(equip: Equip): boolean {
     return equip.skill_trigger_type === 'B_SONAR';
 }
 
+const LAND_BASED_BOMBER_TYPES: Set<EquipType> = new Set([
+    'LAND_BASED_BOMBER',
+    'LAND_BASED_BOMBER_L'
+]);
+
 /**
  * 陸攻系装備であるか判定して返す
  * @param plane 
@@ -154,8 +172,17 @@ export function is_sonar(equip: Equip): boolean {
 export function is_land_based_bomber(
     equip: Equip,
 ): boolean {
-    return equip.type_id === 'LAND_BASED_BOMBER' ||
-        equip.type_id === 'LAND_BASED_BOMBER_L';
+    return has_equip_type(LAND_BASED_BOMBER_TYPES, equip.type_id);
+}
+
+const RADAR_TYPES: Set<EquipType> = new Set([
+    'RADAR_S',
+    'RADAR_L',
+    'RADAR_XL',
+]);
+
+export function is_radar(equip: Equip): boolean {
+    return has_equip_type(RADAR_TYPES, equip.type_id);
 }
 
 /**
@@ -177,4 +204,26 @@ export function is_skip_bomber(equip: Equip): boolean {
 
 export function can_bombing(equip: Equip): boolean {
     return equip.flags.can_bombing;
+}
+
+/**
+ * 大型探照灯であるか判定して返す
+ * @param equip_slot 
+ * @returns 
+ */
+export function is_searchlight_L(
+    equip: Equip,
+): boolean {
+    return equip.type_id === 'SEARCHLIGHT_L';
+}
+
+/**
+ * 小型探照灯であるか判定して返す
+ * @param equip_slot 
+ * @returns 
+ */
+export function is_searchlight_S(
+    equip: Equip,
+): boolean {
+    return equip.type_id === 'SEARCHLIGHT_S';
 }
