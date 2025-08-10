@@ -66,7 +66,7 @@ type NelsonClassSpecialAttack = ValidSpecialAttack<
     | 'Nelson_Special'
 >
 
-export function evaluate_Nagato_class_special_attack(
+export function evaluate_Nelson_class_special_attack(
     attacker_fleet: PlayerFleet,
     attacker_units: SpecialAttackUnits,
     valid_ship_length: SpecialAttackComponentLength,

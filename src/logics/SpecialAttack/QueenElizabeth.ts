@@ -47,7 +47,7 @@ type NelsonClassSpecialAttack = ValidSpecialAttack<
     | 'Queen_Elizabeth_Special'
 >
 
-export function evaluate_Nagato_class_special_attack(
+export function evaluate_Queen_Elizabeth_class_special_attack(
     attacker_fleet: PlayerFleet,
     attacker_units: SpecialAttackUnits,
     valid_ship_length: SpecialAttackComponentLength,
