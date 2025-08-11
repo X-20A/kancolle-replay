@@ -3,6 +3,9 @@ import { make_player_equip_from_name } from "tests/setups/generator/equip";
 /** 水雷戦隊 熟練見張員 */
 export const TSSL = make_player_equip_from_name('水雷戦隊 熟練見張員');
 
+/** 九一式徹甲弾 */
+export const AP_SHELL_91 = make_player_equip_from_name('九一式徹甲弾');
+
 /** 三式弾 */
 export const TYPE_3_SHELL = make_player_equip_from_name('三式弾');
 

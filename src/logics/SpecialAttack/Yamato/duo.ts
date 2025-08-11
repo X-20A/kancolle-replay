@@ -4,8 +4,6 @@ import { SpecialAttackMisfire } from "..";
 import { has_ship_name, PlayerEquippedShip } from "@/models/ship/equipped";
 import { is_random_successful } from "@/effects/random";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { is_equip_exsist } from "@/models/ship/EquipSlot";
-import { is_radar } from "@/models/equip/basic";
 import { has_high_accuracy_radar } from "../util";
 
 const YAMATO_KAI_NI_SERIES: Set<PlayerShipNameJP> = new Set([

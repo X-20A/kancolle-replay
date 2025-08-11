@@ -1,15 +1,18 @@
 import { AbyssalFleet, PlayerFleet } from "@/models/fleet/Fleet";
-import { evaluate_submarine_fleet_attack } from "./Submarine";
+import { evaluate_submarine_fleet_attack, extract_participate_submarine_fleet_attack_units, SubmarineSpecialAttack } from "./Submarine";
 import { DayOrNight } from "@/types/battle";
 import { RandGenerator } from "@/effects/random";
-import { evaluate_Yamato_class_special_attack } from "./Yamato";
+import { evaluate_Yamato_class_special_attack, extract_participate_Yamato_class_special_attack_units, YamatoClassSpecialAttack } from "./Yamato";
 import { calc_valid_component_ship_length, extract_attacker_units } from "./util";
-import { evaluate_Nelson_class_special_attack } from "./Nelson";
+import { evaluate_Nelson_class_special_attack, extract_participate_Nelson_class_special_attack_units } from "./Nelson";
 import { evaluate_Nagato_class_special_attack } from "./Nagato";
-import { evaluate_Richelieu_class_special_attack } from "./Richelieu";
-import { evaluate_Queen_Elizabeth_class_special_attack } from "./QueenElizabeth";
-import { evaluate_Kongou_class_special_attack } from "./Kongou";
-import { evaluate_Colorado_class_special_attack_type } from "./Colorado";
+import { evaluate_Richelieu_class_special_attack, extract_participate_Richelieu_class_special_attack_units } from "./Richelieu";
+import { evaluate_Queen_Elizabeth_class_special_attack, extract_participate_Queen_Elizabeth_class_special_attack_units } from "./QueenElizabeth";
+import { evaluate_Kongou_class_special_attack, extract_participate_Kongou_class_special_attack } from "./Kongou";
+import { Brand } from "@/types/brands";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
+import { match } from "ts-pattern";
+import { extract_participate_Colorado_special_units } from "./Colorado";
 
 const SPECIAL_ATTACKS = {
     Nelson_Special: 100,
@@ -111,4 +114,76 @@ export function calc_triggerable_special_attack_type(
     if (submarine_fleet_attack_result !== 'Ineligible') return submarine_fleet_attack_result;
 
     return 'Ineligible';
+}
+
+export function extract_participate_special_attack_units(
+    attacker_fleet: PlayerFleet,
+    phase_type: DayOrNight,
+    special_attack_type: SpecialAttackType,
+): PlayerFleetUnit[] {
+    const general_attacker_units =
+        extract_attacker_units(attacker_fleet, phase_type);
+
+    return match(special_attack_type)
+        .with('Yamato_2_Ships_Special', 'Yamato_3_Ships_Special',
+            () => extract_participate_Yamato_class_special_attack_units(
+                general_attacker_units,
+                special_attack_type as YamatoClassSpecialAttack, // 残念ながら他のも渡せる
+            )
+        )
+        .with('Nelson_Special',
+            () => extract_participate_Nelson_class_special_attack_units(
+                general_attacker_units,
+            )
+        )
+        .with('Nagato_Special', 'Mutsu_Special',
+            () => extract_participate_Nelson_class_special_attack_units(
+                general_attacker_units,
+            )
+        )
+        .with('Richelieu_Special',
+            () => extract_participate_Richelieu_class_special_attack_units(
+                general_attacker_units,
+            )
+        )
+        .with('Queen_Elizabeth_Special',
+            () => extract_participate_Queen_Elizabeth_class_special_attack_units(
+                general_attacker_units,
+            )
+        )
+        .with('Kongou_Special',
+            () => extract_participate_Kongou_class_special_attack(
+                attacker_fleet,
+            )
+        )
+        .with('Colorado_Special',
+            () => extract_participate_Colorado_special_units(
+                general_attacker_units,
+            )
+        )
+        .with(
+            'Submarine_Fleet_Special_2_3',
+            'Submarine_Fleet_Special_2_4',
+            'Submarine_Fleet_Special_3_4',
+            () => extract_participate_submarine_fleet_attack_units(
+                attacker_fleet,
+                special_attack_type as SubmarineSpecialAttack,
+            )
+        )
+        .exhaustive();
+}
+
+export type SpecialAttackPowerMod = Brand<number, 'SpecialAttackPowerMod'>
+export type SpecialAttackAccuracyMod = Brand<number, 'SpecialAttackAccuracyMod'>
+
+export type SpecialAttackMods = {
+    special_attack_power_mod: SpecialAttackPowerMod,
+    special_attack_accuracy_mod: SpecialAttackAccuracyMod,
+}
+
+export function calc_special_attack_mods(
+    attacker_units: PlayerFleetUnit[],
+    special_attack_type: SpecialAttackType,
+): SpecialAttackMods {
+
 }

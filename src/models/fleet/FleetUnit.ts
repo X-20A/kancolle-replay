@@ -47,6 +47,21 @@ export function is_combined_fleet(fleet_unit: FleetUnit): boolean {
     return fleet_unit.affiliation_type !== 'single';
 }
 
+export function derive_player_fleet_unit(
+    ship: PlayerEquippedShip,
+    affiliation_type: AffiliationFleetType,
+    original_index: number,
+): PlayerFleetUnit {
+    const unit: PlayerFleetUnit = {
+        affiliation_type,
+        original_index,
+        ship: ship,
+        triggered_special_attack: 'None',
+    };
+
+    return unit;
+}
+
 /**
  * プレイヤー艦隊構成艦を生成して返す
  * @param ships 
@@ -58,14 +73,11 @@ export function derive_player_fleet_units(
     affiliation_type: AffiliationFleetType,
 ): PlayerFleetUnit[] {
     const units: PlayerFleetUnit[] = ships.flatMap((ship, index) => {
-        const unit: PlayerFleetUnit = {
+        return derive_player_fleet_unit(
+            ship,
             affiliation_type,
-            original_index: index,
-            ship: ship,
-            triggered_special_attack: 'None',
-        };
-
-        return unit;
+            index,
+        )
     });
 
     return units;

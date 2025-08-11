@@ -8,6 +8,7 @@ import { has_ship_name, is_damage_moderatery_or_more, PlayerEquippedShip } from 
 import { RandValue } from "@/types/brands/other";
 import { evaluate_Yamato_trio_special_attack } from "./trio";
 import { evaluate_Yamato_duo_special_attack } from "./duo";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 const TRIGGERABLE_SHIP_NAMES = new Set<PlayerShipNameJP>([
     '大和改二',
@@ -68,4 +69,23 @@ export function evaluate_Yamato_class_special_attack(
     ) return Yamato_trio_special_attack_result;
 
     return evaluate_Yamato_duo_special_attack(flagship, second_ship, rand_values[1]);
+}
+
+export function extract_participate_Yamato_class_special_attack_units(
+    attacker_units: SpecialAttackUnits,
+    special_attack_type: YamatoClassSpecialAttack,
+): PlayerFleetUnit[] {
+    if (
+        !has_at_least(attacker_units, 3)
+    ) throw Error('大和型タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
+    return special_attack_type === 'Yamato_2_Ships_Special'
+        ? [
+            attacker_units[0],
+            attacker_units[1],
+        ]
+        : [
+            attacker_units[0],
+            attacker_units[1],
+            attacker_units[2],
+        ];
 }

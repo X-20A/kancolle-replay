@@ -35,6 +35,10 @@ export const SARATOGA = derive_naked_ship_from_name('Saratoga');
 /** Aquila */
 export const AQUILA = derive_naked_ship_from_name('Aquila');
 
+/** Colorado改 */
+export const COLORADO_KAI = derive_naked_ship_from_name('Colorado改');
+export const KONGOU_KAI_NI_HEI = derive_naked_ship_from_name('金剛改二丙');
+
 /** 伊勢改二 */
 export const ISE_KAI_NI = derive_naked_ship_from_name('伊勢改二');
 

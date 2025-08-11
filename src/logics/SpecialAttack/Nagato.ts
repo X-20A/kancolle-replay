@@ -2,11 +2,13 @@ import { AbyssalFleet, is_already_special_attack_activated, is_combined_fleet, P
 import { has_ship_name, is_battle_ship_category, is_damage_heavily, is_operational, PlayerEquippedShip } from "@/models/ship/equipped";
 import { has_formation_type } from "../formation";
 import { FormationType, has_at_least } from "@/types";
-import { SpecialAttackIneligible, SpecialAttackMisfire, ValidSpecialAttack } from ".";
+import { SpecialAttackIneligible, SpecialAttackMisfire, SpecialAttackMods, ValidSpecialAttack } from ".";
 import { SpecialAttackComponentLength, SpecialAttackUnits } from "./util";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { is_random_successful } from "@/effects/random";
 import { RandValue } from "@/types/brands/other";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
+import { is_flagship_unit } from "@/models/fleet/predicates";
 
 const TRIGGERABLE_SHIP_NAMES: Set<PlayerShipNameJP> = new Set([
     '長門改二',
@@ -86,4 +88,47 @@ export function evaluate_Nagato_class_special_attack(
     return flagship.name_jp === '長門改二'
         ? 'Nagato_Special'
         : 'Mutsu_Special';
+}
+
+export function extract_participate_Nagato_class_special_attack_units(
+    attacker_units: SpecialAttackUnits,
+): PlayerFleetUnit[] {
+    if (
+        !has_at_least(attacker_units, 2)
+    ) throw Error('長門型タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
+
+    return [
+        attacker_units[0],
+        attacker_units[1],
+    ];
+}
+
+const calc_Nagato_special_attack_mods = (
+    attacker_unit: PlayerFleetUnit,
+): SpecialAttackMods => {
+    const is_flagship = is_flagship_unit(attacker_unit);
+
+    
+}
+
+const calc_Mutsu_special_attack_mods = (
+    flagship: PlayerEquippedShip,
+    second_ship: PlayerEquippedShip,
+): SpecialAttackMods => {
+
+}
+
+export function calc_Nagato_class_special_attack_mods(
+    attacker_unit: PlayerFleetUnit,
+    special_attack_type: NagatoClassSpecialAttack,
+): SpecialAttackMods {
+    if (
+        !has_at_least(attacker_units, 2)
+    ) throw Error('長門型タッチの補正値を得ようとしましたが、該当艦が存在しませんでした');
+
+    const flagship = attacker_units[0];
+
+    return special_attack_type === 'Nagato_Special'
+        ? calc_Nagato_special_attack_mods()
+        : calc_Mutsu_special_attack_mods();
 }

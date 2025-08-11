@@ -2,11 +2,13 @@ import { extract_flagship, is_already_special_attack_activated, is_combined_flee
 import { is_damage_moderatery_or_more, is_operational, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
 import { has_formation_type } from "../formation";
 import { FormationType, has_at_least } from "@/types";
-import { SpecialAttackIneligible, SpecialAttackMisfire, ValidSpecialAttack } from ".";
+import { SpecialAttackIneligible, SpecialAttackMisfire, SpecialAttackType, ValidSpecialAttack } from ".";
 import { DayOrNight } from "@/types/battle";
 import { ShipType } from "@/types/ship/ship";
 import { is_random_successful } from "@/effects/random";
 import { RandValue } from "@/types/brands/other";
+import { SpecialAttackUnits } from "./util";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 /// 潜水艦隊攻撃
 // https://en.kancollewiki.net/Special_Attacks/Submarine_Touch#Trigger_Rate
@@ -68,7 +70,7 @@ const calc_trigger_rate = (): number => {
     return TRIGGER_RATE;
 }
 
-type SubmarineSpecialAttack = ValidSpecialAttack<
+export type SubmarineSpecialAttack = ValidSpecialAttack<
     | "Submarine_Fleet_Special_2_3"
     | "Submarine_Fleet_Special_3_4"
     | "Submarine_Fleet_Special_2_4"
@@ -123,4 +125,40 @@ export function evaluate_submarine_fleet_attack(
     ) return 'Submarine_Fleet_Special_2_3';
 
     throw new Error('潜水艦隊攻撃がトリガーされましたが攻撃種別判定に不備があります');
+}
+
+export function extract_participate_submarine_fleet_attack_units(
+    fleet: PlayerFleet,
+    special_attack_type: SubmarineSpecialAttack,
+): PlayerFleetUnit[] {
+    const ERROR_MESSAGE = '潜水艦隊攻撃の参加艦を抽出しようとしましたが、該当艦が存在しませんでした';
+    const attacker_units = fleet.main_fleet_units;
+
+    if (special_attack_type === 'Submarine_Fleet_Special_2_3') {
+        if (
+            !has_at_least(attacker_units, 3)
+        ) throw Error(ERROR_MESSAGE);
+
+        return [
+            attacker_units[1],
+            attacker_units[2],
+        ];
+    }
+
+    if (
+        !has_at_least(attacker_units, 4)
+    ) throw Error(ERROR_MESSAGE);
+    
+    if (special_attack_type === 'Submarine_Fleet_Special_2_4') {
+        return [
+            attacker_units[1],
+            attacker_units[3],
+        ];
+    }
+
+    // Submarine_Fleet_Special_3_4
+    return [
+        attacker_units[2],
+        attacker_units[3],
+    ];
 }

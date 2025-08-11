@@ -7,6 +7,7 @@ import { has_ship_name, is_damage_heavily, is_damage_moderatery_or_more, is_retr
 import { has_formation_type } from "../formation";
 import { is_random_successful } from "@/effects/random";
 import { RandValue } from "@/types/brands/other";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 
 const TRIGGERABLE_SHIP_NAMES: Set<PlayerShipNameJP> = new Set([
     'Richelieu改', 'Richelieu Deux',
@@ -68,4 +69,17 @@ export function evaluate_Richelieu_class_special_attack(
     return is_random_successful(trigger_rate, rand_value)
         ? 'Richelieu_Special'
         : 'Misfire';
+}
+
+export function extract_participate_Richelieu_class_special_attack_units(
+    attacker_units: SpecialAttackUnits,
+): PlayerFleetUnit[] {
+    if (
+        !has_at_least(attacker_units, 2)
+    ) throw Error('Richelieu型タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
+
+    return [
+        attacker_units[0],
+        attacker_units[1],
+    ];
 }
