@@ -12,6 +12,11 @@ export function is_combined_fleet_type(
     return Object.keys(COMBINED_FLEET_TYPES).includes(fleet_type);
 }
 
+/**
+ * 艦が旗艦であるか判定して返す(含 随伴艦隊旗艦)
+ * @param unit 
+ * @returns 
+ */
 export function is_flagship_unit(
     unit: FleetUnit,
 ): boolean {

@@ -25,8 +25,8 @@ const SPECIAL_ATTACKS = {
     Submarine_Fleet_Special_2_3: 300,
     Submarine_Fleet_Special_3_4: 301,
     Submarine_Fleet_Special_2_4: 302,
-    Yamato_3_Ships_Special: 400,
-    Yamato_2_Ships_Special: 400,
+    Yamato_Trio_Special: 400,
+    Yamato_Duo_Special: 401,
 } as const;
 export type SpecialAttackType = keyof typeof SPECIAL_ATTACKS
 
@@ -125,7 +125,7 @@ export function extract_participate_special_attack_units(
         extract_attacker_units(attacker_fleet, phase_type);
 
     return match(special_attack_type)
-        .with('Yamato_2_Ships_Special', 'Yamato_3_Ships_Special',
+        .with('Yamato_Duo_Special', 'Yamato_Trio_Special',
             () => extract_participate_Yamato_class_special_attack_units(
                 general_attacker_units,
                 special_attack_type as YamatoClassSpecialAttack, // 残念ながら他のも渡せる

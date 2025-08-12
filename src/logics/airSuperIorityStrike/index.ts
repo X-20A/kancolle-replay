@@ -3,8 +3,9 @@ import { AirStateType, is_air_state_superiority_or_more } from "../airSuperiorit
 import { calc_artillery_spotting_types } from "./artillerySpotting";
 import { calc_CVCI_types } from "./CVCI";
 import { Brand } from "@/types/brands";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { calc_Ise_class_CI_types } from "./IseClassCI";
+import { is_AP_shell, is_radar } from "@/models/equip/basic";
 
 /// 航空優勢以上で発動する特殊攻撃
 
@@ -63,13 +64,13 @@ const calc_gun_ship_pre_info = (
 ): GunShipPreInfo => {
     return equip_slots.reduce((acc, slot) => {
         const { equip } = slot;
-        if (!equip) return acc;
+        if (!is_equip_exsist(equip)) return acc;
 
         const skill_type = equip.skill_trigger_type;
         if (skill_type === 'B_MAIN_GUN') acc.main_gun_count++; // 小中大いずれでも可
         if (skill_type === 'B_SEC_GUN') acc.has_sec_gun = true;
-        if (skill_type === 'B_RADAR') acc.has_radar = true;
-        if (skill_type === 'B_AP_SHELL') acc.has_AP_shell = true;
+        if (is_radar(equip)) acc.has_radar = true;
+        if (is_AP_shell(equip)) acc.has_AP_shell = true;
         return acc;
     }, {
         main_gun_count: 0,

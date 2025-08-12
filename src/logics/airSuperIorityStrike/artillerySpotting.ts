@@ -1,4 +1,4 @@
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { AirSuperiorityStrikeType, GunShipPreInfo } from ".";
 import { EquippedShip } from "@/models/ship/equipped";
 
@@ -12,7 +12,7 @@ import { EquippedShip } from "@/models/ship/equipped";
 const is_valid_recon = (
     slot: EquipSlot,
 ): boolean => {
-    return slot.equip !== null &&
+    return is_equip_exsist(slot.equip) &&
         slot.equip.skill_trigger_type === 'B_RECON' &&
         slot.slot_count >= 1;
 }

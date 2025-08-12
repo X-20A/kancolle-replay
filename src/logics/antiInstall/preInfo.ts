@@ -1,4 +1,4 @@
-import { includes_equip_type, includes_player_equip_name, PlayerEquip } from "@/models/equip/basic";
+import { includes_equip_type, includes_player_equip_name, is_AP_shell, PlayerEquip } from "@/models/equip/basic";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 
 export type AntiInstallPreInfo = {
@@ -196,7 +196,7 @@ export function calc_anti_install_pre_info(
             includes_equip_type(['DIVE_BOMBER', 'JET_BOMBER'], type_id)
         ) total.carrier_bomber_count++;
         if (name_jp === 'WG42 (Wurfgerät 42)') total.WG_count++;
-        if (type_id === 'AP_SHELL') total.AP_shell_count++;
+        if (is_AP_shell(equip)) total.AP_shell_count++;
         if (type_id === 'TYPE_3_SHELL') total.Type_3_shell_count++;
         if (name_jp === '特四式内火艇改') total.Katsu_tank_kai_count++;
         if (

@@ -1,5 +1,6 @@
 import { SpecialAttackType } from "@/logics/SpecialAttack"
 import { AbyssalEquippedShip, PlayerEquippedShip } from "../ship/equipped"
+import { is_flagship_unit } from "./predicates"
 
 export type AffiliationFleetType =
     | 'single'
@@ -26,21 +27,12 @@ export type AbyssalFleetUnit = FleetUnitBase & {
 export type FleetUnit = PlayerFleetUnit | AbyssalFleetUnit
 
 /**
- * 艦が旗艦であるか判定して返す(含 随伴艦隊旗艦)
- * @param unit 
- * @returns 
- */
-export function is_flag_ship(unit: FleetUnit): boolean {
-    return unit.original_index === 0;
-}
-
-/**
  * 艦が旗艦であるか判定して返す(随伴艦隊旗艦 は含まない)
  * @param unit 
  * @returns 
  */
 export function is_primary_flag_ship(unit: FleetUnit): boolean {
-    return is_flag_ship(unit) && unit.affiliation_type !== 'escort';
+    return is_flagship_unit(unit) && unit.affiliation_type !== 'escort';
 }
 
 export function is_combined_fleet(fleet_unit: FleetUnit): boolean {

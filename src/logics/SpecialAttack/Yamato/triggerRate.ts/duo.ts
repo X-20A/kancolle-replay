@@ -1,10 +1,10 @@
 import { RandValue } from "@/types/brands/other";
-import { ValidYamatoSpecialAttack } from ".";
-import { SpecialAttackMisfire } from "..";
+import { ValidYamatoSpecialAttack } from "..";
+import { SpecialAttackMisfire } from "../..";
 import { has_ship_name, PlayerEquippedShip } from "@/models/ship/equipped";
 import { is_random_successful } from "@/effects/random";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { has_high_accuracy_radar } from "../util";
+import { has_high_accuracy_radar } from "../../util";
 
 const YAMATO_KAI_NI_SERIES: Set<PlayerShipNameJP> = new Set([
     '大和改二', '大和改二重' // 大和、大和改はそもそも武蔵旗艦時に発動できない
@@ -50,7 +50,7 @@ const calc_trigger_rate = (
 }
 
 type YamatoDuoSpecialAttack = ValidYamatoSpecialAttack<
-    | 'Yamato_2_Ships_Special'
+    | 'Yamato_Duo_Special'
 >
 
 export function evaluate_Yamato_duo_special_attack(
@@ -64,6 +64,6 @@ export function evaluate_Yamato_duo_special_attack(
     );
 
     return is_random_successful(trigger_rate, rand_value)
-        ? 'Yamato_2_Ships_Special'
+        ? 'Yamato_Duo_Special'
         : 'Misfire';
 }

@@ -8,7 +8,7 @@ import { can_Colorado_special_activate } from "./activate";
 import { calc_Colorado_special_trigger_rate } from "./triggerRate";
 import { is_random_successful } from "@/effects/random";
 import { derive_special_attack_unit, SpecialAttackUnit } from "@/models/fleet/SpecialAttackUnit";
-import { calc_Colorado_special_mods, calc_Colorado_special_pre_info } from "./multiplier";
+import { calc_Colorado_special_mods } from "./multiplier";
 
 const ATTACK_COUNTS = {
     first: 1,
@@ -63,12 +63,8 @@ const derive_Colorado_special_unit = (
     unit: PlayerFleetUnit,
     attack_count: number
 ): SpecialAttackUnit => {
-    const pre_info =
-        calc_Colorado_special_pre_info(unit.ship.equip_slots);
-    const mods = calc_Colorado_special_mods(
-        unit,
-        pre_info,
-    );
+    const mods = calc_Colorado_special_mods(unit);
+
     return derive_special_attack_unit(
         unit,
         mods,
@@ -82,9 +78,11 @@ export type ColoradoSpecialForce =
 export function derive_Colorado_special_force(
     units: ColoradoSpecialComponent,
 ): ColoradoSpecialForce {
-    return [
+    const force: ColoradoSpecialForce = [
         derive_Colorado_special_unit(units[0], ATTACK_COUNTS.first),
         derive_Colorado_special_unit(units[1], ATTACK_COUNTS.second),
         derive_Colorado_special_unit(units[2], ATTACK_COUNTS.third),
     ];
+
+    return force;
 }

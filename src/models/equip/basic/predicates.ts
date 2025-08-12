@@ -2,7 +2,6 @@ import { EquipType } from "@/datas/equip/base/player";
 import { AbyssalEquip, Equip, JetBomberEquip, PlaneEquip, PlayerEquip, PlayerPlaneEquip } from ".";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
-import { EquipSlot } from "@/models/ship/EquipSlot";
 
 /**
  * 艦娘装備であるか判定して返す(型ガード)
@@ -68,6 +67,13 @@ export function includes_player_equip_name(
     search_equip_name: PlayerEquipNameJP,
 ): boolean {
     return match_equip_names.includes(search_equip_name);
+}
+
+export function has_equip_name(
+    match_equip_names: Set<PlayerEquipNameJP>,
+    search_equip_name: PlayerEquipNameJP,
+): boolean {
+    return match_equip_names.has(search_equip_name);
 }
 
 /**
@@ -181,8 +187,28 @@ const RADAR_TYPES: Set<EquipType> = new Set([
     'RADAR_XL',
 ]);
 
+/**
+ * 電探系装備であるか判定して返す
+ * @param equip 
+ * @returns 
+ */
 export function is_radar(equip: Equip): boolean {
     return has_equip_type(RADAR_TYPES, equip.type_id);
+}
+
+export function is_radar_XL(equip: Equip): boolean {
+    return equip.type_id === 'RADAR_XL';
+}
+
+/**
+ * 水上電探であるか判定して返す    
+ * 日wiki: 水上電探, ENwiki: Surface Radar と一致する
+ * @param equip 
+ * @returns 
+ */
+export function is_surface_radar(equip: Equip): boolean {
+    return is_radar(equip) &&
+        equip.natural_addition.los >= 5;
 }
 
 /**
@@ -204,6 +230,10 @@ export function is_skip_bomber(equip: Equip): boolean {
 
 export function can_bombing(equip: Equip): boolean {
     return equip.flags.can_bombing;
+}
+
+export function is_AP_shell(equip: Equip): boolean {
+    return equip.type_id === 'AP_SHELL';
 }
 
 /**

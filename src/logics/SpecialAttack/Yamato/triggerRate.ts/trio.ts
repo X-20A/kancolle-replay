@@ -56,7 +56,7 @@ const calc_trigger_rate = (): number => {
 }
 
 type YamatoTrioSpecialAttack = ValidYamatoSpecialAttack<
-    | 'Yamato_3_Ships_Special'
+    | 'Yamato_Trio_Special'
 >
 
 export function evaluate_Yamato_trio_special_attack(
@@ -72,6 +72,6 @@ export function evaluate_Yamato_trio_special_attack(
     const trigger_rate = calc_trigger_rate();
 
     return is_random_successful(trigger_rate, rand_value)
-        ? 'Yamato_3_Ships_Special'
+        ? 'Yamato_Trio_Special'
         : 'Misfire';
 }

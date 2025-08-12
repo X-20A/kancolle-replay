@@ -8,6 +8,14 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { calc_valid_component_ship_length } from "../util";
 import { can_activate_Kongou_special } from "./activate";
 import { calc_Kongou_special_trigger_rate } from "./triggerRate";
+import { derive_special_attack_unit, SpecialAttackUnit } from "@/models/fleet/SpecialAttackUnit";
+import { calc_Kongou_special_mods } from "./multiplier";
+import { EngagementType } from "@/logics/engagemenet";
+
+const ATTACK_COUNTS = {
+    first: 1,
+    second: 1,
+} as const;
 
 const extract_attacker_units = (
     fleet: PlayerFleet,
@@ -62,4 +70,35 @@ export function extract_participate_Kongou_class_special_attack(
         attacker_units[0],
         attacker_units[1],
     ];
+}
+
+const derive_Kongou_special_unit = (
+    engagement_type: EngagementType,
+    unit: PlayerFleetUnit,
+    attack_count: number,
+): SpecialAttackUnit => {
+    const mods = calc_Kongou_special_mods(
+        engagement_type,
+        unit,
+    );
+    return derive_special_attack_unit(
+        unit,
+        mods,
+        attack_count,
+    );
+}
+
+export type KongouSpecialForce =
+    [SpecialAttackUnit, SpecialAttackUnit]
+
+export function derive_Kongou_special_force(
+    engagement_type: EngagementType,
+    units: KongouSpecialComponent,
+): KongouSpecialForce {
+    const force: KongouSpecialForce = [
+        derive_Kongou_special_unit(engagement_type, units[0], ATTACK_COUNTS.first),
+        derive_Kongou_special_unit(engagement_type, units[1], ATTACK_COUNTS.second),
+    ];
+
+    return force;
 }
