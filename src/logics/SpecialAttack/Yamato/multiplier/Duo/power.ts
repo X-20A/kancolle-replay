@@ -6,11 +6,36 @@ import { match } from "ts-pattern";
 import { calc_Yamato_special_pre_info, YamatoSpecialPreInfo } from "../preInfo";
 import { SpecialAttackPowerMod } from "@/logics/SpecialAttack";
 import { YamatoDuoSpecialComponent } from "../..";
+import { Brand } from "@/types/brands";
 
-type SecondShipType =
-    | 'Yamato_kai_ni_ju'
-    | 'Yamato_kai_ni_class'
-    | 'other'
+const SECOND_SHIP_TYPE = {
+    YAMATO_KAI_NI_JU: 1,
+    YAMATO_KAI_NI_CLASS: 2,
+    OTHER: 3,
+} as const;
+type SecondShipType = keyof typeof SECOND_SHIP_TYPE
+
+type BaseValue = {
+    first: number,
+    second: number,
+}
+
+type BaseDatas = Record<SecondShipType, BaseValue>
+
+const BASE_DATAS: BaseDatas = {
+    YAMATO_KAI_NI_JU: {
+        first: 1.54,
+        second: 1.96,
+    },
+    YAMATO_KAI_NI_CLASS: {
+        first: 1.54,
+        second: 1.86,
+    },
+    OTHER: {
+        first: 1.4,
+        second: 1.54,
+    },
+} as const;
 
 const YAMATO_KAI_NI_CLASS_NAMES: Set<PlayerShipNameJP> = new Set([
     '大和改二',
@@ -21,15 +46,15 @@ const calc_second_ship_type = (
     second_ship: PlayerEquippedShip,
 ): SecondShipType => {
     const { name_jp } = second_ship;
-    if (name_jp === '大和改二重') return 'Yamato_kai_ni_ju';
+    if (name_jp === '大和改二重') return 'YAMATO_KAI_NI_JU';
     if (
         has_ship_name(YAMATO_KAI_NI_CLASS_NAMES, name_jp)
-    ) return 'Yamato_kai_ni_class';
+    ) return 'YAMATO_KAI_NI_CLASS';
 
-    return 'other';
+    return 'OTHER';
 }
 
-type ModBase = 1.4 | 1.54 | 1.86 | 1.96
+type ModBase = Brand<number, 'ModBase'>
 
 const calc_base = (
     unit: PlayerFleetUnit,
@@ -37,23 +62,10 @@ const calc_base = (
 ): ModBase => {
     const is_flagship = is_flagship_unit(unit);
 
-    return match(second_ship_type)
-        .with('Yamato_kai_ni_ju', () => {
-            return is_flagship
-                ? 1.54
-                : 1.96;
-        })
-        .with('Yamato_kai_ni_class', () => {
-            return is_flagship
-                ? 1.54
-                : 1.86;
-        })
-        .with('other', () => {
-            return is_flagship
-                ? 1.4
-                : 1.54;
-        })
-        .exhaustive();
+    const data = BASE_DATAS[second_ship_type];
+    return is_flagship
+        ? data.first as ModBase
+        : data.second as ModBase;
 }
 
 type SurfaceRadarMod = 1 | 1.15
