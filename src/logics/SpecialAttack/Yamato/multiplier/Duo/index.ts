@@ -3,6 +3,12 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { calc_Yamato_Duo_special_power_mod } from "./power";
 import { calc_Yamato_Duo_special_accuracy_mod } from "./accuracy";
 
+/**
+ * 大和型2隻タッチの補正セットを返す
+ * @param attacker_unit 
+ * @param second_unit 
+ * @returns 
+ */
 export function calc_Yamato_Duo_special_mods(
     attacker_unit: PlayerFleetUnit,
     second_unit: PlayerFleetUnit,

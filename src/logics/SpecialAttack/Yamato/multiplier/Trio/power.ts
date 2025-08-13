@@ -3,6 +3,7 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { has_ship_name } from "@/models/ship/equipped";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { calc_Yamato_special_pre_info, YamatoSpecialPreInfo } from "../preInfo";
+import { calc_Yamato_special_pre_mods } from "../mod";
 
 const NAGATO_KAI_NI_NAMES: Set<PlayerShipNameJP> = new Set([
     '長門改二',
@@ -102,4 +103,15 @@ export function calc_Yamato_Trio_special_power_mod(
         second_unit,
         third_unit,
     );
+
+    const {
+        surface_radar_mod,
+        radar_XL_mod,
+        AP_shell_mod,
+    } = calc_Yamato_special_pre_mods(pre_info);
+
+    return base
+        * surface_radar_mod
+        * radar_XL_mod
+        * AP_shell_mod as SpecialAttackPowerMod;
 }

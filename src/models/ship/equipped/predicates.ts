@@ -244,6 +244,13 @@ export function includes_ship_type(
     return match_ship_types.includes(search_ship_type);
 }
 
+export function has_ship_type(
+    match_ship_types: Set<ShipType>,
+    search_ship_type: ShipType,
+): boolean {
+    return match_ship_types.has(search_ship_type);
+}
+
 /**
  * 艦が戦艦級であるか判定して返す
  * @param ship 

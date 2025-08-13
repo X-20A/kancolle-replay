@@ -93,11 +93,11 @@ export type KongouSpecialForce =
 
 export function derive_Kongou_special_force(
     engagement_type: EngagementType,
-    units: KongouSpecialComponent,
+    components: KongouSpecialComponent,
 ): KongouSpecialForce {
     const force: KongouSpecialForce = [
-        derive_Kongou_special_unit(engagement_type, units[0], ATTACK_COUNTS.first),
-        derive_Kongou_special_unit(engagement_type, units[1], ATTACK_COUNTS.second),
+        derive_Kongou_special_unit(engagement_type, components[0], ATTACK_COUNTS.first),
+        derive_Kongou_special_unit(engagement_type, components[1], ATTACK_COUNTS.second),
     ];
 
     return force;

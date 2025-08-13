@@ -6,6 +6,8 @@ import { is_random_successful } from "@/effects/random";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { has_high_accuracy_radar } from "../../util";
 
+/// 大和型2隻タッチ 発動率
+
 const YAMATO_KAI_NI_SERIES: Set<PlayerShipNameJP> = new Set([
     '大和改二', '大和改二重' // 大和、大和改はそもそも武蔵旗艦時に発動できない
 ]);

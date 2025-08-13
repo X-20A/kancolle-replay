@@ -1,5 +1,7 @@
 import { SpecialAttackAccuracyMod, SpecialAttackPowerMod } from "@/logics/SpecialAttack";
 
+/// 大和型2隻タッチ 命中補正
+
 export function calc_Yamato_Duo_special_accuracy_mod(
     power_mod: SpecialAttackPowerMod,
 ): SpecialAttackAccuracyMod {

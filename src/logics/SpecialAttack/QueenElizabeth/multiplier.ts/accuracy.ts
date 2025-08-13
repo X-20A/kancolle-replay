@@ -1,8 +1,5 @@
 import { SpecialAttackAccuracyMod } from "../..";
-import { ColoradoSpecialMultiplierPreInfo } from "./preInfo";
-
-/// Colorado級タッチ命中補正
-// ? 大きな命中補正があるということが分かっているだけで全体的にソースに乏しく、暫定度が非常に高い
+import { QueenElizabethSpecialMultiplierPreInfo } from "./preInfo";
 
 const BASE = 1.4;
 
@@ -26,8 +23,8 @@ const calc_AP_shell_mod = (
         : 1;
 }
 
-export function calc_Colorado_special_accuracy_mod(
-    pre_info: ColoradoSpecialMultiplierPreInfo,
+export function calc_QueenElizabeth_special_accuracy_mod(
+    pre_info: QueenElizabethSpecialMultiplierPreInfo,
 ): SpecialAttackAccuracyMod {
     const {
         has_surface_radar,

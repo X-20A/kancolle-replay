@@ -2,11 +2,12 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_flagship_unit } from "@/models/fleet/predicates";
 import { has_ship_name, PlayerEquippedShip } from "@/models/ship/equipped";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { match } from "ts-pattern";
-import { calc_Yamato_special_pre_info, YamatoSpecialPreInfo } from "../preInfo";
+import { calc_Yamato_special_pre_info } from "../preInfo";
 import { SpecialAttackPowerMod } from "@/logics/SpecialAttack";
-import { YamatoDuoSpecialComponent } from "../..";
 import { Brand } from "@/types/brands";
+import { calc_Yamato_special_pre_mods, YamatoSpecialPreMods } from "../mod";
+
+/// 大和型2隻タッチ 火力補正
 
 const SECOND_SHIP_TYPE = {
     YAMATO_KAI_NI_JU: 1,
@@ -24,16 +25,16 @@ type BaseDatas = Record<SecondShipType, BaseValue>
 
 const BASE_DATAS: BaseDatas = {
     YAMATO_KAI_NI_JU: {
-        first: 1.54,
-        second: 1.96,
+        first: 1.54, // 1.4 * 1.1
+        second: 1.9375, // 1.55 * 1.25
     },
     YAMATO_KAI_NI_CLASS: {
-        first: 1.54,
-        second: 1.86,
+        first: 1.54, // 1.4 * 1.1
+        second: 1.86, // 1.55 * 1.2
     },
     OTHER: {
         first: 1.4,
-        second: 1.54,
+        second: 1.55,
     },
 } as const;
 
@@ -68,48 +69,22 @@ const calc_base = (
         : data.second as ModBase;
 }
 
-type SurfaceRadarMod = 1 | 1.15
-
-const calc_surface_radar_mod = (
-    pre_info: YamatoSpecialPreInfo,
-): SurfaceRadarMod => {
-    return pre_info.has_surface_radar
-        ? 1.15
-        : 1;
-}
-
-type RadarXLMod = 1 | 1.25
-
-const calc_radar_XL_mod = (
-    pre_info: YamatoSpecialPreInfo,
-): RadarXLMod => {
-    return pre_info.has_radar_XL
-        ? 1.25
-        : 1;
-}
-
-type APShellMod = 1 | 1.35
-
-const calc_AP_shell_mod = (
-    pre_info: YamatoSpecialPreInfo,
-): APShellMod => {
-    return pre_info.has_AP_shell
-        ? 1.35
-        : 1;
-}
-
 const calc_Yamato_Duo_special_power_mod_core = (
     base: ModBase,
-    surface_radar_mod: SurfaceRadarMod,
-    radar_XL_mod: RadarXLMod,
-    AP_shell_mod: APShellMod,
+    mods: YamatoSpecialPreMods,
 ): SpecialAttackPowerMod => {
     return base
-        * surface_radar_mod
-        * radar_XL_mod
-        * AP_shell_mod as SpecialAttackPowerMod;
+        * mods.surface_radar_mod
+        * mods.radar_XL_mod
+        * mods.AP_shell_mod as SpecialAttackPowerMod;
 }
 
+/**
+ * 大和型2隻タッチの攻撃力補正を返す
+ * @param attacker_unit 
+ * @param second_unit 
+ * @returns 
+ */
 export function calc_Yamato_Duo_special_power_mod(
     attacker_unit: PlayerFleetUnit,
     second_unit: PlayerFleetUnit,
@@ -121,14 +96,10 @@ export function calc_Yamato_Duo_special_power_mod(
 
     const base = calc_base(attacker_unit, second_ship_type);
 
-    const surface_radar_mod = calc_surface_radar_mod(pre_info);
-    const radar_XL_mod = calc_radar_XL_mod(pre_info);
-    const AP_shell_mod = calc_AP_shell_mod(pre_info);
+    const pre_mods = calc_Yamato_special_pre_mods(pre_info);
 
-    return calc_Yamato_Duo_special_power_mod_core(
-        base,
-        surface_radar_mod,
-        radar_XL_mod,
-        AP_shell_mod,
-    );
+    const power_mod: SpecialAttackPowerMod =
+        calc_Yamato_Duo_special_power_mod_core(base,pre_mods);
+
+    return power_mod;
 }

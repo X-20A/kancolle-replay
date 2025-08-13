@@ -7,8 +7,9 @@ import { evaluate_Yamato_duo_special_attack } from "./triggerRate.ts/duo";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { derive_special_attack_unit, SpecialAttackUnit } from "@/models/fleet/SpecialAttackUnit";
 import { can_Yamato_special_activate } from "./activate";
-import { calc_Yamato_special_pre_info } from "./multiplier/preInfo";
 import { calc_Yamato_Duo_special_mods } from "./multiplier/Duo";
+import { calc_Yamato_Trio_special_mods } from "./multiplier/Trio";
+import { evaluate_Yamato_trio_special_attack } from "./triggerRate.ts/trio";
 
 export type YamatoClassSpecialAttack = ValidSpecialAttack<
     | 'Yamato_Duo_Special'
@@ -105,9 +106,19 @@ const derive_Yamato_Duo_special_unit = (
 const derive_Yamato_Trio_special_unit = (
     attacker_unit: PlayerFleetUnit,
     second_unit: PlayerFleetUnit,
+    third_unit: PlayerFleetUnit,
     attack_count: number,
 ): SpecialAttackUnit => {
+    const mods =
+        calc_Yamato_Trio_special_mods(attacker_unit, second_unit, third_unit);
 
+    const special_attack_unit: SpecialAttackUnit = derive_special_attack_unit(
+        attacker_unit,
+        mods,
+        attack_count,
+    );
+
+    return special_attack_unit;
 }
 
 export type YamatoDuoSpecialForce =
@@ -133,10 +144,11 @@ export function derive_Yamato_special_force(
         return duo_force;
     }
 
+    const third_unit = component[2];
     const trio_force: YamatoTrioSpecialForce = [
-        derive_Yamato_Trio_special_unit(component[0], second_unit, TRIO_ATTACK_COUNT.first),
-        derive_Yamato_Trio_special_unit(component[1], second_unit, TRIO_ATTACK_COUNT.second),
-        derive_Yamato_Trio_special_unit(component[2], second_unit, TRIO_ATTACK_COUNT.third),
+        derive_Yamato_Trio_special_unit(component[0], second_unit, third_unit, TRIO_ATTACK_COUNT.first),
+        derive_Yamato_Trio_special_unit(component[1], second_unit, third_unit, TRIO_ATTACK_COUNT.second),
+        derive_Yamato_Trio_special_unit(component[2], second_unit, third_unit, TRIO_ATTACK_COUNT.third),
     ];
 
     return trio_force;

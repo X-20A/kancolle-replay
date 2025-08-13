@@ -6,13 +6,13 @@ import { evaluate_Yamato_class_special_attack, extract_participate_Yamato_class_
 import { calc_valid_component_ship_length, extract_attacker_units } from "./util";
 import { evaluate_Nelson_class_special_attack, extract_participate_Nelson_class_special_attack_units } from "./Nelson";
 import { evaluate_Nagato_class_special_attack } from "./Nagato";
-import { evaluate_Richelieu_class_special_attack, extract_participate_Richelieu_class_special_attack_units } from "./Richelieu";
-import { evaluate_Queen_Elizabeth_class_special_attack, extract_participate_Queen_Elizabeth_class_special_attack_units } from "./QueenElizabeth";
 import { evaluate_Kongou_class_special_attack, extract_participate_Kongou_class_special_attack } from "./Kongou";
 import { Brand } from "@/types/brands";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { match } from "ts-pattern";
 import { extract_participate_Colorado_special_units } from "./Colorado";
+import { evaluate_Richelieu_class_special_attack } from "./Richelieu";
+import { evaluate_QueenElizabeth_special } from "./QueenElizabeth";
 
 const SPECIAL_ATTACKS = {
     Nelson_Special: 100,
@@ -21,7 +21,7 @@ const SPECIAL_ATTACKS = {
     Colorado_Special: 103,
     Kongou_Special: 104,
     Richelieu_Special: 105,
-    Queen_Elizabeth_Special: 106,
+    QueenElizabeth_Special: 106,
     Submarine_Fleet_Special_2_3: 300,
     Submarine_Fleet_Special_3_4: 301,
     Submarine_Fleet_Special_2_4: 302,
@@ -83,13 +83,13 @@ export function calc_triggerable_special_attack_type(
     );
     if (Richelieu_class_special_attack_result !== 'Ineligible') return Richelieu_class_special_attack_result;
 
-    const Queen_Elizabeth_class_special_attack_result = evaluate_Queen_Elizabeth_class_special_attack(
+    const QueenElizabeth_class_special_attack_result = evaluate_QueenElizabeth_special(
         attacker_fleet,
         general_attacker_units,
         valid_component_ship_length,
         rand.next(),
     );
-    if (Queen_Elizabeth_class_special_attack_result !== 'Ineligible') return Queen_Elizabeth_class_special_attack_result;
+    if (QueenElizabeth_class_special_attack_result !== 'Ineligible') return QueenElizabeth_class_special_attack_result;
 
     const Kongou_class_special_attack_result = evaluate_Kongou_class_special_attack(
         attacker_fleet,
@@ -146,7 +146,7 @@ export function extract_participate_special_attack_units(
                 general_attacker_units,
             )
         )
-        .with('Queen_Elizabeth_Special',
+        .with('QueenElizabeth_Special',
             () => extract_participate_Queen_Elizabeth_class_special_attack_units(
                 general_attacker_units,
             )
@@ -176,6 +176,9 @@ export function extract_participate_special_attack_units(
 export type SpecialAttackPowerMod = Brand<number, 'SpecialAttackPowerMod'>
 export type SpecialAttackAccuracyMod = Brand<number, 'SpecialAttackAccuracyMod'>
 
+/**
+ * 特殊攻撃補正セット(火力・命中)
+ */
 export type SpecialAttackMods = {
     special_attack_power_mod: SpecialAttackPowerMod,
     special_attack_accuracy_mod: SpecialAttackAccuracyMod,

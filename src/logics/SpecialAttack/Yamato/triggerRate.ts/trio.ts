@@ -1,9 +1,11 @@
 import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { SpecialAttackIneligible, SpecialAttackMisfire } from "..";
-import { ValidYamatoSpecialAttack } from ".";
 import { is_random_successful } from "@/effects/random";
 import { RandValue } from "@/types/brands/other";
+import { ValidYamatoSpecialAttack } from "..";
+import { SpecialAttackIneligible, SpecialAttackMisfire } from "../..";
+
+/// 大和型3隻タッチ 発動率
 
 const ANY_ORDER_COMBINATIONS: Set<PlayerShipNameJP>[] = [
     new Set(['長門改二', '陸奥改二']),

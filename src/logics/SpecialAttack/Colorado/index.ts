@@ -10,6 +10,8 @@ import { is_random_successful } from "@/effects/random";
 import { derive_special_attack_unit, SpecialAttackUnit } from "@/models/fleet/SpecialAttackUnit";
 import { calc_Colorado_special_mods } from "./multiplier";
 
+/// Coloradoタッチ
+
 const ATTACK_COUNTS = {
     first: 1,
     second: 1,
@@ -43,20 +45,22 @@ export function evaluate_Colorado_special(
         : 'Misfire';
 }
 
-type ColoradoSpecialComponent = [PlayerFleetUnit, PlayerFleetUnit, PlayerFleetUnit]
+type ColoradoSpecialComponents = [PlayerFleetUnit, PlayerFleetUnit, PlayerFleetUnit]
 
 export function extract_participate_Colorado_special_units(
     attacker_units: SpecialAttackUnits,
-): ColoradoSpecialComponent {
+): ColoradoSpecialComponents {
     if (
         !has_at_least(attacker_units, 3)
     ) throw Error('Colorado級タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
 
-    return [
+    const components: ColoradoSpecialComponents = [
         attacker_units[0],
         attacker_units[1],
         attacker_units[2],
     ];
+
+    return components;
 }
 
 const derive_Colorado_special_unit = (
@@ -76,12 +80,12 @@ export type ColoradoSpecialForce =
     [SpecialAttackUnit, SpecialAttackUnit, SpecialAttackUnit];
 
 export function derive_Colorado_special_force(
-    units: ColoradoSpecialComponent,
+    components: ColoradoSpecialComponents,
 ): ColoradoSpecialForce {
     const force: ColoradoSpecialForce = [
-        derive_Colorado_special_unit(units[0], ATTACK_COUNTS.first),
-        derive_Colorado_special_unit(units[1], ATTACK_COUNTS.second),
-        derive_Colorado_special_unit(units[2], ATTACK_COUNTS.third),
+        derive_Colorado_special_unit(components[0], ATTACK_COUNTS.first),
+        derive_Colorado_special_unit(components[1], ATTACK_COUNTS.second),
+        derive_Colorado_special_unit(components[2], ATTACK_COUNTS.third),
     ];
 
     return force;

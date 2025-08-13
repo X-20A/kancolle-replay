@@ -3,12 +3,14 @@ import { is_flagship_unit } from "@/models/fleet/predicates";
 import { has_ship_name } from "@/models/ship/equipped";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { SpecialAttackPowerMod } from "../..";
-import { ColoradoSpecialMultiplierPreInfo } from ".";
+import { ColoradoSpecialMultiplierPreInfo } from "./preInfo";
+
+/// Coloradoタッチ火力補正
 
 /**
  * 補正が乗るビッグ7系の艦    
  * ? 未改造などが含まれないが検証があるかは不明    
- * Rodneyは含まれない    
+ * NOTE: Rodneyは含まれない    
  * https://wikiwiki.jp/kancolle/Colorado#ColoTouch
  */
 const VALID_BIG_7_NAMES: Set<PlayerShipNameJP> = new Set([
