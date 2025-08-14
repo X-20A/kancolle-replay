@@ -1,5 +1,3 @@
-import { PlayerEquip } from "@/models/equip/basic";
-import { AntiDockMultiplier, calc_anti_Dock_multiplier } from "./generalMultiplicativeBonuses/Dock";
 import { calc_anti_install_pre_info } from "./preInfo";
 import { calc_anti_install_improvement_mods } from "./improvementBonus";
 import { calc_anti_install_utils } from "./util";

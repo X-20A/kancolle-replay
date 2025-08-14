@@ -1,4 +1,5 @@
-import { includes_equip_type, includes_player_equip_name, is_AP_shell, PlayerEquip } from "@/models/equip/basic";
+import { includes_equip_type, includes_player_equip_name, is_AP_shell } from "@/models/equip/basic";
+import { is_equip_exsist, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 
 export type AntiInstallPreInfo = {
@@ -147,12 +148,15 @@ const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
         '特大発動艇+チハ改',
         '特大発動艇+Ⅲ号戦車J型',
     ],
-};
+} as const;
 
 export function calc_anti_install_pre_info(
-    equips: PlayerEquip[],
+    equip_slots: PlayerEquipSlot[],
 ): AntiInstallPreInfo {
-    const pre_info: AntiInstallPreInfo = equips.reduce((total, equip) => {
+    const pre_info: AntiInstallPreInfo = equip_slots.reduce((total, slot) => {
+        const { equip } =slot;
+        if (!is_equip_exsist(equip)) return total;
+
         const {
             name_jp,
             improvement_lv,
