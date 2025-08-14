@@ -72,6 +72,8 @@ export function calc_airstrike_balloon_damage_mod(
         * (1 - valid_defender_equip_balloon_ship_count * DEFENDER_COEFFIENT);
 }
 
+export type ShellPowerBalloonMod = Brand<number, 'ShellPowerBalloonMod'>
+
 /**
  * 昼砲撃戦における阻塞気球のダメージ補正値を返す
  * @param attacker_fleet_balloon_count 
@@ -79,11 +81,11 @@ export function calc_airstrike_balloon_damage_mod(
  */
 export function calc_day_shelling_balloon_damage_mod(
     attacker_fleet_balloon_count: number,
-): number {
+): ShellPowerBalloonMod {
     const ATTACKER_COEFFIENT = 0.02;
 
     return 1
-        + attacker_fleet_balloon_count * ATTACKER_COEFFIENT;
+        + attacker_fleet_balloon_count * ATTACKER_COEFFIENT as ShellPowerBalloonMod;
 }
 
 /**

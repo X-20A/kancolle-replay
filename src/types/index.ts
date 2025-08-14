@@ -69,7 +69,7 @@ export function is_combined_fleet_formation(
     return !is_single_fleet_formation(formation);
 }
 
-type AtLeast<T, N extends number> =
+export type AtLeast<T, N extends number> =
     N extends 1 ? [T, ...T[]] :
     N extends 2 ? [T, T, ...T[]] :
     N extends 3 ? [T, T, T, ...T[]] :

@@ -1,6 +1,8 @@
 import { SpecialAttackType } from "@/logics/SpecialAttack"
 import { AbyssalEquippedShip, PlayerEquippedShip } from "../ship/equipped"
 import { is_flagship_unit } from "./predicates"
+import { has_at_least } from "@/types"
+import { Brand } from "@/types/brands"
 
 export type AffiliationFleetType =
     | 'single'
@@ -105,7 +107,7 @@ export function is_player_fleet_unit(
 }
 
 /**
- * 所属艦隊が主力艦隊(含通常艦隊)であるは判定して返す
+ * 所属艦隊が主力艦隊(含通常艦隊)であるか判定して返す
  * @param fleet_unit 
  * @returns 
  */

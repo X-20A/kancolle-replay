@@ -8,14 +8,9 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { calc_valid_component_ship_length } from "../util";
 import { can_activate_Kongou_special } from "./activate";
 import { calc_Kongou_special_trigger_rate } from "./triggerRate";
-import { derive_special_attack_unit, SpecialAttackUnit } from "@/models/fleet/SpecialAttackUnit";
-import { calc_Kongou_special_mods } from "./multiplier";
 import { EngagementType } from "@/logics/engagemenet";
-
-const ATTACK_COUNTS = {
-    first: 1,
-    second: 1,
-} as const;
+import { extract_first_ship_from_units, extract_second_ship_from_units } from "@/types/fleet/pipe";
+import { derive_Kongou_special_force, KongouSpecialForce } from "./force";
 
 const extract_attacker_units = (
     fleet: PlayerFleet,
@@ -25,80 +20,39 @@ const extract_attacker_units = (
         : fleet.main_fleet_units;
 }
 
-type KongouClassSpecialAttack = ValidSpecialAttack<
+type KongouSpecial = ValidSpecialAttack<
     | 'Kongou_Special'
 >
+
+type KongouSpecialEvaluationResult =
+    | KongouSpecialForce
+    | SpecialAttackIneligible
+    | SpecialAttackMisfire
 
 export function evaluate_Kongou_class_special_attack(
     attacker_fleet: PlayerFleet,
     phase_type: DayOrNight,
+    engagement_type: EngagementType,
     rand_value: RandValue,
-): KongouClassSpecialAttack | SpecialAttackIneligible | SpecialAttackMisfire {
+): KongouSpecialEvaluationResult {
     // 金剛型タッチは夜戦でしか発動できないので汎用ユニット抽出は使えない
     const attacker_units = extract_attacker_units(attacker_fleet);
     if (!has_at_least(attacker_units, 2)) return 'Ineligible';
 
     const valid_ship_length = calc_valid_component_ship_length(attacker_units);
-    const flagship = attacker_units[0].ship;
-    const second_ship = attacker_units[1].ship;
+    const first_ship = extract_first_ship_from_units(attacker_units);
+    const second_ship = extract_second_ship_from_units(attacker_units);
 
     if (
-        can_activate_Kongou_special(attacker_fleet, phase_type, flagship, second_ship, valid_ship_length)
+        can_activate_Kongou_special(attacker_fleet, phase_type, first_ship, second_ship, valid_ship_length)
     ) return 'Ineligible';
 
     const trigger_rate = calc_Kongou_special_trigger_rate(
-        flagship,
+        first_ship,
         second_ship,
     );
 
     return is_random_successful(trigger_rate, rand_value)
-        ? 'Kongou_Special'
+        ? derive_Kongou_special_force(engagement_type, attacker_units)
         : 'Misfire';
-}
-
-type KongouSpecialComponent = [PlayerFleetUnit, PlayerFleetUnit]
-
-export function extract_participate_Kongou_class_special_attack(
-    attacker_fleet: PlayerFleet,
-): KongouSpecialComponent {
-    const attacker_units = extract_attacker_units(attacker_fleet);
-    if (
-        !has_at_least(attacker_units, 2)
-    ) throw Error('金剛型タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
-
-    return [
-        attacker_units[0],
-        attacker_units[1],
-    ];
-}
-
-const derive_Kongou_special_unit = (
-    engagement_type: EngagementType,
-    unit: PlayerFleetUnit,
-    attack_count: number,
-): SpecialAttackUnit => {
-    const mods = calc_Kongou_special_mods(
-        engagement_type,
-        unit,
-    );
-    return derive_special_attack_unit(
-        unit,
-        mods,
-        attack_count,
-    );
-}
-
-export type KongouSpecialForce =
-    [SpecialAttackUnit, SpecialAttackUnit]
-
-export function derive_Kongou_special_force(
-    engagement_type: EngagementType,
-    components: KongouSpecialComponent,
-): KongouSpecialForce {
-    const force: KongouSpecialForce = [
-        derive_Kongou_special_unit(engagement_type, components[0], ATTACK_COUNTS.first),
-        derive_Kongou_special_unit(engagement_type, components[1], ATTACK_COUNTS.second),
-    ];
-
-    return force;
 }

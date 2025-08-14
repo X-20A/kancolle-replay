@@ -5,6 +5,7 @@ import { has_ship_name, PlayerEquippedShip } from "@/models/ship/equipped";
 import { is_random_successful } from "@/effects/random";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { has_high_accuracy_radar } from "../../util";
+import { FirstShip, SecondShip } from "@/types/fleet/ship";
 
 /// 大和型2隻タッチ 発動率
 
@@ -17,7 +18,7 @@ const MUSASHI_SERIES: Set<PlayerShipNameJP> = new Set([
 ]);
 
 const calc_partner_mod = (
-    second_ship: PlayerEquippedShip,
+    second_ship: SecondShip,
 ): number => {
     const { name_jp } = second_ship;
 
@@ -36,16 +37,16 @@ const calc_radar_mod = (
 }
 
 const calc_trigger_rate = (
-    flagship: PlayerEquippedShip,
-    second_ship: PlayerEquippedShip,
+    first_ship: FirstShip,
+    second_ship: SecondShip,
 ): number => {
     return Math.floor(
-        + Math.sqrt(flagship.lv)
+        + Math.sqrt(first_ship.lv)
         + Math.sqrt(second_ship.lv)
-        + 1.25 * flagship.edited_status.luck
+        + 1.25 * first_ship.edited_status.luck
         + 1.25 * second_ship.edited_status.luck
         + calc_partner_mod(second_ship)
-        + calc_radar_mod(flagship)
+        + calc_radar_mod(first_ship)
         + calc_radar_mod(second_ship)
         + 33
     );
@@ -56,12 +57,12 @@ type YamatoDuoSpecialAttack = ValidYamatoSpecialAttack<
 >
 
 export function evaluate_Yamato_duo_special_attack(
-    flagship: PlayerEquippedShip,
-    second_ship: PlayerEquippedShip,
+    first_ship: FirstShip,
+    second_ship: SecondShip,
     rand_value: RandValue,
 ): YamatoDuoSpecialAttack | SpecialAttackMisfire {
     const trigger_rate = calc_trigger_rate(
-        flagship,
+        first_ship,
         second_ship,
     );
 

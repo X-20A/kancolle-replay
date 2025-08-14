@@ -63,7 +63,7 @@ const calc_SG_radar_late_model_mod = (
 }
 
 export function calc_Colorado_special_power_mod(
-    unit: PlayerFleetUnit,
+    attacker_unit: PlayerFleetUnit,
     pre_info: ColoradoSpecialMultiplierPreInfo,
 ): SpecialAttackPowerMod {
     const {
@@ -72,7 +72,7 @@ export function calc_Colorado_special_power_mod(
         has_SG_radar_late_model,
     } = pre_info;
 
-    const base = calc_attack_power_mod_base(unit);
+    const base = calc_attack_power_mod_base(attacker_unit);
 
     const surface_radar_mod =
         calc_surface_radar_mod(has_surface_radar);

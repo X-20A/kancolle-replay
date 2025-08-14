@@ -14,10 +14,8 @@ const calc_engagement_mod = (
 }
 
 const calc_gun_mod = (
-    pre_info: KongouSpecialMultiplierPreInfo,
+    valid_gun_count: number,
 ): number => {
-    const { valid_gun_count } = pre_info;
-
     if (valid_gun_count >= 2) return 1.15;
     if (valid_gun_count === 1) return 1.11;
 
@@ -31,7 +29,7 @@ export function calc_Kongou_special_power_mod(
     const BASE = 1;
 
     const engagement_mod = calc_engagement_mod(engagement_type);
-    const gun_mod = calc_gun_mod(pre_info);
+    const gun_mod = calc_gun_mod(pre_info.valid_gun_count);
 
     return BASE
         * engagement_mod

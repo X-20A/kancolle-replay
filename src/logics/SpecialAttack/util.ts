@@ -26,15 +26,15 @@ const is_valid = (
         !is_operational(unit.ship)
 }
 
-export type SpecialAttackComponentLength =
-    Brand<number, 'SpecialAttackComponentLength'>
+export type ValidSurfaceShipLength =
+    Brand<number, 'ValidSurfaceShipLength'>
 
 export function calc_valid_component_ship_length(
     attacker_units: PlayerFleetUnit[]
-): SpecialAttackComponentLength {
+): ValidSurfaceShipLength {
     return attacker_units
         .filter(is_valid)
-        .length as SpecialAttackComponentLength;
+        .length as ValidSurfaceShipLength;
 }
 
 export function has_high_accuracy_radar(
@@ -47,4 +47,11 @@ export function has_high_accuracy_radar(
             is_radar(equip) &&
             equip.natural_addition.los >= 8
     });
+}
+
+export function has_enough_valid_surface_ships(
+    required_count: number,
+    valid_surface_ship_length: ValidSurfaceShipLength,
+): boolean {
+    return valid_surface_ship_length >= required_count;
 }

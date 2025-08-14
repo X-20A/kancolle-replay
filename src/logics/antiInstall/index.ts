@@ -27,7 +27,7 @@ export function calc_anti_install_mods(
         !is_install_type(target_ship)
     ) return 1 as AntiInstallMod
     
-    const info = calc_anti_install_pre_info(equips);
+    const info = calc_anti_install_pre_info(attacker_ship.equip_slots);
     const utils = calc_anti_install_utils(info);
     const improvement_mods = calc_anti_install_improvement_mods(info);
 

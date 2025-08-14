@@ -82,6 +82,48 @@ export type AntiInstallPreInfo = {
     /** 噴式爆撃機 の数 */
     jet_bomber_count: number,
 }
+const INITIAL: AntiInstallPreInfo = {
+    normal_LC_count: 0,
+    total_normal_LC_improvement: 0,
+    Landing_force_count: 0,
+    Amphibious_tank_count: 0,
+    total_Amphibious_tank_improvement: 0,
+    special_LC1_count: 0,
+    Toku_11_tank_count: 0,
+    Isshiki_tank_count: 0,
+    Panzer_3_count: 0,
+    carrier_bomber_count: 0,
+    seaplane_bomber_count: 0,
+    WG_count: 0,
+    AP_shell_count: 0,
+    Type_3_shell_count: 0,
+    Katsu_tank_kai_count: 0,
+    Katsu_tanks_count: 0,
+    total_Katsu_tanks_improvement: 0,
+    chiha_count: 0,
+    chiha_kai_count: 0,
+    m4a1_count: 0,
+    J_tank_count: 0,
+    African_tank_count: 0,
+    AB_count: 0,
+    armed_LC_count: 0,
+    mortar_count: 0,
+    mortar_concentrated_count: 0,
+    Type_4_rocket_count: 0,
+    Type_4_rocket_concentrated_count: 0,
+    Army_infantry_count: 0,
+    Army_chiha_count: 0,
+    Army_chiha_kai_count: 0,
+    Army_infantry_chiha_count: 0,
+    Armys_count: 0,
+    landing_tank_count: 0,
+    armed_boats_synergy_type_A_count: 0,
+    armed_boats_synergy_type_B_count: 0,
+    torpedo_bomber_swordfish_count: 0,
+    seaplane_fighter_count: 0,
+    Late_298_count: 0,
+    jet_bomber_count: 0,
+} as const;
 
 const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
     A: PlayerEquipNameJP[],
@@ -110,50 +152,7 @@ const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
 export function calc_anti_install_pre_info(
     equips: PlayerEquip[],
 ): AntiInstallPreInfo {
-    const initial: AntiInstallPreInfo = {
-        normal_LC_count: 0,
-        total_normal_LC_improvement: 0,
-        Landing_force_count: 0,
-        Amphibious_tank_count: 0,
-        total_Amphibious_tank_improvement: 0,
-        special_LC1_count: 0,
-        Toku_11_tank_count: 0,
-        Isshiki_tank_count: 0,
-        Panzer_3_count: 0,
-        carrier_bomber_count: 0,
-        seaplane_bomber_count: 0,
-        WG_count: 0,
-        AP_shell_count: 0,
-        Type_3_shell_count: 0,
-        Katsu_tank_kai_count: 0,
-        Katsu_tanks_count: 0,
-        total_Katsu_tanks_improvement: 0,
-        chiha_count: 0,
-        chiha_kai_count: 0,
-        m4a1_count: 0,
-        J_tank_count: 0,
-        African_tank_count: 0,
-        AB_count: 0,
-        armed_LC_count: 0,
-        mortar_count: 0,
-        mortar_concentrated_count: 0,
-        Type_4_rocket_count: 0,
-        Type_4_rocket_concentrated_count: 0,
-        Army_infantry_count: 0,
-        Army_chiha_count: 0,
-        Army_chiha_kai_count: 0,
-        Army_infantry_chiha_count: 0,
-        Armys_count: 0,
-        landing_tank_count: 0,
-        armed_boats_synergy_type_A_count: 0,
-        armed_boats_synergy_type_B_count: 0,
-        torpedo_bomber_swordfish_count: 0,
-        seaplane_fighter_count: 0,
-        Late_298_count: 0,
-        jet_bomber_count: 0,
-    }
-
-    return equips.reduce((total, equip) => {
+    const pre_info: AntiInstallPreInfo = equips.reduce((total, equip) => {
         const {
             name_jp,
             improvement_lv,
@@ -237,5 +236,7 @@ export function calc_anti_install_pre_info(
         if (type_id === 'JET_BOMBER') total.jet_bomber_count++;
 
         return total;
-    }, initial);
+    }, INITIAL);
+
+    return pre_info;
 }

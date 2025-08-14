@@ -6,9 +6,9 @@ import { YamatoSpecialPreInfo } from "./preInfo";
 type SurfaceRadarMod = 1 | 1.15
 
 const calc_surface_radar_mod = (
-    pre_info: YamatoSpecialPreInfo,
+    has_surface_radar: boolean,
 ): SurfaceRadarMod => {
-    return pre_info.has_surface_radar
+    return has_surface_radar
         ? 1.15
         : 1;
 }
@@ -16,9 +16,9 @@ const calc_surface_radar_mod = (
 type RadarXLMod = 1 | 1.25
 
 const calc_radar_XL_mod = (
-    pre_info: YamatoSpecialPreInfo,
+    has_radar_XL: boolean,
 ): RadarXLMod => {
-    return pre_info.has_radar_XL
+    return has_radar_XL
         ? 1.25
         : 1;
 }
@@ -26,9 +26,9 @@ const calc_radar_XL_mod = (
 type APShellMod = 1 | 1.35
 
 const calc_AP_shell_mod = (
-    pre_info: YamatoSpecialPreInfo,
+    has_AP_shell: boolean,
 ): APShellMod => {
-    return pre_info.has_AP_shell
+    return has_AP_shell
         ? 1.35
         : 1;
 }
@@ -42,9 +42,15 @@ export type YamatoSpecialPreMods = {
 export function calc_Yamato_special_pre_mods(
     pre_info: YamatoSpecialPreInfo,
 ): YamatoSpecialPreMods {
-    const surface_radar_mod = calc_surface_radar_mod(pre_info);
-    const radar_XL_mod = calc_radar_XL_mod(pre_info);
-    const AP_shell_mod = calc_AP_shell_mod(pre_info);
+    const {
+        has_surface_radar,
+        has_radar_XL,
+        has_AP_shell,
+    } = pre_info;
+
+    const surface_radar_mod = calc_surface_radar_mod(has_surface_radar);
+    const radar_XL_mod = calc_radar_XL_mod(has_radar_XL);
+    const AP_shell_mod = calc_AP_shell_mod(has_AP_shell);
 
     const mods: YamatoSpecialPreMods = {
         surface_radar_mod,

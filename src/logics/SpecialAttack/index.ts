@@ -2,17 +2,17 @@ import { AbyssalFleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { evaluate_submarine_fleet_attack, extract_participate_submarine_fleet_attack_units, SubmarineSpecialAttack } from "./Submarine";
 import { DayOrNight } from "@/types/battle";
 import { RandGenerator } from "@/effects/random";
-import { evaluate_Yamato_class_special_attack, extract_participate_Yamato_class_special_attack_units, YamatoClassSpecialAttack } from "./Yamato";
+import { evaluate_Yamato_class_special_attack, extract_participate_Yamato_special_components, YamatoClassSpecialAttack, YamatoSpecialForce } from "./Yamato";
 import { calc_valid_component_ship_length, extract_attacker_units } from "./util";
-import { evaluate_Nelson_class_special_attack, extract_participate_Nelson_class_special_attack_units } from "./Nelson";
-import { evaluate_Nagato_class_special_attack } from "./Nagato";
-import { evaluate_Kongou_class_special_attack, extract_participate_Kongou_class_special_attack } from "./Kongou";
+import { evaluate_Nelson_class_special_attack, extract_participate_Nelson_class_special_attack_units, NelsonSpecialForce } from "./Nelson";
+import { evaluate_Nagato_class_special_attack, NagatoSpecialForce } from "./Nagato";
+import { evaluate_Kongou_class_special_attack, extract_participate_Kongou_special_components, KongouSpecialForce } from "./Kongou";
 import { Brand } from "@/types/brands";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { match } from "ts-pattern";
-import { extract_participate_Colorado_special_units } from "./Colorado";
-import { evaluate_Richelieu_class_special_attack } from "./Richelieu";
-import { evaluate_QueenElizabeth_special } from "./QueenElizabeth";
+import { ColoradoSpecialForce, extract_participate_Colorado_special_components } from "./Colorado";
+import { evaluate_Richelieu_class_special_attack, RichelieuSpecialForce } from "./Richelieu";
+import { evaluate_QueenElizabeth_special, QueenElizabethSpecialForce } from "./QueenElizabeth";
 
 const SPECIAL_ATTACKS = {
     Nelson_Special: 100,
@@ -126,7 +126,7 @@ export function extract_participate_special_attack_units(
 
     return match(special_attack_type)
         .with('Yamato_Duo_Special', 'Yamato_Trio_Special',
-            () => extract_participate_Yamato_class_special_attack_units(
+            () => extract_participate_Yamato_special_components(
                 general_attacker_units,
                 special_attack_type as YamatoClassSpecialAttack, // 残念ながら他のも渡せる
             )
@@ -152,12 +152,12 @@ export function extract_participate_special_attack_units(
             )
         )
         .with('Kongou_Special',
-            () => extract_participate_Kongou_class_special_attack(
+            () => extract_participate_Kongou_special_components(
                 attacker_fleet,
             )
         )
         .with('Colorado_Special',
-            () => extract_participate_Colorado_special_units(
+            () => extract_participate_Colorado_special_components(
                 general_attacker_units,
             )
         )
@@ -175,18 +175,23 @@ export function extract_participate_special_attack_units(
 
 export type SpecialAttackPowerMod = Brand<number, 'SpecialAttackPowerMod'>
 export type SpecialAttackAccuracyMod = Brand<number, 'SpecialAttackAccuracyMod'>
-
-/**
- * 特殊攻撃補正セット(火力・命中)
- */
 export type SpecialAttackMods = {
     special_attack_power_mod: SpecialAttackPowerMod,
     special_attack_accuracy_mod: SpecialAttackAccuracyMod,
 }
 
-export function calc_special_attack_mods(
-    attacker_units: PlayerFleetUnit[],
-    special_attack_type: SpecialAttackType,
-): SpecialAttackMods {
+export type SpecialAttackForce =
+    | YamatoSpecialForce
+    | NelsonSpecialForce
+    | NagatoSpecialForce
+    | RichelieuSpecialForce
+    | QueenElizabethSpecialForce
+    | KongouSpecialForce
+    | ColoradoSpecialForce
 
+export function derive_special_attack_force(
+    special_attack_type: SpecialAttackType,
+): SpecialAttackForce {
+    match(special_attack_type)
+        .with('Yamato_Duo_Special', 'Yamato_Trio_Special', () => )
 }

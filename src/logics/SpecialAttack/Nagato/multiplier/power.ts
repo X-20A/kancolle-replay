@@ -1,9 +1,10 @@
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NagatoSpecialMultiplierPreInfo } from "./preInfo";
 import { SpecialAttackPowerMod } from "../..";
-import { has_ship_name, PlayerEquippedShip } from "@/models/ship/equipped";
+import { has_ship_name } from "@/models/ship/equipped";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { is_flagship_unit } from "@/models/fleet/predicates";
+import { SecondShip } from "@/types/fleet/ship";
 
 const SECOND_SHIP_TYPE = {
     NAGATO_CLASS_KAI_NI: 1,
@@ -49,7 +50,7 @@ const NAGATO_CLASS_KAI_NI_NAMES: Set<PlayerShipNameJP> = new Set([
 ]);
 
 const calc_base_type = (
-    second_ship: PlayerEquippedShip,
+    second_ship: SecondShip,
 ): SecondShipType => {
     const { name_jp } = second_ship;
     if (
@@ -62,9 +63,9 @@ const calc_base_type = (
 
 const calc_base_value = (
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
+    second_ship: SecondShip,
 ): number => {
-    const base_type = calc_base_type(second_unit.ship);
+    const base_type = calc_base_type(second_ship);
     const data = BASE_DATAS[base_type];
 
     return is_flagship_unit(attacker_unit)
@@ -90,7 +91,7 @@ const calc_AP_shell_mod = (
 
 export function calc_Nagato_special_power_mod(
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
+    second_ship: SecondShip,
     pre_info: NagatoSpecialMultiplierPreInfo,
 ): SpecialAttackPowerMod {
     const {
@@ -98,7 +99,7 @@ export function calc_Nagato_special_power_mod(
         has_AP_shell,
     } = pre_info;
 
-    const base = calc_base_value(attacker_unit, second_unit);
+    const base = calc_base_value(attacker_unit, second_ship);
 
     const surface_radar_mod =
         calc_surface_radar_mod(has_surface_radar);

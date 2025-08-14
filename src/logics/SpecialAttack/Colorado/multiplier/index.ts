@@ -7,11 +7,11 @@ import { calc_Colorado_special_pre_info, ColoradoSpecialMultiplierPreInfo } from
 /// Coloradoタッチの火力・命中補正
 
 const calc_Colorado_special_mods_core = (
-    unit: PlayerFleetUnit,
+    attacker_unit: PlayerFleetUnit,
     pre_info: ColoradoSpecialMultiplierPreInfo,
 ): SpecialAttackMods => {
     const special_attack_power_mod =
-        calc_Colorado_special_power_mod(unit, pre_info);
+        calc_Colorado_special_power_mod(attacker_unit, pre_info);
     const special_attack_accuracy_mod =
         calc_Colorado_special_accuracy_mod(pre_info);
 

@@ -1,6 +1,5 @@
-import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { has_at_least } from "@/types";
-import { SpecialAttackComponentLength, SpecialAttackUnits } from "../util";
+import { ValidSurfaceShipLength, SpecialAttackUnits } from "../util";
 import { SpecialAttackIneligible, SpecialAttackMisfire, ValidSpecialAttack } from "..";
 import { PlayerFleet } from "@/models/fleet/Fleet";
 import { RandValue } from "@/types/brands/other";
@@ -9,6 +8,9 @@ import { calc_Colorado_special_trigger_rate } from "./triggerRate";
 import { is_random_successful } from "@/effects/random";
 import { derive_special_attack_unit, SpecialAttackUnit } from "@/models/fleet/SpecialAttackUnit";
 import { calc_Colorado_special_mods } from "./multiplier";
+import { extract_first_unit, extract_second_unit, extract_third_unit, FirstUnit, SecondUnit, ThirdUnit } from "@/types/fleet/fleetUnit";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
+import { extract_first_ship_from_units, extract_second_ship_from_units, extract_third_ship_from_units } from "@/types/fleet/pipe";
 
 /// Coloradoタッチ
 
@@ -25,17 +27,17 @@ type ColoradoClassSpecialAttack = ValidSpecialAttack<
 export function evaluate_Colorado_special(
     attacker_fleet: PlayerFleet,
     attacker_units: SpecialAttackUnits,
-    valid_ship_length: SpecialAttackComponentLength,
+    valid_ship_length: ValidSurfaceShipLength,
     rand_value: RandValue,
 ): ColoradoClassSpecialAttack | SpecialAttackIneligible | SpecialAttackMisfire {
     if (!has_at_least(attacker_units, 3)) return 'Ineligible';
 
-    const flagship = attacker_units[0].ship;
-    const second_ship = attacker_units[1].ship;
-    const third_ship = attacker_units[2].ship;
+    const first_unit = extract_first_ship_from_units(attacker_units);
+    const second_ship = extract_second_ship_from_units(attacker_units);
+    const third_ship = extract_third_ship_from_units(attacker_units);
 
     if (
-        !can_Colorado_special_activate(attacker_fleet, flagship, second_ship, third_ship, valid_ship_length)
+        !can_Colorado_special_activate(attacker_fleet, first_unit, second_ship, third_ship, valid_ship_length)
     ) return 'Ineligible';
 
     const trigger_rate = calc_Colorado_special_trigger_rate();
@@ -45,9 +47,9 @@ export function evaluate_Colorado_special(
         : 'Misfire';
 }
 
-type ColoradoSpecialComponents = [PlayerFleetUnit, PlayerFleetUnit, PlayerFleetUnit]
+type ColoradoSpecialComponents = [FirstUnit, SecondUnit, ThirdUnit]
 
-export function extract_participate_Colorado_special_units(
+export function extract_participate_Colorado_special_components(
     attacker_units: SpecialAttackUnits,
 ): ColoradoSpecialComponents {
     if (
@@ -55,9 +57,9 @@ export function extract_participate_Colorado_special_units(
     ) throw Error('Colorado級タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
 
     const components: ColoradoSpecialComponents = [
-        attacker_units[0],
-        attacker_units[1],
-        attacker_units[2],
+        extract_first_unit(attacker_units),
+        extract_second_unit(attacker_units),
+        extract_third_unit(attacker_units),
     ];
 
     return components;
@@ -79,7 +81,7 @@ const derive_Colorado_special_unit = (
 export type ColoradoSpecialForce =
     [SpecialAttackUnit, SpecialAttackUnit, SpecialAttackUnit];
 
-export function derive_Colorado_special_force(
+export function derive_Colorado_special_force_core(
     components: ColoradoSpecialComponents,
 ): ColoradoSpecialForce {
     const force: ColoradoSpecialForce = [
@@ -89,4 +91,10 @@ export function derive_Colorado_special_force(
     ];
 
     return force;
+}
+
+export function derive_Colorado_special_force(
+
+): ColoradoSpecialForce {
+    const components
 }

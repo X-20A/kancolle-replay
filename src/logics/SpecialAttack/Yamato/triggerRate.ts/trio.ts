@@ -4,6 +4,7 @@ import { is_random_successful } from "@/effects/random";
 import { RandValue } from "@/types/brands/other";
 import { ValidYamatoSpecialAttack } from "..";
 import { SpecialAttackIneligible, SpecialAttackMisfire } from "../..";
+import { SecondShip, ThirdShip } from "@/types/fleet/ship";
 
 /// 大和型3隻タッチ 発動率
 
@@ -34,8 +35,8 @@ const FIXED_ORDER_COMBINATIONS: [PlayerShipNameJP, PlayerShipNameJP][] = [
 const TRIGGER_RATE = 0.8;
 
 const is_any_order_match = (
-    second_ship: PlayerEquippedShip,
-    third_ship: PlayerEquippedShip,
+    second_ship: SecondShip,
+    third_ship: ThirdShip,
 ): boolean => {
     return ANY_ORDER_COMBINATIONS.some(combination =>
         combination.has(second_ship.name_jp) &&
@@ -44,8 +45,8 @@ const is_any_order_match = (
 }
 
 const is_fixed_order_match = (
-    second_ship: PlayerEquippedShip,
-    third_ship: PlayerEquippedShip,
+    second_ship: SecondShip,
+    third_ship: ThirdShip,
 ): boolean => {
     return FIXED_ORDER_COMBINATIONS.some(([expected_second, expected_third]) =>
         second_ship.name_jp === expected_second &&
@@ -62,8 +63,8 @@ type YamatoTrioSpecialAttack = ValidYamatoSpecialAttack<
 >
 
 export function evaluate_Yamato_trio_special_attack(
-    second_ship: PlayerEquippedShip,
-    third_ship: PlayerEquippedShip,
+    second_ship: SecondShip,
+    third_ship: ThirdShip,
     rand_value: RandValue,
 ): YamatoTrioSpecialAttack | SpecialAttackIneligible | SpecialAttackMisfire {
     if (

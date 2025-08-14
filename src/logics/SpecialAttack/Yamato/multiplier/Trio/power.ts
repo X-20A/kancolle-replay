@@ -2,8 +2,9 @@ import { SpecialAttackPowerMod } from "@/logics/SpecialAttack";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { has_ship_name } from "@/models/ship/equipped";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { calc_Yamato_special_pre_info, YamatoSpecialPreInfo } from "../preInfo";
+import { calc_Yamato_special_pre_info } from "../preInfo";
 import { calc_Yamato_special_pre_mods } from "../mod";
+import { SecondShip, ThirdShip } from "@/types/fleet/ship";
 
 const NAGATO_KAI_NI_NAMES: Set<PlayerShipNameJP> = new Set([
     '長門改二',
@@ -55,11 +56,11 @@ const BASE_DATAS: BaseDatas = {
 } as const;
 
 const calc_base_type = (
-    second_unit: PlayerFleetUnit,
-    third_unit: PlayerFleetUnit,
+    second_ship: SecondShip,
+    third_unit: ThirdShip,
 ): CombinationType => {
-    const { name_jp: second_ship_name } = second_unit.ship;
-    const { name_jp: third_ship_name } = third_unit.ship;
+    const { name_jp: second_ship_name } = second_ship;
+    const { name_jp: third_ship_name } = third_unit;
 
     if (
         second_ship_name === '武蔵改二' &&
@@ -79,10 +80,10 @@ const calc_base_type = (
 
 const calc_base_value = (
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
-    third_unit: PlayerFleetUnit,
+    second_ship: SecondShip,
+    third_ship: ThirdShip,
 ): number => {
-    const base_type = calc_base_type(second_unit, third_unit);
+    const base_type = calc_base_type(second_ship, third_ship);
     const data = BASE_DATAS[base_type];
 
     const { original_index } = attacker_unit;
@@ -93,15 +94,15 @@ const calc_base_value = (
 
 export function calc_Yamato_Trio_special_power_mod(
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
-    third_unit: PlayerFleetUnit,
+    second_ship: SecondShip,
+    third_ship: ThirdShip,
 ): SpecialAttackPowerMod {
     const pre_info =
         calc_Yamato_special_pre_info(attacker_unit.ship.equip_slots);
     const base = calc_base_value(
         attacker_unit,
-        second_unit,
-        third_unit,
+        second_ship,
+        third_ship,
     );
 
     const {

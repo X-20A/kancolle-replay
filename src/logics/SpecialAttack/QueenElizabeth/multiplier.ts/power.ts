@@ -2,6 +2,8 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_flagship_unit } from "@/models/fleet/predicates";
 import { QueenElizabethSpecialMultiplierPreInfo } from "./preInfo";
 import { SpecialAttackPowerMod } from "../..";
+import { extract_first_ship, FirstShip } from "@/types/fleet/ship";
+import { FirstUnit } from "@/types/fleet/fleetUnit";
 
 const FLAGSHIP_TYPE = {
     WARSPITE: 1,
@@ -32,18 +34,20 @@ const SURFACE_RADAR_COEFFIENT = 1.15;
 const AP_SHELL_COEFFIENT = 1.35;
 
 const calc_flagship_type = (
-    first_unit: PlayerFleetUnit,
+    first_ship: FirstShip,
 ): FlagshipType => {
-    return first_unit.ship.name_jp === 'Warspite改'
+    return first_ship.name_jp === 'Warspite改'
         ? 'WARSPITE'
         : 'VALIANT';
 }
 
 const calc_base_value = (
     attacker_unit: PlayerFleetUnit,
-    first_unit: PlayerFleetUnit,
+    first_unit: FirstUnit,
 ): number => {
-    const flagship_type = calc_flagship_type(first_unit);
+    const first_ship = extract_first_ship(first_unit);
+
+    const flagship_type = calc_flagship_type(first_ship);
     const data = BASE_DATAS[flagship_type];
 
     return is_flagship_unit(attacker_unit)
@@ -69,7 +73,7 @@ const calc_AP_shell_mod = (
 
 export function calc_QueenElizabeth_special_power_mod(
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
+    first_unit: FirstUnit,
     pre_info: QueenElizabethSpecialMultiplierPreInfo,
 ): SpecialAttackPowerMod {
     const {
@@ -77,7 +81,7 @@ export function calc_QueenElizabeth_special_power_mod(
         has_AP_shell,
     } = pre_info;
 
-    const base = calc_base_value(attacker_unit, second_unit);
+    const base = calc_base_value(attacker_unit, first_unit);
 
     const surface_radar_mod =
         calc_surface_radar_mod(has_surface_radar);

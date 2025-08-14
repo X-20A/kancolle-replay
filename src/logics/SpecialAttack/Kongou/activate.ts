@@ -3,7 +3,7 @@ import { has_ship_name, is_damage_moderatery_or_more, is_retreated, PlayerEquipp
 import { FormationType } from "@/types";
 import { DayOrNight } from "@/types/battle";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { SpecialAttackComponentLength } from "../util";
+import { has_enough_valid_surface_ships, ValidSurfaceShipLength } from "../util";
 import { has_formation_type } from "@/logics/formation";
 
 const ACTIVATE_LIMIT = 2;
@@ -68,7 +68,7 @@ export function can_activate_Kongou_special(
     phase_type: DayOrNight,
     flagship: PlayerEquippedShip,
     second_ship: PlayerEquippedShip,
-    valid_ship_length: SpecialAttackComponentLength,
+    valid_ship_length: ValidSurfaceShipLength,
 ): boolean {
     return (
         attacker_fleet.Kongou_special_activated_count < ACTIVATE_LIMIT &&
@@ -77,7 +77,7 @@ export function can_activate_Kongou_special(
         !is_damage_moderatery_or_more(flagship) &&
         !is_retreated(second_ship) &&
         !is_damage_moderatery_or_more(second_ship) &&
-        valid_ship_length >= REQUIRED_SURFACE_SHIPS_COUNT &&
+        has_enough_valid_surface_ships(REQUIRED_SURFACE_SHIPS_COUNT, valid_ship_length) &&
         is_valid_combination(flagship, second_ship)
     );
 }

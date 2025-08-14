@@ -6,6 +6,7 @@ import { calc_Yamato_special_pre_info } from "../preInfo";
 import { SpecialAttackPowerMod } from "@/logics/SpecialAttack";
 import { Brand } from "@/types/brands";
 import { calc_Yamato_special_pre_mods, YamatoSpecialPreMods } from "../mod";
+import { SecondShip } from "@/types/fleet/ship";
 
 /// 大和型2隻タッチ 火力補正
 
@@ -44,7 +45,7 @@ const YAMATO_KAI_NI_CLASS_NAMES: Set<PlayerShipNameJP> = new Set([
 ]);
 
 const calc_second_ship_type = (
-    second_ship: PlayerEquippedShip,
+    second_ship: SecondShip,
 ): SecondShipType => {
     const { name_jp } = second_ship;
     if (name_jp === '大和改二重') return 'YAMATO_KAI_NI_JU';
@@ -82,17 +83,17 @@ const calc_Yamato_Duo_special_power_mod_core = (
 /**
  * 大和型2隻タッチの攻撃力補正を返す
  * @param attacker_unit 
- * @param second_unit 
+ * @param second_ship 
  * @returns 
  */
 export function calc_Yamato_Duo_special_power_mod(
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
+    second_ship: SecondShip,
 ): SpecialAttackPowerMod {
     const pre_info =
         calc_Yamato_special_pre_info(attacker_unit.ship.equip_slots);
     const second_ship_type =
-        calc_second_ship_type(second_unit.ship);
+        calc_second_ship_type(second_ship);
 
     const base = calc_base(attacker_unit, second_ship_type);
 

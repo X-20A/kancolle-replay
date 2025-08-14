@@ -1,6 +1,6 @@
 import { SpecialAttackIneligible, SpecialAttackMisfire, ValidSpecialAttack } from "..";
 import { PlayerFleet } from "@/models/fleet/Fleet";
-import { SpecialAttackComponentLength, SpecialAttackUnits } from "../util";
+import { ValidSurfaceShipLength, SpecialAttackUnits } from "../util";
 import { has_at_least } from "@/types";
 import { RandValue } from "@/types/brands/other";
 import { evaluate_Yamato_duo_special_attack } from "./triggerRate.ts/duo";
@@ -10,6 +10,19 @@ import { can_Yamato_special_activate } from "./activate";
 import { calc_Yamato_Duo_special_mods } from "./multiplier/Duo";
 import { calc_Yamato_Trio_special_mods } from "./multiplier/Trio";
 import { evaluate_Yamato_trio_special_attack } from "./triggerRate.ts/trio";
+import { extract_first_unit, extract_second_unit, extract_third_unit, FirstUnit, SecondUnit, ThirdUnit } from "@/types/fleet/fleetUnit";
+import { extract_first_ship_from_units, extract_second_ship_from_units, extract_third_ship_from_units } from "@/types/fleet/pipe";
+
+const DUO_ATTACK_COUNT = {
+    first: 2,
+    second: 1,
+};
+
+const TRIO_ATTACK_COUNT = {
+    first: 1,
+    second: 1,
+    third: 1,
+};
 
 export type YamatoClassSpecialAttack = ValidSpecialAttack<
     | 'Yamato_Duo_Special'
@@ -21,14 +34,14 @@ export type ValidYamatoSpecialAttack<K extends YamatoClassSpecialAttack> = K;
 export function evaluate_Yamato_class_special_attack(
     attacker_fleet: PlayerFleet,
     attacker_units: SpecialAttackUnits,
-    valid_ship_length: SpecialAttackComponentLength,
+    valid_ship_length: ValidSurfaceShipLength,
     rand_values: [RandValue, RandValue],
 ): YamatoClassSpecialAttack | SpecialAttackIneligible | SpecialAttackMisfire {
     if (!has_at_least(attacker_units, 3)) return 'Ineligible';
 
-    const flagship = attacker_units[0].ship;
-    const second_ship = attacker_units[1].ship;
-    const third_ship = attacker_units[2].ship;
+    const flagship = extract_first_ship_from_units(attacker_units);
+    const second_ship = extract_second_ship_from_units(attacker_units);
+    const third_ship = extract_third_ship_from_units(attacker_units);
 
     if (
         !can_Yamato_special_activate(attacker_fleet, flagship, second_ship, valid_ship_length)
@@ -44,9 +57,9 @@ export function evaluate_Yamato_class_special_attack(
 }
 
 export type YamatoDuoSpecialComponent =
-    [PlayerFleetUnit, PlayerFleetUnit]
+    [FirstUnit, SecondUnit]
 export type YamatoTrioSpecialComponent =
-    [PlayerFleetUnit, PlayerFleetUnit, PlayerFleetUnit]
+    [FirstUnit, SecondUnit, ThirdUnit]
 
 type YamatoSpecialComponent =
     YamatoDuoSpecialComponent | YamatoTrioSpecialComponent
@@ -57,39 +70,35 @@ const is_Yamato_Duo_special_component = (
     return component.length === 2;
 }
 
-export function extract_participate_Yamato_class_special_attack_units(
+export function extract_participate_Yamato_special_components(
     attacker_units: SpecialAttackUnits,
     special_attack_type: YamatoClassSpecialAttack,
 ): YamatoSpecialComponent {
     if (
         !has_at_least(attacker_units, 3)
     ) throw Error('大和型タッチの参加艦を抽出しようとしましたが、該当艦が存在しませんでした');
-    return special_attack_type === 'Yamato_Duo_Special'
-        ? [
-            attacker_units[0],
-            attacker_units[1],
-        ]
-        : [
-            attacker_units[0],
-            attacker_units[1],
-            attacker_units[2],
+    
+    if (special_attack_type === 'Yamato_Duo_Special') {
+        const components: YamatoDuoSpecialComponent = [
+            extract_first_unit(attacker_units),
+            extract_second_unit(attacker_units),
         ];
+
+        return components;
+    }
+
+    const components: YamatoTrioSpecialComponent = [
+        extract_first_unit(attacker_units),
+        extract_second_unit(attacker_units),
+        extract_third_unit(attacker_units),
+    ];
+
+    return components;
 }
-
-const DUO_ATTACK_COUNT = {
-    first: 2,
-    second: 1,
-};
-
-const TRIO_ATTACK_COUNT = {
-    first: 1,
-    second: 1,
-    third: 1,
-};
 
 const derive_Yamato_Duo_special_unit = (
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
+    second_unit: SecondUnit,
     attack_count: number,
 ): SpecialAttackUnit => {
     const mods = calc_Yamato_Duo_special_mods(attacker_unit, second_unit);
@@ -105,8 +114,8 @@ const derive_Yamato_Duo_special_unit = (
 
 const derive_Yamato_Trio_special_unit = (
     attacker_unit: PlayerFleetUnit,
-    second_unit: PlayerFleetUnit,
-    third_unit: PlayerFleetUnit,
+    second_unit: SecondUnit,
+    third_unit: ThirdUnit,
     attack_count: number,
 ): SpecialAttackUnit => {
     const mods =
@@ -130,9 +139,9 @@ export type YamatoTrioSpecialForce =
 export type YamatoSpecialForce =
     YamatoDuoSpecialForce | YamatoTrioSpecialForce
 
-export function derive_Yamato_special_force(
+const derive_Yamato_special_force_core = (
     component: YamatoSpecialComponent,
-): YamatoSpecialForce {
+): YamatoSpecialForce => {
     const second_unit = component[1];
 
     if (is_Yamato_Duo_special_component(component)) {
@@ -152,4 +161,15 @@ export function derive_Yamato_special_force(
     ];
 
     return trio_force;
+}
+
+export function derive_Yamato_special_force(
+    component: YamatoSpecialComponent,
+): YamatoSpecialForce {
+    const components = extract_participate_Yamato_special_components(
+        
+    )
+
+    return derive_Yamato_special_force_core
+
 }

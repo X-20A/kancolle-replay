@@ -1,10 +1,11 @@
 import { is_already_special_attack_activated, PlayerFleet } from "@/models/fleet/Fleet";
-import { has_ship_name, has_ship_type, includes_ship_type, is_damage_moderatery_or_more, is_operational, PlayerEquippedShip } from "@/models/ship/equipped";
+import { has_ship_name, has_ship_type, is_damage_moderatery_or_more, is_operational, PlayerEquippedShip } from "@/models/ship/equipped";
 import { FormationType } from "@/types";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { ShipType } from "@/types/ship/ship";
-import { SpecialAttackComponentLength } from "../util";
+import { has_enough_valid_surface_ships, ValidSurfaceShipLength } from "../util";
 import { has_formation_type } from "@/logics/formation";
+import { FifthShip, FirstShip, ThirdShip } from "@/types/fleet/ship";
 
 const TRIGGERABLE_SHIP_NAMES: Set<PlayerShipNameJP> = new Set([
     'Nelson', 'Nelson改',
@@ -34,18 +35,18 @@ const is_valid_joining_ship = (
 
 export function can_activate_Nelson_special(
     attacker_fleet: PlayerFleet,
-    flagship: PlayerEquippedShip,
-    third_ship: PlayerEquippedShip,
-    fifth_ship: PlayerEquippedShip,
-    valid_ship_length: SpecialAttackComponentLength,
+    first_ship: FirstShip,
+    third_ship: ThirdShip,
+    fifth_ship: FifthShip,
+    valid_ship_length: ValidSurfaceShipLength,
 ): boolean {
     return (
         !is_already_special_attack_activated(attacker_fleet) &&
-        has_ship_name(TRIGGERABLE_SHIP_NAMES, flagship.name_jp) &&
-        !is_damage_moderatery_or_more(flagship) &&
+        has_ship_name(TRIGGERABLE_SHIP_NAMES, first_ship.name_jp) &&
+        !is_damage_moderatery_or_more(first_ship) &&
         is_valid_joining_ship(third_ship) &&
         is_valid_joining_ship(fifth_ship) &&
-        valid_ship_length >= REQUIRED_SURFACE_SHIPS_COUNT &&
+        has_enough_valid_surface_ships(REQUIRED_SURFACE_SHIPS_COUNT, valid_ship_length) &&
         has_formation_type(TRIGGERABLE_FORMATION, attacker_fleet.formation)
     );
 }
