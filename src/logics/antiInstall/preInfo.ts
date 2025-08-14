@@ -130,6 +130,8 @@ const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
     A: PlayerEquipNameJP[],
     B: PlayerEquipNameJP[],
 } = {
+    // NOTE: 特大発動艇+Ⅲ号戦車J型 はENwikiではグループBだけだが両グループに含まれる
+    // https://bbs.nga.cn/read.php?tid=33769345&rand=689 > (5)[对陆]登陆艇/内火艇套装补正
     A: [
         '大発動艇',
         '大発動艇(八九式中戦車&陸戦隊)',
