@@ -15,6 +15,7 @@ import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_player_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_player_equipped_ship_flags } from "./flags";
 import { PlayerNakedShip } from "../naked/base";
+import { calc_pre_calculated_anti_install_mods } from "@/logics/antiInstall";
 
 export type PlayerEquippedShipOptions = {
     unique_id?: ShipUniqueId,
@@ -83,7 +84,8 @@ const derive_player_equipped_ship_core = (
     const prepare_AACI_info = derive_prepare_AACI_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
-    const general_multiplicative_bonuses = calc_general_multiplicative_bonuses
+    const pre_calculated_anti_install_mods =
+        calc_pre_calculated_anti_install_mods(equips);
 
     return {
         master_id: naked_ship.master_id,
@@ -103,6 +105,7 @@ const derive_player_equipped_ship_core = (
         base_fuel: naked_ship.base_fuel,
         base_ammo: naked_ship.base_ammo,
         special_attack_type: naked_ship.special_attack_type,
+        pre_calculated_anti_install_mods,
         flags,
         state,
         naked_status,

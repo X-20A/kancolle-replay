@@ -1,12 +1,14 @@
+import { Brand } from "@/types/brands";
 import { AntiInstallImprovementMods } from "../improvementBonus";
 import { AntiInstallPreInfo } from "../preInfo";
-import { AntiInstallUtils } from "../util";
+
+export type AntiAnchoragePostCapMultiplier =
+    Brand<number, 'AntiAnchoragePostCapMultiplier'>
 
 export function calc_anti_Anchorage_multiplier(
     info: AntiInstallPreInfo,
-    utils: AntiInstallUtils,
     improvement_mods: AntiInstallImprovementMods,
-): number {
+): AntiAnchoragePostCapMultiplier {
     const {
         WG_count,
         special_LC1_count,
@@ -22,13 +24,11 @@ export function calc_anti_Anchorage_multiplier(
         carrier_bomber_count,
         jet_bomber_count,
         Katsu_tanks_count,
-    } = info;
-    const {
         total_mortars_count,
         total_Type4_rocket_count,
         has_special_LC,
         armed_boats_count,
-    } = utils;
+    } = info;
     const {
         LC_and_Katsu_improvement_mod,
         Kami_tank_improvement_mod,
@@ -71,5 +71,5 @@ export function calc_anti_Anchorage_multiplier(
         Katsu_tanks_count >= 2
     ) total *= 1.1;
 
-    return total;
+    return total as AntiAnchoragePostCapMultiplier;
 }

@@ -1,5 +1,4 @@
 import { includes_equip_type, includes_player_equip_name, is_AP_shell, PlayerEquip } from "@/models/equip/basic";
-import { is_equip_exsist, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { Brand } from "@/types/brands";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 

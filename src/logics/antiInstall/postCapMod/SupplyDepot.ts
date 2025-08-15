@@ -1,15 +1,16 @@
+import { Brand } from "@/types/brands";
 import { AntiInstallImprovementMods } from "../improvementBonus";
 import { AntiInstallPreInfo } from "../preInfo";
-import { AntiInstallUtils } from "../util";
 
-export function calc_anti_Supply_Depot_multiplier(
+export type AntiDockPostCapMultiplier =
+    Brand<number, 'AntiDockPostCapMultiplier'>
+
+export function calc_anti_SupplyDepot_multiplier(
     info: AntiInstallPreInfo,
-    utils: AntiInstallUtils,
     improvement_mods: AntiInstallImprovementMods,
-): number {
+): AntiDockPostCapMultiplier {
     const {
         WG_count,
-        Type_3_shell_count,
         special_LC1_count,
         m4a1_count,
         chiha_count,
@@ -20,15 +21,12 @@ export function calc_anti_Supply_Depot_multiplier(
         Amphibious_tank_count,
         Katsu_tank_kai_count,
         Katsu_tanks_count,
-        seaplane_bomber_count,
         Armys_count,
-    } = info;
-    const {
         total_Type4_rocket_count,
         total_mortars_count,
         has_special_LC,
         armed_boats_count,
-    } = utils;
+    } = info;
     const {
         LC_and_Katsu_improvement_mod,
         Kami_tank_improvement_mod,
@@ -74,5 +72,5 @@ export function calc_anti_Supply_Depot_multiplier(
     if (Armys_count >= 2) total *= 1.45;
     if (Armys_count >= 3) total *= 1.2;
 
-    return total;
+    return total as AntiDockPostCapMultiplier;
 }

@@ -1,11 +1,9 @@
 import { Brand } from "@/types/brands"
 import { AntiInstallPreInfo } from "../preInfo";
 import { AntiInstallImprovementMods } from "../improvementBonus";
-import { AntiInstallUtils } from "../util";
 
-
-
-export type AntiDockMultiplier = Brand<number, 'AntiDockMultiplier'>
+export type AntiDockPostCapMultiplier =
+    Brand<number, 'AntiDockPostCapMultiplier'>
 
 /**
  * 対船渠棲姫系の一般対地乗算補正(A1)を返す
@@ -17,9 +15,8 @@ export type AntiDockMultiplier = Brand<number, 'AntiDockMultiplier'>
  */
 export function calc_anti_Dock_multiplier(
     info: AntiInstallPreInfo,
-    util: AntiInstallUtils,
     bonuses: AntiInstallImprovementMods,
-): AntiDockMultiplier {
+): AntiDockPostCapMultiplier {
     const {
         Landing_force_count,
         Amphibious_tank_count,
@@ -36,11 +33,9 @@ export function calc_anti_Dock_multiplier(
         m4a1_count,
         J_tank_count,
         African_tank_count,
-    } = info;
-    const {
         has_special_LC,
         armed_boats_count,
-    } = util;
+    } = info;
     const {
         LC_and_Katsu_improvement_mod,
         Kami_tank_improvement_mod,
@@ -79,5 +74,5 @@ export function calc_anti_Dock_multiplier(
 
     if (armed_boats_count) total *= 1.1;
 
-    return total as AntiDockMultiplier;
+    return total as AntiDockPostCapMultiplier;
 }

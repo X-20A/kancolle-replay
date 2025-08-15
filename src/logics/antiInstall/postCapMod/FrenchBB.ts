@@ -1,8 +1,12 @@
+import { Brand } from "@/types/brands";
 import { AntiInstallPreInfo } from "../preInfo";
 
-export function calc_anti_French_BB_multiplier(
+export type AntiFrenchBBPostCapMultiplier =
+    Brand<number, 'AntiFrenchBBPostCapMultiplier'>
+
+export function calc_anti_FrenchBB_multiplier(
     info: AntiInstallPreInfo,
-): number {
+): AntiFrenchBBPostCapMultiplier {
     const {
         AP_shell_count,
         seaplane_bomber_count,
@@ -21,5 +25,5 @@ export function calc_anti_French_BB_multiplier(
     if (carrier_bomber_count) total *= 1.1;
     if (carrier_bomber_count >= 2) total *= 1.15;
 
-    return total;
+    return total as AntiFrenchBBPostCapMultiplier;
 }

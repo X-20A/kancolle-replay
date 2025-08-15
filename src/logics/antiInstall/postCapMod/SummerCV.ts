@@ -1,8 +1,12 @@
+import { Brand } from "@/types/brands";
 import { AntiInstallPreInfo } from "../preInfo";
 
-export function calc_anti_Summer_CV_multiplier(
+export type AntiSummerCVPostCapMultiplier =
+    Brand<number, 'AntiSummerCVPostCapMultiplier'>
+
+export function calc_anti_SummerCV_multiplier(
     info: AntiInstallPreInfo,
-): number {
+): AntiSummerCVPostCapMultiplier {
     const {
         AP_shell_count,
         seaplane_bomber_count,
@@ -22,5 +26,5 @@ export function calc_anti_Summer_CV_multiplier(
     if (torpedo_bomber_swordfish_count) total *= 1.1;
     if (torpedo_bomber_swordfish_count >= 2) total *= 1.2;
 
-    return total;
+    return total as AntiSummerCVPostCapMultiplier;
 }
