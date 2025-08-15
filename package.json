@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "test:watch": "vitest watch tests/watch",
     "data-test": "vitest --run -t 'data-test'",
-    "gen_type": "bun run scripts/generateUnion.ts"
+    "gen_type": "bun run scripts/generateUnion.ts",
+    "lint": "eslint .",
+	"lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@total-typescript/ts-reset": "^0.6.1",
@@ -17,6 +19,7 @@
     "axios": "^1.10.0",
     "big.js": "^7.0.1",
     "biome": "^0.3.3",
+    "eslint": "^9.33.0",
     "fp-ts": "^2.16.10",
     "immer": "^10.1.1",
     "lz-string": "^1.5.0",

@@ -1,6 +1,11 @@
+import { HarbourMultiplier } from "@/logics/antiInstall/preCapMod/generalMultiplicativeBonuses/Harbour";
 import { AbyssalShipType } from "./abyssal";
 import { PlayerShipNameJP } from "./playerNameJP";
 import { PlayerShipClass } from "./shipClass";
+import { AntiInstallFlatDamageBonus } from "@/logics/antiInstall/preCapMod/flatDamageBonuses";
+import { LandingCraftSpecificBonuses } from "@/logics/antiInstall/preCapMod/LandingCraftSpecificBonuses";
+import { AntiInstallShipTypeMultiplier } from "@/logics/antiInstall/preCapMod/shipBonuses";
+import { AntiInstallGeneralMultiplicativeBonuses } from "@/logics/antiInstall/preCapMod/generalMultiplicativeBonuses";
 
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
 // TODO: そのうち詰めてデータ照合テストとかは調停するようにしたい
@@ -281,9 +286,4 @@ export type AswEquipFlags = {
     has_DCP: boolean,
     /** 爆雷が含まれるか */
     has_DC: boolean,
-}
-
-export type SlotType = {
-    master: Readonly<number[]>,
-    edited: Readonly<number[]>,
 }

@@ -1,6 +1,6 @@
 import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipUniqueId } from "@/types/brands/ship";
-import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
+import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType, PrecalculatedAntiInstallMods } from "@/types/ship/ship";
 import { Country } from "@/datas/equip/bonus";
 import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
@@ -74,11 +74,12 @@ export type PlayerEquippedShip = EquippedShipBase & {
     readonly base_fuel: number,
     readonly base_ammo: number,
     readonly special_attack_type: SpecialAttackType | 'None',
+    readonly anti_install_mods: PrecalculatedAntiInstallMods,
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
     /** simで更新されるあれこれ */
     readonly state: PlayerShipState,
-};
+}
 
 export type AbyssalEquippedShip = EquippedShipBase & {
     /** 艦ID(データ由来) */

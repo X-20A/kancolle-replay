@@ -1,4 +1,5 @@
-import { AntiInstallPreInfo } from "./preInfo";
+import { Brand } from "@/types/brands";
+import { AntiInstallPreInfo } from "../preInfo";
 
 /// WG・迫撃砲加算補正(B1)
 
@@ -16,6 +17,9 @@ const calc_bonus = (
     return count_four_or_more; // target_count >= 4
 }
 
+export type AntiInstallFlatDamageBonus =
+    Brand<number, 'AntiInstallFlatDamageBonus'>
+
 /**
  * WG・迫撃砲加算補正(B1)を返す
  * @param info 
@@ -23,7 +27,7 @@ const calc_bonus = (
  */
 export function calc_anti_install_flat_damage_bonuses(
     info: AntiInstallPreInfo,
-): number {
+): AntiInstallFlatDamageBonus {
     const {
         WG_count,
         mortar_concentrated_count,

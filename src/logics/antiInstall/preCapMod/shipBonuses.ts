@@ -1,5 +1,5 @@
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { AbyssalEquippedShip, includes_ship_class, includes_ship_name, includes_ship_type, is_Dock, is_Harbour_vacation, is_Pillbox, is_submarine_category, is_Summer_BB, is_Summer_CV, is_Summer_CA, PlayerEquippedShip, is_French_BB, is_Anchorage } from "../../models/ship/equipped";
+import { AbyssalEquippedShip, includes_ship_class, includes_ship_name, includes_ship_type, is_Dock, is_Harbour_vacation, is_Pillbox, is_submarine_category, is_Summer_BB, is_Summer_CV, is_Summer_CA, PlayerEquippedShip, is_French_BB, is_Anchorage } from "../../../models/ship/equipped";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 
 /// 艦相性別対地ボーナス
@@ -60,6 +60,9 @@ const ANCHORAGE_BONUS_SHIP_NAMES: PlayerShipNameJP[] = [
     '武蔵改二',
 ] as const;
 
+export type AntiInstallShipTypeMultiplier =
+    1 | 1.1 | 1.15 | 1.2 | 1.25 | 1.4
+
 /**
  * 艦相性による対地乗算値(A0)を返す
  * @param attacker_ship 
@@ -69,7 +72,7 @@ const ANCHORAGE_BONUS_SHIP_NAMES: PlayerShipNameJP[] = [
 export function calc_ship_compatibility_multiplier(
     attacker_ship: PlayerEquippedShip,
     target_ship: AbyssalEquippedShip,
-): number {
+): AntiInstallShipTypeMultiplier {
     const {
         name_jp: attacker_ship_name,
         type_id: attacker_ship_type,
@@ -112,6 +115,8 @@ export function calc_ship_compatibility_multiplier(
     return 1;
 }
 
+export type AntiInstallShipTypeFlat = 0 | 30
+
 /**
  * 艦種による対地加算値(B0)を返す
  * @param attacker_ship 
@@ -119,8 +124,25 @@ export function calc_ship_compatibility_multiplier(
  */
 export function calc_ship_type_flat(
     attacker_ship: PlayerEquippedShip,
-): number {
+): AntiInstallShipTypeFlat {
     return is_submarine_category(attacker_ship)
         ? 30
         : 0;
+}
+
+export type AntiInstallShipTypeBonuses = {
+    ship_type_multiplier: AntiInstallShipTypeMultiplier,
+    ship_type_flat: AntiInstallShipTypeFlat,
+}
+
+export function calc_anti_install_ship_type_bonuses(
+    attacker_ship: PlayerEquippedShip,
+    target_ship: AbyssalEquippedShip,
+): AntiInstallShipTypeBonuses {
+    const bonuses: AntiInstallShipTypeBonuses = {
+        ship_type_multiplier: calc_ship_compatibility_multiplier(attacker_ship, target_ship),
+        ship_type_flat: calc_ship_type_flat(attacker_ship),
+    };
+
+    return bonuses;
 }

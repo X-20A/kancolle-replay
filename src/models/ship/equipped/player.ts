@@ -83,6 +83,8 @@ const derive_player_equipped_ship_core = (
     const prepare_AACI_info = derive_prepare_AACI_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
+    const general_multiplicative_bonuses = calc_general_multiplicative_bonuses
+
     return {
         master_id: naked_ship.master_id,
         base_id: naked_ship.base_id,

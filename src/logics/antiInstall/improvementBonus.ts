@@ -116,15 +116,15 @@ export type AntiInstallImprovementMods = {
 
 /**
  * 改修補正値群を返す
- * @param info 
+ * @param pre_info 
  * @returns 
  */
 export function calc_anti_install_improvement_mods(
-    info: AntiInstallPreInfo,
+    pre_info: AntiInstallPreInfo,
 ): AntiInstallImprovementMods {
     const bonuses: AntiInstallImprovementMods = {
-        LC_and_Katsu_improvement_mod: calc_LC_and_Katsu_mod(info),
-        Kami_tank_improvement_mod: calc_Kami_tank_improvement_mod(info),
+        LC_and_Katsu_improvement_mod: calc_LC_and_Katsu_mod(pre_info),
+        Kami_tank_improvement_mod: calc_Kami_tank_improvement_mod(pre_info),
     };
 
     return bonuses;

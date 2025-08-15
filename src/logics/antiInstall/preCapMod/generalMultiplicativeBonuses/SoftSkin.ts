@@ -1,12 +1,31 @@
-import { AntiInstallImprovementMods } from "../improvementBonus";
-import { AntiInstallPreInfo } from "../preInfo";
-import { AntiInstallUtils } from "../util";
+import { Brand } from "@/types/brands";
+import { AntiInstallImprovementMods } from "../../improvementBonus";
+import { AntiInstallPreInfo, ArmedBoatsCount, KatsuTanksCount } from "../../preInfo";
 
-export function calc_Soft_skin_multiplier(
+type DaySoftSkinMultiplier =
+    Brand<number, 'DaySoftSkinMultiplier'>
+
+const calc_day_multiplier = (
+    armed_boats_count: ArmedBoatsCount,
+    Katsu_tanks_count: KatsuTanksCount,
+): DaySoftSkinMultiplier => {
+    let total = 1;
+    if (armed_boats_count) total *= 1.1;
+    if (
+        armed_boats_count >= 2 ||
+        Katsu_tanks_count >= 2
+    ) total *= 1.1;
+
+    return total as DaySoftSkinMultiplier;
+}
+
+type NormalSoftSkinMultiplier =
+    Brand<number, 'NormalSoftSkinMultiplier'>
+
+const calc_normal_multiplier = (
     info: AntiInstallPreInfo,
-    utils: AntiInstallUtils,
     improvement_mods: AntiInstallImprovementMods,
-): number {
+): NormalSoftSkinMultiplier => {
     const {
         Type_3_shell_count,
         WG_count,
@@ -21,13 +40,11 @@ export function calc_Soft_skin_multiplier(
         Katsu_tank_kai_count,
         seaplane_bomber_count,
         Armys_count,
-    } = info;
-    const {
         total_mortars_count,
         total_Type4_rocket_count,
         has_special_LC,
         armed_boats_count,
-    } = utils;
+    } = info;
     const {
         LC_and_Katsu_improvement_mod,
         Kami_tank_improvement_mod,
@@ -76,5 +93,42 @@ export function calc_Soft_skin_multiplier(
     if (Armys_count >= 2) total *= 1.1;
     if (Armys_count >= 3) total *= 1.1;
 
-    return total;
+    return total as NormalSoftSkinMultiplier;
+}
+
+export type SoftSkinMultipliers = {
+    day_multiplier: DaySoftSkinMultiplier,
+    normal_multiplier: NormalSoftSkinMultiplier,
+}
+
+/**
+ * 対砲台系の一般対地乗算補正(A1)を返す
+ * @param pre_info 
+ * @param improvement_mods 
+ * @returns 
+ */
+export function calc_anti_SoftSkin_multipliers(
+    pre_info: AntiInstallPreInfo,
+    improvement_mods: AntiInstallImprovementMods,
+): SoftSkinMultipliers {
+    const {
+        armed_boats_count,
+        Katsu_tanks_count,
+    } = pre_info;
+
+    const day_multiplier = calc_day_multiplier(
+        armed_boats_count,
+        Katsu_tanks_count,
+    );
+    const normal_multiplier = calc_normal_multiplier(
+        pre_info,
+        improvement_mods,
+    );
+
+    const multipliers: SoftSkinMultipliers = {
+        day_multiplier,
+        normal_multiplier,
+    };
+
+    return multipliers;
 }

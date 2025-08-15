@@ -1,6 +1,10 @@
-import { includes_equip_type, includes_player_equip_name, is_AP_shell } from "@/models/equip/basic";
+import { includes_equip_type, includes_player_equip_name, is_AP_shell, PlayerEquip } from "@/models/equip/basic";
 import { is_equip_exsist, PlayerEquipSlot } from "@/models/ship/EquipSlot";
+import { Brand } from "@/types/brands";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
+
+export type ArmedBoatsCount = Brand<number, 'ArmedBoatsCount'>
+export type KatsuTanksCount = Brand<number, 'KatsuTanksCount'>
 
 export type AntiInstallPreInfo = {
     /** 大発系 の数(例外有り) */
@@ -34,7 +38,7 @@ export type AntiInstallPreInfo = {
     /** 特四式内火艇改 の数 */
     Katsu_tank_kai_count: number,
     /** 特四式内火艇 | 特四式内火艇改 の数 */
-    Katsu_tanks_count: number,
+    Katsu_tanks_count: KatsuTanksCount,
     /** 特四式内火艇 | 特四式内火艇改 の改修値総計 */
     total_Katsu_tanks_improvement: number,
     /** 特大発動艇+チハ の数 */
@@ -82,6 +86,13 @@ export type AntiInstallPreInfo = {
     Late_298_count: number,
     /** 噴式爆撃機 の数 */
     jet_bomber_count: number,
+
+    /** 上陸用舟艇 | カツ車 | 陸軍部隊 */
+    has_special_LC: boolean,
+    /** 武装大発 | 装甲艇(AB艇) の数 */
+    armed_boats_count: ArmedBoatsCount,
+    total_mortars_count: number,
+    total_Type4_rocket_count: number,
 }
 const INITIAL: AntiInstallPreInfo = {
     normal_LC_count: 0,
@@ -99,7 +110,7 @@ const INITIAL: AntiInstallPreInfo = {
     AP_shell_count: 0,
     Type_3_shell_count: 0,
     Katsu_tank_kai_count: 0,
-    Katsu_tanks_count: 0,
+    Katsu_tanks_count: 0 as KatsuTanksCount,
     total_Katsu_tanks_improvement: 0,
     chiha_count: 0,
     chiha_kai_count: 0,
@@ -124,7 +135,51 @@ const INITIAL: AntiInstallPreInfo = {
     seaplane_fighter_count: 0,
     Late_298_count: 0,
     jet_bomber_count: 0,
+    has_special_LC: false,
+    armed_boats_count: 0 as ArmedBoatsCount,
+    total_mortars_count: 0,
+    total_Type4_rocket_count: 0,
 } as const;
+
+const add_utils = (
+    pre_info: AntiInstallPreInfo,
+): AntiInstallPreInfo => {
+    const {
+        normal_LC_count,
+        Landing_force_count,
+        Katsu_tank_kai_count,
+        AB_count,
+        armed_LC_count,
+        mortar_count,
+        mortar_concentrated_count,
+        Type_4_rocket_count,
+        Type_4_rocket_concentrated_count,
+        Armys_count,
+    } = pre_info;
+
+    const has_special_LC = normal_LC_count >= 1 ||
+        Landing_force_count >= 1 ||
+        Katsu_tank_kai_count >= 1 ||
+        Armys_count >= 1;
+
+    const armed_boats_count =
+        AB_count + armed_LC_count as ArmedBoatsCount;
+
+    const total_mortars_count = mortar_count
+        + mortar_concentrated_count;
+    const total_Type4_rocket_count = Type_4_rocket_count
+        + Type_4_rocket_concentrated_count;
+
+    const util: AntiInstallPreInfo = {
+        ...pre_info,
+        has_special_LC,
+        armed_boats_count,
+        total_mortars_count,
+        total_Type4_rocket_count,
+    }
+
+    return util;
+}
 
 const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
     A: PlayerEquipNameJP[],
@@ -153,12 +208,9 @@ const ARMED_BOATS_SYNERGY_TARGET_NAMES: {
 } as const;
 
 export function calc_anti_install_pre_info(
-    equip_slots: PlayerEquipSlot[],
+    equips: PlayerEquip[],
 ): AntiInstallPreInfo {
-    const pre_info: AntiInstallPreInfo = equip_slots.reduce((total, slot) => {
-        const { equip } =slot;
-        if (!is_equip_exsist(equip)) return total;
-
+    const pre_info: AntiInstallPreInfo = equips.reduce((total, equip) => {
         const {
             name_jp,
             improvement_lv,
@@ -244,5 +296,5 @@ export function calc_anti_install_pre_info(
         return total;
     }, INITIAL);
 
-    return pre_info;
+    return add_utils(pre_info);
 }
