@@ -5,7 +5,7 @@ import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { match } from "ts-pattern";
 import { FitAccuracyMod } from "../fit";
 import { ArmorPiercingAccuracyMod } from "../armorPiercing";
-import { AirSuperiorityStrikeAccuracyMod } from "../airSuperIorityStrike";
+import { AirSuperiorityStrikeShellAccuracyMod } from "../airSuperIorityStrike";
 import { AccuracyMoraleMod } from "../morale";
 import { ShellAccuracyFormationMod } from "../formation";
 import { ShellAccuracyVanguardMod } from "../vanguard";
@@ -159,7 +159,7 @@ export function calc_day_shelling_accuracy(
     formation_mod: ShellAccuracyFormationMod,
     morale_mod: AccuracyMoraleMod,
     fit_mod: FitAccuracyMod,
-    spotting_mod: AirSuperiorityStrikeAccuracyMod,
+    spotting_mod: AirSuperiorityStrikeShellAccuracyMod,
     AP_mod: ArmorPiercingAccuracyMod,
     smoke_mod: ShellAccuracySmokeMod,
 ): Accuracy {

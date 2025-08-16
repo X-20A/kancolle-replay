@@ -13,6 +13,11 @@ export type AirStateResult = {
     enemy_air_state: AirStateType,
 }
 
+const VALID_AIR_STTATE: Set<AirStateType> = new Set([
+    'Superiority',
+    'Supremacy',
+]);
+
 /**
  * 制空状態が優勢以上であるか判定して返す
  * @param air_state 
@@ -20,13 +25,8 @@ export type AirStateResult = {
  */
 export function is_air_state_superiority_or_more(
     air_state: AirStateType,
-): boolean {
-    const VALID_AIR_STTATE: AirStateType[] = [
-        'Superiority',
-        'Supremacy',
-    ];
-
-    return VALID_AIR_STTATE.includes(air_state);
+): air_state is Extract<AirStateType, 'Supremacy' | 'Superiority'> {
+    return VALID_AIR_STTATE.has(air_state);
 }
 
 /**

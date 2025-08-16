@@ -9,6 +9,8 @@ export const SKILL_TRIGGER_TYPE = {
     NONE: 0,
     B_MAIN_GUN: 1,
     B_SEC_GUN: 2,
+    // RECONといっても水偵水爆だけで艦偵は含まない 改称すべきか？
+    // 弾着・CVCIの文脈でしか使われてないので廃止してもいいかも
     B_RECON: 3,
     B_RADAR: 4,
     B_AP_SHELL: 5,

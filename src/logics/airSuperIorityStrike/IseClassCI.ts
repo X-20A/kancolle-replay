@@ -1,26 +1,33 @@
-import { EquippedShip, includes_ship_name, is_player_equipped_ship } from "@/models/ship/equipped";
+import { EquippedShip, has_ship_name, is_player_equipped_ship } from "@/models/ship/equipped";
 import { AirSuperiorityStrikeType } from ".";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { EquipSlot } from "@/models/ship/EquipSlot";
+import { EquipSlot, is_equip_exsist, is_slot_count_positive } from "@/models/ship/EquipSlot";
 
 /// 海空立体攻撃 | 瑞雲立体攻撃
 
-const SUBJECT_SHIP: PlayerShipNameJP[] = [
+const APPLICABLE_SHIP: Set<PlayerShipNameJP> = new Set([
     '伊勢改二',
     '日向改二',
-];
+]);
 
 type PreInfo = {
     zuiun_count: number,
     suisei_count: number,
 }
+const INITIAL: PreInfo = {
+    zuiun_count: 0,
+    suisei_count: 0,
+} as const;
 
 const calc_pre_info = (
     equip_slots: EquipSlot[],
 ): PreInfo => {
     return equip_slots.reduce((total, slot) => {
         const { equip } = slot;
-        if (!equip || slot.slot_count === 0) return total;
+        if (
+            !is_equip_exsist(equip) ||
+            !is_slot_count_positive(slot)
+        ) return total;
 
         // ? 両方を満たした場合多重判定になるか? 暫定: 多重判定可
         if (
@@ -33,10 +40,7 @@ const calc_pre_info = (
         ) total.suisei_count++;
         
         return total;
-    }, {
-        zuiun_count: 0,
-        suisei_count: 0,
-    });
+    }, INITIAL);
 }
 
 export function calc_Ise_class_CI_types (
@@ -46,7 +50,7 @@ export function calc_Ise_class_CI_types (
     const triggerables: AirSuperiorityStrikeType[] = [];
     if (
         !is_player_equipped_ship(attacker_ship) ||
-        !includes_ship_name(SUBJECT_SHIP, attacker_ship.name_jp) ||
+        !has_ship_name(APPLICABLE_SHIP, attacker_ship.name_jp) ||
         main_gun_count === 0
     ) return triggerables;
 

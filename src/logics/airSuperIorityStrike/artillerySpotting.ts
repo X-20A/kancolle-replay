@@ -1,21 +1,9 @@
-import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
+import { is_equip_exsist, is_slot_count_positive } from "@/models/ship/EquipSlot";
 import { AirSuperiorityStrikeType, GunShipPreInfo } from ".";
 import { EquippedShip } from "@/models/ship/equipped";
+import { is_valid_air_superiority_strike_seaplane } from "./util";
 
 /// 弾着観測射撃
-
-/**
- * 水偵 かつ スロットが1機以上残存しているか判定して返す
- * @param slot 
- * @returns 
- */
-const is_valid_recon = (
-    slot: EquipSlot,
-): boolean => {
-    return is_equip_exsist(slot.equip) &&
-        slot.equip.skill_trigger_type === 'B_RECON' &&
-        slot.slot_count >= 1;
-}
 
 /**
  * 弾着観測射撃の種別群を返す
@@ -30,7 +18,11 @@ export function calc_artillery_spotting_types(
     const triggerables: AirSuperiorityStrikeType[] = [];
     const { equip_slots } = attacker_ship;
 
-    const has_valid_recon = equip_slots.some(is_valid_recon);
+    const has_valid_recon = equip_slots.some(slot =>
+        is_equip_exsist(slot.equip) &&
+        is_valid_air_superiority_strike_seaplane(slot.equip) &&
+        is_slot_count_positive(slot)
+    );
     if (!has_valid_recon) return triggerables;
 
     const {

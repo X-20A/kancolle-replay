@@ -22,7 +22,7 @@ export type PlayerEquipSlot = EquipSlotBase & {
 }
 
 export type AbyssalEquipSlot = EquipSlotBase & {
-    readonly equip: AbyssalEquip,
+    readonly equip: AbyssalEquip | 'None',
     readonly slot_index: number,
 };
 
@@ -52,15 +52,17 @@ export function derive_player_equip_slots(
 
     const normal_slots: PlayerEquipSlot[] = slot_counts.map((slot_count, index) => {
         const equip = normal_equips[index] ?? 'None';
-        return {
-            equip: is_equip_exsist(equip) ? normal_equips[index] : 'None',
+        const slot: PlayerEquipSlot = {
+            equip: equip,
             slot_count: slot_count as SlotCount,
             original_slot_count: slot_count,
             slot_index: index,
             equip_bonus: is_equip_exsist(equip)
                 ? derive_equip_bonus_addition(ship, [equip])
                 : DEFAULT_STATUS_COMPONENT,
-        }
+        };
+
+        return slot;
     });
 
     const ex_slot: PlayerEquipSlot = {
@@ -81,16 +83,23 @@ export function derive_player_equip_slots(
 
 export function derive_abyssal_equip_slots(
     equips: AbyssalEquip[],
-    slots: readonly number[],
+    slot_counts: readonly number[],
 ): AbyssalEquipSlot[] {
-    if (equips.length > slots.length) throw new Error('スロット数を超える数の装備が渡されました');
+    if (equips.length > slot_counts.length) throw new Error('スロット数を超える数の装備が渡されました');
 
-    return slots.map((slot_count, index) => ({
-        equip: equips[index],
-        slot_count: slot_count as SlotCount,
-        original_slot_count: slot_count,
-        slot_index: index,
-    }));
+    const slots: AbyssalEquipSlot[] = slot_counts.map((slot_count, index) => {
+        const equip = equips[index] ?? 'None';
+        const slot: AbyssalEquipSlot = {
+            equip: equip,
+            slot_count: slot_count as SlotCount,
+            original_slot_count: slot_count,
+            slot_index: index,
+        }
+
+        return slot;
+    });
+
+    return slots;
 }
 
 /**
@@ -147,4 +156,10 @@ export function convert_non_empty_abyssal_equip_slots(
             ? slot
             : [];
     });
+}
+
+export function is_slot_count_positive(
+    slot: EquipSlot,
+): boolean {
+    return slot.slot_count >= 1;
 }
