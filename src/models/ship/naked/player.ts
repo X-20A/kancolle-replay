@@ -49,12 +49,12 @@ export function derive_player_naked_ship(
 
     const status: TStatusComponent = {
         hp: ship_data.HP,
-        fire_power: ship_data.FP,
+        shell_power: ship_data.FP,
         armor: ship_data.AR,
         torpedo_power: ship_data.TP,
         evasion: calc_status_from_level(ship_data.EVbase, ship_data.EV, ship_lv),
         anti_air: ship_data.AA,
-        asw: calc_status_from_level(ship_data.ASWbase, ship_data.ASW, ship_lv),
+        asw_power: calc_status_from_level(ship_data.ASWbase, ship_data.ASW, ship_lv),
         los: calc_status_from_level(ship_data.LOSbase, ship_data.LOS, ship_lv),
         luck: ship_data.LUK,
         range: ship_data.RNG,

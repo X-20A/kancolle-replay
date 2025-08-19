@@ -75,7 +75,7 @@ export type AbyssalShipData = {
     unknown_status?: UnknownStatus,
 }
 
-export type AbyssalShipDatas = DeepReadonly<Record<AbyssalShipId, AbyssalShipData>>;
+export type AbyssalShipDatas = Record<AbyssalShipId, AbyssalShipData>
 
 export type AbyssalNakedShipFlags = {
     /** 無条件開幕対潜艦はtrue */

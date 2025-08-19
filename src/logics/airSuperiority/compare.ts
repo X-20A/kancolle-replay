@@ -1,4 +1,3 @@
-
 const AIR_STATE = {
     Supremacy: 1,
     Superiority: 2,

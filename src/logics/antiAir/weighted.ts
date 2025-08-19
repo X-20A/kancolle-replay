@@ -6,7 +6,7 @@ import { match } from "ts-pattern";
 import { calc_equip_type_mod_for_fleet_anti_air, calc_formation_mod } from ".";
 import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { calc_total_improvement_value, is_sunk } from "@/models/ship/equipped";
-import { is_equip_exsist } from "@/models/ship/EquipSlot";
+import { is_equip_exsist, is_non_empty_abyssal_equip_slot } from "@/models/ship/EquipSlot";
 
 /**
  * 装備倍率を返す    
@@ -44,7 +44,7 @@ export function calc_player_weighted_anti_air(
     equips: PlayerEquip[],
     naked_status: TStatusComponent,
     total_equip_bonus_addition: TStatusComponent,
-    total_equip_improvement_addition: EquipImprovementAddition,
+    total_equip_improvement_addition: TStatusComponent,
 ): WeightedAntiAir {
     const X = naked_status.anti_air / 2
         + calc_total_N(equips)
@@ -128,11 +128,10 @@ export function calc_abyssal_fleet_weighted_anti_air(
         ) return total;
 
         return Math.floor(
-            total + ship.equip_slots.reduce((total, equip_slot) => {
-                const equip = equip_slot.equip;
-                if (!equip) return total;
+            total + ship.equip_slots.reduce((total, slot) => {
+                if (!is_non_empty_abyssal_equip_slot(slot)) return total;
 
-                return total + calc_M(equip);
+                return total + calc_M(slot.equip);
             }, 0)
         );
     }, 0);

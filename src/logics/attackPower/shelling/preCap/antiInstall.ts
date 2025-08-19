@@ -1,11 +1,12 @@
 import { Brand } from "@/types/brands";
-import { ShellingAttackPowerBase } from "../basePower";
-import { AbyssalEquippedShip } from "@/models/ship/equipped";
+import { ShellingAttackPowerBase } from "./basePower";
+import { AbyssalEquippedShip, EquippedShip, is_CVs, is_install_type, PlayerEquippedShip } from "@/models/ship/equipped";
 import { AntiInstallGeneralMultiplicativeBonuses } from "@/logics/antiInstall/preCapMod/generalMultiplicativeBonuses";
 import { AntiInstallShipTypeBonuses } from "@/logics/antiInstall/preCapMod/shipBonuses";
 import { LandingCraftSpecificBonuses } from "@/logics/antiInstall/preCapMod/LandingCraftSpecificBonuses";
 import { AntiInstallFlatDamageBonus } from "@/logics/antiInstall/preCapMod/flatDamageBonuses";
 import { match } from "ts-pattern";
+import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 
 type GeneralMultiplicativeBonus = Brand<number, 'GeneralMultiplicativeBonus'>
 
@@ -29,15 +30,49 @@ const extract_general_multiplicative_bonus = (
         .exhaustive() as unknown as GeneralMultiplicativeBonus;
 }
 
+const cala_total_dive_bomber_power = (
+    equip_slots: EquipSlot[],
+): number => {
+    return equip_slots.reduce((total, slot) => {
+        const { equip } = slot;
+        if (
+            !is_equip_exsist(equip) ||
+            equip.type_id !== 'DIVE_BOMBER'
+        ) return total;
+
+        total += equip.natural_addition.aerial_bomb_power;
+
+        return total;
+    }, 0);
+}
+
+const calc_surface_core = (
+
+): number => {
+
+}
+
+const calc_CVs_core = (
+
+): number => {
+    
+}
+
 export type AppliedAntiInstallBase = Brand<number, 'AppliedAntiInstallBase'>
 
 const calc_applied_anti_install_base_core = (
     base_power: ShellingAttackPowerBase,
+    attacker_ship: PlayerEquippedShip,
+    target_ship: EquippedShip,
     ship_type_bonuses: AntiInstallShipTypeBonuses,
     general_multiplicative_bonus: GeneralMultiplicativeBonus,
     landing_craft_specific_bonuses: LandingCraftSpecificBonuses,
     flat_damage_bonus: AntiInstallFlatDamageBonus,
 ): AppliedAntiInstallBase => {
+    if (
+        !is_install_type(target_ship)
+    ) return base_power as unknown as AppliedAntiInstallBase;
+
     const {
         ship_type_multiplier,
         ship_type_flat,

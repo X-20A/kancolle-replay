@@ -8,5 +8,5 @@ import { ShipType } from "@/types/ship/ship";
  * @returns 
  */
 function isNakedAswPositive(ship: PlayerEquippedShip): boolean {
-    return ship.naked_status.asw >= 1;
+    return ship.naked_status.asw_power >= 1;
 }

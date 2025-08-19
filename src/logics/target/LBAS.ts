@@ -48,7 +48,7 @@ const calc_LBAS_attack_type = (
 const can_LBAS_ASW_attack_plane = (
     plane: PlayerPlaneEquip,
 ): boolean => {
-    return plane.natural_addition.asw >= 7;
+    return plane.natural_addition.asw_power >= 7;
 }
 
 /**

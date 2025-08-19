@@ -21,7 +21,7 @@ const calc_asw_sonar = (
         if (!is_equip_exsist(equip)) return total;
 
         return is_sonar(equip)
-            ? total + equip.natural_addition.asw // 対潜火力でいいみたい
+            ? total + equip.natural_addition.asw_power // 対潜火力でいいみたい
             : total;
     }, 0);
 }

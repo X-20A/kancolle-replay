@@ -1,5 +1,4 @@
 import { EquipType } from "@/datas/equip/base/player"
-import { DeepReadonly } from ".."
 import { EquipImprovementType } from "@/datas/equip/improvement"
 import { PlayerEquipNameJP } from "./playerNameJP";
 
@@ -184,4 +183,4 @@ export type PlayerEquipData = {
     is_20th_family?: true,
 }
 
-export type EquipDatas = DeepReadonly<Record<number, PlayerEquipData>>
+export type EquipDatas = Record<number, PlayerEquipData>

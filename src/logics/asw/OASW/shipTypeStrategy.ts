@@ -45,7 +45,7 @@ export function can_OASW_by_ship_type(ship: PlayerEquippedShip): boolean {
  */
 function is_DE_capable_of_OASW(ship: PlayerEquippedShip): boolean {
     return has_sonar_and_view_ASW_at_least(ship, 60)
-        || (has_view_ASW_at_least(ship, 75) && ship.total_natural_equip_addition.asw >= 4);
+        || (has_view_ASW_at_least(ship, 75) && ship.total_natural_equip_addition.asw_power >= 4);
 }
 
 /**
@@ -53,7 +53,7 @@ function is_DE_capable_of_OASW(ship: PlayerEquippedShip): boolean {
  */
 function is_CVL_capable_of_OASW(ship: PlayerEquippedShip): boolean {
     const asw_flags = ship.flags.asw_equip;
-    const asw = ship.view_status.asw;
+    const asw = ship.view_status.asw_power;
 
     if (
         asw >= 50 &&
@@ -89,7 +89,7 @@ function is_CVL_capable_of_OASW(ship: PlayerEquippedShip): boolean {
  * @returns 閾値以上かどうか
  */
 function has_view_ASW_at_least(ship: PlayerEquippedShip, threshold: number): boolean {
-    return ship.view_status.asw >= threshold;
+    return ship.view_status.asw_power >= threshold;
 }
 
 /**

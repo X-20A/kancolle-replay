@@ -2,10 +2,8 @@ import { brandUniqueId, ShipId, ShipLv, ShipUniqueId } from "@/types/brands/ship
 import { PlayerEquippedShip, merge_status_components_with_max_range, sum_status_components } from ".";
 import { Equip, is_player_equip, is_player_equips, PlayerEquip } from "@/models/equip/basic";
 import { ModernizationType, SpecialItemId } from "@/types/ship/ship";
-import { TStatusComponent } from "@/types";
+import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
 import { derive_player_naked_ship } from "../naked/player";
-import { DEFAULT_STATUS_COMPONENT } from "@/datas";
-import { sumEquipImprovementAdditions } from "@/models/equip/EquipImprovement";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { derive_equip_bonus_addition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
@@ -44,30 +42,31 @@ const derive_player_equipped_ship_core = (
     const naked_status = naked_ship.status;
     const total_natural_equip_addition = equips
         .map(equip => equip.natural_addition)
-        .reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
+        .reduce(merge_status_components_with_max_range, INITIAL_STATUS_COMPONENT);
     
     const total_equip_bonus_addition =
         derive_equip_bonus_addition(naked_ship, equips);
-    const total_equip_improvement_addition =
-        sumEquipImprovementAdditions(equips.map(equip => equip.improvement_addition));
+    const total_equip_improvement_addition = equips
+        .map(equip => equip.improvement_addition)
+        .reduce(sum_status_components, INITIAL_STATUS_COMPONENT);
     const special_item_addition = deriveSpecialItemAddition(special_item_id);
    
     // 射程は素ステータスと装備素射程の最大値に装備ボーナスを加算
     const partial_status = [
         naked_status,
         total_natural_equip_addition,
-    ].reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
+    ].reduce(merge_status_components_with_max_range, INITIAL_STATUS_COMPONENT);
     const view_status = [
         partial_status,
         total_equip_bonus_addition,
         special_item_addition,
-    ].reduce(sum_status_components, DEFAULT_STATUS_COMPONENT);
+    ].reduce(sum_status_components, INITIAL_STATUS_COMPONENT);
 
     const edited_status = options.edit_input ?? view_status;
 
     const total_valid_asw = equips
         .reduce((total, equip) => {
-            return total + equip.contribute_asw_attack_power;
+            return total + equip.contribute_asw_power;
         }, 0);
 
     const flags = derive_player_equipped_ship_flags(naked_ship.flags, equips)

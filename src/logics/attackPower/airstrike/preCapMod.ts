@@ -14,7 +14,7 @@ const calc_pre_cap_mod_base = (
     // ? wikiに記載なし
     // また、加算乗算でなく上書きしてるので解釈もやや異なるかも
     if (is_submarine_category(target_ship)) {
-        return attacker_plane.natural_addition.asw >= 10
+        return attacker_plane.natural_addition.asw_power >= 10
             ? 0.7 + rand.next() * 0.3 as PreCapModBase
             : 0.35 + rand.next() * 0.45 as PreCapModBase;
     }

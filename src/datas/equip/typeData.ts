@@ -1,4 +1,3 @@
-import { DeepReadonly } from "@/types";
 import { AACITriggerEquipType, SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "./base/player";
 import { ShipType } from "@/types/ship/ship";
@@ -44,7 +43,7 @@ export type EquipTypeData = {
     can_support_asw?: true,
 }
 
-export type EquipTypeDatas = DeepReadonly<Record<EquipType, EquipTypeData>>;
+export type EquipTypeDatas = Record<EquipType, EquipTypeData>;
 
 export const EQUIP_TYPE_DATAS: EquipTypeDatas = {
     MAIN_GUN_S: {

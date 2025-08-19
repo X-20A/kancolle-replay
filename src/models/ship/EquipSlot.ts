@@ -113,6 +113,12 @@ export function is_equip_exsist(
     return equip !== 'None';
 }
 
+export function is_non_empty_equip_slot(
+    equip_slot: EquipSlot,
+): equip_slot is NonEmptyEquipSlot {
+    return is_equip_exsist(equip_slot.equip);
+}
+
 export function is_non_empty_player_equip_slot(
     equip_slot: PlayerEquipSlot,
 ): equip_slot is NonEmptyPlayerEquipSlot {

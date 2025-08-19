@@ -3,17 +3,28 @@ import { EQUIP_BONUS_DATAS } from "@/datas/equip/bonus";
 import { PlayerNakedShip } from "../ship/naked/base";
 import { TStatusComponent } from "@/types";
 
-type EquipBonusType = Omit<TStatusComponent,
-    'hp' | 'torpedo_accuracy' | 'night_battle_accuracy' | 'luck'>;
+type EquipBonusType = Pick<TStatusComponent,
+    | 'shell_power'
+    | 'armor'
+    | 'torpedo_power'
+    | 'evasion'
+    | 'anti_air'
+    | 'asw_power'
+    | 'los'
+    | 'range'
+    | 'shell_accuracy'
+    | 'aerial_bomb_power'
+    | 'aerial_torpedo_power'
+    >;
 
 // hpを除外したデフォルト値
-const DEFAULT_EQUIP_BONUS_COMPONENT: EquipBonusType = {
-    fire_power: 0,
+const INITIAL_EQUIP_BONUS_COMPONENT: EquipBonusType = {
+    shell_power: 0,
     armor: 0,
     torpedo_power: 0,
     evasion: 0,
     anti_air: 0,
-    asw: 0,
+    asw_power: 0,
     los: 0,
     range: 0,
     shell_accuracy: 0,
@@ -29,20 +40,22 @@ export type EquipBonusKey = keyof EquipBonusType
  * @param bonus 加算するボーナス
  * @returns 合計
  */
-function addBonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBonusType {
-    return {
-        fire_power: acc.fire_power + (bonus.fire_power ?? 0),
+function sum_bonus(acc: EquipBonusType, bonus: Partial<EquipBonusType>): EquipBonusType {
+    const sum: EquipBonusType = {
+        shell_power: acc.shell_power + (bonus.shell_power ?? 0),
         armor: acc.armor + (bonus.armor ?? 0),
         torpedo_power: acc.torpedo_power + (bonus.torpedo_power ?? 0),
         evasion: acc.evasion + (bonus.evasion ?? 0),
         anti_air: acc.anti_air + (bonus.anti_air ?? 0),
-        asw: acc.asw + (bonus.asw ?? 0),
+        asw_power: acc.asw_power + (bonus.asw_power ?? 0),
         los: acc.los + (bonus.los ?? 0),
         shell_accuracy: acc.shell_accuracy + (bonus.shell_accuracy ?? 0),
         range: acc.range + (bonus.range ?? 0),
         aerial_bomb_power: acc.aerial_bomb_power + (bonus.aerial_bomb_power ?? 0),
         aerial_torpedo_power: acc.aerial_torpedo_power + (bonus.aerial_torpedo_power ?? 0),
     };
+
+    return sum;
 }
 
 /**
@@ -119,17 +132,28 @@ export function derive_equip_bonus_addition(
             const stack_limit = bonus.stack_limit ?? matched_equips.length;
             const apply_count = Math.min(matched_equips.length, stack_limit);
             for (let i = 0; i < apply_count; i++) {
-                total_bonus_acc = addBonus(total_bonus_acc, bonus.addition);
+                total_bonus_acc = sum_bonus(total_bonus_acc, bonus.addition);
             }
         }
         return total_bonus_acc;
-    }, DEFAULT_EQUIP_BONUS_COMPONENT);
+    }, INITIAL_EQUIP_BONUS_COMPONENT);
 
-    return {
+    const result: TStatusComponent = {
         ...summary,
         hp: 0,
+        shell_accuracy: 0,
+        shell_evasion: 0,
+        torpedo_evasion: 0,
+        night_battle_power: 0,
+        asw_accuracy: 0,
+        self_anti_air: 0,
+        fleet_anti_air: 0,
+        air_superiority: 0,
         luck: 0,
         torpedo_accuracy: 0,
         night_battle_accuracy: 0,
+        smokescreen_rate_flat: 0,
     };
+
+    return result;
 }

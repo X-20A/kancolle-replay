@@ -9,6 +9,8 @@ export function derive_abyssal_equip(
     const equip_master = derive_abyssal_equip_master(master_id);
     const type_id = equip_master.type_id;
 
+    const natural_addition = equip_master.status;
+
     const other_equip: AbyssalOtherEquip = {
         master_id,
         name_en: equip_master.name_en,
@@ -17,7 +19,8 @@ export function derive_abyssal_equip(
         skill_trigger_type: equip_master.skill_trigger_type ?? EQUIP_TYPE_DATAS[type_id] ?? 'NONE',
         aaci_trigger_type: equip_master.aaci_trigger_type,
         flags: equip_master.flags,
-        natural_addition: equip_master.status,
+        natural_addition,
+        total_addtion: natural_addition,
     };
 
     if (!equip_master.flags.is_plane) return other_equip;

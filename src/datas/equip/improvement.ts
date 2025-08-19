@@ -1,5 +1,3 @@
-import { DeepReadonly } from "@/types";
-
 /** 装備種別ID */
 export const enum EquipImprovementType {
     MAIN_GUN_S = 1,

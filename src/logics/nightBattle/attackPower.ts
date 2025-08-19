@@ -14,9 +14,9 @@ export type NightBattlePowers = {
 
 export function calcNightBattlePower(ship: PlayerEquippedShip): NightBattlePowers {
     const base_power =
-        ship.naked_status.fire_power
-        + ship.total_natural_equip_addition.fire_power
-        + ship.total_equip_bonus_addition.fire_power
+        ship.naked_status.shell_power
+        + ship.total_natural_equip_addition.shell_power
+        + ship.total_equip_bonus_addition.shell_power
         + ship.naked_status.torpedo_power
         + ship.total_natural_equip_addition.torpedo_power
         + ship.total_equip_bonus_addition.torpedo_power

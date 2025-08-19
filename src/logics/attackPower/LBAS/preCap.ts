@@ -90,7 +90,7 @@ const calc_anti_submarine_mod = (
 ): number => {
     if (!is_submarine_category(target_ship)) return 1;
 
-    return plane.natural_addition.asw >= 10
+    return plane.natural_addition.asw_power >= 10
         ? 0.7 + rand_value * 0.3 // 0.7 - 1.0
         : 0.35 + rand_value * 0.45; // 0.35 - 0.8
 }

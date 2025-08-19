@@ -2,7 +2,6 @@ import { TStatusComponent } from "@/types";
 import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipUniqueId } from "@/types/brands/ship";
 import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
 import { Country } from "@/datas/equip/bonus";
-import { EquipImprovementAddition } from "../../equip/EquipImprovement";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
@@ -16,7 +15,6 @@ import { SpecialAttackType } from "@/logics/SpecialAttack";
 import { PreCalculatedAntiInstallMods } from "@/logics/antiInstall";
 
 export * from "./predicates";
-export * from "./improvement";
 
 // 判定系関数はpredicates.tsへ移動
 
@@ -67,7 +65,7 @@ export type PlayerEquippedShip = EquippedShipBase & {
     /** 装備ボーナスの総計 */
     readonly total_equip_bonus_addition: TStatusComponent,
     /** 装備改修ボーナスの総計 */
-    readonly total_equip_improvement_addition: EquipImprovementAddition,
+    readonly total_equip_improvement_addition: TStatusComponent,
     /** 白襷, 海色リボン加算値 */
     readonly special_item_addition: TStatusComponent,
     /** 対潜攻撃力計算に有効な対潜値の総計 */
@@ -112,23 +110,33 @@ export function sum_status_components(
     a: TStatusComponent,
     b: TStatusComponent,
 ): TStatusComponent {
-    return {
+    const sum: TStatusComponent = {
         hp: a.hp + b.hp,
-        fire_power: a.fire_power + b.fire_power,
-        armor: a.armor + b.armor,
+        shell_power: a.shell_power + b.shell_power,
+        shell_accuracy: a.shell_accuracy + b.shell_accuracy,
+        shell_evasion: a.shell_evasion + b.shell_evasion,
         torpedo_power: a.torpedo_power + b.torpedo_power,
+        torpedo_accuracy: a.torpedo_accuracy + b.torpedo_accuracy,
+        torpedo_evasion: a.torpedo_evasion + b.torpedo_evasion,
+        night_battle_power: a.night_battle_power + b.night_battle_power,
+        night_battle_accuracy: a.night_battle_accuracy + b.night_battle_accuracy,
+        asw_power: a.asw_power + b.asw_power,
+        asw_accuracy: a.asw_accuracy + b.asw_accuracy,
+        armor: a.armor + b.armor,
         evasion: a.evasion + b.evasion,
         anti_air: a.anti_air + b.anti_air,
-        asw: a.asw + b.asw,
+        self_anti_air: a.self_anti_air + b.self_anti_air,
+        fleet_anti_air: a.fleet_anti_air + b.fleet_anti_air,
+        air_superiority: a.air_superiority + b.air_superiority,
         los: a.los + b.los,
         luck: a.luck + b.luck,
         range: a.range + b.range,
-        shell_accuracy: a.shell_accuracy + b.shell_accuracy,
-        torpedo_accuracy: a.torpedo_accuracy + b.torpedo_accuracy,
-        night_battle_accuracy: a.night_battle_accuracy + b.night_battle_accuracy,
         aerial_bomb_power: a.aerial_bomb_power + b.aerial_bomb_power,
         aerial_torpedo_power: a.aerial_torpedo_power + b.aerial_torpedo_power,
+        smokescreen_rate_flat: a.smokescreen_rate_flat + b.smokescreen_rate_flat,
     };
+
+    return sum;
 }
 
 /**

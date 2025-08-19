@@ -1,7 +1,6 @@
 import { TStatusComponent } from "@/types";
 import { AACITriggerEquipType, EquipFitClass, SkillTriggerEquipType } from "@/types/equip/player";
 import { EquipType } from "@/datas/equip/base/player";
-import { EquipImprovementAddition } from "../EquipImprovement";
 import { TransportAddition } from "../TransportPower";
 import { EquipId } from "@/types/brands/equip";
 import { derive_player_equip } from "./player";
@@ -26,6 +25,7 @@ type EquipBase = {
     readonly aaci_trigger_type: AACITriggerEquipType,
     /** マスターデータままの装備加算値 */
     readonly natural_addition: TStatusComponent,
+    readonly total_addtion: TStatusComponent,
 }
 
 export type PlayerOtherEquip = EquipBase & {
@@ -38,14 +38,14 @@ export type PlayerOtherEquip = EquipBase & {
     /** フラグ類 */
     readonly flags: PlayerEquipFlags,
     /** 装備改修加算値 */
-    readonly improvement_addition: EquipImprovementAddition,
+    readonly improvement_addition: TStatusComponent,
     /** TP加算値 */
     readonly transport_addition: TransportAddition,
     /**
      * 対潜攻撃力計算に寄与する対潜値    
      * TODO: StatusComponentに入れるかどうか
      */
-    readonly contribute_asw_attack_power: number,
+    readonly contribute_asw_power: number,
 }
 
 /** 航空機特性を持つ装備（熟練度除く） */
@@ -106,13 +106,4 @@ export function derive_equip(
             proficiency,
         )
         : derive_abyssal_equip(master_id as AbyssalEquipId)
-}
-
-export function calc_equip_improvement_addition(
-    equip: Equip,
-    key: keyof EquipImprovementAddition,
-): number {
-    if (is_abyssal_equip(equip)) return 0;
-
-    return equip.improvement_addition[key];
 }

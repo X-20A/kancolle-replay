@@ -10,7 +10,7 @@ export const SPECIAL_ITEM_BONUS_DATAS: SpecialItemDatas = {
         armor: 1,
     },
     [SpecialItemId.Sash]: {
-        fire_power: 2,
+        shell_power: 2,
         evasion: 2,
     }
 }

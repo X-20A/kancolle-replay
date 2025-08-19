@@ -1,5 +1,4 @@
 import { AACITriggerEquipType, SkillTriggerEquipType, SpecialIcon } from "./player";
-import { DeepReadonly } from "..";
 import { EquipType } from "@/datas/equip/base/player";
 import { AbyssalEquipNameJP } from "./abyssalNameJP";
 import { AbyssalEquipId } from "./abyssalId";
@@ -62,5 +61,5 @@ export type AbyssalEquipData = {
 
 
 
-export type AbyssalEquipDatas = DeepReadonly<Record<AbyssalEquipId, AbyssalEquipData>>
+export type AbyssalEquipDatas = Record<AbyssalEquipId, AbyssalEquipData>
 

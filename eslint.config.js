@@ -26,7 +26,7 @@ export default [
 		rules: {
 			...tsEslint.configs['recommended'].rules,
 			...tsEslint.configs['recommended-requiring-type-checking'].rules,
-			'@typescript-eslint/no-unused-vars': 'warn',
+			'@typescript-eslint/no-unused-vars': 'off',
 			'@typescript-eslint/no-explicit-any': 'warn'
 		}
 	},

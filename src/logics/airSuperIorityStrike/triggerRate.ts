@@ -58,10 +58,10 @@ const calc_A = (
 type LoSFleet = Brand<number, 'LoSFleet'>
 
 /**
- * 艦隊索敵補正を返す
- * ここだけ日wiki方式で
- * ⌊√(A) + 0.1×A⌋
- * までやってしまう
+ * 艦隊索敵補正を返す    
+ * ここだけ日wiki方式で    
+ * ⌊√(A) + 0.1×A⌋    
+ * までやってしまう    
  * https://wikiwiki.jp/kancolle/戦闘について#FAcutin
  * @param attacker_fleet 
  * @returns 
@@ -118,7 +118,7 @@ const calc_Base_ship_Superiority = (
 
     return Math.floor(
         + Math.floor(Math.sqrt(luck))
-        + 0.6 * (LoS_Equip + 1.2 * LoS_Fleet)
+        + 0.6 * (1.2 * LoS_Equip + LoS_Fleet)
     ) as BaseShip;
 }
 
@@ -138,7 +138,7 @@ const calc_Base_ship_Supremacy = (
 
     return Math.floor(
         + Math.floor(Math.sqrt(luck))
-        + 0.7 * (LoS_Equip + 1.6 * LoS_Fleet)
+        + 0.7 * (1.6 * LoS_Equip + LoS_Fleet)
         + 10
     ) as BaseShip;
 }
