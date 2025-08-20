@@ -15,6 +15,7 @@ import { derive_player_equipped_ship_flags } from "./flags";
 import { PlayerNakedShip } from "../naked";
 import { calc_pre_calculated_anti_install_mods } from "@/logics/antiInstall";
 import { PlayerShipId } from "@/types/ship/playerShipId";
+import { derive_ASW_pre_info } from "@/logics/asw/preInfo";
 
 export type PlayerEquippedShipOptions = {
     unique_id?: ShipUniqueId,
@@ -43,32 +44,35 @@ const derive_player_equipped_ship_core = (
     const naked_status = naked_ship.status;
     const total_natural_equip_addition = equips
         .map(equip => equip.natural_addition)
-        .reduce(merge_status_components_with_max_range, INITIAL_STATUS_COMPONENT);
+        .reduce(merge_status_components_with_max_range, { ...INITIAL_STATUS_COMPONENT });
     
     const total_equip_bonus_addition =
         derive_equip_bonus_addition(naked_ship, equips);
     const total_equip_improvement_addition = equips
         .map(equip => equip.improvement_addition)
-        .reduce(sum_status_components, INITIAL_STATUS_COMPONENT);
+        .reduce(sum_status_components, { ...INITIAL_STATUS_COMPONENT });
     const special_item_addition = deriveSpecialItemAddition(special_item_id);
    
     // 射程は素ステータスと装備素射程の最大値に装備ボーナスを加算
     const partial_status = [
         naked_status,
         total_natural_equip_addition,
-    ].reduce(merge_status_components_with_max_range, INITIAL_STATUS_COMPONENT);
+    ].reduce(merge_status_components_with_max_range, { ...INITIAL_STATUS_COMPONENT });
+
     const view_status = [
         partial_status,
         total_equip_bonus_addition,
         special_item_addition,
-    ].reduce(sum_status_components, INITIAL_STATUS_COMPONENT);
-
+    ].reduce(sum_status_components, { ...INITIAL_STATUS_COMPONENT });
+    
     const edited_status = options.edit_input ?? view_status;
 
-    const total_valid_asw = equips
+    const total_contribute_asw_attack_power = equips
         .reduce((total, equip) => {
             return total + equip.contribute_asw_power;
         }, 0);
+
+    const ASW_pre_info = derive_ASW_pre_info(equips);
 
     const flags = derive_player_equipped_ship_flags(naked_ship.flags, equips)
 
@@ -116,7 +120,8 @@ const derive_player_equipped_ship_core = (
         edited_status,
         weighted_anti_air,
         triggerable_AACIs,
-        total_contribute_asw_attack_power: total_valid_asw,
+        total_contribute_asw_attack_power,
+        ASW_pre_info,
     };
 
     return ship;

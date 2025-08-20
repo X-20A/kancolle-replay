@@ -1,10 +1,9 @@
 import { AbyssalEquip, PlayerEquip } from "@/models/equip/basic";
-import { AswEquipFlags, PlayerNakedShipFlags } from "@/types/ship/ship";
+import { PlayerNakedShipFlags } from "@/types/ship/ship";
 import { derive_ASW_pre_info } from "../../../logics/asw/preInfo";
 import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 
 export type PlayerShipFlags = PlayerNakedShipFlags & {
-    asw_equip: AswEquipFlags;
     /** 阻塞気球を装備しているか */
     has_balloon: boolean,
 }
@@ -23,7 +22,6 @@ export function derive_player_equipped_ship_flags(
 
     return {
         ...naked_ship_flags,
-        asw_equip,
         has_balloon,
     };
 }

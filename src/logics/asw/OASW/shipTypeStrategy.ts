@@ -52,7 +52,7 @@ function is_DE_capable_of_OASW(ship: PlayerEquippedShip): boolean {
  * 軽空母が先制対潜可能か判定して返す
  */
 function is_CVL_capable_of_OASW(ship: PlayerEquippedShip): boolean {
-    const asw_flags = ship.flags.asw_equip;
+    const asw_flags = ship.ASW_pre_info;
     const asw = ship.view_status.asw_power;
 
     if (
@@ -89,7 +89,9 @@ function is_CVL_capable_of_OASW(ship: PlayerEquippedShip): boolean {
  * @returns 閾値以上かどうか
  */
 function has_view_ASW_at_least(ship: PlayerEquippedShip, threshold: number): boolean {
-    return ship.view_status.asw_power >= threshold;
+    console.log('ship.edited_status.asw_power: ', ship.edited_status.asw_power);
+    console.log('threshold: ', threshold);
+    return ship.edited_status.asw_power >= threshold;
 }
 
 /**
@@ -99,5 +101,5 @@ function has_view_ASW_at_least(ship: PlayerEquippedShip, threshold: number): boo
  * @returns 条件をすべて満たすかどうか
  */
 function has_sonar_and_view_ASW_at_least(ship: PlayerEquippedShip, threshold: number): boolean {
-    return ship.flags.asw_equip.has_any_sonar && has_view_ASW_at_least(ship, threshold);
+    return ship.ASW_pre_info.has_any_sonar && has_view_ASW_at_least(ship, threshold);
 }

@@ -29,7 +29,7 @@ const INITIAL_EQUIP_BONUS_COMPONENT: EquipBonusType = {
     range: 0,
     accuracy: 0,
     aerial_bomb_power: 0,
-};
+} as const;
 
 export type EquipBonusKey = keyof EquipBonusType
 
@@ -134,7 +134,7 @@ export function derive_equip_bonus_addition(
             }
         }
         return total_bonus_acc;
-    }, INITIAL_EQUIP_BONUS_COMPONENT);
+    }, { ...INITIAL_EQUIP_BONUS_COMPONENT });
 
     const result: TStatusComponent = {
         ...summary,

@@ -6,39 +6,49 @@ import { PlayerEquippedShip } from "@/models/ship/equipped";
  */
 export function evaluate_special_OASW_condition(
     ship: PlayerEquippedShip,
-): boolean | undefined {
-    const asw_flags = ship.flags.asw_equip;
+): boolean | 'no_match' {
+    const {
+        has_positive_asw_dive_bomber,
+        has_high_asw_torpedo_bomber,
+        has_asw_plane,
+        has_autogyro,
+        has_any_sonar,
+        has_seaplane_bomber,
+        has_any_DC,
+        has_any_S51J,
+        low_autogyro_count,
+    } = ship.ASW_pre_info;
 
     if (ship.flags.can_unconditional_OASW) return true;
 
     if (ship.flags.has_advantage_OASW_CVs) {
-        return asw_flags.has_positive_asw_dive_bomber
-            || asw_flags.has_high_asw_torpedo_bomber
-            || asw_flags.has_asw_plane
-            || asw_flags.has_autogyro;
+        return has_positive_asw_dive_bomber
+            || has_high_asw_torpedo_bomber
+            || has_asw_plane
+            || has_autogyro;
     }
     switch (ship.name_jp) {
         case '神州丸改':
         case '大和改二重':
-            return asw_flags.has_any_sonar
-                || asw_flags.has_seaplane_bomber
-                || asw_flags.has_autogyro;
+            return has_any_sonar
+                || has_seaplane_bomber
+                || has_autogyro;
         case '熊野丸':
         case '熊野丸改':
-            return asw_flags.has_any_sonar
-                || asw_flags.has_positive_asw_dive_bomber
-                || asw_flags.has_asw_plane
-                || asw_flags.has_autogyro;
+            return has_any_sonar
+                || has_positive_asw_dive_bomber
+                || has_asw_plane
+                || has_autogyro;
         case '扶桑改二':
         case '山城改二':
-            return asw_flags.has_any_sonar
-                || asw_flags.has_seaplane_bomber
-                || asw_flags.has_autogyro
-                || asw_flags.has_any_DC;
+            return has_any_sonar
+                || has_seaplane_bomber
+                || has_autogyro
+                || has_any_DC;
         case '日向改二':
-            return asw_flags.has_any_S51J
-                || asw_flags.has_multiple_low_autogyro;
+            return has_any_S51J
+                || low_autogyro_count >= 1;
         default:
-            return undefined;
+            return 'no_match';
     }
 }

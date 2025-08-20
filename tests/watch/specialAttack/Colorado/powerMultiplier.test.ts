@@ -21,7 +21,6 @@ describe('Colorado級特殊攻撃テスト', () => {
         ): void => {
             const pre_info = calc_Colorado_special_pre_info(unit.ship.equip_slots);
             const power_mod = calc_Colorado_special_power_mod(unit, pre_info);
-            console.log('power_mod: ', power_mod);
 
             // 1.5 * 1.35 * 1.15
             // 1.5 * 1.15 * 1.35

@@ -1,6 +1,5 @@
-import { DEFAULT_STATUS_COMPONENT } from "@/datas";
-import { SPECIAL_ITEM_BONUS_DATAS, SpecialItemDatas } from "@/datas/equip/SpecialItem";
-import { TStatusComponent } from "@/types";
+import { SPECIAL_ITEM_BONUS_DATAS } from "@/datas/equip/SpecialItem";
+import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
 import { SpecialItemId } from "@/types/ship/ship";
 
 /**
@@ -12,7 +11,7 @@ export function deriveSpecialItemAddition(
     special_item_id: SpecialItemId
 ): TStatusComponent {
     return {
-        ...DEFAULT_STATUS_COMPONENT,
+        ...INITIAL_STATUS_COMPONENT,
         ...SPECIAL_ITEM_BONUS_DATAS[special_item_id],
     };
 }

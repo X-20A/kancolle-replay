@@ -14,6 +14,7 @@ import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { SpecialAttackType } from "@/logics/SpecialAttack";
 import { PreCalculatedAntiInstallMods } from "@/logics/antiInstall";
 import { PlayerShipId } from "@/types/ship/playerShipId";
+import { ASWPreInfo } from "@/logics/asw/preInfo";
 
 export * from "./predicates";
 
@@ -71,6 +72,7 @@ export type PlayerEquippedShip = EquippedShipBase & {
     readonly special_item_addition: TStatusComponent,
     /** 対潜攻撃力計算に有効な対潜値の総計 */
     readonly total_contribute_asw_attack_power: number,
+    readonly ASW_pre_info: ASWPreInfo,
     readonly base_fuel: number,
     readonly base_ammo: number,
     readonly pre_calculated_anti_install_mods: PreCalculatedAntiInstallMods,

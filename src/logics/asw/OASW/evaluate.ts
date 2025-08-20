@@ -9,7 +9,7 @@ import { can_OASW_by_ship_type } from './shipTypeStrategy';
 export function evaluateCanOASW(ship: EquippedShip): boolean {
     if (!is_player_equipped_ship(ship)) return ship.flags.can_OASW;
 
-    return evaluate_special_OASW_condition(ship) === true
-        ? true
-        : can_OASW_by_ship_type(ship);
+    return evaluate_special_OASW_condition(ship) === 'no_match'
+        ? can_OASW_by_ship_type(ship)
+        : true;
 }
