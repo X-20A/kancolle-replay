@@ -30,7 +30,7 @@ const calc_core_base_power_set = (
         attack_type,
     } = combination;
     const { natural_addition, improvement_addition } = attacker_squadron.equip;
-    const { asw, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
+    const { asw_power, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
     const {
         asw_power: improve_asw,
         aerial_bomb_power: improve_bomb,
@@ -39,10 +39,10 @@ const calc_core_base_power_set = (
 
     return match(attack_type)
         .with('asw', () => (
-            { natural_status: asw, improvement_bonus: improve_asw } as RawBasePowerResult)
+            { natural_status: asw_power, improvement_bonus: improve_asw })
         )
         .with('bomb', () => (
-            { natural_status: aerial_bomb_power, improvement_bonus: improve_bomb } as RawBasePowerResult)
+            { natural_status: aerial_bomb_power, improvement_bonus: improve_bomb })
         )
         .with('torpedo', () => {
             return {
@@ -52,9 +52,9 @@ const calc_core_base_power_set = (
                     ? Math.floor(aerial_torpedo_power / 2)
                     : aerial_torpedo_power,
                 improvement_bonus: improve_torpedo,
-            } as RawBasePowerResult
+            }
         })
-        .exhaustive();
+        .exhaustive() as RawBasePowerResult;
 };
 
 /**

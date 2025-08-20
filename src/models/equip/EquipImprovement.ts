@@ -1,5 +1,6 @@
 import { ADD_STATUS_KEYS, EQUIP_IMPLOVEMENT_DATAS, EquipImprovementType } from "@/datas/equip/improvement";
 import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
+import { Equip, is_player_equip } from "./basic";
 
 export function derive_equip_improvement_addition(
     improvement_type: EquipImprovementType,
@@ -19,4 +20,13 @@ export function derive_equip_improvement_addition(
             [key]: value,
         };
     }, INITIAL_STATUS_COMPONENT);
+}
+
+export function calc_equip_improvement_addition(
+    equip: Equip,
+    key: keyof TStatusComponent,
+): number {
+    return is_player_equip(equip)
+        ? equip.improvement_addition[key]
+        : 0;
 }

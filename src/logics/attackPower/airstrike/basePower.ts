@@ -1,4 +1,4 @@
-import { calc_equip_improvement_addition, can_bombing, Equip, includes_player_equip_name, is_dive_bomber, is_jet_bomber, is_plane_equip, is_player_equip, is_scamp, is_torpedo_bomber, PlaneEquip } from "@/models/equip/basic";
+import { can_bombing, Equip, includes_player_equip_name, is_dive_bomber, is_jet_bomber, is_plane_equip, is_player_equip, is_scamp, is_torpedo_bomber, PlaneEquip } from "@/models/equip/basic";
 import { VaidAirstrikeCombination } from "../../target/airstrike";
 import { match } from "ts-pattern";
 import { is_install_type } from "@/models/ship/equipped";
@@ -9,6 +9,7 @@ import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AirstrikeType } from "../../target/LBAS";
 import { Brand } from "@/types/brands";
 import { FleetUnit, is_affiliation_fleet_main, is_combined_fleet, is_player_fleet_unit } from "@/models/fleet/FleetUnit";
+import { calc_equip_improvement_addition } from "@/models/equip/EquipImprovement";
 
 const calc_core = (
     combination: VaidAirstrikeCombination,
@@ -20,17 +21,17 @@ const {
     } = combination;
     const { equip } = attacker_squadron;
     const { natural_addition } = equip;
-    const { asw, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
+    const { asw_power, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
     const improve_asw = calc_equip_improvement_addition(equip, 'asw_power');
     const improve_bomb = calc_equip_improvement_addition(equip, 'aerial_bomb_power');
     const improve_torpedo = calc_equip_improvement_addition(equip, 'aerial_torpedo_power');
 
     return match(attack_type)
         .with('asw', () => (
-            { natural_status: asw, improvement_bonus: improve_asw } as RawBasePowerResult)
+            { natural_status: asw_power, improvement_bonus: improve_asw })
         )
         .with('bomb', () => (
-            { natural_status: aerial_bomb_power, improvement_bonus: improve_bomb } as RawBasePowerResult)
+            { natural_status: aerial_bomb_power, improvement_bonus: improve_bomb })
         )
         .with('torpedo', () => {
             return {
@@ -38,9 +39,9 @@ const {
                     ? 0
                     : aerial_torpedo_power,
                 improvement_bonus: improve_torpedo,
-            } as RawBasePowerResult
+            };
         })
-        .exhaustive();
+        .exhaustive() as RawBasePowerResult;
 }
 
 /**

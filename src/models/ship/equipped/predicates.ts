@@ -174,7 +174,7 @@ export function is_install_type(
  */
 export function equal_ship_name(
     player_ship_name: PlayerShipNameJP,
-    ship_name: AbyssalShipNameJP | PlayerShipNameJP,
+    ship_name: PlayerShipNameJP,
 ): boolean {
     return player_ship_name === ship_name;
 }
