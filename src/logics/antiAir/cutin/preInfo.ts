@@ -1,6 +1,6 @@
-import { Equip, includes_equip_type } from "../equip/basic";
+import { Equip, includes_equip_type } from "../../../models/equip/basic";
 
-export type PrepareAaciInfo = {
+export type AACIPreInfo = {
     /** 機銃の数 */
     anti_air_gun_count: number,
     /** 高角砲の数 */
@@ -79,55 +79,54 @@ export type PrepareAaciInfo = {
     /** 94式高射装置 が含まれるか */
     has_94_FD: boolean,
 }
+const INITIAL: AACIPreInfo = {
+    anti_air_gun_count: 0,
+    high_angle_gun_count: 0,
+    special_high_angle_gun_count: 0,
+    special_anti_air_gun_count: 0,
+    aa3_gun_count: 0,
+    hatsuzuki_gun_count: 0,
+    Shigure_gun_cluster_count: 0,
+    UP_rocket_count: 0,
+    Shirayuki_gun_count: 0,
+    Mk30_count: 0,
+    Mk30_kai_count: 0,
+    Mk30_GFCS_count: 0,
+    C_H_gun_count: 0,
+    Atlanta_gun_count: 0,
+    Atlanta_GFCS_gun_count: 0,
+    Yamato_10cm_cluster_count: 0,
+    has_any_L_gun: false,
+    has_any_radar: false,
+    has_fire_director: false,
+    has_anti_air_radar: false,
+    has_aa4_radar: false,
+    has_aa7_or_less_high_gun: false,
+    has_aa3to8_gun: false,
+    has_aa4_gun: false,
+    has_aa6_gun: false,
+    has_hunshin_kai_ni: false,
+    has_ohyodo_gun: false,
+    has_FCR_284: false,
+    has_kai_3_gun: false,
+    has_kai_4_gun: false,
+    has_ponpon: false,
+    has_type_3_shell: false,
+    has_GFCS_radar: false,
+    has_yamato_radar: false,
+    has_skilled_yamato_radar: false,
+    has_94_FD: false,
+};
 
 /**
  * 装備配列からAACI判定用情報を集計する
  * @param equips 装備配列
  * @returns PrepareAaciInfo
  */
-export function derive_prepare_AACI_info(
+export function derive_AACI_pre_info(
     equips: Equip[],
-): PrepareAaciInfo {
-    const initial: PrepareAaciInfo = {
-        anti_air_gun_count: 0,
-        high_angle_gun_count: 0,
-        special_high_angle_gun_count: 0,
-        special_anti_air_gun_count: 0,
-        aa3_gun_count: 0,
-        hatsuzuki_gun_count: 0,
-        Shigure_gun_cluster_count: 0,
-        UP_rocket_count: 0,
-        Shirayuki_gun_count: 0,
-        Mk30_count: 0,
-        Mk30_kai_count: 0,
-        Mk30_GFCS_count: 0,
-        C_H_gun_count: 0,
-        Atlanta_gun_count: 0,
-        Atlanta_GFCS_gun_count: 0,
-        Yamato_10cm_cluster_count: 0,
-        has_any_L_gun: false,
-        has_any_radar: false,
-        has_fire_director: false,
-        has_anti_air_radar: false,
-        has_aa4_radar: false,
-        has_aa7_or_less_high_gun: false,
-        has_aa3to8_gun: false,
-        has_aa4_gun: false,
-        has_aa6_gun: false,
-        has_hunshin_kai_ni: false,
-        has_ohyodo_gun: false,
-        has_FCR_284: false,
-        has_kai_3_gun: false,
-        has_kai_4_gun: false,
-        has_ponpon: false,
-        has_type_3_shell: false,
-        has_GFCS_radar: false,
-        has_yamato_radar: false,
-        has_skilled_yamato_radar: false,
-        has_94_FD: false,
-    };
-
-    return equips.reduce<PrepareAaciInfo>((acc, equip) => {
+): AACIPreInfo {
+    return equips.reduce<AACIPreInfo>((acc, equip) => {
         // カウント系
         if (equip.aaci_trigger_type === 'A_AAGUN') acc.anti_air_gun_count++;
         if (equip.aaci_trigger_type === 'A_HAGUN' || equip.aaci_trigger_type === 'A_HAFD') acc.high_angle_gun_count++;
@@ -147,27 +146,34 @@ export function derive_prepare_AACI_info(
         if (equip.name_jp === '10cm連装高角砲群 集中配備') acc.Yamato_10cm_cluster_count++;
 
         // フラグ系
-        if (!acc.has_any_L_gun && includes_equip_type(['MAIN_GUN_L', 'MAIN_GUN_XL'], equip.type_id)) acc.has_any_L_gun = true;
-        if (!acc.has_any_radar && equip.skill_trigger_type === 'B_RADAR') acc.has_any_radar = true;
-        if (!acc.has_fire_director && (equip.aaci_trigger_type === 'A_AAFD')) acc.has_fire_director = true;
-        if (!acc.has_anti_air_radar && equip.aaci_trigger_type === 'A_AIRRADAR') acc.has_anti_air_radar = true;
-        if (!acc.has_aa4_radar && equip.skill_trigger_type === 'B_RADAR' && equip.natural_addition.anti_air >= 4) acc.has_aa4_radar = true;
-        if ((equip.aaci_trigger_type === 'A_HAGUN' || equip.aaci_trigger_type === 'A_HAFD') && equip.natural_addition.anti_air <= 7) acc.has_aa7_or_less_high_gun = true;
-        if (!acc.has_aa3to8_gun && equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 3 && equip.natural_addition.anti_air <= 8) acc.has_aa3to8_gun = true;
-        if (!acc.has_aa4_gun && equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 4) acc.has_aa4_gun = true;
-        if (!acc.has_aa6_gun && equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 6) acc.has_aa6_gun = true;
-        if (!acc.has_hunshin_kai_ni && equip.name_jp === '12cm30連装噴進砲改二') acc.has_hunshin_kai_ni = true;
-        if (!acc.has_ohyodo_gun && equip.name_jp === '10cm連装高角砲改+増設機銃') acc.has_ohyodo_gun = true;
-        if (!acc.has_FCR_284 && equip.name_jp === '16inch Mk.I三連装砲改+FCR type284') acc.has_FCR_284 = true;
-        if (!acc.has_kai_3_gun && equip.name_jp === '35.6cm連装砲改三(ダズル迷彩仕様)') acc.has_kai_3_gun = true;
-        if (!acc.has_kai_4_gun && equip.name_jp === '35.6cm連装砲改四') acc.has_kai_4_gun = true;
-        if (!acc.has_ponpon && equip.name_jp === 'QF 2ポンド8連装ポンポン砲') acc.has_ponpon = true;
-        if (!acc.has_type_3_shell && equip.type_id === 'TYPE_3_SHELL') acc.has_type_3_shell = true;
-        if (!acc.has_GFCS_radar && equip.name_jp === 'GFCS Mk.37') acc.has_GFCS_radar = true;
-        if (!acc.has_yamato_radar && equip.name_jp === '15m二重測距儀+21号電探改二') acc.has_yamato_radar = true;
-        if (!acc.has_skilled_yamato_radar && equip.name_jp === '15m二重測距儀改+21号電探改二+熟練射撃指揮所') acc.has_skilled_yamato_radar = true;
-        if (!acc.has_94_FD && equip.name_jp === '94式高射装置') acc.has_94_FD = true;
+        if (includes_equip_type(['MAIN_GUN_L', 'MAIN_GUN_XL'], equip.type_id)) acc.has_any_L_gun = true;
+        if (equip.skill_trigger_type === 'B_RADAR') acc.has_any_radar = true;
+        if (equip.aaci_trigger_type === 'A_AAFD') acc.has_fire_director = true;
+        if (equip.aaci_trigger_type === 'A_AIRRADAR') acc.has_anti_air_radar = true;
+        if (equip.skill_trigger_type === 'B_RADAR' && equip.natural_addition.anti_air >= 4) acc.has_aa4_radar = true;
+        if (
+            (equip.aaci_trigger_type === 'A_HAGUN' || equip.aaci_trigger_type === 'A_HAFD') &&
+            equip.natural_addition.anti_air <= 7
+        ) acc.has_aa7_or_less_high_gun = true;
+        if (
+            equip.aaci_trigger_type === 'A_AAGUN' &&
+            equip.natural_addition.anti_air >= 3 &&
+            equip.natural_addition.anti_air <= 8
+        ) acc.has_aa3to8_gun = true;
+        if (equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 4) acc.has_aa4_gun = true;
+        if (equip.aaci_trigger_type === 'A_AAGUN' && equip.natural_addition.anti_air >= 6) acc.has_aa6_gun = true;
+        if (equip.name_jp === '12cm30連装噴進砲改二') acc.has_hunshin_kai_ni = true;
+        if (equip.name_jp === '10cm連装高角砲改+増設機銃') acc.has_ohyodo_gun = true;
+        if (equip.name_jp === '16inch Mk.I三連装砲改+FCR type284') acc.has_FCR_284 = true;
+        if (equip.name_jp === '35.6cm連装砲改三(ダズル迷彩仕様)') acc.has_kai_3_gun = true;
+        if (equip.name_jp === '35.6cm連装砲改四') acc.has_kai_4_gun = true;
+        if (equip.name_jp === 'QF 2ポンド8連装ポンポン砲') acc.has_ponpon = true;
+        if (equip.type_id === 'TYPE_3_SHELL') acc.has_type_3_shell = true;
+        if (equip.name_jp === 'GFCS Mk.37') acc.has_GFCS_radar = true;
+        if (equip.name_jp === '15m二重測距儀+21号電探改二') acc.has_yamato_radar = true;
+        if (equip.name_jp === '15m二重測距儀改+21号電探改二+熟練射撃指揮所') acc.has_skilled_yamato_radar = true;
+        if (equip.name_jp === '94式高射装置') acc.has_94_FD = true;
 
         return acc;
-    }, initial);
+    }, INITIAL);
 }

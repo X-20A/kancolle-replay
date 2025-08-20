@@ -1,7 +1,7 @@
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_AACI_rates } from "@/logics/antiAir/cutin/rate";
 import { Equip } from "@/models/equip/basic";
-import { derive_prepare_AACI_info } from "@/models/ship/aaciPreparate";
+import { derive_AACI_pre_info } from "@/logics/antiAir/cutin/preInfo";
 import { NakedShip } from "@/models/ship/naked/base";
 import { ATLANTA_GUN, HIGH_10 } from "tests/setups/assets/equips/gun";
 import { GFCS_RADAR, SURFACE_22 } from "tests/setups/assets/equips/radar";
@@ -22,13 +22,14 @@ describe('制空系テスト', () => {
             ship: NakedShip,
             equips: Equip[],
         ) => {
-            const info = derive_prepare_AACI_info(equips);
+            const info = derive_AACI_pre_info(equips);
             const aaci_ids = calc_triggerable_AACIs(ship, info);
             const result = calc_AACI_rates(aaci_ids);
             const result_rates = result.AACI_rates;
 
             expect(expected.rates.length).toBe(result_rates.length);
             expected.rates.forEach((expected_rate, index) => {
+                if (!result_rates[index]) throw new Error(`result_rates[${index}] is undefined`);
                 expect(expected_rate.toString()).toBe(result_rates[index].rate.toString());
             })
         };

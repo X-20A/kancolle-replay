@@ -7,7 +7,7 @@ import { derive_player_naked_ship } from "../naked/player";
 import { deriveSpecialItemAddition } from "@/models/equip/SpecialItem";
 import { derive_equip_bonus_addition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
-import { derive_prepare_AACI_info } from "../aaciPreparate";
+import { derive_AACI_pre_info } from "../../../logics/antiAir/cutin/preInfo";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_player_equip_slots } from "@/models/ship/EquipSlot";
@@ -80,7 +80,7 @@ const derive_player_equipped_ship_core = (
         total_equip_improvement_addition,
     );
 
-    const prepare_AACI_info = derive_prepare_AACI_info(equips);
+    const prepare_AACI_info = derive_AACI_pre_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
     const pre_calculated_anti_install_mods =

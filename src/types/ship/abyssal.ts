@@ -1,8 +1,7 @@
-import { DeepReadonly } from "..";
 import { AbyssalEquipId } from "../equip/abyssalId";
 import { AbyssalShipId } from "./abyssalId";
 import { AbyssalShipNameJP } from "./abyssalNameJP";
-import { CVsNightAttackType, InstallType, ShipType, ShipTypeBase, UnknownStatus } from "./ship";
+import { CVsNightAttackType, InstallType, ShipTypeBase, UnknownStatus } from "./ship";
 
 // TODO: CVB, LHAは含まないがまあそのうち
 export type AbyssalShipType = ShipTypeBase | 'AT'

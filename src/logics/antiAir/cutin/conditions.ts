@@ -1,5 +1,5 @@
 import { Country } from "@/datas/equip/bonus";
-import { PrepareAaciInfo } from "@/models/ship/aaciPreparate";
+import { AACIPreInfo } from "@/logics/antiAir/cutin/preInfo";
 import { equal_ship_name, has_ship_name, includes_ship_name, is_battle_ship_category, is_player_naked_ship } from "@/models/ship/equipped";
 import { NakedShip } from "@/models/ship/naked/base";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
@@ -27,11 +27,6 @@ export type AntiAirCutIn = {
     /** 発動率 */
     readonly rate: number;
 }
-
-type AaciCondition = (
-    ship: NakedShip,
-    info: PrepareAaciInfo,
-) => boolean;
 
 /** 秋月型 改/改二のID */
 const AKIZUKI_CLASS_KAI_OR_MORE: Set<PlayerShipNameJP> = new Set([
@@ -67,6 +62,11 @@ const KONGOU_CLASS_KAI_NI: Set<PlayerShipNameJP> = new Set([
     '霧島改二丙',
 ]);
 
+type AaciCondition = (
+    ship: NakedShip,
+    info: AACIPreInfo,
+) => boolean;
+
 const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
     return match<AntiAirCutinType, AaciCondition>(type)
         .with(1, () => (ship, info) =>
@@ -94,8 +94,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_anti_air_radar
         )
         .with(5, () => (ship, info) =>
-            is_player_naked_ship(ship) &&
-            ship.ship_class !== 'Akizuki' &&
+            (!is_player_naked_ship(ship) || ship.ship_class !== 'Akizuki') &&
             info.special_high_angle_gun_count >= 2 &&
             info.has_anti_air_radar
         )
@@ -106,15 +105,13 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_fire_director
         )
         .with(7, () => (ship, info) =>
-            is_player_naked_ship(ship) &&
-            ship.ship_class !== 'Akizuki' &&
+            (!is_player_naked_ship(ship) || ship.ship_class !== 'Akizuki') &&
             info.high_angle_gun_count >= 1 &&
             info.has_fire_director &&
             info.has_anti_air_radar
         )
         .with(8, () => (ship, info) =>
-            is_player_naked_ship(ship) &&
-            ship.ship_class !== 'Akizuki' &&
+            (!is_player_naked_ship(ship) || ship.ship_class !== 'Akizuki') &&
             info.special_high_angle_gun_count >= 1 &&
             info.has_anti_air_radar
         )
@@ -141,8 +138,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
             info.has_anti_air_radar
         )
         .with(13, () => (ship, info) =>
-            is_player_naked_ship(ship) &&
-            !equal_ship_name('摩耶改二', ship.name_jp) &&
+            (!is_player_naked_ship(ship) || !equal_ship_name('摩耶改二', ship.name_jp)) &&
             info.special_high_angle_gun_count >= 1 &&
             info.special_anti_air_gun_count >= 1 &&
             info.has_anti_air_radar
@@ -402,7 +398,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
  */
 export function calc_triggerable_AACIs(
     ship: NakedShip,
-    info: PrepareAaciInfo,
+    info: AACIPreInfo,
 ): AntiAirCutinType[] {
     return ANTI_AIR_CUTIN_TYPES.filter((cutin_type) => {
         const condition = AACI_CONDITIONS(cutin_type);

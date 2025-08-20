@@ -1,12 +1,14 @@
 import { AntiAirCutinType, calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip } from "@/models/equip/basic";
-import { derive_prepare_AACI_info } from "@/models/ship/aaciPreparate";
+import { derive_AACI_pre_info } from "@/logics/antiAir/cutin/preInfo";
+import { AbyssalEquippedShip } from "@/models/ship/equipped";
+import { derive_equipped_abyssal_ship } from "@/models/ship/equipped/abyssal";
 import { NakedShip } from "@/models/ship/naked/base";
 import { FD_91, FD_94, GUN_127, GUN_77, HUNSHIN_KAI_NI, PONPON, SINGLE_25, TRIPLE_25, UP_ROCKET, ZOUBI_25 } from "tests/setups/assets/equips/antiAir";
 import { AKIZUKI_GUN, ATLANTA_GUN, HATSUZUKI_GUN, HIGH_10, HIGH_127, LARGE_356, MIKUMA_GUN, FCR_284, OOYODO_GUN, TANYAN_GUN, MK30_GFCS, MK30, MK30_KAI, ATLANTA_GFCS_GUN, YAMATO_10CM_CLUSTER, HARUNA_GUN_3, HARUNA_GUN_4, HARUSAME_GUN, SHIRAYUKI_GUN } from "tests/setups/assets/equips/gun";
 import { TYPE_3_SHELL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR, RADAR_13, RADAR_13_KAI, SURFACE_22, YAMATO_RADAR } from "tests/setups/assets/equips/radar";
-import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
+import { AA_GUN_IMP, AIR_DEFENCE_PRINCESS, LANDING_WA } from "tests/setups/assets/ship/abyssal";
 import { derive_naked_ship_from_name } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 
@@ -51,7 +53,7 @@ describe('制空系テスト', () => {
             ship: NakedShip,
             equips: Equip[],
         ) => {
-            const info = derive_prepare_AACI_info(equips);
+            const info = derive_AACI_pre_info(equips);
             const result = calc_triggerable_AACIs(ship, info);
 
             expect(result).toHaveLength(expected.length);
@@ -133,7 +135,7 @@ describe('制空系テスト', () => {
         // 負例
 
         // 秋月型では 5,7,8種 は発動しない
-        test([1,2,3], AKIZUKI, [AKIZUKI_GUN, AKIZUKI_GUN, RADAR_13]);
+        test([1, 2, 3], AKIZUKI, [AKIZUKI_GUN, AKIZUKI_GUN, RADAR_13]);
         // 4,6種は大口径主砲でないと発動しない
         test([], NAGATO, [MIKUMA_GUN, TYPE_3_SHELL, FD_91, RADAR_13]);
         // +高射装置系は高射装置にカウントしない
@@ -152,16 +154,23 @@ describe('制空系テスト', () => {
         test([], TENRYUU_KAI_NI, [HIGH_10, GUN_77]);
         test([], TENRYUU_KAI_NI, [HIGH_10, PONPON]);
     });
-    
+
     it('深海対空CI', () => {
         const test = (
             expected: AntiAirCutinType[],
-            result: AntiAirCutinType[],
+            ship: AbyssalEquippedShip,
         ) => {
+            const result = ship.triggerable_AACIs;
             expect(result).toHaveLength(expected.length);
             expect(result).toEqual(expect.arrayContaining(expected));
         };
 
-        test([5, 8], LANDING_WA.triggerable_AACIs);
+        // 汎用CI系最小構成
+        test([5, 8], LANDING_WA);
+        // 汎用6種は三式弾系を要求するが現状これを装備した深海艦はいない(しかし装備データはある)
+        // 高射装置は内蔵含め深海側には無い？
+        // 高射装置が必要な6,7,9はスキップ
+        test([12], AA_GUN_IMP);
+        test([5, 8, 12, 13], AIR_DEFENCE_PRINCESS);
     });
 });

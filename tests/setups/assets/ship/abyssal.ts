@@ -16,8 +16,14 @@ export const BB_RE = derive_equipped_abyssal_ship(1561);
 /** 輸送ワ級II(揚陸中) */
 export const LANDING_WA = derive_equipped_abyssal_ship(2269);
 
+/** 対空小鬼 */
+export const AA_GUN_IMP = derive_equipped_abyssal_ship(2180);
+
 /** 潜水ソ級flagship */
 export const SO_FLAGSHIP = derive_equipped_abyssal_ship(1572);
 
 /** 集積地棲姫 */
 export const SYUUSEKI = derive_equipped_abyssal_ship(1653);
+
+/** 防空棲姫 */
+export const AIR_DEFENCE_PRINCESS = derive_equipped_abyssal_ship(1628);
