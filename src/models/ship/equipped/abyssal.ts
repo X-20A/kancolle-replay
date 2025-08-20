@@ -2,7 +2,6 @@ import { brandShipLv, brandUniqueId } from "@/types/brands/ship";
 import { AbyssalEquippedShip, merge_status_components_with_max_range } from ".";
 import { derive_abyssal_naked_ship } from "../naked/abyssal";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
-import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { PlayerEquippedShipOptions } from "./player";
 import { derive_AACI_pre_info } from "../../../logics/antiAir/cutin/preInfo";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
@@ -11,6 +10,7 @@ import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_abyssal_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_abyssal_equipped_ship_flags } from "./flags";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
+import { INITIAL_STATUS_COMPONENT } from "@/types";
 
 export function derive_equipped_abyssal_ship(
     id: AbyssalShipId,
@@ -34,12 +34,12 @@ export function derive_equipped_abyssal_ship(
 
     const total_natural_equip_addition = equips
             .map(equip => equip.natural_addition)
-            .reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
+        .reduce(merge_status_components_with_max_range, { ...INITIAL_STATUS_COMPONENT });
 
     const view_status = [
         naked_status,
         total_natural_equip_addition,
-    ].reduce(merge_status_components_with_max_range, DEFAULT_STATUS_COMPONENT);
+    ].reduce(merge_status_components_with_max_range, { ...INITIAL_STATUS_COMPONENT });
 
     const edited_status = options.edit_input ?? view_status;
 

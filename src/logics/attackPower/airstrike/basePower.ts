@@ -21,10 +21,10 @@ const {
     } = combination;
     const { equip } = attacker_squadron;
     const { natural_addition } = equip;
-    const { asw_power, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
+    const { asw_power, aerial_bomb_power, torpedo_power } = natural_addition;
     const improve_asw = calc_equip_improvement_addition(equip, 'asw_power');
     const improve_bomb = calc_equip_improvement_addition(equip, 'aerial_bomb_power');
-    const improve_torpedo = calc_equip_improvement_addition(equip, 'aerial_torpedo_power');
+    const improve_torpedo = calc_equip_improvement_addition(equip, 'torpedo_power');
 
     return match(attack_type)
         .with('asw', () => (
@@ -37,7 +37,7 @@ const {
             return {
                 natural_status: is_install_type(target_unit.ship)
                     ? 0
-                    : aerial_torpedo_power,
+                    : torpedo_power,
                 improvement_bonus: improve_torpedo,
             };
         })
@@ -61,7 +61,7 @@ const calc_slot_of_most_powerful_plane = (
     ): number => {
         return can_bombing(slot.equip)
             ? slot.equip.natural_addition.aerial_bomb_power
-            : slot.equip.natural_addition.aerial_torpedo_power;
+            : slot.equip.natural_addition.torpedo_power;
     }
 
     // 最も強力なスロットを選択
@@ -127,7 +127,7 @@ const calc_fit_plane = (
 
     if (
         slot_of_most_priority_plane
-    ) return slot_of_most_priority_plane.equip_bonus.aerial_torpedo_power as FitPlane;
+    ) return slot_of_most_priority_plane.equip_bonus.torpedo_power as FitPlane;
 
     // ? 優先度リストに無い(未検証)場合は暫定的に装備IDの大きい機体の装備ボーナスを返す
     const highest_slot = non_empty_slots.reduce((highest_slot, current_slot) => {
@@ -136,7 +136,7 @@ const calc_fit_plane = (
             ? current_slot
             : highest_slot;
     });
-    return highest_slot.equip_bonus.aerial_torpedo_power as FitPlane;
+    return highest_slot.equip_bonus.torpedo_power as FitPlane;
 }
 
 type FitSDP = Brand<number, 'FitSDP'>
@@ -154,7 +154,7 @@ const calc_SDP_mod = (
         if (!is_scamp(slot.equip)) return total;
 
         return total += is_torpedo_attack
-            ? slot.equip_bonus.aerial_torpedo_power
+            ? slot.equip_bonus.torpedo_power
             : slot.equip_bonus.aerial_bomb_power;
     }, 0) as FitSDP;
 }
