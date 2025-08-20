@@ -27,7 +27,7 @@ export function calc_Nagato_special_pre_info(
         ) total.has_AP_shell = true;
 
         return total;
-    }, INITIAL);
+    }, { ...INITIAL });
 
     return pre_info;
 }

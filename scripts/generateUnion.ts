@@ -16,7 +16,10 @@ const generate_union_type = (
     const names = Array.from(new Set(matches.map((match) => match[1])));
 
     // 全て数値なら数値リテラル型、そうでなければ文字列リテラル型
-    const isAllNumber = names.every(n => /^\d+$/.test(n));
+    const isAllNumber = names.every(num => {
+        if (!num) throw new Error('正規表現抽出に失敗しました');
+        return /^\d+$/.test(num);
+    });
     const typeDef = [
         '/**',
         ` * ${type_name}ユニオン型 (自動生成)`,
@@ -45,6 +48,13 @@ generate_union_type(
     '../src/types/ship/playerNameJP.ts',
     /name_jp:\s*['\"`]?([^'\"`\n]+)['\"`]?/g,
     'PlayerShipNameJP',
+);
+// 艦娘ID
+generate_union_type(
+    '../src/datas/ship/player.ts',
+    '../src/types/ship/playerShipId.ts',
+    /^\s*(\d+):/gm,
+    'PlayerShipId',
 );
 // 深海棲艦名
 generate_union_type(

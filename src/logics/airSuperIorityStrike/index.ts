@@ -85,7 +85,7 @@ const calc_gun_ship_pre_info = (
         if (is_radar(equip)) acc.has_radar = true;
         if (is_AP_shell(equip)) acc.has_AP_shell = true;
         return acc;
-    }, INITIAL);
+    }, { ...INITIAL });
 }
 
 /**

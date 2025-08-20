@@ -1,5 +1,5 @@
 import { PlayerEquip } from "@/models/equip/basic";
-import { is_married, PlayerNakedShip } from "@/models/ship/naked/base";
+import { is_married, PlayerNakedShip } from "@/models/ship/naked";
 import { Brand } from "@/types/brands";
 import { calc_ship_type_fit_mod, FitPreInfo } from "./accuracy/preInfo";
 import { calc_fit } from "./accuracy/condition";

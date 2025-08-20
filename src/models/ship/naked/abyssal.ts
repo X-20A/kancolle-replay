@@ -1,5 +1,5 @@
-import { brandShipNameEN, ShipId } from "@/types/brands/ship";
-import { AbyssalNakedShip } from "./base";
+import { brandShipNameEN } from "@/types/brands/ship";
+import { AbyssalNakedShip } from ".";
 import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 import { TStatusComponent } from "@/types";
 import { ABYSSAL_SHIP_DATAS } from "@/datas/ship/abyssal";
@@ -14,8 +14,8 @@ export function derive_abyssal_naked_ship(
 
     const status: TStatusComponent = {
         hp: ship_data.HP,
-        shell_power: ship_data.FP,
-        shell_accuracy: 0,
+        fire_power: ship_data.FP,
+        accuracy: 0,
         armor: ship_data.AR,
         torpedo_power: ship_data.TP,
         evasion: ship_data.EV,
@@ -25,10 +25,8 @@ export function derive_abyssal_naked_ship(
         luck: ship_data.LUK,
         range: ship_data.RNG,
         torpedo_accuracy: ship_data.TP_ACC ?? 0,
-        night_battle_accuracy: 0,
         aerial_bomb_power: 0,
-        aerial_torpedo_power: 0,
-    }
+    };
 
     const flags: AbyssalNakedShipFlags = {
         can_OASW: ship_data.can_OASW ?? false,
@@ -51,7 +49,7 @@ export function derive_abyssal_naked_ship(
         is_faraway: is_faraway ?? false,
     };
 
-    return {
+    const ship: AbyssalNakedShip = {
         master_id: id,
         name_en: brandShipNameEN(ship_data.name),
         name_jp: ship_data.name_jp,
@@ -62,7 +60,7 @@ export function derive_abyssal_naked_ship(
         slots: ship_data.SLOTS,
         status,
         flags,
-        dive_bomb_weak_mod: ship_data.dive_bomb_weak_mod ?? 1,
-        land_based_weak_mod: ship_data.land_based_weak_mod ?? 1,
-    }
+    };
+
+    return ship;
 }

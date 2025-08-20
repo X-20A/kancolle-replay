@@ -1,4 +1,4 @@
-import { PlayerNakedShip } from "@/models/ship/naked/base";
+import { PlayerNakedShip } from "@/models/ship/naked";
 import { FitPreInfo } from "./preInfo";
 import { includes_ship_type } from "@/models/ship/equipped";
 import { calc_fit_mold } from "..";

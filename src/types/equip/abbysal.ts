@@ -35,8 +35,6 @@ export type AbyssalEquipData = {
     LOS?: number,
     /** 爆装 */
     AERIAL_BOMB?: number,
-    /** 艦攻雷装 */
-    AERIAL_TP?: number,
     /** 対爆 */
     AB?: number,
     /** 迎撃 */

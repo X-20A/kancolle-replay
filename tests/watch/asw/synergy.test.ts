@@ -1,15 +1,23 @@
-import { calcAswSynergy } from "@/logics/asw/synergy";
-import { pipe } from "fp-ts/lib/function";
+import { calc_ASW_synergy } from "@/logics/asw/synergy";
 import { describe, expect, it } from "vitest"
-import { derive_asw_flags } from "@/models/ship/aswFlags";
+import { derive_ASW_pre_info } from "@/logics/asw/preInfo";
 import { PlayerEquip } from "@/models/equip/basic";
 import { RYUUSEI_IKKOUSEN_SKILLED } from "tests/setups/assets/equips/plane";
 import { NISHIKI_DC, NISHIKI_HAKUGEKI, REISHIKI_SONAR, SANSHIKI_DCP, SANSHIKI_SONAR, TAN_GYORAI_DC } from "tests/setups/assets/equips/asw";
 
 describe('対潜系テスト', () => {
     it('装備の組み合わせごとに正しい対潜シナジーボーナスを返すことを確認', () => {
-        const test = (expected: number, equips: PlayerEquip[]) => {
-            expect(expected).toBe(pipe(equips, derive_asw_flags, calcAswSynergy));
+        const test = (
+            expected: number,
+            equips: PlayerEquip[],
+        ): void => {
+            const pre_info = derive_ASW_pre_info(equips);
+            const result = calc_ASW_synergy(pre_info);
+            //console.log(equips[0]?.name_jp);
+            //console.log('pre_info: ', pre_info);
+            //console.log('result: ', result);
+            expect(expected).toBe(result);
+
         };
 
         test(1, []);

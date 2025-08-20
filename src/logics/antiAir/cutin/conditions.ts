@@ -1,7 +1,7 @@
 import { Country } from "@/datas/equip/bonus";
 import { AACIPreInfo } from "@/logics/antiAir/cutin/preInfo";
 import { equal_ship_name, has_ship_name, includes_ship_name, is_battle_ship_category, is_player_naked_ship } from "@/models/ship/equipped";
-import { NakedShip } from "@/models/ship/naked/base";
+import { NakedShip } from "@/models/ship/naked";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { match } from "ts-pattern";
 

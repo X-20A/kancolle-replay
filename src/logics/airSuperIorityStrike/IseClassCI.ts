@@ -40,7 +40,7 @@ const calc_pre_info = (
         ) total.suisei_count++;
         
         return total;
-    }, INITIAL);
+    }, { ...INITIAL });
 }
 
 export function calc_Ise_class_CI_types (

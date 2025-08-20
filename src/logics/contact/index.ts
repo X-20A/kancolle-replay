@@ -60,7 +60,7 @@ const calc_plane_contact_mod = (
     plane: PlaneEquip,
 ): number => {
     // TODO: この法則がACSimの個別処理と一致するか確認
-    const accuracy = plane.natural_addition.shell_accuracy;
+    const accuracy = plane.natural_addition.accuracy;
     if (accuracy >= 3) return 1.2;
     if (accuracy === 2) return 1.17;
     return 1.12;

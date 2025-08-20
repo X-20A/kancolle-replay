@@ -8,7 +8,7 @@ const calc_surface_shelling_core = (
     base_power: ShellAttackPowerBase,
 ): number => {
     return (
-        + attacker_ship.edited_status.shell_power
+        + attacker_ship.edited_status.fire_power
         + calc_total_improvement_value(attacker_ship, 'shell_power')
         * base_power as ShellingAttackPowerBase
     );
@@ -24,7 +24,7 @@ const calc_normal_CVs_shelling_core = (
     base_power: ShellAttackPowerBase,
 ): number => {
     return (
-        + attacker_ship.edited_status.shell_power
+        + attacker_ship.edited_status.fire_power
         * base_power as ShellingAttackPowerBase
     );
 }

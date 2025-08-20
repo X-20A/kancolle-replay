@@ -1,10 +1,6 @@
 import { brand, Brand } from ".";
 
 /**
- * 艦ID
- */
-export type ShipId = Brand<number, 'ShipId'>
-/**
  * 未改造時 艦ID
  */
 export type ShipBaseId = Brand<number, 'ShipBaseId'>

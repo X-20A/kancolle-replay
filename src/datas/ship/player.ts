@@ -20,7 +20,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 254,
-        prev_id: 0,
+        prev_id: 'None',
     },
     2: {
         name: 'Kisaragi',
@@ -41,7 +41,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 255,
-        prev_id: 0,
+        prev_id: 'None',
     },
     6: {
         name: 'Nagatsuki',
@@ -62,7 +62,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 258,
-        prev_id: 0,
+        prev_id: 'None',
     },
     7: {
         name: 'Mikazuki',
@@ -83,7 +83,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 260,
-        prev_id: 0,
+        prev_id: 'None',
     },
     9: {
         name: 'Fubuki',
@@ -104,7 +104,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 201,
-        prev_id: 0,
+        prev_id: 'None',
     },
     10: {
         name: 'Shirayuki',
@@ -125,7 +125,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 202,
-        prev_id: 0,
+        prev_id: 'None',
     },
     11: {
         name: 'Miyuki',
@@ -146,7 +146,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 204,
-        prev_id: 0,
+        prev_id: 'None',
     },
     12: {
         name: 'Isonami',
@@ -167,7 +167,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 206,
-        prev_id: 0,
+        prev_id: 'None',
     },
     13: {
         name: 'Ayanami',
@@ -188,7 +188,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 207,
-        prev_id: 0,
+        prev_id: 'None',
     },
     14: {
         name: 'Shikinami',
@@ -209,7 +209,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 208,
-        prev_id: 0,
+        prev_id: 'None',
     },
     15: {
         name: 'Akebono',
@@ -230,7 +230,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 231,
-        prev_id: 0,
+        prev_id: 'None',
     },
     16: {
         name: 'Ushio',
@@ -251,7 +251,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 233,
-        prev_id: 0,
+        prev_id: 'None',
     },
     17: {
         name: 'Kagerou',
@@ -272,7 +272,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 225,
-        prev_id: 0,
+        prev_id: 'None',
     },
     18: {
         name: 'Shiranui',
@@ -293,7 +293,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 226,
-        prev_id: 0,
+        prev_id: 'None',
     },
     19: {
         name: 'Kuroshio',
@@ -314,7 +314,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 227,
-        prev_id: 0,
+        prev_id: 'None',
     },
     20: {
         name: 'Yukikaze',
@@ -335,7 +335,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 228,
-        prev_id: 0,
+        prev_id: 'None',
     },
     21: {
         name: 'Nagara',
@@ -356,7 +356,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 218,
-        prev_id: 0,
+        prev_id: 'None',
     },
     22: {
         name: 'Isuzu',
@@ -377,7 +377,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 219,
-        prev_id: 0,
+        prev_id: 'None',
     },
     23: {
         name: 'Yura',
@@ -398,7 +398,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 220,
-        prev_id: 0,
+        prev_id: 'None',
     },
     24: {
         name: 'Ooi',
@@ -419,7 +419,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 57,
-        prev_id: 0,
+        prev_id: 'None',
     },
     25: {
         name: 'Kitakami',
@@ -440,7 +440,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 58,
-        prev_id: 0,
+        prev_id: 'None',
     },
     26: {
         name: 'Fusou',
@@ -462,7 +462,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 85,
         ammo: 120,
         next_id: 286,
-        prev_id: 0,
+        prev_id: 'None',
     },
     27: {
         name: 'Yamashiro',
@@ -484,7 +484,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 85,
         ammo: 120,
         next_id: 287,
-        prev_id: 0,
+        prev_id: 'None',
     },
     28: {
         name: 'Satsuki',
@@ -505,7 +505,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 256,
-        prev_id: 0,
+        prev_id: 'None',
     },
     29: {
         name: 'Fumizuki',
@@ -526,7 +526,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 257,
-        prev_id: 0,
+        prev_id: 'None',
     },
     30: {
         name: 'Kikuzuki',
@@ -547,7 +547,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 259,
-        prev_id: 0,
+        prev_id: 'None',
     },
     31: {
         name: 'Mochizuki',
@@ -568,7 +568,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 261,
-        prev_id: 0,
+        prev_id: 'None',
     },
     32: {
         name: 'Hatsuyuki',
@@ -589,7 +589,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 203,
-        prev_id: 0,
+        prev_id: 'None',
     },
     33: {
         name: 'Murakumo',
@@ -610,7 +610,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 205,
-        prev_id: 0,
+        prev_id: 'None',
     },
     34: {
         name: 'Akatsuki',
@@ -631,7 +631,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 234,
-        prev_id: 0,
+        prev_id: 'None',
     },
     35: {
         name: 'Hibiki',
@@ -652,7 +652,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 235,
-        prev_id: 0,
+        prev_id: 'None',
     },
     36: {
         name: 'Ikazuchi',
@@ -673,7 +673,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 236,
-        prev_id: 0,
+        prev_id: 'None',
     },
     37: {
         name: 'Inazuma',
@@ -694,7 +694,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 237,
-        prev_id: 0,
+        prev_id: 'None',
     },
     38: {
         name: 'Hatsuharu',
@@ -715,7 +715,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 238,
-        prev_id: 0,
+        prev_id: 'None',
     },
     39: {
         name: 'Nenohi',
@@ -736,7 +736,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 239,
-        prev_id: 0,
+        prev_id: 'None',
     },
     40: {
         name: 'Wakaba',
@@ -757,7 +757,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 240,
-        prev_id: 0,
+        prev_id: 'None',
     },
     41: {
         name: 'Hatsushimo',
@@ -778,7 +778,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 241,
-        prev_id: 0,
+        prev_id: 'None',
     },
     42: {
         name: 'Shiratsuyu',
@@ -799,7 +799,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 242,
-        prev_id: 0,
+        prev_id: 'None',
     },
     43: {
         name: 'Shigure',
@@ -820,7 +820,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 243,
-        prev_id: 0,
+        prev_id: 'None',
     },
     44: {
         name: 'Murasame',
@@ -841,7 +841,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 244,
-        prev_id: 0,
+        prev_id: 'None',
     },
     45: {
         name: 'Yuudachi',
@@ -862,7 +862,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 245,
-        prev_id: 0,
+        prev_id: 'None',
     },
     46: {
         name: 'Samidare',
@@ -883,7 +883,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 246,
-        prev_id: 0,
+        prev_id: 'None',
     },
     47: {
         name: 'Suzukaze',
@@ -904,7 +904,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 247,
-        prev_id: 0,
+        prev_id: 'None',
     },
     48: {
         name: 'Arare',
@@ -925,7 +925,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 252,
-        prev_id: 0,
+        prev_id: 'None',
     },
     49: {
         name: 'Kasumi',
@@ -946,7 +946,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 253,
-        prev_id: 0,
+        prev_id: 'None',
     },
     50: {
         name: 'Shimakaze',
@@ -967,7 +967,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 25,
         next_id: 229,
-        prev_id: 0,
+        prev_id: 'None',
     },
     51: {
         name: 'Tenryuu',
@@ -988,7 +988,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 20,
         next_id: 213,
-        prev_id: 0,
+        prev_id: 'None',
     },
     52: {
         name: 'Tatsuta',
@@ -1009,7 +1009,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 20,
         next_id: 214,
-        prev_id: 0,
+        prev_id: 'None',
     },
     53: {
         name: 'Natori',
@@ -1030,7 +1030,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 221,
-        prev_id: 0,
+        prev_id: 'None',
     },
     54: {
         name: 'Sendai',
@@ -1051,7 +1051,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 222,
-        prev_id: 0,
+        prev_id: 'None',
     },
     55: {
         name: 'Jintsuu',
@@ -1072,7 +1072,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 223,
-        prev_id: 0,
+        prev_id: 'None',
     },
     56: {
         name: 'Naka',
@@ -1093,7 +1093,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 224,
-        prev_id: 0,
+        prev_id: 'None',
     },
     57: {
         name: 'Ooi Kai',
@@ -1156,7 +1156,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 50,
         next_id: 262,
-        prev_id: 0,
+        prev_id: 'None',
     },
     60: {
         name: 'Kako',
@@ -1177,7 +1177,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 50,
         next_id: 263,
-        prev_id: 0,
+        prev_id: 'None',
     },
     61: {
         name: 'Aoba',
@@ -1198,7 +1198,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 50,
         next_id: 264,
-        prev_id: 0,
+        prev_id: 'None',
     },
     62: {
         name: 'Myoukou',
@@ -1219,7 +1219,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 265,
-        prev_id: 0,
+        prev_id: 'None',
     },
     63: {
         name: 'Nachi',
@@ -1240,7 +1240,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 266,
-        prev_id: 0,
+        prev_id: 'None',
     },
     64: {
         name: 'Ashigara',
@@ -1261,7 +1261,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 267,
-        prev_id: 0,
+        prev_id: 'None',
     },
     65: {
         name: 'Haguro',
@@ -1282,7 +1282,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 268,
-        prev_id: 0,
+        prev_id: 'None',
     },
     66: {
         name: 'Takao',
@@ -1303,7 +1303,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 269,
-        prev_id: 0,
+        prev_id: 'None',
     },
     67: {
         name: 'Atago',
@@ -1324,7 +1324,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 270,
-        prev_id: 0,
+        prev_id: 'None',
     },
     68: {
         name: 'Maya',
@@ -1345,7 +1345,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 271,
-        prev_id: 0,
+        prev_id: 'None',
     },
     69: {
         name: 'Choukai',
@@ -1366,7 +1366,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 272,
-        prev_id: 0,
+        prev_id: 'None',
     },
     70: {
         name: 'Mogami',
@@ -1387,7 +1387,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 73,
-        prev_id: 0,
+        prev_id: 'None',
     },
     71: {
         name: 'Tone',
@@ -1408,7 +1408,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 45,
         ammo: 60,
         next_id: 273,
-        prev_id: 0,
+        prev_id: 'None',
     },
     72: {
         name: 'Chikuma',
@@ -1429,7 +1429,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 45,
         ammo: 60,
         next_id: 274,
-        prev_id: 0,
+        prev_id: 'None',
     },
     73: {
         name: 'Mogami Kai',
@@ -1471,7 +1471,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 35,
         next_id: 282,
-        prev_id: 0,
+        prev_id: 'None',
     },
     75: {
         name: 'Hiyou',
@@ -1492,7 +1492,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 40,
         next_id: 283,
-        prev_id: 0,
+        prev_id: 'None',
     },
     76: {
         name: 'Ryuujou',
@@ -1513,7 +1513,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 35,
         next_id: 281,
-        prev_id: 0,
+        prev_id: 'None',
     },
     77: {
         name: 'Ise',
@@ -1535,7 +1535,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 85,
         ammo: 120,
         next_id: 82,
-        prev_id: 0,
+        prev_id: 'None',
     },
     78: {
         name: 'Kongou',
@@ -1557,7 +1557,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 80,
         ammo: 110,
         next_id: 209,
-        prev_id: 0,
+        prev_id: 'None',
     },
     79: {
         name: 'Haruna',
@@ -1579,7 +1579,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 80,
         ammo: 110,
         next_id: 211,
-        prev_id: 0,
+        prev_id: 'None',
     },
     80: {
         name: 'Nagato',
@@ -1601,7 +1601,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 100,
         ammo: 130,
         next_id: 275,
-        prev_id: 0,
+        prev_id: 'None',
     },
     81: {
         name: 'Mutsu',
@@ -1623,7 +1623,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 100,
         ammo: 130,
         next_id: 276,
-        prev_id: 0,
+        prev_id: 'None',
     },
     82: {
         name: 'Ise Kai',
@@ -1666,7 +1666,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 60,
         ammo: 55,
         next_id: 277,
-        prev_id: 0,
+        prev_id: 'None',
     },
     84: {
         name: 'Kaga',
@@ -1687,7 +1687,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 60,
         ammo: 55,
         next_id: 278,
-        prev_id: 0,
+        prev_id: 'None',
     },
     85: {
         name: 'Kirishima',
@@ -1709,7 +1709,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 80,
         ammo: 110,
         next_id: 212,
-        prev_id: 0,
+        prev_id: 'None',
     },
     86: {
         name: 'Hiei',
@@ -1731,7 +1731,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 80,
         ammo: 110,
         next_id: 210,
-        prev_id: 0,
+        prev_id: 'None',
     },
     87: {
         name: 'Hyuuga',
@@ -1753,7 +1753,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 85,
         ammo: 120,
         next_id: 88,
-        prev_id: 0,
+        prev_id: 'None',
     },
     88: {
         name: 'Hyuuga Kai',
@@ -1796,7 +1796,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 285,
-        prev_id: 0,
+        prev_id: 'None',
     },
     90: {
         name: 'Souryuu',
@@ -1817,7 +1817,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 50,
         next_id: 279,
-        prev_id: 0,
+        prev_id: 'None',
     },
     91: {
         name: 'Hiryuu',
@@ -1838,7 +1838,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 50,
         next_id: 280,
-        prev_id: 0,
+        prev_id: 'None',
     },
     92: {
         name: 'Junyou',
@@ -1859,7 +1859,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 40,
         next_id: 284,
-        prev_id: 0,
+        prev_id: 'None',
     },
     93: {
         name: 'Oboro',
@@ -1880,7 +1880,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 230,
-        prev_id: 0,
+        prev_id: 'None',
     },
     94: {
         name: 'Sazanami',
@@ -1901,7 +1901,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 232,
-        prev_id: 0,
+        prev_id: 'None',
     },
     95: {
         name: 'Asashio',
@@ -1922,7 +1922,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 248,
-        prev_id: 0,
+        prev_id: 'None',
     },
     96: {
         name: 'Ooshio',
@@ -1943,7 +1943,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 249,
-        prev_id: 0,
+        prev_id: 'None',
     },
     97: {
         name: 'Michishio',
@@ -1964,7 +1964,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 250,
-        prev_id: 0,
+        prev_id: 'None',
     },
     98: {
         name: 'Arashio',
@@ -1985,7 +1985,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 251,
-        prev_id: 0,
+        prev_id: 'None',
     },
     99: {
         name: 'Kuma',
@@ -2006,7 +2006,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 215,
-        prev_id: 0,
+        prev_id: 'None',
     },
     100: {
         name: 'Tama',
@@ -2027,7 +2027,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 216,
-        prev_id: 0,
+        prev_id: 'None',
     },
     101: {
         name: 'Kiso',
@@ -2048,7 +2048,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 217,
-        prev_id: 0,
+        prev_id: 'None',
     },
     102: {
         name: 'Chitose',
@@ -2069,7 +2069,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 35,
         next_id: 104,
-        prev_id: 0,
+        prev_id: 'None',
     },
     103: {
         name: 'Chiyoda',
@@ -2090,7 +2090,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 35,
         next_id: 105,
-        prev_id: 0,
+        prev_id: 'None',
     },
     104: {
         name: 'Chitose Kai',
@@ -2237,7 +2237,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 55,
         ammo: 55,
         next_id: 288,
-        prev_id: 0,
+        prev_id: 'None',
     },
     111: {
         name: 'Zuikaku',
@@ -2258,7 +2258,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 55,
         ammo: 55,
         next_id: 112,
-        prev_id: 0,
+        prev_id: 'None',
     },
     112: {
         name: 'Zuikaku Kai',
@@ -2300,7 +2300,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 289,
-        prev_id: 0,
+        prev_id: 'None',
     },
     114: {
         name: 'Abukuma',
@@ -2321,7 +2321,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 290,
-        prev_id: 0,
+        prev_id: 'None',
     },
     115: {
         name: 'Yuubari',
@@ -2342,7 +2342,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 30,
         next_id: 293,
-        prev_id: 0,
+        prev_id: 'None',
     },
     116: {
         name: 'Zuihou',
@@ -2363,7 +2363,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 35,
         next_id: 117,
-        prev_id: 0,
+        prev_id: 'None',
     },
     117: {
         name: 'Zuihou Kai',
@@ -2404,7 +2404,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 25,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 57,
     },
     119: {
@@ -2425,7 +2425,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 25,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 58,
     },
     120: {
@@ -2447,7 +2447,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 121,
-        prev_id: 0,
+        prev_id: 'None',
     },
     121: {
         name: 'Mikuma Kai',
@@ -2489,7 +2489,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 294,
-        prev_id: 0,
+        prev_id: 'None',
     },
     123: {
         name: 'Kinugasa',
@@ -2510,7 +2510,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 50,
         next_id: 295,
-        prev_id: 0,
+        prev_id: 'None',
     },
     124: {
         name: 'Suzuya',
@@ -2531,7 +2531,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 129,
-        prev_id: 0,
+        prev_id: 'None',
     },
     125: {
         name: 'Kumano',
@@ -2552,7 +2552,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 65,
         next_id: 130,
-        prev_id: 0,
+        prev_id: 'None',
     },
     126: {
         name: 'I-168',
@@ -2573,7 +2573,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 398,
-        prev_id: 0,
+        prev_id: 'None',
     },
     127: {
         name: 'I-58',
@@ -2594,7 +2594,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 399,
-        prev_id: 0,
+        prev_id: 'None',
     },
     128: {
         name: 'I-8',
@@ -2615,7 +2615,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 400,
-        prev_id: 0,
+        prev_id: 'None',
     },
     129: {
         name: 'Suzuya Kai',
@@ -2679,7 +2679,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 250,
         ammo: 300,
         next_id: 136,
-        prev_id: 0,
+        prev_id: 'None',
     },
     132: {
         name: 'Akigumo',
@@ -2700,7 +2700,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 301,
-        prev_id: 0,
+        prev_id: 'None',
     },
     133: {
         name: 'Yuugumo',
@@ -2721,7 +2721,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 302,
-        prev_id: 0,
+        prev_id: 'None',
     },
     134: {
         name: 'Makigumo',
@@ -2742,7 +2742,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 303,
-        prev_id: 0,
+        prev_id: 'None',
     },
     135: {
         name: 'Naganami',
@@ -2763,7 +2763,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 304,
-        prev_id: 0,
+        prev_id: 'None',
     },
     136: {
         name: 'Yamato Kai',
@@ -2806,7 +2806,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 35,
         next_id: 305,
-        prev_id: 0,
+        prev_id: 'None',
     },
     138: {
         name: 'Noshiro',
@@ -2827,7 +2827,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 35,
         next_id: 306,
-        prev_id: 0,
+        prev_id: 'None',
     },
     139: {
         name: 'Yahagi',
@@ -2848,7 +2848,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 35,
         next_id: 307,
-        prev_id: 0,
+        prev_id: 'None',
     },
     140: {
         name: 'Sakawa',
@@ -2869,7 +2869,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 35,
         next_id: 314,
-        prev_id: 0,
+        prev_id: 'None',
     },
     141: {
         name: 'Isuzu Kai 2',
@@ -2889,7 +2889,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 219,
         can_unconditional_OASW: true,
     },
@@ -2911,7 +2911,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 35,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 295,
     },
     143: {
@@ -2934,7 +2934,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 250,
         ammo: 300,
         next_id: 148,
-        prev_id: 0,
+        prev_id: 'None',
     },
     144: {
         name: 'Yuudachi Kai 2',
@@ -2954,7 +2954,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 245,
     },
     145: {
@@ -2996,7 +2996,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 25,
         ammo: 50,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 217,
     },
     147: {
@@ -3017,7 +3017,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 235,
     },
     148: {
@@ -3149,7 +3149,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 70,
         ammo: 65,
         next_id: 156,
-        prev_id: 0,
+        prev_id: 'None',
     },
     154: {
         name: 'Katori',
@@ -3170,7 +3170,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 15,
         next_id: 343,
-        prev_id: 0,
+        prev_id: 'None',
     },
     155: {
         name: 'I-401',
@@ -3191,7 +3191,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 15,
         next_id: 403,
-        prev_id: 0,
+        prev_id: 'None',
     },
     156: {
         name: 'Taihou Kai',
@@ -3211,7 +3211,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [30, 24, 24, 8],
         fuel: 90,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 153,
     },
     157: {
@@ -3232,7 +3232,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 28, 6, 3],
         fuel: 40,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 281,
     },
     158: {
@@ -3253,7 +3253,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 222,
     },
     159: {
@@ -3274,7 +3274,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 223,
     },
     160: {
@@ -3295,7 +3295,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 224,
     },
     161: {
@@ -3317,7 +3317,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 10,
         next_id: 166,
-        prev_id: 0,
+        prev_id: 'None',
     },
     162: {
         name: 'Kamoi',
@@ -3338,7 +3338,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 10,
         next_id: 499,
-        prev_id: 0,
+        prev_id: 'None',
     },
     163: {
         name: 'Maruyu',
@@ -3359,7 +3359,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 5,
         next_id: 402,
-        prev_id: 0,
+        prev_id: 'None',
     },
     164: {
         name: 'Yayoi',
@@ -3380,7 +3380,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 308,
-        prev_id: 0,
+        prev_id: 'None',
     },
     165: {
         name: 'Uzuki',
@@ -3401,7 +3401,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 309,
-        prev_id: 0,
+        prev_id: 'None',
     },
     166: {
         name: 'AkitsuMaru Kai',
@@ -3421,7 +3421,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [8, 8, 8],
         fuel: 45,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 161,
     },
     167: {
@@ -3443,7 +3443,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 320,
-        prev_id: 0,
+        prev_id: 'None',
     },
     168: {
         name: 'Urakaze',
@@ -3464,7 +3464,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 317,
-        prev_id: 0,
+        prev_id: 'None',
     },
     169: {
         name: 'Tanikaze',
@@ -3485,7 +3485,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 313,
-        prev_id: 0,
+        prev_id: 'None',
     },
     170: {
         name: 'Hamakaze',
@@ -3506,7 +3506,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 312,
-        prev_id: 0,
+        prev_id: 'None',
     },
     171: {
         name: 'Bismarck',
@@ -3528,7 +3528,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 90,
         ammo: 110,
         next_id: 172,
-        prev_id: 0,
+        prev_id: 'None',
     },
     172: {
         name: 'Bismarck Kai',
@@ -3593,7 +3593,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 310,
-        prev_id: 0,
+        prev_id: 'None',
     },
     175: {
         name: 'Z3',
@@ -3614,7 +3614,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 311,
-        prev_id: 0,
+        prev_id: 'None',
     },
     176: {
         name: 'PrinzEugen',
@@ -3635,7 +3635,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 70,
         next_id: 177,
-        prev_id: 0,
+        prev_id: 'None',
     },
     177: {
         name: 'PrinzEugen Kai',
@@ -3655,7 +3655,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 55,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 176,
     },
     178: {
@@ -3677,7 +3677,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [4, 4, 4, 4],
         fuel: 110,
         ammo: 155,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 173,
     },
     179: {
@@ -3698,7 +3698,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 310,
     },
     180: {
@@ -3719,7 +3719,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 311,
     },
     181: {
@@ -3741,7 +3741,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 316,
-        prev_id: 0,
+        prev_id: 'None',
     },
     182: {
         name: 'Akashi',
@@ -3762,7 +3762,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 10,
         next_id: 187,
-        prev_id: 0,
+        prev_id: 'None',
     },
     183: {
         name: 'Ooyodo',
@@ -3783,7 +3783,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 30,
         next_id: 321,
-        prev_id: 0,
+        prev_id: 'None',
     },
     184: {
         name: 'Taigei',
@@ -3804,7 +3804,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 10,
         next_id: 185,
-        prev_id: 0,
+        prev_id: 'None',
     },
     185: {
         name: 'Ryuuhou',
@@ -3846,7 +3846,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 322,
-        prev_id: 0,
+        prev_id: 'None',
     },
     187: {
         name: 'Akashi Kai',
@@ -3866,7 +3866,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0, 0],
         fuel: 55,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 182,
     },
     188: {
@@ -3887,7 +3887,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 9, 6],
         fuel: 50,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 273,
     },
     189: {
@@ -3908,7 +3908,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 9, 6],
         fuel: 50,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 274,
     },
     190: {
@@ -3930,7 +3930,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 300,
-        prev_id: 0,
+        prev_id: 'None',
     },
     191: {
         name: 'I-19',
@@ -3951,7 +3951,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 401,
-        prev_id: 0,
+        prev_id: 'None',
     },
     192: {
         name: 'Nachi Kai 2',
@@ -3971,7 +3971,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 4],
         fuel: 45,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 266,
     },
     193: {
@@ -3992,7 +3992,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 4],
         fuel: 45,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 267,
     },
     194: {
@@ -4013,7 +4013,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 4],
         fuel: 45,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 268,
     },
     195: {
@@ -4034,7 +4034,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 207,
     },
     196: {
@@ -4055,7 +4055,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 36, 23, 4],
         fuel: 70,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 280,
     },
     197: {
@@ -4076,7 +4076,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 35, 21, 7],
         fuel: 70,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 279,
     },
     198: {
@@ -4097,7 +4097,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 252,
     },
     199: {
@@ -4118,7 +4118,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 249,
     },
     200: {
@@ -4139,7 +4139,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 290,
     },
     201: {
@@ -4181,7 +4181,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 10,
     },
     203: {
@@ -4202,7 +4202,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 32,
     },
     204: {
@@ -4521,7 +4521,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 21,
     },
     219: {
@@ -4584,7 +4584,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 53,
     },
     222: {
@@ -4752,7 +4752,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 50,
     },
     230: {
@@ -4773,7 +4773,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 93,
     },
     231: {
@@ -4815,7 +4815,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 94,
     },
     233: {
@@ -4899,7 +4899,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 36,
     },
     237: {
@@ -4920,7 +4920,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 37,
     },
     238: {
@@ -4962,7 +4962,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 39,
     },
     240: {
@@ -4983,7 +4983,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 40,
     },
     241: {
@@ -5109,7 +5109,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 46,
     },
     247: {
@@ -5130,7 +5130,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 47,
     },
     248: {
@@ -5361,7 +5361,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 6,
     },
     259: {
@@ -5382,7 +5382,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 30,
     },
     260: {
@@ -5403,7 +5403,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 7,
     },
     261: {
@@ -5424,7 +5424,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 31,
     },
     262: {
@@ -5487,7 +5487,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 35,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 61,
     },
     265: {
@@ -5592,7 +5592,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 40,
         ammo: 70,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 66,
     },
     270: {
@@ -5613,7 +5613,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 40,
         ammo: 70,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 67,
     },
     271: {
@@ -5867,7 +5867,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 12, 12, 6],
         fuel: 40,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 74,
     },
     283: {
@@ -5888,7 +5888,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 18, 18, 12],
         fuel: 45,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 75,
     },
     284: {
@@ -6121,7 +6121,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 122,
     },
     295: {
@@ -6163,7 +6163,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [24, 16, 11, 8],
         fuel: 45,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 291,
     },
     297: {
@@ -6184,7 +6184,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [24, 16, 11, 8],
         fuel: 45,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 292,
     },
     299: {
@@ -6206,7 +6206,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 715,
-        prev_id: 0,
+        prev_id: 'None',
     },
     300: {
         name: 'Hatsukaze Kai',
@@ -6226,7 +6226,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 190,
     },
     301: {
@@ -6331,7 +6331,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2],
         fuel: 30,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 137,
     },
     306: {
@@ -6394,7 +6394,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 164,
     },
     309: {
@@ -6415,7 +6415,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 165,
     },
     310: {
@@ -6520,7 +6520,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2],
         fuel: 30,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 140,
     },
     316: {
@@ -6604,7 +6604,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 4],
         fuel: 45,
         ammo: 75,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 265,
     },
     320: {
@@ -6646,7 +6646,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 6, 6, 0],
         fuel: 35,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 183,
     },
     322: {
@@ -6667,7 +6667,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 186,
     },
     323: {
@@ -6751,7 +6751,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 238,
     },
     327: {
@@ -6772,7 +6772,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 413,
     },
     328: {
@@ -6793,7 +6793,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 414,
     },
     329: {
@@ -6814,7 +6814,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 415,
     },
     330: {
@@ -6835,7 +6835,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 421,
         has_built_in_fire_director: true,
     },
@@ -6858,7 +6858,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 45,
         next_id: 429,
-        prev_id: 0,
+        prev_id: 'None',
     },
     332: {
         name: 'Katsuragi',
@@ -6879,7 +6879,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 45,
         next_id: 430,
-        prev_id: 0,
+        prev_id: 'None',
     },
     334: {
         name: 'U-511 Kai',
@@ -6920,7 +6920,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 35,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 154,
     },
     344: {
@@ -6983,7 +6983,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 422,
         has_built_in_fire_director: true,
     },
@@ -7005,7 +7005,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 443,
     },
     348: {
@@ -7026,7 +7026,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [12, 12, 8],
         fuel: 40,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 451,
     },
     349: {
@@ -7111,7 +7111,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [6, 3, 1],
         fuel: 120,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 460,
     },
     353: {
@@ -7133,7 +7133,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [30, 13, 10, 3],
         fuel: 70,
         ammo: 80,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 432,
     },
     354: {
@@ -7154,7 +7154,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 454,
     },
     355: {
@@ -7175,7 +7175,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 455,
     },
     356: {
@@ -7196,7 +7196,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 35,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 465,
     },
     357: {
@@ -7282,7 +7282,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [4, 4, 4, 4],
         fuel: 200,
         ammo: 275,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 440,
     },
     361: {
@@ -7303,7 +7303,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 45,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 449,
     },
     362: {
@@ -7345,7 +7345,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 473,
     },
     364: {
@@ -7367,7 +7367,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 90,
         ammo: 110,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 439,
     },
     365: {
@@ -7388,7 +7388,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [15, 26, 15, 10],
         fuel: 45,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 444,
     },
     366: {
@@ -7409,7 +7409,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 481,
     },
     367: {
@@ -7430,7 +7430,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 483,
     },
     368: {
@@ -7493,7 +7493,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 472,
     },
     371: {
@@ -7514,7 +7514,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 474,
     },
     372: {
@@ -7535,7 +7535,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [12, 12, 7, 7],
         fuel: 40,
         ammo: 50,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 491,
     },
     373: {
@@ -7577,7 +7577,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 1, 0],
         fuel: 25,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 494,
     },
     375: {
@@ -7598,7 +7598,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 1, 0],
         fuel: 25,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 495,
     },
     376: {
@@ -7619,7 +7619,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 517,
     },
     377: {
@@ -7640,7 +7640,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 518,
     },
     378: {
@@ -7661,7 +7661,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 584,
     },
     379: {
@@ -7682,7 +7682,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 585,
     },
     380: {
@@ -7769,7 +7769,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 524,
     },
     384: {
@@ -7790,7 +7790,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 525,
     },
     385: {
@@ -7811,7 +7811,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 531,
     },
     386: {
@@ -7832,7 +7832,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 540,
     },
     387: {
@@ -7853,7 +7853,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 475,
     },
     390: {
@@ -7895,7 +7895,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 480,
     },
     392: {
@@ -7939,7 +7939,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [24, 32, 12, 12],
         fuel: 65,
         ammo: 60,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 515,
     },
     394: {
@@ -7961,7 +7961,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 519,
     },
     395: {
@@ -7982,7 +7982,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0, 0],
         fuel: 15,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 516,
     },
     396: {
@@ -8024,7 +8024,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [40, 36, 21, 15],
         fuel: 90,
         ammo: 105,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 549,
     },
     398: {
@@ -8045,7 +8045,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 126,
     },
     399: {
@@ -8066,7 +8066,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 127,
     },
     400: {
@@ -8087,7 +8087,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 128,
     },
     401: {
@@ -8108,7 +8108,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 191,
     },
     402: {
@@ -8129,7 +8129,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 163,
     },
     403: {
@@ -8150,7 +8150,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 155,
     },
     404: {
@@ -8172,7 +8172,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 45,
         next_id: 406,
-        prev_id: 0,
+        prev_id: 'None',
     },
     405: {
         name: 'Harusame',
@@ -8193,7 +8193,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 323,
-        prev_id: 0,
+        prev_id: 'None',
     },
     406: {
         name: 'Unryuu Kai',
@@ -8213,7 +8213,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 21, 27, 3],
         fuel: 50,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 404,
     },
     407: {
@@ -8234,7 +8234,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 233,
     },
     408: {
@@ -8255,7 +8255,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [24, 18, 20, 4],
         fuel: 45,
         ammo: 50,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 284,
     },
     409: {
@@ -8277,7 +8277,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 324,
-        prev_id: 0,
+        prev_id: 'None',
     },
     410: {
         name: 'Kiyoshimo',
@@ -8298,7 +8298,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 325,
-        prev_id: 0,
+        prev_id: 'None',
     },
     411: {
         name: 'Fusou Kai 2',
@@ -8319,7 +8319,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [4, 4, 9, 23],
         fuel: 105,
         ammo: 140,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 286,
     },
     412: {
@@ -8341,7 +8341,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [4, 4, 9, 23],
         fuel: 105,
         ammo: 140,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 287,
     },
     413: {
@@ -8363,7 +8363,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 327,
-        prev_id: 0,
+        prev_id: 'None',
     },
     414: {
         name: 'Yamagumo',
@@ -8384,7 +8384,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 328,
-        prev_id: 0,
+        prev_id: 'None',
     },
     415: {
         name: 'Nowaki',
@@ -8405,7 +8405,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 329,
-        prev_id: 0,
+        prev_id: 'None',
     },
     416: {
         name: 'Furutaka Kai 2',
@@ -8425,7 +8425,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 35,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 262,
     },
     417: {
@@ -8446,7 +8446,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 35,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 263,
     },
     418: {
@@ -8467,7 +8467,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 256,
     },
     419: {
@@ -8488,7 +8488,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 241,
     },
     420: {
@@ -8509,7 +8509,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 205,
     },
     421: {
@@ -8531,7 +8531,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 25,
         next_id: 330,
-        prev_id: 0,
+        prev_id: 'None',
         has_built_in_fire_director: true,
     },
     422: {
@@ -8553,7 +8553,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 25,
         next_id: 346,
-        prev_id: 0,
+        prev_id: 'None',
         has_built_in_fire_director: true,
     },
     423: {
@@ -8575,7 +8575,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 25,
         next_id: 357,
-        prev_id: 0,
+        prev_id: 'None',
         has_built_in_fire_director: true,
     },
     424: {
@@ -8597,7 +8597,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 345,
-        prev_id: 0,
+        prev_id: 'None',
     },
     425: {
         name: 'Asashimo',
@@ -8618,7 +8618,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 344,
-        prev_id: 0,
+        prev_id: 'None',
     },
     426: {
         name: 'Fubuki Kai 2',
@@ -8638,7 +8638,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 201,
     },
     427: {
@@ -8659,7 +8659,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 45,
         ammo: 80,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 272,
     },
     428: {
@@ -8680,7 +8680,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 45,
         ammo: 80,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 271,
     },
     429: {
@@ -8701,7 +8701,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 21, 27, 3],
         fuel: 50,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 331,
     },
     430: {
@@ -8722,7 +8722,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 21, 27, 3],
         fuel: 50,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 332,
     },
     431: {
@@ -8744,7 +8744,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 334,
-        prev_id: 0,
+        prev_id: 'None',
     },
     432: {
         name: 'GrafZeppelin',
@@ -8766,7 +8766,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 55,
         ammo: 65,
         next_id: 353,
-        prev_id: 0,
+        prev_id: 'None',
     },
     433: {
         name: 'Saratoga',
@@ -8788,7 +8788,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 65,
         ammo: 70,
         next_id: 438,
-        prev_id: 0,
+        prev_id: 'None',
     },
     434: {
         name: 'Mutsuki Kai 2',
@@ -8808,7 +8808,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 254,
     },
     435: {
@@ -8829,7 +8829,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 255,
     },
     436: {
@@ -8850,7 +8850,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 334,
     },
     437: {
@@ -8871,7 +8871,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 234,
     },
     438: {
@@ -8915,7 +8915,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 90,
         ammo: 110,
         next_id: 364,
-        prev_id: 0,
+        prev_id: 'None',
     },
     440: {
         name: 'Iowa',
@@ -8937,7 +8937,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 200,
         ammo: 250,
         next_id: 360,
-        prev_id: 0,
+        prev_id: 'None',
     },
     441: {
         name: 'Littorio',
@@ -8959,7 +8959,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 130,
         ammo: 150,
         next_id: 446,
-        prev_id: 0,
+        prev_id: 'None',
     },
     442: {
         name: 'Roma',
@@ -8981,7 +8981,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 130,
         ammo: 150,
         next_id: 447,
-        prev_id: 0,
+        prev_id: 'None',
     },
     443: {
         name: 'Libeccio',
@@ -9002,7 +9002,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 347,
-        prev_id: 0,
+        prev_id: 'None',
     },
     444: {
         name: 'Aquila',
@@ -9023,7 +9023,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 45,
         next_id: 365,
-        prev_id: 0,
+        prev_id: 'None',
     },
     445: {
         name: 'Akitsushima',
@@ -9044,7 +9044,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 10,
         next_id: 450,
-        prev_id: 0,
+        prev_id: 'None',
     },
     446: {
         name: 'Italia',
@@ -9065,7 +9065,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 140,
         ammo: 170,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 441,
         is_air_craft_carrier_BB: true,
     },
@@ -9088,7 +9088,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 140,
         ammo: 170,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 442,
         is_air_craft_carrier_BB: true,
     },
@@ -9111,7 +9111,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 45,
         ammo: 60,
         next_id: 358,
-        prev_id: 0,
+        prev_id: 'None',
     },
     449: {
         name: 'Pola',
@@ -9132,7 +9132,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 45,
         ammo: 60,
         next_id: 361,
-        prev_id: 0,
+        prev_id: 'None',
     },
     450: {
         name: 'Akitsushima Kai',
@@ -9152,7 +9152,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 60,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 445,
     },
     451: {
@@ -9174,7 +9174,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 35,
         next_id: 348,
-        prev_id: 0,
+        prev_id: 'None',
     },
     452: {
         name: 'Okinami',
@@ -9195,7 +9195,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 359,
-        prev_id: 0,
+        prev_id: 'None',
     },
     453: {
         name: 'Kazagumo',
@@ -9216,7 +9216,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 349,
-        prev_id: 0,
+        prev_id: 'None',
     },
     454: {
         name: 'Arashi',
@@ -9237,7 +9237,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 354,
-        prev_id: 0,
+        prev_id: 'None',
     },
     455: {
         name: 'Hagikaze',
@@ -9258,7 +9258,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 355,
-        prev_id: 0,
+        prev_id: 'None',
     },
     456: {
         name: 'Oyashio',
@@ -9279,7 +9279,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 362,
-        prev_id: 0,
+        prev_id: 'None',
     },
     457: {
         name: 'Yamakaze',
@@ -9300,7 +9300,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 369,
-        prev_id: 0,
+        prev_id: 'None',
     },
     458: {
         name: 'Umikaze',
@@ -9321,7 +9321,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 350,
-        prev_id: 0,
+        prev_id: 'None',
     },
     459: {
         name: 'Kawakaze',
@@ -9342,7 +9342,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 351,
-        prev_id: 0,
+        prev_id: 'None',
     },
     460: {
         name: 'Hayasui',
@@ -9363,7 +9363,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 100,
         ammo: 15,
         next_id: 352,
-        prev_id: 0,
+        prev_id: 'None',
     },
     461: {
         name: 'Shoukaku Kai 2',
@@ -9468,7 +9468,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 15,
         next_id: 356,
-        prev_id: 0,
+        prev_id: 'None',
     },
     466: {
         name: 'Shoukaku Kai 2A',
@@ -9530,7 +9530,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 463,
     },
     469: {
@@ -9551,7 +9551,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 351,
     },
     470: {
@@ -9594,7 +9594,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 476,
-        prev_id: 0,
+        prev_id: 'None',
     },
     472: {
         name: 'Asakaze',
@@ -9615,7 +9615,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 370,
-        prev_id: 0,
+        prev_id: 'None',
     },
     473: {
         name: 'Harukaze',
@@ -9636,7 +9636,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 363,
-        prev_id: 0,
+        prev_id: 'None',
     },
     474: {
         name: 'Matsukaze',
@@ -9657,7 +9657,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 371,
-        prev_id: 0,
+        prev_id: 'None',
     },
     475: {
         name: 'Hatakaze',
@@ -9678,7 +9678,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 387,
-        prev_id: 0,
+        prev_id: 'None',
     },
     476: {
         name: 'Kamikaze Kai',
@@ -9698,7 +9698,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 471,
     },
     477: {
@@ -9719,7 +9719,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 213,
     },
     478: {
@@ -9741,7 +9741,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 214,
     },
     479: {
@@ -9763,7 +9763,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 390,
-        prev_id: 0,
+        prev_id: 'None',
     },
     480: {
         name: 'Sagiri',
@@ -9784,7 +9784,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 391,
-        prev_id: 0,
+        prev_id: 'None',
     },
     481: {
         name: 'Minazuki',
@@ -9805,7 +9805,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 366,
-        prev_id: 0,
+        prev_id: 'None',
     },
     483: {
         name: 'I-26',
@@ -9826,7 +9826,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 367,
-        prev_id: 0,
+        prev_id: 'None',
     },
     484: {
         name: 'Hamanami',
@@ -9847,7 +9847,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 680,
-        prev_id: 0,
+        prev_id: 'None',
     },
     485: {
         name: 'Fujinami',
@@ -9868,7 +9868,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 373,
-        prev_id: 0,
+        prev_id: 'None',
     },
     486: {
         name: 'Uranami',
@@ -9889,7 +9889,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 368,
-        prev_id: 0,
+        prev_id: 'None',
     },
     487: {
         name: 'Kinu Kai 2',
@@ -9909,7 +9909,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 289,
     },
     488: {
@@ -9930,7 +9930,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 2, 1],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 220,
     },
     489: {
@@ -9951,7 +9951,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 250,
     },
     490: {
@@ -9972,7 +9972,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 251,
     },
     491: {
@@ -9994,7 +9994,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 40,
         next_id: 372,
-        prev_id: 0,
+        prev_id: 'None',
     },
     492: {
         name: 'Richelieu',
@@ -10016,7 +10016,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 100,
         ammo: 125,
         next_id: 392,
-        prev_id: 0,
+        prev_id: 'None',
     },
     493: {
         name: 'I-400',
@@ -10037,7 +10037,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 15,
         next_id: 606,
-        prev_id: 0,
+        prev_id: 'None',
     },
     494: {
         name: 'I-13',
@@ -10058,7 +10058,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 374,
-        prev_id: 0,
+        prev_id: 'None',
     },
     495: {
         name: 'I-14',
@@ -10079,7 +10079,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 375,
-        prev_id: 0,
+        prev_id: 'None',
     },
     496: {
         name: 'Zara due',
@@ -10099,7 +10099,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [6, 3, 3, 3],
         fuel: 50,
         ammo: 80,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 358,
     },
     497: {
@@ -10120,7 +10120,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 242,
     },
     498: {
@@ -10141,7 +10141,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 244,
     },
     499: {
@@ -10183,7 +10183,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 30,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 499,
     },
     501: {
@@ -10331,7 +10331,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [17, 22, 18, 4],
         fuel: 60,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 503,
     },
     509: {
@@ -10353,7 +10353,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [17, 22, 18, 4],
         fuel: 60,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 504,
     },
     511: {
@@ -10376,7 +10376,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 75,
         ammo: 100,
         next_id: 512,
-        prev_id: 0,
+        prev_id: 'None',
     },
     512: {
         name: 'Oktyabrskaya Revolyutsiya',
@@ -10419,7 +10419,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 2, 2],
         fuel: 85,
         ammo: 110,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 512,
     },
     514: {
@@ -10441,7 +10441,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 60,
         next_id: 705,
-        prev_id: 0,
+        prev_id: 'None',
     },
     515: {
         name: 'Ark Royal',
@@ -10462,7 +10462,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 55,
         ammo: 50,
         next_id: 393,
-        prev_id: 0,
+        prev_id: 'None',
     },
     516: {
         name: 'Tashkent',
@@ -10483,7 +10483,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 30,
         next_id: 395,
-        prev_id: 0,
+        prev_id: 'None',
     },
     517: {
         name: 'Shimushu',
@@ -10504,7 +10504,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 376,
-        prev_id: 0,
+        prev_id: 'None',
     },
     518: {
         name: 'Kunashiri',
@@ -10525,7 +10525,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 377,
-        prev_id: 0,
+        prev_id: 'None',
     },
     519: {
         name: 'Jervis',
@@ -10546,7 +10546,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 25,
         next_id: 394,
-        prev_id: 0,
+        prev_id: 'None',
     },
     520: {
         name: 'Janus',
@@ -10567,7 +10567,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 25,
         next_id: 893,
-        prev_id: 0,
+        prev_id: 'None',
     },
     521: {
         name: 'Kasuga Maru',
@@ -10588,7 +10588,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 526,
-        prev_id: 0,
+        prev_id: 'None',
     },
     522: {
         name: 'Yawata Maru',
@@ -10609,7 +10609,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 25,
         next_id: 884,
-        prev_id: 0,
+        prev_id: 'None',
     },
     524: {
         name: 'Etorofu',
@@ -10630,7 +10630,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 383,
-        prev_id: 0,
+        prev_id: 'None',
     },
     525: {
         name: 'Matsuwa',
@@ -10651,7 +10651,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 384,
-        prev_id: 0,
+        prev_id: 'None',
     },
     526: {
         name: 'Taiyou',
@@ -10693,7 +10693,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 686,
-        prev_id: 0,
+        prev_id: 'None',
     },
     528: {
         name: 'Hayanami',
@@ -10714,7 +10714,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 688,
-        prev_id: 0,
+        prev_id: 'None',
     },
     529: {
         name: 'Taiyou Kai 2',
@@ -10736,7 +10736,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [14, 14, 8, 3],
         fuel: 35,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 380,
     },
     530: {
@@ -10757,7 +10757,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 539,
     },
     531: {
@@ -10779,7 +10779,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 385,
-        prev_id: 0,
+        prev_id: 'None',
     },
     532: {
         name: 'Suzutsuki',
@@ -10800,7 +10800,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 25,
         next_id: 537,
-        prev_id: 0,
+        prev_id: 'None',
         has_built_in_fire_director: true,
     },
     533: {
@@ -10823,7 +10823,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 25,
         next_id: 538,
-        prev_id: 0,
+        prev_id: 'None',
     },
     534: {
         name: 'Shinyou',
@@ -10844,7 +10844,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 25,
         next_id: 381,
-        prev_id: 0,
+        prev_id: 'None',
     },
     535: {
         name: 'Luigi Torelli',
@@ -10865,7 +10865,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 605,
-        prev_id: 0,
+        prev_id: 'None',
     },
     536: {
         name: 'Shinyou Kai 2',
@@ -10887,7 +10887,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [9, 18, 18, 6],
         fuel: 35,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 381,
     },
     537: {
@@ -10908,7 +10908,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 532,
         has_built_in_fire_director: true,
     },
@@ -10931,7 +10931,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 533,
     },
     539: {
@@ -10974,7 +10974,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 386,
-        prev_id: 0,
+        prev_id: 'None',
     },
     541: {
         name: 'Nagato Kai 2',
@@ -10996,7 +10996,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 6, 3],
         fuel: 180,
         ammo: 225,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 275,
     },
     542: {
@@ -11017,7 +11017,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 302,
     },
     543: {
@@ -11038,7 +11038,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 304,
     },
     544: {
@@ -11060,7 +11060,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 25,
         ammo: 30,
         next_id: 396,
-        prev_id: 0,
+        prev_id: 'None',
     },
     545: {
         name: 'Saratoga Mk.II',
@@ -11104,7 +11104,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [5, 5, 5, 8, 5],
         fuel: 275,
         ammo: 350,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 148,
     },
     547: {
@@ -11125,7 +11125,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 216,
     },
     548: {
@@ -11146,7 +11146,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 257,
     },
     549: {
@@ -11168,7 +11168,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 75,
         ammo: 80,
         next_id: 397,
-        prev_id: 0,
+        prev_id: 'None',
     },
     550: {
         name: 'Saratoga Mk.II Mod.2',
@@ -11188,7 +11188,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [37, 24, 19, 13],
         fuel: 100,
         ammo: 100,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 545,
     },
     551: {
@@ -11210,7 +11210,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 678,
-        prev_id: 0,
+        prev_id: 'None',
     },
     552: {
         name: 'Daitou',
@@ -11231,7 +11231,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 679,
-        prev_id: 0,
+        prev_id: 'None',
     },
     553: {
         name: 'Ise Kai 2',
@@ -11252,7 +11252,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 22, 22, 9],
         fuel: 110,
         ammo: 145,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 82,
     },
     554: {
@@ -11274,7 +11274,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 8, 24, 12, 11],
         fuel: 115,
         ammo: 140,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 88,
     },
     555: {
@@ -11316,7 +11316,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 317,
     },
     557: {
@@ -11337,7 +11337,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 320,
     },
     558: {
@@ -11358,7 +11358,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 312,
     },
     559: {
@@ -11379,7 +11379,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 313,
     },
     560: {
@@ -11400,7 +11400,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 15, 15, 2],
         fuel: 40,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 555,
     },
     561: {
@@ -11422,7 +11422,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 681,
-        prev_id: 0,
+        prev_id: 'None',
     },
     562: {
         name: 'Johnston',
@@ -11444,7 +11444,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 689,
-        prev_id: 0,
+        prev_id: 'None',
     },
     563: {
         name: 'Makigumo Kai 2',
@@ -11464,7 +11464,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 303,
     },
     564: {
@@ -11485,7 +11485,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 349,
     },
     565: {
@@ -11507,7 +11507,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 685,
-        prev_id: 0,
+        prev_id: 'None',
     },
     566: {
         name: 'Kagerou Kai 2',
@@ -11527,7 +11527,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 225,
     },
     567: {
@@ -11548,7 +11548,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 226,
     },
     568: {
@@ -11569,7 +11569,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 227,
     },
     569: {
@@ -11590,7 +11590,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 359,
     },
     570: {
@@ -11612,7 +11612,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 684,
-        prev_id: 0,
+        prev_id: 'None',
     },
     571: {
         name: 'Nelson',
@@ -11635,7 +11635,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 95,
         ammo: 145,
         next_id: 576,
-        prev_id: 0,
+        prev_id: 'None',
     },
     572: {
         name: 'Rodney',
@@ -11657,7 +11657,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 95,
         ammo: 145,
         next_id: 577,
-        prev_id: 0,
+        prev_id: 'None',
     },
     573: {
         name: 'Mutsu Kai 2',
@@ -11679,7 +11679,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 3, 3, 7],
         fuel: 180,
         ammo: 225,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 276,
     },
     574: {
@@ -11701,7 +11701,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 25,
         next_id: 579,
-        prev_id: 0,
+        prev_id: 'None',
     },
     575: {
         name: 'Maestrale',
@@ -11722,7 +11722,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 580,
-        prev_id: 0,
+        prev_id: 'None',
     },
     576: {
         name: 'Nelson Kai',
@@ -11744,7 +11744,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 2, 2],
         fuel: 95,
         ammo: 175,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 571,
     },
     577: {
@@ -11766,7 +11766,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 2, 2],
         fuel: 95,
         ammo: 175,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 572,
     },
     578: {
@@ -11787,7 +11787,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 344,
     },
     579: {
@@ -11829,7 +11829,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 575,
     },
     581: {
@@ -11851,7 +11851,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 40,
         next_id: 690,
-        prev_id: 0,
+        prev_id: 'None',
     },
     582: {
         name: 'Natsugumo',
@@ -11872,7 +11872,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 721,
-        prev_id: 0,
+        prev_id: 'None',
     },
     583: {
         name: 'Minegumo',
@@ -11893,7 +11893,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 687,
-        prev_id: 0,
+        prev_id: 'None',
     },
     584: {
         name: 'Hachijou',
@@ -11914,7 +11914,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 378,
-        prev_id: 0,
+        prev_id: 'None',
     },
     585: {
         name: 'Ishigaki',
@@ -11935,7 +11935,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 379,
-        prev_id: 0,
+        prev_id: 'None',
     },
     586: {
         name: 'Nisshin A',
@@ -11955,7 +11955,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [8, 8, 12, 4],
         fuel: 40,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 690,
     },
     587: {
@@ -11976,7 +11976,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 350,
     },
     588: {
@@ -12019,7 +12019,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 50,
         next_id: 693,
-        prev_id: 0,
+        prev_id: 'None',
     },
     590: {
         name: 'G.Garibaldi',
@@ -12040,7 +12040,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 50,
         next_id: 691,
-        prev_id: 0,
+        prev_id: 'None',
     },
     591: {
         name: 'Kongou Kai Ni C',
@@ -12062,7 +12062,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 3, 6],
         fuel: 100,
         ammo: 160,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 149,
     },
     592: {
@@ -12085,7 +12085,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 100,
         ammo: 160,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 150,
     },
     593: {
@@ -12150,7 +12150,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 60,
         next_id: 600,
-        prev_id: 0,
+        prev_id: 'None',
     },
     596: {
         name: 'Fletcher',
@@ -12172,7 +12172,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 692,
-        prev_id: 0,
+        prev_id: 'None',
     },
     597: {
         name: 'Atlanta',
@@ -12193,7 +12193,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 50,
         next_id: 696,
-        prev_id: 0,
+        prev_id: 'None',
     },
     598: {
         name: 'Honolulu',
@@ -12214,7 +12214,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 55,
         next_id: 711,
-        prev_id: 0,
+        prev_id: 'None',
     },
     599: {
         name: 'Akagi Kai 2 E',
@@ -12235,7 +12235,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [16, 16, 40, 4, 2],
         fuel: 95,
         ammo: 85,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 594,
     },
     600: {
@@ -12256,7 +12256,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1, 4],
         fuel: 40,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 595,
     },
     601: {
@@ -12279,7 +12279,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 90,
         ammo: 130,
         next_id: 1496,
-        prev_id: 0,
+        prev_id: 'None',
     },
     602: {
         name: 'South Dakota',
@@ -12300,7 +12300,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 150,
         ammo: 190,
         next_id: 697,
-        prev_id: 0,
+        prev_id: 'None',
     },
     603: {
         name: 'Hornet',
@@ -12321,7 +12321,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 60,
         ammo: 65,
         next_id: 704,
-        prev_id: 0,
+        prev_id: 'None',
     },
     604: {
         name: 'De Ruyter',
@@ -12342,7 +12342,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 35,
         next_id: 609,
-        prev_id: 0,
+        prev_id: 'None',
     },
     605: {
         name: 'Luigi Torelli Kai',
@@ -12383,7 +12383,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 493,
     },
     607: {
@@ -12404,7 +12404,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 636,
     },
     609: {
@@ -12425,7 +12425,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 2, 2],
         fuel: 30,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 604,
     },
     610: {
@@ -12469,7 +12469,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 616,
-        prev_id: 0,
+        prev_id: 'None',
     },
     612: {
         name: 'Yashiro',
@@ -12490,7 +12490,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 617,
-        prev_id: 0,
+        prev_id: 'None',
     },
     613: {
         name: 'Perth',
@@ -12511,7 +12511,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 45,
         next_id: 618,
-        prev_id: 0,
+        prev_id: 'None',
     },
     614: {
         name: 'Grecale',
@@ -12532,7 +12532,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 619,
-        prev_id: 0,
+        prev_id: 'None',
     },
     615: {
         name: 'Helena',
@@ -12553,7 +12553,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 55,
         next_id: 620,
-        prev_id: 0,
+        prev_id: 'None',
     },
     616: {
         name: 'Mikura Kai',
@@ -12573,7 +12573,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 611,
     },
     617: {
@@ -12594,7 +12594,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 612,
     },
     618: {
@@ -12615,7 +12615,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 30,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 613,
     },
     619: {
@@ -12636,7 +12636,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 614,
     },
     620: {
@@ -12657,7 +12657,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 2, 4],
         fuel: 35,
         ammo: 60,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 615,
     },
     621: {
@@ -12679,7 +12679,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 5,
         next_id: 626,
-        prev_id: 0,
+        prev_id: 'None',
     },
     622: {
         name: 'Yuubari Kai 2',
@@ -12742,7 +12742,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0, 0, 0],
         fuel: 30,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 623,
     },
     625: {
@@ -12764,7 +12764,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 695,
-        prev_id: 0,
+        prev_id: 'None',
     },
     626: {
         name: 'Shinshuumaru Kai',
@@ -12784,7 +12784,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 8],
         fuel: 40,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 621,
     },
     627: {
@@ -12805,7 +12805,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 208,
     },
     628: {
@@ -12870,7 +12870,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 3, 7],
         fuel: 30,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 579,
     },
     631: {
@@ -12892,7 +12892,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 700,
-        prev_id: 0,
+        prev_id: 'None',
     },
     632: {
         name: 'Ariake',
@@ -12913,7 +12913,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 703,
-        prev_id: 0,
+        prev_id: 'None',
     },
     633: {
         name: 'Yuugure',
@@ -12934,7 +12934,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 725,
-        prev_id: 0,
+        prev_id: 'None',
     },
     634: {
         name: 'Jingei',
@@ -12955,7 +12955,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 10,
         next_id: 639,
-        prev_id: 0,
+        prev_id: 'None',
     },
     635: {
         name: 'Chougei',
@@ -12976,7 +12976,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 10,
         next_id: 640,
-        prev_id: 0,
+        prev_id: 'None',
     },
     636: {
         name: 'I-47',
@@ -12997,7 +12997,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 607,
-        prev_id: 0,
+        prev_id: 'None',
     },
     637: {
         name: 'Kaiboukan No.4',
@@ -13018,7 +13018,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 701,
-        prev_id: 0,
+        prev_id: 'None',
     },
     638: {
         name: 'Kaiboukan No.30',
@@ -13039,7 +13039,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 712,
-        prev_id: 0,
+        prev_id: 'None',
     },
     639: {
         name: 'Jingei Kai',
@@ -13059,7 +13059,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2],
         fuel: 30,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 634,
     },
     640: {
@@ -13080,7 +13080,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2],
         fuel: 30,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 635,
     },
     641: {
@@ -13102,7 +13102,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 702,
-        prev_id: 0,
+        prev_id: 'None',
     },
     642: {
         name: 'Take',
@@ -13123,7 +13123,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 706,
-        prev_id: 0,
+        prev_id: 'None',
     },
     643: {
         name: 'Ume',
@@ -13144,7 +13144,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 716,
-        prev_id: 0,
+        prev_id: 'None',
     },
     644: {
         name: 'Momo',
@@ -13165,7 +13165,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 708,
-        prev_id: 0,
+        prev_id: 'None',
     },
     645: {
         name: 'Souya (AGL)',
@@ -13231,7 +13231,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 368,
     },
     648: {
@@ -13252,7 +13252,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 301,
     },
     649: {
@@ -13273,7 +13273,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 345,
     },
     650: {
@@ -13358,7 +13358,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 658,
-        prev_id: 0,
+        prev_id: 'None',
     },
     654: {
         name: 'Washington',
@@ -13379,7 +13379,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 140,
         ammo: 190,
         next_id: 659,
-        prev_id: 0,
+        prev_id: 'None',
     },
     655: {
         name: 'Northampton',
@@ -13400,7 +13400,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 60,
         next_id: 660,
-        prev_id: 0,
+        prev_id: 'None',
     },
     656: {
         name: 'Yukikaze Kai 2',
@@ -13420,7 +13420,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 651,
     },
     657: {
@@ -13441,7 +13441,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 25,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 652,
     },
     658: {
@@ -13462,7 +13462,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 653,
     },
     659: {
@@ -13483,7 +13483,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 2, 3, 3],
         fuel: 150,
         ammo: 195,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 654,
     },
     660: {
@@ -13504,7 +13504,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1, 4],
         fuel: 40,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 655,
     },
     662: {
@@ -13525,7 +13525,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 4, 2],
         fuel: 35,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 306,
     },
     663: {
@@ -13567,7 +13567,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 231,
     },
     666: {
@@ -13588,7 +13588,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 206,
     },
     667: {
@@ -13651,7 +13651,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 362,
     },
     671: {
@@ -13673,7 +13673,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 709,
-        prev_id: 0,
+        prev_id: 'None',
     },
     674: {
         name: 'Tamanami',
@@ -13694,7 +13694,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 718,
-        prev_id: 0,
+        prev_id: 'None',
     },
     675: {
         name: 'Suzunami',
@@ -13715,7 +13715,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 710,
-        prev_id: 0,
+        prev_id: 'None',
     },
     678: {
         name: 'Hiburi Kai',
@@ -13735,7 +13735,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 551,
     },
     679: {
@@ -13756,7 +13756,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 552,
     },
     680: {
@@ -13777,7 +13777,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 484,
     },
     681: {
@@ -13820,7 +13820,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 570,
     },
     685: {
@@ -13841,7 +13841,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 565,
     },
     686: {
@@ -13862,7 +13862,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 527,
     },
     687: {
@@ -13883,7 +13883,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 583,
     },
     688: {
@@ -13904,7 +13904,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 528,
     },
     689: {
@@ -13926,7 +13926,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 562,
     },
     690: {
@@ -13968,7 +13968,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 40,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 590,
     },
     692: {
@@ -14011,7 +14011,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 2, 2],
         fuel: 40,
         ammo: 55,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 589,
     },
     694: {
@@ -14034,7 +14034,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 3],
         fuel: 100,
         ammo: 160,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 152,
     },
     695: {
@@ -14055,7 +14055,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 625,
     },
     696: {
@@ -14076,7 +14076,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 30,
         ammo: 60,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 597,
     },
     697: {
@@ -14097,7 +14097,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 2, 3, 3],
         fuel: 160,
         ammo: 200,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 602,
     },
     698: {
@@ -14140,7 +14140,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 10,
         next_id: 645,
-        prev_id: 0,
+        prev_id: 'None',
     },
     700: {
         name: 'Usugumo Kai',
@@ -14160,7 +14160,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 631,
     },
     701: {
@@ -14181,7 +14181,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 637,
     },
     702: {
@@ -14202,7 +14202,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 641,
     },
     703: {
@@ -14223,7 +14223,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 632,
     },
     704: {
@@ -14244,7 +14244,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [36, 19, 19, 16],
         fuel: 70,
         ammo: 80,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 603,
     },
     705: {
@@ -14265,7 +14265,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1, 3],
         fuel: 40,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 514,
     },
     706: {
@@ -14286,7 +14286,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 642,
     },
     707: {
@@ -14307,7 +14307,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [24, 20, 4, 1],
         fuel: 30,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 396,
     },
     708: {
@@ -14328,7 +14328,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 644,
     },
     709: {
@@ -14349,7 +14349,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 671,
     },
     710: {
@@ -14370,7 +14370,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 675,
     },
     711: {
@@ -14391,7 +14391,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 2, 4],
         fuel: 35,
         ammo: 60,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 598,
     },
     712: {
@@ -14412,7 +14412,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 638,
     },
     713: {
@@ -14433,7 +14433,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [18, 18, 19, 2],
         fuel: 75,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 885,
     },
     714: {
@@ -14454,7 +14454,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 895,
     },
     715: {
@@ -14475,7 +14475,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 299,
     },
     716: {
@@ -14496,7 +14496,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 643,
     },
     717: {
@@ -14518,7 +14518,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [8, 6, 2],
         fuel: 35,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 900,
     },
     718: {
@@ -14539,7 +14539,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 674,
     },
     719: {
@@ -14560,7 +14560,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 20,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 881,
     },
     720: {
@@ -14602,7 +14602,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 582,
     },
     722: {
@@ -14623,7 +14623,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 2, 4],
         fuel: 35,
         ammo: 60,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 896,
     },
     723: {
@@ -14644,7 +14644,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [28, 30, 24, 4],
         fuel: 65,
         ammo: 70,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 931,
     },
     724: {
@@ -14666,7 +14666,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 100,
         ammo: 130,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 935,
     },
     725: {
@@ -14687,7 +14687,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 633,
     },
     726: {
@@ -14709,7 +14709,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 941,
     },
     727: {
@@ -14731,7 +14731,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 945,
     },
     728: {
@@ -14752,7 +14752,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 898,
     },
     729: {
@@ -14773,7 +14773,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 964,
     },
     730: {
@@ -14836,7 +14836,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 892,
     },
     733: {
@@ -14857,7 +14857,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [3, 3, 3, 3],
         fuel: 90,
         ammo: 110,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 927,
     },
     734: {
@@ -14900,7 +14900,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [22, 38, 20, 13],
         fuel: 85,
         ammo: 90,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 966,
     },
     877: {
@@ -14922,7 +14922,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 70,
         ammo: 105,
         next_id: 878,
-        prev_id: 0,
+        prev_id: 'None',
     },
     878: {
         name: 'Conte di Cavour Kai',
@@ -14963,7 +14963,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 3, 4],
         fuel: 85,
         ammo: 115,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 878,
     },
     881: {
@@ -14985,7 +14985,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 719,
-        prev_id: 0,
+        prev_id: 'None',
     },
     882: {
         name: 'I-203',
@@ -15006,7 +15006,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 887,
-        prev_id: 0,
+        prev_id: 'None',
     },
     883: {
         name: 'Ryuuhou Kai 2 E',
@@ -15070,7 +15070,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 65,
         ammo: 55,
         next_id: 713,
-        prev_id: 0,
+        prev_id: 'None',
     },
     886: {
         name: 'Hayashio',
@@ -15091,7 +15091,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 720,
-        prev_id: 0,
+        prev_id: 'None',
     },
     887: {
         name: 'I-203 Kai',
@@ -15111,7 +15111,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 20,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 882,
     },
     888: {
@@ -15155,7 +15155,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [14, 20, 5, 2],
         fuel: 35,
         ammo: 35,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 382,
     },
     891: {
@@ -15177,7 +15177,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 15,
         next_id: 897,
-        prev_id: 0,
+        prev_id: 'None',
     },
     892: {
         name: 'Drum',
@@ -15198,7 +15198,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 732,
-        prev_id: 0,
+        prev_id: 'None',
     },
     893: {
         name: 'Janus Kai',
@@ -15219,7 +15219,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 520,
     },
     894: {
@@ -15262,7 +15262,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 714,
-        prev_id: 0,
+        prev_id: 'None',
     },
     896: {
         name: 'Brooklyn',
@@ -15283,7 +15283,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 55,
         next_id: 722,
-        prev_id: 0,
+        prev_id: 'None',
     },
     897: {
         name: 'Salmon Kai',
@@ -15303,7 +15303,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 891,
     },
     898: {
@@ -15325,7 +15325,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 728,
-        prev_id: 0,
+        prev_id: 'None',
     },
     899: {
         name: 'Houshou Kai 2 Sen',
@@ -15367,7 +15367,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 15,
         next_id: 717,
-        prev_id: 0,
+        prev_id: 'None',
     },
     901: {
         name: 'Javelin',
@@ -15388,7 +15388,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 25,
         next_id: 906,
-        prev_id: 0,
+        prev_id: 'None',
     },
     903: {
         name: 'Amagiri Kai 2',
@@ -15431,7 +15431,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 909,
-        prev_id: 0,
+        prev_id: 'None',
     },
     905: {
         name: 'Kurahashi',
@@ -15452,7 +15452,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 910,
-        prev_id: 0,
+        prev_id: 'None',
     },
     906: {
         name: 'Javelin Kai',
@@ -15473,7 +15473,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 901,
     },
     908: {
@@ -15516,7 +15516,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 904,
     },
     910: {
@@ -15537,7 +15537,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 905,
     },
     911: {
@@ -15583,7 +15583,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 90,
         ammo: 130,
         next_id: 918,
-        prev_id: 0,
+        prev_id: 'None',
     },
     915: {
         name: 'Hayashio Kai 2',
@@ -15603,7 +15603,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 720,
     },
     916: {
@@ -15648,7 +15648,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1, 2],
         fuel: 95,
         ammo: 165,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 913,
     },
     920: {
@@ -15670,7 +15670,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 681,
     },
     921: {
@@ -15692,7 +15692,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 926,
-        prev_id: 0,
+        prev_id: 'None',
     },
     922: {
         name: 'Inagi',
@@ -15713,7 +15713,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 10,
         next_id: 730,
-        prev_id: 0,
+        prev_id: 'None',
     },
     923: {
         name: 'Tuscaloosa',
@@ -15734,7 +15734,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 60,
         next_id: 928,
-        prev_id: 0,
+        prev_id: 'None',
     },
     924: {
         name: 'Nevada',
@@ -15755,7 +15755,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 85,
         ammo: 120,
         next_id: 929,
-        prev_id: 0,
+        prev_id: 'None',
     },
     925: {
         name: 'Langley',
@@ -15776,7 +15776,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 40,
         next_id: 930,
-        prev_id: 0,
+        prev_id: 'None',
     },
     926: {
         name: 'Ukuru Kai',
@@ -15796,7 +15796,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 921,
     },
     927: {
@@ -15818,7 +15818,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 90,
         ammo: 110,
         next_id: 733,
-        prev_id: 0,
+        prev_id: 'None',
     },
     928: {
         name: 'Tuscaloosa Kai',
@@ -15838,7 +15838,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 2, 5],
         fuel: 40,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 923,
     },
     929: {
@@ -15880,7 +15880,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [24, 16, 4, 1],
         fuel: 40,
         ammo: 45,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 925,
     },
     931: {
@@ -15902,7 +15902,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 50,
         ammo: 55,
         next_id: 723,
-        prev_id: 0,
+        prev_id: 'None',
     },
     933: {
         name: 'Massachusetts',
@@ -15923,7 +15923,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 150,
         ammo: 190,
         next_id: 938,
-        prev_id: 0,
+        prev_id: 'None',
     },
     934: {
         name: 'C.Cappellini',
@@ -15944,7 +15944,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 731,
-        prev_id: 0,
+        prev_id: 'None',
     },
     935: {
         name: 'Jean Bart',
@@ -15965,7 +15965,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 100,
         ammo: 125,
         next_id: 724,
-        prev_id: 0,
+        prev_id: 'None',
     },
     936: {
         name: 'Nevada Kai Mod.2',
@@ -15985,7 +15985,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 2, 2],
         fuel: 90,
         ammo: 150,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 929,
     },
     938: {
@@ -16006,7 +16006,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 2, 3, 3],
         fuel: 160,
         ammo: 200,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 933,
     },
     939: {
@@ -16048,7 +16048,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 939,
     },
     941: {
@@ -16070,7 +16070,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 726,
-        prev_id: 0,
+        prev_id: 'None',
     },
     943: {
         name: 'Kumano Maru',
@@ -16091,7 +16091,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 15,
         next_id: 948,
-        prev_id: 0,
+        prev_id: 'None',
     },
     944: {
         name: 'Heian Maru',
@@ -16112,7 +16112,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 10,
         next_id: 949,
-        prev_id: 0,
+        prev_id: 'None',
     },
     945: {
         name: 'No.101 Transport Ship',
@@ -16134,7 +16134,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 5,
         next_id: 727,
-        prev_id: 0,
+        prev_id: 'None',
     },
     948: {
         name: 'Kumano Maru Kai',
@@ -16154,7 +16154,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [8, 8, 2],
         fuel: 45,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 943,
     },
     949: {
@@ -16175,7 +16175,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1],
         fuel: 30,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 944,
     },
     951: {
@@ -16196,7 +16196,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 316,
     },
     952: {
@@ -16218,7 +16218,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 55,
         next_id: 734,
-        prev_id: 0,
+        prev_id: 'None',
     },
     953: {
         name: 'Asahi',
@@ -16239,7 +16239,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 35,
         ammo: 5,
         next_id: 958,
-        prev_id: 0,
+        prev_id: 'None',
     },
     954: {
         name: 'Haruna Kai 2 C',
@@ -16302,7 +16302,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 324,
     },
     957: {
@@ -16323,7 +16323,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1, 3],
         fuel: 55,
         ammo: 95,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 734,
     },
     958: {
@@ -16344,7 +16344,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 40,
         ammo: 5,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 953,
     },
     959: {
@@ -16365,7 +16365,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 204,
     },
     960: {
@@ -16407,7 +16407,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 145,
     },
     962: {
@@ -16429,7 +16429,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 35,
         next_id: 967,
-        prev_id: 0,
+        prev_id: 'None',
     },
     964: {
         name: 'Shirakumo',
@@ -16450,7 +16450,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 20,
         next_id: 729,
-        prev_id: 0,
+        prev_id: 'None',
     },
     965: {
         name: 'Gloire',
@@ -16471,7 +16471,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 40,
         next_id: 970,
-        prev_id: 0,
+        prev_id: 'None',
     },
     966: {
         name: 'Lexington',
@@ -16493,7 +16493,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 65,
         ammo: 70,
         next_id: 735,
-        prev_id: 0,
+        prev_id: 'None',
     },
     967: {
         name: 'Mogador Kai',
@@ -16513,7 +16513,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0, 0],
         fuel: 15,
         ammo: 40,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 962,
     },
     968: {
@@ -16534,7 +16534,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0, 0],
         fuel: 25,
         ammo: 30,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 357,
     },
     969: {
@@ -16556,7 +16556,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [2, 2, 4, 4],
         fuel: 195,
         ammo: 280,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 392,
     },
     970: {
@@ -16577,7 +16577,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 2, 2, 2],
         fuel: 35,
         ammo: 50,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 965,
     },
     971: {
@@ -16599,7 +16599,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 976,
-        prev_id: 0,
+        prev_id: 'None',
     },
     972: {
         name: 'I-41',
@@ -16620,7 +16620,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 977,
-        prev_id: 0,
+        prev_id: 'None',
     },
     975: {
         name: 'Harusame Kai 2',
@@ -16640,7 +16640,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 323,
     },
     976: {
@@ -16661,7 +16661,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 2],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 971,
     },
     977: {
@@ -16682,7 +16682,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 2],
         fuel: 10,
         ammo: 25,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 972,
     },
     979: {
@@ -16703,7 +16703,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 10,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 730,
     },
     1496: {
@@ -16725,7 +16725,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 1, 2],
         fuel: 95,
         ammo: 165,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 601,
     },
     981: {
@@ -16746,7 +16746,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 373,
     },
     986: {
@@ -16767,7 +16767,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 202,
     },
     987: {
@@ -16788,7 +16788,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 203,
     },
 
@@ -16811,7 +16811,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 997,
-        prev_id: 0,
+        prev_id: 'None',
     },
     997: {
         name: 'Sugi Kai',
@@ -16831,7 +16831,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 992,
     },
     994: {
@@ -16853,7 +16853,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 15,
         next_id: 736,
-        prev_id: 0,
+        prev_id: 'None',
     },
     736: {
         name: 'Kaya Kai',
@@ -16873,7 +16873,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 15,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 994,
     },
     995: {
@@ -16895,7 +16895,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 15,
         ammo: 5,
         next_id: 1000,
-        prev_id: 0,
+        prev_id: 'None',
     },
     1000: {
         name: 'Ootomari Kai',
@@ -16915,7 +16915,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 15,
         ammo: 10,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 995,
     },
     1001: {
@@ -16937,7 +16937,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 30,
         ammo: 45,
         next_id: 1006,
-        prev_id: 0,
+        prev_id: 'None',
     },
     1006: {
         name: 'Kirov Kai',
@@ -16957,7 +16957,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 2, 1],
         fuel: 30,
         ammo: 60,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 1001,
     },
     1003: {
@@ -16979,7 +16979,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 20,
         next_id: 1008,
-        prev_id: 0,
+        prev_id: 'None',
     },
     1008: {
         name: 'Shimane Maru Kai',
@@ -17002,7 +17002,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [12, 6, 4],
         fuel: 40,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 1003,
     },
     1005: {
@@ -17024,7 +17024,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 40,
         ammo: 60,
         next_id: 1010,
-        prev_id: 0,
+        prev_id: 'None',
     },
     1010: {
         name: 'Minneapolis Kai',
@@ -17044,7 +17044,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [1, 1, 4, 2],
         fuel: 40,
         ammo: 65,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 1005,
     },
     942: {
@@ -17066,7 +17066,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 20,
         ammo: 20,
         next_id: 737,
-        prev_id: 0,
+        prev_id: 'None',
     },
     737: {
         name: 'Richard P. Leary Kai',
@@ -17087,7 +17087,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 20,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 942,
     },
     983: {
@@ -17108,7 +17108,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0, 0],
         fuel: 15,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 680,
     },
     984: {
@@ -17130,7 +17130,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         fuel: 10,
         ammo: 20,
         next_id: 989,
-        prev_id: 0,
+        prev_id: 'None',
     },
     989: {
         name: 'Wahoo Kai',
@@ -17150,7 +17150,7 @@ export const PLAYER_SHIP_DATAS: ShipDatas = {
         SLOTS: [0, 0],
         fuel: 10,
         ammo: 20,
-        next_id: 0,
+        next_id: 'None',
         prev_id: 984,
     },
 }

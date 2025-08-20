@@ -129,7 +129,7 @@ export function calc_lbas_accuracy(
     // NOTE: 熟練度補正は関係無し
     const accuracy = (
         ACCURACY_CONSTANT
-        + 7 * unit.natural_addition.shell_accuracy * mod_boss
+        + 7 * unit.natural_addition.accuracy * mod_boss
         + acc_sp
     ) * balloon_mod * combined_fleet_mod;
 

@@ -1,5 +1,5 @@
 import { PlayerEquippedShip } from "@/models/ship/equipped";
-import { calcAswSynergy } from "./synergy";
+import { calc_ASW_synergy } from "./synergy";
 
 /*
 export function calcAswPower(ship: PlayerEquippedShip): number {

@@ -293,7 +293,7 @@ export function calc_anti_install_pre_info(
         if (type_id === 'JET_BOMBER') total.jet_bomber_count++;
 
         return total;
-    }, INITIAL);
+    }, { ...INITIAL });
 
     return add_utils(pre_info);
 }

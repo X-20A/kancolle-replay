@@ -1,17 +1,18 @@
-import { brandShipBaseId, brandShipId, brandShipNameEN, ShipBaseId, ShipId, ShipLv } from "@/types/brands/ship";
-import { PlayerNakedShip } from "./base";
+import { brandShipBaseId, brandShipNameEN, ShipBaseId, ShipLv } from "@/types/brands/ship";
+import { PlayerNakedShip } from ".";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { COUNTRY_DATAS } from "@/datas/ship/country";
 import { TStatusComponent } from "@/types";
 import { PlayerNakedShipFlags } from "@/types/ship/ship";
+import { PlayerShipId } from "@/types/ship/playerShipId";
 
-const calc_base_id = (current_id: ShipId): ShipBaseId => {
+const calc_base_id = (current_id: PlayerShipId): ShipBaseId => {
     let id = current_id;
 
     while (true) {
         const data = PLAYER_SHIP_DATAS[id];
-        if (data.prev_id === 0) break;
-        id = brandShipId(data.prev_id);
+        if (data.prev_id === 'None') break;
+        id = data.prev_id;
     }
 
     return brandShipBaseId(id);
@@ -39,7 +40,7 @@ const calc_status_from_level = (
 
 export function derive_player_naked_ship(
     ship_lv: ShipLv,
-    id: ShipId,
+    id: PlayerShipId,
 ): PlayerNakedShip {
     const ship_data = PLAYER_SHIP_DATAS[id];
     if (!ship_data) throw new Error(`id: ${id}の艦が見つかりませんでした`);
@@ -49,7 +50,7 @@ export function derive_player_naked_ship(
 
     const status: TStatusComponent = {
         hp: ship_data.HP,
-        shell_power: ship_data.FP,
+        fire_power: ship_data.FP,
         armor: ship_data.AR,
         torpedo_power: ship_data.TP,
         evasion: calc_status_from_level(ship_data.EVbase, ship_data.EV, ship_lv),
@@ -58,12 +59,10 @@ export function derive_player_naked_ship(
         los: calc_status_from_level(ship_data.LOSbase, ship_data.LOS, ship_lv),
         luck: ship_data.LUK,
         range: ship_data.RNG,
-        shell_accuracy: 0,
+        accuracy: 0,
         torpedo_accuracy: 0,
-        night_battle_accuracy: 0,
         aerial_bomb_power: 0,
-        aerial_torpedo_power: 0,
-    }
+    };
 
     const flags: PlayerNakedShipFlags = {
         has_advantage_OASW_CVs: ship_data.has_advantage_OASW_CVs ?? false,
@@ -78,7 +77,7 @@ export function derive_player_naked_ship(
         has_ASW_potential_CV: ship_data.has_ASW_potential_CV ?? false,
     };
 
-    return {
+    const ship: PlayerNakedShip = {
         master_id: id,
         lv: ship_lv,
         base_id: calc_base_id(id),
@@ -93,5 +92,7 @@ export function derive_player_naked_ship(
         base_fuel: ship_data.fuel,
         base_ammo: ship_data.ammo,
         flags,
-    }
+    };
+
+    return ship;
 }

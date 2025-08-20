@@ -1,6 +1,6 @@
 import { AbyssalEquip, PlayerEquip } from "@/models/equip/basic";
 import { AswEquipFlags, PlayerNakedShipFlags } from "@/types/ship/ship";
-import { derive_asw_flags } from "../aswFlags";
+import { derive_ASW_pre_info } from "../../../logics/asw/preInfo";
 import { AbyssalNakedShipFlags } from "@/types/ship/abyssal";
 
 export type PlayerShipFlags = PlayerNakedShipFlags & {
@@ -17,7 +17,7 @@ export function derive_player_equipped_ship_flags(
     naked_ship_flags: PlayerNakedShipFlags,
     equips: PlayerEquip[],
 ): PlayerShipFlags {
-    const asw_equip = derive_asw_flags(equips);
+    const asw_equip = derive_ASW_pre_info(equips);
 
     const has_balloon = equips.some(equip => equip.type_id === 'BARRAGE_BALLOON');
 

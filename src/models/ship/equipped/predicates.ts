@@ -5,7 +5,7 @@ import { PlayerShipClass } from "@/types/ship/shipClass";
 import { ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
 import { WeightedAntiAir } from "@/types/brands/other";
 import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
-import { NakedShip, PlayerNakedShip } from "../naked/base";
+import { NakedShip, PlayerNakedShip } from "../naked";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
 import { ShipStateBase, PlayerShipState } from "../state";

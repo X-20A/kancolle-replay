@@ -96,7 +96,7 @@ const calc_acc_base = (
 const calc_acc_equip = (
     attacker_ship: EquippedShip,
 ): number => {
-    return attacker_ship.total_natural_equip_addition.shell_accuracy
+    return attacker_ship.total_natural_equip_addition.accuracy
         + calc_total_improvement_value(attacker_ship, 'shell_accuracy');
 }
 

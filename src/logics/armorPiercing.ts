@@ -41,7 +41,7 @@ const calc_pre_info = (
         if (skill_type === 'B_SEC_GUN') acc.has_sec_gun = true;
         if (skill_type === 'B_RADAR') acc.has_radar = true;
         return acc;
-    }, INITIAL);
+    }, { ...INITIAL });
 }
 
 export function calc_AP_type(

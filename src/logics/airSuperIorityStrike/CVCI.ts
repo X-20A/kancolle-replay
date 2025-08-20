@@ -42,7 +42,7 @@ const calc_pre_info = (
         if (is_dive_bomber(equip)) total.dive_bomber_count++;
         if (is_torpedo_bomber(equip)) total.has_torpedo_bomber = true;
         return total;
-    }, INITIAL);
+    }, { ...INITIAL });
 }
 
 /**

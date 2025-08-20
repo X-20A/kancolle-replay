@@ -48,9 +48,9 @@ export function calc_accuracy_of_triggered_night_scout(
             ) continue;
 
             const best_night_scout_accuracy =
-                best_night_scout?.natural_addition.shell_accuracy || 0;
+                best_night_scout?.natural_addition.accuracy || 0;
             const night_scout_accuracy =
-                night_scout.natural_addition.shell_accuracy;
+                night_scout.natural_addition.accuracy;
             if (
                 // NOTE: 命中値の高いものを優先
                 // https://x.com/CC_jabberwock/status/1542501537036939265
@@ -62,7 +62,7 @@ export function calc_accuracy_of_triggered_night_scout(
 
     return best_night_scout === null
         ? 'None'
-        : best_night_scout.natural_addition.shell_accuracy;
+        : best_night_scout.natural_addition.accuracy;
 }
 
 export type ShellPowerNightScoutMod = Brand<number, 'ShellPowerNightScoutMod'>

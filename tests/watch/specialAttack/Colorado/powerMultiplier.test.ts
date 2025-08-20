@@ -1,5 +1,5 @@
-import { calc_Colorado_special_pre_info } from "@/logics/SpecialAttack/Colorado/multiplier";
 import { calc_Colorado_special_power_mod } from "@/logics/SpecialAttack/Colorado/multiplier/power";
+import { calc_Colorado_special_pre_info } from "@/logics/SpecialAttack/Colorado/multiplier/preInfo";
 import { AffiliationFleetType, derive_player_fleet_unit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { AP_SHELL_91 } from "tests/setups/assets/equips/other";
 import { SG_LATE_RADAR, SURFACE_22 } from "tests/setups/assets/equips/radar";
@@ -21,6 +21,7 @@ describe('Colorado級特殊攻撃テスト', () => {
         ): void => {
             const pre_info = calc_Colorado_special_pre_info(unit.ship.equip_slots);
             const power_mod = calc_Colorado_special_power_mod(unit, pre_info);
+            console.log('power_mod: ', power_mod);
 
             // 1.5 * 1.35 * 1.15
             // 1.5 * 1.15 * 1.35

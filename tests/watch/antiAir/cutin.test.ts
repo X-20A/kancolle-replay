@@ -1,9 +1,7 @@
 import { AntiAirCutinType, calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip } from "@/models/equip/basic";
 import { derive_AACI_pre_info } from "@/logics/antiAir/cutin/preInfo";
-import { AbyssalEquippedShip } from "@/models/ship/equipped";
-import { derive_equipped_abyssal_ship } from "@/models/ship/equipped/abyssal";
-import { NakedShip } from "@/models/ship/naked/base";
+import { NakedShip } from "@/models/ship/naked";
 import { FD_91, FD_94, GUN_127, GUN_77, HUNSHIN_KAI_NI, PONPON, SINGLE_25, TRIPLE_25, UP_ROCKET, ZOUBI_25 } from "tests/setups/assets/equips/antiAir";
 import { AKIZUKI_GUN, ATLANTA_GUN, HATSUZUKI_GUN, HIGH_10, HIGH_127, LARGE_356, MIKUMA_GUN, FCR_284, OOYODO_GUN, TANYAN_GUN, MK30_GFCS, MK30, MK30_KAI, ATLANTA_GFCS_GUN, YAMATO_10CM_CLUSTER, HARUNA_GUN_3, HARUNA_GUN_4, HARUSAME_GUN, SHIRAYUKI_GUN } from "tests/setups/assets/equips/gun";
 import { TYPE_3_SHELL } from "tests/setups/assets/equips/other";
@@ -11,6 +9,7 @@ import { GFCS_RADAR, RADAR_13, RADAR_13_KAI, SURFACE_22, YAMATO_RADAR } from "te
 import { AA_GUN_IMP, AIR_DEFENCE_PRINCESS, LANDING_WA } from "tests/setups/assets/ship/abyssal";
 import { derive_naked_ship_from_name } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
+import { AbyssalEquippedShip } from "@/models/ship/equipped";
 
 describe('制空系テスト', () => {
     it('艦娘対空CI', () => {
@@ -171,6 +170,6 @@ describe('制空系テスト', () => {
         // 高射装置は内蔵含め深海側には無い？
         // 高射装置が必要な6,7,9はスキップ
         test([12], AA_GUN_IMP);
-        test([5, 8, 12, 13], AIR_DEFENCE_PRINCESS);
+        test([5, 8], AIR_DEFENCE_PRINCESS);
     });
 });

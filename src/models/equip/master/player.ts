@@ -16,7 +16,7 @@ export function derive_player_equip_master(
     
     const status: TStatusComponent = {
         hp: 0,
-        shell_power: equip_data.FP ?? 0,
+        fire_power: equip_data.FP ?? 0,
         armor: equip_data.AR ?? 0,
         torpedo_power: equip_data.TP ?? 0,
         evasion: equip_data.EV ?? 0,
@@ -25,11 +25,9 @@ export function derive_player_equip_master(
         los: equip_data.LOS ?? 0,
         luck: 0,
         range: equip_data.RNG ?? 0,
-        shell_accuracy: equip_data.ACC ?? 0,
+        accuracy: equip_data.ACC ?? 0,
         torpedo_accuracy: 0,
-        night_battle_accuracy: 0,
         aerial_bomb_power: equip_data.AERIAL_BOMB ?? 0,
-        aerial_torpedo_power: equip_data.AERIAL_TP ?? 0,
     }
 
     const type_data = EQUIP_TYPE_DATAS[type_id];

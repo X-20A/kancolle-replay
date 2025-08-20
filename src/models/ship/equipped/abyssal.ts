@@ -1,7 +1,6 @@
-import { brandShipLv, brandUniqueId, ShipId } from "@/types/brands/ship";
+import { brandShipLv, brandUniqueId } from "@/types/brands/ship";
 import { AbyssalEquippedShip, merge_status_components_with_max_range } from ".";
 import { derive_abyssal_naked_ship } from "../naked/abyssal";
-import { brandEquipId } from "@/types/brands/equip";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { PlayerEquippedShipOptions } from "./player";
@@ -49,7 +48,7 @@ export function derive_equipped_abyssal_ship(
     const prepare_AACI_info = derive_AACI_pre_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
-    return {
+    const ship: AbyssalEquippedShip = {
         master_id: naked_ship.master_id,
         unique_id: brandUniqueId(crypto.randomUUID()),
         name_en: naked_ship.name_en,
@@ -67,10 +66,10 @@ export function derive_equipped_abyssal_ship(
         weighted_anti_air,
         triggerable_AACIs,
         flags: derive_abyssal_equipped_ship_flags(naked_ship.flags, equips),
-        dive_bomb_weak_mod: naked_ship.dive_bomb_weak_mod,
-        land_based_weak_mod: naked_ship.land_based_weak_mod,
         state: {
             hp_remain: max_hp,
         },
     };
+
+    return ship;
 }

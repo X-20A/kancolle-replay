@@ -1,28 +1,29 @@
-import { AswEquipFlags } from "@/types/ship/ship";
+import { ASWPreInfo } from "@/logics/asw/preInfo";
 
 /**
  * 対潜シナジー値を計算して返す
- * @param flags 
+ * @param info 
  * @returns 
  */
-export function calcAswSynergy(
-    flags: AswEquipFlags,
+export function calc_ASW_synergy(
+    info: ASWPreInfo,
 ): number {
-    const has_sonar = flags.has_any_sonar;
-    const has_sonar_S = flags.has_small_sonar;
-    const has_DC = flags.has_any_DC;
-    const has_DCP = flags.has_DCP;
-    const has_DC_only = flags.has_DC;
+    const {
+        has_any_sonar,
+        has_small_sonar,
+        has_any_DC,
+        has_DCP,
+        has_DC,
+    } = info;
     
     let damage_bonus = 1;
 
-    // 爆雷投射機と爆雷のみを両方持っている場合
-    if (has_DCP && has_DC_only) {
-        damage_bonus *= has_sonar_S ? 1.25 : 1.1;
+    // 爆雷投射機と爆雷を両方持っている場合
+    if (has_DCP && has_DC) {
+        damage_bonus *= has_small_sonar ? 1.25 : 1.1;
     }
-
     // ソナーと爆雷の両方を持っている場合
-    if (has_sonar && has_DC) {
+    if (has_any_sonar && has_any_DC) {
         damage_bonus *= 1.15;
     }
 

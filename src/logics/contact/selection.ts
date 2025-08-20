@@ -38,7 +38,7 @@ export function calc_select_contact_plane(
                 ? slot.equip
                 : []
         })
-        .sort((a, b) => b.natural_addition.shell_accuracy - a.natural_addition.shell_accuracy)
+        .sort((a, b) => b.natural_addition.accuracy - a.natural_addition.accuracy)
         .find(plane => {
             return rand.next() < plane.natural_addition.los / air_state_mod
         });

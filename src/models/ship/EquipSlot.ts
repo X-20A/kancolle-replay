@@ -1,6 +1,6 @@
 import { TStatusComponent } from "@/types";
 import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "../equip/basic"
-import { PlayerNakedShip } from "./naked/base";
+import { PlayerNakedShip } from "./naked";
 import { derive_equip_bonus_addition } from "../equip/EquipBonus";
 import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { Brand } from "@/types/brands";

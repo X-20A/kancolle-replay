@@ -2,7 +2,7 @@ import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_AACI_rates } from "@/logics/antiAir/cutin/rate";
 import { Equip } from "@/models/equip/basic";
 import { derive_AACI_pre_info } from "@/logics/antiAir/cutin/preInfo";
-import { NakedShip } from "@/models/ship/naked/base";
+import { NakedShip } from "@/models/ship/naked";
 import { ATLANTA_GUN, HIGH_10 } from "tests/setups/assets/equips/gun";
 import { GFCS_RADAR, SURFACE_22 } from "tests/setups/assets/equips/radar";
 import { derive_naked_ship_from_name } from "tests/setups/generator/ship";

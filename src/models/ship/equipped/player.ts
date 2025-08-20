@@ -1,4 +1,4 @@
-import { brandUniqueId, ShipId, ShipLv, ShipUniqueId } from "@/types/brands/ship";
+import { brandUniqueId, ShipLv, ShipUniqueId } from "@/types/brands/ship";
 import { PlayerEquippedShip, merge_status_components_with_max_range, sum_status_components } from ".";
 import { Equip, is_player_equip, is_player_equips, PlayerEquip } from "@/models/equip/basic";
 import { ModernizationType, SpecialItemId } from "@/types/ship/ship";
@@ -12,8 +12,9 @@ import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_player_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_player_equipped_ship_flags } from "./flags";
-import { PlayerNakedShip } from "../naked/base";
+import { PlayerNakedShip } from "../naked";
 import { calc_pre_calculated_anti_install_mods } from "@/logics/antiInstall";
+import { PlayerShipId } from "@/types/ship/playerShipId";
 
 export type PlayerEquippedShipOptions = {
     unique_id?: ShipUniqueId,
@@ -86,7 +87,7 @@ const derive_player_equipped_ship_core = (
     const pre_calculated_anti_install_mods =
         calc_pre_calculated_anti_install_mods(equips);
 
-    return {
+    const ship: PlayerEquippedShip = {
         master_id: naked_ship.master_id,
         base_id: naked_ship.base_id,
         unique_id: brandUniqueId(crypto.randomUUID()),
@@ -103,7 +104,6 @@ const derive_player_equipped_ship_core = (
         max_hp: naked_status.hp,
         base_fuel: naked_ship.base_fuel,
         base_ammo: naked_ship.base_ammo,
-        special_attack_type: naked_ship.special_attack_type,
         pre_calculated_anti_install_mods,
         flags,
         state,
@@ -117,13 +117,15 @@ const derive_player_equipped_ship_core = (
         weighted_anti_air,
         triggerable_AACIs,
         total_contribute_asw_attack_power: total_valid_asw,
-    }
+    };
+
+    return ship;
 }
 
 export function derive_player_equipped_ship(
     lv: ShipLv,
     special_item_id: SpecialItemId,
-    ship_id: ShipId,
+    ship_id: PlayerShipId,
     options: PlayerEquippedShipOptions,
     normal_slot_equips: Equip[],
     ex_slot_equip: Equip | 'None',

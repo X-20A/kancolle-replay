@@ -32,7 +32,7 @@ export function calc_Colorado_special_pre_info(
         ) total.has_SG_radar_late_model = true;
 
         return total;
-    }, INITIAL);
+    }, { ...INITIAL });
 
     return pre_info;
 }

@@ -1,6 +1,6 @@
 import { Equip, PlayerEquip } from "@/models/equip/basic";
 import { is_CLs } from "@/models/ship/equipped";
-import { PlayerNakedShip } from "@/models/ship/naked/base";
+import { PlayerNakedShip } from "@/models/ship/naked";
 import { calc_fit_mold, FitShellPowerMod } from ".";
 
 type PreInfo = {

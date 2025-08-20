@@ -15,7 +15,7 @@ export const DEFAULT_STATUS_COMPONENT: TStatusComponent = {
     los: 0,
     luck: 0,
     range: 0,
-    shell_accuracy: 0,
+    accuracy: 0,
     torpedo_accuracy: 0,
     night_battle_accuracy: 0,
     aerial_bomb_power: 0,

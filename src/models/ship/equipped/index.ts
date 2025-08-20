@@ -1,5 +1,5 @@
 import { TStatusComponent } from "@/types";
-import { ShipBaseId, ShipId, ShipLv, ShipNameEN, ShipUniqueId } from "@/types/brands/ship";
+import { ShipBaseId, ShipLv, ShipNameEN, ShipUniqueId } from "@/types/brands/ship";
 import { SpecialItemId, ModernizationType, ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
 import { Country } from "@/datas/equip/bonus";
 import { PlayerShipClass } from "@/types/ship/shipClass";
@@ -13,6 +13,7 @@ import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { SpecialAttackType } from "@/logics/SpecialAttack";
 import { PreCalculatedAntiInstallMods } from "@/logics/antiInstall";
+import { PlayerShipId } from "@/types/ship/playerShipId";
 
 export * from "./predicates";
 
@@ -45,7 +46,7 @@ type EquippedShipBase = {
 
 export type PlayerEquippedShip = EquippedShipBase & {
     /** 艦ID(データ由来) */
-    readonly master_id: ShipId;
+    readonly master_id: PlayerShipId;
     /** 艦名(日) */
     readonly name_jp: PlayerShipNameJP;
     /** 艦種ID */
@@ -72,7 +73,6 @@ export type PlayerEquippedShip = EquippedShipBase & {
     readonly total_contribute_asw_attack_power: number,
     readonly base_fuel: number,
     readonly base_ammo: number,
-    readonly special_attack_type: SpecialAttackType | 'None',
     readonly pre_calculated_anti_install_mods: PreCalculatedAntiInstallMods,
     /** フラグ類 */
     readonly flags: PlayerShipFlags,
@@ -96,8 +96,6 @@ export type AbyssalEquippedShip = EquippedShipBase & {
     readonly install_type: InstallType,
     /** フラグ類 */
     readonly flags: AbyssalShipFlags,
-    readonly dive_bomb_weak_mod: number,
-    readonly land_based_weak_mod: number,
     readonly state: ShipStateBase,
 }
 
@@ -112,28 +110,18 @@ export function sum_status_components(
 ): TStatusComponent {
     const sum: TStatusComponent = {
         hp: a.hp + b.hp,
-        shell_power: a.shell_power + b.shell_power,
-        shell_accuracy: a.shell_accuracy + b.shell_accuracy,
-        shell_evasion: a.shell_evasion + b.shell_evasion,
+        fire_power: a.fire_power + b.fire_power,
+        accuracy: a.accuracy + b.accuracy,
         torpedo_power: a.torpedo_power + b.torpedo_power,
         torpedo_accuracy: a.torpedo_accuracy + b.torpedo_accuracy,
-        torpedo_evasion: a.torpedo_evasion + b.torpedo_evasion,
-        night_battle_power: a.night_battle_power + b.night_battle_power,
-        night_battle_accuracy: a.night_battle_accuracy + b.night_battle_accuracy,
         asw_power: a.asw_power + b.asw_power,
-        asw_accuracy: a.asw_accuracy + b.asw_accuracy,
         armor: a.armor + b.armor,
         evasion: a.evasion + b.evasion,
         anti_air: a.anti_air + b.anti_air,
-        self_anti_air: a.self_anti_air + b.self_anti_air,
-        fleet_anti_air: a.fleet_anti_air + b.fleet_anti_air,
-        air_superiority: a.air_superiority + b.air_superiority,
         los: a.los + b.los,
         luck: a.luck + b.luck,
         range: a.range + b.range,
         aerial_bomb_power: a.aerial_bomb_power + b.aerial_bomb_power,
-        aerial_torpedo_power: a.aerial_torpedo_power + b.aerial_torpedo_power,
-        smokescreen_rate_flat: a.smokescreen_rate_flat + b.smokescreen_rate_flat,
     };
 
     return sum;

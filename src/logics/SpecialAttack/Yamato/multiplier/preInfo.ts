@@ -24,7 +24,7 @@ export function calc_Yamato_special_pre_info(
         if (is_AP_shell(equip)) total.has_AP_shell = true;
 
         return total;
-    }, INITIAL);
+    }, { ...INITIAL });
 
     return pre_info;
 }

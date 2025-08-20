@@ -5,7 +5,7 @@ import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
 import { derive_player_naked_ship } from "@/models/ship/naked/player";
 import { derive_abyssal_naked_ship } from "@/models/ship/naked/abyssal";
-import { NakedShip, PlayerNakedShip } from "@/models/ship/naked/base";
+import { NakedShip, PlayerNakedShip } from "@/models/ship/naked";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { __player_equipped_ship__, derive_player_equipped_ship } from "@/models/ship/equipped/player";

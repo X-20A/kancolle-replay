@@ -1,5 +1,6 @@
 import { AbyssalShipType } from "./abyssal";
 import { PlayerShipNameJP } from "./playerNameJP";
+import { PlayerShipId } from "./playerShipId";
 import { PlayerShipClass } from "./shipClass";
 
 // TODO: 制空シミュにAO_2が入ってるのでとりあえずこの形
@@ -167,9 +168,9 @@ export type PlayerShipData = {
     /** 最大弾薬消費量 */
     ammo: number,
     /** 改造後艦ID */
-    next_id: number,
+    next_id: PlayerShipId | 'None',
     /** 改造前艦ID */
-    prev_id: number,
+    prev_id: PlayerShipId | 'None',
 
     // 以下フラグ類
 
@@ -218,7 +219,7 @@ export type PlayerShipData = {
     planeasw?: 0 | 2,
 }
 
-export type ShipDatas = Record<number, PlayerShipData>;
+export type ShipDatas = Record<PlayerShipId, PlayerShipData>;
 
 export type PlayerNakedShipFlags = {
     /**
@@ -250,35 +251,4 @@ export type PlayerNakedShipFlags = {
     is_anti_install_ship: boolean,
     /** 条件次第で対潜攻撃可能なCV(加賀改二護) */
     has_ASW_potential_CV: boolean,
-}
-
-export type AswEquipFlags = {
-    /** 艦攻/艦爆 が含まれるか */
-    has_any_plane_bomber: boolean,
-    /** 対潜値1以上の艦爆 が含まれるか */
-    has_positive_asw_dive_bomber: boolean,
-    /** 対潜値1以上の艦攻 が含まれるか */
-    has_positive_asw_torpedo_bomber: boolean,
-    /** 対潜哨戒機が含まれるか */
-    has_asw_plane: boolean,
-    /** 回転翼機が含まれるか */
-    has_autogyro: boolean,
-    /** 対潜値7以上の艦攻が含まれるか */
-    has_high_asw_torpedo_bomber: boolean,
-    /** 水上爆撃機が含まれるか */
-    has_seaplane_bomber: boolean,
-    /** S-51J/改が含まれるか */
-    has_any_S51J: boolean,
-    /** カ号/オ号改/改二 が2スロ以上含まれるか */
-    has_multiple_low_autogyro: boolean,
-    /** ソナー系が含まれるか */
-    has_any_sonar: boolean,
-    /** 小型ソナーが含まれるか */
-    has_small_sonar: boolean,
-    /** 爆雷系が含まれるか */
-    has_any_DC: boolean,
-    /** 爆雷投射機が含まれるか */
-    has_DCP: boolean,
-    /** 爆雷が含まれるか */
-    has_DC: boolean,
 }

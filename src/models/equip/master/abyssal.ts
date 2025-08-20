@@ -16,21 +16,19 @@ export function derive_abyssal_equip_master(
 
     const status: TStatusComponent = {
         hp: 0,
-        shell_power: equip_data.FP ?? 0,
-        shell_accuracy: equip_data.ACC ?? 0,
-        armor: equip_data.AR ?? 0,
+        fire_power: equip_data.FP ?? 0,
+        accuracy: equip_data.ACC ?? 0,
         torpedo_power: equip_data.TP ?? 0,
+        torpedo_accuracy: equip_data.ACC ?? 0,
+        asw_power: equip_data.ASW ?? 0,
+        armor: equip_data.AR ?? 0,
         evasion: equip_data.EV ?? 0,
         anti_air: equip_data.AA ?? 0,
-        asw_power: equip_data.ASW ?? 0,
         los: equip_data.LOS ?? 0,
         luck: 0,
         range: equip_data.RNG ?? 0,
-        torpedo_accuracy: 0,
-        night_battle_accuracy: 0,
         aerial_bomb_power: equip_data.AERIAL_BOMB ?? 0,
-        aerial_torpedo_power: equip_data.AERIAL_TP ?? 0,
-    }
+    };
 
     const type_data = EQUIP_TYPE_DATAS[type_id];
 
@@ -57,7 +55,7 @@ export function derive_abyssal_equip_master(
 
     const icon_id = equip_data.icon ?? type_data.icon;
     
-    return {
+    const equip: AbyssalEquipMaster = {
         master_id: id,
         name_en: equip_data.name,
         name_jp: equip_data.name_jp,
@@ -69,5 +67,7 @@ export function derive_abyssal_equip_master(
         AA_resist_fleet: equip_data.AA_resist_fleet ?? 1,
         status,
         flags,
-    }
+    };
+
+    return equip;
 }

@@ -1,6 +1,6 @@
 import { Country } from "@/datas/equip/bonus";
 import { TStatusComponent } from "@/types";
-import { ShipBaseId, ShipId, ShipLv, ShipNameEN } from "@/types/brands/ship";
+import { ShipBaseId, ShipLv, ShipNameEN } from "@/types/brands/ship";
 import { InstallType, PlayerNakedShipFlags, ShipFitClass, ShipTypeBase, UnknownStatus } from "@/types/ship/ship";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { AbyssalNakedShipFlags, AbyssalShipType } from "@/types/ship/abyssal";
@@ -9,7 +9,7 @@ import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
 import { is_player_naked_ship } from "../equipped";
-import { SpecialAttackType } from "@/logics/SpecialAttack";
+import { PlayerShipId } from "@/types/ship/playerShipId";
 
 type NakedShipBase = {
     readonly name_en: ShipNameEN,
@@ -18,7 +18,7 @@ type NakedShipBase = {
 }
 
 export type PlayerNakedShip = NakedShipBase & {
-    readonly master_id: ShipId,
+    readonly master_id: PlayerShipId,
     readonly lv: ShipLv,
     readonly base_id: ShipBaseId,
     readonly name_jp: PlayerShipNameJP,
@@ -28,7 +28,6 @@ export type PlayerNakedShip = NakedShipBase & {
     readonly country: Country,
     readonly base_fuel: number,
     readonly base_ammo: number,
-    readonly special_attack_type: SpecialAttackType | 'None',
     readonly flags: PlayerNakedShipFlags,
 }
 
@@ -40,8 +39,6 @@ export type AbyssalNakedShip = NakedShipBase & {
     readonly unknown_status: UnknownStatus,
     readonly EQUIPS: AbyssalEquipId[],
     readonly flags: AbyssalNakedShipFlags,
-    readonly dive_bomb_weak_mod: number,
-    readonly land_based_weak_mod: number,
 }
 
 /** 装備を持ってない && 運・対潜 未改修状態の艦諸元 */

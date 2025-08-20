@@ -31,7 +31,7 @@ const calc_shelling_support_accuracy_core = (
     const base = ACCURACY_CONSTANT
         + 2 * Math.sqrt(attacker_ship.lv)
         + 1.5 * Math.sqrt(attacker_ship.edited_status.luck)
-        + attacker_ship.edited_status.shell_accuracy;
+        + attacker_ship.edited_status.accuracy;
 
     const accuracy = base
         * vanguard_mod

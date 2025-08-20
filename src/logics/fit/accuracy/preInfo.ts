@@ -1,6 +1,6 @@
 import { includes_player_equip_name, PlayerEquip } from "@/models/equip/basic";
 import { is_player_equipped_ship } from "@/models/ship/equipped";
-import { is_married, PlayerNakedShip } from "@/models/ship/naked/base";
+import { is_married, PlayerNakedShip } from "@/models/ship/naked";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 
 const EQUIP_COUNT_INITIAL = {

@@ -100,7 +100,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         types: ["SEAPLANE"],
         bonuses: [
             {
-                addition: { fire_power: 2, asw: 3, evasion: 1 },
+                addition: { fire_power: 2, asw_power: 3, evasion: 1 },
                 ship_ids: [662, 663, 668],
                 stack_limit: 1
             },
@@ -115,7 +115,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         types: ["SEAPLANE_BOMBER"],
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 1, evasion: 1 },
+                addition: { fire_power: 1, asw_power: 1, evasion: 1 },
                 ship_ids: [662, 663, 668],
                 stack_limit: 1
             },
@@ -148,12 +148,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         types: ["AUTOGYRO"],
         bonuses: [
             {
-                addition: { asw: 4, evasion: 1 },
+                addition: { asw_power: 4, evasion: 1 },
                 ship_ids: [662],
                 stack_limit: 1
             },
             {
-                addition: { asw: 3, evasion: 1 },
+                addition: { asw_power: 3, evasion: 1 },
                 ship_ids: [663, 668],
                 stack_limit: 1
             }
@@ -237,7 +237,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Akizuki"]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [968]
             },
             {
@@ -264,7 +264,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [426, 986, 987],
                 required_improvement: 8
             },
@@ -336,15 +336,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_type_ids: ["CVL"]
             },
             {
-                addition: { fire_power: 2, asw: 3 },
+                addition: { fire_power: 2, asw_power: 3 },
                 ship_class_names: ["Yawatamaru", "Taiyou"]
             },
             {
-                addition: { fire_power: 2, anti_air: 2, asw: 2, evasion: 2 },
+                addition: { fire_power: 2, anti_air: 2, asw_power: 2, evasion: 2 },
                 ship_base_ids: [89]
             },
             {
-                addition: { fire_power: 1, evasion: 1, asw: 1, anti_air: 1 },
+                addition: { fire_power: 1, evasion: 1, asw_power: 1, anti_air: 1 },
                 ship_ids: [894, 899]
             }
         ]
@@ -492,7 +492,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [986, 987]
             },
             {
-                addition: { shell_accuracy: 1, anti_air: 1 },
+                addition: { accuracy: 1, anti_air: 1 },
                 ship_ids: [986, 987],
                 requires_synergy_equip_id: [533, 553],
                 stack_limit: 1
@@ -513,7 +513,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [986, 987],
                 required_improvement: 10
             }
@@ -546,7 +546,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [979]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [979],
                 required_improvement: 6
             },
@@ -590,7 +590,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [44, 45, 287, 288],
         bonuses: [
             {
-                addition: { asw: 3, evasion: 2 },
+                addition: { asw_power: 3, evasion: 2 },
                 ship_class_names: ["Katori"]
             }
         ]
@@ -599,7 +599,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [46, 47, 132, 149, 438],
         bonuses: [
             {
-                addition: { asw: 2, evasion: 3 },
+                addition: { asw_power: 2, evasion: 3 },
                 ship_class_names: ["Katori"],
                 stack_limit: 1
             }
@@ -609,11 +609,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [47, 438],
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 3, evasion: 2 },
+                addition: { fire_power: 1, asw_power: 3, evasion: 2 },
                 ship_base_ids: [43, 425, 471, 473, 457, 122]
             },
             {
-                addition: { asw: 2, evasion: 2 },
+                addition: { asw_power: 2, evasion: 2 },
                 ship_base_ids: [16, 36, 414, 167, 170, 527]
             }
         ]
@@ -722,17 +722,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [61], // 二式艦上偵察機
         bonuses: [
             {
-                addition: { fire_power: 3, armor: 1, shell_accuracy: 5, evasion: 2, range: 1 },
+                addition: { fire_power: 3, armor: 1, accuracy: 5, evasion: 2, range: 1 },
                 ship_ids: [553],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 3, armor: 3, shell_accuracy: 5, evasion: 3, range: 1 },
+                addition: { fire_power: 3, armor: 3, accuracy: 5, evasion: 3, range: 1 },
                 ship_ids: [554],
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 5, range: 1 },
+                addition: { accuracy: 5, range: 1 },
                 ship_ids: [196, 197],
                 stack_limit: 1
             },
@@ -854,11 +854,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [69], // カ号観測機
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 2 },
+                addition: { fire_power: 1, asw_power: 2 },
                 ship_ids: [554, 646]
             },
             {
-                addition: { fire_power: 1, asw: 1 },
+                addition: { fire_power: 1, asw_power: 1 },
                 ship_ids: [553]
             }
         ]
@@ -905,7 +905,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [82],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Taiyou"]
             }
         ]
@@ -937,7 +937,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 1, torpedo_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, torpedo_power: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [951]
             },
             {
@@ -961,7 +961,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [951],
                 required_improvement: 10
             },
@@ -981,7 +981,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [50, 181, 229, 316, 961],
                 required_improvement: 9
             },
@@ -1001,7 +1001,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Yuugumo", "Akizuki", "Matsu"],
                 required_improvement: 10
             }
@@ -1164,7 +1164,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_type_ids: ["DE"]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 1, evasion: 2 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 1, evasion: 2 },
                 ship_ids: [955, 956, 960, 981, 983],
                 required_improvement: 4,
                 stack_limit: 1
@@ -1202,7 +1202,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [507]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [507],
                 required_improvement: 2
             },
@@ -1255,7 +1255,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [968]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_ids: [968],
                 requires_air_radar: true
             },
@@ -1304,7 +1304,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Akizuki"],
                 required_improvement: 8
             },
@@ -1329,7 +1329,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [426, 981, 983, 986, 987],
                 required_improvement: 9
             },
@@ -1344,7 +1344,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [129], // 熟練見張員
         bonuses: [
             {
-                addition: { fire_power: 1, torpedo_power: 2, asw: 2, evasion: 2, los: 1 },
+                addition: { fire_power: 1, torpedo_power: 2, asw_power: 2, evasion: 2, los: 1 },
                 ship_class_names: ["Ayanami", "Dairoku", "Hatsuharu", "Hubuki", "Asashio", "Shimakaze", "Shiratsuyu", "Mutsuki", "Kagerou", "Yuugumo", "Akizuki", "Kamikaze", "Matsu"]
             },
             {
@@ -1429,22 +1429,22 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [149],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 3 },
+                addition: { asw_power: 1, evasion: 3 },
                 ship_ids: [141, 160, 488, 622, 623, 656, 961],
                 stack_limit: 1
             },
             {
-                addition: { asw: 3, evasion: 5 },
+                addition: { asw_power: 3, evasion: 5 },
                 ship_ids: [624],
                 stack_limit: 1
             },
             {
-                addition: { asw: 2, evasion: 4 },
+                addition: { asw_power: 2, evasion: 4 },
                 ship_ids: [662],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 2 },
+                addition: { asw_power: 1, evasion: 2 },
                 ship_class_names: ["Akizuki"],
                 stack_limit: 1
             }
@@ -1619,19 +1619,19 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [228],
         bonuses: [
             {
-                addition: { fire_power: 3, anti_air: 3, asw: 4, evasion: 4 },
+                addition: { fire_power: 3, anti_air: 3, asw_power: 4, evasion: 4 },
                 ship_base_ids: [89]
             },
             {
-                addition: { fire_power: 1, evasion: 2, asw: 2, anti_air: 1 },
+                addition: { fire_power: 1, evasion: 2, asw_power: 2, anti_air: 1 },
                 ship_ids: [894, 899]
             },
             {
-                addition: { fire_power: 2, anti_air: 1, asw: 5, evasion: 1 },
+                addition: { fire_power: 2, anti_air: 1, asw_power: 5, evasion: 1 },
                 ship_class_names: ["Yawatamaru", "Taiyou"]
             },
             {
-                addition: { anti_air: 1, asw: 2, evasion: 1 },
+                addition: { anti_air: 1, asw_power: 2, evasion: 1 },
                 ship_type_ids: ["CVL"]
             }
         ]
@@ -1656,7 +1656,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, anti_air: 3, asw: 2 },
+                addition: { fire_power: 2, anti_air: 3, asw_power: 2 },
                 ship_ids: [656]
             },
             {
@@ -1840,7 +1840,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ark_Royal"],
                 required_improvement: 5
             },
@@ -1855,7 +1855,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ark_Royal"],
                 required_improvement: 9
             },
@@ -1875,7 +1875,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [89],
                 required_improvement: 9
             },
@@ -1924,7 +1924,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [20, 43, 167]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [961]
             }
         ]
@@ -2015,12 +2015,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [648, 649, 955, 956, 960, 961]
             },
             {
-                addition: { anti_air: 3, fire_power: 1, shell_accuracy: 1 },
+                addition: { anti_air: 3, fire_power: 1, accuracy: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, torpedo_power: 4, evasion: 2, shell_accuracy: 2 },
+                addition: { fire_power: 2, torpedo_power: 4, evasion: 2, accuracy: 2 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
                 requires_surface_radar: true,
                 stack_limit: 1
@@ -2032,7 +2032,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, anti_air: 5, evasion: 3, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 5, evasion: 3, accuracy: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
                 requires_air_radar: true,
                 stack_limit: 1
@@ -2048,7 +2048,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 2
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
                 required_improvement: 5
             },
@@ -2058,7 +2058,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [229, 542, 543, 563, 564, 569, 578, 648, 649, 955, 956, 960, 961, 981, 983],
                 required_improvement: 10
             },
@@ -2104,7 +2104,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 8
             },
             {
@@ -2116,12 +2116,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1, evasion: 2, asw: 1 },
+                addition: { accuracy: 1, evasion: 2, asw_power: 1 },
                 ship_base_ids: [35, 63, 64, 100, 101, 114, 511, 516, 574, 1001],
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1, evasion: 4, asw: 2 },
+                addition: { accuracy: 1, evasion: 4, asw_power: 2 },
                 requires_synergy_equip_id: [402],
                 required_improvement: 7
             }
@@ -2334,11 +2334,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [287],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_ids: [141, 160, 488, 624, 656]
             },
             {
-                addition: { asw: 3 },
+                addition: { asw_power: 3 },
                 ship_ids: [662, 961]
             }
         ]
@@ -2347,15 +2347,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [288],
         bonuses: [
             {
-                addition: { asw: 2, evasion: 1 },
+                addition: { asw_power: 2, evasion: 1 },
                 ship_ids: [141, 160, 488, 656]
             },
             {
-                addition: { fire_power: 1, asw: 3, evasion: 2 },
+                addition: { fire_power: 1, asw_power: 3, evasion: 2 },
                 ship_ids: [624]
             },
             {
-                addition: { asw: 4, evasion: 1 },
+                addition: { asw_power: 4, evasion: 1 },
                 ship_ids: [662, 961]
             }
         ]
@@ -2457,7 +2457,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [290],
         bonuses: [
             {
-                addition: { fire_power: 3, anti_air: 2, shell_accuracy: 3, evasion: 1 },
+                addition: { fire_power: 3, anti_air: 2, accuracy: 3, evasion: 1 },
                 ship_ids: [553, 554]
             },
             {
@@ -2529,7 +2529,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Shimushu", "Etorohu"]
             },
             {
-                addition: { fire_power: 2, asw: 1, evasion: 3 },
+                addition: { fire_power: 2, asw_power: 1, evasion: 3 },
                 ship_class_names: ["Shimushu", "Etorohu"],
                 requires_surface_radar: true,
                 stack_limit: 1
@@ -2583,7 +2583,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 3
             },
             {
-                addition: { shell_accuracy: 4 },
+                addition: { accuracy: 4 },
                 ship_ids: [959],
                 required_improvement: 6
             },
@@ -2629,7 +2629,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, anti_air: 1, asw: 1 },
+                addition: { fire_power: 1, anti_air: 1, asw_power: 1 },
                 ship_ids: [666]
             },
             {
@@ -2799,7 +2799,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [302],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Taiyou"]
             }
         ]
@@ -2821,11 +2821,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [304],
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 1, evasion: 1 },
+                addition: { fire_power: 1, asw_power: 1, evasion: 1 },
                 ship_class_names: ["Kuma", "Sendai", "Nagara", "Agano"]
             },
             {
-                addition: { fire_power: 1, asw: 2, evasion: 2 },
+                addition: { fire_power: 1, asw_power: 2, evasion: 2 },
                 ship_class_names: ["Gotland"]
             }
         ]
@@ -2834,11 +2834,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [305, 306],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Taiyou"]
             },
             {
-                addition: { asw: 2, evasion: 1 },
+                addition: { asw_power: 2, evasion: 1 },
                 ship_base_ids: [534]
             },
             {
@@ -2911,7 +2911,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 2, asw: 1, evasion: 1 },
+                addition: { fire_power: 2, asw_power: 1, evasion: 1 },
                 ship_ids: [622, 623, 624]
             },
             {
@@ -2931,7 +2931,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [518], // 14cm連装砲改二
         bonuses: [
             {
-                addition: { fire_power: 1, anti_air: 1, asw: 1, evasion: 1 },
+                addition: { fire_power: 1, anti_air: 1, asw_power: 1, evasion: 1 },
                 ship_class_names: ["Yuubari", "Katori"]
             },
             {
@@ -2947,7 +2947,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [622, 624]
             },
             {
-                addition: { asw: 2 },
+                addition: { asw_power: 2 },
                 ship_ids: [624]
             }
         ]
@@ -3015,7 +3015,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Kongou"],
                 required_improvement: 8,
                 stack_limit: 1
@@ -3026,7 +3026,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ise"],
                 required_improvement: 10,
                 stack_limit: 1
@@ -3085,7 +3085,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [82, 88]
             },
             {
-                addition: { fire_power: 2, anti_air: 2, shell_accuracy: 3, evasion: 2 },
+                addition: { fire_power: 2, anti_air: 2, accuracy: 3, evasion: 2 },
                 ship_ids: [553]
             },
             {
@@ -3095,34 +3095,34 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 3, anti_air: 2, shell_accuracy: 3, evasion: 2 },
+                addition: { fire_power: 3, anti_air: 2, accuracy: 3, evasion: 2 },
                 ship_ids: [554]
             },
             {
-                addition: { fire_power: 1, armor: 1, shell_accuracy: 1, evasion: 2 },
+                addition: { fire_power: 1, armor: 1, accuracy: 1, evasion: 2 },
                 ship_ids: [554],
                 requires_synergy_equip_id: [290],
                 stack_limit: 1
             },
             {
-                addition: { anti_air: 2, shell_accuracy: 1, evasion: 3 },
+                addition: { anti_air: 2, accuracy: 1, evasion: 3 },
                 ship_ids: [82, 88, 553, 554],
                 requires_air_radar: true,
                 stack_limit: 1
             },
             {
-                addition: { anti_air: -2, shell_accuracy: -1, evasion: -3 },
+                addition: { anti_air: -2, accuracy: -1, evasion: -3 },
                 ship_ids: [82, 88, 553, 554],
                 requires_air_radar: true,
                 requires_synergy_equip_id: [290],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 3, anti_air: 2, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 3, anti_air: 2, accuracy: 2, evasion: 1 },
                 ship_ids: [541, 573]
             },
             {
-                addition: { fire_power: 2, armor: 1, shell_accuracy: 1, evasion: 2 },
+                addition: { fire_power: 2, armor: 1, accuracy: 1, evasion: 2 },
                 ship_ids: [541, 573],
                 requires_synergy_equip_id: [290],
                 stack_limit: 1
@@ -3159,7 +3159,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [322],
         bonuses: [
             {
-                addition: { fire_power: 5, anti_air: 2, asw: 1, evasion: 2 },
+                addition: { fire_power: 5, anti_air: 2, asw_power: 1, evasion: 2 },
                 ship_ids: [553, 554]
             }
         ]
@@ -3168,7 +3168,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [323],
         bonuses: [
             {
-                addition: { fire_power: 6, anti_air: 3, asw: 2, evasion: 3 },
+                addition: { fire_power: 6, anti_air: 3, asw_power: 2, evasion: 3 },
                 ship_ids: [553, 554]
             }
         ]
@@ -3177,11 +3177,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [324, 325],
         bonuses: [
             {
-                addition: { fire_power: 2, asw: 3, evasion: 1 },
+                addition: { fire_power: 2, asw_power: 3, evasion: 1 },
                 ship_ids: [554, 646]
             },
             {
-                addition: { fire_power: 1, asw: 2, evasion: 1 },
+                addition: { fire_power: 1, asw_power: 2, evasion: 1 },
                 ship_ids: [553]
             }
         ]
@@ -3190,15 +3190,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [326],
         bonuses: [
             {
-                addition: { fire_power: 3, asw: 5, evasion: 3 },
+                addition: { fire_power: 3, asw_power: 5, evasion: 3 },
                 ship_ids: [646]
             },
             {
-                addition: { fire_power: 3, asw: 4, evasion: 2 },
+                addition: { fire_power: 3, asw_power: 4, evasion: 2 },
                 ship_ids: [554]
             },
             {
-                addition: { fire_power: 1, asw: 3, evasion: 1 },
+                addition: { fire_power: 1, asw_power: 3, evasion: 1 },
                 ship_ids: [553]
             }
         ]
@@ -3207,15 +3207,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [327],
         bonuses: [
             {
-                addition: { fire_power: 5, asw: 6, evasion: 4 },
+                addition: { fire_power: 5, asw_power: 6, evasion: 4 },
                 ship_ids: [646]
             },
             {
-                addition: { fire_power: 4, asw: 5, evasion: 2 },
+                addition: { fire_power: 4, asw_power: 5, evasion: 2 },
                 ship_ids: [554]
             },
             {
-                addition: { fire_power: 2, asw: 4, evasion: 1 },
+                addition: { fire_power: 2, asw_power: 4, evasion: 1 },
                 ship_ids: [553]
             }
         ]
@@ -3482,23 +3482,23 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [599, 610]
             },
             {
-                addition: { fire_power: 2, asw: 2 },
+                addition: { fire_power: 2, asw_power: 2 },
                 ship_ids: [555, 560]
             },
             {
-                addition: { fire_power: 4, asw: 1 },
+                addition: { fire_power: 4, asw_power: 1 },
                 ship_ids: [318]
             },
             {
-                addition: { fire_power: 2, asw: 1 },
+                addition: { fire_power: 2, asw_power: 1 },
                 ship_ids: [282]
             },
             {
-                addition: { fire_power: 4, asw: 2 },
+                addition: { fire_power: 4, asw_power: 2 },
                 ship_ids: [888]
             },
             {
-                addition: { fire_power: 5, asw: 2 },
+                addition: { fire_power: 5, asw_power: 2 },
                 ship_ids: [883]
             }
         ]
@@ -3511,23 +3511,23 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [599, 610]
             },
             {
-                addition: { fire_power: 3, asw: 2, evasion: 2 },
+                addition: { fire_power: 3, asw_power: 2, evasion: 2 },
                 ship_ids: [555, 560]
             },
             {
-                addition: { fire_power: 5, asw: 1, evasion: 2 },
+                addition: { fire_power: 5, asw_power: 1, evasion: 2 },
                 ship_ids: [318]
             },
             {
-                addition: { fire_power: 3, asw: 1, evasion: 1 },
+                addition: { fire_power: 3, asw_power: 1, evasion: 1 },
                 ship_ids: [282]
             },
             {
-                addition: { fire_power: 4, asw: 2, evasion: 2 },
+                addition: { fire_power: 4, asw_power: 2, evasion: 2 },
                 ship_ids: [888]
             },
             {
-                addition: { fire_power: 5, asw: 2, evasion: 3 },
+                addition: { fire_power: 5, asw_power: 2, evasion: 3 },
                 ship_ids: [883]
             }
         ]
@@ -3673,11 +3673,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [367],
         bonuses: [
             {
-                addition: { fire_power: 2, asw: 1, evasion: 1, los: 1 },
+                addition: { fire_power: 2, asw_power: 1, evasion: 1, los: 1 },
                 ship_base_ids: [574]
             },
             {
-                addition: { fire_power: 1, asw: 1, evasion: 1, los: 1 },
+                addition: { fire_power: 1, asw_power: 1, evasion: 1, los: 1 },
                 ship_class_names: ["Commandant_Teste"]
             },
             {
@@ -3694,7 +3694,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [368], // Swordfish Mk.III改(水上機型)
         bonuses: [
             {
-                addition: { fire_power: 4, asw: 3, evasion: 2, los: 3 },
+                addition: { fire_power: 4, asw_power: 3, evasion: 2, los: 3 },
                 ship_base_ids: [574]
             },
             {
@@ -3703,15 +3703,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, asw: 3, evasion: 1, los: 2 },
+                addition: { fire_power: 2, asw_power: 3, evasion: 1, los: 2 },
                 ship_class_names: ["Commandant_Teste"]
             },
             {
-                addition: { fire_power: 1, asw: 2, evasion: 1, los: 2 },
+                addition: { fire_power: 1, asw_power: 2, evasion: 1, los: 2 },
                 ship_class_names: ["Mizuho", "Kamoi"]
             },
             {
-                addition: { fire_power: 2, asw: 2, evasion: 2, los: 2 },
+                addition: { fire_power: 2, asw_power: 2, evasion: 2, los: 2 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"]
             }
         ]
@@ -3720,7 +3720,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [369], // Swordfish Mk.III改(水上機型/熟練)
         bonuses: [
             {
-                addition: { fire_power: 5, asw: 4, evasion: 4, los: 3 },
+                addition: { fire_power: 5, asw_power: 4, evasion: 4, los: 3 },
                 ship_base_ids: [574]
             },
             {
@@ -3729,15 +3729,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 3, asw: 3, evasion: 2, los: 3 },
+                addition: { fire_power: 3, asw_power: 3, evasion: 2, los: 3 },
                 ship_class_names: ["Commandant_Teste"]
             },
             {
-                addition: { fire_power: 2, asw: 2, evasion: 1, los: 2 },
+                addition: { fire_power: 2, asw_power: 2, evasion: 1, los: 2 },
                 ship_class_names: ["Mizuho", "Kamoi"]
             },
             {
-                addition: { fire_power: 2, asw: 2, evasion: 2, los: 2 },
+                addition: { fire_power: 2, asw_power: 2, evasion: 2, los: 2 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"]
             }
         ]
@@ -3746,19 +3746,19 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [370],
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 3, evasion: 1, los: 2 },
+                addition: { fire_power: 1, asw_power: 3, evasion: 1, los: 2 },
                 ship_base_ids: [574]
             },
             {
-                addition: { fire_power: 1, asw: 3, evasion: 1, los: 1 },
+                addition: { fire_power: 1, asw_power: 3, evasion: 1, los: 1 },
                 ship_class_names: ["Commandant_Teste"]
             },
             {
-                addition: { fire_power: 1, asw: 2, evasion: 1, los: 1 },
+                addition: { fire_power: 1, asw_power: 2, evasion: 1, los: 1 },
                 ship_class_names: ["Mizuho", "Kamoi"]
             },
             {
-                addition: { fire_power: 2, asw: 3, evasion: 2, los: 2 },
+                addition: { fire_power: 2, asw_power: 3, evasion: 2, los: 2 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"]
             },
             {
@@ -3777,7 +3777,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [371],
         bonuses: [
             {
-                addition: { fire_power: 4, asw: 2, evasion: 3, los: 6 },
+                addition: { fire_power: 4, asw_power: 2, evasion: 3, los: 6 },
                 ship_base_ids: [574]
             },
             {
@@ -3786,7 +3786,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, asw: 1, evasion: 2, los: 4 },
+                addition: { fire_power: 2, asw_power: 1, evasion: 2, los: 4 },
                 ship_class_names: ["Commandant_Teste"]
             },
             {
@@ -3794,7 +3794,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Richelieu"]
             },
             {
-                addition: { fire_power: 3, asw: 1, evasion: 2, los: 3 },
+                addition: { fire_power: 3, asw_power: 1, evasion: 2, los: 3 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"]
             },
             {
@@ -3812,7 +3812,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [75, 92, 110, 111, 153]
             },
             {
-                addition: { aerial_torpedo_power: 1 },
+                addition: { torpedo_power: 1 },
                 ship_base_ids: [110, 111, 153],
                 stack_limit: 1
             },
@@ -3821,20 +3821,20 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [108, 109, 291, 292, 296, 297, 508, 509]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [74, 116, 117, 185, 282, 318, 555, 560]
             },
             {
-                addition: { aerial_torpedo_power: 1 },
+                addition: { torpedo_power: 1 },
                 ship_ids: [318, 555, 560],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, asw: 1 },
+                addition: { fire_power: 2, asw_power: 1 },
                 ship_ids: [883, 888]
             },
             {
-                addition: { aerial_torpedo_power: 2 },
+                addition: { torpedo_power: 2 },
                 ship_ids: [883, 888],
                 stack_limit: 1
             }
@@ -3852,17 +3852,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [75, 92, 111, 153]
             },
             {
-                addition: { aerial_torpedo_power: 2, evasion: 2 },
+                addition: { torpedo_power: 2, evasion: 2 },
                 ship_base_ids: [110, 153],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 2, evasion: 3 },
+                addition: { torpedo_power: 2, evasion: 3 },
                 ship_base_ids: [111],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 1, evasion: 1 },
+                addition: { torpedo_power: 1, evasion: 1 },
                 ship_base_ids: [75, 92],
                 stack_limit: 1
             },
@@ -3871,38 +3871,38 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [108, 109, 291, 292, 296, 297, 508, 509]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [74, 116]
             },
             {
-                addition: { fire_power: 1, asw: 1 },
+                addition: { fire_power: 1, asw_power: 1 },
                 ship_ids: [117, 185, 282]
             },
             {
-                addition: { fire_power: 1, asw: 2 },
+                addition: { fire_power: 1, asw_power: 2 },
                 ship_ids: [318, 555, 560, 883]
             },
             {
-                addition: { fire_power: 2, asw: 2 },
+                addition: { fire_power: 2, asw_power: 2 },
                 ship_ids: [888]
             },
             {
-                addition: { aerial_torpedo_power: 1 },
+                addition: { torpedo_power: 1 },
                 ship_ids: [117, 185, 282, 291, 292],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 1, evasion: 1 },
+                addition: { torpedo_power: 1, evasion: 1 },
                 ship_ids: [296, 297, 318, 555, 560],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 2, evasion: 2 },
+                addition: { torpedo_power: 2, evasion: 2 },
                 ship_ids: [508, 509, 888],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 3, evasion: 4 },
+                addition: { torpedo_power: 3, evasion: 4 },
                 ship_ids: [883],
                 stack_limit: 1
             }
@@ -3924,22 +3924,22 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [75, 92]
             },
             {
-                addition: { aerial_torpedo_power: 3, evasion: 3 },
+                addition: { torpedo_power: 3, evasion: 3 },
                 ship_base_ids: [110],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 3, evasion: 4 },
+                addition: { torpedo_power: 3, evasion: 4 },
                 ship_base_ids: [111],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 3, evasion: 2 },
+                addition: { torpedo_power: 3, evasion: 2 },
                 ship_base_ids: [153],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 2, evasion: 2 },
+                addition: { torpedo_power: 2, evasion: 2 },
                 ship_base_ids: [75, 92],
                 stack_limit: 1
             },
@@ -3948,47 +3948,47 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [108, 109]
             },
             {
-                addition: { fire_power: 1, asw: 1 },
+                addition: { fire_power: 1, asw_power: 1 },
                 ship_ids: [74, 116, 291, 292, 296, 297]
             },
             {
-                addition: { fire_power: 1, asw: 2 },
+                addition: { fire_power: 1, asw_power: 2 },
                 ship_ids: [117, 185, 282, 508, 509]
             },
             {
-                addition: { fire_power: 1, asw: 3 },
+                addition: { fire_power: 1, asw_power: 3 },
                 ship_ids: [318, 555, 560]
             },
             {
-                addition: { fire_power: 2, asw: 3 },
+                addition: { fire_power: 2, asw_power: 3 },
                 ship_ids: [883]
             },
             {
-                addition: { fire_power: 3, asw: 3 },
+                addition: { fire_power: 3, asw_power: 3 },
                 ship_ids: [888]
             },
             {
-                addition: { aerial_torpedo_power: 1 },
+                addition: { torpedo_power: 1 },
                 ship_ids: [108, 109, 291, 292],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 1, evasion: 1 },
+                addition: { torpedo_power: 1, evasion: 1 },
                 ship_ids: [117, 185, 282, 296, 297],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 1, evasion: 2 },
+                addition: { torpedo_power: 1, evasion: 2 },
                 ship_ids: [318, 555, 560],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 2, evasion: 3 },
+                addition: { torpedo_power: 2, evasion: 3 },
                 ship_ids: [508, 509, 888],
                 stack_limit: 1
             },
             {
-                addition: { aerial_torpedo_power: 3, evasion: 5 },
+                addition: { torpedo_power: 3, evasion: 5 },
                 ship_ids: [883],
                 stack_limit: 1
             }
@@ -3998,11 +3998,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [375], // XF5U
         bonuses: [
             {
-                addition: { fire_power: 3, anti_air: 3, asw: 3, evasion: 3 },
+                addition: { fire_power: 3, anti_air: 3, asw_power: 3, evasion: 3 },
                 ship_class_names: ["Lexington", "Casablanca", "Essex", "Yorktown", "Independence", "Ranger"]
             },
             {
-                addition: { fire_power: 1, anti_air: 1, asw: 1, evasion: 1 },
+                addition: { fire_power: 1, anti_air: 1, asw_power: 1, evasion: 1 },
                 ship_base_ids: [84]
             }
         ]
@@ -4028,17 +4028,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [377],
         bonuses: [
             {
-                addition: { asw: 2, evasion: 1 },
+                addition: { asw_power: 2, evasion: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 2 },
+                addition: { asw_power: 1, evasion: 2 },
                 ship_ids: [629, 651, 656],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Perth", "Town", "Illustrious"],
                 stack_limit: 1
             }
@@ -4048,22 +4048,22 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [378],
         bonuses: [
             {
-                addition: { asw: 3, evasion: 1 },
+                addition: { asw_power: 3, evasion: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_ids: [629, 651, 656],
                 stack_limit: 1
             },
             {
-                addition: { asw: 2, evasion: 1 },
+                addition: { asw_power: 2, evasion: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Perth"],
                 stack_limit: 1
             }
@@ -4098,7 +4098,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [24, 25]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [22, 23, 56, 113, 115]
             },
             {
@@ -4122,15 +4122,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [651, 656]
             },
             {
-                addition: { asw: 2, evasion: 3 },
+                addition: { asw_power: 2, evasion: 3 },
                 ship_ids: [656]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [141, 160, 487, 488]
             },
             {
-                addition: { asw: 2 },
+                addition: { asw_power: 2 },
                 ship_ids: [477, 478, 624]
             },
             {
@@ -4211,7 +4211,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [24, 25]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [22, 23, 56, 113, 115]
             },
             {
@@ -4244,11 +4244,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [141, 160, 487, 488]
             },
             {
-                addition: { asw: 2 },
+                addition: { asw_power: 2 },
                 ship_ids: [477, 478, 624]
             },
             {
@@ -4329,7 +4329,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [382, 509],
         bonuses: [
             {
-                addition: { anti_air: 2, asw: 1, evasion: 2 },
+                addition: { anti_air: 2, asw_power: 1, evasion: 2 },
                 ship_type_ids: ["DE"]
             },
             {
@@ -4401,7 +4401,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, anti_air: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, anti_air: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [979]
             }
         ]
@@ -4426,7 +4426,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10
             },
             {
@@ -4450,12 +4450,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1, anti_air: -1 },
+                addition: { accuracy: 1, anti_air: -1 },
                 ship_type_ids: ["DE"],
                 required_improvement: 8
             },
             {
-                addition: { anti_air: 1, shell_accuracy: -1 },
+                addition: { anti_air: 1, accuracy: -1 },
                 ship_type_ids: ["DE"],
                 required_improvement: 10
             },
@@ -4480,12 +4480,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1, anti_air: -1 },
+                addition: { accuracy: 1, anti_air: -1 },
                 ship_class_names: ["Mutsuki", "Kamikaze", "Matsu"],
                 required_improvement: 8
             },
             {
-                addition: { anti_air: 1, shell_accuracy: -1 },
+                addition: { anti_air: 1, accuracy: -1 },
                 ship_class_names: ["Mutsuki", "Kamikaze", "Matsu"],
                 required_improvement: 10
             },
@@ -4510,12 +4510,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1, anti_air: -1 },
+                addition: { accuracy: 1, anti_air: -1 },
                 ship_ids: [145, 488, 656, 961],
                 required_improvement: 8
             },
             {
-                addition: { anti_air: 1, shell_accuracy: -1 },
+                addition: { anti_air: 1, accuracy: -1 },
                 ship_ids: [145, 488, 656, 961],
                 required_improvement: 10
             },
@@ -4560,7 +4560,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [979]
             },
             {
@@ -4579,7 +4579,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [979],
                 required_improvement: 9
             },
@@ -4616,7 +4616,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["I_400"],
                 required_improvement: 6,
                 stack_limit: 1
@@ -4627,12 +4627,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10,
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [127, 636],
                 required_improvement: 5,
                 stack_limit: 1
@@ -4727,23 +4727,23 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [610, 698]
             },
             {
-                addition: { fire_power: 4, asw: 4, evasion: 3 },
+                addition: { fire_power: 4, asw_power: 4, evasion: 3 },
                 ship_ids: [646] // 加賀改二護
             },
             {
-                addition: { fire_power: 3, asw: 6 },
+                addition: { fire_power: 3, asw_power: 6 },
                 ship_ids: [646],
                 requires_synergy_equip_type_ids: ['AUTOGYRO'],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 5, asw: 4 },
+                addition: { fire_power: 5, asw_power: 4 },
                 ship_ids: [646],
                 requires_synergy_equip_id: [326, 327],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, asw: 3, evasion: 1 },
+                addition: { fire_power: 2, asw_power: 3, evasion: 1 },
                 ship_country_ids: [Country.USA]
             }
         ]
@@ -4852,7 +4852,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [614]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Maestrale"],
                 required_improvement: 7
             },
@@ -4867,7 +4867,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Maestrale"],
                 required_improvement: 9
             },
@@ -5015,7 +5015,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [621]
             },
             {
-                addition: { fire_power: 1, asw: 1, evasion: 1, los: 1 },
+                addition: { fire_power: 1, asw_power: 1, evasion: 1, los: 1 },
                 ship_base_ids: [161]
             },
             {
@@ -5032,7 +5032,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [621]
             },
             {
-                addition: { fire_power: 1, anti_air: 1, asw: 1, evasion: 2 },
+                addition: { fire_power: 1, anti_air: 1, asw_power: 1, evasion: 2 },
                 ship_base_ids: [161]
             }
         ]
@@ -5106,7 +5106,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [412], // 水雷戦隊 熟練見張員
         bonuses: [
             {
-                addition: { fire_power: 2, torpedo_power: 4, asw: 2 },
+                addition: { fire_power: 2, torpedo_power: 4, asw_power: 2 },
                 ship_class_names: ["Ayanami", "Dairoku", "Hatsuharu", "Hubuki", "Asashio", "Shimakaze", "Shiratsuyu", "Mutsuki", "Kagerou", "Yuugumo", "Akizuki", "Kamikaze", "Matsu"],
                 stack_limit: 1
             },
@@ -5248,7 +5248,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [539], // SOC Seagull 後期型(熟練)
         bonuses: [
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Brooklyn"],
                 stack_limit: 1
             },
@@ -5265,7 +5265,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 5
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1,
                 required_improvement: 7
@@ -5292,7 +5292,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 ship_type_ids: ["CL", "CA"],
                 stack_limit: 1,
@@ -5304,7 +5304,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [415],
         bonuses: [
             {
-                addition: { asw: 1, los: 1 },
+                addition: { asw_power: 1, los: 1 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1
             },
@@ -5374,7 +5374,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 7,
                 ship_country_ids: [Country.USA]
             },
@@ -5384,7 +5384,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 9,
                 ship_country_ids: [Country.USA]
             },
@@ -5429,7 +5429,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 6,
                 ship_country_ids: [Country.USA]
             },
@@ -5439,7 +5439,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 8,
                 ship_country_ids: [Country.USA]
             },
@@ -5449,7 +5449,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10,
                 ship_country_ids: [Country.USA]
             },
@@ -5535,7 +5535,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [424], //Barracuda Mk.II // !
         bonuses: [
             {
-                addition: { fire_power: 2, aerial_torpedo_power: 3 },
+                addition: { fire_power: 2, torpedo_power: 3 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"]
             },
             {
@@ -5549,12 +5549,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10
             }
         ]
@@ -5563,11 +5563,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [425], // Barracuda Mk.III // !
         bonuses: [
             {
-                addition: { fire_power: 2, asw: 2, aerial_torpedo_power: 1, los: 1 },
+                addition: { fire_power: 2, asw_power: 2, torpedo_power: 1, los: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 required_improvement: 2
             },
@@ -5577,17 +5577,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 required_improvement: 7
             },
             {
-                addition: { aerial_torpedo_power: 1 },
+                addition: { torpedo_power: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 required_improvement: 8
             },
@@ -5597,7 +5597,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_class_names: ["Queen_Elizabeth", "Ark_Royal", "J", "Nelson", "Town", "Illustrious"],
                 required_improvement: 10
             },
@@ -5606,15 +5606,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10
             }
         ]
@@ -5794,17 +5794,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [438],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Kamikaze", "Mutsuki", "Hubuki", "Ayanami", "Dairoku", "Hatsuharu", "Shiratsuyu", "Asashio", "Kagerou", "Yuugumo", "Shimakaze", "Akizuki", "Matsu"],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_ids: [141, 160, 488],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [145, 363, 476, 578, 588, 667, 961],
                 required_improvement: 4,
                 stack_limit: 1
@@ -5816,7 +5816,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [145, 363, 476, 578, 588, 667, 961],
                 required_improvement: 8,
                 stack_limit: 1
@@ -5828,12 +5828,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [16, 36, 47, 122, 167, 170, 414, 458, 459],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_base_ids: [43, 457, 471, 473, 585, 611],
                 stack_limit: 1
             }
@@ -5873,22 +5873,22 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [439],
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_type_ids: ["DE", "DD", "CL", "CT"],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_type_ids: ["DE"],
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_class_names: ["Matsu"],
                 stack_limit: 1
             },
             {
-                addition: { asw: 2 },
+                addition: { asw_power: 2 },
                 ship_country_ids: [Country.USA, Country.UK],
                 stack_limit: 1
             }
@@ -5937,7 +5937,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 6
             },
             {
@@ -5945,23 +5945,23 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 1, asw: 1, evasion: 2 },
+                addition: { fire_power: 1, asw_power: 1, evasion: 2 },
                 ship_class_names: ["Taiyou"]
             },
             {
-                addition: { fire_power: 1, asw: 1, evasion: 1 },
+                addition: { fire_power: 1, asw_power: 1, evasion: 1 },
                 ship_base_ids: [522]
             },
             {
-                addition: { fire_power: 1, asw: 2, evasion: 1 },
+                addition: { fire_power: 1, asw_power: 2, evasion: 1 },
                 ship_base_ids: [89, 184]
             },
             {
-                addition: { fire_power: 1, evasion: 1, asw: 1, anti_air: 1 },
+                addition: { fire_power: 1, evasion: 1, asw_power: 1, anti_air: 1 },
                 ship_ids: [894, 899]
             }
         ]
@@ -6004,7 +6004,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [70],
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 1 },
+                addition: { fire_power: 1, asw_power: 1 },
                 ship_base_ids: [900]
             }
         ]
@@ -6013,7 +6013,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [346],
         bonuses: [
             {
-                addition: { evasion: 1, asw: 1 },
+                addition: { evasion: 1, asw_power: 1 },
                 ship_base_ids: [900],
                 stack_limit: 1
             }
@@ -6023,7 +6023,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [347],
         bonuses: [
             {
-                addition: { evasion: 2, asw: 2 },
+                addition: { evasion: 2, asw_power: 2 },
                 ship_base_ids: [900],
                 stack_limit: 1
             }
@@ -6033,7 +6033,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [451],
         bonuses: [
             {
-                addition: { fire_power: 1, asw: 2 },
+                addition: { fire_power: 1, asw_power: 2 },
                 ship_base_ids: [161]
             },
             {
@@ -6042,17 +6042,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [166],
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [166],
                 required_improvement: 5
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [166],
                 required_improvement: 7
             },
@@ -6062,7 +6062,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 1, asw: 3 },
+                addition: { fire_power: 1, asw_power: 3 },
                 ship_base_ids: [900, 943]
             },
             {
@@ -6071,12 +6071,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [900, 943],
                 required_improvement: 2
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [900, 943],
                 required_improvement: 3
             },
@@ -6086,12 +6086,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [900, 943],
                 required_improvement: 6
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [900, 943],
                 required_improvement: 8
             },
@@ -6130,11 +6130,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [486]
             },
             {
-                addition: { fire_power: 1, torpedo_power: 1, asw: 1, evasion: 1 },
+                addition: { fire_power: 1, torpedo_power: 1, asw_power: 1, evasion: 1 },
                 ship_ids: [647]
             },
             {
-                addition: { fire_power: 1, asw: 1 },
+                addition: { fire_power: 1, asw_power: 1 },
                 ship_ids: [666]
             },
             {
@@ -6180,7 +6180,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { shell_accuracy: 3 },
+                addition: { accuracy: 3 },
                 ship_country_ids: [Country.USA],
                 stack_limit: 1
             },
@@ -6189,7 +6189,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.UK, Country.Australia]
             },
             {
-                addition: { shell_accuracy: 2 },
+                addition: { accuracy: 2 },
                 ship_country_ids: [Country.UK, Country.Australia],
                 stack_limit: 1
             },
@@ -6203,7 +6203,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, evasion: 2, los: 3, range: 1, shell_accuracy: 2 },
+                addition: { fire_power: 2, evasion: 2, los: 3, range: 1, accuracy: 2 },
                 ship_ids: [651, 656],
                 stack_limit: 1
             }
@@ -6251,7 +6251,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Sentaka"],
                 required_improvement: 5
             },
@@ -6266,7 +6266,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["I_400", "I_13", "I_47", "Sentaka"],
                 required_improvement: 10
             }
@@ -6291,7 +6291,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["I_400", "I_13", "I_47", "Sentaka"],
                 required_improvement: 4
             },
@@ -6316,12 +6316,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 5
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["SS", "SSV"],
                 required_improvement: 10
             },
             {
-                addition: { torpedo_power: 7, shell_accuracy: 5 },
+                addition: { torpedo_power: 7, accuracy: 5 },
                 ship_type_ids: ["SS", "SSV"],
                 required_improvement: 2,
                 requires_synergy_equip_id: [461],
@@ -6334,27 +6334,27 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [465],
         bonuses: [
             {
-                addition: { fire_power: 2, evasion: 8, shell_accuracy: 2 },
+                addition: { fire_power: 2, evasion: 8, accuracy: 2 },
                 ship_ids: [916]
             },
             {
-                addition: { evasion: 2, shell_accuracy: 1 },
+                addition: { evasion: 2, accuracy: 1 },
                 ship_ids: [916],
                 requires_synergy_equip_id: [460],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 2, accuracy: 1 },
                 ship_ids: [546, 911]
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_ids: [546, 911],
                 requires_synergy_equip_id: [460],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 2 },
+                addition: { fire_power: 2, accuracy: 2 },
                 ship_class_names: ["Yamato"],
                 requires_synergy_equip_id: [142, 460],
                 stack_limit: 1
@@ -6369,7 +6369,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Yamato"]
             },
             {
-                addition: { anti_air: 2, evasion: 1, shell_accuracy: 1 },
+                addition: { anti_air: 2, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"],
                 requires_synergy_equip_id: [142, 460],
                 stack_limit: 1
@@ -6383,7 +6383,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [546, 593, 911, 916, 954]
             },
             {
-                addition: { fire_power: 2, anti_air: 2, evasion: 2, shell_accuracy: 3 },
+                addition: { fire_power: 2, anti_air: 2, evasion: 2, accuracy: 3 },
                 ship_ids: [546, 593, 911, 916, 954],
                 requires_synergy_equip_id: [460],
                 stack_limit: 1
@@ -6394,21 +6394,21 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [463],
         bonuses: [
             {
-                addition: { fire_power: 1, anti_air: 2, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 2, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"]
             },
             {
-                addition: { anti_air: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { anti_air: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"],
                 requires_synergy_equip_id: [142, 460],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 2 },
                 ship_ids: [546, 911, 916]
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 2 },
                 ship_ids: [546, 911, 916],
                 requires_synergy_equip_id: [460],
                 stack_limit: 1
@@ -6419,11 +6419,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [12],
         bonuses: [
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"]
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"],
                 requires_synergy_equip_id: [142, 460],
                 stack_limit: 1
@@ -6434,11 +6434,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [234],
         bonuses: [
             {
-                addition: { fire_power: 1, anti_air: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"]
             },
             {
-                addition: { anti_air: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { anti_air: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Yamato"],
                 requires_synergy_equip_id: [142, 460],
                 stack_limit: 1
@@ -6449,17 +6449,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [128, 281],
         bonuses: [
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_ids: [546, 911, 916]
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_ids: [546, 911, 916],
                 requires_synergy_equip_id: [460],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, accuracy: 2 },
                 ship_class_names: ["Yamato"],
                 requires_synergy_equip_id: [142, 460],
                 stack_limit: 1
@@ -6470,15 +6470,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [466],
         bonuses: [
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_ids: [112, 156, 277, 278, 279, 280, 288]
             },
             {
-                addition: { fire_power: 2, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, evasion: 2, accuracy: 1 },
                 ship_ids: [461, 462, 466, 467]
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 2 },
                 ship_ids: [196, 197, 594, 599, 610, 646, 698]
             }
         ]
@@ -6491,7 +6491,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { fire_power: 1, anti_air: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, anti_air: 1, evasion: 1, accuracy: 2 },
                 ship_country_ids: [Country.USA],
                 requires_synergy_equip_id: [279, 307, 315, 456],
                 stack_limit: 1
@@ -6512,37 +6512,37 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [247],
         bonuses: [
             {
-                addition: { fire_power: 2, shell_accuracy: 2 },
+                addition: { fire_power: 2, accuracy: 2 },
                 ship_country_ids: [Country.France]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 4
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 8
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 2, evasion: 2, shell_accuracy: 2 },
+                addition: { fire_power: 2, evasion: 2, accuracy: 2 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [245, 246, 468]
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 9
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 10
@@ -6553,7 +6553,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [245, 246],
         bonuses: [
             {
-                addition: { fire_power: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, accuracy: 1 },
                 ship_class_names: ["Richelieu"]
             }
         ]
@@ -6562,16 +6562,16 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [468],
         bonuses: [
             {
-                addition: { fire_power: 3, shell_accuracy: 1 },
+                addition: { fire_power: 3, accuracy: 1 },
                 ship_class_names: ["Richelieu"]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 required_improvement: 4
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 required_improvement: 8
             },
@@ -6581,7 +6581,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 required_improvement: 10
             }
@@ -6598,7 +6598,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Asashio", "Shiratsuyu"]
             },
             {
-                addition: { fire_power: 1, evasion: 1, torpedo_power: 3, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, torpedo_power: 3, accuracy: 1 },
                 ship_class_names: ["Asashio", "Shiratsuyu"],
                 requires_surface_radar: true,
                 stack_limit: 1
@@ -6608,7 +6608,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Kagerou"]
             },
             {
-                addition: { fire_power: 2, evasion: 1, torpedo_power: 3, shell_accuracy: 3 },
+                addition: { fire_power: 2, evasion: 1, torpedo_power: 3, accuracy: 3 },
                 ship_class_names: ["Kagerou"],
                 requires_surface_radar: true,
                 stack_limit: 1
@@ -6618,11 +6618,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_base_ids: [20, 43, 167]
             },
             {
-                addition: { fire_power: 3, shell_accuracy: 3, evasion: 2 },
+                addition: { fire_power: 3, accuracy: 3, evasion: 2 },
                 ship_ids: [961]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, accuracy: 2 },
                 ship_ids: [145, 566, 567, 568, 651, 656, 670, 915, 951, 961],
                 stack_limit: 1
             },
@@ -6632,7 +6632,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 2
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [145, 566, 567, 568, 651, 656, 670, 915, 951, 961],
                 required_improvement: 5
             },
@@ -6642,7 +6642,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [145, 566, 567, 568, 651, 656, 670, 915, 951, 961],
                 required_improvement: 10
             }
@@ -6652,7 +6652,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [529],
         bonuses: [
             {
-                addition: { fire_power: 1, anti_air: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, anti_air: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [144, 145, 246, 405, 497]
             },
             {
@@ -6676,7 +6676,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 2, anti_air: 2, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 2, anti_air: 2, accuracy: 1, evasion: 1 },
                 ship_ids: [323, 498, 961]
             },
             {
@@ -6690,7 +6690,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [323, 498, 961],
                 required_improvement: 8
             },
@@ -6700,7 +6700,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 3, anti_air: 3, shell_accuracy: 2, evasion: 2 },
+                addition: { fire_power: 3, anti_air: 3, accuracy: 2, evasion: 2 },
                 ship_ids: [975]
             },
             {
@@ -6724,7 +6724,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [975],
                 required_improvement: 8
             },
@@ -6754,42 +6754,42 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [471],
         bonuses: [
             {
-                addition: { fire_power: 2, evasion: 2, shell_accuracy: 2 },
+                addition: { fire_power: 2, evasion: 2, accuracy: 2 },
                 ship_country_ids: [Country.France]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, accuracy: 1 },
                 ship_class_names: ["Richelieu"]
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 6
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 8
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 2 },
+                addition: { accuracy: 2 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 required_improvement: 7,
                 requires_synergy_equip_id: [468],
@@ -6803,7 +6803,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 requires_synergy_equip_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 requires_synergy_equip_id: [536, 537],
                 requires_synergy_equip_improvement: 1
@@ -6820,7 +6820,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [538],
         bonuses: [
             {
-                addition: { fire_power: 3, evasion: 2, shell_accuracy: 2 },
+                addition: { fire_power: 3, evasion: 2, accuracy: 2 },
                 ship_country_ids: [Country.France]
             },
             {
@@ -6828,11 +6828,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Richelieu"]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [969]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 2, evasion: 2 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 2, evasion: 2 },
                 ship_class_names: ["Commandant_Teste"]
             },
             {
@@ -6841,7 +6841,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 4
             },
@@ -6856,7 +6856,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 7
             },
@@ -6871,24 +6871,24 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 2 },
+                addition: { accuracy: 2 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 required_improvement: 7,
                 requires_synergy_equip_id: [468],
@@ -6902,14 +6902,14 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 requires_synergy_equip_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Richelieu"],
                 required_improvement: 9,
                 requires_synergy_equip_id: [468],
                 requires_synergy_equip_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 requires_synergy_equip_id: [536, 537],
                 requires_synergy_equip_improvement: 1
@@ -6928,7 +6928,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 requires_synergy_equip_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 9,
                 requires_synergy_equip_id: [536, 537],
@@ -6940,11 +6940,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [472],
         bonuses: [
             {
-                addition: { asw: 2 },
+                addition: { asw_power: 2 },
                 ship_country_ids: [Country.USA]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_country_ids: [Country.UK]
             },
             {
@@ -6952,7 +6952,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_type_ids: ["DE"]
             },
             {
-                addition: { asw: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { asw_power: 1, evasion: 1, accuracy: 1 },
                 ship_ids: [920],
                 stack_limit: 1
             }
@@ -6962,11 +6962,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [227],
         bonuses: [
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 8
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 10
             }
         ]
@@ -6980,7 +6980,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 5,
                 stack_limit: 1
             },
@@ -6990,17 +6990,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 8,
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 9,
                 stack_limit: 1
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 10,
                 stack_limit: 1
             },
@@ -7059,7 +7059,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 2,
                 stack_limit: 1
             },
@@ -7089,7 +7089,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 8,
                 stack_limit: 1
             },
@@ -7109,24 +7109,24 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [483],
         bonuses: [
             {
-                addition: { fire_power: 2, anti_air: 3, shell_accuracy: 1 },
+                addition: { fire_power: 2, anti_air: 3, accuracy: 1 },
                 ship_class_names: ["Kongou"],
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Kongou"],
                 required_improvement: 6,
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Kongou"],
                 required_improvement: 10,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, anti_air: 2, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 2, evasion: 2, accuracy: 1 },
                 ship_class_names: ["Ise"],
                 stack_limit: 1
             },
@@ -7137,7 +7137,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ise"],
                 required_improvement: 6,
                 stack_limit: 1
@@ -7149,7 +7149,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Yamato"],
                 required_improvement: 6,
                 stack_limit: 1
@@ -7211,7 +7211,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [546, 911, 916],
                 required_improvement: 5,
                 stack_limit: 1
@@ -7222,13 +7222,13 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [553, 554],
                 required_improvement: 1,
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [553, 554],
                 required_improvement: 3,
                 stack_limit: 1
@@ -7292,7 +7292,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["CA", "CAV"],
                 required_improvement: 8,
                 stack_limit: 1
@@ -7313,11 +7313,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Mogami"]
             },
             {
-                addition: { anti_air: 2, evasion: 1, shell_accuracy: 1 },
+                addition: { anti_air: 2, evasion: 1, accuracy: 1 },
                 ship_ids: [501, 506]
             },
             {
-                addition: { anti_air: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { anti_air: 1, evasion: 1, accuracy: 1 },
                 ship_ids: [502, 507]
             },
             {
@@ -7333,7 +7333,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10
             }
         ]
@@ -7357,7 +7357,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { fire_power: 1, anti_air: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 1, accuracy: 1 },
                 ship_ids: [894, 899],
                 required_improvement: 10
             }
@@ -7367,15 +7367,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [486],
         bonuses: [
             {
-                addition: { fire_power: 4, anti_air: 4, evasion: 3, shell_accuracy: 2 },
+                addition: { fire_power: 4, anti_air: 4, evasion: 3, accuracy: 2 },
                 ship_ids: [894, 899]
             },
             {
-                addition: { fire_power: 2, anti_air: 2, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, anti_air: 2, evasion: 2, accuracy: 1 },
                 ship_ids: [883, 888]
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 required_improvement: 6
             },
             {
@@ -7383,7 +7383,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 required_improvement: 10
             }
         ]
@@ -7392,11 +7392,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [487],
         bonuses: [
             {
-                addition: { fire_power: 5, anti_air: 3, evasion: 2, shell_accuracy: 4 },
+                addition: { fire_power: 5, anti_air: 3, evasion: 2, accuracy: 4 },
                 ship_ids: [894, 899]
             },
             {
-                addition: { fire_power: 3, anti_air: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 3, anti_air: 1, evasion: 1, accuracy: 2 },
                 ship_ids: [883, 888]
             },
             {
@@ -7404,11 +7404,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { anti_air: 1, shell_accuracy: 1 },
+                addition: { anti_air: 1, accuracy: 1 },
                 required_improvement: 8
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 required_improvement: 10
             }
         ]
@@ -7417,24 +7417,24 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [488], // 二式爆雷改二
         bonuses: [
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_type_ids: ["DD"],
                 ship_country_ids: [Country.Japan]
             },
             {
-                addition: { asw: 1, evasion: 1 },
+                addition: { asw_power: 1, evasion: 1 },
                 ship_class_names: ["Shimushu", "Etorohu", "Hiburi", "Tei", "Ukuru"]
             },
             {
-                addition: { asw: 5, evasion: 4, shell_accuracy: 2 },
+                addition: { asw_power: 5, evasion: 4, accuracy: 2 },
                 ship_ids: [145, 961]
             },
             {
-                addition: { asw: 2, evasion: 1, shell_accuracy: 1 },
+                addition: { asw_power: 2, evasion: 1, accuracy: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656]
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [43, 235, 407, 411, 412, 419, 537, 538, 663, 668]
             },
             {
@@ -7443,12 +7443,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [145, 961],
                 required_improvement: 5
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [145, 961],
                 required_improvement: 7
             },
@@ -7458,17 +7458,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [145, 961],
                 required_improvement: 9
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [145, 961],
                 required_improvement: 10
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
                 required_improvement: 5
             },
@@ -7478,12 +7478,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
                 required_improvement: 9
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_ids: [228, 243, 557, 558, 651, 656, 43, 235, 407, 411, 412, 419, 537, 538, 663, 668],
                 required_improvement: 10
             }
@@ -7493,11 +7493,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [489, 491],
         bonuses: [
             {
-                addition: { fire_power: 1, anti_air: 2, evasion: 1, asw: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 2, evasion: 1, asw_power: 1, accuracy: 1 },
                 ship_base_ids: [161, 900, 943]
             },
             {
-                addition: { fire_power: 2, anti_air: 2, evasion: 2, asw: 1, shell_accuracy: 1 },
+                addition: { fire_power: 2, anti_air: 2, evasion: 2, asw_power: 1, accuracy: 1 },
                 ship_ids: [717, 948]
             },
             {
@@ -7505,11 +7505,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 8
             },
             {
@@ -7694,7 +7694,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [151, 593, 954],
                 requires_synergy_equip_id: [411],
                 requires_synergy_equip_improvement: 6,
@@ -7720,19 +7720,19 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [503], // 35.6cm連装砲改四
         bonuses: [
             {
-                addition: { fire_power: 4, anti_air: 4, shell_accuracy: 2 },
+                addition: { fire_power: 4, anti_air: 4, accuracy: 2 },
                 ship_ids: [593]
             },
             {
-                addition: { fire_power: 4, anti_air: 3, shell_accuracy: 2 },
+                addition: { fire_power: 4, anti_air: 3, accuracy: 2 },
                 ship_ids: [954]
             },
             {
-                addition: { fire_power: 2, anti_air: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, anti_air: 2, accuracy: 1 },
                 ship_ids: [151]
             },
             {
-                addition: { fire_power: 3, anti_air: 1, shell_accuracy: 1 },
+                addition: { fire_power: 3, anti_air: 1, accuracy: 1 },
                 ship_ids: [591, 592]
             },
             {
@@ -7744,7 +7744,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [150, 152]
             },
             {
-                addition: { fire_power: 4, anti_air: 1, shell_accuracy: 1 },
+                addition: { fire_power: 4, anti_air: 1, accuracy: 1 },
                 ship_ids: [694]
             },
             {
@@ -7758,7 +7758,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 2
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [593, 954],
                 required_improvement: 4
             },
@@ -7773,7 +7773,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [593, 694, 954],
                 required_improvement: 10
             },
@@ -7788,7 +7788,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [151, 591, 592],
                 required_improvement: 6
             },
@@ -7798,12 +7798,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [151, 591, 592],
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [149, 150, 152, 694],
                 required_improvement: 4
             },
@@ -7818,13 +7818,13 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 3, shell_accuracy: 3, evasion: 2 },
+                addition: { fire_power: 3, accuracy: 3, evasion: 2 },
                 ship_ids: [954],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 2, accuracy: 2, evasion: 1 },
                 ship_ids: [151, 591, 592, 593, 694],
                 requires_surface_radar: true,
                 stack_limit: 1
@@ -7843,7 +7843,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
                 requires_synergy_equip_improvement: 8,
@@ -7857,7 +7857,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 2, evasion: 2 },
+                addition: { fire_power: 2, accuracy: 2, evasion: 2 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_high_precision_radar: true,
                 stack_limit: 1
@@ -7958,7 +7958,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [986, 987]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [986, 987],
                 required_improvement: 8
             }
@@ -7968,17 +7968,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [506],
         bonuses: [
             {
-                addition: { fire_power: 2, shell_accuracy: 3, anti_air: 2, evasion: 4 },
+                addition: { fire_power: 2, accuracy: 3, anti_air: 2, evasion: 4 },
                 ship_ids: [961],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2, anti_air: 1, evasion: 3 },
+                addition: { fire_power: 1, accuracy: 2, anti_air: 1, evasion: 3 },
                 ship_ids: [145, 497, 557, 558, 656, 951, 975],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 1, evasion: 2 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 1, evasion: 2 },
                 ship_ids: [147, 235, 407, 419, 464, 470, 537, 538, 578, 955, 960],
                 stack_limit: 1
             }
@@ -7988,28 +7988,28 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [507, 508],
         bonuses: [
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Nevada"]
             },
             {
-                addition: { fire_power: 2, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 2, evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 ship_type_ids: ["FBB", "BB", "BBV"]
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 2 },
                 ship_country_ids: [Country.USA],
                 ship_type_ids: ["FBB", "BB", "BBV"],
                 requires_synergy_equip_id: [279, 307, 315, 456],
                 stack_limit: 1
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_class_names: ["Ise", "Kongou", "Husou"],
                 stack_limit: 1
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.UK],
                 stack_limit: 1
             },
@@ -8022,7 +8022,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 9
             }
         ]
@@ -8031,26 +8031,26 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [508],
         bonuses: [
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_class_names: ["Nevada"],
                 requires_synergy_equip_id: [507],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 2, accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 ship_type_ids: ["FBB", "BB", "BBV"],
                 requires_synergy_equip_id: [507],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Ise", "Kongou", "Husou"],
                 requires_synergy_equip_id: [507],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 1 },
                 ship_country_ids: [Country.UK],
                 requires_synergy_equip_id: [507],
                 stack_limit: 1
@@ -8061,11 +8061,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [510],
         bonuses: [
             {
-                addition: { fire_power: 2, asw: 3, evasion: 2, los: 2 },
+                addition: { fire_power: 2, asw_power: 3, evasion: 2, los: 2 },
                 ship_country_ids: [Country.UK]
             },
             {
-                addition: { los: 3, shell_accuracy: 2 },
+                addition: { los: 3, accuracy: 2 },
                 ship_class_names: ["Nelson"]
             },
             {
@@ -8097,51 +8097,51 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [517],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1, los: 1 },
+                addition: { accuracy: 1, evasion: 1, los: 1 },
                 ship_class_names: ["Ayanami", "Dairoku", "Hatsuharu", "Hubuki", "Asashio", "Shimakaze", "Shiratsuyu", "Mutsuki", "Kagerou", "Yuugumo", "Akizuki", "Kamikaze", "Matsu", "Shimushu", "Etorohu", "Hiburi", "Tei", "Ukuru"],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_class_names: ["Yuugumo"],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1, evasion: 3, los: 2 },
+                addition: { fire_power: 2, accuracy: 1, evasion: 3, los: 2 },
                 ship_ids: [960],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 2, los: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 2, los: 1 },
                 ship_ids: [147, 235, 407, 419, 464, 470, 578, 656, 955, 961, 975],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [981, 983],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 requires_synergy_equip_id: [267, 366],
                 requires_synergy_equip_improvement: 3,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_class_names: ["Yuugumo"],
                 requires_synergy_equip_id: [267, 366],
                 requires_synergy_equip_improvement: 3,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 4, evasion: 3 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 4, evasion: 3 },
                 requires_synergy_equip_id: [450],
                 requires_synergy_equip_improvement: 4,
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 7,
                 stack_limit: 1
             },
@@ -8156,7 +8156,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10,
                 stack_limit: 1
             }
@@ -8185,7 +8185,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { evasion: 1, shell_accuracy: 1 },
+                addition: { evasion: 1, accuracy: 1 },
                 required_improvement: 10
             },
             {
@@ -8200,12 +8200,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [519], // SJレーダー+潜水艦司令塔装備
         bonuses: [
             {
-                addition: { shell_accuracy: 2, evasion: 2 },
+                addition: { accuracy: 2, evasion: 2 },
                 ship_class_names: ["Salmon"],
                 stack_limit: 1
             },
             {
-                addition: { torpedo_power: 1, shell_accuracy: 2, evasion: 2 },
+                addition: { torpedo_power: 1, accuracy: 2, evasion: 2 },
                 ship_class_names: ["Gato"],
                 stack_limit: 1
             }
@@ -8223,7 +8223,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_class_names: ["Takao", "Myoukou"]
             },
             {
-                addition: { fire_power: 3, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 3, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Mogami", "Tone"]
             },
             {
@@ -8237,19 +8237,19 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 3
             },
             {
-                addition: { fire_power: 2, torpedo_power: 2, evasion: 1, shell_accuracy: 1 },
+                addition: { fire_power: 2, torpedo_power: 2, evasion: 1, accuracy: 1 },
                 ship_class_names: ["Hurutaka", "Aoba"],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 3, torpedo_power: 2, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 3, torpedo_power: 2, evasion: 2, accuracy: 1 },
                 ship_class_names: ["Takao", "Mogami", "Myoukou", "Tone"],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, anti_air: 4, evasion: 4, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 4, evasion: 4, accuracy: 1 },
                 ship_class_names: ["Hurutaka", "Takao", "Mogami", "Aoba", "Myoukou", "Tone"],
                 requires_synergy_equip_id: [10, 66, 71, 130, 220, 275, 464],
                 stack_limit: 1
@@ -8269,29 +8269,29 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [501, 502, 503, 504, 506, 507]
             },
             {
-                addition: { fire_power: 1, evasion: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, evasion: 1, accuracy: 2 },
                 ship_ids: [501, 502, 503, 504, 506, 507],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, anti_air: 3, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 3, evasion: 2, accuracy: 1 },
                 ship_ids: [501, 502, 503, 504, 506, 507],
                 requires_synergy_equip_id: [30, 410],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, anti_air: 3, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, anti_air: 3, evasion: 2, accuracy: 1 },
                 ship_ids: [501, 502, 503, 504, 506, 507],
                 requires_synergy_equip_id: [410],
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_ids: [265, 269, 319, 502]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2, anti_air: 1 },
+                addition: { fire_power: 1, accuracy: 2, anti_air: 1 },
                 ship_ids: [507]
             },
             {
@@ -8300,7 +8300,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [501, 502, 503, 504, 506, 507],
                 required_improvement: 10
             }
@@ -8318,19 +8318,19 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [507]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, los: 2, evasion: 2 },
+                addition: { fire_power: 1, accuracy: 1, los: 2, evasion: 2 },
                 ship_ids: [183]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 2, los: 3, evasion: 3 },
+                addition: { fire_power: 2, accuracy: 2, los: 3, evasion: 3 },
                 ship_ids: [321]
             },
             {
-                addition: { fire_power: 3, anti_air: 1, shell_accuracy: 3, los: 2, evasion: 2 },
+                addition: { fire_power: 3, anti_air: 1, accuracy: 3, los: 2, evasion: 2 },
                 ship_ids: [507]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ooyodo"],
                 required_improvement: 1
             },
@@ -8350,7 +8350,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ooyodo"],
                 required_improvement: 6
             },
@@ -8360,12 +8360,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ooyodo"],
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [507],
                 required_improvement: 1
             },
@@ -8385,7 +8385,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [507],
                 required_improvement: 6
             },
@@ -8395,7 +8395,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [507],
                 required_improvement: 10
             }
@@ -8408,7 +8408,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ],
         bonuses: [
             {
-                addition: { torpedo_power: 1, evasion: 5, shell_accuracy: 1, los: 3 },
+                addition: { torpedo_power: 1, evasion: 5, accuracy: 1, los: 3 },
                 ship_type_ids: ["SSV"]
             },
             {
@@ -8417,7 +8417,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["SSV"],
                 required_improvement: 2
             },
@@ -8432,7 +8432,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 5
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["SSV"],
                 required_improvement: 8
             },
@@ -8447,7 +8447,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [523], // 零式小型水上機(熟練)
         bonuses: [
             {
-                addition: { torpedo_power: 2, aerial_bomb_power: 2, evasion: 1, shell_accuracy: 1, los: 1 },
+                addition: { torpedo_power: 2, aerial_bomb_power: 2, evasion: 1, accuracy: 1, los: 1 },
                 ship_type_ids: ["SSV"]
             }
         ]
@@ -8456,7 +8456,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [524], // 12cm単装高角砲+25mm機銃増備
         bonuses: [
             {
-                addition: { fire_power: 1, anti_air: 2, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 1, anti_air: 2, evasion: 2, accuracy: 1 },
                 ship_type_ids: ["LHA", "AR", "AS", "CT", "AO"]
             },
             {
@@ -8486,7 +8486,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["LHA", "AR", "AS", "CT", "AO"],
                 required_improvement: 7
             },
@@ -8518,7 +8518,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_type_ids: ["SS", "SSV"]
             },
             {
-                addition: { fire_power: 2, torpedo_power: 1, shell_accuracy: 2 },
+                addition: { fire_power: 2, torpedo_power: 1, accuracy: 2 },
                 ship_base_ids: [971, 972],
                 stack_limit: 1
             },
@@ -8528,12 +8528,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["SS", "SSV"],
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_type_ids: ["SS", "SSV"],
                 required_improvement: 6
             },
@@ -8548,7 +8548,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [526], // 特四式内火艇改
         bonuses: [
             {
-                addition: { fire_power: 1, torpedo_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, torpedo_power: 1, accuracy: 1 },
                 ship_type_ids: ["SS", "SSV"]
             },
             {
@@ -8572,7 +8572,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [527],
         bonuses: [
             {
-                addition: { anti_air: 2, shell_accuracy: 1, evasion: 1, los: 2 },
+                addition: { anti_air: 2, accuracy: 1, evasion: 1, los: 2 },
                 ship_country_ids: [Country.UK],
                 stack_limit: 1
             },
@@ -8605,7 +8605,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.UK],
                 required_improvement: 10,
                 stack_limit: 1
@@ -8616,7 +8616,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [528],
         bonuses: [
             {
-                addition: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 2, evasion: 1 },
                 ship_country_ids: [Country.UK]
             },
             {
@@ -8629,7 +8629,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 2
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.UK],
                 required_improvement: 4
             },
@@ -8639,7 +8639,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.UK],
                 required_improvement: 10
             }
@@ -8663,7 +8663,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 8
             },
@@ -8688,7 +8688,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 5
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 7
             },
@@ -8698,7 +8698,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 10
             }
@@ -8719,13 +8719,13 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 requires_synergy_equip_id: [123]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 10,
                 requires_synergy_equip_id: [123]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 7
             },
@@ -8740,12 +8740,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Italia],
                 required_improvement: 8
             },
@@ -8770,7 +8770,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ark_Royal", "Illustrious"],
                 required_improvement: 6
             },
@@ -8785,7 +8785,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Ark_Royal", "Illustrious"],
                 required_improvement: 9
             },
@@ -8824,11 +8824,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [593]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2 },
+                addition: { fire_power: 1, accuracy: 2 },
                 ship_ids: [592, 694]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [592, 694],
                 required_improvement: 2
             },
@@ -8843,7 +8843,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [592, 694],
                 required_improvement: 7
             },
@@ -8858,12 +8858,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [592, 694],
                 required_improvement: 10
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [150, 152, 591, 954]
             },
             {
@@ -8877,7 +8877,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [150, 152, 591, 954],
                 required_improvement: 6
             },
@@ -8887,7 +8887,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [150, 152, 591, 954],
                 required_improvement: 10
             },
@@ -8902,23 +8902,23 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [149, 151, 593],
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 3, shell_accuracy: 3, evasion: 3 },
+                addition: { fire_power: 3, accuracy: 3, evasion: 3 },
                 ship_ids: [592, 694],
                 requires_surface_radar: true,
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 2 },
+                addition: { accuracy: 2 },
                 ship_ids: [592, 694],
                 stack_limit: 2
             },
             {
-                addition: { shell_accuracy: 2 },
+                addition: { accuracy: 2 },
                 ship_ids: [592, 694],
                 stack_limit: 3
             },
@@ -8928,12 +8928,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 3
             },
             {
-                addition: { shell_accuracy: 2 },
+                addition: { accuracy: 2 },
                 ship_ids: [592, 694],
                 stack_limit: 4
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 2, evasion: 2 },
+                addition: { fire_power: 2, accuracy: 2, evasion: 2 },
                 ship_ids: [149, 150, 151, 152, 591, 593, 954],
                 requires_surface_radar: true,
                 stack_limit: 1
@@ -8963,7 +8963,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [149, 150, 151, 152, 591, 592, 593, 694, 954],
                 requires_high_precision_radar: true,
                 stack_limit: 1
@@ -8982,7 +8982,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_synergy_equip_id: [174],
                 requires_synergy_equip_improvement: 8,
@@ -8996,7 +8996,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 2, torpedo_power: 2, shell_accuracy: 2, evasion: 3 },
+                addition: { fire_power: 2, torpedo_power: 2, accuracy: 2, evasion: 3 },
                 ship_ids: [591, 592, 593, 694, 954],
                 requires_high_precision_radar: true,
                 stack_limit: 1
@@ -9020,7 +9020,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [591, 592, 593, 694, 954],
                 stack_limit: 2
             }
@@ -9040,7 +9040,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [428],
                 required_improvement: 5
             },
@@ -9075,7 +9075,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [141],
                 required_improvement: 6
             },
@@ -9115,7 +9115,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [531],
         bonuses: [
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 4
             },
             {
@@ -9127,7 +9127,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 7
             },
             {
@@ -9139,7 +9139,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10
             }
         ]
@@ -9158,7 +9158,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Akizuki"],
                 required_improvement: 6
             },
@@ -9183,7 +9183,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [968],
                 required_improvement: 5
             },
@@ -9208,7 +9208,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [981, 983],
                 required_improvement: 8
             },
@@ -9223,11 +9223,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [534, 535],
         bonuses: [
             {
-                addition: { fire_power: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, accuracy: 1 },
                 ship_country_ids: [Country.France]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Mogador"]
             },
             {
@@ -9236,7 +9236,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 requires_synergy_equip_id: [535]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 2
             },
@@ -9246,7 +9246,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 6
             },
@@ -9271,7 +9271,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 9
             }
@@ -9281,20 +9281,20 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [536, 537],
         bonuses: [
             {
-                addition: { fire_power: 2, shell_accuracy: 1 },
+                addition: { fire_power: 2, accuracy: 1 },
                 ship_country_ids: [Country.France]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["La_Galissonnière"]
             },
             {
-                addition: { fire_power: 1, evasion: 2, shell_accuracy: 1 },
+                addition: { fire_power: 1, evasion: 2, accuracy: 1 },
                 ship_ids: [970],
                 requires_synergy_equip_id: [537]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 3
             },
@@ -9304,7 +9304,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 6
             },
@@ -9314,7 +9314,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.France],
                 required_improvement: 9
             },
@@ -9348,19 +9348,19 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [546, 662, 663, 668, 911, 916]
             },
             {
-                addition: { shell_accuracy: 1, evasion: 1, los: 1 },
+                addition: { accuracy: 1, evasion: 1, los: 1 },
                 ship_ids: [73, 121, 188, 189, 503, 504, 506]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1, los: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1, los: 1 },
                 ship_ids: [200, 487, 488, 501, 502, 507]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 2, evasion: 2, los: 2 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 2, evasion: 2, los: 2 },
                 ship_base_ids: [102, 103, 445, 581]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1, anti_air: 2, evasion: 2, los: 2 },
+                addition: { fire_power: 2, accuracy: 1, anti_air: 2, evasion: 2, los: 2 },
                 ship_base_ids: [162, 451]
             }
         ]
@@ -9369,15 +9369,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [541, 542],
         bonuses: [
             {
-                addition: { fire_power: 3, shell_accuracy: 2, anti_air: 1, evasion: 2, los: 1 },
+                addition: { fire_power: 3, accuracy: 2, anti_air: 1, evasion: 2, los: 1 },
                 ship_base_ids: [966]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1, anti_air: 1, evasion: 1, los: 1 },
+                addition: { fire_power: 2, accuracy: 1, anti_air: 1, evasion: 1, los: 1 },
                 ship_base_ids: [433]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1 },
                 ship_base_ids: [603, 931]
             }
         ]
@@ -9401,7 +9401,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [542],
         bonuses: [
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 required_improvement: 7
             },
@@ -9416,15 +9416,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [543, 544],
         bonuses: [
             {
-                addition: { fire_power: 4, shell_accuracy: 2, anti_air: 1, evasion: 2, los: 2 },
+                addition: { fire_power: 4, accuracy: 2, anti_air: 1, evasion: 2, los: 2 },
                 ship_base_ids: [966]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1, anti_air: 1, evasion: 1, los: 1 },
+                addition: { fire_power: 2, accuracy: 1, anti_air: 1, evasion: 1, los: 1 },
                 ship_base_ids: [433]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 1, evasion: 1 },
                 ship_base_ids: [603, 931]
             },
             {
@@ -9437,7 +9437,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [543],
         bonuses: [
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 required_improvement: 7
             },
@@ -9452,7 +9452,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 required_improvement: 10
             }
@@ -9467,7 +9467,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.USA],
                 required_improvement: 8
             },
@@ -9507,15 +9507,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 stack_limit: 1
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2, evasion: 1, los: 2 },
+                addition: { fire_power: 1, accuracy: 2, evasion: 1, los: 2 },
                 ship_ids: [461, 466]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, los: 1 },
+                addition: { fire_power: 1, accuracy: 1, los: 1 },
                 ship_ids: [462, 467, 646]
             },
             {
-                addition: { shell_accuracy: 1, los: 1 },
+                addition: { accuracy: 1, los: 1 },
                 ship_ids: [156, 599, 610]
             }
         ]
@@ -9524,11 +9524,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [549],
         bonuses: [
             {
-                addition: { fire_power: 2, shell_accuracy: 1, evasion: 1, asw: 4 },
+                addition: { fire_power: 2, accuracy: 1, evasion: 1, asw_power: 4 },
                 ship_base_ids: [161, 900, 943]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, asw: 1 },
+                addition: { fire_power: 1, accuracy: 1, asw_power: 1 },
                 ship_class_names: ["Houshou", "Taiyou"]
             },
             {
@@ -9537,12 +9537,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [161, 900, 943],
                 required_improvement: 4
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [161, 900, 943],
                 required_improvement: 5
             },
@@ -9557,12 +9557,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [161, 900, 943],
                 required_improvement: 8
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_base_ids: [161, 900, 943],
                 required_improvement: 9
             },
@@ -9572,7 +9572,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 ship_class_names: ["Houshou", "Taiyou"],
                 required_improvement: 4
             },
@@ -9582,7 +9582,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Houshou", "Taiyou"],
                 required_improvement: 8
             },
@@ -9597,7 +9597,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [550],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1 },
+                addition: { accuracy: 1, evasion: 1 },
                 ship_base_ids: [89, 116]
             },
             {
@@ -9611,7 +9611,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_base_ids: [89, 116],
                 required_improvement: 9
             },
@@ -9630,15 +9630,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [551],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1 },
+                addition: { accuracy: 1, evasion: 1 },
                 ship_base_ids: [89, 116]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1, evasion: 2 },
+                addition: { fire_power: 2, accuracy: 1, evasion: 2 },
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899],
                 required_improvement: 7
             },
@@ -9663,7 +9663,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [552],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1 },
+                addition: { accuracy: 1, evasion: 1 },
                 ship_base_ids: [89, 116]
             },
             {
@@ -9671,7 +9671,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 3, evasion: 3 },
+                addition: { fire_power: 2, accuracy: 3, evasion: 3 },
                 ship_ids: [883, 899]
             },
             {
@@ -9685,7 +9685,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 6
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [883, 899],
                 required_improvement: 7
             },
@@ -9705,7 +9705,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 2, evasion: 1 },
                 ship_ids: [555, 560, 599, 610, 888]
             },
             {
@@ -9714,7 +9714,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
                 required_improvement: 8
             },
@@ -9734,7 +9734,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [557],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1 },
+                addition: { accuracy: 1, evasion: 1 },
                 ship_base_ids: [89, 116]
             },
             {
@@ -9742,7 +9742,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 3, evasion: 3 },
+                addition: { fire_power: 2, accuracy: 3, evasion: 3 },
                 ship_ids: [883, 899]
             },
             {
@@ -9751,16 +9751,16 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [883, 899],
                 required_improvement: 2
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 2, evasion: 1 },
                 ship_ids: [555, 560, 599, 610, 888]
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
                 required_improvement: 2
             }
@@ -9770,7 +9770,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [558],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1 },
+                addition: { accuracy: 1, evasion: 1 },
                 ship_base_ids: [89, 116]
             },
             {
@@ -9778,7 +9778,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [116, 117, 285, 318, 555, 560, 883, 888, 894, 899]
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 3, evasion: 3 },
+                addition: { fire_power: 2, accuracy: 3, evasion: 3 },
                 ship_ids: [883, 899]
             },
             {
@@ -9787,12 +9787,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [883, 899],
                 required_improvement: 2
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 2, evasion: 1 },
                 ship_ids: [555, 560, 599, 610, 888]
             },
             {
@@ -9801,7 +9801,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 1
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [555, 560, 599, 610, 888],
                 required_improvement: 2
             }
@@ -9811,11 +9811,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [258],
         bonuses: [
             {
-                addition: { shell_accuracy: 1, evasion: 1 },
+                addition: { accuracy: 1, evasion: 1 },
                 required_improvement: 2
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1 },
                 ship_ids: [156, 599, 610, 883, 899],
                 required_improvement: 2
             }
@@ -9835,7 +9835,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_class_names: ["Akizuki"],
                 required_improvement: 6
             },
@@ -9860,7 +9860,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 4
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_ids: [981, 983],
                 required_improvement: 6
             },
@@ -9884,11 +9884,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 2
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 4
             },
             {
-                addition: { asw: 1 },
+                addition: { asw_power: 1 },
                 required_improvement: 6
             },
             {
@@ -9896,15 +9896,15 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 1, evasion: 1, asw: 1 },
+                addition: { fire_power: 1, evasion: 1, asw_power: 1 },
                 ship_type_ids: ["CVL"]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_ids: [117, 285, 318, 555, 560, 883, 888, 894]
             },
             {
@@ -9912,11 +9912,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 ship_ids: [894]
             },
             {
-                addition: { shell_accuracy: 1, evasion: 1, asw: 1 },
+                addition: { accuracy: 1, evasion: 1, asw_power: 1 },
                 ship_class_names: ["Houshou", "Taiyou"]
             },
             {
-                addition: { fire_power: 3, shell_accuracy: 2, evasion: 1, asw: 3 },
+                addition: { fire_power: 3, accuracy: 2, evasion: 1, asw_power: 3 },
                 requires_synergy_equip_id: [402]
             }
         ]
@@ -9929,7 +9929,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 3
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 required_improvement: 7
             },
             {
@@ -9937,16 +9937,16 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 10
             },
             {
-                addition: { fire_power: 2, shell_accuracy: 1, asw: 1 },
+                addition: { fire_power: 2, accuracy: 1, asw_power: 1 },
                 ship_base_ids: [1001]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 3, evasion: 2 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 3, evasion: 2 },
                 ship_base_ids: [1001],
                 requires_synergy_equip_id: [556]
             },
             {
-                addition: { fire_power: 1, evasion: 2, asw: 1 },
+                addition: { fire_power: 1, evasion: 2, asw_power: 1 },
                 ship_base_ids: [1001],
                 requires_synergy_equip_id: [402]
             }
@@ -9956,7 +9956,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [556],
         bonuses: [
             {
-                addition: { fire_power: 1, shell_accuracy: 1, evasion: 1, anti_air: 3 },
+                addition: { fire_power: 1, accuracy: 1, evasion: 1, anti_air: 3 },
                 ship_base_ids: [511, 1001]
             }
         ]
@@ -9970,17 +9970,17 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 7
             },
             {
-                addition: { shell_accuracy: 1 },
+                addition: { accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 8
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 9
             },
             {
-                addition: { anti_air: 1, fire_power: 1, shell_accuracy: 1 },
+                addition: { anti_air: 1, fire_power: 1, accuracy: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 10
             },
@@ -9990,7 +9990,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1 },
+                addition: { fire_power: 1, accuracy: 1 },
                 ship_base_ids: [83, 534],
                 required_improvement: 10
             }
@@ -10000,11 +10000,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [559],
         bonuses: [
             {
-                addition: { fire_power: 8, shell_accuracy: 6, anti_air: 1, evasion: 2 },
+                addition: { fire_power: 8, accuracy: 6, anti_air: 1, evasion: 2 },
                 ship_country_ids: [Country.Germany]
             },
             {
-                addition: { fire_power: 3, shell_accuracy: 2, evasion: 1 },
+                addition: { fire_power: 3, accuracy: 2, evasion: 1 },
                 ship_base_ids: [83, 534]
             }
         ]
@@ -10023,12 +10023,12 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 8
             },
             {
-                addition: { shell_accuracy: 1, anti_air: 1, evasion: 1 },
+                addition: { accuracy: 1, anti_air: 1, evasion: 1 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 9
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 1, evasion: 2 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 1, evasion: 2 },
                 ship_country_ids: [Country.Germany],
                 required_improvement: 10
             },
@@ -10038,7 +10038,7 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
                 required_improvement: 9
             },
             {
-                addition: { shell_accuracy: 1, anti_air: 1, evasion: 1 },
+                addition: { accuracy: 1, anti_air: 1, evasion: 1 },
                 ship_base_ids: [83, 534],
                 required_improvement: 10
             }
@@ -10048,11 +10048,11 @@ export const EQUIP_BONUS_DATAS: EquipBonusData[] = [
         ids: [560],
         bonuses: [
             {
-                addition: { fire_power: 3, shell_accuracy: 3, anti_air: 4, evasion: 5 },
+                addition: { fire_power: 3, accuracy: 3, anti_air: 4, evasion: 5 },
                 ship_country_ids: [Country.Germany]
             },
             {
-                addition: { fire_power: 1, shell_accuracy: 1, anti_air: 2, evasion: 3 },
+                addition: { fire_power: 1, accuracy: 1, anti_air: 2, evasion: 3 },
                 ship_base_ids: [83, 534]
             }
         ]
