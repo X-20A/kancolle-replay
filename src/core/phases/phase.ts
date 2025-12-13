@@ -5,7 +5,7 @@ import { calc_smoke_screen_activate_rate, calc_triggered_smoke_type } from "@/lo
 import { Node } from "@/models/Node";
 import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
-import { LbasJetSquadron, LBAS, derive_jet_bomber_squadron, is_squadron_destruction, calc_returned_origin_fleet, extract_jet_squadrons, calc_returned_origin_lbas } from "@/models/LBAS";
+import { LbasJetSquadron, LBAS, derive_jet_bomber_squadron, is_squadron_destruction, reflect_squadrons_to_origin_fleet, extract_jet_squadrons, calc_returned_origin_lbas } from "@/models/LBAS";
 import { calc_jet_attacked_enemy_fleet } from "@/logics/aerialCombat/jetAssault";
 import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
@@ -308,7 +308,7 @@ export function calc_ship_jet_assault_phase(
     );
 
     if (air_state_shootdowned_squadrons.every(is_squadron_destruction)) return { // 枯れたらreturn
-        post_CVs_jet_assault_phase_player_fleet: calc_returned_origin_fleet(
+        post_CVs_jet_assault_phase_player_fleet: reflect_squadrons_to_origin_fleet(
             air_state_shootdowned_squadrons,
             player_fleet,
         ),
@@ -339,7 +339,7 @@ export function calc_ship_jet_assault_phase(
     );
 
     return {
-        post_CVs_jet_assault_phase_player_fleet: calc_returned_origin_fleet(
+        post_CVs_jet_assault_phase_player_fleet: reflect_squadrons_to_origin_fleet(
             anti_air_fired_squadrons,
             player_fleet,
         ),

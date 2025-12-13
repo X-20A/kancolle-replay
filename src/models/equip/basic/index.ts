@@ -10,7 +10,6 @@ import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
 import { AbyssalEquipFlags, PlayerEquipFlags } from "@/types/equip/flags";
 import { Brand } from "@/types/brands";
-import { is_abyssal_equip } from "./predicates";
 
 export * from "./predicates";
 

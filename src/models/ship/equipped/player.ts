@@ -127,6 +127,16 @@ const derive_player_equipped_ship_core = (
     return ship;
 }
 
+/**
+ * 艦娘(装備込)を返す
+ * @param lv 
+ * @param special_item_id 
+ * @param ship_id 
+ * @param options 
+ * @param normal_slot_equips 
+ * @param ex_slot_equip 
+ * @returns 
+ */
 export function derive_player_equipped_ship(
     lv: ShipLv,
     special_item_id: SpecialItemId,

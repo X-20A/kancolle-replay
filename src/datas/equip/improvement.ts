@@ -817,7 +817,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        aerial_torpedo_power: {
+        torpedo_power: {
             coeffient: 0.7,
             is_sqrt: true,
         },

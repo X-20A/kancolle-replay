@@ -30,11 +30,11 @@ const calc_core_base_power_set = (
         attack_type,
     } = combination;
     const { natural_addition, improvement_addition } = attacker_squadron.equip;
-    const { asw_power, aerial_bomb_power, aerial_torpedo_power } = natural_addition;
+    const { asw_power, aerial_bomb_power, torpedo_power } = natural_addition;
     const {
         asw_power: improve_asw,
         aerial_bomb_power: improve_bomb,
-        aerial_torpedo_power: improve_torpedo,
+        torpedo_power: improve_torpedo,
     } = improvement_addition;
 
     return match(attack_type)
@@ -49,8 +49,8 @@ const calc_core_base_power_set = (
                 natural_status: is_install_type(target_unit.ship)
                     // NOTE: 艦攻 かつ 対地目標である場合は 雷装 / 2(切り捨て)
                     // https://docs.google.com/spreadsheets/d/1mA8rBhMIn9DRxVIvVH5SiZOXLTumHuZtkNcAjmFsgCY/edit?gid=611010520#gid=611010520&range=A52
-                    ? Math.floor(aerial_torpedo_power / 2)
-                    : aerial_torpedo_power,
+                    ? Math.floor(torpedo_power / 2)
+                    : torpedo_power,
                 improvement_bonus: improve_torpedo,
             }
         })

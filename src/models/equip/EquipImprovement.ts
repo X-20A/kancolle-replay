@@ -2,6 +2,12 @@ import { ADD_STATUS_KEYS, EQUIP_IMPLOVEMENT_DATAS, EquipImprovementType } from "
 import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
 import { Equip, is_player_equip } from "./basic";
 
+/**
+ * 改修によるステータスボーナスを返す
+ * @param improvement_type 
+ * @param improvement_lv 
+ * @returns 
+ */
 export function derive_equip_improvement_addition(
     improvement_type: EquipImprovementType,
     improvement_lv: number,
@@ -22,6 +28,12 @@ export function derive_equip_improvement_addition(
     }, INITIAL_STATUS_COMPONENT);
 }
 
+/**
+ * 装備の改修値ボーナスを返す
+ * @param equip 
+ * @param key 
+ * @returns 
+ */
 export function calc_equip_improvement_addition(
     equip: Equip,
     key: keyof TStatusComponent,

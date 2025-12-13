@@ -5,8 +5,13 @@ import { AffiliationFleetType, PlayerFleetUnit } from "./fleet/FleetUnit";
 import { EquipType } from "@/datas/equip/base/player";
 import { Fleet, is_combined_fleet } from "./fleet/Fleet";
 import { produce } from "immer";
-import { is_equip_exsist } from "./ship/EquipSlot";
+import { is_equip_exsist, is_normal_equip_slot, SlotCount } from "./ship/EquipSlot";
 
+/// 航空隊(空母やLBASからぴゅ～っと飛んでくやつ)
+
+/**
+ * 航空隊共通ベース
+ */
 type SquadronBase = {
     /** 航空隊機数 */
     readonly slot_count: number,
@@ -26,7 +31,7 @@ type ShipSquadronBase = SquadronBase & {
     readonly slot_index: number,
 }
 
-/** 航空隊 */
+/** 基地航空隊 */
 type LbasSquadronBase = SquadronBase & {
     /** 基地航空隊 index */
     readonly lbas_index: number,
@@ -102,11 +107,17 @@ export function extract_jet_squadrons(
     });
 }
 
-export function derive_specific_type_squadron(
+/**
+ * 艦隊から航空隊を抽出して返す
+ * @param fleet_units 
+ * @param target_types 
+ * @returns 
+ */
+const derive_specific_type_squadron = (
     fleet_units: PlayerFleetUnit[],
     target_types: EquipType[],
-): NormalShipSquadron[] {
-    return fleet_units.flatMap(unit => {
+): NormalShipSquadron[] => {
+    const fleet_squadrons: NormalShipSquadron[] =  fleet_units.reduce((total_squadrons, unit) => {
         const valid_plane_slots = unit.ship.equip_slots.flatMap(slot => {
             const equip = slot.equip;
             if (
@@ -121,13 +132,18 @@ export function derive_specific_type_squadron(
 
         if (valid_plane_slots.length === 0) return [];
 
-        const avg_proficiency = calc_average_proficiencyfrom_equip_slots(valid_plane_slots);
+        const avg_proficiency =
+            calc_average_proficiencyfrom_equip_slots(valid_plane_slots);
 
-        return valid_plane_slots.flatMap(slot => {
+        const ship_squadrons: NormalShipSquadron[] = valid_plane_slots.flatMap(slot => {
             const equip = slot.equip;
-            if (!is_equip_exsist(equip) || !is_player_plane_equip(equip)) return [];
+            if (
+                !is_equip_exsist(equip) ||
+                !is_player_plane_equip(equip) ||
+                !is_normal_equip_slot(slot.slot_index)
+            ) return [];
             
-            return {
+            const squadron: NormalShipSquadron = {
                 equip: equip,
                 each_fleet: unit.affiliation_type,
                 ship_index: unit.original_index,
@@ -136,8 +152,14 @@ export function derive_specific_type_squadron(
                 proficiency: is_player_plane_equip(equip) ? equip.plane_proficiency : 0,
                 avg_proficiency,
             };
-        })
-    })
+
+            return [squadron];
+        });
+
+        return total_squadrons.concat(ship_squadrons);
+    }, [] as NormalShipSquadron[]);
+
+    return fleet_squadrons;
 }
 
 export function derive_normal_ship_squadron(
@@ -169,7 +191,13 @@ export function derive_jet_bomber_squadron(
     ) as ShipJetSquadron[];
 }
 
-export function calc_returned_origin_fleet<T extends Fleet>(
+/**
+ * 航空隊を所属元の艦隊に反映する
+ * @param squadrons 
+ * @param fleet 
+ * @returns 
+ */
+export function reflect_squadrons_to_origin_fleet<T extends Fleet>(
     squadrons: ShipSquadron[],
     fleet: T,
 ): T {
@@ -183,17 +211,13 @@ export function calc_returned_origin_fleet<T extends Fleet>(
 
             if (!match_squadron) return unit;
 
-            const equip_slot_index = unit.ship.equip_slots.findIndex(
-                slot => slot.equip && slot.slot_index === match_squadron.slot_index
-            );
-
-            if (equip_slot_index === -1) {
-                throw new Error('抽出元の装備スロットが見つかりませんでした');
-            }
-
             return produce(unit, draftUnit => {
-                draftUnit.ship.equip_slots[equip_slot_index].slot_count =
-                    match_squadron.slot_count;
+                const slot = draftUnit.ship.equip_slots?.[match_squadron.slot_index];
+                if (!slot) {
+                    throw new Error('抽出元の装備スロットが見つかりませんでした');
+                }
+
+                slot.slot_count = match_squadron.slot_count as SlotCount;
             });
         }) as typeof draft_fleet.main_fleet_units;
 
@@ -216,8 +240,12 @@ export function calc_returned_origin_fleet<T extends Fleet>(
             }
 
             return produce(unit, draftUnit => {
-                draftUnit.ship.equip_slots[equipSlotIndex].slot_count =
-                    match_squadron.slot_count;
+                const slot = draftUnit.ship.equip_slots?.[match_squadron.slot_index];
+                if (!slot) {
+                    throw new Error('抽出元の装備スロットが見つかりませんでした');
+                }
+
+                slot.slot_count = match_squadron.slot_count as SlotCount;
             });
         }) as typeof draft_fleet.escort_fleet_units;
     });
@@ -284,13 +312,23 @@ export function calc_updated_target_node_LBAS(
     };
 }
 
+const DEFAULT_LBAS_SLOTS: readonly number[] = [18, 18, 18, 18] as const;
+
+/**
+ * LBASを返す
+ * @param param_units 
+ * @param lbas_index 
+ * @param edit_slot_counts 
+ * @returns 
+ */
 export function derive_LBAS(
     param_units: PlayerPlaneEquip[],
     lbas_index: number,
     edit_slot_counts?: readonly number[],
 ): LBAS {
-    const DEFAULT_LBAS_SLOTS: readonly number[] = [18, 18, 18, 18];
-    const units = param_units.length >= 5 ? param_units.slice(0, 4) : param_units;
+    const units = param_units.length >= 5
+        ? param_units.slice(0, 4)
+        : param_units;
 
     const slot_counts = edit_slot_counts
         ? [
@@ -302,14 +340,18 @@ export function derive_LBAS(
     const avg_lbas_proficiency = calc_average_proficiencyfrom_equips(units);
 
     const squadrons: NormalLbasSquadron[] = units.flatMap((unit, index) => {
-        return {
+        const slot_count = slot_counts[index];
+        if (!slot_count) throw new Error('該当するスロット数がありません');
+        const squadron: NormalLbasSquadron = {
             equip: unit,
-            slot_count: slot_counts[index],
+            slot_count,
             proficiency: unit.plane_proficiency,
             lbas_index: lbas_index,
             squadron_index: index,
             avg_proficiency: avg_lbas_proficiency,
-        }
+        };
+
+        return [squadron];
     })
     return {
         squadrons: squadrons,

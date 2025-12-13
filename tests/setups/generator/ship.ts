@@ -1,5 +1,5 @@
 import { Equip, PlayerEquip } from "@/models/equip/basic";
-import { brandShipId, brandShipLv, ShipId } from "@/types/brands/ship";
+import { brandShipLv, ShipBaseId } from "@/types/brands/ship";
 import { SpecialItemId } from "@/types/ship/ship";
 import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { PLAYER_SHIP_DATAS } from "@/datas/ship/player";
@@ -9,6 +9,7 @@ import { NakedShip, PlayerNakedShip } from "@/models/ship/naked";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { __player_equipped_ship__, derive_player_equipped_ship } from "@/models/ship/equipped/player";
+import { PlayerShipId } from "@/types/ship/playerShipId";
 
 const {
     derive_player_equipped_ship_core,
@@ -28,14 +29,19 @@ export function derive_PES(
     );
 }
 
+/**
+ * 艦名から艦娘IDを返す
+ * @param name 
+ * @returns 
+ */
 const calc_ship_id_from_name = (
     name: PlayerShipNameJP,
-): ShipId => {
+): PlayerShipId => {
     const data = Object.entries(PLAYER_SHIP_DATAS)
         .find(([, data]) => data.name_jp === name);
     if (!data) throw new Error(`指定された名前の装備は存在しません: ${name}`);
 
-    return brandShipId(Number(data[0]));
+    return Number(data[0]) as PlayerShipId;
 }
 
 /**
@@ -46,14 +52,14 @@ const calc_ship_id_from_name = (
  * @param ex_equip ex装備（任意）
  */
 const make_ship_from_id_equips = (
-    id: number,
+    id: PlayerShipId,
     equips: Equip[],
     ex_equip: Equip | 'None',
 ): PlayerEquippedShip => {
     return derive_player_equipped_ship(
         brandShipLv(99),
         SpecialItemId.None,
-        brandShipId(id),
+        id,
         {},
         equips,
         ex_equip,
@@ -74,14 +80,18 @@ export const pre_make_player_ship_from_name = (
 };
 
 const derive_naked_ship = (
-    id: number,
+    ship_id: ShipBaseId,
 ): NakedShip => {
-    const ship_id = brandShipId(id);
-    return id < 1500
-        ? derive_player_naked_ship(brandShipLv(99), ship_id)
+    return ship_id < 1500
+        ? derive_player_naked_ship(brandShipLv(99), ship_id as PlayerShipId)
         : derive_abyssal_naked_ship(ship_id as AbyssalShipId)
 }
 
+/**
+ * 艦名からすっぴん艦娘を返す
+ * @param name 
+ * @returns 
+ */
 export function derive_naked_ship_from_name(
     name: PlayerShipNameJP,
 ): PlayerNakedShip {

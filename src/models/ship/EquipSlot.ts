@@ -1,8 +1,7 @@
-import { TStatusComponent } from "@/types";
+import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
 import { AbyssalEquip, Equip, is_player_equip, PlayerEquip } from "../equip/basic"
 import { PlayerNakedShip } from "./naked";
 import { derive_equip_bonus_addition } from "../equip/EquipBonus";
-import { DEFAULT_STATUS_COMPONENT } from "@/datas";
 import { Brand } from "@/types/brands";
 
 /// 装備スロット
@@ -14,9 +13,12 @@ type EquipSlotBase = {
     readonly original_slot_count: number,
 }
 
+export type SlotIndex = number | 'ex'
+export type NormalSlotIndex = number
+
 export type PlayerEquipSlot = EquipSlotBase & {
     readonly equip: PlayerEquip | 'None',
-    readonly slot_index: number | 'ex',
+    readonly slot_index: SlotIndex,
     /** 艦攻装備ボーナス用 */
     readonly equip_bonus: TStatusComponent,
 }
@@ -30,7 +32,7 @@ export type EquipSlot = PlayerEquipSlot | AbyssalEquipSlot;
 
 export type NonEmptyPlayerEquipSlot = EquipSlotBase & {
     readonly equip: PlayerEquip,  // 'None' を削除
-    readonly slot_index: number | 'ex',
+    readonly slot_index: SlotIndex,
     readonly equip_bonus: TStatusComponent,
 }
 
@@ -59,7 +61,7 @@ export function derive_player_equip_slots(
             slot_index: index,
             equip_bonus: is_equip_exsist(equip)
                 ? derive_equip_bonus_addition(ship, [equip])
-                : DEFAULT_STATUS_COMPONENT,
+                : { ...INITIAL_STATUS_COMPONENT },
         };
 
         return slot;
@@ -72,7 +74,7 @@ export function derive_player_equip_slots(
         slot_index: 'ex',
         equip_bonus: is_equip_exsist(ex_equip)
             ? derive_equip_bonus_addition(ship, [ex_equip])
-            : DEFAULT_STATUS_COMPONENT,
+            : { ...INITIAL_STATUS_COMPONENT },
     }
 
     return [
@@ -100,6 +102,17 @@ export function derive_abyssal_equip_slots(
     });
 
     return slots;
+}
+
+/**
+ * 装備スロットが通常(増設でない)であるか判定して返す
+ * @param slot_index 
+ * @returns 
+ */
+export function is_normal_equip_slot(
+    slot_index: SlotIndex,
+): slot_index is NormalSlotIndex {
+    return slot_index !== 'ex';
 }
 
 /**

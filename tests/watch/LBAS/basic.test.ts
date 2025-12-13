@@ -18,6 +18,12 @@ const {
 
 const { calc_LBAS_attack_type } = __target_LBAS_test__;
 
+/**
+ * 装備(単体)からLBASを返す    
+ * 手順短縮版
+ * @param equip 
+ * @returns 
+ */
 const short_derive_LBAS = (
     equip: Equip,
 ): LBAS => {
@@ -34,7 +40,7 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
             target_ship: AbyssalEquippedShip,
         ): void => {
             const lbas = short_derive_LBAS(equip);
-            const attacker_squadron = lbas.squadrons[0];
+            const attacker_squadron = lbas.squadrons[0]!;
 
             const fleet = derive_abyssal_fleet([target_ship]);
             const target_unit = fleet.main_fleet_units[0];
@@ -131,7 +137,7 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
             target_ship: AbyssalEquippedShip,
         ): void => {
             const lbas = short_derive_LBAS(equip);
-            const attacker_squadron = lbas.squadrons[0];
+            const attacker_squadron = lbas.squadrons[0]!;
 
             const fleet = derive_abyssal_fleet([target_ship]);
             const target_unit = fleet.main_fleet_units[0];
