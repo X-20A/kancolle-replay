@@ -13,7 +13,7 @@ export const CA_NE = derive_equipped_abyssal_ship(1594);
 /** 戦艦レ級 */
 export const BB_RE = derive_equipped_abyssal_ship(1561);
 
-/** 輸送ワ級II(揚陸中) */
+/** 輸送ワ級II(揚陸中)flagship */
 export const LANDING_WA = derive_equipped_abyssal_ship(2269);
 
 /** 対空小鬼 */

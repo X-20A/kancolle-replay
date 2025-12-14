@@ -16,6 +16,10 @@ import { describe, expect, it } from "vitest";
 
 const AACI_AKIZUKI = derive_PES(AKIZUKI, [HIGH_10, SURFACE_22]); // AACI種別: [2]
 
+/**
+ * No.1548 深海地獄艦爆    
+ * https://en.kancollewiki.net/Abyssal_Hell_Dive_Bomber
+ */
 const JIGOKU_BOMBER = derive_abyssal_equip(1548); // 射撃回避なし
 
 const node = derive_node();

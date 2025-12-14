@@ -149,6 +149,12 @@ export function is_already_special_attack_activated(
     return fleet.is_activated_special_attack;
 }
 
+/**
+ * 艦隊の陣形を更新して返す
+ * @param fleet 
+ * @param formation 
+ * @returns 
+ */
 export function calc_formation_updated_fleet<T extends Fleet>(
     fleet: T,
     formation: FormationType,

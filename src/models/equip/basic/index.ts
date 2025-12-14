@@ -27,13 +27,15 @@ type EquipBase = {
     readonly total_addtion: TStatusComponent,
 }
 
+export type ImporovementLv = 0|1|2|3|4|5|6|7|8|9|10
+
 export type PlayerOtherEquip = EquipBase & {
     /** 装備マスターID */
     readonly master_id: number,
     readonly name_jp: PlayerEquipNameJP,
     readonly fit_class: EquipFitClass | 'None',
     /** 装備改修値 */
-    readonly improvement_lv: number,
+    readonly improvement_lv: ImporovementLv,
     /** フラグ類 */
     readonly flags: PlayerEquipFlags,
     /** 装備改修加算値 */

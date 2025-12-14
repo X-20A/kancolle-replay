@@ -2,6 +2,7 @@ import { EquipType } from "@/datas/equip/base/player";
 import { AbyssalEquip, Equip, JetBomberEquip, PlaneEquip, PlayerEquip, PlayerPlaneEquip } from ".";
 import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
+import { AACITriggerEquipType } from "@/types/equip/player";
 
 /**
  * 艦娘装備であるか判定して返す(型ガード)

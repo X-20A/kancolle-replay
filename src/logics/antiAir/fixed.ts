@@ -18,7 +18,8 @@ const calc_combined_fleet_mod = (
 }
 
 /**
- * 自艦隊による固定撃墜数を返す
+ * 自艦隊による固定撃墜数を返す    
+ * https://en.kancollewiki.net/Aerial_Combat#Proportional_and_Fixed_shootdowns > Allied Fleet > Fixed
  * @param weighted_anti_air 
  * @param target_unit 
  */
@@ -30,7 +31,7 @@ export function calc_player_fixed_shootdown_count(
     target_unit: PlaneEquip,
     node: Node,
 ): number {
-    const abyssal_fleet_weighted_anti_air =
+    const player_fleet_weighted_anti_air =
         calc_player_fleet_weighted_anti_air(defender_fleet, formation);
 
     const combined_fleet_mod = calc_combined_fleet_mod(defender_unit, node);
@@ -38,13 +39,14 @@ export function calc_player_fixed_shootdown_count(
     return Math.floor(
         (
             Math.floor(defender_unit.ship.weighted_anti_air * target_unit.anti_air_resist_ship)
-            + Math.floor(abyssal_fleet_weighted_anti_air * target_unit.anti_air_resist_fleet)
-        ) * (aaci_type === 'Misfire' ? 1 : AACI_DATAS[aaci_type].mod) * combined_fleet_mod / 5
+            + Math.floor(player_fleet_weighted_anti_air * target_unit.anti_air_resist_fleet)
+        ) * combined_fleet_mod * (aaci_type === 'Misfire' ? 1 : AACI_DATAS[aaci_type].mod) / 5
     );
 }
 
 /**
- * 敵艦隊による固定撃墜数を返す
+ * 敵艦隊による固定撃墜数を返す    
+ * https://en.kancollewiki.net/Aerial_Combat#Proportional_and_Fixed_shootdowns > Enemy Fleet > Fixed
  * @param weighted_anti_air 
  * @param target_unit 
  */

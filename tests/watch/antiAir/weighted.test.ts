@@ -1,6 +1,6 @@
 import { calc_abyssal_fleet_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_equip, PlayerEquip } from "@/models/equip/basic";
-import { AbyssalFleet, AbyssalSingleFleet, derive_abyssal_fleet, Fleet, SingleFleet } from "@/models/fleet/Fleet";
+import { AbyssalFleet, AbyssalSingleFleet, derive_abyssal_fleet } from "@/models/fleet/Fleet";
 import { EquippedShip } from "@/models/ship/equipped";
 import { SingleFleetFormationType } from "@/types";
 import { brandEquipId } from "@/types/brands/equip";

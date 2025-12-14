@@ -78,11 +78,11 @@ const derive_player_equipped_ship_core = (
 
     const state = derive_player_ship_state(options.hp_remain ?? edited_status.hp);
 
+    console.log('ship_name: ', naked_ship.name_jp);
     const weighted_anti_air = calc_player_weighted_anti_air(
         equips,
         naked_status,
         total_equip_bonus_addition,
-        total_equip_improvement_addition,
     );
 
     const prepare_AACI_info = derive_AACI_pre_info(equips);
