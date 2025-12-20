@@ -6,12 +6,11 @@ import { PlayerShipClass } from "@/types/ship/shipClass";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { WeightedAntiAir } from "@/types/brands/other";
-import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
+import { AACIType } from "@/logics/antiAir/cutin/conditions";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
-import { SpecialAttackType } from "@/logics/SpecialAttack";
 import { PreCalculatedAntiInstallMods } from "@/logics/antiInstall";
 import { PlayerShipId } from "@/types/ship/playerShipId";
 import { ASWPreInfo } from "@/logics/asw/preInfo";
@@ -43,7 +42,7 @@ type EquippedShipBase = {
     /** 加重対空値 */
     readonly weighted_anti_air: WeightedAntiAir,
     /** 発動可能な対空CIのID配列 */
-    readonly triggerable_AACIs: AntiAirCutinType[],
+    readonly triggerable_AACIs: AACIType[],
 }
 
 export type PlayerEquippedShip = EquippedShipBase & {

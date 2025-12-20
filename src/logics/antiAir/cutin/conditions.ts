@@ -13,11 +13,13 @@ const ANTI_AIR_CUTIN_TYPES = [
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
     51, 52,
 ] as const;
-export type AntiAirCutinType = typeof ANTI_AIR_CUTIN_TYPES[number];
+export type AACIType = typeof ANTI_AIR_CUTIN_TYPES[number];
+
+export type TriggeredAACIType = AACIType | 'Misfire'
 
 export type AntiAirCutIn = {
     /** カットイン種別id */
-    readonly id: AntiAirCutinType;
+    readonly id: AACIType;
     /** 割合撃墜ボーナス */
     readonly rateCorr: number;
     /** 固定撃墜ボーナスA */
@@ -28,7 +30,7 @@ export type AntiAirCutIn = {
     readonly rate: number;
 }
 
-/** 秋月型 改/改二のID */
+/** 秋月型 改/改二 */
 const AKIZUKI_CLASS_KAI_OR_MORE: Set<PlayerShipNameJP> = new Set([
     '秋月改',
     '照月改',
@@ -67,8 +69,8 @@ type AaciCondition = (
     info: AACIPreInfo,
 ) => boolean;
 
-const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
-    return match<AntiAirCutinType, AaciCondition>(type)
+const AACI_CONDITIONS = (type: AACIType): AaciCondition => {
+    return match<AACIType, AaciCondition>(type)
         .with(1, () => (ship, info) =>
             is_player_naked_ship(ship) &&
             ship.ship_class === 'Akizuki' &&
@@ -399,7 +401,7 @@ const AACI_CONDITIONS = (type: AntiAirCutinType): AaciCondition => {
 export function calc_triggerable_AACIs(
     ship: NakedShip,
     info: AACIPreInfo,
-): AntiAirCutinType[] {
+): AACIType[] {
     return ANTI_AIR_CUTIN_TYPES.filter((cutin_type) => {
         const condition = AACI_CONDITIONS(cutin_type);
         return condition(ship, info);

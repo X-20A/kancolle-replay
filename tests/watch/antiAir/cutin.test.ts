@@ -1,4 +1,4 @@
-import { AntiAirCutinType, calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
+import { AACIType, calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip } from "@/models/equip/basic";
 import { derive_AACI_pre_info } from "@/logics/antiAir/cutin/preInfo";
 import { NakedShip } from "@/models/ship/naked";
@@ -48,7 +48,7 @@ describe('制空系テスト', () => {
         const FUJINAMI_KAI_NI = derive_naked_ship_from_name('藤波改二');
 
         const test = (
-            expected: AntiAirCutinType[],
+            expected: AACIType[],
             ship: NakedShip,
             equips: Equip[],
         ) => {
@@ -156,7 +156,7 @@ describe('制空系テスト', () => {
 
     it('深海対空CI', () => {
         const test = (
-            expected: AntiAirCutinType[],
+            expected: AACIType[],
             ship: AbyssalEquippedShip,
         ) => {
             const result = ship.triggerable_AACIs;

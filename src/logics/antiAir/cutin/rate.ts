@@ -1,5 +1,5 @@
 import { AACI_DATAS } from "@/datas/battle/aaci";
-import { AntiAirCutinType } from "./conditions";
+import { AACIType, TriggeredAACIType } from "./conditions";
 import Big from "big.js";
 import { RandGenerator } from "@/effects/random";
 
@@ -10,8 +10,8 @@ import { RandGenerator } from "@/effects/random";
  * @returns 
  */
 const priority_comparator = (
-    a: AntiAirCutinType,
-    b: AntiAirCutinType,
+    a: AACIType,
+    b: AACIType,
 ) => {
     return AACI_DATAS[a].priority - AACI_DATAS[b].priority
 }
@@ -24,9 +24,9 @@ const priority_comparator = (
  * @returns 
  */
 export function calc_triggered_AACI(
-    aaci_types: AntiAirCutinType[],
+    aaci_types: AACIType[],
     rand: RandGenerator,
-): AntiAirCutinType | 'Misfire' {
+): TriggeredAACIType {
     const triggered =
         aaci_types
         .sort(priority_comparator)
@@ -38,7 +38,7 @@ export function calc_triggered_AACI(
 }
 
 type AaciRateBuilt = {
-    CI_id: AntiAirCutinType,
+    CI_id: AACIType,
     rate: Big,
 }
 export type ShipAaciRate = {
@@ -48,14 +48,14 @@ export type ShipAaciRate = {
 
 /**
  * 表示用に百分率で各AACIが占める発動率を返す
- * @param aaci_types 
+ * @param AACI_types 
  * @returns 
  */
 export function calc_AACI_rates(
-    aaci_types: AntiAirCutinType[],
+    AACI_types: AACIType[],
 ): ShipAaciRate {
     const sorted_AACI_built: AaciRateBuilt[] =
-        aaci_types
+        AACI_types
         .sort(priority_comparator)
         .map((aaci_type) => ({
             CI_id: aaci_type,

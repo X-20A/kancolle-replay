@@ -1,14 +1,8 @@
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
-import { AbyssalShipNameJP } from "@/types/ship/abyssalNameJP";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
 import { PlayerShipClass } from "@/types/ship/shipClass";
-import { ShipType, ShipTypeBase, InstallType } from "@/types/ship/ship";
-import { WeightedAntiAir } from "@/types/brands/other";
-import { AbyssalShipFlags, PlayerShipFlags } from "./flags";
+import { ShipType } from "@/types/ship/ship";
 import { NakedShip, PlayerNakedShip } from "../naked";
-import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
-import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
-import { ShipStateBase, PlayerShipState } from "../state";
 import type { EquippedShip, PlayerEquippedShip, AbyssalEquippedShip } from "./index";
 
 /**

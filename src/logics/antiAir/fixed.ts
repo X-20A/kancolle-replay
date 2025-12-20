@@ -1,4 +1,4 @@
-import { AntiAirCutinType } from "./cutin/conditions";
+import { AACIType } from "./cutin/conditions";
 import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { SingleFleetFormationType } from "@/types";
 import { PlaneEquip } from "@/models/equip/basic";
@@ -25,7 +25,7 @@ const calc_combined_fleet_mod = (
  */
 export function calc_player_fixed_shootdown_count(
     defender_unit: PlayerFleetUnit,
-    aaci_type: AntiAirCutinType | 'Misfire',
+    aaci_type: AACIType | 'Misfire',
     defender_fleet: PlayerSingleFleet,
     formation: SingleFleetFormationType,
     target_unit: PlaneEquip,
@@ -52,7 +52,7 @@ export function calc_player_fixed_shootdown_count(
  */
 export function calc_abyssal_fixed_shootdown_count(
     defender_unit: AbyssalFleetUnit,
-    aaci_type: AntiAirCutinType | 'Misfire',
+    aaci_type: AACIType | 'Misfire',
     defender_fleet: AbyssalFleet,
     target_unit: PlaneEquip,
     node: Node,

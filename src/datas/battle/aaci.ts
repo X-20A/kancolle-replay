@@ -1,6 +1,6 @@
 /// 対空カットイン諸元
 
-import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions"
+import { AACIType } from "@/logics/antiAir/cutin/conditions"
 
 type AaciData = {
     /** 変動ボーナス */
@@ -15,7 +15,7 @@ type AaciData = {
     /** 優先度 小さいほど優先度が高い */
     priority: number,
 }
-type AaciDatas = Record<AntiAirCutinType, AaciData>
+type AaciDatas = Record<AACIType, AaciData>
 
 export const AACI_DATAS: AaciDatas = {
     1: {

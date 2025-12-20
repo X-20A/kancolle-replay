@@ -2,9 +2,9 @@ import { AntiAirFormationMod } from "@/logics/formation";
 import { concat_fleet_ships, PlayerFleet } from "@/models/fleet/Fleet";
 import { calc_mod_equip_fleet } from "./utils";
 import { PlayerEquip } from "@/models/equip/basic";
-import { match } from "ts-pattern";
 import { is_equip_exsist, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { PlayerEquippedShip } from "@/models/ship/equipped";
+import { Brand } from "@/types/brands";
 
 /// プレイヤー艦隊の艦隊防空値(AdjAAfleet)
 /// https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Allied Fleet > Fleet Adj AA
@@ -70,15 +70,19 @@ const calc_ships_total = (
     }, 0);
 }
 
+/** プレイヤー艦隊の艦隊防空値(AdjAAfleet) */
+export type PlayerFleetAntiAir =
+    Brand<number, 'PlayerFleetAntiAir'>
+
 /**
- * プレイヤー艦隊の艦隊防空値(AdjAAfleet)を返す    
+ * プレイヤー艦隊の艦隊防空値(AdjAAfleet)を返す(コア)    
  * https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Allied Fleet > Fleet Adj AA
  * @param ship 
  */
-export function calc_player_fleet_anti_air(
-    fleet: PlayerFleet,
+const calc_player_fleet_anti_air_core = (
+    ships: PlayerEquippedShip[],
     formation_mod: AntiAirFormationMod,
-): number {
+): PlayerFleetAntiAir => {
     // 艦隊防空値(AdjAAfleet)先行実装
     // ? 装備ボーナス: EquipBonus
     // ? 日wiki: floor(ModFormation * Σ<ships>(Σ<equips>(floor(AAequip * ModEquipFleet + AA★Fleet + 0.5 * EquipBonus)))) / 1.3
@@ -88,12 +92,26 @@ export function calc_player_fleet_anti_air(
     // ? さらにAARfleet(射撃回避補正)を掛けてから floor(X / 1.3)。固定撃墜数処理と混ざってる
     // ? 暫定: 制空シミュ式 比較がしやすいのと処理の流れがきれいなので
 
-    const ships = concat_fleet_ships(fleet);
     const ships_total = calc_ships_total(ships);
 
-    return Math.floor(formation_mod * Math.floor(ships_total)) / 1.3;
+    return Math.floor(formation_mod * Math.floor(ships_total)) / 1.3 as PlayerFleetAntiAir;
+}
+
+/**
+ * プレイヤー艦隊の艦隊防空値(AdjAAfleet)を返す
+ * @param fleet 
+ * @param formation_mod 
+ * @returns 
+ */
+export function calc_player_fleet_anti_air(
+    fleet: PlayerFleet,
+    formation_mod: AntiAirFormationMod,
+): PlayerFleetAntiAir {
+    const ships = concat_fleet_ships(fleet);
+    return calc_player_fleet_anti_air_core(ships, formation_mod);
 }
 
 export const __adjusted_fleet_player__ = {
+    calc_player_fleet_anti_air_core,
     calc_improvement_coeffient,
 };

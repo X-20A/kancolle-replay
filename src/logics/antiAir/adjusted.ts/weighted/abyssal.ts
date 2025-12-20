@@ -1,9 +1,13 @@
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
 import { every_slots_empty, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { calc_mod_equip_ship } from ".";
+import { Brand } from "@/types/brands";
 
 /// 深海艦の加重対空値
 /// https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Enemy Fleet > Ship Adj AA
+
+export type AbyssalShipAdjustedAntiAir =
+    Brand<number, 'AbyssalShipAdjustedAntiAir'>
 
 /**
  * 深海艦の艦隊防空値を返す

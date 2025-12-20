@@ -1,18 +1,13 @@
 import { RandGenerator } from "@/effects/random";
-import { AbyssalFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
-import { is_player_equipped_ship, PlayerEquippedShip } from "@/models/ship/equipped"
-import { Equip, includes_equip_type, is_anti_air_radar } from "@/models/equip/basic";
-import { FormationType } from "@/types";
-import { match } from "ts-pattern";
+import { AbyssalFleet, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
+import { is_player_equipped_ship } from "@/models/ship/equipped"
 import { LbasJetSquadron, ShipJetSquadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
 import { calc_prop_shootdown_count } from "./prop";
 import { calc_abyssal_fixed_shootdown_count } from "./fixed";
 import { Node } from "@/models/Node";
 import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
-import { AntiAirCutinType } from "./cutin/conditions";
-import { is_equip_exsist } from "@/models/ship/EquipSlot";
-import { AntiAirFormationMod } from "../formation";
+import { TriggeredAACIType } from "./cutin/conditions";
 
 /// 対空射撃系
 
@@ -31,22 +26,6 @@ function extract_defender_ships(fleet: Fleet): FleetUnit[] {
 }
 
 /**
- * 割合撃墜と固定撃墜の為の連合艦隊補正を返す
- * @param fleet_unit 
- * @param node 
- * @returns 
- */
-export function calc_combined_fleet_mod(
-    fleet_unit: FleetUnit,
-    node: Node,
-): number {
-    if (fleet_unit.affiliation_type === 'single') return 1
-    if (fleet_unit.affiliation_type === 'escort') return 0.48; 
-    if (node.type.is_air_raid_only) return 0.72;
-    return 0.8;
-}
-
-/**
  * 防御艦隊の対空射撃を受けた後の航空隊群を返す
  * @param squadrons 
  * @param enemy_fleet 
@@ -56,7 +35,7 @@ export function calc_anti_air_fired_jet_squadrons<T extends ShipJetSquadron[] | 
     squadrons: T,
     enemy_fleet: AbyssalFleet,
     node: Node,
-    triggered_aaci_type: AntiAirCutinType | 'Misfire',
+    triggered_AACI_type: TriggeredAACIType,
     rand: RandGenerator,
 ): T {
     const defender_units = extract_defender_ships(enemy_fleet);
@@ -75,11 +54,11 @@ export function calc_anti_air_fired_jet_squadrons<T extends ShipJetSquadron[] | 
 
         /** 固定撃墜数 */
         const flat_shootdown_count = rand.next() < 0.5
-            ? calc_abyssal_fixed_shootdown_count(defender_unit, triggered_aaci_type, enemy_fleet, squadron.equip, node)
+            ? calc_abyssal_fixed_shootdown_count(defender_unit, triggered_AACI_type, enemy_fleet, squadron.equip, node)
             : 0;
 
         /** 最低保証 */
-        const guaranteed = calc_enemy_defence_guaranteed(triggered_aaci_type, squadron.equip);
+        const guaranteed = calc_enemy_defence_guaranteed(triggered_AACI_type, squadron.equip);
 
         const new_slot_count = squadron.slot_count
             - prop_shootdown_count

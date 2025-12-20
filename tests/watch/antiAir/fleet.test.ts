@@ -97,6 +97,7 @@ describe('艦隊防空', () => {
 
         test(10, derive_player_fleet([NORMAL_AKIZUKI]), 'LineAhead');
         test(12.307692307692307, derive_player_fleet([IMPROVED_AKIZUKI]), 'LineAhead');
+        // TODO: 陣形, 装備ボーナス
     });
     it('深海艦隊 艦隊防空値', () => {
         const test = (
@@ -115,5 +116,6 @@ describe('艦隊防空', () => {
         };
 
         test(32, derive_abyssal_fleet([LANDING_WA_FLAGSHIP]), 'Diamond');
+        // TODO: 陣形
     });
 });

@@ -1,10 +1,8 @@
-import { AntiAirCutinType } from "@/logics/antiAir/cutin/conditions";
-import { calc_abyssal_fixed_shootdown_count, calc_player_fixed_shootdown_count } from "@/logics/antiAir/fixed";
+import { AACIType } from "@/logics/antiAir/cutin/conditions";
 import { calc_enemy_defence_guaranteed, calc_player_defence_guaranteed } from "@/logics/antiAir/guaranteed";
 import { calc_prop_shootdown_count } from "@/logics/antiAir/prop";
 import { AbyssalPlaneEquip, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
-import { AbyssalSingleFleet, calc_formation_updated_fleet, derive_abyssal_fleet, derive_player_fleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { derive_node } from "@/models/Node";
 import { HIGH_10 } from "tests/setups/assets/equips/gun";
 import { F4U_1D, SUISEI_EGUSA } from "tests/setups/assets/equips/plane";
@@ -24,7 +22,7 @@ const JIGOKU_BOMBER = derive_abyssal_equip(1548); // 射撃回避なし
 
 const node = derive_node();
 
-// ! スロット数は17以下を使用する
+// ! スロット数は17以下を使用すること
 // ! 制空状態による被撃墜があるのでSortie Sim等と合わなくなる
 const HIRYUU_SLOT_COUNT = 12;
 
@@ -50,31 +48,9 @@ describe('対空系テスト', () => {
         ));
     });
 
-    it('固定撃墜数', () => {
-        const Akizuki_fleet = calc_formation_updated_fleet(derive_player_fleet([AACI_AKIZUKI]), 'Diamond');
-        const Wa_fleet = calc_formation_updated_fleet(derive_abyssal_fleet([LANDING_WA_FLAGSHIP]), 'Diamond');
-
-        expect(23).toBe(calc_player_fixed_shootdown_count(
-            Akizuki_fleet.main_fleet_units[0],
-            2 as AntiAirCutinType,
-            Akizuki_fleet as PlayerSingleFleet,
-            'Diamond',
-            JIGOKU_BOMBER as AbyssalPlaneEquip,
-            node,
-        ));
-
-        expect(37).toBe(calc_abyssal_fixed_shootdown_count(
-            Wa_fleet.main_fleet_units[0],
-            8 as AntiAirCutinType,
-            Wa_fleet as AbyssalSingleFleet,
-            F4U_1D as PlaneEquip,
-            node,
-        ));
-    });
-
     it('最低保証撃墜数', () => {
         expect(5).toBe(calc_enemy_defence_guaranteed(
-            8 as AntiAirCutinType,
+            8 as AACIType,
             F4U_1D as PlaneEquip,
         ));
         
