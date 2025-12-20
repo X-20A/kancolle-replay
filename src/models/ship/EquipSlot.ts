@@ -182,3 +182,14 @@ export function is_slot_count_positive(
 ): boolean {
     return slot.slot_count >= 1;
 }
+
+/**
+ * 全ての装備スロットが空であるか判定して返す
+ * @param slots 
+ * @returns 
+ */
+export function every_slots_empty(
+    slots: EquipSlot[],
+): boolean {
+    return slots.every(slot => !is_equip_exsist(slot.equip));
+}

@@ -79,3 +79,7 @@ export const TYPE_3_COMMAND_KAI_NI = make_player_equip_from_name('三式指揮�
 export const NOMAL_HAYABUSA_20 = make_player_equip_from_name('一式戦 隼II型改(20戦隊)');
 /** 一式戦 隼III型改(熟練/20戦隊) */
 export const SKILLED_HAYABUSA_20 = make_player_equip_from_name('一式戦 隼III型改(熟練/20戦隊)');
+
+/** 零式水上偵察機11型乙(熟練) */
+export const YURA_SEAPLANE_SCOUT_SLILLED =
+    make_player_equip_from_name('零式水上偵察機11型乙(熟練)');

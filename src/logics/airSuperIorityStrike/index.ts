@@ -4,7 +4,7 @@ import { calc_artillery_spotting_types } from "./artillerySpotting";
 import { Brand } from "@/types/brands";
 import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { calc_Ise_class_CI_types } from "./IseClassCI";
-import { is_AP_shell, is_radar } from "@/models/equip/basic";
+import { is_AP_shell, is_radar_category } from "@/models/equip/basic";
 import { calc_CVCI_types } from "./CVCI";
 import { calc_air_superiority_strike_trigger_rate } from "./triggerRate";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
@@ -82,7 +82,7 @@ const calc_gun_ship_pre_info = (
         const skill_type = equip.skill_trigger_type;
         if (skill_type === 'B_MAIN_GUN') acc.main_gun_count++; // 小中大いずれでも可
         if (skill_type === 'B_SEC_GUN') acc.has_sec_gun = true;
-        if (is_radar(equip)) acc.has_radar = true;
+        if (is_radar_category(equip)) acc.has_radar = true;
         if (is_AP_shell(equip)) acc.has_AP_shell = true;
         return acc;
     }, { ...INITIAL });

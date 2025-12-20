@@ -15,6 +15,7 @@ import { SpecialAttackType } from "@/logics/SpecialAttack";
 import { PreCalculatedAntiInstallMods } from "@/logics/antiInstall";
 import { PlayerShipId } from "@/types/ship/playerShipId";
 import { ASWPreInfo } from "@/logics/asw/preInfo";
+import { ImprovementAddition } from "@/models/equip/EquipImprovement";
 
 export * from "./predicates";
 
@@ -67,7 +68,7 @@ export type PlayerEquippedShip = EquippedShipBase & {
     /** 装備ボーナスの総計 */
     readonly total_equip_bonus_addition: TStatusComponent,
     /** 装備改修ボーナスの総計 */
-    readonly total_equip_improvement_addition: TStatusComponent,
+    readonly total_equip_improvement_addition: ImprovementAddition,
     /** 白襷, 海色リボン加算値 */
     readonly special_item_addition: TStatusComponent,
     /** 対潜攻撃力計算に有効な対潜値の総計 */
@@ -124,6 +125,33 @@ export function sum_status_components(
         luck: a.luck + b.luck,
         range: a.range + b.range,
         aerial_bomb_power: a.aerial_bomb_power + b.aerial_bomb_power,
+    };
+
+    return sum;
+}
+
+/**
+ * ImprovementAdditionの各プロパティを合算したImprovementAdditionを返す
+ */
+export function sum_improvement_addition(
+    a: ImprovementAddition,
+    b: ImprovementAddition,
+): ImprovementAddition {
+    const sum: ImprovementAddition = {
+        hp: a.hp + b.hp,
+        fire_power: a.fire_power + b.fire_power,
+        accuracy: a.accuracy + b.accuracy,
+        torpedo_power: a.torpedo_power + b.torpedo_power,
+        torpedo_accuracy: a.torpedo_accuracy + b.torpedo_accuracy,
+        asw_power: a.asw_power + b.asw_power,
+        armor: a.armor + b.armor,
+        evasion: a.evasion + b.evasion,
+        anti_air: a.anti_air + b.anti_air,
+        los: a.los + b.los,
+        luck: a.luck + b.luck,
+        range: a.range + b.range,
+        aerial_bomb_power: a.aerial_bomb_power + b.aerial_bomb_power,
+        fleet_anti_air: a.fleet_anti_air + b.fleet_anti_air,
     };
 
     return sum;

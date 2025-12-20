@@ -1,5 +1,5 @@
 import { brandUniqueId, ShipLv, ShipUniqueId } from "@/types/brands/ship";
-import { PlayerEquippedShip, merge_status_components_with_max_range, sum_status_components } from ".";
+import { PlayerEquippedShip, merge_status_components_with_max_range, sum_improvement_addition, sum_status_components } from ".";
 import { Equip, is_player_equip, is_player_equips, PlayerEquip } from "@/models/equip/basic";
 import { ModernizationType, SpecialItemId } from "@/types/ship/ship";
 import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
@@ -16,6 +16,7 @@ import { PlayerNakedShip } from "../naked";
 import { calc_pre_calculated_anti_install_mods } from "@/logics/antiInstall";
 import { PlayerShipId } from "@/types/ship/playerShipId";
 import { derive_ASW_pre_info } from "@/logics/asw/preInfo";
+import { INITIAL_IMPROVEMENT_ADDITION } from "@/models/equip/EquipImprovement";
 
 export type PlayerEquippedShipOptions = {
     unique_id?: ShipUniqueId,
@@ -50,7 +51,7 @@ const derive_player_equipped_ship_core = (
         derive_equip_bonus_addition(naked_ship, equips);
     const total_equip_improvement_addition = equips
         .map(equip => equip.improvement_addition)
-        .reduce(sum_status_components, { ...INITIAL_STATUS_COMPONENT });
+        .reduce(sum_improvement_addition, { ...INITIAL_IMPROVEMENT_ADDITION });
     const special_item_addition = deriveSpecialItemAddition(special_item_id);
    
     // 射程は素ステータスと装備素射程の最大値に装備ボーナスを加算

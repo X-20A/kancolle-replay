@@ -45,3 +45,13 @@ export const FCR_284 = make_player_equip_from_name('16inch Mk.I三連装砲改+F
 export const HARUNA_GUN_3 = make_player_equip_from_name('35.6cm連装砲改三(ダズル迷彩仕様)');
 /** 35.6cm連装砲改四 */
 export const HARUNA_GUN_4 = make_player_equip_from_name('35.6cm連装砲改四');
+/** 試製46cm連装砲 */
+export const PROTO_YAMATO_46 = make_player_equip_from_name('試製46cm連装砲');
+/** 46cm三連装砲 */
+export const YAMATO_46 = make_player_equip_from_name('46cm三連装砲');
+/** 46cm三連装砲改 */
+export const YAMATO_46_KAI = make_player_equip_from_name('46cm三連装砲改');
+/** 51cm連装砲 */
+export const GUN_51 = make_player_equip_from_name('51cm連装砲');
+/** 試製51cm三連装砲 */
+export const GUN_TRIPLE_51 = make_player_equip_from_name('試製51cm三連装砲');

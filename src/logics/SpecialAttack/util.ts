@@ -1,4 +1,4 @@
-import { is_radar } from "@/models/equip/basic";
+import { is_radar_category } from "@/models/equip/basic";
 import { is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_operational, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
@@ -44,7 +44,7 @@ export function has_high_accuracy_radar(
         const { equip } = slot;
 
         return is_equip_exsist(equip) &&
-            is_radar(equip) &&
+            is_radar_category(equip) &&
             equip.natural_addition.los >= 8
     });
 }

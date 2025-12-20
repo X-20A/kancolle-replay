@@ -9,7 +9,7 @@ import { derive_node } from "@/models/Node";
 import { HIGH_10 } from "tests/setups/assets/equips/gun";
 import { F4U_1D, SUISEI_EGUSA } from "tests/setups/assets/equips/plane";
 import { SURFACE_22 } from "tests/setups/assets/equips/radar";
-import { LANDING_WA } from "tests/setups/assets/ship/abyssal";
+import { LANDING_WA_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
 import { AKIZUKI } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
@@ -37,14 +37,14 @@ describe('対空系テスト', () => {
         ));
 
         expect(6).toBe(calc_prop_shootdown_count(
-            LANDING_WA.weighted_anti_air,
+            LANDING_WA_FLAGSHIP.weighted_anti_air,
             F4U_1D as PlayerPlaneEquip,
             HIRYUU_SLOT_COUNT,
         ));
 
         // 彗星(江草) 射撃回避: [艦: 0.6, ]
         expect(3).toBe(calc_prop_shootdown_count(
-            LANDING_WA.weighted_anti_air,
+            LANDING_WA_FLAGSHIP.weighted_anti_air,
             SUISEI_EGUSA as PlayerPlaneEquip,
             HIRYUU_SLOT_COUNT,
         ));
@@ -52,7 +52,7 @@ describe('対空系テスト', () => {
 
     it('固定撃墜数', () => {
         const Akizuki_fleet = calc_formation_updated_fleet(derive_player_fleet([AACI_AKIZUKI]), 'Diamond');
-        const Wa_fleet = calc_formation_updated_fleet(derive_abyssal_fleet([LANDING_WA]), 'Diamond');
+        const Wa_fleet = calc_formation_updated_fleet(derive_abyssal_fleet([LANDING_WA_FLAGSHIP]), 'Diamond');
 
         expect(23).toBe(calc_player_fixed_shootdown_count(
             Akizuki_fleet.main_fleet_units[0],

@@ -3,7 +3,7 @@ import { Equip, is_player_plane_equip, is_player_plane_equips } from "@/models/e
 import { derive_LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
 import { B_25, LB_TYPE_1, MOSQUITE_LBR, NORMAL_NISHIKI_LBR, SKILLED_NISHIKI_LBR } from "tests/setups/assets/equips/plane";
-import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA, SYUUSEKI } from "tests/setups/assets/ship/abyssal";
+import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA_FLAGSHIP, SYUUSEKI } from "tests/setups/assets/ship/abyssal";
 import { describe, expect, it } from "vitest"
 import { Rand, RandGenerator } from "@/effects/random";
 import { __target_LBAS_test__, ValidLbasCombination } from "@/logics/target/LBAS";
@@ -34,7 +34,7 @@ describe('基地航空隊 攻撃力系', () => {
             expect(expected).toBe(result);
         };
 
-        test(1, LB_TYPE_1, LANDING_WA);
+        test(1, LB_TYPE_1, LANDING_WA_FLAGSHIP);
         test(1.9, B_25, DD_I);
         test(1.75, B_25, CL_HO);
         test(1.6, B_25, CA_NE);

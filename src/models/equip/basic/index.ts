@@ -10,6 +10,7 @@ import { PlayerEquipNameJP } from "@/types/equip/playerNameJP";
 import { AbyssalEquipId } from "@/types/equip/abyssalId";
 import { AbyssalEquipFlags, PlayerEquipFlags } from "@/types/equip/flags";
 import { Brand } from "@/types/brands";
+import { ImprovementAddition } from "../EquipImprovement";
 
 export * from "./predicates";
 
@@ -39,7 +40,7 @@ export type PlayerOtherEquip = EquipBase & {
     /** フラグ類 */
     readonly flags: PlayerEquipFlags,
     /** 装備改修加算値 */
-    readonly improvement_addition: TStatusComponent,
+    readonly improvement_addition: ImprovementAddition,
     /** TP加算値 */
     readonly transport_addition: TransportAddition,
     /**

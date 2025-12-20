@@ -6,7 +6,7 @@ import { FD_91, FD_94, GUN_127, GUN_77, HUNSHIN_KAI_NI, PONPON, SINGLE_25, TRIPL
 import { AKIZUKI_GUN, ATLANTA_GUN, HATSUZUKI_GUN, HIGH_10, HIGH_127, LARGE_356, MIKUMA_GUN, FCR_284, OOYODO_GUN, TANYAN_GUN, MK30_GFCS, MK30, MK30_KAI, ATLANTA_GFCS_GUN, YAMATO_10CM_CLUSTER, HARUNA_GUN_3, HARUNA_GUN_4, HARUSAME_GUN, SHIRAYUKI_GUN } from "tests/setups/assets/equips/gun";
 import { TYPE_3_SHELL } from "tests/setups/assets/equips/other";
 import { GFCS_RADAR, RADAR_13, RADAR_13_KAI, SURFACE_22, YAMATO_RADAR } from "tests/setups/assets/equips/radar";
-import { AA_GUN_IMP, AIR_DEFENCE_PRINCESS, LANDING_WA } from "tests/setups/assets/ship/abyssal";
+import { AA_GUN_IMP, AIR_DEFENCE_PRINCESS, LANDING_WA_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
 import { derive_naked_ship_from_name } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
@@ -165,7 +165,7 @@ describe('制空系テスト', () => {
         };
 
         // 汎用CI系最小構成
-        test([5, 8], LANDING_WA);
+        test([5, 8], LANDING_WA_FLAGSHIP);
         // 汎用6種は三式弾系を要求するが現状これを装備した深海艦はいない(しかし装備データはある)
         // 高射装置は内蔵含め深海側には無い？
         // 高射装置が必要な6,7,9はスキップ

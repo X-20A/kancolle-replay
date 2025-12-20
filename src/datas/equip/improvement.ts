@@ -98,6 +98,7 @@ export const ADD_STATUS_KEYS = [
     "torpedo_evasion",
     "asw_power",
     "asw_accuracy",
+    // ! 加重対空は対空値によって分岐するのでデータ駆動不可 削除予定
     "self_anti_air",
     "fleet_anti_air",
     "air_superiority",

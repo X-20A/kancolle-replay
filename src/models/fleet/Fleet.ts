@@ -1,5 +1,5 @@
 import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
-import { EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk } from "../ship/equipped"
+import { AbyssalEquippedShip, EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk, PlayerEquippedShip } from "../ship/equipped"
 import { AbyssalFleetUnit, derive_abyssal_fleet_units, derive_player_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
 import { DayOrNight } from "@/types/battle";
 
@@ -90,12 +90,19 @@ export function concat_fleet_units(
  * @param fleet 
  * @returns 
  */
-export function concat_fleet_ships(
-    fleet: Fleet,
-): EquippedShip[] {
+export function concat_fleet_ships<T extends Fleet>(
+    fleet: T
+): T extends PlayerFleet ? PlayerEquippedShip[] : AbyssalEquippedShip[] {
     const units = concat_fleet_units(fleet);
+    const ships = map_units_to_ships(units);
 
-    return map_units_to_ships(units);
+    // 型ガードで条件分岐
+    if (is_player_fleet(fleet)) {
+        // ここでは ships が PlayerEquippedShip[] であることを期待
+        return ships as T extends PlayerFleet ? PlayerEquippedShip[] : AbyssalEquippedShip[];
+    } else {
+        return ships as T extends PlayerFleet ? PlayerEquippedShip[] : AbyssalEquippedShip[];
+    }
 }
 
 /**

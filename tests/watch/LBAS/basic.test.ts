@@ -6,7 +6,7 @@ import { derive_LBAS, LBAS } from "@/models/LBAS";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
 import { DO_217_INITIAL, F4U_1D, FLITZ_X, HAYABUSA_65, HO_229, JET_KEIUN, KI_102_B, KI_102_B_MISSILE, LB_TYPE_1, NOMAL_HAYABUSA_20, NORMAL_HIRYUU_MISSILE, RYUUSEI_IKKOUSEN_SKILLED, SHINZAN, SKILLED_HAYABUSA_20, SKILLED_HIRYUU_MISSILE, SUISEI_EGUSA, TOUKAI, TYPE_3_COMMAND, TYPE_3_COMMAND_KAI_NI, ZUIUN } from "tests/setups/assets/equips/plane";
-import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA, SO_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
+import { BB_RE, CA_NE, CL_HO, DD_I, LANDING_WA_FLAGSHIP, SO_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
 import { describe, expect, it } from "vitest";
 
 const {
@@ -60,19 +60,19 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
         };
 
         // 雷装値
-        test(10, LB_TYPE_1, LANDING_WA);
-        test(11, KI_102_B, LANDING_WA);
-        test(0, TOUKAI, LANDING_WA);
-        test(16, SHINZAN, LANDING_WA);
-        test(15, RYUUSEI_IKKOUSEN_SKILLED, LANDING_WA);
+        test(10, LB_TYPE_1, LANDING_WA_FLAGSHIP);
+        test(11, KI_102_B, LANDING_WA_FLAGSHIP);
+        test(0, TOUKAI, LANDING_WA_FLAGSHIP);
+        test(16, SHINZAN, LANDING_WA_FLAGSHIP);
+        test(15, RYUUSEI_IKKOUSEN_SKILLED, LANDING_WA_FLAGSHIP);
         // 爆装値
-        test(13, SUISEI_EGUSA, LANDING_WA);
-        test(7, F4U_1D, LANDING_WA);
-        test(15, JET_KEIUN, LANDING_WA);
-        test(16, HO_229, LANDING_WA);
-        test(4, ZUIUN, LANDING_WA);
-        test(2, TYPE_3_COMMAND_KAI_NI, LANDING_WA);
-        test(4, NOMAL_HAYABUSA_20, LANDING_WA);
+        test(13, SUISEI_EGUSA, LANDING_WA_FLAGSHIP);
+        test(7, F4U_1D, LANDING_WA_FLAGSHIP);
+        test(15, JET_KEIUN, LANDING_WA_FLAGSHIP);
+        test(16, HO_229, LANDING_WA_FLAGSHIP);
+        test(4, ZUIUN, LANDING_WA_FLAGSHIP);
+        test(2, TYPE_3_COMMAND_KAI_NI, LANDING_WA_FLAGSHIP);
+        test(4, NOMAL_HAYABUSA_20, LANDING_WA_FLAGSHIP);
         // 対潜値
         test(10, TOUKAI, SO_FLAGSHIP);
         test(7, TYPE_3_COMMAND, SO_FLAGSHIP);
@@ -153,11 +153,11 @@ describe('基地航空隊 攻撃力系 基本項系', () => {
         };
 
         // さらっと
-        test(81.92099788303082, LB_TYPE_1, LANDING_WA); // 補正系なし
+        test(81.92099788303082, LB_TYPE_1, LANDING_WA_FLAGSHIP); // 補正系なし
         test(81.92099788303082, TOUKAI, SO_FLAGSHIP);
         test(134.57292092483436, SKILLED_HIRYUU_MISSILE, BB_RE);
 
         const LEVEL_9_LB_TYPE_1 = derive_equip(9, brandEquipId(169));
-        test(93.8744074384673, LEVEL_9_LB_TYPE_1, LANDING_WA); // 改修値9
+        test(93.8744074384673, LEVEL_9_LB_TYPE_1, LANDING_WA_FLAGSHIP); // 改修値9
     });
 });

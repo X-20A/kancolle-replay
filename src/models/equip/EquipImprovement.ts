@@ -2,6 +2,14 @@ import { ADD_STATUS_KEYS, EQUIP_IMPLOVEMENT_DATAS, EquipImprovementType } from "
 import { INITIAL_STATUS_COMPONENT, TStatusComponent } from "@/types";
 import { Equip, is_player_equip } from "./basic";
 
+export type ImprovementAddition = TStatusComponent & {
+    fleet_anti_air: number,
+}
+export const INITIAL_IMPROVEMENT_ADDITION: ImprovementAddition = {
+    ...INITIAL_STATUS_COMPONENT,
+    fleet_anti_air: 0,
+} as const;
+
 /**
  * 改修によるステータスボーナスを返す
  * @param improvement_type 
@@ -11,7 +19,7 @@ import { Equip, is_player_equip } from "./basic";
 export function derive_equip_improvement_addition(
     improvement_type: EquipImprovementType,
     improvement_lv: number,
-): TStatusComponent {
+): ImprovementAddition {
     const improvement_data = EQUIP_IMPLOVEMENT_DATAS[improvement_type];
 
     return ADD_STATUS_KEYS.reduce((total, key) => {
@@ -25,7 +33,7 @@ export function derive_equip_improvement_addition(
             ...total,
             [key]: value,
         };
-    }, INITIAL_STATUS_COMPONENT);
+    }, { ...INITIAL_IMPROVEMENT_ADDITION });
 }
 
 /**

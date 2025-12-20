@@ -1,7 +1,7 @@
 import { RandGenerator } from "@/effects/random";
 import { AbyssalFleet, concat_fleet_ships, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/fleet/Fleet"
-import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped"
-import { Equip } from "@/models/equip/basic";
+import { is_player_equipped_ship, PlayerEquippedShip } from "@/models/ship/equipped"
+import { Equip, includes_equip_type, is_anti_air_radar } from "@/models/equip/basic";
 import { FormationType } from "@/types";
 import { match } from "ts-pattern";
 import { LbasJetSquadron, ShipJetSquadron } from "@/models/LBAS";
@@ -12,6 +12,7 @@ import { Node } from "@/models/Node";
 import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { AntiAirCutinType } from "./cutin/conditions";
 import { is_equip_exsist } from "@/models/ship/EquipSlot";
+import { AntiAirFormationMod } from "../formation";
 
 /// 対空射撃系
 
@@ -46,79 +47,6 @@ export function calc_combined_fleet_mod(
 }
 
 /**
- * 加重対空値計算の為の装備倍率を返す
- * @param equip 
- * @returns 
- */
-export const calc_equip_type_mod_for_fleet_anti_air = (
-    equip: Equip,
-): number => {
-    return match(equip.aaci_trigger_type)
-        .with('A_HAGUN', 'A_HAFD', 'A_AAFD', () => 0.35)
-        .with('A_AIRRADAR', () => 0.4)
-        .with('A_TYPE3SHELL', () => 0.6)
-        .with('A_XLGUN', () => 0.25)
-        .with('NONE', 'A_AAGUN', 'A_GUN', 'A_MAINGUNL', () => 0.2)
-        .exhaustive();
-}
-
-/**
- * 単艦の艦隊防空値を返す
- * @param ship 
- */
-export function calc_ship_fleet_anti_air(
-    ship: EquippedShip,
-): number {
-    const equips_fleet_anti_air = ship.equip_slots.reduce((total, equip_built) => {
-        const equip = equip_built.equip;
-        if (!is_equip_exsist(equip)) return total;
-
-        return total + calc_equip_type_mod_for_fleet_anti_air(equip);
-    }, 0);
-
-    if (!is_player_equipped_ship(ship)) return equips_fleet_anti_air;
-
-    return equips_fleet_anti_air
-        + ship.total_equip_improvement_addition.fleet_anti_air
-        + ship.total_equip_bonus_addition.anti_air;
-}
-
-/**
- * 艦隊防空値計算の為の陣形補正を返す
- * @param formation 
- * @returns 
- */
-export const calc_formation_mod = (
-    formation: FormationType,
-): number => {
-    return match(formation)
-        .with('LineAhead', 'Echelon', 'LineAbreast', () => 1)
-        .with('Vanguard', () => 1.1)
-        .with('DoubleLine', () => 1.2)
-        .with('Diamond', () => 1.6)
-        .with('CruisingFormation_1', () => 1.1)
-        .with('CruisingFormation_2', () => 1)
-        .with('CruisingFormation_3', () => 1.5)
-        .with('CruisingFormation_4', () => 1)
-        .exhaustive();
-}
-
-/**
- * 艦隊の艦隊防空値を返す
- * @param ship 
- */
-export function calc_fleet_anti_air(
-    fleet: Fleet,
-): number {
-    const ships_total = concat_fleet_ships(fleet).reduce((total, ship) => {
-        return total
-            + calc_ship_fleet_anti_air(ship);
-    }, 0);
-
-    return Math.floor(calc_formation_mod(fleet.formation) * ships_total) * (2 / 1.3);
-}
-
-/**
  * 防御艦隊の対空射撃を受けた後の航空隊群を返す
  * @param squadrons 
  * @param enemy_fleet 
@@ -138,7 +66,7 @@ export function calc_anti_air_fired_jet_squadrons<T extends ShipJetSquadron[] | 
         if (squadron.slot_count <= 0) return squadron;
 
         const defender_unit =
-            defender_units[Math.floor(rand.next() * defender_units.length)];
+            defender_units[Math.floor(rand.next() * defender_units.length)]!;
 
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5
@@ -187,7 +115,7 @@ export function calc_anti_air_fired_squadrons<T extends ShipJetSquadron[] | Lbas
         if (squadron.slot_count <= 0) return squadron;
 
         const defender_unit =
-            defender_units[Math.floor(rand.next() * defender_units.length)];
+            defender_units[Math.floor(rand.next() * defender_units.length)]!;
 
         /** 割合撃墜数 */
         const prop_shootdown_count = rand.next() < 0.5

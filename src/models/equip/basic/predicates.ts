@@ -193,23 +193,39 @@ const RADAR_TYPES: Set<EquipType> = new Set([
  * @param equip 
  * @returns 
  */
-export function is_radar(equip: Equip): boolean {
+export function is_radar_category(equip: Equip): boolean {
     return has_equip_type(RADAR_TYPES, equip.type_id);
 }
 
+/**
+ * 特大レーダーであるか判定して返す
+ * @param equip 
+ * @returns 
+ */
 export function is_radar_XL(equip: Equip): boolean {
     return equip.type_id === 'RADAR_XL';
 }
 
 /**
  * 水上電探であるか判定して返す    
- * 日wiki: 水上電探, ENwiki: Surface Radar と一致する
+ * https://en.kancollewiki.net/Category:Surface_Radars
  * @param equip 
  * @returns 
  */
 export function is_surface_radar(equip: Equip): boolean {
-    return is_radar(equip) &&
+    return is_radar_category(equip) &&
         equip.natural_addition.los >= 5;
+}
+
+/**
+ * 対空電探であるか判定して返す    
+ * https://en.kancollewiki.net/Category:Air_Radars
+ * @param equip 
+ * @returns 
+ */
+export function is_anti_air_radar(equip: Equip): boolean {
+    return is_radar_category(equip) &&
+        equip.natural_addition.anti_air >= 2;
 }
 
 /**

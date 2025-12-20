@@ -5,7 +5,7 @@ import { DRUM, TSSL } from "tests/setups/assets/equips/other";
 import { FUZE_SUISEI, IWAI_BAKUSEN, NIGHT_CORSAIR, NIGHT_ZUIUN, TBM_3W_3S } from "tests/setups/assets/equips/plane";
 import { GFCS_RADAR, SS_RADAR_TELESCOPE } from "tests/setups/assets/equips/radar";
 import { FIVE_BARREL_TORPEDO, LATE_MODEL_TORPEDO_SIX } from "tests/setups/assets/equips/torpedo";
-import { LANDING_WA, SYUUSEKI } from "tests/setups/assets/ship/abyssal";
+import { LANDING_WA_FLAGSHIP, SYUUSEKI } from "tests/setups/assets/ship/abyssal";
 import { FLETCHER, AKIZUKI, TASH_KAI, HITOMI_KAI, AKAGI_KAI_NI, ISE_KAI_NI } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
 import { describe, expect, it } from "vitest";
@@ -13,7 +13,7 @@ import { describe, expect, it } from "vitest";
 const test = (
     expected: NightBattleStrikeType[],
     attacker_ship: EquippedShip,
-    defender_ship: EquippedShip = LANDING_WA,
+    defender_ship: EquippedShip = LANDING_WA_FLAGSHIP,
 ) => {
     const result = calc_night_battle_CI_types(
         attacker_ship,
