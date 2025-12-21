@@ -1,4 +1,4 @@
-import { calc_maritime_resupply_locations, calc_supply_ratio } from "@/logics/maritimeResupply";
+import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { PlayerFleet } from "@/models/fleet/Fleet";
 import { NavalBase } from "@/models/NavalBase";
 import { Node } from "@/models/Node";

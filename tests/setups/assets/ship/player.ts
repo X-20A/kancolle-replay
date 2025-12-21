@@ -18,6 +18,10 @@ export const AKIZUKI = derive_naked_ship_from_name('秋月');
 /** タシュケント改 */
 export const TASH_KAI = derive_naked_ship_from_name('Ташкент改');
 
+/** Atlanta */
+export const ATLANTA = derive_naked_ship_from_name('Atlanta');
+/** Gotland */
+export const GOTLAND = derive_naked_ship_from_name('Gotland');
 
 /** 加古改二 */
 export const KAKO_KAI_NI = derive_naked_ship_from_name('加古改二');
@@ -45,3 +49,9 @@ export const ISE_KAI_NI = derive_naked_ship_from_name('伊勢改二');
 /** 伊13改 */
 export const HITOMI_KAI = derive_naked_ship_from_name('伊13改');
 
+/** 神威 */
+export const KAMOI = derive_naked_ship_from_name('神威');
+/** 宗谷 */
+export const SOUYA = derive_naked_ship_from_name('宗谷');
+/** 山汐丸改 */
+export const YAMASHIOMARU_KAI = derive_naked_ship_from_name('山汐丸改');

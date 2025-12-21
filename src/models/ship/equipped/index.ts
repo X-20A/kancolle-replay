@@ -5,7 +5,6 @@ import { Country } from "@/datas/equip/bonus";
 import { PlayerShipClass } from "@/types/ship/shipClass";
 import { PlayerShipState, ShipStateBase } from "../state";
 import { AbyssalEquipSlot, PlayerEquipSlot } from "@/models/ship/EquipSlot";
-import { WeightedAntiAir } from "@/types/brands/other";
 import { AACIType } from "@/logics/antiAir/cutin/conditions";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { AbyssalShipFlags, PlayerShipFlags } from "./flags";

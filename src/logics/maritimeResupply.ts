@@ -2,9 +2,9 @@ import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
-import { is_operational, is_retreated, is_sunk } from "@/models/ship/equipped";
+import { is_operational } from "@/models/ship/equipped";
 import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
-import { is_equip_exsist } from "@/models/ship/EquipSlot";
+import { is_equip_exsist, SlotIndex } from "@/models/ship/EquipSlot";
 import { PlayerShipState } from "@/models/ship/state";
 import { ShipUniqueId } from "@/types/brands/ship";
 
@@ -14,12 +14,12 @@ import { ShipUniqueId } from "@/types/brands/ship";
 export type MaritimeResupplyLocation = {
     /** 洋上補給を装備していた艦のユニークID */
     ship_unique_id: ShipUniqueId,
-    /** 装備していたスロット 0オリジン */
-    equip_index: number,
+    /** 装備していたスロット */
+    equip_index: SlotIndex,
 }
 
 /**
- * 艦隊内の洋上補給の数を返す    
+ * 艦隊内の洋上補給の位置を返す    
  * ※4つ以上は数えない
  * @param player_fleet 
  * @returns 
@@ -34,8 +34,12 @@ export function calc_maritime_resupply_locations(
     for (const ship of ships) {
         if (!is_operational(ship)) continue;
 
-        for (let slot_index = 0; slot_index < ship.equip_slots.length; slot_index++) {
-            const equip = ship.equip_slots[slot_index]?.equip;
+        const { equip_slots } = ship;
+        for (let slot_index = 0; slot_index < equip_slots.length; slot_index++) {
+            const equip_slot = equip_slots[slot_index];
+            if (!equip_slot) continue;
+
+            const { equip } = equip_slot;
             if (
                 !equip ||
                 !is_equip_exsist(equip) ||
@@ -44,7 +48,7 @@ export function calc_maritime_resupply_locations(
 
             result.push({
                 ship_unique_id: ship.unique_id,
-                equip_index: slot_index
+                equip_index: equip_slot.slot_index
             });
 
             if (result.length >= AVAILABLE_LIMIT) return result;
@@ -158,12 +162,15 @@ const calc_supplied_ships = (
 
         const new_equips: Equip[] = ship.equip_slots.flatMap((slot, index) => {
             if (
+                maritime_resupply_location.equip_index === 'ex' ||
                 index === maritime_resupply_location.equip_index ||
                 !is_equip_exsist(slot.equip)
             ) return [];
 
             return slot.equip;
         });
+        const new_ex_equip: Equip | 'None' =
+            ship.equip_slots.find(slot => slot.slot_index === 'ex')?.equip ?? 'None';
 
         // 要は洋上補給の装甲-2が無くなるだけ 一応再生成の筋は通しとく
         const options: PlayerEquippedShipOptions = {
@@ -175,8 +182,9 @@ const calc_supplied_ships = (
             ship.lv,
             ship.special_item_id,
             ship.master_id,
-            new_equips,
             options,
+            new_equips,
+            new_ex_equip,
         );
 
         const new_state: PlayerShipState = {
@@ -199,7 +207,7 @@ const calc_supplied_ships = (
         supplied_units,
         total_fuel_consumed,
         total_ammo_consumed,
-    }
+    };
 }
 
 /**
@@ -231,7 +239,7 @@ export function calc_supplied_fleet(
     if (!is_combined_fleet(player_fleet)) return {
         supplied_fleet: {
             ...player_fleet,
-            main_fleet_units: main_fleet_units,
+            main_fleet_units: main_fleet_units as [PlayerFleetUnit, ...PlayerFleetUnit[]],
         },
         billed_naval_base: {
             ...naval_base,
@@ -253,8 +261,8 @@ export function calc_supplied_fleet(
     return {
         supplied_fleet: {
             ...player_fleet,
-            main_fleet_units: main_fleet_units,
-            escort_fleet_units: escort_fleet_units,
+            main_fleet_units: main_fleet_units as [PlayerFleetUnit, ...PlayerFleetUnit[]],
+            escort_fleet_units: escort_fleet_units as [PlayerFleetUnit, ...PlayerFleetUnit[]],
         },
         billed_naval_base: {
             ...naval_base,

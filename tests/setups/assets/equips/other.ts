@@ -19,3 +19,6 @@ export const ENMAKU_KAI = make_player_equip_from_name('発煙装置改(煙幕)')
 
 /** ドラム缶(輸送用) */
 export const DRUM = make_player_equip_from_name('ドラム缶(輸送用)');
+
+/** 洋上補給 */
+export const MARITIME_RESUPPLY = make_player_equip_from_name('洋上補給');
