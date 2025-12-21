@@ -4,7 +4,7 @@ import { calc_general_target_fleet, choice_target_in_single_vs_combined, choice_
 import { calc_appllied_damage_fleet, calc_jet_LBAS_assault_damage } from "../damage";
 import { AbyssalCombinedFleet, AbyssalSingleFleet, is_combined_fleet } from "@/models/fleet/Fleet";
 import { is_submarine_category } from "@/models/ship/equipped";
-import { UserSettings } from "@/core/flows/SimExecuter";
+import { UserSettings } from "@/core/flows/normal";
 import { Node } from "@/models/Node";
 
 /**

@@ -1,4 +1,4 @@
-import { UserSettings } from "@/core/flows/SimExecuter";
+import { UserSettings } from "@/core/flows/normal";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { is_DD } from "@/models/ship/equipped";
 import { SingleFleetFormationType } from "@/types";

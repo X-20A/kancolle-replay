@@ -3,7 +3,6 @@ import { AbyssalFleet, PlayerSingleFleet } from "@/models/fleet/Fleet";
 import { SingleFleetFormationType } from "@/types";
 import { PlaneEquip } from "@/models/equip/basic";
 import { AACI_DATAS } from "@/datas/battle/aaci";
-import { calc_abyssal_fleet_weighted_anti_air, calc_player_fleet_weighted_anti_air } from "./weighted";
 import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { Node } from "@/models/Node";
 

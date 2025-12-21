@@ -3,7 +3,7 @@ import { AbyssalFleet, concat_fleet_ships } from "@/models/fleet/Fleet";
 import { calc_mod_equip_fleet } from "./utils";
 import { AbyssalEquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
-import { Brand } from "@/types/brands";
+import { FleetAntiAir } from ".";
 
 /// 深海艦隊の艦隊防空値
 
@@ -37,9 +37,6 @@ const calc_ships_total = (
     }, 0)
 }
 
-export type AbyssalFleetAntiAir =
-    Brand<number, 'AbyssalFleetAntiAir'>
-
 /**
  * 深海艦隊の艦隊防空値を返す    
  * https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Enemy Fleet > Fleet Adj AA
@@ -48,10 +45,10 @@ export type AbyssalFleetAntiAir =
 const calc_abyssal_fleet_anti_air_core = (
     ships: AbyssalEquippedShip[],
     formation_mod: AntiAirFormationMod,
-): number => {
+): FleetAntiAir => {
     const ships_total = calc_ships_total(ships);
 
-    return Math.floor(formation_mod * Math.floor(ships_total));
+    return Math.floor(formation_mod * Math.floor(ships_total)) as FleetAntiAir;
 }
 
 /**
@@ -62,7 +59,7 @@ const calc_abyssal_fleet_anti_air_core = (
 export function calc_abyssal_fleet_anti_air(
     fleet: AbyssalFleet,
     formation_mod: AntiAirFormationMod,
-): number {
+): FleetAntiAir {
     const ships = concat_fleet_ships(fleet);
     return calc_abyssal_fleet_anti_air_core(ships, formation_mod);
 }

@@ -1,8 +1,7 @@
 import { Equip } from "@/models/equip/basic";
 import { PlayerEquippedShip } from "@/models/ship/equipped";
 import { every_slots_empty, is_equip_exsist } from "@/models/ship/EquipSlot";
-import { calc_mod_equip_ship } from ".";
-import { Brand } from "@/types/brands";
+import { calc_mod_equip_ship, WeightedAntiAir } from ".";
 
 /// 艦娘の加重対空値
 /// https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Allied Fleet > Ship Adj AA
@@ -42,16 +41,13 @@ const calc_improvement_coeffient = (
 
 const EQUIP_BONUS_COEFFIENT = 0.75;
 
-export type PlayerShipAdjustedAntiAir =
-    Brand<number, 'PlayerShipAdjustedAntiAir'>
-
 /**
  * 艦娘の加重対空値を返す
  * @param ship 
  */
 export function calc_weighted_anti_air_of_player_ship(
     ship: PlayerEquippedShip,
-): PlayerShipAdjustedAntiAir {
+): WeightedAntiAir {
     // ? 日wiki: AAship + Σ(AAEquip * Mod_Equip_Ship + AA★-Equip) + 0.75 * total_equip_bonuses
     // ? ENwiki: AAship + Σ(AAEquip * Mod_Equip_Ship + AA★-Equip) ※ AAEquip は装備ボーナスを含む
     // ? Sortie Sim: AAship + Σ(AAequip * Mod_Equip_Ship + AA★-Equip + equip_bonus * 0.75) ※ 実処理は日wikiと同じ
@@ -63,7 +59,7 @@ export function calc_weighted_anti_air_of_player_ship(
 
     if (every_slots_empty(ship.equip_slots)) {
         // 装備無しの場合、装備加算だけでなく最後のfloorも無い
-        return AA_ship as PlayerShipAdjustedAntiAir;
+        return AA_ship as WeightedAntiAir;
     }
 
     const all_equip_addition = ship.equip_slots.reduce((total, equip_slot) => {
@@ -80,7 +76,7 @@ export function calc_weighted_anti_air_of_player_ship(
         AA_ship
         + all_equip_addition
         + EQUIP_BONUS_COEFFIENT * ship.total_equip_bonus_addition.anti_air
-    ) as PlayerShipAdjustedAntiAir;
+    ) as WeightedAntiAir;
 }
 
 export const __weighted_ship_player__ = {

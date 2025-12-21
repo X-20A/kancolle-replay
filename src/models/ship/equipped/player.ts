@@ -9,7 +9,6 @@ import { derive_equip_bonus_addition } from "@/models/equip/EquipBonus";
 import { derive_player_ship_state } from "../state";
 import { derive_AACI_pre_info } from "../../../logics/antiAir/cutin/preInfo";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
-import { calc_player_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_player_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_player_equipped_ship_flags } from "./flags";
 import { PlayerNakedShip } from "../naked";
@@ -79,13 +78,6 @@ const derive_player_equipped_ship_core = (
 
     const state = derive_player_ship_state(options.hp_remain ?? edited_status.hp);
 
-    console.log('ship_name: ', naked_ship.name_jp);
-    const weighted_anti_air = calc_player_weighted_anti_air(
-        equips,
-        naked_status,
-        total_equip_bonus_addition,
-    );
-
     const prepare_AACI_info = derive_AACI_pre_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
@@ -119,7 +111,6 @@ const derive_player_equipped_ship_core = (
         special_item_addition,
         view_status,
         edited_status,
-        weighted_anti_air,
         triggerable_AACIs,
         total_contribute_asw_attack_power,
         ASW_pre_info,

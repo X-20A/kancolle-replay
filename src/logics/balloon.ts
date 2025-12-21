@@ -1,4 +1,4 @@
-import { UserSettings } from "@/core/flows/SimExecuter";
+import { UserSettings } from "@/core/flows/normal";
 import { concat_fleet_ships, Fleet } from "@/models/fleet/Fleet";
 import { Node } from "@/models/Node";
 import { EquippedShip, is_player_equipped_ship, is_retreated, is_sunk } from "@/models/ship/equipped";

@@ -1,4 +1,4 @@
-import { UserSettings } from "@/core/flows/SimExecuter"
+import { UserSettings } from "@/core/flows/normal"
 import { EngagementType } from "@/logics/engagemenet"
 import { SmokeScreenType } from "@/logics/smokeScreen"
 import { FormationType } from "@/types"

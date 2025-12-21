@@ -1,4 +1,4 @@
-import { __adjusted_fleet_player__, calc_player_fleet_anti_air } from "@/logics/antiAir/adjusted.ts/fleet/player";
+import { __adjusted_fleet_player__ } from "@/logics/antiAir/adjusted.ts/fleet/player";
 import { calc_weighted_anti_air_of_player_ship } from "@/logics/antiAir/adjusted.ts/weighted/player";
 import { calc_AACI_multiplier } from "@/logics/antiAir/cutin";
 import { AACIType, TriggeredAACIType } from "@/logics/antiAir/cutin/conditions";
@@ -11,8 +11,9 @@ import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { calc_formation_updated_fleet, derive_abyssal_fleet, derive_player_fleet } from "@/models/fleet/Fleet";
 import { AffiliationFleetType } from "@/models/fleet/FleetUnit";
 import { PlayerEquippedShip } from "@/models/ship/equipped";
-import { FormationType, SingleFleetFormationType } from "@/types";
+import { SingleFleetFormationType } from "@/types";
 import { HIGH_10 } from "tests/setups/assets/equips/gun";
+import { F4U_1D } from "tests/setups/assets/equips/plane";
 import { SURFACE_22 } from "tests/setups/assets/equips/radar";
 import { LANDING_WA_FLAGSHIP } from "tests/setups/assets/ship/abyssal";
 import { AKIZUKI } from "tests/setups/assets/ship/player";
@@ -25,8 +26,6 @@ const {
 const {
     calc_combined_fleet_mod_core,
 } = __shootdown_util__;
-
-const AACI_AKIZUKI = derive_PES(AKIZUKI, [HIGH_10, SURFACE_22]); // AACI種別: [2]
 
 /**
  * No.1548 深海地獄艦爆    
@@ -54,6 +53,11 @@ describe('固定撃墜数', () => {
             const fleet_anti_air = calc_player_fleet_anti_air_core(defender_ships, formation_mod);
             const combined_fleet_mod = calc_combined_fleet_mod_core(affiliation_type, is_air_raid_only);
             const AACI_multiplier = calc_AACI_multiplier(triggered_AACI_type);
+            console.log('weighted_anti_air: ', weighted_anti_air);
+            console.log('formation_mod :', formation_mod);
+            console.log('fleet_anti_air :', fleet_anti_air);
+            console.log('combined_fleet_mod :', combined_fleet_mod);
+            console.log('AACI_multiplier :', AACI_multiplier);
             expect(expected).toBe(calc_player_fixed_shootdown_count(
                 weighted_anti_air,
                 fleet_anti_air,
@@ -61,17 +65,20 @@ describe('固定撃墜数', () => {
                 combined_fleet_mod,
                 target_unit,
             ));
-        }
-        const Akizuki_fleet = calc_formation_updated_fleet(derive_player_fleet([AACI_AKIZUKI]), 'Diamond');
+        };
 
-        expect(23).toBe(calc_player_fixed_shootdown_count(
-            Akizuki_fleet.main_fleet_units[0],
-            2 as AACIType,
-            Akizuki_fleet as PlayerSingleFleet,
+        const AACI_AKIZUKI = derive_PES(AKIZUKI, [HIGH_10, SURFACE_22]); // AACI種別: [2]
+
+        test(24, // 制空シミュ、sortie simだと23になる
+            AACI_AKIZUKI,
+            0,
+            [AACI_AKIZUKI],
             'Diamond',
-            JIGOKU_BOMBER as AbyssalPlaneEquip,
-            node,
-        ));
+            2 as TriggeredAACIType,
+            'single',
+            { is_air_raid_only: false },
+            JIGOKU_BOMBER as PlaneEquip,
+        );
     });
     it('深海', () => {
         const Wa_fleet = calc_formation_updated_fleet(derive_abyssal_fleet([LANDING_WA_FLAGSHIP]), 'Diamond');

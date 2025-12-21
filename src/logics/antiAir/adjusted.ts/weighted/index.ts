@@ -3,6 +3,7 @@ import { EquippedShip, is_player_equipped_ship } from "@/models/ship/equipped";
 import { calc_weighted_anti_air_of_player_ship } from "./player";
 import { calc_weighted_anti_air_of_abyssal_ship } from "./abyssal";
 import { match } from "ts-pattern";
+import { Brand } from "@/types/brands";
 
 /// 艦の加重対空値
 /// https://wikiwiki.jp/kancolle/対空砲火#AntiAircraft
@@ -27,6 +28,8 @@ export const calc_mod_equip_ship = (
         .exhaustive();
 }
 
+export type WeightedAntiAir = Brand<number, 'WeightedAntiAir'>
+
 /**
  * 艦の加重対空値を返す
  * @param ship 
@@ -34,7 +37,7 @@ export const calc_mod_equip_ship = (
  */
 export function calc_weighted_anti_air_of_ship(
     ship: EquippedShip,
-): number {
+): WeightedAntiAir {
     return is_player_equipped_ship(ship)
         ? calc_weighted_anti_air_of_player_ship(ship)
         : calc_weighted_anti_air_of_abyssal_ship(ship);

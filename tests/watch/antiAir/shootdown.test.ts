@@ -1,6 +1,6 @@
 import { AACIType } from "@/logics/antiAir/cutin/conditions";
 import { calc_enemy_defence_guaranteed, calc_player_defence_guaranteed } from "@/logics/antiAir/guaranteed";
-import { calc_prop_shootdown_count } from "@/logics/antiAir/prop";
+import { calc_prop_shootdown_count } from "@/logics/antiAir/shootdown/prop";
 import { AbyssalPlaneEquip, PlaneEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { derive_abyssal_equip } from "@/models/equip/basic/abyssal";
 import { derive_node } from "@/models/Node";

@@ -6,7 +6,6 @@ import { PlayerEquippedShipOptions } from "./player";
 import { derive_AACI_pre_info } from "../../../logics/antiAir/cutin/preInfo";
 import { calc_triggerable_AACIs } from "@/logics/antiAir/cutin/conditions";
 import { Equip, is_abyssal_equips } from "@/models/equip/basic";
-import { calc_abyssal_ship_weighted_anti_air } from "@/logics/antiAir/weighted";
 import { derive_abyssal_equip_slots } from "@/models/ship/EquipSlot";
 import { derive_abyssal_equipped_ship_flags } from "./flags";
 import { AbyssalShipId } from "@/types/ship/abyssalId";
@@ -43,8 +42,6 @@ export function derive_equipped_abyssal_ship(
 
     const edited_status = options.edit_input ?? view_status;
 
-    const weighted_anti_air = calc_abyssal_ship_weighted_anti_air(equips, naked_status);
-
     const prepare_AACI_info = derive_AACI_pre_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);
 
@@ -63,7 +60,6 @@ export function derive_equipped_abyssal_ship(
         total_natural_equip_addition,
         view_status,
         edited_status,
-        weighted_anti_air,
         triggerable_AACIs,
         flags: derive_abyssal_equipped_ship_flags(naked_ship.flags, equips),
         state: {

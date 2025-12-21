@@ -4,7 +4,7 @@ import { calc_mod_equip_fleet } from "./utils";
 import { PlayerEquip } from "@/models/equip/basic";
 import { is_equip_exsist, PlayerEquipSlot } from "@/models/ship/EquipSlot";
 import { PlayerEquippedShip } from "@/models/ship/equipped";
-import { Brand } from "@/types/brands";
+import { FleetAntiAir } from ".";
 
 /// プレイヤー艦隊の艦隊防空値(AdjAAfleet)
 /// https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Allied Fleet > Fleet Adj AA
@@ -70,10 +70,6 @@ const calc_ships_total = (
     }, 0);
 }
 
-/** プレイヤー艦隊の艦隊防空値(AdjAAfleet) */
-export type PlayerFleetAntiAir =
-    Brand<number, 'PlayerFleetAntiAir'>
-
 /**
  * プレイヤー艦隊の艦隊防空値(AdjAAfleet)を返す(コア)    
  * https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Allied Fleet > Fleet Adj AA
@@ -82,7 +78,7 @@ export type PlayerFleetAntiAir =
 const calc_player_fleet_anti_air_core = (
     ships: PlayerEquippedShip[],
     formation_mod: AntiAirFormationMod,
-): PlayerFleetAntiAir => {
+): FleetAntiAir => {
     // 艦隊防空値(AdjAAfleet)先行実装
     // ? 装備ボーナス: EquipBonus
     // ? 日wiki: floor(ModFormation * Σ<ships>(Σ<equips>(floor(AAequip * ModEquipFleet + AA★Fleet + 0.5 * EquipBonus)))) / 1.3
@@ -94,7 +90,7 @@ const calc_player_fleet_anti_air_core = (
 
     const ships_total = calc_ships_total(ships);
 
-    return Math.floor(formation_mod * Math.floor(ships_total)) / 1.3 as PlayerFleetAntiAir;
+    return Math.floor(formation_mod * Math.floor(ships_total)) / 1.3 as FleetAntiAir;
 }
 
 /**
@@ -106,7 +102,7 @@ const calc_player_fleet_anti_air_core = (
 export function calc_player_fleet_anti_air(
     fleet: PlayerFleet,
     formation_mod: AntiAirFormationMod,
-): PlayerFleetAntiAir {
+): FleetAntiAir {
     const ships = concat_fleet_ships(fleet);
     return calc_player_fleet_anti_air_core(ships, formation_mod);
 }

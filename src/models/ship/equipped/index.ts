@@ -39,8 +39,6 @@ type EquippedShipBase = {
     readonly view_status: TStatusComponent,
     /** ユーザーによって編集された後の艦ステータス */
     readonly edited_status: TStatusComponent,
-    /** 加重対空値 */
-    readonly weighted_anti_air: WeightedAntiAir,
     /** 発動可能な対空CIのID配列 */
     readonly triggerable_AACIs: AACIType[],
 }

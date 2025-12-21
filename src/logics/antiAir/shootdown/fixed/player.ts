@@ -23,6 +23,16 @@ export function calc_player_fixed_shootdown_count(
     combined_fleet_mod: ShootdownCombinedFleetMod,
     target_unit: PlaneEquip,
 ): number {
+    console.log('weighted_anti_air: ', weighted_anti_air);
+    console.log('fleet_anti_air: ', fleet_anti_air);
+    console.log('AACI_multiplier: ', AACI_multiplier);
+
+    // ? 日wiki: floor[(AdjAAship + AdjAAfleet) * AACImultiplier / 10]
+    // ? 射撃回避が組み込まれてないので使えない
+    // ? ENwiki: floor[(floor[AdjAAship * AARship]) + (floor[AdjAAfleet * AARfleet]) * ModCF * AACImultiplier / 5]
+    // ? 制空シミュ: floor[floor[AdjAAship * AARship] + floor[floor[AdjAAfleet * AARfleet] + 0.6 * EquipBonus] * 0.25 * 0.75 * ModCF * AACImultiplier]
+    // ? Sortie Sim: 
+    // ? 暫定; ENwiki なんとなく綺麗なので
     return Math.floor(
         (
             Math.floor(weighted_anti_air * target_unit.anti_air_resist_ship)

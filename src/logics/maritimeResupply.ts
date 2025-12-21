@@ -1,9 +1,10 @@
 import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
-import { FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";
+import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
-import { is_sunk, PlayerEquippedShip } from "@/models/ship/equipped";
+import { is_operational, is_retreated, is_sunk } from "@/models/ship/equipped";
 import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
+import { is_equip_exsist } from "@/models/ship/EquipSlot";
 import { PlayerShipState } from "@/models/ship/state";
 import { ShipUniqueId } from "@/types/brands/ship";
 
@@ -26,21 +27,24 @@ export type MaritimeResupplyLocation = {
 export function calc_maritime_resupply_locations(
     player_fleet: PlayerFleet,
 ): MaritimeResupplyLocation[] {
-    const UNDERWAY_REPLENISHMENT_ID = 146;
     const AVAILABLE_LIMIT = 3;
     const result: MaritimeResupplyLocation[] = [];
 
     const ships = concat_fleet_ships(player_fleet);
     for (const ship of ships) {
-        if (is_sunk(ship)) continue;
+        if (!is_operational(ship)) continue;
 
-        for (let equip_index = 0; equip_index < ship.equip_slots.length; equip_index++) {
-            const equip = ship.equip_slots[equip_index].equip;
-            if (!equip || equip.master_id !== UNDERWAY_REPLENISHMENT_ID) continue;
+        for (let slot_index = 0; slot_index < ship.equip_slots.length; slot_index++) {
+            const equip = ship.equip_slots[slot_index]?.equip;
+            if (
+                !equip ||
+                !is_equip_exsist(equip) ||
+                equip.name_jp !== '洋上補給'
+            ) continue;
 
             result.push({
                 ship_unique_id: ship.unique_id,
-                equip_index: equip_index
+                equip_index: slot_index
             });
 
             if (result.length >= AVAILABLE_LIMIT) return result;
@@ -77,6 +81,12 @@ export function calc_supply_ratio(
     }
 }
 
+/**
+ * 補給後の残(燃料|弾薬)割合と補給した(燃料|弾薬)割合のセットを返す
+ * @param pre_supply_ratio 
+ * @param supply_ratio 
+ * @returns 
+ */
 const calc_supply_ratio_set = (
     pre_supply_ratio: number,
     supply_ratio: number,
@@ -116,7 +126,7 @@ const calc_supplied_ships = (
     let total_ammo_consumed = 0;
     const supplied_units = units.map(unit => {
         const ship = unit.ship;
-        if (is_sunk(ship)) return unit;
+        if (!is_operational(ship)) return unit;
 
         // 燃料補給計算
         const {
@@ -149,7 +159,7 @@ const calc_supplied_ships = (
         const new_equips: Equip[] = ship.equip_slots.flatMap((slot, index) => {
             if (
                 index === maritime_resupply_location.equip_index ||
-                !slot.equip
+                !is_equip_exsist(slot.equip)
             ) return [];
 
             return slot.equip;

@@ -8,7 +8,7 @@ import { produce } from "immer";
 import { AbyssalFleetUnit, FleetUnit } from "@/models/fleet/FleetUnit";
 import { calc_jet_lbas_critical_rate } from "../critical";
 import { Node } from "@/models/Node";
-import { UserSettings } from "@/core/flows/SimExecuter";
+import { UserSettings } from "@/core/flows/normal";
 import { calc_jet_LBAS_assault_attack_power } from "../attackPower/LBAS/postCap";
 import { RandValue } from "@/types/brands/other";
 

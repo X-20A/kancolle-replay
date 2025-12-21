@@ -3,7 +3,7 @@ import { AbyssalFleet, concat_fleet_units, Fleet,  PlayerFleet } from "@/models/
 import { is_player_equipped_ship } from "@/models/ship/equipped"
 import { LbasJetSquadron, ShipJetSquadron } from "@/models/LBAS";
 import { calc_enemy_defence_guaranteed } from "./guaranteed";
-import { calc_prop_shootdown_count } from "./prop";
+import { calc_prop_shootdown_count } from "./shootdown/prop";
 import { calc_abyssal_fixed_shootdown_count } from "./fixed";
 import { Node } from "@/models/Node";
 import { AbyssalFleetUnit, FleetUnit, PlayerFleetUnit } from "@/models/fleet/FleetUnit";

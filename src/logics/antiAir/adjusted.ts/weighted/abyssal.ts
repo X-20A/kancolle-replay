@@ -1,13 +1,9 @@
 import { AbyssalEquippedShip } from "@/models/ship/equipped";
 import { every_slots_empty, is_equip_exsist } from "@/models/ship/EquipSlot";
-import { calc_mod_equip_ship } from ".";
-import { Brand } from "@/types/brands";
+import { calc_mod_equip_ship, WeightedAntiAir } from ".";
 
 /// 深海艦の加重対空値
 /// https://en.kancollewiki.net/Aerial_Combat#Adjusted_Anti-Air > Enemy Fleet > Ship Adj AA
-
-export type AbyssalShipAdjustedAntiAir =
-    Brand<number, 'AbyssalShipAdjustedAntiAir'>
 
 /**
  * 深海艦の艦隊防空値を返す
@@ -15,7 +11,7 @@ export type AbyssalShipAdjustedAntiAir =
  */
 export function calc_weighted_anti_air_of_abyssal_ship(
     ship: AbyssalEquippedShip,
-): number {
+): WeightedAntiAir {
     // ? ENwiki: 2 * √(AAship + ΣAAequip) + Σ(AAequip * Mod_Equip-Ship)
     // ? Sortie Sim: √(AAship) + Σ(AAequip * Mod_Equip-Ship)
 
@@ -25,7 +21,7 @@ export function calc_weighted_anti_air_of_abyssal_ship(
         // ? ENwikiには深海艦(装備無)のfloorの有無については記述が無い
         // ? 補給ワ級は装備が無いが素対空0なので現状検証不可？
         // ? 暫定: 艦娘と同じでfloor無
-        return sqrted_edited_anti_air;
+        return sqrted_edited_anti_air as WeightedAntiAir;
     }
 
     const all_equip_addition = ship.equip_slots.reduce((total, equip_slot) => {
@@ -40,5 +36,5 @@ export function calc_weighted_anti_air_of_abyssal_ship(
     return Math.floor(
         sqrted_edited_anti_air
         + all_equip_addition
-    );
+    ) as WeightedAntiAir;
 }
