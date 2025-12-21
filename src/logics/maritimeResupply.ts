@@ -4,6 +4,7 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
 import { is_operational } from "@/models/ship/equipped";
 import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
+import { update_ship_state } from "@/models/ship/equipped/update";
 import { is_equip_exsist, SlotIndex } from "@/models/ship/EquipSlot";
 import { PlayerShipState } from "@/models/ship/state";
 import { ShipUniqueId } from "@/types/brands/ship";
@@ -28,7 +29,7 @@ export function calc_maritime_resupply_locations(
     player_fleet: PlayerFleet,
 ): MaritimeResupplyLocation[] {
     const AVAILABLE_LIMIT = 3;
-    const result: MaritimeResupplyLocation[] = [];
+    const locations: MaritimeResupplyLocation[] = [];
 
     const ships = concat_fleet_ships(player_fleet);
     for (const ship of ships) {
@@ -46,16 +47,36 @@ export function calc_maritime_resupply_locations(
                 equip.name_jp !== '洋上補給'
             ) continue;
 
-            result.push({
+            locations.push({
                 ship_unique_id: ship.unique_id,
-                equip_index: equip_slot.slot_index
+                equip_index: equip_slot.slot_index,
             });
 
-            if (result.length >= AVAILABLE_LIMIT) return result;
+            if (locations.length >= AVAILABLE_LIMIT) return locations;
         }
     }
 
-    return result;
+    return locations;
+}
+
+const get_single_fleet_supply_ratio = (
+    maritime_resupply_count: number,
+): number => {
+    return (
+        maritime_resupply_count === 1 ? 25 :
+            maritime_resupply_count === 2 ? 36 :
+                47 // maritime_resupply_count >= 3
+    );
+}
+
+const get_combined_fleet_supply_ratio = (
+    maritime_resupply_count: number,
+): number => {
+    return (
+        maritime_resupply_count === 1 ? 15 :
+            maritime_resupply_count === 2 ? 27.5 :
+                40 // maritime_resupply_count >= 3
+    );
 }
 
 /**
@@ -70,19 +91,9 @@ export function calc_supply_ratio(
     player_fleet: PlayerFleet,
     maritime_resupply_count: number,
 ): number {
-    if (is_combined_fleet(player_fleet)) {
-        return(
-            maritime_resupply_count === 1 ? 15 :
-                maritime_resupply_count === 2 ? 27.5 :
-                    40 // maritime_resupply_count >= 3
-        );
-    } else {
-        return (
-            maritime_resupply_count === 1 ? 25 :
-                maritime_resupply_count === 2 ? 36 :
-                    47 // maritime_resupply_count >= 3
-        );
-    }
+    return is_combined_fleet(player_fleet)
+        ? get_combined_fleet_supply_ratio(maritime_resupply_count)
+        : get_single_fleet_supply_ratio(maritime_resupply_count);
 }
 
 /**
@@ -193,10 +204,13 @@ const calc_supplied_ships = (
             ammo_remain_ratio: new_ammo_ratio,
         };
 
-        const new_ship = {
-            ...pre_new_ship,
-            state: new_state,
-        };
+        const new_ship = update_ship_state(
+            ship,
+            {
+                fuel_remain_ratio: new_fuel_ratio,
+                ammo_remain_ratio: new_ammo_ratio,
+            },
+        );
         return {
             ...unit,
             ship: new_ship,
@@ -271,3 +285,7 @@ export function calc_supplied_fleet(
         },
     };
 }
+
+export const __maritime_resuply__ = {
+    calc_supply_ratio_set,
+};

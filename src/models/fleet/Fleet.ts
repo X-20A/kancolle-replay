@@ -211,7 +211,7 @@ export function derive_player_fleet(
         if (!is_player_ships(escort_fleet_ships)) throw new Error('自艦隊に深海棲艦が含まれています');
         return {
             main_fleet_units: derive_player_fleet_units(main_fleet_ships, 'main') as [PlayerFleetUnit, ...PlayerFleetUnit[]],
-            escort_fleet_units: derive_player_fleet_units(main_fleet_ships, 'escort') as [PlayerFleetUnit, ...PlayerFleetUnit[]],
+            escort_fleet_units: derive_player_fleet_units(escort_fleet_ships, 'escort') as [PlayerFleetUnit, ...PlayerFleetUnit[]],
             fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
             is_activated_special_attack: false,
@@ -248,7 +248,7 @@ export function derive_abyssal_fleet(
         if (!is_abyssal_ships(escort_fleet_ships)) throw new Error('深海艦隊に艦娘が含まれています');
         return {
             main_fleet_units: derive_abyssal_fleet_units(main_fleet_ships, 'main') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
-            escort_fleet_units: derive_abyssal_fleet_units(main_fleet_ships, 'escort') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+            escort_fleet_units: derive_abyssal_fleet_units(escort_fleet_ships, 'escort') as [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
             fleet_type: 'Surface_Task_Force',
             unused_smoke: true,
             formation: 'CruisingFormation_4',
