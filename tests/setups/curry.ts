@@ -1,6 +1,7 @@
 import { derive_equip, Equip } from "@/models/equip/basic";
 import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
-import { ShipId, ShipLv } from "@/types/brands/ship";
+import { ShipLv } from "@/types/brands/ship";
+import { PlayerShipId } from "@/types/ship/playerShipId";
 import { SpecialItemId } from "@/types/ship/ship";
 import { curry, curryN } from "ramda";
 
@@ -22,7 +23,7 @@ export const curry_derive_player_equipped_ship = curry(
     (
         lv: ShipLv,
         special_item_id: SpecialItemId,
-        ship_id: ShipId,
+        ship_id: PlayerShipId,
         options: PlayerEquippedShipOptions,
         normal_slot_equips: Equip[],
         ex_slot_equip: Equip | "None"

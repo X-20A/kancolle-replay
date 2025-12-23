@@ -20,6 +20,8 @@ import { INITIAL_IMPROVEMENT_ADDITION } from "@/models/equip/EquipImprovement";
 export type PlayerEquippedShipOptions = {
     unique_id?: ShipUniqueId,
     hp_remain?: number,
+    fuel_remain_ratio?: number,
+    ammo_remain_ratio?: number,
     modernizations?: ModernizationType,
     edit_input?: TStatusComponent,
     slots?: readonly number[],
@@ -150,7 +152,7 @@ export function derive_player_equipped_ship(
     return derive_player_equipped_ship_core(
         naked_ship,
         normal_slot_equips,
-        ex_slot_equip,
+        ex_slot_equip ?? 'None',
         special_item_id,
         options,
     );

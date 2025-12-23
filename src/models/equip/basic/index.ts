@@ -101,9 +101,17 @@ export function derive_equip(
     master_id: EquipId,
     proficiency?: number,
 ): Equip {
+    if (
+        improvement_lv < 0 ||
+        improvement_lv > 10 ||
+        !Number.isInteger(improvement_lv)
+    ) {
+        throw new Error(`改修値の値が無効です`);
+    }
+
     return master_id < 1500
         ? derive_player_equip(
-            improvement_lv,
+            improvement_lv as ImporovementLv,
             master_id,
             proficiency,
         )

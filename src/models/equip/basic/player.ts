@@ -2,12 +2,14 @@ import { EQUIP_TYPE_DATAS } from "@/datas/equip/typeData";
 import { derive_equip_improvement_addition } from "../EquipImprovement";
 import { derive_player_equip_master } from "../master/player";
 import { deriveTransportAddition } from "../TransportPower";
-import { PlayerOtherEquip, PlayerPlaneEquip, PlayerEquip } from ".";
+import { PlayerOtherEquip, PlayerPlaneEquip, PlayerEquip, ImporovementLv } from ".";
 import { EquipId } from "@/types/brands/equip";
 import { sum_status_components } from "@/models/ship/equipped";
 
+const DEFAULT_PROFICIENCY = 100;
+
 export function derive_player_equip(
-    improvement_lv: number,
+    improvement_lv: ImporovementLv,
     master_id: EquipId,
     proficiency?: number,
 ): PlayerEquip {
@@ -43,7 +45,7 @@ export function derive_player_equip(
 
     const plane_equip: PlayerPlaneEquip = {
         ...other_equip,
-        plane_proficiency: proficiency ?? 100,
+        plane_proficiency: proficiency ?? DEFAULT_PROFICIENCY,
         anti_air_resist_ship: equip_master.AA_resist_ship,
         anti_air_resist_fleet: equip_master.AA_resist_fleet,
     };

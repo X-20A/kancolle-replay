@@ -1,5 +1,5 @@
 import { EquipType } from "@/datas/equip/base/player";
-import { is_player_plane_equip, PlayerPlaneEquip, PlayerEquip } from "@/models/equip/basic";
+import { is_player_plane_equip, PlayerPlaneEquip, PlayerEquip, includes_equip_type } from "@/models/equip/basic";
 import { EquipSlot } from "@/models/ship/EquipSlot";
 import { AvgProficiency, brandAvgProficiency } from "@/types/brands/other";
 
@@ -24,69 +24,18 @@ export type PlaneProficiencyRank =
  * @param plane_proficiency 
  * @returns 
  */
-const calc_plane_proficiency_rank =
-    (plane_proficiency: number): PlaneProficiencyRank => {
-        if (plane_proficiency >= 100) return 7;
-        if (plane_proficiency >=  85) return 6;
-        if (plane_proficiency >=  70) return 5;
-        if (plane_proficiency >=  55) return 4;
-        if (plane_proficiency >=  40) return 3;
-        if (plane_proficiency >=  25) return 2;
-        if (plane_proficiency >=  10) return 1;
+const calc_plane_proficiency_rank = (
+    plane_proficiency: number,
+): PlaneProficiencyRank => {
+    if (plane_proficiency >= 100) return 7;
+    if (plane_proficiency >=  85) return 6;
+    if (plane_proficiency >=  70) return 5;
+    if (plane_proficiency >=  55) return 4;
+    if (plane_proficiency >=  40) return 3;
+    if (plane_proficiency >=  25) return 2;
+    if (plane_proficiency >=  10) return 1;
 
-        return 0;
-    }
-
-/**
- * 制空ボーナスを返す    
- * https://wikiwiki.jp/kancolle/艦載機熟練度#ProficiencyAirpower
- * @param equip 
- * @returns 
- */
-const calc_air_superiority_bonus = (equip: PlayerPlaneEquip): number => {
-    const plane_proficiency = equip.plane_proficiency;
-    const type_id = equip.type_id;
-
-    const FIGHTER_CATEGORY: EquipType[] = [
-        "FIGHTER",
-        "SEAPLANE_FIGHTER",
-        "INTERCEPTOR",
-    ];
-    const is_fighter = FIGHTER_CATEGORY.includes(type_id) || equip.flags.is_20th_family;
-
-    const is_seaplane_bomber = type_id === "SEAPLANE_BOMBER";
-
-    return (
-        plane_proficiency >= 100 ? (is_fighter ? 22 : is_seaplane_bomber ? 6 : 0) :
-            plane_proficiency >= 70 ? (is_fighter ? 14 : is_seaplane_bomber ? 3 : 0) :
-                plane_proficiency >= 55 ? (is_fighter ? 9 : is_seaplane_bomber ? 1 : 0) :
-                    plane_proficiency >= 40 ? (is_fighter ? 5 : is_seaplane_bomber ? 1 : 0) :
-                        plane_proficiency >= 25 ? (is_fighter ? 2 : is_seaplane_bomber ? 1 : 0) :
-                            0
-    );
-};
-
-/**
- * 内部熟練ボーナスを返す    
- * https://wikiwiki.jp/kancolle/艦載機熟練度#ProficiencyAirpower
- * @param plane_proficiency 
- * @returns 
- */
-const calc_internal_bonus =
-    (plane_proficiency: number): number => Math.sqrt(plane_proficiency / 10); // 切り捨てなし
-
-/**
- * 航空機熟練度による制空値上昇値を返す
- * @param equip 
- * @returns 
- */
-export function calc_plane_proficiency_flat(
-    equip: PlayerEquip,
-): number {
-    if (!is_player_plane_equip(equip)) return 0;
-    if (equip.type_id === "ASW_PLANE" && !equip.flags.is_20th_family) return 0;
-
-    return calc_air_superiority_bonus(equip) + calc_internal_bonus(equip.plane_proficiency);
+    return 0;
 }
 
 /**

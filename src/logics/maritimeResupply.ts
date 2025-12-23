@@ -4,9 +4,7 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
 import { is_operational } from "@/models/ship/equipped";
 import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
-import { update_ship_state } from "@/models/ship/equipped/update";
 import { is_equip_exsist, SlotIndex } from "@/models/ship/EquipSlot";
-import { PlayerShipState } from "@/models/ship/state";
 import { ShipUniqueId } from "@/types/brands/ship";
 
 /**
@@ -59,25 +57,34 @@ export function calc_maritime_resupply_locations(
     return locations;
 }
 
-const get_single_fleet_supply_ratio = (
-    maritime_resupply_count: number,
-): number => {
-    return (
-        maritime_resupply_count === 1 ? 25 :
-            maritime_resupply_count === 2 ? 36 :
-                47 // maritime_resupply_count >= 3
-    );
+type SupplyRatioData = {
+    min_maritime_resupply_count: number,
+    value: number,
 }
 
-const get_combined_fleet_supply_ratio = (
+const SINGLE_FLEET_SUPPLY_RATIO_DATAS: SupplyRatioData[] = [
+    { min_maritime_resupply_count: 3, value: 0.47 },
+    { min_maritime_resupply_count: 2, value: 0.36 },
+    { min_maritime_resupply_count: 1, value: 0.25 },
+];
+
+const COMBINED_FLEET_SUPPLY_RATIO_DATAS: SupplyRatioData[] = [
+    { min_maritime_resupply_count: 3, value: 0.4 },
+    { min_maritime_resupply_count: 2, value: 0.275 },
+    { min_maritime_resupply_count: 1, value: 0.15 },
+];
+
+const get_fleet_supply_ratio = (
+    datas: SupplyRatioData[],
     maritime_resupply_count: number,
 ): number => {
-    return (
-        maritime_resupply_count === 1 ? 15 :
-            maritime_resupply_count === 2 ? 27.5 :
-                40 // maritime_resupply_count >= 3
-    );
-}
+    for (const { min_maritime_resupply_count, value } of datas) {
+        if (maritime_resupply_count >= min_maritime_resupply_count) {
+            return value;
+        }
+    }
+    return 0;
+};
 
 /**
  * 洋上補給の数に応じた回復割合を返す    
@@ -92,8 +99,8 @@ export function calc_supply_ratio(
     maritime_resupply_count: number,
 ): number {
     return is_combined_fleet(player_fleet)
-        ? get_combined_fleet_supply_ratio(maritime_resupply_count)
-        : get_single_fleet_supply_ratio(maritime_resupply_count);
+        ? get_fleet_supply_ratio(COMBINED_FLEET_SUPPLY_RATIO_DATAS, maritime_resupply_count)
+        : get_fleet_supply_ratio(SINGLE_FLEET_SUPPLY_RATIO_DATAS, maritime_resupply_count);
 }
 
 /**
@@ -109,16 +116,16 @@ const calc_supply_ratio_set = (
     post_supply_ratio: number,
     real_supply_ratio: number,
 } => {
-    const post_supply_ship_ratio = Math.min(
-        100,
+    const post_supply_ratio = Math.min(
+        1,
         pre_supply_ratio + supply_ratio,
     );
-    const real_supply_ratio = pre_supply_ratio - post_supply_ship_ratio;
+    const real_supply_ratio = post_supply_ratio - pre_supply_ratio;
 
     return {
-        post_supply_ratio: post_supply_ship_ratio,
+        post_supply_ratio,
         real_supply_ratio,
-    }
+    };
 }
 
 /**
@@ -187,9 +194,11 @@ const calc_supplied_ships = (
         const options: PlayerEquippedShipOptions = {
             unique_id: ship.unique_id,
             hp_remain: ship.state.hp_remain,
+            fuel_remain_ratio: new_fuel_ratio,
+            ammo_remain_ratio: new_ammo_ratio,
             slots: ship.equip_slots.map(slot => slot.slot_count),
         };
-        const pre_new_ship = derive_player_equipped_ship(
+        const new_ship = derive_player_equipped_ship(
             ship.lv,
             ship.special_item_id,
             ship.master_id,
@@ -198,19 +207,6 @@ const calc_supplied_ships = (
             new_ex_equip,
         );
 
-        const new_state: PlayerShipState = {
-            ...ship.state,
-            fuel_remain_ratio: new_fuel_ratio,
-            ammo_remain_ratio: new_ammo_ratio,
-        };
-
-        const new_ship = update_ship_state(
-            ship,
-            {
-                fuel_remain_ratio: new_fuel_ratio,
-                ammo_remain_ratio: new_ammo_ratio,
-            },
-        );
         return {
             ...unit,
             ship: new_ship,

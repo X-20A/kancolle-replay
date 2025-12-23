@@ -1,7 +1,7 @@
 import { is_player_plane_equip, is_player_equip } from "@/models/equip/basic";
 import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
 import { EquippedShip, is_CVs, is_sunk } from "@/models/ship/equipped";
-import { calc_plane_proficiency_detection_flat } from "./proficiency";
+import { calc_plane_proficiency_detection_flat } from "./proficiency/proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { RandGenerator } from "@/effects/random";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";

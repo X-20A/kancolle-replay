@@ -4,9 +4,14 @@ import { make_player_equip_from_name } from "tests/setups/generator/equip";
 export const REPPUU = make_player_equip_from_name('試製烈風 後期型');
 /** XF5U */
 export const XF5U = make_player_equip_from_name('XF5U');
+/** 試製 震電(局地戦闘機) */
+export const SHINDEN_INTERCEPTER = make_player_equip_from_name('試製 震電(局地戦闘機)');
 
 /** F4U-2 Night Corsair */
 export const NIGHT_CORSAIR = make_player_equip_from_name('F4U-2 Night Corsair');
+
+/** 橘花改 */
+export const KIKKA_KAI = make_player_equip_from_name('橘花改');
 
 /** 彗星(江草隊) */
 export const SUISEI_EGUSA = make_player_equip_from_name('彗星(江草隊)');
@@ -28,6 +33,13 @@ export const TBM_3W_3S = make_player_equip_from_name('TBM-3W+3S');
 export const NISHIKI_SCOUT_PLANE = make_player_equip_from_name('二式艦上偵察機');
 /** 彩雲 */
 export const SAIUN = make_player_equip_from_name('彩雲');
+
+/** 雷電 */
+export const RAIDEN = make_player_equip_from_name('雷電');
+/** 三式戦 飛燕 */
+export const HIEN = make_player_equip_from_name('三式戦 飛燕');
+/** Me 262 A-1a/R1 */
+export const SCHWALBE = make_player_equip_from_name('Me 262 A-1a/R1');
 
 /** 一式陸攻 */
 export const LB_TYPE_1 = make_player_equip_from_name('一式陸攻');
@@ -63,8 +75,14 @@ export const SKILLED_NISHIKI_LBR = make_player_equip_from_name('二式陸上偵�
 /** Mosquito PR Mk.IV */
 export const MOSQUITE_LBR = make_player_equip_from_name('Mosquito PR Mk.IV');
 
+/** 二式大艇 */
+export const NISHIKI_TAITEI = make_player_equip_from_name('二式大艇');
+
 /** 深山 */
 export const SHINZAN = make_player_equip_from_name('深山');
+
+/** 二式水戦改 */
+export const NISHIKI_SUISEN_KAI = make_player_equip_from_name('二式水戦改');
 
 /** 瑞雲 */
 export const ZUIUN = make_player_equip_from_name('瑞雲');

@@ -1,6 +1,6 @@
 import { AvgProficiency } from "@/types/brands/other";
 import { is_jet_bomber, is_plane_equip, is_player_plane_equip, JetBomberEquip, PlaneEquip, PlayerPlaneEquip } from "./equip/basic";
-import { calc_average_proficiencyfrom_equip_slots, calc_average_proficiencyfrom_equips } from "@/logics/proficiency";
+import { calc_average_proficiencyfrom_equip_slots, calc_average_proficiencyfrom_equips } from "@/logics/proficiency/proficiency";
 import { AffiliationFleetType, PlayerFleetUnit } from "./fleet/FleetUnit";
 import { EquipType } from "@/datas/equip/base/player";
 import { Fleet, is_combined_fleet } from "./fleet/Fleet";
