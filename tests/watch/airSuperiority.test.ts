@@ -1,8 +1,7 @@
-import { calc_ship_air_superiority_power } from "@/logics/airSuperiority/air_superiority";
+import { calc_ship_air_superiority_power } from "@/logics/airSuperiority/fighterPower";
 import { derive_equip, PlayerEquip } from "@/models/equip/basic";
 import { EquippedShip } from "@/models/ship/equipped";
 import { brandEquipId } from "@/types/brands/equip";
-import { pipe } from "fp-ts/lib/function";
 import { REPPUU, XF5U } from "tests/setups/assets/equips/plane";
 import { RANGER } from "tests/setups/assets/ship/player";
 import { derive_PES } from "tests/setups/generator/ship";
@@ -21,9 +20,8 @@ describe('制空系テスト', () => {
         const XF5U_RANGER = derive_PES(RANGER, [XF5U]);
         const SHIDEN_RANGER = derive_PES(RANGER, [IMPROVED_SHIDEN as PlayerEquip]);
         
-
         const test = (expected: number, ship: EquippedShip) => {
-            expect(expected).toBe(pipe(ship, calc_ship_air_superiority_power));
+            expect(expected).toBe(calc_ship_air_superiority_power(ship));
         };
 
         test(0, SUPPIN_RANGER);

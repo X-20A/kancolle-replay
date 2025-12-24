@@ -34,9 +34,9 @@ export function derive_PES(
  * @param name 
  * @returns 
  */
-const calc_ship_id_from_name = (
+export function find_ship_id_from_name(
     name: PlayerShipNameJP,
-): PlayerShipId => {
+): PlayerShipId {
     const data = Object.entries(PLAYER_SHIP_DATAS)
         .find(([, data]) => data.name_jp === name);
     if (!data) throw new Error(`指定された名前の装備は存在しません: ${name}`);
@@ -73,7 +73,7 @@ const make_ship_from_id_equips = (
 export const pre_make_player_ship_from_name = (
     name: PlayerShipNameJP,
 ): (equips: Equip[], ex_equip?: Equip | null) => PlayerEquippedShip => {
-    const id = calc_ship_id_from_name(name);
+    const id = find_ship_id_from_name(name);
     return (equips: Equip[], ex_equip: Equip | null = null) => {
         return make_ship_from_id_equips(id, equips, ex_equip ?? 'None');
     };
@@ -95,6 +95,6 @@ const derive_naked_ship = (
 export function derive_naked_ship_from_name(
     name: PlayerShipNameJP,
 ): PlayerNakedShip {
-    const id = calc_ship_id_from_name(name);
+    const id = find_ship_id_from_name(name);
     return derive_player_naked_ship(brandShipLv(99), id);
 }

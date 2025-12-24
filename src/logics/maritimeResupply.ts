@@ -221,7 +221,7 @@ const calc_supplied_ships = (
 }
 
 /**
- * 洋上補給後のFleetを返す
+ * 洋上補給後の艦隊を返す
  * @param player_fleet 
  * @param supply_ratio 
  * @param maritime_resupply_locations 

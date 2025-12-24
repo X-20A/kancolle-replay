@@ -2,6 +2,8 @@ import { EquipType } from "@/datas/equip/base/player";
 import { has_equip_type, is_player_plane_equip, PlayerEquip, PlayerPlaneEquip } from "@/models/equip/basic";
 import { Brand } from "@/types/brands";
 
+/// 艦載機熟練度による制空値ボーナス
+
 type BonusData = Readonly<{
     min_proficiency: number,
     value: number,
@@ -144,13 +146,19 @@ export type FighterPowerProficiencyFlat =
     Brand<number, 'FighterPowerProficiencyFlat'>
 
 /**
- * 艦載機の航空機熟練度による制空値上昇値を返す
+ * 航空機熟練度による制空値加算値 計算関数
+ */
+export type CalcFighterPowerProficiencyFn =
+    (equip: PlayerEquip) => FighterPowerProficiencyFlat
+
+/**
+ * 艦載機の航空機熟練度による制空値加算値を返す
  * @param equip 
  * @returns 
  */
-export function calc_carrier_based_proficiency_flat(
+export const calc_carrier_based_proficiency_flat: CalcFighterPowerProficiencyFn = (
     equip: PlayerEquip,
-): FighterPowerProficiencyFlat {
+): FighterPowerProficiencyFlat => {
     return calculate_proficiency_base(
         equip,
         CARRIER_INTERNAL_BONUS_EXCLUDE_TYPES,
@@ -158,13 +166,13 @@ export function calc_carrier_based_proficiency_flat(
 }
 
 /**
- * 基地航空隊機の航空機熟練度による制空値上昇値を返す
+ * 基地航空隊機の航空機熟練度による制空値加算値を返す
  * @param equip 
  * @returns 
  */
-export function calc_land_based_proficiency_flat(
+export const calc_land_based_proficiency_flat: CalcFighterPowerProficiencyFn = (
     equip: PlayerEquip,
-): FighterPowerProficiencyFlat {
+): FighterPowerProficiencyFlat => {
     return calculate_proficiency_base(
         equip,
     ) as FighterPowerProficiencyFlat;

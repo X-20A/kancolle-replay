@@ -1,9 +1,6 @@
 import { __maritime_resuply__, calc_maritime_resupply_locations, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { PlayerCombinedFleet } from "@/models/fleet/Fleet";
-import { MARITIME_RESUPPLY } from "tests/setups/assets/equips/other";
-import { REPPUU } from "tests/setups/assets/equips/plane";
-import { AKIZUKI, ATLANTA, FLETCHER, GOTLAND, KAKO_KAI_NI, MAYA_KAI_NI, MUTSUKI, SOUYA, YAMASHIOMARU_KAI } from "tests/setups/assets/ship/player";
-import { build_fleet_from_fixture, PlayerFleetFixture } from "tests/setups/generator/fleet";
+import { build_fleet_from_fixture, PlayerFleetFixture } from "tests/setups/generator/fixture";
 import { describe, expect, it } from "vitest";
 
 const {
@@ -11,38 +8,40 @@ const {
 } = __maritime_resuply__;
 
 const single_fleet_fixture: PlayerFleetFixture = {
-    main: [
-        { ship: ATLANTA },
-        { ship: GOTLAND },
-        { ship: MUTSUKI },
-        { ship: FLETCHER },
+    main_fleet_ships: [
+        { name: 'Atlanta' },
+        { name: 'Gotland' },
+        { name: '睦月' },
+        { name: 'Fletcher' },
         {
-            ship: YAMASHIOMARU_KAI,
-            equips: [MARITIME_RESUPPLY, REPPUU], ex_equip: MARITIME_RESUPPLY,
+            name: '山汐丸改',
+            equips: [{ name: '洋上補給' }, { name: '試製烈風 後期型' }],
+            ex_equip: { name: '洋上補給' },
         },
-        { ship: SOUYA, equips: [MARITIME_RESUPPLY, MARITIME_RESUPPLY] },
+        { name: '宗谷', equips: [{ name: '洋上補給' }, { name: '洋上補給' }] },
     ],
 } as const;
 
 const combined_fleet_fixture: PlayerFleetFixture = {
-    main: [
-        { ship: KAKO_KAI_NI },
-        { ship: MAYA_KAI_NI },
-        { ship: ATLANTA },
-        { ship: GOTLAND },
-        { ship: MUTSUKI },
-        { ship: FLETCHER },
+    main_fleet_ships: [
+        { name: '加古改二' },
+        { name: '摩耶改二' },
+        { name: 'Atlanta' },
+        { name: 'Gotland' },
+        { name: '睦月' },
+        { name: 'Fletcher' },
     ],
-    escort: [
-        { ship: ATLANTA },
-        { ship: MUTSUKI },
-        { ship: FLETCHER },
+    escort_fleet_ships: [
+        { name: '矢矧' },
+        { name: '朝霜' },
+        { name: '清霜' },
         {
-            ship: YAMASHIOMARU_KAI,
-            equips: [MARITIME_RESUPPLY, REPPUU], ex_equip: MARITIME_RESUPPLY,
+            name: '山汐丸改',
+            equips: [{ name: '洋上補給' }, { name: '試製烈風 後期型' }],
+            ex_equip: { name: '洋上補給' },
         },
-        { ship: SOUYA, equips: [MARITIME_RESUPPLY, MARITIME_RESUPPLY] },
-        { ship: AKIZUKI },
+        { name: '宗谷', equips: [{ name: '洋上補給' }, { name: '洋上補給' }] },
+        { name: '秋月' },
     ],
 } as const;
 

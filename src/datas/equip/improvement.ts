@@ -101,7 +101,7 @@ export const ADD_STATUS_KEYS = [
     // ! 加重対空は対空値によって分岐するのでデータ駆動不可 削除予定
     "self_anti_air",
     "fleet_anti_air",
-    "air_superiority",
+    "anti_air",
     "los",
     "armor",
     "anti_pill_box_mod",
@@ -443,7 +443,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
         },
     },
     [EquipImprovementType.FIGHTER]: {
-        air_superiority: {
+        anti_air: {
             coeffient: 0.2,
             is_sqrt: false,
         },
@@ -469,7 +469,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
         },
     },
     [EquipImprovementType.FIGHTER_BOMBER]: {
-        air_superiority: {
+        anti_air: {
             coeffient: 0.25,
             is_sqrt: false,
         },
@@ -822,19 +822,19 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        air_superiority: {
+        anti_air: {
             coeffient: 0.5,
             is_sqrt: true,
         },
     },
     [EquipImprovementType.INTERCEPTOR]: {
-        air_superiority: {
+        anti_air: {
             coeffient: 0.2,
             is_sqrt: false,
         },
     },
     [EquipImprovementType.LAND_BASED_SCOUT]: { // ! 明石にはない
-        air_superiority: {
+        anti_air: {
             coeffient: 0.2,
             is_sqrt: false,
         },
@@ -858,7 +858,7 @@ export const EQUIP_IMPLOVEMENT_DATAS: EquipImprovementDatas = {
             coeffient: 0.7,
             is_sqrt: true,
         },
-        air_superiority: {
+        anti_air: {
             coeffient: 0.5,
             is_sqrt: true,
         },

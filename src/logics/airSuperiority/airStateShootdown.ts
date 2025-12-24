@@ -1,180 +1,11 @@
-import { AbyssalEquippedShip, EquippedShip } from "@/models/ship/equipped";
-import { Equip, is_jet_bomber, is_player_plane_equip, is_player_equip, PlaneEquip, PlayerEquip, AbyssalEquip } from "@/models/equip/basic";
-import { AbyssalCombinedFleet, AbyssalSingleFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships } from "@/models/fleet/Fleet";
+import { AbyssalCombinedFleet, AbyssalSingleFleet } from "@/models/fleet/Fleet";
 import { AirStateType } from "./compare";
 import { RandGenerator } from "@/effects/random";
+import { is_combined_fleet } from "@/models/fleet/FleetUnit";
+import { JetSquadron, NormalSquadron } from "@/models/LBAS";
+import { is_jet_bomber, is_player_equip, is_player_plane_equip, PlaneEquip } from "@/models/equip/basic";
 import { match } from "ts-pattern";
-import { JetSquadron, NormalSquadron, Squadron } from "@/models/LBAS";
-import { EquipSlot, is_equip_exsist } from "@/models/ship/EquipSlot";
-import { calc_carrier_based_proficiency_flat, FighterPowerProficiencyFlat } from "../proficiency/fighterPower";
-import { Brand } from "@/types/brands";
-
-/// 制空系
-
-type PlayerAntiAir = Readonly<{
-    natural: number;
-    improvement: number;
-}>;
-
-type AbyssalAntiAir = Readonly<{
-    natural: number;
-}>;
-
-const calc_player_plane_fighter_power = (
-    anti_air: PlayerAntiAir,
-    remain_plane_count: number,
-    proficiency_flat: FighterPowerProficiencyFlat,
-): number => {
-    if (
-        remain_plane_count < 0 ||
-        !Number.isInteger(remain_plane_count)
-    ) {
-        throw new Error('搭載数が不正です');
-    }
-
-    const equip_fighter_power =
-        anti_air.natural + anti_air.improvement;
-
-    return Math.floor(
-        equip_fighter_power * Math.sqrt(remain_plane_count)
-        + proficiency_flat
-    );
-};
-
-const calc_abyssal_plane_fighter_power = (
-    anti_air: AbyssalAntiAir,
-    remain_plane_count: number,
-): number => {
-    return Math.floor(
-        anti_air.natural * Math.sqrt(remain_plane_count)
-    );
-};
-
-const to_player_anti_air = (equip: PlayerEquip): PlayerAntiAir => {
-    return {
-        natural: equip.natural_addition.anti_air,
-        improvement: equip.improvement_addition.anti_air,
-    };
-};
-
-const to_abyssal_anti_air = (equip: AbyssalEquip): AbyssalAntiAir => {
-    return {
-        natural: equip.natural_addition.anti_air,
-    };
-};
-
-/**
- * 装備と残スロット数から制空値を返す
- * @param equip 
- * @param remain_plane_count 
- * @returns 
- */
-const calc_equip_air_superiority_power = (
-    equip: Equip,
-    remain_plane_count: number,
-    proficiency_flat: FighterPowerProficiencyFlat,
-): number => {
-    return is_player_equip(equip)
-        ? calc_player_plane_fighter_power(
-            to_player_anti_air(equip),
-            remain_plane_count,
-            proficiency_flat,
-        )
-        : calc_abyssal_plane_fighter_power(
-            to_abyssal_anti_air(equip),
-            remain_plane_count,
-        );
-};
-
-
-/**
- * 航空中隊の制空値を返す
- * @param squadrons 
- * @returns 
- */
-export function calc_squadrons_air_superriority_power(
-    squadrons: Squadron[],
-): number {
-    return squadrons.reduce((total, squadron) => {
-        return total + calc_equip_air_superiority_power(
-            squadron.equip,
-            squadron.slot_count,
-            calc_carrier_based_proficiency_flat(squadron.equip)
-        );
-    }, 0);
-}
-
-/**
- * 装備群の制空値を返す
- * @param equips 
- * @param slots 
- * @returns 
- */
-export function calc_equips_air_superiority_power(
-    equip_slots: EquipSlot[],
-    slots: readonly number[],
-): number {
-    return equip_slots.reduce((total, slot, index) => {
-        const { equip } = slot;
-        if (
-            !is_equip_exsist(equip) ||
-            !equip.flags.is_involve_air_superiority ||
-            slots[index] === 0
-        ) return total;
-
-        const remain_plane_count = slots[index];
-        if (!remain_plane_count) return total;
-
-        if (is_player_equip(equip)) {
-            const equip_air_superiority_power =
-                equip.natural_addition.anti_air
-                + equip.improvement_addition.air_superiority;
-
-            return total + Math.floor(
-                equip_air_superiority_power * Math.sqrt(remain_plane_count)
-                + calc_plane_proficiency_flat(equip)
-            );
-        } else {
-            return total + Math.floor(
-                equip.natural_addition.anti_air * Math.sqrt(remain_plane_count)
-            );
-        }
-    }, 0);
-}
-
-/**
- * 艦の制空値を返す
- * @param ship 
- * @returns 
- */
-export function calc_ship_air_superiority_power(ship: EquippedShip): number {
-    return calc_equips_air_superiority_power(ship.equip_slots, ship.slot_counts);
-}
-
-/**
- * 艦群の制空値を返す
- * @param ships 
- * @returns 
- */
-export function calc_ships_air_superiority_power(ships: EquippedShip[]): number {
-    return ships.reduce((total, ship) => {
-        return total + calc_ship_air_superiority_power(ship);
-    }, 0);
-}
-
-/**
- * 艦隊の制空値を返す
- * @param fleet 
- */
-export function calc_fleet_air_superiority_power(
-    fleet: Fleet,
-    calc_scope: 'main_only' | 'both_fleet'
-): number {
-    return match(calc_scope)
-        .with('main_only', () => calc_ships_air_superiority_power(concat_fleet_ships(fleet)))
-        .with('both_fleet', () => calc_ships_air_superiority_power(map_units_to_ships(fleet.main_fleet_units)))
-        .exhaustive();
-}
+import { AbyssalEquippedShip } from "@/models/ship/equipped";
 
 const AIR_STATE_CONSTANT: Record<AirStateType, number> = {
     Supremacy: 1,
@@ -246,7 +77,7 @@ export function calc_own_air_state_shootdowned_slots(
     const { K1, K2 } = calc_Ks(unit, air_state);
     const A1 = K1 * rand.next() * (AIR_STATE_CONSTANT[air_state] / 3);
     const A2 = K2 * AIR_STATE_CONSTANT[air_state] / 4
-    
+
     const loss_count = Math.floor((slot_count * (A1 + A2)) / 10);
 
     return slot_count - loss_count;

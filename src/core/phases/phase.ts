@@ -7,7 +7,7 @@ import { calc_engagement } from "@/logics/engagemenet";
 import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
 import { LbasJetSquadron, LBAS, derive_jet_bomber_squadron, is_squadron_destruction, reflect_squadrons_to_origin_fleet, extract_jet_squadrons, calc_returned_origin_lbas } from "@/models/LBAS";
 import { calc_jet_attacked_enemy_fleet } from "@/logics/aerialCombat/jetAssault";
-import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/air_superiority";
+import { calc_air_state_shootdowned_enemy_fleet, calc_air_state_shootdowned_lbas, calc_fleet_air_superiority_power, calc_squadrons_air_superriority_power } from "@/logics/airSuperiority/fighterPower";
 import { evaluate_air_superiority } from "@/logics/airSuperiority/compare";
 import { calc_anti_air_fired_jet_squadrons } from "@/logics/antiAir";
 import { AbyssalCombinedFleet, AbyssalFleet, AbyssalSingleFleet, PlayerFleet } from "@/models/fleet/Fleet";
