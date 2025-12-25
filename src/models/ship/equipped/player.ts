@@ -78,7 +78,11 @@ const derive_player_equipped_ship_core = (
 
     const flags = derive_player_equipped_ship_flags(naked_ship.flags, equips)
 
-    const state = derive_player_ship_state(options.hp_remain ?? edited_status.hp);
+    const state = derive_player_ship_state(
+        options.hp_remain ?? edited_status.hp,
+        options.fuel_remain_ratio,
+        options.ammo_remain_ratio,
+    );
 
     const prepare_AACI_info = derive_AACI_pre_info(equips);
     const triggerable_AACIs = calc_triggerable_AACIs(naked_ship, prepare_AACI_info);

@@ -1,5 +1,5 @@
 import { is_already_special_attack_activated, PlayerFleet } from "@/models/fleet/Fleet";
-import { has_ship_name, has_ship_type, is_damage_moderatery_or_more, is_operational, PlayerEquippedShip } from "@/models/ship/equipped";
+import { has_ship_name, has_ship_type, is_damage_moderatery_or_more, is_ship_on_the_front_line, PlayerEquippedShip } from "@/models/ship/equipped";
 import { FormationType } from "@/types";
 import { PlayerShipNameJP } from "@/types/ship/playerNameJP";
 import { ShipType } from "@/types/ship/ship";
@@ -28,7 +28,7 @@ const is_valid_joining_ship = (
 ): boolean => {
     return (
         !has_ship_type(INVALID_SHIP_TYPES, ship.type_id) &&
-        is_operational(ship)
+        is_ship_on_the_front_line(ship)
         // 大破はok
     );
 }

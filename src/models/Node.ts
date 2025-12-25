@@ -7,24 +7,22 @@ import { FormationType } from "@/types"
 /// Fleetとどっちに持たせるかのラインは微妙
 /// ひとまずNode間で引き継いで欲しくない情報はこっちで
 
-/** Node種別 */
-type NodeType = {
-    /** ボスマスであるか */
-    is_boss: boolean,
-    /** 開幕夜戦マスであるか */
-    is_night_battle_only: boolean,
-    /** 空襲戦マスであるか */
-    is_air_raid_only: boolean,
-    /** 航空戦マスであるか */
-    is_aerial_combat: boolean,
-    /** 対潜空襲マスであるか */
-    is_airstrike_supported: boolean,
-    /** レーダー射撃マスであるか */
-    is_ambush: boolean,
-
-    /** 潜水艦のみのマスであるか */
-    is_ss_only: boolean,
-}
+/**
+ * Node種別    
+ * 払暁戦は一旦見送り
+ */
+export type NodeType =
+    | 'Normal_Battle'
+    | 'Boss_Battle'
+    | 'Submarine_Only'
+    | 'PT_Only'
+    | 'Night_Battle'
+    | 'Airstrike_Supported_Battle'
+    | 'Air_Raid'
+    | 'Aerial_Combat'
+    | 'Enemy_Ambush'
+    | 'World_6_Air_Raid'
+    | 'Surface_Based_Anti_Submarine'
 
 type EachFormation = {
     own_formation: FormationType,
@@ -35,7 +33,7 @@ export type Node = {
     /** 何番目のNodeか 0オリジン */
     index: number,
     /** Node種別 */
-    type: NodeType,
+    node_type: NodeType,
     /** 
      * 索敵フェイズ成否    
      * 索敵フェイズ以前はnull
@@ -57,22 +55,12 @@ export type Node = {
     each_formation: EachFormation,
 }
 
-export function derive_node_type(): NodeType {
-    return {
-        is_boss: false,
-        is_night_battle_only: false,
-        is_air_raid_only: false,
-        is_aerial_combat: false,
-        is_airstrike_supported: false,
-        is_ambush: false,
-        is_ss_only: false,
-    };
-}
-
-export function derive_node(): Node {
+export function derive_node(
+    node_type?: NodeType,
+): Node {
     return {
         index: 0,
-        type: derive_node_type(),
+        node_type: node_type ?? 'Normal_Battle',
         is_detection_success: null,
         engagement_type: null,
         triggered_smoke_screen_type: null,

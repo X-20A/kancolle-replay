@@ -1,7 +1,8 @@
 import { CombinedFleetFormationType, FormationType, is_combined_fleet_formation, is_single_fleet_formation, SingleFleetFormationType } from "@/types"
-import { AbyssalEquippedShip, EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, is_sunk, PlayerEquippedShip } from "../ship/equipped"
-import { AbyssalFleetUnit, derive_abyssal_fleet_units, derive_player_fleet_units, FleetUnit, PlayerFleetUnit } from "./FleetUnit"
+import { AbyssalEquippedShip, EquippedShip, is_abyssal_ships, is_player_equipped_ship, is_player_ships, PlayerEquippedShip } from "../ship/equipped"
+import { AbyssalFleetUnit, derive_abyssal_fleet_units, derive_player_fleet_units, FleetUnit, is_player_fleet_units, PlayerFleetUnit } from "./FleetUnit"
 import { DayOrNight } from "@/types/battle";
+import { get_first_or_throw } from "@/utils/array";
 
 const SINGLE_FLEET_TYPE = {
     Normal: 1,
@@ -20,6 +21,7 @@ export type FleetType = SingleFleetType | CombinedFleetType
 
 type FleetBase = {
     readonly unused_smoke: boolean,
+    readonly main_fleet_units: FleetUnit[],
 }
 
 type SingleFleetBase = FleetBase & {
@@ -27,15 +29,19 @@ type SingleFleetBase = FleetBase & {
     readonly fleet_type: SingleFleetType,
 }
 
-export type PlayerSingleFleet = SingleFleetBase & {
-    readonly main_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
-    readonly is_activated_special_attack: boolean,
-    readonly Kongou_special_activated_count: number,
-}
+export type PlayerSingleFleet =
+    Omit<FleetBase, 'main_fleet_units'> &
+    SingleFleetBase & {
+        readonly main_fleet_units: PlayerFleetUnit[];
+        readonly is_activated_special_attack: boolean;
+        readonly Kongou_special_activated_count: number;
+    }
 
-export type AbyssalSingleFleet = SingleFleetBase & {
-    readonly main_fleet_units: [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
-}
+export type AbyssalSingleFleet =
+    Omit<FleetBase, 'main_fleet_units'> &
+    SingleFleetBase & {
+        readonly main_fleet_units: AbyssalFleetUnit[];
+    }
 
 export type SingleFleet = PlayerSingleFleet | AbyssalSingleFleet
 
@@ -45,15 +51,15 @@ type CombinedFleetBase = FleetBase & {
 }
 
 export type PlayerCombinedFleet = CombinedFleetBase & {
-    readonly main_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
-    readonly escort_fleet_units: [PlayerFleetUnit, ...PlayerFleetUnit[]],
+    readonly main_fleet_units: PlayerFleetUnit[],
+    readonly escort_fleet_units: PlayerFleetUnit[],
     readonly is_activated_special_attack: boolean,
     readonly Kongou_special_activated_count: number,
 }
 
 export type AbyssalCombinedFleet = CombinedFleetBase & {
-    readonly main_fleet_units: [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
-    readonly escort_fleet_units: [AbyssalFleetUnit, ...AbyssalFleetUnit[]],
+    readonly main_fleet_units: AbyssalFleetUnit[],
+    readonly escort_fleet_units: AbyssalFleetUnit[],
 }
 
 export type CombinedFleet = PlayerCombinedFleet | AbyssalCombinedFleet
@@ -62,12 +68,12 @@ export type PlayerFleet = PlayerSingleFleet | PlayerCombinedFleet
 
 export type AbyssalFleet = AbyssalSingleFleet | AbyssalCombinedFleet
 
-export type Fleet = SingleFleet | CombinedFleet;
+export type Fleet = SingleFleet | CombinedFleet
 
 export function is_player_fleet(
     fleet: Fleet,
 ): fleet is PlayerFleet {
-    return is_player_equipped_ship(fleet.main_fleet_units[0].ship);
+    return 'is_activated_special_attack' in fleet;
 }
 
 /**
@@ -76,12 +82,10 @@ export function is_player_fleet(
  * @param fleet 
  * @returns 
  */
-export function concat_fleet_units(
+export function concat_fleet_units<T extends FleetUnit>(
     fleet: Fleet,
-): FleetUnit[] {
-    return is_combined_fleet(fleet)
-        ? fleet.main_fleet_units.concat(fleet.escort_fleet_units)
-        : fleet.main_fleet_units;
+): T[] {
+    return concat_fleet_units(fleet);
 }
 
 /**
@@ -96,9 +100,7 @@ export function concat_fleet_ships<T extends Fleet>(
     const units = concat_fleet_units(fleet);
     const ships = map_units_to_ships(units);
 
-    // 型ガードで条件分岐
     if (is_player_fleet(fleet)) {
-        // ここでは ships が PlayerEquippedShip[] であることを期待
         return ships as T extends PlayerFleet ? PlayerEquippedShip[] : AbyssalEquippedShip[];
     } else {
         return ships as T extends PlayerFleet ? PlayerEquippedShip[] : AbyssalEquippedShip[];
@@ -110,11 +112,18 @@ export function concat_fleet_ships<T extends Fleet>(
  * @param fleet_units 
  * @returns 
  */
-export function map_units_to_ships(
-    fleet_units: FleetUnit[],
-): EquippedShip[] {
-    return fleet_units.map(unit => unit.ship);
+export function map_units_to_ships<T extends FleetUnit>(
+    fleet_units: T[],
+): T extends PlayerFleetUnit ? PlayerEquippedShip[] : AbyssalEquippedShip[] {
+    const ships = fleet_units.map(unit => unit.ship);
+
+    if (is_player_fleet_units(fleet_units)) {
+        return ships as T extends PlayerFleetUnit ? PlayerEquippedShip[] : AbyssalEquippedShip[];
+    } else {
+        return ships as T extends PlayerFleetUnit ? PlayerEquippedShip[] : AbyssalEquippedShip[];
+    }
 }
+
 
 /**
  * 艦隊が連合艦隊であるか判定して返す(型ガード)
@@ -180,17 +189,6 @@ export function calc_formation_updated_fleet<T extends Fleet>(
         ...fleet,
         formation,
     };
-}
-
-/**
- * 全ての艦が撃沈されているか判定して返す
- * @param fleet 
- * @returns 
- */
-export function is_all_sunk(
-    fleet: Fleet,
-): boolean {
-    return concat_fleet_ships(fleet).every(is_sunk);
 }
 
 /**
@@ -270,7 +268,7 @@ export function extract_flagship(
     if (
         is_combined_fleet(fleet) &&
         phase_type === 'Night'
-    ) return fleet.escort_fleet_units[0];
+    ) return get_first_or_throw(fleet.escort_fleet_units);
 
-    return fleet.main_fleet_units[0];
+    return get_first_or_throw(fleet.main_fleet_units);
 }

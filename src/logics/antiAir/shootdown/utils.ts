@@ -31,7 +31,7 @@ export function calc_combined_fleet_mod(
 ): ShootdownCombinedFleetMod {
     return calc_combined_fleet_mod_core(
         fleet_unit.affiliation_type,
-        { is_air_raid_only: node.type.is_air_raid_only },
+        { is_air_raid_only: node.node_type.is_air_raid_only },
     );
 }
 

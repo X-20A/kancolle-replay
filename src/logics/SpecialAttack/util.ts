@@ -1,7 +1,7 @@
 import { is_radar_category } from "@/models/equip/basic";
 import { is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
-import { is_operational, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
+import { is_ship_on_the_front_line, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
 import { is_equip_exsist } from "@/models/ship/EquipSlot";
 import { DayOrNight } from "@/types/battle";
 import { Brand } from "@/types/brands";
@@ -23,7 +23,7 @@ const is_valid = (
     unit: PlayerFleetUnit,
 ): boolean => {
     return !is_submarine_category(unit.ship) &&
-        !is_operational(unit.ship)
+        !is_ship_on_the_front_line(unit.ship)
 }
 
 export type ValidSurfaceShipLength =

@@ -1,4 +1,4 @@
-import { EquippedShip } from "@/models/ship/equipped";
+import { EquippedShip, is_ship_on_the_front_line } from "@/models/ship/equipped";
 import { Equip, is_player_equip, PlayerEquip, AbyssalEquip } from "@/models/equip/basic";
 import { concat_fleet_ships, Fleet, map_units_to_ships } from "@/models/fleet/Fleet";
 import { Squadron } from "@/models/LBAS";
@@ -22,16 +22,6 @@ const calc_player_plane_fighter_power = (
     remain_plane_count: number,
     proficiency_flat: FighterPowerProficiencyFlat,
 ): number => {
-    if (
-        remain_plane_count < 0 ||
-        !Number.isInteger(remain_plane_count)
-    ) {
-        throw new Error('搭載数が不正です');
-    }
-
-    // wikiには記載が無いが弾かないと熟練度補正分が乗ってしまう
-    if (remain_plane_count === 0) return 0;
-
     const equip_fighter_power =
         anti_air.natural + anti_air.improvement;
 
@@ -98,19 +88,18 @@ const calc_equip_air_superiority_power = (
  */
 export function calc_equips_air_superiority_power(
     equip_slots: EquipSlot[],
-    slots: readonly number[],
     calc_fighter_power_proficiency_fn: CalcFighterPowerProficiencyFn,
 ): number {
-    return equip_slots.reduce((total, slot, index) => {
-        const { equip } = slot;
+    return equip_slots.reduce((total, slot) => {
+        const {
+            equip,
+            slot_count,
+        } = slot;
         if (
             !is_equip_exsist(equip) ||
             !equip.flags.is_involve_air_superiority ||
-            slots[index] === 0
+            slot_count === 0
         ) return total;
-
-        const remain_plane_count = slots[index];
-        if (!remain_plane_count) return total;
 
         return total
             + calc_equip_air_superiority_power(
@@ -131,7 +120,6 @@ export function calc_ship_air_superiority_power(
 ): number {
     return calc_equips_air_superiority_power(
         ship.equip_slots,
-        ship.slot_counts,
         calc_carrier_based_proficiency_flat,
     );
 }
@@ -145,6 +133,8 @@ const calc_ships_air_superiority_power = (
     ships: EquippedShip[],
 ): number => {
     return ships.reduce((total, ship) => {
+        if (!is_ship_on_the_front_line(ship)) return total;
+
         return total
             + calc_ship_air_superiority_power(
                 ship,
@@ -168,7 +158,7 @@ export function calc_fleet_fighter_power_in_anti_single_fleet(
 
 /**
  * 対連合艦隊戦における艦隊の制空値を返す    
- * ? プレイヤー: 通常, 深海: 連合 時において敵随伴艦隊の艦載機の制空値は含まれるか？
+ * ? プレイヤー: 通常, 深海: 連合 時において敵随伴艦隊の艦載機の制空値は含まれるか？    
  * ? 暫定: 含まれない(プレイヤー側の条件と同じ)
  * @param fleet 
  * @returns 

@@ -1,8 +1,6 @@
 import { SpecialAttackType } from "@/logics/SpecialAttack"
 import { AbyssalEquippedShip, PlayerEquippedShip } from "../ship/equipped"
 import { is_flagship_unit } from "./predicates"
-import { has_at_least } from "@/types"
-import { Brand } from "@/types/brands"
 
 export type AffiliationFleetType =
     | 'single'
@@ -104,6 +102,12 @@ export function is_player_fleet_unit(
     fleet_unit: FleetUnit,
 ): fleet_unit is PlayerFleetUnit {
     return 'triggered_special_attack' in fleet_unit;
+}
+
+export function is_player_fleet_units(
+    fleet_units: FleetUnit[],
+): fleet_units is PlayerFleetUnit[] {
+    return fleet_units.every(is_player_fleet_unit);
 }
 
 /**

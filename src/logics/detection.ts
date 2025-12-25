@@ -1,6 +1,6 @@
 import { is_player_plane_equip, is_player_equip } from "@/models/equip/basic";
-import { AbyssalFleet, concat_fleet_ships, Fleet, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
-import { EquippedShip, is_CVs, is_sunk } from "@/models/ship/equipped";
+import { AbyssalFleet, concat_fleet_ships, is_combined_fleet, map_units_to_ships, PlayerFleet } from "@/models/fleet/Fleet";
+import { EquippedShip, is_CVs, is_ship_on_the_front_line } from "@/models/ship/equipped";
 import { calc_plane_proficiency_detection_flat } from "./proficiency/proficiency";
 import { brandDetectionPower, brandReconPower, DetectionPower, ReconPower } from "@/types/brands/fleet";
 import { RandGenerator } from "@/effects/random";
@@ -8,6 +8,7 @@ import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { is_equip_exsist } from "@/models/ship/EquipSlot";
 
 /// 索敵系
+/// https://en.kancollewiki.net/Combat/Day_Battle#Detection
 
 /**
  * 艦の配置に応じた補正値を返す
@@ -34,9 +35,9 @@ const calc_mod_ship_count = (ships_length: number): number => {
 }
 
 const calc_mod_carrier = (CVs_count: number): number => {
-    return CVs_count === 0
-        ? 0
-        : 10 * (CVs_count - 1) + 30;
+    if(CVs_count === 0) return 0;
+    
+    return 10 * (CVs_count - 1) + 30;
 }
 
 type ShipSummary = {
@@ -76,7 +77,7 @@ export const analyze_ships_detection = (
     ships: EquippedShip[],
 ): FleetDetectionStatus => {
     const ship_summary: ShipSummary = ships.reduce((ship_total, ship, index) => {
-        if (is_sunk(ship)) return ship_total;
+        if (!is_ship_on_the_front_line(ship)) return ship_total;
 
         const equip_summary: EquipSummary = ship.equip_slots.reduce((equip_total, slot) => {
             const { equip } = slot;
@@ -169,9 +170,12 @@ const sum_fleet_detection_status = (
  * @param fleet 
  * @returns 
  */
-export const analyze_fleet_detection = (fleet: Fleet): FleetDetectionStatus => {
+export const analyze_fleet_detection = (
+    fleet: PlayerFleet,
+): FleetDetectionStatus => {
+    const main_fleet_ships = map_units_to_ships(fleet.main_fleet_units)
     return sum_fleet_detection_status(
-        analyze_ships_detection(map_units_to_ships(fleet.main_fleet_units)),
+        analyze_ships_detection(main_fleet_ships),
         analyze_ships_detection(is_combined_fleet(fleet) ? map_units_to_ships(fleet.escort_fleet_units) : []),
     );
 }
@@ -208,15 +212,15 @@ const calc_shotdowned_recon_ships = (
 ): PlayerFleetUnit[] => {
     return units.map((unit) => {
         const ship = unit.ship;
-        if (is_sunk(ship)) return unit;
+        if (!is_ship_on_the_front_line(ship)) return unit;
 
-        const updated_slots = ship.slot_counts.map((slot, index) => {
-            const equip = ship.equip_slots[index].equip;
+        const updated_slot_counts = ship.equip_slots.map(slot => {
+            const { equip, slot_count } = slot;
             if (
                 !is_equip_exsist(equip)
                 || !equip.flags.can_detect
-                || slot > 0
-            ) return slot;
+                || slot_count > 0
+            ) return slot_count;
 
             const rand_val = rand.next() * 0.4 + 1.0; // [1.0, 1.4)
             const shotdown_val =
@@ -224,13 +228,13 @@ const calc_shotdowned_recon_ships = (
 
             if (shotdown_val <= 0) {
                 const loss = Math.floor(rand.next() * 3); // 0~2
-                return Math.max(slot - loss, 0);
+                return Math.max(slot_count - loss, 0);
             }
 
-            return slot;
+            return slot_count;
         });
 
-        const new_ship = { ...ship, slot_counts: updated_slots };
+        const new_ship = { ...ship, slot_counts: updated_slot_counts };
         return {
             ...unit,
             ship: new_ship,
@@ -262,12 +266,12 @@ export function calc_enemy_fighter_count(
  * @param recon_power 
  * @param rand 
  */
-export function calc_shotdowned_recon_fleet(
-    player_fleet: PlayerFleet,
+export function calc_shotdowned_recon_fleet<T extends PlayerFleet>(
+    player_fleet: T,
     recon_power: ReconPower,
     total_enemy_fighter_count: number,
     rand: RandGenerator,
-): PlayerFleet {
+): T {
     // 味方艦隊の ship ごとに撃墜処理を実施
     // ? 随伴艦隊も索敵機を飛ばすか分からない 暫定: 飛ばす
     const updated_main_fleet_ships = calc_shotdowned_recon_ships(

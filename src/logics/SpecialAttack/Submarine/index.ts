@@ -1,5 +1,5 @@
 import { extract_flagship, PlayerFleet } from "@/models/fleet/Fleet";
-import { is_damage_moderatery_or_more, is_operational, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
+import { is_damage_moderatery_or_more, is_ship_on_the_front_line, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
 import { has_at_least } from "@/types";
 import { SpecialAttackIneligible, SpecialAttackMisfire, ValidSpecialAttack } from "..";
 import { DayOrNight } from "@/types/battle";
@@ -56,14 +56,14 @@ export function evaluate_submarine_fleet_attack(
     if (
         fourth_ship &&
         is_submarine_category(fourth_ship) &&
-        !is_operational(fourth_ship) &&
+        !is_ship_on_the_front_line(fourth_ship) &&
         !is_damage_moderatery_or_more(second_ship) &&
         !is_damage_moderatery_or_more(fourth_ship)
     ) return 'Submarine_Fleet_Special_2_4';
     if (
         fourth_ship &&
         is_submarine_category(fourth_ship) &&
-        !is_operational(fourth_ship) &&
+        !is_ship_on_the_front_line(fourth_ship) &&
         !is_damage_moderatery_or_more(third_ship) &&
         !is_damage_moderatery_or_more(fourth_ship)
     ) return 'Submarine_Fleet_Special_3_4';

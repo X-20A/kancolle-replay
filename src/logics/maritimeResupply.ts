@@ -2,10 +2,11 @@ import { Equip } from "@/models/equip/basic";
 import { concat_fleet_ships, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
 import { PlayerFleetUnit } from "@/models/fleet/FleetUnit";
 import { NavalBase } from "@/models/NavalBase";
-import { is_operational } from "@/models/ship/equipped";
+import { is_ship_on_the_front_line, PlayerEquippedShip } from "@/models/ship/equipped";
 import { derive_player_equipped_ship, PlayerEquippedShipOptions } from "@/models/ship/equipped/player";
 import { is_equip_exsist, SlotIndex } from "@/models/ship/EquipSlot";
 import { ShipUniqueId } from "@/types/brands/ship";
+import { calc_consumed_resources } from "./cost/ship";
 
 /**
  * 艦隊内における洋上補給の装備位置
@@ -23,15 +24,15 @@ export type MaritimeResupplyLocation = {
  * @param player_fleet 
  * @returns 
  */
-export function calc_maritime_resupply_locations(
+const calc_maritime_resupply_locations = (
     player_fleet: PlayerFleet,
-): MaritimeResupplyLocation[] {
+): MaritimeResupplyLocation[] => {
     const AVAILABLE_LIMIT = 3;
     const locations: MaritimeResupplyLocation[] = [];
 
     const ships = concat_fleet_ships(player_fleet);
     for (const ship of ships) {
-        if (!is_operational(ship)) continue;
+        if (!is_ship_on_the_front_line(ship)) continue;
 
         const { equip_slots } = ship;
         for (let slot_index = 0; slot_index < equip_slots.length; slot_index++) {
@@ -94,10 +95,10 @@ const get_fleet_supply_ratio = (
  * @param maritime_resupply_count 
  * @returns 
  */
-export function calc_supply_ratio(
+const calc_supply_ratio = (
     player_fleet: PlayerFleet,
     maritime_resupply_count: number,
-): number {
+): number => {
     return is_combined_fleet(player_fleet)
         ? get_fleet_supply_ratio(COMBINED_FLEET_SUPPLY_RATIO_DATAS, maritime_resupply_count)
         : get_fleet_supply_ratio(SINGLE_FLEET_SUPPLY_RATIO_DATAS, maritime_resupply_count);
@@ -128,89 +129,145 @@ const calc_supply_ratio_set = (
     };
 }
 
+type SupplyResult = Readonly<{
+    fuel_remain_ratio: number;
+    ammo_remain_ratio: number;
+    fuel_consumed: number;
+    ammo_consumed: number;
+}>;
+
 /**
- * 洋上補給後の艦を返す(洋上補給の消滅も反映)
- * @param ships 
+ * 補給後の残リソース割合と請求資源量のセットを返す
+ * @param ship 
  * @param supply_ratio 
- * @param maritime_resupply_locations 
  * @returns 
  */
-const calc_supplied_ships = (
-    units: PlayerFleetUnit[],
+const calc_ship_supply_result = (
+    ship: PlayerEquippedShip,
     supply_ratio: number,
-    maritime_resupply_locations: MaritimeResupplyLocation[],
+): SupplyResult => {
+    const fuel = calc_supply_ratio_set(
+        ship.state.fuel_remain_ratio,
+        supply_ratio,
+    );
+    const ammo = calc_supply_ratio_set(
+        ship.state.ammo_remain_ratio,
+        supply_ratio,
+    );
+
+    return {
+        fuel_remain_ratio: fuel.post_supply_ratio,
+        ammo_remain_ratio: ammo.post_supply_ratio,
+        fuel_consumed: calc_consumed_resources(
+            fuel.real_supply_ratio,
+            ship.base_fuel,
+            ship,
+        ),
+        ammo_consumed: calc_consumed_resources(
+            ammo.real_supply_ratio,
+            ship.base_ammo,
+            ship,
+        ),
+    };
+};
+
+/**
+ * 洋上補給を消費した艦を再生成して返す
+ * @param ship 
+ * @param supply_result 
+ * @param maritime_resupply_location 
+ * @returns 
+ */
+const rebuild_ship_after_resupply = (
+    ship: PlayerEquippedShip,
+    supply_result: SupplyResult,
+    maritime_resupply_location: MaritimeResupplyLocation,
+): PlayerEquippedShip => {
+    const new_equips: Equip[] = ship.equip_slots.flatMap((slot, index) => {
+        if (
+            maritime_resupply_location.equip_index === 'ex' ||
+            index === maritime_resupply_location.equip_index ||
+            !is_equip_exsist(slot.equip)
+        ) return [];
+        return slot.equip;
+    });
+
+    const new_ex_equip: Equip | 'None' =
+        ship.equip_slots.find(slot => slot.slot_index === 'ex')?.equip ?? 'None';
+
+    const options: PlayerEquippedShipOptions = {
+        unique_id: ship.unique_id,
+        hp_remain: ship.state.hp_remain,
+        fuel_remain_ratio: supply_result.fuel_remain_ratio,
+        ammo_remain_ratio: supply_result.ammo_remain_ratio,
+        slots: ship.equip_slots.map(slot => slot.slot_count),
+    };
+
+    return derive_player_equipped_ship(
+        ship.lv,
+        ship.special_item_id,
+        ship.master_id,
+        options,
+        new_equips,
+        new_ex_equip,
+    );
+};
+
+const calc_resupplied_ships = (
+    units: readonly PlayerFleetUnit[],
+    supply_ratio: number,
+    maritime_resupply_locations: readonly MaritimeResupplyLocation[],
 ): {
-    supplied_units: PlayerFleetUnit[],
-    total_fuel_consumed: number,
-    total_ammo_consumed: number,
+    supplied_units: PlayerFleetUnit[];
+    total_fuel_consumed: number;
+    total_ammo_consumed: number;
 } => {
     let total_fuel_consumed = 0;
     let total_ammo_consumed = 0;
+
     const supplied_units = units.map(unit => {
         const ship = unit.ship;
-        if (!is_operational(ship)) return unit;
+        if (!is_ship_on_the_front_line(ship)) {
+            return unit;
+        }
 
-        // 燃料補給計算
-        const {
-            post_supply_ratio: new_fuel_ratio,
-            real_supply_ratio: real_fuel_supply_ratio,
-        } = calc_supply_ratio_set(
-            ship.state.fuel_remain_ratio,
+        const supply_result = calc_ship_supply_result(
+            ship,
             supply_ratio,
         );
 
-        total_fuel_consumed += real_fuel_supply_ratio * ship.base_fuel;
+        total_fuel_consumed += supply_result.fuel_consumed;
+        total_ammo_consumed += supply_result.ammo_consumed;
 
-        // 弾薬補給計算
-        const {
-            post_supply_ratio: new_ammo_ratio,
-            real_supply_ratio: real_ammo_supply_ratio,
-        } = calc_supply_ratio_set(
-            ship.state.ammo_remain_ratio,
-            supply_ratio,
-        );
+        const maritime_resupply_location =
+            maritime_resupply_locations.find(
+                location => location.ship_unique_id === ship.unique_id,
+            );
 
-        total_ammo_consumed += real_ammo_supply_ratio * ship.base_ammo;
+        // 洋上補給なし → state更新のみ
+        if (!maritime_resupply_location) {
+            return {
+                ...unit,
+                ship: {
+                    ...ship,
+                    state: {
+                        ...ship.state,
+                        fuel_remain_ratio: supply_result.fuel_remain_ratio,
+                        ammo_remain_ratio: supply_result.ammo_remain_ratio,
+                    },
+                },
+            };
+        }
 
-        // 発動した洋上補給を装備していた艦なら装備をスライド
-        const maritime_resupply_location = maritime_resupply_locations.find(location =>
-            location.ship_unique_id === ship.unique_id
-        );
-        if (!maritime_resupply_location) return unit;
-
-        const new_equips: Equip[] = ship.equip_slots.flatMap((slot, index) => {
-            if (
-                maritime_resupply_location.equip_index === 'ex' ||
-                index === maritime_resupply_location.equip_index ||
-                !is_equip_exsist(slot.equip)
-            ) return [];
-
-            return slot.equip;
-        });
-        const new_ex_equip: Equip | 'None' =
-            ship.equip_slots.find(slot => slot.slot_index === 'ex')?.equip ?? 'None';
-
-        // 要は洋上補給の装甲-2が無くなるだけ 一応再生成の筋は通しとく
-        const options: PlayerEquippedShipOptions = {
-            unique_id: ship.unique_id,
-            hp_remain: ship.state.hp_remain,
-            fuel_remain_ratio: new_fuel_ratio,
-            ammo_remain_ratio: new_ammo_ratio,
-            slots: ship.equip_slots.map(slot => slot.slot_count),
-        };
-        const new_ship = derive_player_equipped_ship(
-            ship.lv,
-            ship.special_item_id,
-            ship.master_id,
-            options,
-            new_equips,
-            new_ex_equip,
-        );
-
+        // 洋上補給あり → 艦再生成
         return {
             ...unit,
-            ship: new_ship,
-        }
+            ship: rebuild_ship_after_resupply(
+                ship,
+                supply_result,
+                maritime_resupply_location,
+            ),
+        };
     });
 
     return {
@@ -218,39 +275,41 @@ const calc_supplied_ships = (
         total_fuel_consumed,
         total_ammo_consumed,
     };
-}
+};
 
 /**
  * 洋上補給後の艦隊を返す
- * @param player_fleet 
+ * @param fleet 
  * @param supply_ratio 
  * @param maritime_resupply_locations 
  * @returns 
  */
-export function calc_supplied_fleet(
-    player_fleet: PlayerFleet,
-    supply_ratio: number,
-    maritime_resupply_locations: MaritimeResupplyLocation[],
+export function calc_resupplied_fleet<T extends PlayerFleet>(
+    fleet: T,
     naval_base: NavalBase,
 ): {
-    supplied_fleet: PlayerFleet,
+    supplied_fleet: T,
     billed_naval_base: NavalBase,  
 } {
+    const maritime_resupply_locations =
+        calc_maritime_resupply_locations(fleet);
+    const supply_ratio =
+        calc_supply_ratio(fleet, maritime_resupply_locations.length);
     const {
         supplied_units: main_fleet_units,
         total_fuel_consumed: main_fleet_fuel_consumed,
         total_ammo_consumed: main_fleet_ammo_consumed,
-     } = calc_supplied_ships(
-        player_fleet.main_fleet_units,
+     } = calc_resupplied_ships(
+        fleet.main_fleet_units,
         supply_ratio,
         maritime_resupply_locations,
     );
 
-    if (!is_combined_fleet(player_fleet)) return {
+    if (!is_combined_fleet(fleet)) return {
         supplied_fleet: {
-            ...player_fleet,
+            ...fleet,
             main_fleet_units: main_fleet_units as [PlayerFleetUnit, ...PlayerFleetUnit[]],
-        },
+        } as T,
         billed_naval_base: {
             ...naval_base,
             fuel: main_fleet_fuel_consumed,
@@ -262,18 +321,18 @@ export function calc_supplied_fleet(
         supplied_units: escort_fleet_units,
         total_fuel_consumed: escort_fleet_fuel_consumed,
         total_ammo_consumed: escort_fleet_ammo_consumed,
-    } = calc_supplied_ships(
-        player_fleet.escort_fleet_units,
+    } = calc_resupplied_ships(
+        fleet.escort_fleet_units,
         supply_ratio,
         maritime_resupply_locations,
     );
 
     return {
         supplied_fleet: {
-            ...player_fleet,
+            ...fleet,
             main_fleet_units: main_fleet_units as [PlayerFleetUnit, ...PlayerFleetUnit[]],
             escort_fleet_units: escort_fleet_units as [PlayerFleetUnit, ...PlayerFleetUnit[]],
-        },
+        } as T,
         billed_naval_base: {
             ...naval_base,
             fuel: main_fleet_fuel_consumed + escort_fleet_fuel_consumed,
@@ -281,7 +340,3 @@ export function calc_supplied_fleet(
         },
     };
 }
-
-export const __maritime_resuply__ = {
-    calc_supply_ratio_set,
-};

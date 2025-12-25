@@ -1,4 +1,4 @@
-import { calc_maritime_resupply_locations, calc_supplied_fleet, calc_supply_ratio } from "@/logics/maritimeResupply";
+import { calc_resupplied_fleet } from "@/logics/maritimeResupply";
 import { PlayerFleet } from "@/models/fleet/Fleet";
 import { NavalBase } from "@/models/NavalBase";
 import { Node } from "@/models/Node";
@@ -14,40 +14,20 @@ import { Node } from "@/models/Node";
 export function calc_maritime_resupply_phase(
     player_fleet: PlayerFleet,
     naval_base: NavalBase,
-    node: Node,
 ): {
     post_maritime_resupply_phase_player_fleet: PlayerFleet,
     post_maritime_resupply_phase_naval_base: NavalBase,
 } {
-    if (!node.type.is_boss) return {
-        post_maritime_resupply_phase_player_fleet: player_fleet,
-        post_maritime_resupply_phase_naval_base: naval_base,
-    };
-
-    const maritime_resupply_locations =
-        calc_maritime_resupply_locations(player_fleet);
-    if (!maritime_resupply_locations.length) return {
-        post_maritime_resupply_phase_player_fleet: player_fleet,
-        post_maritime_resupply_phase_naval_base: naval_base,
-    };
-
-    const supply_ratio = calc_supply_ratio(
-        player_fleet,
-        maritime_resupply_locations.length,
-    );
-
     const {
-        supplied_fleet: post_maritime_resupply_phase_player_fleet,
-        billed_naval_base: post_maritime_resupply_phase_naval_base,
-    } = calc_supplied_fleet(
+        supplied_fleet,
+        billed_naval_base,
+    } = calc_resupplied_fleet(
         player_fleet,
-        supply_ratio,
-        maritime_resupply_locations,
         naval_base,
     );
 
     return {
-        post_maritime_resupply_phase_player_fleet,
-        post_maritime_resupply_phase_naval_base
-    }
+        post_maritime_resupply_phase_player_fleet: supplied_fleet,
+        post_maritime_resupply_phase_naval_base: billed_naval_base,
+    };
 }

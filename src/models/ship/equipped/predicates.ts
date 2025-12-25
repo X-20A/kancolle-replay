@@ -52,7 +52,9 @@ export function is_abyssal_ships(ships: EquippedShip[]): ships is AbyssalEquippe
  * @param ship 
  * @returns 
  */
-export function is_sunk(ship: EquippedShip): boolean {
+const is_sunk = (
+    ship: EquippedShip,
+): boolean => {
     return ship.state.hp_remain <= 0;
 }
 
@@ -61,11 +63,18 @@ export function is_sunk(ship: EquippedShip): boolean {
  * @param ship 
  * @returns 
  */
-export function is_retreated(ship: EquippedShip): boolean {
+const is_retreated = (
+    ship: EquippedShip,
+): boolean => {
     return is_player_equipped_ship(ship) && ship.state.is_retreated;
 }
 
-export function is_operational(ship: EquippedShip): boolean {
+/**
+ * 艦が非轟沈 かつ 非退避 状態であるか判定して返す
+ * @param ship 
+ * @returns 
+ */
+export function is_ship_on_the_front_line(ship: EquippedShip): boolean {
     return !is_sunk(ship) &&
         !is_retreated(ship);
 }

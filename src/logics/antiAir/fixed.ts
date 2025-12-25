@@ -12,7 +12,7 @@ const calc_combined_fleet_mod = (
 ): number => {
     if (defender_unit.affiliation_type === 'single') return 1;
     if (defender_unit.affiliation_type === 'escort') return 0.48;
-    if (node.type.is_air_raid_only) return 0.72;
+    if (node.node_type.is_air_raid_only) return 0.72;
     return 0.8;
 }
 

@@ -1,6 +1,6 @@
 import { has_formation_type } from "@/logics/formation";
 import { is_already_special_attack_activated, is_combined_fleet, PlayerFleet } from "@/models/fleet/Fleet";
-import { is_damage_moderatery_or_more, is_operational, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
+import { is_damage_moderatery_or_more, is_ship_on_the_front_line, is_submarine_category, PlayerEquippedShip } from "@/models/ship/equipped";
 import { FormationType } from "@/types";
 import { DayOrNight } from "@/types/battle";
 import { ShipType } from "@/types/ship/ship";
@@ -27,7 +27,7 @@ const is_valid_joining_ship = (
     return ship !== undefined &&
         !is_damage_moderatery_or_more(ship) &&
         is_submarine_category(ship) &&
-        !is_operational(ship)
+        !is_ship_on_the_front_line(ship)
 }
 
 export function can_activate_Submarine_special(

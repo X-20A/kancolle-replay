@@ -25,7 +25,7 @@ const calc_acc_base = (
     node: Node,
 ): AccBase => {
     if (!is_player_equipped_ship(attacker_unit.ship)) {
-        if (node.type.is_air_raid_only) {
+        if (node.node_type.is_air_raid_only) {
             return defender_unit.affiliation_type === 'main'
                 ? 105 as AccBase
                 : 70 as AccBase;

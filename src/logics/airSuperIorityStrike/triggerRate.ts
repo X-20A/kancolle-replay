@@ -1,7 +1,7 @@
 import { concat_fleet_units, Fleet } from "@/models/fleet/Fleet";
 import { FleetUnit } from "@/models/fleet/FleetUnit";
 import { is_flagship_unit } from "@/models/fleet/predicates";
-import { EquippedShip, is_operational } from "@/models/ship/equipped";
+import { EquippedShip, is_ship_on_the_front_line } from "@/models/ship/equipped";
 import { AirSuperiorityStrikeChanceMod } from ".";
 import { Brand } from "@/types/brands";
 import { is_valid_air_superiority_strike_seaplane } from "./util";
@@ -46,7 +46,7 @@ const calc_A = (
     const units = concat_fleet_units(attacker_fleet);
     return units.reduce((total, unit) => {
         const { ship } = unit;
-        if (!is_operational(ship)) return total;
+        if (!is_ship_on_the_front_line(ship)) return total;
 
         total += ship.naked_status.los;
         total += calc_total_valid_seaplane_LoS(ship.equip_slots);

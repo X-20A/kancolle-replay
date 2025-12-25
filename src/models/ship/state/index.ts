@@ -18,11 +18,13 @@ export type PlayerShipState =  ShipStateBase & {
 
 export function derive_player_ship_state(
     hp_remain: number,
+    fuel_remain_ratio?: number,
+    ammo_remain_ratio?: number,
 ): PlayerShipState {
     return {
         hp_remain,
-        fuel_remain_ratio: 1,
-        ammo_remain_ratio: 1,
+        fuel_remain_ratio: fuel_remain_ratio ?? 1,
+        ammo_remain_ratio: ammo_remain_ratio ?? 1,
         morale: 49,
         enable_sink_safety: true,
         is_retreated: false,
